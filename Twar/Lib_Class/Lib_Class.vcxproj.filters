@@ -1,0 +1,141 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Lib_Class">
+      <UniqueIdentifier>{ae56ad86-29e8-42ad-a012-9dbe91a384d2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Lib_Class\WindowCreator">
+      <UniqueIdentifier>{90106eff-9357-4998-bcc6-1e44669bb1d1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Lib_Class\DirectXGraphics">
+      <UniqueIdentifier>{0f52f74e-ddf7-40bf-87c9-1b38735e7fd2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Lib_Class\DirectSound">
+      <UniqueIdentifier>{9ca8f78a-069c-4a9d-807a-c93c6a89612f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Lib_Class\DirectSound\DSound">
+      <UniqueIdentifier>{18430ae3-2d17-447b-b6a8-2774beed9b74}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Lib_Class\DirectSound\SoundPlayer">
+      <UniqueIdentifier>{bf467bb3-896a-42fc-991e-5bde12ba40bb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Lib_Class\DirectXGraphics\Texture">
+      <UniqueIdentifier>{fa5479bf-0fb0-4f4d-868a-7e6d2d1745d9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Lib_Class\DirectXGraphics\Font">
+      <UniqueIdentifier>{3be5115e-e221-42c7-bbac-8ed8645191ab}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Lib_Class\DirectXGraphics\XFile">
+      <UniqueIdentifier>{c12068a2-6d6e-49bf-aae9-34dfa60cdc57}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Lib_Class\DirectInput">
+      <UniqueIdentifier>{ad03a2dc-e5ab-4ab9-8bc3-96b7b72efb3f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Lib_Class\DirectInput\InputKey">
+      <UniqueIdentifier>{39319460-8101-4c8b-ac70-11758cfaefce}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Lib_Class\DirectInput\InputDevice">
+      <UniqueIdentifier>{580584f3-0db3-44f2-bd73-9596c293ba02}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Lib_Class\DirectInput\InputMouse">
+      <UniqueIdentifier>{f2dcdc14-d8c9-4416-a0fa-8c08b3bf72f5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Lib_Class\Camera">
+      <UniqueIdentifier>{9d4ed108-e7e5-40e1-b402-eb81e2129785}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Lib_Class\DirectXGraphics\Vertex">
+      <UniqueIdentifier>{f0f0082e-4af7-4d65-8feb-2819ddc57237}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Lib_Class\DirectXGraphics\GraphicsDevice">
+      <UniqueIdentifier>{66830fc7-a13d-4697-af7a-fb513b79a296}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Lib_Class\Light">
+      <UniqueIdentifier>{e7c35558-b213-4cf7-95c5-fc48b4b3f098}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Texture.cpp">
+      <Filter>Lib_Class\DirectXGraphics\Texture</Filter>
+    </ClCompile>
+    <ClCompile Include="InputDevice.cpp">
+      <Filter>Lib_Class\DirectInput\InputDevice</Filter>
+    </ClCompile>
+    <ClCompile Include="InputKey.cpp">
+      <Filter>Lib_Class\DirectInput\InputKey</Filter>
+    </ClCompile>
+    <ClCompile Include="DSound.cpp">
+      <Filter>Lib_Class\DirectSound\DSound</Filter>
+    </ClCompile>
+    <ClCompile Include="SoundPlayer.cpp">
+      <Filter>Lib_Class\DirectSound\SoundPlayer</Filter>
+    </ClCompile>
+    <ClCompile Include="WindowCreator.cpp">
+      <Filter>Lib_Class\WindowCreator</Filter>
+    </ClCompile>
+    <ClCompile Include="Font.cpp">
+      <Filter>Lib_Class\DirectXGraphics\Font</Filter>
+    </ClCompile>
+    <ClCompile Include="GraphicsDevice.cpp">
+      <Filter>Lib_Class\DirectXGraphics\GraphicsDevice</Filter>
+    </ClCompile>
+    <ClCompile Include="XFile.cpp">
+      <Filter>Lib_Class\DirectXGraphics\XFile</Filter>
+    </ClCompile>
+    <ClCompile Include="InputMouse.cpp">
+      <Filter>Lib_Class\DirectInput\InputMouse</Filter>
+    </ClCompile>
+    <ClCompile Include="Camera.cpp">
+      <Filter>Lib_Class\Camera</Filter>
+    </ClCompile>
+    <ClCompile Include="Vertex.cpp">
+      <Filter>Lib_Class\DirectXGraphics\Vertex</Filter>
+    </ClCompile>
+    <ClCompile Include="Light.cpp">
+      <Filter>Lib_Class\Light</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Texture.h">
+      <Filter>Lib_Class\DirectXGraphics\Texture</Filter>
+    </ClInclude>
+    <ClInclude Include="InputDevice.h">
+      <Filter>Lib_Class\DirectInput\InputDevice</Filter>
+    </ClInclude>
+    <ClInclude Include="InputKey.h">
+      <Filter>Lib_Class\DirectInput\InputKey</Filter>
+    </ClInclude>
+    <ClInclude Include="DSound.h">
+      <Filter>Lib_Class\DirectSound\DSound</Filter>
+    </ClInclude>
+    <ClInclude Include="SoundPlayer.h">
+      <Filter>Lib_Class\DirectSound\SoundPlayer</Filter>
+    </ClInclude>
+    <ClInclude Include="WindowCreator.h">
+      <Filter>Lib_Class\WindowCreator</Filter>
+    </ClInclude>
+    <ClInclude Include="Font.h">
+      <Filter>Lib_Class\DirectXGraphics\Font</Filter>
+    </ClInclude>
+    <ClInclude Include="GraphicsDevice.h">
+      <Filter>Lib_Class\DirectXGraphics\GraphicsDevice</Filter>
+    </ClInclude>
+    <ClInclude Include="LibClass.h">
+      <Filter>Lib_Class</Filter>
+    </ClInclude>
+    <ClInclude Include="XFile.h">
+      <Filter>Lib_Class\DirectXGraphics\XFile</Filter>
+    </ClInclude>
+    <ClInclude Include="InputMouse.h">
+      <Filter>Lib_Class\DirectInput\InputMouse</Filter>
+    </ClInclude>
+    <ClInclude Include="Camera.h">
+      <Filter>Lib_Class\Camera</Filter>
+    </ClInclude>
+    <ClInclude Include="Vertex.h">
+      <Filter>Lib_Class\DirectXGraphics\Vertex</Filter>
+    </ClInclude>
+    <ClInclude Include="Light.h">
+      <Filter>Lib_Class\Light</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>
