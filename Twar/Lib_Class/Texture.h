@@ -70,6 +70,7 @@ public:
 
 	/**
 	* テクスチャーを開放する関数<br>
+	* FileManager関連使用想定して作成
 	*/
 	void Release();
 

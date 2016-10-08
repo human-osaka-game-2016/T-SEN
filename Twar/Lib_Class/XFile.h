@@ -41,7 +41,8 @@ public:
 	void DrawX();
 
 	/**
-	* ƒƒ‚ƒŠ‰ğ•úŠÖ”
+	* ƒƒ‚ƒŠ‰ğ•úŠÖ”<br>
+	* FailManager‚Ég—p‚·‚é‚½‚ß‚Éì¬
 	*/
 	void Release();
 };
