@@ -72,6 +72,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="Camera.h" />
+    <ClInclude Include="DebugTimer.h" />
     <ClInclude Include="DSound.h" />
     <ClInclude Include="Font.h" />
     <ClInclude Include="GraphicsDevice.h" />
@@ -88,6 +89,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Camera.cpp" />
+    <ClCompile Include="DebugTimer.cpp" />
     <ClCompile Include="DSound.cpp" />
     <ClCompile Include="Font.cpp" />
     <ClCompile Include="GraphicsDevice.cpp" />

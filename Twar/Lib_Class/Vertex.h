@@ -18,6 +18,7 @@ private:
 	IDirect3DDevice9*		m_pD3Device;			//!< デバイス
 	float					m_texWidth;		  	    //!< テクスチャーの幅
 	float					m_texheight;			//!< テクスチャーの高さ
+	float					m_texDepth;				//!< テクスチャーの奥行き
 	float					m_tuMax;				//!< テクスチャーのtu最大値
 	float					m_tuMin;				//!< テクスチャーのtu最小値
 	float					m_tvMax;				//!< テクスチャーのtv最大値
@@ -37,10 +38,23 @@ public:
 	* 数値を指定するときに使用
 	* @param[in] width  幅
 	* @param[in] height 高さ
+	* @param[in] deoth	奥行き
 	* @param[in] tu	    tu値
 	* @param[in] tv		tv値
 	*/
 	Vertex(float width,float height,float tu,float tv);
+
+	/**
+	* コンストラクタ.
+	* 数値を指定するときに使用<br>
+	* 奥行も指定する場合に作成.
+	* @param[in] width  幅
+	* @param[in] height 高さ
+	* @param[in] deoth	奥行き
+	* @param[in] tu	    tu値
+	* @param[in] tv		tv値
+	*/
+	Vertex(float width,float height,float depth,float tu,float tv);
 
 	/**デストラクタ*/
 	~Vertex();
@@ -55,6 +69,17 @@ public:
 	void Draw(Texture* texture, float posX, float posY);
 
 	/**
+	* 通常描画関数<br>
+	* テクスチャーの左上に座標をセットする<br>
+	* こちらはZ座標も引数として渡す.
+	* @param[in] texture テクスチャークラスのポインタ
+	* @param[in] posX     X座標
+	* @param[in] posY     Y座標
+	* @param[in] posZ	  Z座標
+	*/
+	void Draw(Texture* texture, float posX, float posY,float posZ);
+
+	/**
 	* 描画関数<br>
 	* テクスチャーの中心に座標をセットする.
 	* @param[in] texture テクスチャークラスのポインタ
@@ -62,6 +87,17 @@ public:
 	* @param[in] posY     Y座標
 	*/
 	void DrawCP(Texture* texture, float posX, float posY);
+
+	/**
+	* 描画関数<br>
+	* テクスチャーの中心に座標をセットする<br>
+	* Z座標も引数として渡す.
+	* @param[in] texture テクスチャークラスのポインタ
+	* @param[in] posX     X座標
+	* @param[in] posY     Y座標
+	* @param[in] posZ	  Z座標
+	*/
+	void DrawCP(Texture* texture, float posX, float posY,float posZ);
 
 	/**
 	* テクスチャーサイズをセットする関数.

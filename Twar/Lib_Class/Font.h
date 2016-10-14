@@ -58,6 +58,18 @@ public:
 	* @param[in] italic		Î‘Ì‚É‚·‚é‚©‚Ç‚¤‚©
 	*/
 	void ReCreateFont(LPCTSTR pFacename, UINT weight, BOOL italic);
+
+	/**
+	* 1•¶š‚Ì‚‚³‚ğæ“¾‚·‚éŠÖ”.
+	* @return m_height	•¶š‚Ì‚‚³
+	*/
+	INT	 GetFontHeight(){ return m_height; }
+
+	/**
+	* 1•¶š‚Ì‰¡•‚ğæ“¾‚·‚éŠÖ”
+	* @return 
+	*/
+	UINT GetFontWidth(){ return m_width; }
 };
 
 #endif		// FONT_H

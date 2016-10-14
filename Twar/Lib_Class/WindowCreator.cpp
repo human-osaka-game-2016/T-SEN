@@ -62,6 +62,10 @@ HRESULT WindowCreator::MakeWindow(HINSTANCE hInstance, LRESULT CALLBACK WndProc(
 			NULL
 			);
 
+		SetProcessDPIAware();					// ウィンドウサイズを調整する関数
+		HDC hdc = GetDC(m_hWnd);
+		int aaa = GetDeviceCaps(hdc, LOGPIXELSX);
+
 		// クライアント領域を調整する
 		RECT client_rect;
 		RECT widow_rect;
