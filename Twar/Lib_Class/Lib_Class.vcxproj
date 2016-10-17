@@ -73,7 +73,6 @@
   <ItemGroup>
     <ClInclude Include="Camera.h" />
     <ClInclude Include="DebugTimer.h" />
-    <ClInclude Include="DSound.h" />
     <ClInclude Include="Font.h" />
     <ClInclude Include="GraphicsDevice.h" />
     <ClInclude Include="InputDevice.h" />
@@ -81,7 +80,7 @@
     <ClInclude Include="InputMouse.h" />
     <ClInclude Include="LibClass.h" />
     <ClInclude Include="Light.h" />
-    <ClInclude Include="SoundPlayer.h" />
+    <ClInclude Include="SoundFileManager.h" />
     <ClInclude Include="Texture.h" />
     <ClInclude Include="Vertex.h" />
     <ClInclude Include="WindowCreator.h" />
@@ -90,14 +89,13 @@
   <ItemGroup>
     <ClCompile Include="Camera.cpp" />
     <ClCompile Include="DebugTimer.cpp" />
-    <ClCompile Include="DSound.cpp" />
     <ClCompile Include="Font.cpp" />
     <ClCompile Include="GraphicsDevice.cpp" />
     <ClCompile Include="InputDevice.cpp" />
     <ClCompile Include="InputKey.cpp" />
     <ClCompile Include="InputMouse.cpp" />
     <ClCompile Include="Light.cpp" />
-    <ClCompile Include="SoundPlayer.cpp" />
+    <ClCompile Include="SoundFileManager.cpp" />
     <ClCompile Include="Texture.cpp" />
     <ClCompile Include="Vertex.cpp" />
     <ClCompile Include="WindowCreator.cpp" />

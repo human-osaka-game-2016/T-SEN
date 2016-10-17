@@ -1,29 +1,45 @@
 /**
-* @file  SoundPlayer.cpp
-* @brief 音楽の再生に関するクラス.cpp
+* @file SoundFileManager.cpp
+* @brief サウンドを管理するクラスのcpp
 * @author haga
 */
-#include <windows.h>
-#include <dSound.h>
-#include "Dsound.h"
-#include "SoundPlayer.h"
 
-// コンストラクタ
-SoundPlayer::SoundPlayer() :m_pDSound8(DSound::GetInstance().GetInterface()), m_pDSBuffer(NULL)
+#include "SoundFileManager.h"
+
+SoundFileManager::SoundFileManager():
+m_pDSound8(NULL)
 {
 }
-// デストラクタ
-SoundPlayer::~SoundPlayer()
+
+SoundFileManager::~SoundFileManager()
 {
-	if (m_pDSBuffer)
+	for (auto itr = m_soundMap.begin(); itr != m_soundMap.end();itr++)
 	{
-		m_pDSBuffer->Release();
-		m_pDSBuffer = NULL;
+		if (itr->second)
+		{
+			itr->second->Release();
+			itr->second = NULL;
+		}
+	}
+
+	m_soundMap.clear();
+		
+	if (m_pDSound8)
+	{
+		m_pDSound8->Release();
+		m_pDSound8 = NULL;
 	}
 }
 
+void SoundFileManager::InitSound(HWND hWnd)
+{
+	DirectSoundCreate8(NULL, &m_pDSound8, NULL);
+	// 協調レベル設定
+	m_pDSound8->SetCooperativeLevel(hWnd, DSSCL_NORMAL);
+}
+
 // WAVEファイルオープン関数
-bool SoundPlayer::OpenWave(TCHAR* filepath, WAVEFORMATEX* waveFormatEx, char** pwaveData, DWORD* dataSize)
+bool SoundFileManager::OpenWave(TCHAR* filepath, WAVEFORMATEX* waveFormatEx, char** pwaveData, DWORD* dataSize)
 {
 	if (filepath == 0)
 		return false;
@@ -86,78 +102,82 @@ bool SoundPlayer::OpenWave(TCHAR* filepath, WAVEFORMATEX* waveFormatEx, char** p
 	return true;
 }
 
-// 音楽を読み込む
-HRESULT SoundPlayer::LoadSound(TCHAR* filepath)
+HRESULT SoundFileManager::LoadSound(TCHAR* filePath)
 {
-	WAVEFORMATEX wFmt; 
-	char *pWaveData = 0; 
-	DWORD dataSize = 0; 
+	LPDIRECTSOUNDBUFFER8 pDSBuffer = NULL;
+	// Waveファイルオープン
+	WAVEFORMATEX wFmt;
+	char *pWaveData = 0;
+	DWORD waveSize = 0;
 
-	if (!OpenWave(filepath, &wFmt, &pWaveData, &dataSize))
+	if (!OpenWave((filePath), &wFmt, &pWaveData, &waveSize))
 	{
-		MessageBox(0, "WAVEファイルオープンに失敗しました。", NULL, MB_OK);
 		return E_FAIL;
 	}
 
-	// セカンダリバッファ作成
 	DSBUFFERDESC DSBufferDesc;
-
 	DSBufferDesc.dwSize = sizeof(DSBUFFERDESC);
 	DSBufferDesc.dwFlags = 0;
-	DSBufferDesc.dwBufferBytes = dataSize;
+	DSBufferDesc.dwBufferBytes = waveSize;
 	DSBufferDesc.dwReserved = 0;
 	DSBufferDesc.lpwfxFormat = &wFmt;
 	DSBufferDesc.guid3DAlgorithm = GUID_NULL;
 
-
 	IDirectSoundBuffer *ptmpBuf = 0;
 	m_pDSound8->CreateSoundBuffer(&DSBufferDesc, &ptmpBuf, NULL);
-	ptmpBuf->QueryInterface(IID_IDirectSoundBuffer8, (void**)&m_pDSBuffer);
-	ptmpBuf->Release();
+	ptmpBuf->QueryInterface(IID_IDirectSoundBuffer8, (void**)&pDSBuffer);
 
-	// セカンダリバッファにWaveデータ書き込み
-	LPVOID lpvWrite = 0;
-	DWORD dwLength = 0;
-	if (DS_OK == m_pDSBuffer->Lock(0, 0, &lpvWrite, &dwLength, NULL, NULL, DSBLOCK_ENTIREBUFFER)) 
+	ptmpBuf->Release();
+	if (pDSBuffer == NULL)
 	{
-		memcpy(lpvWrite, pWaveData, dwLength);
-		m_pDSBuffer->Unlock(lpvWrite, dwLength, NULL, 0);
-	}
-	else
-	{
-		MessageBox(0, "WAVEファイルバッファ書き込みに失敗しました。", NULL, MB_OK);
+		m_pDSound8->Release();
 		return E_FAIL;
 	}
 
-	delete[] pWaveData;
+
+	// セカンダリバッファにWaveデータ書き込み
+	//音声データ
+	LPVOID lpvWrite = 0;
+	//音声データの大きさ
+	DWORD dwLength = 0;
+	if (DS_OK == pDSBuffer->Lock(0, 0, &lpvWrite, &dwLength, NULL, NULL, DSBLOCK_ENTIREBUFFER))
+	{
+		memcpy(lpvWrite, pWaveData, dwLength);
+		pDSBuffer->Unlock(lpvWrite, dwLength, NULL, 0);
+	}
+
+	delete[] pWaveData; // 元音はもういらない
+
+
+	m_soundMap[filePath] = pDSBuffer;
 
 	return S_OK;
 }
 
-// 音楽再生モード
-void SoundPlayer::SoundMode(SOUNDMODE _sMode)
+// 音楽を再生する関数
+void SoundFileManager::SoundPlayer(TCHAR* filePath, SOUND_MODE sMode)
 {
-	switch (_sMode)
+	switch (sMode)
 	{
 	case Play:
-		m_pDSBuffer->Play(0, 0, 0);
+		m_soundMap[filePath]->Play(0, 0, 0);
 		break;
 	case PlayLoop:
-		m_pDSBuffer->Play(0, 0, DSBPLAY_LOOPING);
+		m_soundMap[filePath]->Play(0, 0, DSBPLAY_LOOPING);
 		break;
 	case Stop:
-		m_pDSBuffer->Stop();
+		m_soundMap[filePath]->Stop();
 		break;
 	case Reset:
-		m_pDSBuffer->SetCurrentPosition(0);
+		m_soundMap[filePath]->SetCurrentPosition(0);
 		break;
 	case Stop_Reset:
-		m_pDSBuffer->Stop();
-		m_pDSBuffer->SetCurrentPosition(0);
+		m_soundMap[filePath]->Stop();
+		m_soundMap[filePath]->SetCurrentPosition(0);
 		break;
 	case Reset_Play:
-		m_pDSBuffer->SetCurrentPosition(0);
-		m_pDSBuffer->Play(0, 0, 0);
+		m_soundMap[filePath]->SetCurrentPosition(0);
+		m_soundMap[filePath]->Play(0, 0, 0);
 		break;
 
 	}

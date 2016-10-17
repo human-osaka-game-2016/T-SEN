@@ -10,6 +10,7 @@
 #include "WindowCreator.h"
 #include "GraphicsDevice.h"
 #include "InputDevice.h"
+#include "SoundFileManager.h"
 #include "Font.h"
 
 
@@ -75,6 +76,11 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPTSTR lpCmdLin
 	g_pInputDevice->InitDinput();
 	g_pInputDevice->InitDinputKey(g_pGameWindow->GetHwnd());
 	g_pInputDevice->InitDinputMouse(g_pGameWindow->GetHwnd());
+
+	// ダイレクトサウンド
+	SoundFileManager* pSoundFileManager = NULL;
+	pSoundFileManager = &SoundFileManager::GetInstance();
+	pSoundFileManager->InitSound(g_pGameWindow->GetHwnd());
 
 	//-------------------------------------------------------------------
 	//						メッセージループ

@@ -10,15 +10,6 @@
     <Filter Include="Lib_Class\DirectXGraphics">
       <UniqueIdentifier>{0f52f74e-ddf7-40bf-87c9-1b38735e7fd2}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Lib_Class\DirectSound">
-      <UniqueIdentifier>{9ca8f78a-069c-4a9d-807a-c93c6a89612f}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Lib_Class\DirectSound\DSound">
-      <UniqueIdentifier>{18430ae3-2d17-447b-b6a8-2774beed9b74}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Lib_Class\DirectSound\SoundPlayer">
-      <UniqueIdentifier>{bf467bb3-896a-42fc-991e-5bde12ba40bb}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Lib_Class\DirectXGraphics\Texture">
       <UniqueIdentifier>{fa5479bf-0fb0-4f4d-868a-7e6d2d1745d9}</UniqueIdentifier>
     </Filter>
@@ -55,6 +46,9 @@
     <Filter Include="Lib_Class\DebugTimer">
       <UniqueIdentifier>{68656a60-ec78-4245-b788-7101b64dd265}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Lib_Class\SoundFileManager">
+      <UniqueIdentifier>{9ca8f78a-069c-4a9d-807a-c93c6a89612f}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Texture.cpp">
@@ -65,12 +59,6 @@
     </ClCompile>
     <ClCompile Include="InputKey.cpp">
       <Filter>Lib_Class\DirectInput\InputKey</Filter>
-    </ClCompile>
-    <ClCompile Include="DSound.cpp">
-      <Filter>Lib_Class\DirectSound\DSound</Filter>
-    </ClCompile>
-    <ClCompile Include="SoundPlayer.cpp">
-      <Filter>Lib_Class\DirectSound\SoundPlayer</Filter>
     </ClCompile>
     <ClCompile Include="WindowCreator.cpp">
       <Filter>Lib_Class\WindowCreator</Filter>
@@ -99,6 +87,9 @@
     <ClCompile Include="DebugTimer.cpp">
       <Filter>Lib_Class\DebugTimer</Filter>
     </ClCompile>
+    <ClCompile Include="SoundFileManager.cpp">
+      <Filter>Lib_Class\SoundFileManager</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Texture.h">
@@ -109,12 +100,6 @@
     </ClInclude>
     <ClInclude Include="InputKey.h">
       <Filter>Lib_Class\DirectInput\InputKey</Filter>
-    </ClInclude>
-    <ClInclude Include="DSound.h">
-      <Filter>Lib_Class\DirectSound\DSound</Filter>
-    </ClInclude>
-    <ClInclude Include="SoundPlayer.h">
-      <Filter>Lib_Class\DirectSound\SoundPlayer</Filter>
     </ClInclude>
     <ClInclude Include="WindowCreator.h">
       <Filter>Lib_Class\WindowCreator</Filter>
@@ -145,6 +130,9 @@
     </ClInclude>
     <ClInclude Include="DebugTimer.h">
       <Filter>Lib_Class\DebugTimer</Filter>
+    </ClInclude>
+    <ClInclude Include="SoundFileManager.h">
+      <Filter>Lib_Class\SoundFileManager</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

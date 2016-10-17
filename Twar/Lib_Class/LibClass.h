@@ -1,7 +1,8 @@
 /**
 * @file LibClass.h
 * @brief Lib_Classのヘッダーファイルをまとめたヘッダーファイル<br>
-* ヘッダーをフィルターごとに分けている.
+* ヘッダーをフィルターごとに分けている<br>
+* あくまでこのヘッダーは確認用なので、includeはしないこと
 * @author haga
 */
 
@@ -27,8 +28,7 @@
 //-------------------------------------------
 //				DirectSound
 //-------------------------------------------
-#include "DSound.h"					//!< DirectSoundデバイス関連クラス
-#include "SoundPlayer.h"			//!< 音楽再生クラス
+#include "SoundFileManager.h"
 
 //-------------------------------------------
 //　　　　　	WindowCreater
