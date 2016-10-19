@@ -9,9 +9,8 @@
 #include <d3d9.h>
 #include <d3dx9.h>
 
-#define SAFE_RELEASE(p) {if(p){(p)->Release(); (p)=NULL;}}						//!< メモリ開放マクロ
-#define D3DFVF_CUSTOMVERTEX (D3DFVF_XYZRHW | D3DFVF_DIFFUSE | D3DFVF_TEX1)		//!< 柔軟な頂点フォーマットのマクロ
-
+#define D3DFVF_CUSTOMVERTEX (D3DFVF_XYZRHW | D3DFVF_DIFFUSE | D3DFVF_TEX1)		//!< 頂点フォーマットのマクロ
+#define USERVERTE_FVF (D3DFVF_XYZ | D3DFVF_NORMAL | D3DFVF_TEX1)				//!< 頂点フォーマットのマクロ(法線ベクトルを含む)
 /**
 * DirectXのデバイス関連のクラス.
 */

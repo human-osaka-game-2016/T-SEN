@@ -81,7 +81,7 @@
     <ClInclude Include="LibClass.h" />
     <ClInclude Include="Light.h" />
     <ClInclude Include="SoundFileManager.h" />
-    <ClInclude Include="Texture.h" />
+    <ClInclude Include="TextureManager.h" />
     <ClInclude Include="Vertex.h" />
     <ClInclude Include="WindowCreator.h" />
     <ClInclude Include="XFile.h" />
@@ -96,7 +96,7 @@
     <ClCompile Include="InputMouse.cpp" />
     <ClCompile Include="Light.cpp" />
     <ClCompile Include="SoundFileManager.cpp" />
-    <ClCompile Include="Texture.cpp" />
+    <ClCompile Include="TextureManager.cpp" />
     <ClCompile Include="Vertex.cpp" />
     <ClCompile Include="WindowCreator.cpp" />
     <ClCompile Include="XFile.cpp" />
