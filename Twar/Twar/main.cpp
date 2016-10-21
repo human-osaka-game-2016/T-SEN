@@ -119,22 +119,26 @@ LRESULT CALLBACK WindowProc(HWND hwnd, UINT message, WPARAM wparam, LPARAM lpara
 	switch (message)
 	{
 	case WM_DESTROY:
+	{
 		int a = MessageBox(hwnd, TEXT("終わりますか？"), TEXT("終了"), MB_YESNO);
 		if (a == IDYES)
 		{
 			PostQuitMessage(0);
 		}
+	}
 		return  0;
 		break;
 	case WM_KEYDOWN:
 		switch ((CHAR)wparam)
 		{
 		case VK_ESCAPE:
+		{
 			int a = MessageBox(hwnd, TEXT("終わりますか？"), TEXT("終了"), MB_YESNO);
 			if (a == IDYES)
 			{
 				PostQuitMessage(0);
 			}
+		}
 			return 0;
 			break;
 		}

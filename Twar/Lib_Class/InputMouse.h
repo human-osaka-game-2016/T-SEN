@@ -8,6 +8,23 @@
 
 #include <dinput.h>
 #include <d3dx9.h>
+#include "InputDevice.h"
+
+/**マウスのボタン*/
+enum MOUSEBUTTON
+{
+	MouseLeft,		//!< 左ボタン
+	MouseRight,		//!< 右ボタン
+	MouseCenter,	//!< ホイール
+	ButtonMAX,
+};
+/**マウスホイールの状態*/
+enum WHEEL_STATE
+{
+	WHEEL_NONE = 0,		//!< 回転していない
+	WHEEL_UP = 1,		//!< 奥に回転させている状態
+	WHEEL_DOWN = -1,	//!< 手前に回転させている状態
+};
 
 /**
 * マウス操作に関するクラス
@@ -15,20 +32,33 @@
 class InputMouse
 {
 private:
-	HWND				 m_hWnd;			//!< ウィンドウハンドル格納
-	LPDIRECTINPUTDEVICE8 m_pMouseDevice;	//!< マウスデバイス
-	DIMOUSESTATE2		 m_dims;			//!< マウス構造体(ボタン関連)
-	INT					 m_wndWid;			//!< ウインドウサイズ幅
-	INT					 m_wndHgt;			//!< ウィンドドウサイズ高さ
-	LONG				 m_posX;			//!< マウスのx座標
-	LONG				 m_posY;			//!< マウスのy座標
-	LONG				 m_wheel;			//!< マウスのホイール
-	bool				 m_LDown;			//!< Update時点の左ボタン状態
-	bool				 m_RDown;			//!< Update時点の右ボタン状態
-	bool				 m_MDown;			//!< Update時点の中ボタン状態
-	bool				 m_LAction;			//!< ボタン押した直後だけONになる(クリックを拾うときに)
-	bool				 m_RAction;			//!< ボタン押した直後だけONになる(クリックを拾うときに)
-	bool				 m_MAction;			//!< ボタン押した直後だけONになる(クリックを拾うときに)
+	HWND				 m_hWnd;								//!< ウィンドウハンドル格納
+	LPDIRECTINPUTDEVICE8 m_pMouseDevice;						//!< マウスデバイス
+	DIMOUSESTATE2		 m_dims;								//!< マウス構造体(ボタン関連)
+	INT					 m_wndWid;								//!< ウインドウサイズ幅
+	INT					 m_wndHgt;								//!< ウィンドドウサイズ高さ
+	LONG				 m_posX;								//!< マウスのx座標
+	LONG				 m_posY;								//!< マウスのy座標
+	LONG				 m_wheel;								//!< マウスのホイール
+	bool				 m_LDown;								//!< Update時点の左ボタン状態
+	bool				 m_RDown;								//!< Update時点の右ボタン状態
+	bool				 m_MDown;								//!< Update時点の中ボタン状態
+	bool				 m_LAction;								//!< ボタン押した直後だけONになる(クリックを拾うときに)
+	bool				 m_RAction;								//!< ボタン押した直後だけONになる(クリックを拾うときに)
+	bool				 m_MAction;								//!< ボタン押した直後だけONになる(クリックを拾うときに)
+	int					 m_PreMouse[MOUSEBUTTON::ButtonMAX];	//!< マウスのボタンの前の状態を格納する変数
+	BUTTONSTATE			 m_mouse[MOUSEBUTTON::ButtonMAX];		//!< マウスのボタンの状態を格納する変数
+
+	/**状態確認*/
+	bool GetIsLAction() const { return m_LAction; }
+	bool GetIsRAction() const { return m_RAction; }
+	bool GetIsMAction() const { return m_MAction; }
+
+	/**
+	* 状態を確認する関数
+	* @param[in] mouseButton マウスのボタンの種類
+	*/
+	void CheckState(MOUSEBUTTON mouseButton);
 
 public:
 	/**コンストラクタ*/
@@ -36,27 +66,29 @@ public:
 	/**デストラクタ*/
 	~InputMouse();
 
-	/**マウスホイールの状態*/
-	enum WHEEL_STATE
-	{
-		WHEEL_NONE = 0,		//!< 回転していない
-		WHEEL_UP = 1,		//!< 奥に回転させている状態
-		WHEEL_DOWN = -1,	//!< 手前に回転させている状態
-	};
 
 	/**マウスの更新*/
 	void UpdateMouse();
+
+	/**
+	* マウスの状態を確認する関数
+	* @param[in] mouseButton マウスのボタンの種類
+	* @return ボタンが押されているかどうか
+	*/
+	BUTTONSTATE ChecKMouse(MOUSEBUTTON mouseButton);
+
+	/**
+	* マウスホイール状態を取得する関数
+	* @return ホイール状態
+	*/
+	WHEEL_STATE GetWheelState();
 
 	/**マウス座標を取得する*/
 	LONG GetPosX() const { return m_posX; }
 	LONG GetPosY() const { return m_posY; }
 	LONG GetWheel() const { return m_wheel; }
 
-	/**状態確認*/
-	bool GetIsLAction() const { return m_LAction; }
-	bool GetIsRAction() const { return m_RAction; }
-	bool GetIsMAction() const { return m_MAction; }
-
+	
 	/**
 	* マウスの座標をセット.
 	* @param[in] x 座標x

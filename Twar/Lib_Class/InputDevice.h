@@ -10,6 +10,16 @@
 /*
 * DirectInput関連クラス.
 */
+
+/**ボタンの状態確認*/
+enum BUTTONSTATE
+{
+	OFF,		//!< キーを離した状態が続いている
+	ON,			//!< キーを押した状態が続いている
+	PUSH,		//!< キーを離す
+	RELEASE,	//!< キーを押す
+};
+
 class InputDevice
 {
 private:

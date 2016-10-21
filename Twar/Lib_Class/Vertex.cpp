@@ -20,12 +20,6 @@ m_tvMin(tuMin)
 	{
 		m_color[i] = 0xFFFFFFFF;
 	}
-	/*
-	m_color[0] = 0xFFFFFFFF;
-	m_color[1] = 0xFFFFFFFF;
-	m_color[2] = 0xFFFFFFFF;
-	m_color[3] = 0xFFFFFFFF;
-	*/
 }
 
 // デストラクタ
@@ -74,7 +68,7 @@ void Vertex::Draw(LPDIRECT3DTEXTURE9 pTexture, float posX, float posY, float pos
 	m_pD3Device->DrawPrimitiveUP(D3DPT_TRIANGLEFAN, 2, vtex, sizeof(CUSTOMVERTEX));
 }
 
-// 描画(テクスチャーの中心に座標を合わせる)引数にZ座標追加
+// 描画(テクスチャーの中心に座標を合わせる)
 void Vertex::DrawCenterPos(LPDIRECT3DTEXTURE9 pTexture, float posX, float posY)
 {
 

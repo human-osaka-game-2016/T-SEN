@@ -11,6 +11,7 @@ class GamaLib
 public:
 	GamaLib();
 	~GamaLib();
+
 };
 
 #endif	// GAMELIB_H

@@ -4,7 +4,7 @@
 * @author haga
 */
 #include <dinput.h>
-#include "InputDevice.h"
+
 #include "InputKey.h"
 
 // コンストラクタ
@@ -31,8 +31,16 @@ void InputKey::UpdateKey()
 	}
 }
 
-// キー状態確認関数
-void InputKey::KeyCheck(BYTE* DIK, KEYKIND st)
+// キーチェック関数
+BUTTONSTATE InputKey::CheckKey(int DIK, KEYKIND st)
+{
+	CheckState(&m_diks[DIK], st);
+
+	return m_Key[st];
+}
+
+// 状態確認関数
+void InputKey::CheckState(BYTE* DIK, KEYKIND st)
 {
 	if ((*DIK) & 0x80)
 	{

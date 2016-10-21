@@ -6,7 +6,9 @@
 #ifndef INPUT_KEY_H
 #define INPUT_KEY_H
 
+
 #include <dinput.h>
+#include "InputDevice.h"
 
 /**キー種類*/
 enum  KEYKIND
@@ -55,17 +57,10 @@ enum  KEYKIND
 	SEVEN,
 	EIGHT,
 	NINE,
-	KEYMAX
+	KEYMAX,
 };
 
-/**キー状態*/
-enum KEYSTATE
-{
-	OFF,		//!< キーを離した状態が続いている
-	ON,			//!< キーを押した状態が続いている
-	RELEASE,	//!< キーを離す
-	PUSH		//!< キーを押す
-};
+
 
 /**
 * キーに関するクラス
@@ -76,9 +71,16 @@ private:
 	LPDIRECTINPUTDEVICE8  m_pKeyDevice;			//!< キーボードデバイス格納用
 	int					  m_PreKey[KEYMAX];		//!< キーの状態格納する変数
 
+	/**
+	* 状態を確認する関数.
+	* @param[in] DIK	ダイレクトインプットキー
+	* @param[in] st	キー種類
+	*/
+	void CheckState(BYTE* DIK, KEYKIND st);
+
 public:
 	BYTE     m_diks[256];			//!< DIKを格納する変数
-	KEYSTATE m_Key[KEYMAX];			//!< キーの種類を格納する変数
+	BUTTONSTATE m_Key[KEYMAX];			//!< キーの種類を格納する変数
 
 	/**コンストラクタ*/
 	InputKey();
@@ -86,28 +88,15 @@ public:
 	/**デストラクタ*/
 	~InputKey();
 
-	/**
-	* 実体を取得する関数<br>
-	* Singletonパターン.
-	* @return ControlKey キー操作のオブジェクト
-	*/
-	static InputKey& GetInstance()
-	{
-		static InputKey ControlKey;
-
-		return ControlKey;
-	}
-
 	/**キーの更新*/
 	void UpdateKey();
 
 	/**
-	* キーの状態を確認する関数.
-	* @param[in] DIK	ダイレクトインプットキー
-	* @param[in] st	キー種類
+	* キー状態確認関数
+	* @param[in] DIK	ダイレクトインプットキーID
+ 	* @param[in] st		キーの種類
 	*/
-	void KeyCheck(BYTE* DIK, KEYKIND st);
-
+	BUTTONSTATE CheckKey(int DIK, KEYKIND st);
 };
 
 #endif		// INPUT_KEY_H

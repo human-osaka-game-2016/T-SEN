@@ -25,6 +25,12 @@ m_hWnd(InputDevice::GetInstance().GethWnd())
 	m_LAction = false;
 	m_MAction = false;
 	m_RAction = false;
+
+	for (int i = 0 ; i < MOUSEBUTTON::ButtonMAX; i++)
+	{
+		m_PreMouse[i] = BUTTONSTATE::OFF;
+		m_mouse[i] = BUTTONSTATE::OFF;
+	}
 }
 
 // デストラクタ
@@ -35,6 +41,8 @@ InputMouse::~InputMouse()
 // マウスのデータ更新
 void InputMouse::UpdateMouse()
 {
+	m_wheel = 0;
+
 	DIDEVICEOBJECTDATA od;			// デバイスオブジェクトデータを格納する変数
 	DWORD dwItems = 1;
 	HRESULT hr;
@@ -77,6 +85,7 @@ void InputMouse::UpdateMouse()
 				break;
 
 			case DIMOFS_Z:							// マウスのZ(ホイール)動作
+
 				m_wheel = od.dwData;
 				if (m_wheel > 0)
 				{
@@ -120,7 +129,7 @@ void InputMouse::UpdateMouse()
 				}
 				else
 				{
-					m_RAction = false;
+					m_MAction = false;
 				}
 				break;
 
@@ -130,3 +139,71 @@ void InputMouse::UpdateMouse()
 	}
 }
 
+
+// 状態を確認する関数
+void InputMouse::CheckState(MOUSEBUTTON mouseButton)
+{
+	bool mouseClick = false;		// マウスがクリックされたか
+
+	switch (mouseButton)
+	{
+	case MouseLeft:
+		mouseClick = GetIsLAction();
+		break;
+
+	case MouseRight:
+		mouseClick = GetIsLAction();
+		break;
+
+	case MouseCenter:
+		mouseClick = GetIsMAction();
+		break;
+	}
+
+	if (mouseClick)
+	{
+		if (m_PreMouse[mouseButton] == OFF)
+		{
+			m_mouse[mouseButton] = PUSH;
+		}
+		else
+		{
+			m_mouse[mouseButton] = ON;
+		}
+		m_PreMouse[mouseButton] = ON;
+	}
+	else
+	{
+		if (m_PreMouse[mouseButton] == ON)
+		{
+			m_mouse[mouseButton] = RELEASE;
+		}
+		else
+		{
+			m_mouse[mouseButton] = OFF;
+		}
+		m_PreMouse[mouseButton] = OFF;
+	}
+}
+
+BUTTONSTATE InputMouse::ChecKMouse(MOUSEBUTTON mouseButton)
+{
+
+	CheckState(mouseButton);
+
+	return m_mouse[mouseButton];
+}
+
+WHEEL_STATE InputMouse::GetWheelState()
+{
+	if (m_wheel > 0)
+	{
+		return WHEEL_UP;
+	}
+	else if (m_wheel < 0)
+	{
+		return WHEEL_DOWN;
+	}
+
+	return WHEEL_NONE;
+}
