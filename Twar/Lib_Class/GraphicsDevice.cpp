@@ -18,8 +18,17 @@ m_pD3Device(NULL)
 // デストラクタ
 GraphicsDevice::~GraphicsDevice()
 {
-	SAFE_RELEASE(m_pD3Device);
-	SAFE_RELEASE(m_pDirect3D);
+	if (m_pD3Device != NULL)
+	{
+		m_pD3Device->Release();
+		m_pD3Device = NULL;
+	}
+
+	if (m_pDirect3D != NULL)
+	{
+		m_pDirect3D->Release();
+		m_pDirect3D = NULL;
+	}
 }
 
 // DirectX初期化関数(中で描画設定も行っている)
@@ -48,9 +57,9 @@ HRESULT	 GraphicsDevice::InitDevice(HWND hWnd, bool wType, int wWidth, int wHeig
 	m_d3dppWindow.BackBufferCount  = 1;
 	m_d3dppWindow.SwapEffect       = D3DSWAPEFFECT_DISCARD;
 	m_d3dppWindow.Windowed		   = TRUE;
-	// m_d3dppWindow.EnableAutoDepthStencil = TRUE;
-	// m_d3dppWindow.AutoDepthStencilFormat = D3DFMT_D24S8;			// Zバッファ24ビット、ステンシルバッファ8ビット なのでOK
-	// m_d3dppWindow.Flags = D3DPRESENTFLAG_DISCARD_DEPTHSTENCIL;	// ダブルステンシル
+	m_d3dppWindow.EnableAutoDepthStencil = TRUE;
+	m_d3dppWindow.AutoDepthStencilFormat = D3DFMT_D24S8;			// Zバッファ24ビット、ステンシルバッファ8ビット なのでOK
+	m_d3dppWindow.Flags = D3DPRESENTFLAG_DISCARD_DEPTHSTENCIL;	// ダブルステンシル
 	
 	// フルスクリーンモード(BackBufferの数値は仮置き)
 	ZeroMemory(&m_d3dppFull, sizeof(D3DPRESENT_PARAMETERS));
@@ -61,12 +70,12 @@ HRESULT	 GraphicsDevice::InitDevice(HWND hWnd, bool wType, int wWidth, int wHeig
 	m_d3dppFull.SwapEffect = D3DSWAPEFFECT_DISCARD;
 	m_d3dppFull.hDeviceWindow = hWnd;
 	m_d3dppFull.Windowed = FALSE;
-	// m_d3dppFull.EnableAutoDepthStencil = TRUE;
-	// m_d3dppFull.AutoDepthStencilFormat = D3DFMT_UNKNOWN;
-	// m_d3dppFull.Flags = 0;
+	m_d3dppFull.EnableAutoDepthStencil = TRUE;
+	m_d3dppFull.AutoDepthStencilFormat = D3DFMT_UNKNOWN;
+	m_d3dppFull.Flags = 0;
 	m_d3dppFull.FullScreen_RefreshRateInHz = 0;
-	//  m_d3dppFull.PresentationInterval = D3DPRESENT_INTERVAL_IMMEDIATE;
-	//	m_d3dppFull.PresentationInterval = D3DPRESENT_INTERVAL_ONE;
+	m_d3dppFull.PresentationInterval = D3DPRESENT_INTERVAL_IMMEDIATE;
+	m_d3dppFull.PresentationInterval = D3DPRESENT_INTERVAL_ONE;
 
 	ZeroMemory(&m_d3dpp, sizeof(D3DPRESENT_PARAMETERS));
 	if (m_wType)
@@ -138,7 +147,7 @@ void GraphicsDevice::SetRenderState3D()
 void GraphicsDevice::StartRender()
 {
 	// 画面の消去
-	m_pD3Device->Clear(0, NULL, D3DCLEAR_TARGET, D3DCOLOR_XRGB(0x00, 0x00, 0x00), 1.0, 0);
+	m_pD3Device->Clear(0, NULL, D3DCLEAR_TARGET | D3DCLEAR_ZBUFFER, D3DCOLOR_XRGB(0x00, 0x00, 0x00), 1.0, 0);
 	// 描画の開始
 	m_pD3Device->BeginScene();
 }
@@ -147,7 +156,7 @@ void GraphicsDevice::StartRender()
 void GraphicsDevice::StartRender(DWORD FVF)
 {
 	// 画面の消去
-	m_pD3Device->Clear(0, NULL,D3DCLEAR_TARGET,D3DCOLOR_XRGB(0x00, 0x00, 0x00),1.0, 0);
+	m_pD3Device->Clear(0, NULL, D3DCLEAR_TARGET | D3DCLEAR_ZBUFFER, D3DCOLOR_XRGB(0x00, 0x00, 0x00), 1.0, 0);
 	// 描画の開始
 	m_pD3Device->BeginScene();
 	// 描画のフォーマットを設定

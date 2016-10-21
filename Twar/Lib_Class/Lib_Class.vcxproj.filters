@@ -10,9 +10,6 @@
     <Filter Include="Lib_Class\DirectXGraphics">
       <UniqueIdentifier>{0f52f74e-ddf7-40bf-87c9-1b38735e7fd2}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Lib_Class\DirectXGraphics\Texture">
-      <UniqueIdentifier>{fa5479bf-0fb0-4f4d-868a-7e6d2d1745d9}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Lib_Class\DirectXGraphics\Font">
       <UniqueIdentifier>{3be5115e-e221-42c7-bbac-8ed8645191ab}</UniqueIdentifier>
     </Filter>
@@ -49,14 +46,16 @@
     <Filter Include="Lib_Class\SoundFileManager">
       <UniqueIdentifier>{9ca8f78a-069c-4a9d-807a-c93c6a89612f}</UniqueIdentifier>
     </Filter>
+<<<<<<< HEAD
     <Filter Include="Lib_Class\GameLib">
       <UniqueIdentifier>{967b25ce-e9c0-411f-8980-053a781f6e77}</UniqueIdentifier>
+=======
+    <Filter Include="Lib_Class\TextureManager">
+      <UniqueIdentifier>{0ecc8a24-b153-42b4-bd1a-55bc1de428a0}</UniqueIdentifier>
+>>>>>>> TextureManager
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Texture.cpp">
-      <Filter>Lib_Class\DirectXGraphics\Texture</Filter>
-    </ClCompile>
     <ClCompile Include="InputDevice.cpp">
       <Filter>Lib_Class\DirectInput\InputDevice</Filter>
     </ClCompile>
@@ -93,14 +92,16 @@
     <ClCompile Include="SoundFileManager.cpp">
       <Filter>Lib_Class\SoundFileManager</Filter>
     </ClCompile>
+<<<<<<< HEAD
     <ClCompile Include="GamaLib.cpp">
       <Filter>Lib_Class\GameLib</Filter>
+=======
+    <ClCompile Include="TextureManager.cpp">
+      <Filter>Lib_Class\TextureManager</Filter>
+>>>>>>> TextureManager
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Texture.h">
-      <Filter>Lib_Class\DirectXGraphics\Texture</Filter>
-    </ClInclude>
     <ClInclude Include="InputDevice.h">
       <Filter>Lib_Class\DirectInput\InputDevice</Filter>
     </ClInclude>
@@ -140,8 +141,13 @@
     <ClInclude Include="SoundFileManager.h">
       <Filter>Lib_Class\SoundFileManager</Filter>
     </ClInclude>
+<<<<<<< HEAD
     <ClInclude Include="GamaLib.h">
       <Filter>Lib_Class\GameLib</Filter>
+=======
+    <ClInclude Include="TextureManager.h">
+      <Filter>Lib_Class\TextureManager</Filter>
+>>>>>>> TextureManager
     </ClInclude>
   </ItemGroup>
 </Project>

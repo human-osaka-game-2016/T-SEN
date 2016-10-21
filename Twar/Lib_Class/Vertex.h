@@ -7,7 +7,17 @@
 #define VERTEX_H
 
 #include "GraphicsDevice.h"
-#include "Texture.h"
+
+/**
+* カスタムバーテックス構造体.
+*/
+struct CUSTOMVERTEX
+{
+	FLOAT	x, y, z, rhw;	//!< 座標系
+	DWORD	color;			//!< 色
+	FLOAT	tu, tv;			//!< テクスチャーのtu,tv値
+};
+
 
 /**
 * バーテックスクラス
@@ -26,24 +36,7 @@ private:
 	DWORD                   m_color[4];				//!< 色の値
 
 public:
-	/**
-	* コンストラクタ.
-	* @param[in] width  幅
-	* @param[in] height 高さ
-	*/
-	Vertex(float width, float height);
-
-	/**
-	* コンストラクタ.
-	* 数値を指定するときに使用
-	* @param[in] width  幅
-	* @param[in] height 高さ
-	* @param[in] deoth	奥行き
-	* @param[in] tu	    tu値
-	* @param[in] tv		tv値
-	*/
-	Vertex(float width,float height,float tu,float tv);
-
+	
 	/**
 	* コンストラクタ.
 	* 数値を指定するときに使用<br>
@@ -51,22 +44,24 @@ public:
 	* @param[in] width  幅
 	* @param[in] height 高さ
 	* @param[in] deoth	奥行き
-	* @param[in] tu	    tu値
-	* @param[in] tv		tv値
+	* @param[in] tuMax	 tu値の最大値
+	* @param[in] tvMax	 tv値の最大値
+	* @param[in] tuMin	 tu値の最小値
+	* @param[in] tvMin	 tv値の最小値
 	*/
-	Vertex(float width,float height,float depth,float tu,float tv);
+	Vertex(float width,float height,float depth = 0.0f,float tuMax = 1.0f,float tvMax = 1.0f,float tuMin = 0.0f,float tvMin = 0.0f);
 
 	/**デストラクタ*/
 	~Vertex();
 
 	/**
 	* 通常描画関数<br>
-	* テクスチャーの左上に座標をセットする.
+	* テクスチャーの左上に座標をセットする<br>
 	* @param[in] texture テクスチャークラスのポインタ
-	* @param[in] posX     X座標 
+	* @param[in] posX     X座標
 	* @param[in] posY     Y座標
 	*/
-	void Draw(Texture* texture, float posX, float posY);
+	void Draw(LPDIRECT3DTEXTURE9 pTexture, float posX, float posY);
 
 	/**
 	* 通常描画関数<br>
@@ -75,18 +70,18 @@ public:
 	* @param[in] texture テクスチャークラスのポインタ
 	* @param[in] posX     X座標
 	* @param[in] posY     Y座標
-	* @param[in] posZ	  Z座標
+	* @param[in] posZ	  Z座標(デフォルト引数は0.0f)
 	*/
-	void Draw(Texture* texture, float posX, float posY,float posZ);
+	void Draw(LPDIRECT3DTEXTURE9 pTexture, float posX, float posY, float posZ);
 
 	/**
 	* 描画関数<br>
-	* テクスチャーの中心に座標をセットする.
+	* テクスチャーの中心に座標をセットする<br>
 	* @param[in] texture テクスチャークラスのポインタ
 	* @param[in] posX     X座標
 	* @param[in] posY     Y座標
 	*/
-	void DrawCP(Texture* texture, float posX, float posY);
+	void DrawCenterPos(LPDIRECT3DTEXTURE9 pTexture, float posX, float posY);
 
 	/**
 	* 描画関数<br>
@@ -95,9 +90,9 @@ public:
 	* @param[in] texture テクスチャークラスのポインタ
 	* @param[in] posX     X座標
 	* @param[in] posY     Y座標
-	* @param[in] posZ	  Z座標
+	* @param[in] posZ	  Z座標(デフォルト引数は0.0f)
 	*/
-	void DrawCP(Texture* texture, float posX, float posY,float posZ);
+	void DrawCenterPos(LPDIRECT3DTEXTURE9 pTexture, float posX, float posY, float posZ);
 
 	/**
 	* テクスチャーサイズをセットする関数.
