@@ -119,7 +119,11 @@ LRESULT CALLBACK WindowProc(HWND hwnd, UINT message, WPARAM wparam, LPARAM lpara
 	switch (message)
 	{
 	case WM_DESTROY:
-		PostQuitMessage(0);
+		int a = MessageBox(hwnd, TEXT("èIÇÌÇËÇ‹Ç∑Ç©ÅH"), TEXT("èIóπ"), MB_YESNO);
+		if (a == IDYES)
+		{
+			PostQuitMessage(0);
+		}
 		return  0;
 		break;
 	case WM_KEYDOWN:

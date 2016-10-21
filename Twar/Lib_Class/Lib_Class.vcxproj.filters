@@ -43,6 +43,9 @@
     <ClCompile Include="Font.cpp">
       <Filter>Lib_Class\GamaLib\Font</Filter>
     </ClCompile>
+    <ClCompile Include="XFileManager.cpp">
+      <Filter>Lib_Class\GamaLib\XFileManager</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GamaLib.h">
@@ -89,6 +92,9 @@
     </ClInclude>
     <ClInclude Include="Font.h">
       <Filter>Lib_Class\GamaLib\Font</Filter>
+    </ClInclude>
+    <ClInclude Include="XFileManager.h">
+      <Filter>Lib_Class\GamaLib\XFileManager</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

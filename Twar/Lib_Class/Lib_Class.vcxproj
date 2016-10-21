@@ -86,6 +86,7 @@
     <ClInclude Include="Vertex.h" />
     <ClInclude Include="WindowCreator.h" />
     <ClInclude Include="XFile.h" />
+    <ClInclude Include="XFileManager.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Camera.cpp" />
@@ -102,6 +103,7 @@
     <ClCompile Include="Vertex.cpp" />
     <ClCompile Include="WindowCreator.cpp" />
     <ClCompile Include="XFile.cpp" />
+    <ClCompile Include="XFileManager.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
