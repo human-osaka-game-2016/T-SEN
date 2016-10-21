@@ -1,153 +1,144 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Filter Include="Lib_Class">
-      <UniqueIdentifier>{ae56ad86-29e8-42ad-a012-9dbe91a384d2}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Lib_Class\WindowCreator">
-      <UniqueIdentifier>{90106eff-9357-4998-bcc6-1e44669bb1d1}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Lib_Class\DirectXGraphics">
-      <UniqueIdentifier>{0f52f74e-ddf7-40bf-87c9-1b38735e7fd2}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Lib_Class\DirectXGraphics\Font">
-      <UniqueIdentifier>{3be5115e-e221-42c7-bbac-8ed8645191ab}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Lib_Class\DirectXGraphics\XFile">
-      <UniqueIdentifier>{c12068a2-6d6e-49bf-aae9-34dfa60cdc57}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Lib_Class\DirectInput">
-      <UniqueIdentifier>{ad03a2dc-e5ab-4ab9-8bc3-96b7b72efb3f}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Lib_Class\DirectInput\InputKey">
-      <UniqueIdentifier>{39319460-8101-4c8b-ac70-11758cfaefce}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Lib_Class\DirectInput\InputDevice">
-      <UniqueIdentifier>{580584f3-0db3-44f2-bd73-9596c293ba02}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Lib_Class\DirectInput\InputMouse">
-      <UniqueIdentifier>{f2dcdc14-d8c9-4416-a0fa-8c08b3bf72f5}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Lib_Class\Camera">
-      <UniqueIdentifier>{9d4ed108-e7e5-40e1-b402-eb81e2129785}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Lib_Class\DirectXGraphics\Vertex">
-      <UniqueIdentifier>{f0f0082e-4af7-4d65-8feb-2819ddc57237}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Lib_Class\DirectXGraphics\GraphicsDevice">
-      <UniqueIdentifier>{66830fc7-a13d-4697-af7a-fb513b79a296}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Lib_Class\Light">
-      <UniqueIdentifier>{e7c35558-b213-4cf7-95c5-fc48b4b3f098}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Lib_Class\DebugTimer">
-      <UniqueIdentifier>{68656a60-ec78-4245-b788-7101b64dd265}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Lib_Class\SoundFileManager">
-      <UniqueIdentifier>{9ca8f78a-069c-4a9d-807a-c93c6a89612f}</UniqueIdentifier>
-    </Filter>
-<<<<<<< HEAD
-    <Filter Include="Lib_Class\GameLib">
-      <UniqueIdentifier>{967b25ce-e9c0-411f-8980-053a781f6e77}</UniqueIdentifier>
-=======
-    <Filter Include="Lib_Class\TextureManager">
-      <UniqueIdentifier>{0ecc8a24-b153-42b4-bd1a-55bc1de428a0}</UniqueIdentifier>
->>>>>>> TextureManager
-    </Filter>
-  </ItemGroup>
-  <ItemGroup>
-    <ClCompile Include="InputDevice.cpp">
-      <Filter>Lib_Class\DirectInput\InputDevice</Filter>
-    </ClCompile>
-    <ClCompile Include="InputKey.cpp">
-      <Filter>Lib_Class\DirectInput\InputKey</Filter>
-    </ClCompile>
-    <ClCompile Include="WindowCreator.cpp">
-      <Filter>Lib_Class\WindowCreator</Filter>
-    </ClCompile>
-    <ClCompile Include="Font.cpp">
-      <Filter>Lib_Class\DirectXGraphics\Font</Filter>
+    <ClCompile Include="GamaLib.cpp">
+      <Filter>Lib_Class\GamaLib</Filter>
     </ClCompile>
     <ClCompile Include="GraphicsDevice.cpp">
-      <Filter>Lib_Class\DirectXGraphics\GraphicsDevice</Filter>
+      <Filter>Lib_Class\GamaLib\GraphicsDevice</Filter>
     </ClCompile>
-    <ClCompile Include="XFile.cpp">
-      <Filter>Lib_Class\DirectXGraphics\XFile</Filter>
+    <ClCompile Include="InputDevice.cpp">
+      <Filter>Lib_Class\GamaLib\InputDevice</Filter>
     </ClCompile>
     <ClCompile Include="InputMouse.cpp">
-      <Filter>Lib_Class\DirectInput\InputMouse</Filter>
+      <Filter>Lib_Class\GamaLib\InputDevice\InputMouse</Filter>
+    </ClCompile>
+    <ClCompile Include="InputKey.cpp">
+      <Filter>Lib_Class\GamaLib\InputDevice\InputKey</Filter>
     </ClCompile>
     <ClCompile Include="Camera.cpp">
       <Filter>Lib_Class\Camera</Filter>
     </ClCompile>
-    <ClCompile Include="Vertex.cpp">
-      <Filter>Lib_Class\DirectXGraphics\Vertex</Filter>
-    </ClCompile>
     <ClCompile Include="Light.cpp">
       <Filter>Lib_Class\Light</Filter>
     </ClCompile>
-    <ClCompile Include="DebugTimer.cpp">
-      <Filter>Lib_Class\DebugTimer</Filter>
-    </ClCompile>
     <ClCompile Include="SoundFileManager.cpp">
-      <Filter>Lib_Class\SoundFileManager</Filter>
+      <Filter>Lib_Class\GamaLib\SoundFileManager</Filter>
     </ClCompile>
-<<<<<<< HEAD
-    <ClCompile Include="GamaLib.cpp">
-      <Filter>Lib_Class\GameLib</Filter>
-=======
     <ClCompile Include="TextureManager.cpp">
-      <Filter>Lib_Class\TextureManager</Filter>
->>>>>>> TextureManager
+      <Filter>Lib_Class\GamaLib\TextureManager</Filter>
+    </ClCompile>
+    <ClCompile Include="Vertex.cpp">
+      <Filter>Lib_Class\GamaLib\Vertex</Filter>
+    </ClCompile>
+    <ClCompile Include="WindowCreator.cpp">
+      <Filter>Lib_Class\GamaLib\WindowCreator</Filter>
+    </ClCompile>
+    <ClCompile Include="XFile.cpp">
+      <Filter>Lib_Class\GamaLib\XFileManager\XFile</Filter>
+    </ClCompile>
+    <ClCompile Include="DebugTimer.cpp">
+      <Filter>Lib_Class\GamaLib\DebugTimer</Filter>
+    </ClCompile>
+    <ClCompile Include="Font.cpp">
+      <Filter>Lib_Class\GamaLib\Font</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="InputDevice.h">
-      <Filter>Lib_Class\DirectInput\InputDevice</Filter>
-    </ClInclude>
-    <ClInclude Include="InputKey.h">
-      <Filter>Lib_Class\DirectInput\InputKey</Filter>
-    </ClInclude>
-    <ClInclude Include="WindowCreator.h">
-      <Filter>Lib_Class\WindowCreator</Filter>
-    </ClInclude>
-    <ClInclude Include="Font.h">
-      <Filter>Lib_Class\DirectXGraphics\Font</Filter>
+    <ClInclude Include="GamaLib.h">
+      <Filter>Lib_Class\GamaLib</Filter>
     </ClInclude>
     <ClInclude Include="GraphicsDevice.h">
-      <Filter>Lib_Class\DirectXGraphics\GraphicsDevice</Filter>
+      <Filter>Lib_Class\GamaLib\GraphicsDevice</Filter>
     </ClInclude>
-    <ClInclude Include="LibClass.h">
-      <Filter>Lib_Class</Filter>
-    </ClInclude>
-    <ClInclude Include="XFile.h">
-      <Filter>Lib_Class\DirectXGraphics\XFile</Filter>
+    <ClInclude Include="InputDevice.h">
+      <Filter>Lib_Class\GamaLib\InputDevice</Filter>
     </ClInclude>
     <ClInclude Include="InputMouse.h">
-      <Filter>Lib_Class\DirectInput\InputMouse</Filter>
+      <Filter>Lib_Class\GamaLib\InputDevice\InputMouse</Filter>
+    </ClInclude>
+    <ClInclude Include="InputKey.h">
+      <Filter>Lib_Class\GamaLib\InputDevice\InputKey</Filter>
     </ClInclude>
     <ClInclude Include="Camera.h">
       <Filter>Lib_Class\Camera</Filter>
     </ClInclude>
-    <ClInclude Include="Vertex.h">
-      <Filter>Lib_Class\DirectXGraphics\Vertex</Filter>
-    </ClInclude>
     <ClInclude Include="Light.h">
       <Filter>Lib_Class\Light</Filter>
     </ClInclude>
-    <ClInclude Include="DebugTimer.h">
-      <Filter>Lib_Class\DebugTimer</Filter>
+    <ClInclude Include="LibClass.h">
+      <Filter>Lib_Class</Filter>
     </ClInclude>
     <ClInclude Include="SoundFileManager.h">
-      <Filter>Lib_Class\SoundFileManager</Filter>
+      <Filter>Lib_Class\GamaLib\SoundFileManager</Filter>
     </ClInclude>
-<<<<<<< HEAD
-    <ClInclude Include="GamaLib.h">
-      <Filter>Lib_Class\GameLib</Filter>
-=======
     <ClInclude Include="TextureManager.h">
-      <Filter>Lib_Class\TextureManager</Filter>
->>>>>>> TextureManager
+      <Filter>Lib_Class\GamaLib\TextureManager</Filter>
     </ClInclude>
+    <ClInclude Include="Vertex.h">
+      <Filter>Lib_Class\GamaLib\Vertex</Filter>
+    </ClInclude>
+    <ClInclude Include="WindowCreator.h">
+      <Filter>Lib_Class\GamaLib\WindowCreator</Filter>
+    </ClInclude>
+    <ClInclude Include="XFile.h">
+      <Filter>Lib_Class\GamaLib\XFileManager\XFile</Filter>
+    </ClInclude>
+    <ClInclude Include="DebugTimer.h">
+      <Filter>Lib_Class\GamaLib\DebugTimer</Filter>
+    </ClInclude>
+    <ClInclude Include="Font.h">
+      <Filter>Lib_Class\GamaLib\Font</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Lib_Class">
+      <UniqueIdentifier>{f0b7ae25-6cfb-437f-becd-fa2c9a34c2fe}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Lib_Class\Camera">
+      <UniqueIdentifier>{13f9d136-adf1-40dc-9ff9-9634df1fbf5b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Lib_Class\Light">
+      <UniqueIdentifier>{bf79eb00-eaab-4442-a521-1509cb123ae0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Lib_Class\GamaLib">
+      <UniqueIdentifier>{e3625e2f-d1c8-46af-9c2c-12d9bcc3c9ce}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Lib_Class\GamaLib\GraphicsDevice">
+      <UniqueIdentifier>{4baca559-1014-497b-b6ff-4c291e887561}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Lib_Class\GamaLib\InputDevice">
+      <UniqueIdentifier>{c1660ff2-f594-47bb-a1ed-ee33c74fdf42}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Lib_Class\GamaLib\InputDevice\InputMouse">
+      <UniqueIdentifier>{4554b1f4-1c38-4363-825d-899f4176e842}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Lib_Class\GamaLib\InputDevice\InputKey">
+      <UniqueIdentifier>{bf145da0-fc23-48df-867d-ef42628c98c2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Lib_Class\GamaLib\SoundFileManager">
+      <UniqueIdentifier>{4caa17f6-89a4-40ce-a516-d428123767fa}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Lib_Class\GamaLib\TextureManager">
+      <UniqueIdentifier>{1eb8def6-f5f5-4114-a8e3-73bfac8aa8fc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Lib_Class\GamaLib\Vertex">
+      <UniqueIdentifier>{26bf02ee-680b-4292-ba98-db2b308152f3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Lib_Class\GamaLib\WindowCreator">
+      <UniqueIdentifier>{f6762385-a0b3-4db8-8a7a-f385b30508d8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Lib_Class\GamaLib\XFileManager">
+      <UniqueIdentifier>{15c6d2f2-2b7e-43fc-9069-fe36fd110c66}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Lib_Class\GamaLib\XFileManager\XFile">
+      <UniqueIdentifier>{3bc0e0ab-da63-485f-a1a3-ddc03357b161}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Lib_Class\GamaLib\DebugTimer">
+      <UniqueIdentifier>{2bf95e45-e589-4cd1-8cff-6654480b8760}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Lib_Class\GamaLib\Font">
+      <UniqueIdentifier>{cd7e31f3-233e-44ee-8854-94587aea0886}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
 </Project>

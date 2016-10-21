@@ -13,7 +13,6 @@
 //　　　　　 DirectXGraphics
 //--------------------------------------------
 #include "GraphicsDevice.h"			//!< GraphicsDeviceのクラス
-#include "Texture.h"				//!< テクスチャクラス
 #include "Vertex.h"					//!< 頂点クラス
 #include "XFile.h"					//!< Xファイルクラス
 #include "Font.h"					//!< フォントクラス
