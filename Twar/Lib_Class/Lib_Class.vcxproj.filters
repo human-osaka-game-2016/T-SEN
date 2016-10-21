@@ -49,6 +49,9 @@
     <Filter Include="Lib_Class\SoundFileManager">
       <UniqueIdentifier>{9ca8f78a-069c-4a9d-807a-c93c6a89612f}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Lib_Class\GameLib">
+      <UniqueIdentifier>{967b25ce-e9c0-411f-8980-053a781f6e77}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Texture.cpp">
@@ -89,6 +92,9 @@
     </ClCompile>
     <ClCompile Include="SoundFileManager.cpp">
       <Filter>Lib_Class\SoundFileManager</Filter>
+    </ClCompile>
+    <ClCompile Include="GamaLib.cpp">
+      <Filter>Lib_Class\GameLib</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -133,6 +139,9 @@
     </ClInclude>
     <ClInclude Include="SoundFileManager.h">
       <Filter>Lib_Class\SoundFileManager</Filter>
+    </ClInclude>
+    <ClInclude Include="GamaLib.h">
+      <Filter>Lib_Class\GameLib</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

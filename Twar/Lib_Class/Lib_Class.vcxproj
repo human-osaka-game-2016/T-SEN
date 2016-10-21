@@ -74,6 +74,7 @@
     <ClInclude Include="Camera.h" />
     <ClInclude Include="DebugTimer.h" />
     <ClInclude Include="Font.h" />
+    <ClInclude Include="GamaLib.h" />
     <ClInclude Include="GraphicsDevice.h" />
     <ClInclude Include="InputDevice.h" />
     <ClInclude Include="InputKey.h" />
@@ -90,6 +91,7 @@
     <ClCompile Include="Camera.cpp" />
     <ClCompile Include="DebugTimer.cpp" />
     <ClCompile Include="Font.cpp" />
+    <ClCompile Include="GamaLib.cpp" />
     <ClCompile Include="GraphicsDevice.cpp" />
     <ClCompile Include="InputDevice.cpp" />
     <ClCompile Include="InputKey.cpp" />
