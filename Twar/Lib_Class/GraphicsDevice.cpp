@@ -179,33 +179,6 @@ void GraphicsDevice::SetFVF(DWORD FVF)
 	m_pD3Device->SetFVF(FVF);
 }
 
-
-// ライト設定
-void GraphicsDevice::SetLight()
-{
-	D3DXVECTOR3 vecDirection(1, 1, 1);
-	D3DLIGHT9	light;
-
-	// ライトをあてる 白色で鏡面反射ありに設定
-	ZeroMemory(&light, sizeof(D3DLIGHT9));
-	light.Type = D3DLIGHT_DIRECTIONAL;
-	light.Diffuse.r = 1.0f;
-	light.Diffuse.g = 1.0f;
-	light.Diffuse.b = 1.0f;
-	light.Specular.r = 1.0f;
-	light.Specular.g = 1.0f;
-	light.Specular.b = 1.0f;
-	//light.Position = D3DXVECTOR3(0.0f, 5.0f, -30.0f);
-	D3DXVec3Normalize((D3DXVECTOR3*)&light.Direction, &vecDirection);
-	light.Range = 200.0f;
-
-	m_pD3Device->SetLight(0, &light);
-	m_pD3Device->LightEnable(0, TRUE);
-	m_pD3Device->SetRenderState(D3DRS_LIGHTING, TRUE);				// ライトを有効にする
-	m_pD3Device->SetRenderState(D3DRS_AMBIENT, 0x00111111);			// アンビエントライト(環境光)を設定する
-	m_pD3Device->SetRenderState(D3DRS_SPECULARENABLE, TRUE);		// スペキュラ(鏡面反射)を有効にする
-}
-
 // ウィンドウモードが変更した場合デバイス関連を再設定する
 HRESULT GraphicsDevice::ChangeDisplayMode()
 {

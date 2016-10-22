@@ -49,7 +49,7 @@ public:
 	* @param[in] tuMin	 tu値の最小値
 	* @param[in] tvMin	 tv値の最小値
 	*/
-	Vertex(float width,float height,float depth = 0.0f,float tuMax = 1.0f,float tvMax = 1.0f,float tuMin = 0.0f,float tvMin = 0.0f);
+	Vertex(float width = 0.0f,float height = 0.0f,float depth = 0.0f,float tuMax = 1.0f,float tvMax = 1.0f,float tuMin = 0.0f,float tvMin = 0.0f);
 
 	/**デストラクタ*/
 	~Vertex();

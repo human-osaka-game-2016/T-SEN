@@ -84,6 +84,7 @@
     <ClInclude Include="SoundFileManager.h" />
     <ClInclude Include="TextureManager.h" />
     <ClInclude Include="Vertex.h" />
+    <ClInclude Include="VertexManager.h" />
     <ClInclude Include="WindowCreator.h" />
     <ClInclude Include="XFile.h" />
     <ClInclude Include="XFileManager.h" />
@@ -101,6 +102,7 @@
     <ClCompile Include="SoundFileManager.cpp" />
     <ClCompile Include="TextureManager.cpp" />
     <ClCompile Include="Vertex.cpp" />
+    <ClCompile Include="VertexManager.cpp" />
     <ClCompile Include="WindowCreator.cpp" />
     <ClCompile Include="XFile.cpp" />
     <ClCompile Include="XFileManager.cpp" />

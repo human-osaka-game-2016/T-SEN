@@ -93,11 +93,6 @@ public:
 	void SetFVF(DWORD FVF);
 
 	/**
-	* ライト基本設定
-	*/
-	void SetLight();
-
-	/**
 	* ウィンドウモードを変えたときに再設定する関数
 	*/
 	HRESULT ChangeDisplayMode();

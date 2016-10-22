@@ -29,7 +29,7 @@
       <Filter>Lib_Class\GamaLib\TextureManager</Filter>
     </ClCompile>
     <ClCompile Include="Vertex.cpp">
-      <Filter>Lib_Class\GamaLib\Vertex</Filter>
+      <Filter>Lib_Class\GamaLib\VertexManager\Vertex</Filter>
     </ClCompile>
     <ClCompile Include="WindowCreator.cpp">
       <Filter>Lib_Class\GamaLib\WindowCreator</Filter>
@@ -45,6 +45,9 @@
     </ClCompile>
     <ClCompile Include="XFileManager.cpp">
       <Filter>Lib_Class\GamaLib\XFileManager</Filter>
+    </ClCompile>
+    <ClCompile Include="VertexManager.cpp">
+      <Filter>Lib_Class\GamaLib\VertexManager</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -79,7 +82,7 @@
       <Filter>Lib_Class\GamaLib\TextureManager</Filter>
     </ClInclude>
     <ClInclude Include="Vertex.h">
-      <Filter>Lib_Class\GamaLib\Vertex</Filter>
+      <Filter>Lib_Class\GamaLib\VertexManager\Vertex</Filter>
     </ClInclude>
     <ClInclude Include="WindowCreator.h">
       <Filter>Lib_Class\GamaLib\WindowCreator</Filter>
@@ -95,6 +98,9 @@
     </ClInclude>
     <ClInclude Include="XFileManager.h">
       <Filter>Lib_Class\GamaLib\XFileManager</Filter>
+    </ClInclude>
+    <ClInclude Include="VertexManager.h">
+      <Filter>Lib_Class\GamaLib\VertexManager</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -128,9 +134,6 @@
     <Filter Include="Lib_Class\GamaLib\TextureManager">
       <UniqueIdentifier>{1eb8def6-f5f5-4114-a8e3-73bfac8aa8fc}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Lib_Class\GamaLib\Vertex">
-      <UniqueIdentifier>{26bf02ee-680b-4292-ba98-db2b308152f3}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Lib_Class\GamaLib\WindowCreator">
       <UniqueIdentifier>{f6762385-a0b3-4db8-8a7a-f385b30508d8}</UniqueIdentifier>
     </Filter>
@@ -145,6 +148,12 @@
     </Filter>
     <Filter Include="Lib_Class\GamaLib\Font">
       <UniqueIdentifier>{cd7e31f3-233e-44ee-8854-94587aea0886}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Lib_Class\GamaLib\VertexManager">
+      <UniqueIdentifier>{ed9c311f-73de-44af-a876-129f19fe96fe}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Lib_Class\GamaLib\VertexManager\Vertex">
+      <UniqueIdentifier>{26bf02ee-680b-4292-ba98-db2b308152f3}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

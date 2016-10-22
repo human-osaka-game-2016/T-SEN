@@ -70,6 +70,8 @@ class InputKey
 private:
 	LPDIRECTINPUTDEVICE8  m_pKeyDevice;			//!< ƒL[ƒ{[ƒhƒfƒoƒCƒXŠi”[—p
 	int					  m_PreKey[KEYMAX];		//!< ƒL[‚Ìó‘ÔŠi”[‚·‚é•Ï”
+	BYTE				  m_diks[256];			//!< DIK‚ðŠi”[‚·‚é•Ï”
+	BUTTONSTATE			  m_Key[KEYMAX];		//!< ƒL[‚ÌŽí—Þ‚ðŠi”[‚·‚é•Ï”
 
 	/**
 	* ó‘Ô‚ðŠm”F‚·‚éŠÖ”.
@@ -79,8 +81,7 @@ private:
 	void CheckState(BYTE* DIK, KEYKIND st);
 
 public:
-	BYTE     m_diks[256];			//!< DIK‚ðŠi”[‚·‚é•Ï”
-	BUTTONSTATE m_Key[KEYMAX];			//!< ƒL[‚ÌŽí—Þ‚ðŠi”[‚·‚é•Ï”
+	
 
 	/**ƒRƒ“ƒXƒgƒ‰ƒNƒ^*/
 	InputKey();
