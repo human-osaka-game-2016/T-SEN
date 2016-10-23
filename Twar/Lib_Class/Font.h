@@ -21,7 +21,7 @@ private:
 
 public:
 	/**コンストラクタ*/
-	Font();
+	Font(IDirect3DDevice9*	pD3Device);
 
 	/**
 	* コンストラクタ<br>
@@ -29,7 +29,7 @@ public:
 	* @param[in] height		文字の高さ
 	* @param[in] width		文字の幅
 	*/
-	Font(INT height, UINT width);
+	Font(IDirect3DDevice9*	pD3Device,INT height, UINT width);
 
 	/**デストラクタ*/
 	~Font();
@@ -65,11 +65,6 @@ public:
 	*/
 	INT	 GetFontHeight(){ return m_height; }
 
-	/**
-	* 1文字の横幅を取得する関数
-	* @return 
-	*/
-	UINT GetFontWidth(){ return m_width; }
 };
 
 #endif		// FONT_H

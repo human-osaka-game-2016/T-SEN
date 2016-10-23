@@ -41,13 +41,16 @@
       <Filter>Lib_Class\GamaLib\DebugTimer</Filter>
     </ClCompile>
     <ClCompile Include="Font.cpp">
-      <Filter>Lib_Class\GamaLib\Font</Filter>
+      <Filter>Lib_Class\Font</Filter>
     </ClCompile>
     <ClCompile Include="XFileManager.cpp">
       <Filter>Lib_Class\GamaLib\XFileManager</Filter>
     </ClCompile>
     <ClCompile Include="VertexManager.cpp">
       <Filter>Lib_Class\GamaLib\VertexManager</Filter>
+    </ClCompile>
+    <ClCompile Include="DebugFont.cpp">
+      <Filter>Lib_Class\GamaLib\DebugFont</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -94,13 +97,16 @@
       <Filter>Lib_Class\GamaLib\DebugTimer</Filter>
     </ClInclude>
     <ClInclude Include="Font.h">
-      <Filter>Lib_Class\GamaLib\Font</Filter>
+      <Filter>Lib_Class\Font</Filter>
     </ClInclude>
     <ClInclude Include="XFileManager.h">
       <Filter>Lib_Class\GamaLib\XFileManager</Filter>
     </ClInclude>
     <ClInclude Include="VertexManager.h">
       <Filter>Lib_Class\GamaLib\VertexManager</Filter>
+    </ClInclude>
+    <ClInclude Include="DebugFont.h">
+      <Filter>Lib_Class\GamaLib\DebugFont</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -146,14 +152,17 @@
     <Filter Include="Lib_Class\GamaLib\DebugTimer">
       <UniqueIdentifier>{2bf95e45-e589-4cd1-8cff-6654480b8760}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Lib_Class\GamaLib\Font">
-      <UniqueIdentifier>{cd7e31f3-233e-44ee-8854-94587aea0886}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Lib_Class\GamaLib\VertexManager">
       <UniqueIdentifier>{ed9c311f-73de-44af-a876-129f19fe96fe}</UniqueIdentifier>
     </Filter>
     <Filter Include="Lib_Class\GamaLib\VertexManager\Vertex">
       <UniqueIdentifier>{26bf02ee-680b-4292-ba98-db2b308152f3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Lib_Class\Font">
+      <UniqueIdentifier>{cd7e31f3-233e-44ee-8854-94587aea0886}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Lib_Class\GamaLib\DebugFont">
+      <UniqueIdentifier>{7619f11d-e4f3-4b1c-aadb-07be99e3a0ad}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

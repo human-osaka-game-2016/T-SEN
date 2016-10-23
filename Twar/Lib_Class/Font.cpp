@@ -6,8 +6,8 @@
 #include "Font.h"
 
 // コンストラクタ
-Font::Font():
-m_pD3Device(GraphicsDevice::GetInstance().GetDevice()),
+Font::Font(IDirect3DDevice9*	pD3Device) :
+m_pD3Device(pD3Device),
 m_pFont(NULL),
 m_height(20),
 m_width(10)
@@ -30,8 +30,8 @@ m_width(10)
 }
 
 // コンストラクタ 文字の大きさを指定する場合に使用
-Font::Font(INT height, UINT	width):
-m_pD3Device(GraphicsDevice::GetInstance().GetDevice()),
+Font::Font(IDirect3DDevice9*	pD3Device,INT height, UINT	width) :
+m_pD3Device(pD3Device),
 m_pFont(NULL),
 m_height(height),
 m_width(width)

@@ -88,7 +88,7 @@ void DebugTimer::DrawResult(std::string  timeName, D3DXVECTOR2 pos)
 			{
 				std::string  Str =
 					timeName +":"+ std::to_string(itr->time) + "ミリ秒" +"\n";
-				Font timeDisp;
+				DebugFont timeDisp;
 				timeDisp.Draw(Str.c_str(), pos);
 			}
 			break;
@@ -112,7 +112,7 @@ void DebugTimer::DrawSumResult(D3DXVECTOR2 pos)
 
 	std::string  Str =
 		"合計時間は:" +  std::to_string(TotalTime) + "ミリ秒" + "\n";
-	Font timeDisp;
+	DebugFont timeDisp;
 	timeDisp.Draw(Str.c_str(), pos);
 }
 
@@ -120,7 +120,7 @@ void DebugTimer::DrawSumResult(D3DXVECTOR2 pos)
 // すべての計測時間と合計時間を表示する
 void DebugTimer::DrawAllResult(D3DXVECTOR2 pos)
 {
-	Font timeDisp;					// 表示用フォント
+	DebugFont timeDisp;					// 表示用フォント
 	int fontHeight = timeDisp.GetFontHeight();	// 1文字の高さ
 	int dispCount = 0;							// 表示数
 
