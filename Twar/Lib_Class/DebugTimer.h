@@ -61,6 +61,12 @@ public:
 	void ReStart(std::string  timeName);
 
 	/**
+	* 時間計測結果を取得する
+	* @param[in] timeName 計測結果を取得したい時間の名前
+	*/
+	DWORD GetResult(std::string  timeName);
+
+	/**
 	* 1つの計測結果だけ描画する
 	* @param[in] timeName 結果を表示したい計測時間の名前
 	* @param[in] pos 表示する座標

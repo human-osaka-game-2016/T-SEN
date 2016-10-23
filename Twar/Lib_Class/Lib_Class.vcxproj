@@ -75,7 +75,7 @@
     <ClInclude Include="DebugFont.h" />
     <ClInclude Include="DebugTimer.h" />
     <ClInclude Include="Font.h" />
-    <ClInclude Include="GamaLib.h" />
+    <ClInclude Include="GameLib.h" />
     <ClInclude Include="GraphicsDevice.h" />
     <ClInclude Include="InputDevice.h" />
     <ClInclude Include="InputKey.h" />
@@ -95,7 +95,7 @@
     <ClCompile Include="DebugFont.cpp" />
     <ClCompile Include="DebugTimer.cpp" />
     <ClCompile Include="Font.cpp" />
-    <ClCompile Include="GamaLib.cpp" />
+    <ClCompile Include="GameLib.cpp" />
     <ClCompile Include="GraphicsDevice.cpp" />
     <ClCompile Include="InputDevice.cpp" />
     <ClCompile Include="InputKey.cpp" />

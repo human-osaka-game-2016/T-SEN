@@ -77,6 +77,25 @@ void DebugTimer::ReStart(std::string  timeName)
 	}
 }
 
+// Œv‘ªŒ‹‰Ê‚ÌŽæ“¾
+DWORD DebugTimer::GetResult(std::string  timeName)
+{
+	DWORD timeResult = 0;
+
+	for (auto itr = m_debugTime.begin(); itr != m_debugTime.end(); itr++)
+	{
+		if (itr->timeName == timeName)
+		{
+
+			timeResult = itr->time;
+
+			break;
+		}
+	}
+
+	return timeResult;
+}
+
 // Œv‘ªŒ‹‰Ê•\Ž¦
 void DebugTimer::DrawResult(std::string  timeName, D3DXVECTOR2 pos)
 {
