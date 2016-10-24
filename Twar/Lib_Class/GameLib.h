@@ -30,6 +30,14 @@ enum BUTTON_STATE
 	RELEASE			//!< キーを離す
 };
 
+/**ホイールの状態*/
+enum WHEEL_STATE
+{
+	ROLL_NONE,		//!< 回転していない
+	ROLL_UP,		//!< 奥に回転させている状態
+	ROLL_DOWN,		//!< 手前に回転させている状態
+};
+
 /**音楽の再生方法*/
 enum SOUND_OPERATION
 {
@@ -113,7 +121,7 @@ public:
 	//------------------------------------------------------------------------------------
 	/**
 	* デバイスを取得する関数.
-	* ----------残しておくか検討中------------------
+	* Facadeパターンならいらないのだが、やむおえなく残しておく@haga
 	* @return デバイスのポインタ
 	*/
 	const IDirect3DDevice9* GetDevice();					
@@ -240,11 +248,16 @@ public:
 	BUTTON_STATE CheckKey(int DIK, KEYKIND keyName);				
 
 	/**
-	* マウスのボタンの状態を取得する関数
-	* @param[in] mouseButton マウスのボタンの種類
+	* マウスの左ボタンの状態を取得する関数
 	* @return ボタンの状態
 	*/
-	BUTTON_STATE ChecKMouse(MOUSEBUTTON mouseButton);			
+	BUTTON_STATE ChecKMouseL();
+
+	/**
+	* マウスの右ボタンの状態を取得する関数
+	* @return ボタンの状態
+	*/
+	BUTTON_STATE ChecKMouseR();
 
 	/**
 	* マウスのホイールの状態を取得する関数.

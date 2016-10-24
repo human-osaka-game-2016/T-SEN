@@ -19,7 +19,7 @@ enum MOUSEBUTTON
 	ButtonMAX,
 };
 /**マウスホイールの状態*/
-enum WHEEL_STATE
+enum WHEELSTATE
 {
 	WHEEL_NONE = 0,		//!< 回転していない
 	WHEEL_UP = 1,		//!< 奥に回転させている状態
@@ -81,7 +81,7 @@ public:
 	* マウスホイール状態を取得する関数
 	* @return ホイール状態
 	*/
-	WHEEL_STATE GetWheelState();
+	WHEELSTATE GetWheelState();
 
 	/**マウス座標を取得する*/
 	LONG GetPosX() const { return m_posX; }

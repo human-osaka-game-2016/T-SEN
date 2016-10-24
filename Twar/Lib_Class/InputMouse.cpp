@@ -194,7 +194,7 @@ BTN_STATE InputMouse::ChecKMouse(MOUSEBUTTON mouseButton)
 	return m_mouse[mouseButton];
 }
 
-WHEEL_STATE InputMouse::GetWheelState()
+WHEELSTATE InputMouse::GetWheelState()
 {
 	if (m_wheel > 0)
 	{

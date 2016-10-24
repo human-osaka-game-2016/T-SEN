@@ -221,11 +221,36 @@ BUTTON_STATE GameLib::CheckKey(int DIK, KEYKIND keyName)
 	return state;
 }
 
-BUTTON_STATE GameLib::ChecKMouse(MOUSEBUTTON mouseButton)
+BUTTON_STATE GameLib::ChecKMouseL()
 {
 	BUTTON_STATE state;
 	
-	switch (m_pInputMouse->ChecKMouse(mouseButton))
+	switch (m_pInputMouse->ChecKMouse(MouseLeft))
+	{
+	case BTN_ON:
+		state = ON;
+		break;
+
+	case BTN_OFF:
+		state = OFF;
+		break;
+
+	case BTN_PUSH:
+		state = PUSH;
+		break;
+
+	case BTN_RELEASE:
+		state = RELEASE;
+		break;
+	}
+	return state;
+}
+
+BUTTON_STATE GameLib::ChecKMouseR()
+{
+	BUTTON_STATE state;
+
+	switch (m_pInputMouse->ChecKMouse(MouseRight))
 	{
 	case BTN_ON:
 		state = ON;
@@ -248,7 +273,23 @@ BUTTON_STATE GameLib::ChecKMouse(MOUSEBUTTON mouseButton)
 
 WHEEL_STATE GameLib::GetWheelState()
 {
-	return (m_pInputMouse->GetWheelState());
+	WHEEL_STATE state;
+
+	switch (m_pInputMouse->GetWheelState())
+	{
+	case WHEEL_NONE:
+		state = ROLL_NONE;
+		break;
+
+	case WHEEL_UP:
+		state = ROLL_UP;
+		break;
+
+	case WHEEL_DOWN:
+		state = ROLL_DOWN;
+		break;
+	}
+	return state;
 }
 
 void GameLib::GetMousePos(float* mousePosX, float* mousePosY)
