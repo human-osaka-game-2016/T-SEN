@@ -7,27 +7,16 @@
 #include "SoundFileManager.h"
 
 SoundFileManager::SoundFileManager():
-m_pDSound8(NULL)
+m_pDSound8(NULL),
+m_releaseFlag(false)
 {
 }
 
 SoundFileManager::~SoundFileManager()
 {
-	for (auto itr = m_soundMap.begin(); itr != m_soundMap.end();itr++)
+	if (!m_releaseFlag)
 	{
-		if (itr->second)
-		{
-			itr->second->Release();
-			itr->second = NULL;
-		}
-	}
-
-	m_soundMap.clear();
-		
-	if (m_pDSound8)
-	{
-		m_pDSound8->Release();
-		m_pDSound8 = NULL;
+		ReleaseALL();
 	}
 }
 
@@ -102,7 +91,7 @@ bool SoundFileManager::OpenWave(TCHAR* filepath, WAVEFORMATEX* waveFormatEx, cha
 	return true;
 }
 
-HRESULT SoundFileManager::LoadSound(TCHAR* filePath)
+HRESULT SoundFileManager::LoadSound(int key,TCHAR* filePath)
 {
 	LPDIRECTSOUNDBUFFER8 pDSBuffer = NULL;
 	// Waveファイルオープン
@@ -149,36 +138,66 @@ HRESULT SoundFileManager::LoadSound(TCHAR* filePath)
 	delete[] pWaveData; // 元音はもういらない
 
 
-	m_soundMap[filePath] = pDSBuffer;
+	m_soundMap[key] = pDSBuffer;
 
 	return S_OK;
 }
 
 // 音楽を再生する関数
-void SoundFileManager::SoundPlayer(TCHAR* filePath, SOUND_MODE sMode)
+void SoundFileManager::SoundPlayer(int key, SOUND_MODE sMode)
 {
 	switch (sMode)
 	{
 	case Play:
-		m_soundMap[filePath]->Play(0, 0, 0);
+		m_soundMap[key]->Play(0, 0, 0);
 		break;
 	case PlayLoop:
-		m_soundMap[filePath]->Play(0, 0, DSBPLAY_LOOPING);
+		m_soundMap[key]->Play(0, 0, DSBPLAY_LOOPING);
 		break;
 	case Stop:
-		m_soundMap[filePath]->Stop();
+		m_soundMap[key]->Stop();
 		break;
 	case Reset:
-		m_soundMap[filePath]->SetCurrentPosition(0);
+		m_soundMap[key]->SetCurrentPosition(0);
 		break;
 	case Stop_Reset:
-		m_soundMap[filePath]->Stop();
-		m_soundMap[filePath]->SetCurrentPosition(0);
+		m_soundMap[key]->Stop();
+		m_soundMap[key]->SetCurrentPosition(0);
 		break;
 	case Reset_Play:
-		m_soundMap[filePath]->SetCurrentPosition(0);
-		m_soundMap[filePath]->Play(0, 0, 0);
+		m_soundMap[key]->SetCurrentPosition(0);
+		m_soundMap[key]->Play(0, 0, 0);
 		break;
 
 	}
+}
+
+// サウンド解放関数
+void SoundFileManager::Release(int key)
+{
+	m_soundMap[key]->Release();
+	m_soundMap.erase(key);
+}
+
+// 解放関数
+void SoundFileManager::ReleaseALL()
+{
+	for (auto itr = m_soundMap.begin(); itr != m_soundMap.end(); ++itr)
+	{
+		if (itr->second)
+		{
+			itr->second->Release();
+			itr->second = NULL;
+		}
+	}
+
+	m_soundMap.clear();
+
+	if (m_pDSound8)
+	{
+		m_pDSound8->Release();
+		m_pDSound8 = NULL;
+	}
+
+	m_releaseFlag = true;
 }

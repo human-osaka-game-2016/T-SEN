@@ -221,14 +221,41 @@ D3DXVECTOR2 GameLib::GetMousePos()
 	return pos;
 }
 
-void GameLib::LoadSound(TCHAR* filePath)
+void GameLib::LoadSound(int key,TCHAR* filePath)
 {
-	m_pSoundFileManager->LoadSound(filePath);
+	m_pSoundFileManager->LoadSound(key,filePath);
 }
 
-void GameLib::PlayDSound(TCHAR* filePath, SOUND_MODE sMode)
+void GameLib::PlayDSound(int key, SOUND_OPERATION operation)
 {
-	m_pSoundFileManager->SoundPlayer(filePath,sMode);
+	switch (operation)
+	{
+	case SOUND_PLAY:
+		m_pSoundFileManager->SoundPlayer(key, SOUND_MODE::Play);
+		break;
+
+	case SOUND_STOP:
+		m_pSoundFileManager->SoundPlayer(key, SOUND_MODE::Stop);
+		break;
+
+	case SOUND_LOOP:
+		m_pSoundFileManager->SoundPlayer(key, SOUND_MODE::PlayLoop);
+		break;
+
+	case SOUND_RESET:
+		m_pSoundFileManager->SoundPlayer(key, SOUND_MODE::Reset);
+		break;
+		
+	case SOUND_RESET_PLAY:
+		m_pSoundFileManager->SoundPlayer(key, SOUND_MODE::Reset_Play);
+		break;
+
+	case SOUND_STOP_RESET:
+		m_pSoundFileManager->SoundPlayer(key, SOUND_MODE::Stop_Reset);
+		break;
+
+	}
+	
 }
 
 void GameLib::DrawFont(std::string text, float posX, float posY)

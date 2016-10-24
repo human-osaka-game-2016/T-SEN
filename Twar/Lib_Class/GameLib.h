@@ -21,8 +21,20 @@
 #include "DebugTimer.h"
 using namespace std;
 
+
+/**音楽の再生方法*/
+enum SOUND_OPERATION
+{
+	SOUND_PLAY,			//!< 再生
+	SOUND_STOP,			//!< 停止
+	SOUND_LOOP,			//!< ループ再生
+	SOUND_RESET, 		//!< 初期位置に戻す
+	SOUND_RESET_PLAY,   //!< 停めて初期位置戻す
+	SOUND_STOP_RESET	//!< 初期位置から再生し直す
+};
+
 /**
-* ライブラリのクラス
+* ライブラリのクラス	
 */
 class GameLib
 {
@@ -158,9 +170,9 @@ public:
 	/**
 	* テクスチャーを解放する関数
 	* @param[in] AllFlag  全て解放するならture,特定のテクスチャーだけを解放するならfalseで第二引数を指定する
-	* @param[in] key	登録したキー、またはID。デフォルト引数は666←登録されないだろう数値を代入している
+	* @param[in] key	登録したキー、またはID。デフォルト引数は999←登録されないだろう数値を代入している
 	*/
-	void ReleaseTex(bool AllFlag,int key = 666);
+	void ReleaseTex(bool AllFlag,int key = 999);
 
 	//-------------------------------------------------------------------------------------
 	//								Xファイル関連関数
@@ -181,9 +193,9 @@ public:
 	/**
 	* Xファイルを解放する関数.
 	* @param[in] AllFlag  全て解放するならture,特定のテクスチャーだけを解放するならfalseで第二引数を指定する
-	* @param[in] key	登録したキー、またはID。デフォルト引数は666←登録されないだろう数値を代入している
+	* @param[in] key	登録したキー、またはID。デフォルト引数は999←登録されないだろう数値を代入している
 	*/
-	void ReleaseXFile(bool AllFlag,int key = 666);				
+	void ReleaseXFile(bool AllFlag,int key = 999);				
 
 	//-----------------------------------------------------------------------------------------------------
 	//									入力デバイス関連関数
@@ -220,20 +232,21 @@ public:
 	D3DXVECTOR2 GetMousePos();									 
 
 	//--------------------------------------------------------------------------
-	//						サウンド関連関数
+	//							サウンド関連関数
 	//--------------------------------------------------------------------------
 	/**
 	* 音声を読み込む関数.
+	* @param[in] key	  登録するキー、またはID(enumで作成を想定)
 	* @param[in] filePath ファイル名
 	*/
-	void LoadSound(TCHAR* filePath);											
+	void LoadSound(int key,TCHAR* filePath);											
 
 	/**
 	* 音楽を鳴らす関数
-	* @param[in] filePath ファイル名
-	* @param[in] sMode   音楽の再生方法
+	* @param[in] key		 登録するキー、またはID(enumで作成を想定)
+	* @param[in] operation   音楽の再生方法
 	*/
-	void PlayDSound(TCHAR* filePath, SOUND_MODE sMode);							
+	void PlayDSound(int key, SOUND_OPERATION operation);
 
 	//-------------------------------------------------------------------------------
 	//								デバック機能

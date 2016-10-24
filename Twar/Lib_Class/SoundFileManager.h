@@ -32,8 +32,9 @@ enum SOUND_MODE
 class SoundFileManager
 {
 private:
-	IDirectSound8*								m_pDSound8;										//!< DirectSoundのインターフェイス
-	std::map<TCHAR*, LPDIRECTSOUNDBUFFER8> m_soundMap;			//!< サウンドファイルを格納する変数
+	IDirectSound8*								m_pDSound8;			//!< DirectSoundのインターフェイス
+	std::map<int, LPDIRECTSOUNDBUFFER8>			m_soundMap;			//!< サウンドファイルを格納する変数
+	bool										m_releaseFlag;		//!< メモリ解放フラグ
 
 	/**
 	* WAVEファイルオープン関数.
@@ -46,9 +47,11 @@ private:
 	*/
 	bool OpenWave(TCHAR* filepath, WAVEFORMATEX* waveFormatEx, char** pwaveData, DWORD* dataSize);
 
-public:
 	/**コンストラクタ*/
 	SoundFileManager();
+
+public:
+	
 	/**dデストラクタ*/
 	~SoundFileManager();
 
@@ -70,18 +73,28 @@ public:
 
 	/**
 	* 音楽を読み込む関数.
+	* @param[in]    key			登録するキー
 	* @param[in]	filepath	音楽ファイル名
 	* @retval S_OK		読み込み成功
 	* @retval E_FAIL	読み込み失敗
 	*/
-	HRESULT LoadSound(TCHAR* filePath);
+	HRESULT LoadSound(int key,TCHAR* filePath);
 
 	/**
 	* 音楽を再生する関数
-	* @param[in] filePath  ファイル名(mapのキーの役割)
+	* @param[in]  key			登録したキー
 	* @param[in] mode		音楽の再生方式
 	*/
-	void SoundPlayer(TCHAR* filePath, SOUND_MODE sMode);
+	void SoundPlayer(int key, SOUND_MODE sMode); 
+
+	/**
+	* サウンド解放関数
+	* @param[in] key 登録したキー
+	*/
+	void Release(int key);
+
+	/**サウンド全てを解放する関数*/
+	void ReleaseALL();
 };
 
 
