@@ -1,24 +1,24 @@
-/**
+ï»¿/**
 * @file	DebugTimer.cpp
-* @brief ƒfƒoƒbƒN‚Ìˆ×‚ÌŠÔ‚ğŒv‘ª‚·‚éƒNƒ‰ƒX‚Ìcpp
+* @brief ãƒ‡ãƒãƒƒã‚¯ã®ç‚ºã®æ™‚é–“ã‚’è¨ˆæ¸¬ã™ã‚‹ã‚¯ãƒ©ã‚¹ã®cpp
 * @author haga
 */
 #include <windows.h>
 #include <string>
 #include "DebugTimer.h"
 
-// ƒRƒ“ƒXƒgƒ‰ƒNƒ^
+// ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿
 DebugTimer::DebugTimer()
 {
 }
 
-// ƒfƒXƒgƒ‰ƒNƒ^
+// ãƒ‡ã‚¹ãƒˆãƒ©ã‚¯ã‚¿
 DebugTimer::~DebugTimer()
 {
 	m_debugTime.clear();
 }
 
-// Œv‘ª‚·‚éŠÔ‚ğƒZƒbƒg‚·‚é
+// è¨ˆæ¸¬ã™ã‚‹æ™‚é–“ã‚’ã‚»ãƒƒãƒˆã™ã‚‹
 void DebugTimer::SetDebugTimer(std::string  timeName)
 {
 	DebugTime temp;
@@ -28,7 +28,7 @@ void DebugTimer::SetDebugTimer(std::string  timeName)
 	m_debugTime.push_back(temp);
 }
 
-// ŠÔŒv‘ªŠJn
+// æ™‚é–“è¨ˆæ¸¬é–‹å§‹
 void DebugTimer::StartTimer(std::string  timeName)
 {
 	for (auto itr = m_debugTime.begin(); itr != m_debugTime.end(); itr++)
@@ -44,7 +44,7 @@ void DebugTimer::StartTimer(std::string  timeName)
 	}
 }
 
-// ŠÔŒv‘ªI—¹
+// æ™‚é–“è¨ˆæ¸¬çµ‚äº†
 void DebugTimer::EndTimer(std::string  timeName)
 {
 	DWORD currentTime = timeGetTime();
@@ -60,7 +60,7 @@ void DebugTimer::EndTimer(std::string  timeName)
 	}
 }
 
-// ŠÔŒv‘ªÄŒv‘ª
+// æ™‚é–“è¨ˆæ¸¬å†è¨ˆæ¸¬
 void DebugTimer::ReStart(std::string  timeName)
 {
 	for (auto itr = m_debugTime.begin(); itr != m_debugTime.end(); itr++)
@@ -77,7 +77,7 @@ void DebugTimer::ReStart(std::string  timeName)
 	}
 }
 
-// Œv‘ªŒ‹‰Ê‚Ìæ“¾
+// è¨ˆæ¸¬çµæœã®å–å¾—
 DWORD DebugTimer::GetResult(std::string  timeName)
 {
 	DWORD timeResult = 0;
@@ -96,7 +96,7 @@ DWORD DebugTimer::GetResult(std::string  timeName)
 	return timeResult;
 }
 
-// Œv‘ªŒ‹‰Ê•\¦
+// è¨ˆæ¸¬çµæœè¡¨ç¤º
 void DebugTimer::DrawResult(std::string  timeName, D3DXVECTOR2 pos)
 {
 	for (auto itr = m_debugTime.begin(); itr != m_debugTime.end(); itr++)
@@ -106,7 +106,7 @@ void DebugTimer::DrawResult(std::string  timeName, D3DXVECTOR2 pos)
 			if (itr->measureFlag == false)
 			{
 				std::string  Str =
-					timeName +":"+ std::to_string(itr->time) + "ƒ~ƒŠ•b" +"\n";
+					timeName +":"+ std::to_string(itr->time) + "ãƒŸãƒªç§’" +"\n";
 				DebugFont timeDisp;
 				timeDisp.Draw(Str.c_str(), pos);
 			}
@@ -116,47 +116,47 @@ void DebugTimer::DrawResult(std::string  timeName, D3DXVECTOR2 pos)
 }
 
 
-// ŠÔ‚Ì‘‡Œv‚ğ•\¦‚·‚é
+// æ™‚é–“ã®ç·åˆè¨ˆã‚’è¡¨ç¤ºã™ã‚‹
 void DebugTimer::DrawSumResult(D3DXVECTOR2 pos)
 {
-	DWORD TotalTime = 0;				// ŠÔ‚ğ‡Œv‚·‚é‚½‚ß‚ÌŠí
+	DWORD TotalTime = 0;				// æ™‚é–“ã‚’åˆè¨ˆã™ã‚‹ãŸã‚ã®å™¨
 
 	for (auto i: m_debugTime)
 	{
-		if (i.measureFlag == false)		// Œv‘ª‚µI‚í‚Á‚Ä‚¢‚½‚ç‰ÁZ‚·‚é
+		if (i.measureFlag == false)		// è¨ˆæ¸¬ã—çµ‚ã‚ã£ã¦ã„ãŸã‚‰åŠ ç®—ã™ã‚‹
 		{
 			TotalTime += i.time;
 		}
 	}
 
 	std::string  Str =
-		"‡ŒvŠÔ‚Í:" +  std::to_string(TotalTime) + "ƒ~ƒŠ•b" + "\n";
+		"åˆè¨ˆæ™‚é–“ã¯:" +  std::to_string(TotalTime) + "ãƒŸãƒªç§’" + "\n";
 	DebugFont timeDisp;
 	timeDisp.Draw(Str.c_str(), pos);
 }
 
 
-// ‚·‚×‚Ä‚ÌŒv‘ªŠÔ‚Æ‡ŒvŠÔ‚ğ•\¦‚·‚é
+// ã™ã¹ã¦ã®è¨ˆæ¸¬æ™‚é–“ã¨åˆè¨ˆæ™‚é–“ã‚’è¡¨ç¤ºã™ã‚‹
 void DebugTimer::DrawAllResult(D3DXVECTOR2 pos)
 {
-	DebugFont timeDisp;					// •\¦—pƒtƒHƒ“ƒg
-	int fontHeight = timeDisp.GetFontHeight();	// 1•¶š‚Ì‚‚³
-	int dispCount = 0;							// •\¦”
+	DebugFont timeDisp;					// è¡¨ç¤ºç”¨ãƒ•ã‚©ãƒ³ãƒˆ
+	int fontHeight = timeDisp.GetFontHeight();	// 1æ–‡å­—ã®é«˜ã•
+	int dispCount = 0;							// è¡¨ç¤ºæ•°
 
 	for (auto i : m_debugTime)
 	{
 		if (i.measureFlag == false)
 		{
-			pos.y += (fontHeight * dispCount);				// •¶š‚Ì‚‚³•ªÀ•W‚ğ‚¸‚ç‚·
+			pos.y += (fontHeight * dispCount);				// æ–‡å­—ã®é«˜ã•åˆ†åº§æ¨™ã‚’ãšã‚‰ã™
 			std::string  Str =
-				i.timeName + ":" + std::to_string(i.time) + "ƒ~ƒŠ•b" + "\n";
+				i.timeName + ":" + std::to_string(i.time) + "ãƒŸãƒªç§’" + "\n";
 			timeDisp.Draw(Str.c_str(), pos);
 			dispCount++;
 			
 		}
 	}
 
-	// 1‚Â‚Å‚àŒ‹‰Ê•\¦‚µ‚Ä‚¢‚é‚È‚ç‘‡Œv‚ğ•\¦‚·‚é
+	// 1ã¤ã§ã‚‚çµæœè¡¨ç¤ºã—ã¦ã„ã‚‹ãªã‚‰ç·åˆè¨ˆã‚’è¡¨ç¤ºã™ã‚‹
 	if (dispCount != 0)
 	{
 		pos.y += fontHeight;
