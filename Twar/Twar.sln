@@ -4,6 +4,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 VisualStudioVersion = 12.0.40629.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Twar", "Twar\Twar.vcxproj", "{A8D46519-76A0-451B-81EA-7F5310C60736}"
+	ProjectSection(ProjectDependencies) = postProject
+		{A72D57CD-5434-4485-8690-0FD5556D2EEF} = {A72D57CD-5434-4485-8690-0FD5556D2EEF}
+	EndProjectSection
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Lib_Class", "Lib_Class\Lib_Class.vcxproj", "{A72D57CD-5434-4485-8690-0FD5556D2EEF}"
 EndProject
