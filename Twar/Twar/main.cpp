@@ -7,6 +7,7 @@
 #include <crtdbg.h>
 #include <d3dx9.h>
 #include <dinput.h>
+#include "GameLib.h"
 #include "WindowCreator.h"
 #include "GraphicsDevice.h"
 #include "InputDevice.h"
@@ -21,10 +22,7 @@
 #define CLIENT_SIZE_H 900 				// クライアントサイズの高さ
 #define GAME_FPS (1000 / 60)			// ゲームFPS
 
-
-WindowCreator*  g_pGameWindow = NULL;
-GraphicsDevice* g_pGraphicsDevice = NULL;				// DirectXDevice
-InputDevice*	g_pInputDevice = NULL;					// DirectInput
+GameLib*		g_pGameLib = NULL;
 
 // プロシージャ関数
 LRESULT CALLBACK WindowProc(HWND hwnd, UINT message, WPARAM wparam, LPARAM lparam);
@@ -38,49 +36,23 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPTSTR lpCmdLin
 
 	MSG msg;
 
+	g_pGameLib = &GameLib::GetInstance();
 	//-------------------------------------------------------------------
 	//				         ウィンドウ生成
 	//-------------------------------------------------------------------	
-	g_pGameWindow = new WindowCreator(WINDOW_TITLE, CLIENT_SIZE_W, CLIENT_SIZE_H);
+	//g_pGameWindow = new WindowCreator(WINDOW_TITLE, CLIENT_SIZE_W, CLIENT_SIZE_H);
 #ifndef FULLSCREEN
 
-	g_pGameWindow->MakeWindow(hInstance, WindowProc, true);
+	g_pGameLib->InitGameLib(WINDOW_TITLE, CLIENT_SIZE_W, CLIENT_SIZE_H,hInstance, WindowProc, true);
+	//g_pGameWindow->MakeWindow(hInstance, WindowProc, true);
 
 #else
-
-	g_pGameWindow->MakeWindow(hInstance, WindowProc, false);
-
-#endif
-
-	//-------------------------------------------------------------------
-	//						  DirectX関連
-	//-------------------------------------------------------------------
-
-	// グラフィックデバイス
-	g_pGraphicsDevice = &GraphicsDevice::GetInstance();
-#ifndef FULLSCREEN
-
-	g_pGraphicsDevice->InitDevice(g_pGameWindow->GetHwnd(), true, CLIENT_SIZE_W, CLIENT_SIZE_H);
-
-#else
-
-	pGraphicsDevice->InitDevice(g_pGameWindow->GetHwnd(), false, CLIENT_SIZE_W, CLIENT_SIZE_H);
+	g_pGameLib->InitGameLib(WINDOW_TITLE, CLIENT_SIZE_W, CLIENT_SIZE_H,hInstance, WindowProc, false);
+	//g_pGameWindow->MakeWindow(hInstance, WindowProc, false);
 
 #endif
 
 
-	g_pGraphicsDevice->SetRenderState3D();
-
-	// ダイレクトインプット
-	g_pInputDevice = &InputDevice::GetInstance();
-	g_pInputDevice->InitDinput();
-	g_pInputDevice->InitDinputKey(g_pGameWindow->GetHwnd());
-	g_pInputDevice->InitDinputMouse(g_pGameWindow->GetHwnd());
-
-	// ダイレクトサウンド
-	SoundFileManager* pSoundFileManager = NULL;
-	pSoundFileManager = &SoundFileManager::GetInstance();
-	pSoundFileManager->InitSound(g_pGameWindow->GetHwnd());
 
 	//-------------------------------------------------------------------
 	//						メッセージループ
@@ -109,7 +81,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPTSTR lpCmdLin
 	}
 
 
-	delete g_pGameWindow;
+	g_pGameLib->ReleaseGameLib();
 
 	return (INT)msg.wParam;
 }
@@ -148,8 +120,7 @@ LRESULT CALLBACK WindowProc(HWND hwnd, UINT message, WPARAM wparam, LPARAM lpara
 		switch ((CHAR)wparam)
 		{
 		case VK_RETURN:     // Alt + Enterを押すとウィンドウ切り替え
-			g_pGraphicsDevice->ChangeDisplayMode();
-			g_pGameWindow->ChangeWindowSize();
+			g_pGameLib->ChangeWindowMode();
 			break;
 		default:
 			break;

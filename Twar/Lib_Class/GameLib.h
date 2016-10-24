@@ -62,7 +62,7 @@ enum SOUND_OPERATION
 class GameLib
 {
 private:
-	WindowCreator		m_windowCreator;
+	WindowCreator*		m_pWindowCreator;
 	GraphicsDevice*		m_pGraphicsDevice;
 	InputDevice*		m_pInputDevice;
 	SoundFileManager*   m_pSoundFileManager;
@@ -78,11 +78,8 @@ private:
 
 	/**
 	* コンストラクタ.
-	* @param[in] title  ウィンドウタイトル
-	* @param[in] width  ウィンドウの横幅
-	* @param[in] height ウインドウの縦幅
 	*/
-	GameLib(char* title, int width, int height);
+	GameLib();
 
 public:
 	
@@ -97,19 +94,22 @@ public:
 	* @param[in] height ウインドウの縦幅
 	* @return GameLibクラス
 	*/
-	static GameLib& GetInstance(char* title, int width, int height)
+	static GameLib& GetInstance()
 	{
-		static GameLib gameLib(title,width,height);
+		static GameLib gameLib;
 		return gameLib;
 	}
 
 	/**
 	* 初期化関数.
+	* @param[in] title  ウィンドウタイトル
+	* @param[in] width  ウィンドウの横幅
+	* @param[in] height ウインドウの縦幅
 	* @param[in] hInstance	インスタンスハンドル
 	* @param[in] Wndproc	ウィンドウプロシージャ関数
 	* @param[in] windowType ウィンドウタイプ trueなら通常,falseならフルスクリーン
 	*/
-	void InitGameLib(HINSTANCE hInstance, LRESULT CALLBACK WndProc(HWND hWnd, UINT msg, WPARAM wp, LPARAM lp), bool windowType);
+	void InitGameLib(char* title, int width, int height,HINSTANCE hInstance, LRESULT CALLBACK WndProc(HWND hWnd, UINT msg, WPARAM wp, LPARAM lp), bool windowType);
 
 	/**メモリ開放関数*/
 	void ReleaseGameLib();

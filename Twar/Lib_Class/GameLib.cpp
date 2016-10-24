@@ -11,8 +11,8 @@
 #include "GameLib.h"
 
 
-GameLib::GameLib(char* title, int width, int height):
-m_windowCreator(title,width,height),
+GameLib::GameLib():
+m_pWindowCreator(NULL),
 m_pGraphicsDevice(NULL),
 m_pInputDevice(NULL),
 m_pSoundFileManager(NULL),
@@ -21,8 +21,8 @@ m_pInputKey(NULL),
 m_pTextureManager(NULL),
 m_pXFileManager(NULL),
 m_pVertexManager(NULL),
-m_wWidth(width),
-m_wHeight(height),
+m_wWidth(0),
+m_wHeight(0),
 m_releaseFlag(false)
 {	
 }
@@ -37,31 +37,35 @@ GameLib::~GameLib()
 }
 
 // 初期化関数
-void GameLib::InitGameLib(HINSTANCE hInstance, LRESULT CALLBACK WndProc(HWND hWnd, UINT msg, WPARAM wp, LPARAM lp), bool windowType)
+void GameLib::InitGameLib(char* title, int width, int height,HINSTANCE hInstance, LRESULT CALLBACK WndProc(HWND hWnd, UINT msg, WPARAM wp, LPARAM lp), bool windowType)
 {
+	m_wWidth = width;
+	m_wHeight = height;
+	m_pWindowCreator = new WindowCreator(title, width, height);
+	
 	m_pGraphicsDevice = &GraphicsDevice::GetInstance();
 	if (windowType)				// ウィンドウサイズ
 	{
-		m_windowCreator.MakeWindow(hInstance, WndProc, true);
-		m_pGraphicsDevice->InitDevice(m_windowCreator.GetHwnd(), true, m_wWidth, m_wHeight);
+		m_pWindowCreator->MakeWindow(hInstance, WndProc, true);
+		m_pGraphicsDevice->InitDevice(m_pWindowCreator->GetHwnd(), true, m_wWidth, m_wHeight);
 	}
 	else						// フルスクリーンサイズ
 	{
-		m_windowCreator.MakeWindow(hInstance, WndProc, false);
-		m_pGraphicsDevice->InitDevice(m_windowCreator.GetHwnd(), false, m_wWidth, m_wHeight);
+		m_pWindowCreator->MakeWindow(hInstance, WndProc, false);
+		m_pGraphicsDevice->InitDevice(m_pWindowCreator->GetHwnd(), false, m_wWidth, m_wHeight);
 	}
 
 	m_pGraphicsDevice->SetRenderState3D();
 
 	m_pInputDevice = &InputDevice::GetInstance();
 	m_pInputDevice->InitDinput();
-	m_pInputDevice->InitDinputKey(m_windowCreator.GetHwnd());
-	m_pInputDevice->InitDinputMouse(m_windowCreator.GetHwnd());
+	m_pInputDevice->InitDinputKey(m_pWindowCreator->GetHwnd());
+	m_pInputDevice->InitDinputMouse(m_pWindowCreator->GetHwnd());
 	m_pInputKey = new InputKey();
 	m_pInputMouse = new InputMouse();
 
 	m_pSoundFileManager = &SoundFileManager::GetInstance();
-	m_pSoundFileManager->InitSound(m_windowCreator.GetHwnd());
+	m_pSoundFileManager->InitSound(m_pWindowCreator->GetHwnd());
 
 	m_pTextureManager = new TextureManager();
 	m_pXFileManager = new XFileManager();
@@ -80,6 +84,7 @@ void GameLib::ReleaseGameLib()
 		delete m_pTextureManager;
 		delete m_pInputMouse;
 		delete m_pInputKey;
+		delete m_pWindowCreator;
 
 		m_releaseFlag = true;
 	}
@@ -89,7 +94,7 @@ void GameLib::ReleaseGameLib()
 void GameLib::ChangeWindowMode()
 {
 	m_pGraphicsDevice->ChangeDisplayMode();
-	m_windowCreator.ChangeWindowSize();
+	m_pWindowCreator->ChangeWindowSize();
 }
 
 const IDirect3DDevice9* GameLib:: GetDevice()
