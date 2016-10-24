@@ -12,7 +12,7 @@ InputKey::InputKey() : m_pKeyDevice(InputDevice::GetInstance().GetKeyDevice())
 {
 	for (int i = 0; i < KEYMAX;i++)
 	{
-		m_PreKey[i] = OFF;
+		m_PreKey[i] = BTN_OFF;
 	} 
 }
 
@@ -32,7 +32,7 @@ void InputKey::UpdateKey()
 }
 
 // キーチェック関数
-BUTTONSTATE InputKey::CheckKey(int DIK, KEYKIND st)
+BTN_STATE InputKey::CheckKey(int DIK, KEYKIND st)
 {
 	CheckState(&m_diks[DIK], st);
 
@@ -44,27 +44,27 @@ void InputKey::CheckState(BYTE* DIK, KEYKIND st)
 {
 	if ((*DIK) & 0x80)
 	{
-		if (m_PreKey[st] == OFF)
+		if (m_PreKey[st] == BTN_OFF)
 		{
-			m_Key[st] = PUSH;
+			m_Key[st] = BTN_PUSH;
 		
 		}
 		else
 		{
-			m_Key[st] = ON;
+			m_Key[st] = BTN_ON;
 		}
-		m_PreKey[st] = ON;
+		m_PreKey[st] = BTN_ON;
 	}
 	else
 	{
-		if (m_PreKey[st] == ON)
+		if (m_PreKey[st] == BTN_ON)
 		{
-			m_Key[st] = RELEASE;
+			m_Key[st] = BTN_RELEASE;
 		}
 		else
 		{
-			m_Key[st] = OFF;
+			m_Key[st] = BTN_OFF;
 		}
-		m_PreKey[st] = OFF;
+		m_PreKey[st] = BTN_OFF;
 	}
 }

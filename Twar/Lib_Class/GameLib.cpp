@@ -196,14 +196,54 @@ void GameLib::UpDateDI()
 	m_pInputMouse->UpdateMouse();
 }
 
-BUTTONSTATE GameLib::CheckKey(int DIK, KEYKIND keyName)
+BUTTON_STATE GameLib::CheckKey(int DIK, KEYKIND keyName)
 {
-	return (m_pInputKey->CheckKey(DIK,keyName));
+	BUTTON_STATE state;
+
+	switch (m_pInputKey->CheckKey(DIK, keyName))
+	{
+	case BTN_ON:
+		state = ON;
+		break;
+
+	case BTN_OFF:
+		state = OFF;
+		break;
+
+	case BTN_PUSH:
+		state = PUSH;
+		break;
+
+	case BTN_RELEASE:
+		state = RELEASE;
+		break;
+	}
+	return state;
 }
 
-BUTTONSTATE GameLib::ChecKMouse(MOUSEBUTTON mouseButton)
+BUTTON_STATE GameLib::ChecKMouse(MOUSEBUTTON mouseButton)
 {
-	return (m_pInputMouse->ChecKMouse(mouseButton));
+	BUTTON_STATE state;
+	
+	switch (m_pInputMouse->ChecKMouse(mouseButton))
+	{
+	case BTN_ON:
+		state = ON;
+		break;
+
+	case BTN_OFF:
+		state = OFF;
+		break;
+
+	case BTN_PUSH:
+		state = PUSH;
+		break;
+
+	case BTN_RELEASE:
+		state = RELEASE;
+		break;
+	}
+	return state;
 }
 
 WHEEL_STATE GameLib::GetWheelState()
@@ -211,14 +251,10 @@ WHEEL_STATE GameLib::GetWheelState()
 	return (m_pInputMouse->GetWheelState());
 }
 
-D3DXVECTOR2 GameLib::GetMousePos()
+void GameLib::GetMousePos(float* mousePosX, float* mousePosY)
 {
-	D3DXVECTOR2 pos;
-
-	pos.x = static_cast<float>(m_pInputMouse->GetPosX());
-	pos.y = static_cast<float>(m_pInputMouse->GetPosY());
-
-	return pos;
+	*mousePosX = static_cast<float>(m_pInputMouse->GetPosX());
+	*mousePosY = static_cast<float>(m_pInputMouse->GetPosY());
 }
 
 void GameLib::LoadSound(int key,TCHAR* filePath)

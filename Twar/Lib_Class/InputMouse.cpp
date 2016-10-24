@@ -28,8 +28,8 @@ m_hWnd(InputDevice::GetInstance().GethWnd())
 
 	for (int i = 0 ; i < MOUSEBUTTON::ButtonMAX; i++)
 	{
-		m_PreMouse[i] = BUTTONSTATE::OFF;
-		m_mouse[i] = BUTTONSTATE::OFF;
+		m_PreMouse[i] = BTN_STATE::BTN_OFF;
+		m_mouse[i] = BTN_STATE::BTN_OFF;
 	}
 }
 
@@ -162,31 +162,31 @@ void InputMouse::CheckState(MOUSEBUTTON mouseButton)
 
 	if (mouseClick)
 	{
-		if (m_PreMouse[mouseButton] == OFF)
+		if (m_PreMouse[mouseButton] == BTN_OFF)
 		{
-			m_mouse[mouseButton] = PUSH;
+			m_mouse[mouseButton] = BTN_PUSH;
 		}
 		else
 		{
-			m_mouse[mouseButton] = ON;
+			m_mouse[mouseButton] = BTN_ON;
 		}
-		m_PreMouse[mouseButton] = ON;
+		m_PreMouse[mouseButton] = BTN_ON;
 	}
 	else
 	{
-		if (m_PreMouse[mouseButton] == ON)
+		if (m_PreMouse[mouseButton] == BTN_ON)
 		{
-			m_mouse[mouseButton] = RELEASE;
+			m_mouse[mouseButton] = BTN_RELEASE;
 		}
 		else
 		{
-			m_mouse[mouseButton] = OFF;
+			m_mouse[mouseButton] = BTN_OFF;
 		}
-		m_PreMouse[mouseButton] = OFF;
+		m_PreMouse[mouseButton] = BTN_OFF;
 	}
 }
 
-BUTTONSTATE InputMouse::ChecKMouse(MOUSEBUTTON mouseButton)
+BTN_STATE InputMouse::ChecKMouse(MOUSEBUTTON mouseButton)
 {
 
 	CheckState(mouseButton);

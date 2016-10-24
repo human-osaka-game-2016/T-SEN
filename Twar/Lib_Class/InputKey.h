@@ -70,8 +70,6 @@ class InputKey
 private:
 	LPDIRECTINPUTDEVICE8  m_pKeyDevice;			//!< キーボードデバイス格納用
 	int					  m_PreKey[KEYMAX];		//!< キーの状態格納する変数
-	BYTE				  m_diks[256];			//!< DIKを格納する変数
-	BUTTONSTATE			  m_Key[KEYMAX];		//!< キーの種類を格納する変数
 
 	/**
 	* 状態を確認する関数.
@@ -81,7 +79,8 @@ private:
 	void CheckState(BYTE* DIK, KEYKIND st);
 
 public:
-	
+	BYTE     m_diks[256];			//!< DIKを格納する変数
+	BTN_STATE m_Key[KEYMAX];			//!< キーの種類を格納する変数
 
 	/**コンストラクタ*/
 	InputKey();
@@ -97,7 +96,7 @@ public:
 	* @param[in] DIK	ダイレクトインプットキーID
  	* @param[in] st		キーの種類
 	*/
-	BUTTONSTATE CheckKey(int DIK, KEYKIND st);
+	BTN_STATE CheckKey(int DIK, KEYKIND st);
 };
 
 #endif		// INPUT_KEY_H

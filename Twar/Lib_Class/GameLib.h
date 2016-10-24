@@ -21,6 +21,14 @@
 #include "DebugTimer.h"
 using namespace std;
 
+/**DirectInputにおけるボタンの状態*/
+enum BUTTON_STATE
+{
+	ON,				//!< キーを押した状態が続いている
+	OFF,			//!< キーを離した状態が続いている
+	PUSH,			//!< キーを押す
+	RELEASE			//!< キーを離す
+};
 
 /**音楽の再生方法*/
 enum SOUND_OPERATION
@@ -53,7 +61,6 @@ private:
 	int					m_wHeight;			//!< ウィンドウの高さ
 	bool				m_releaseFlag;		//!< メモリ解放したかどうかのフラグ
 
-public:
 	/**
 	* コンストラクタ.
 	* @param[in] title  ウィンドウタイトル
@@ -62,8 +69,24 @@ public:
 	*/
 	GameLib(char* title, int width, int height);
 
+public:
+	
 	/**デストラクタ*/
 	~GameLib();
+
+	/** 
+ 	* GameLibの実体を取得する関数<br>
+	* Singltonパターン.
+	* @param[in] title  ウィンドウタイトル
+	* @param[in] width  ウィンドウの横幅
+	* @param[in] height ウインドウの縦幅
+	* @return GameLibクラス
+	*/
+	static GameLib& GetInstance(char* title, int width, int height)
+	{
+		static GameLib gameLib(title,width,height);
+		return gameLib;
+	}
 
 	/**
 	* 初期化関数.
@@ -88,7 +111,11 @@ public:
 	//------------------------------------------------------------------------------------
 	//									描画関連関数
 	//------------------------------------------------------------------------------------
-	/**デバイスを取得する関数*/
+	/**
+	* デバイスを取得する関数.
+	* ----------残しておくか検討中------------------
+	* @return デバイスのポインタ
+	*/
 	const IDirect3DDevice9* GetDevice();					
 
 	/**
@@ -210,14 +237,14 @@ public:
 	* @param[in] keyName  キーの名前
 	* @return ボタンの状態
 	*/
-	BUTTONSTATE CheckKey(int DIK, KEYKIND keyName);				
+	BUTTON_STATE CheckKey(int DIK, KEYKIND keyName);				
 
 	/**
 	* マウスのボタンの状態を取得する関数
 	* @param[in] mouseButton マウスのボタンの種類
 	* @return ボタンの状態
 	*/
-	BUTTONSTATE ChecKMouse(MOUSEBUTTON mouseButton);			
+	BUTTON_STATE ChecKMouse(MOUSEBUTTON mouseButton);			
 
 	/**
 	* マウスのホイールの状態を取得する関数.
@@ -226,10 +253,12 @@ public:
 	WHEEL_STATE GetWheelState();								
 
 	/**
-	* マウスの座標を取得する関数.
-	* @return マウスの座標
+	* マウスの座標を取得する関数<br>
+	* 最初戻り値D3DXVECTOR2で取得しにしていたが、汎用性がない気がしたのでこの形に変更：@haga
+	* @param[out] mousePosX マウス座標xを格納する変数
+	* @param[out] mousePosY マウス座標yを格納する変数
 	*/
-	D3DXVECTOR2 GetMousePos();									 
+	void GetMousePos(float* mousePosX, float* mousePosY);
 
 	//--------------------------------------------------------------------------
 	//							サウンド関連関数

@@ -12,12 +12,12 @@
 */
 
 /**ボタンの状態確認*/
-enum BUTTONSTATE
+enum BTN_STATE
 {
-	OFF,		//!< キーを離した状態が続いている
-	ON,			//!< キーを押した状態が続いている
-	PUSH,		//!< キーを離す
-	RELEASE,	//!< キーを押す
+	BTN_OFF,		//!< キーを離した状態が続いている
+	BTN_ON,			//!< キーを押した状態が続いている
+	BTN_PUSH,		//!< キーを押す
+	BTN_RELEASE,	//!< キーを離す
 };
 
 class InputDevice

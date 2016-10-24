@@ -15,7 +15,7 @@ enum MOUSEBUTTON
 {
 	MouseLeft,		//!< 左ボタン
 	MouseRight,		//!< 右ボタン
-	MouseCenter,	//!< ホイール
+	MouseCenter,	//!< 真ん中
 	ButtonMAX,
 };
 /**マウスホイールの状態*/
@@ -47,7 +47,7 @@ private:
 	bool				 m_RAction;								//!< ボタン押した直後だけONになる(クリックを拾うときに)
 	bool				 m_MAction;								//!< ボタン押した直後だけONになる(クリックを拾うときに)
 	int					 m_PreMouse[MOUSEBUTTON::ButtonMAX];	//!< マウスのボタンの前の状態を格納する変数
-	BUTTONSTATE			 m_mouse[MOUSEBUTTON::ButtonMAX];		//!< マウスのボタンの状態を格納する変数
+	BTN_STATE			 m_mouse[MOUSEBUTTON::ButtonMAX];		//!< マウスのボタンの状態を格納する変数
 
 	/**状態確認*/
 	bool GetIsLAction() const { return m_LAction; }
@@ -75,7 +75,7 @@ public:
 	* @param[in] mouseButton マウスのボタンの種類
 	* @return ボタンが押されているかどうか
 	*/
-	BUTTONSTATE ChecKMouse(MOUSEBUTTON mouseButton);
+	BTN_STATE ChecKMouse(MOUSEBUTTON mouseButton);
 
 	/**
 	* マウスホイール状態を取得する関数
