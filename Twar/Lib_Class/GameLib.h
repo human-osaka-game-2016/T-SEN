@@ -8,18 +8,25 @@
 
 #include <windows.h>
 #include <iostream>
-#include "WindowCreator.h"	
-#include "GraphicsDevice.h"
-#include "InputDevice.h"
+#include <d3d9.h>
+#include <d3dx9.h>
 #include "InputKey.h"
-#include "InputMouse.h"
-#include "TextureManager.h"
-#include "XFileManager.h"
-#include "SoundFileManager.h"
-#include "VertexManager.h"
-#include "DebugFont.h"
-#include "DebugTimer.h"
 using namespace std;
+
+class WindowCreator;
+class GraphicsDevice;
+class InputDevice;
+class InputMouse;
+class TextureManager;
+class XFileManager;
+class SoundFileManager;
+class VertexManager;
+class DebugFont;
+class DebugTimer;
+
+
+#define DIRECT3DFVF_CUSTOMVERTEX (D3DFVF_XYZRHW | D3DFVF_DIFFUSE | D3DFVF_TEX1)		//!< 頂点フォーマット
+#define USER_VERTEX_FVF (D3DFVF_XYZ | D3DFVF_NORMAL | D3DFVF_TEX1)					//!< 頂点フォーマット(XYZと法線とテクスチャー)
 
 /**DirectInputにおけるボタンの状態*/
 enum BUTTON_STATE
@@ -130,7 +137,7 @@ public:
 	* 描画開始処理関数.
 	* @param[in] FVF 頂点フォーマット
 	*/
-	void StartRender(DWORD FVF = D3DFVF_CUSTOMVERTEX);
+	void StartRender(DWORD FVF = DIRECT3DFVF_CUSTOMVERTEX);
 
 	/**描画終了処理関数*/
 	void EndRender();											
@@ -205,7 +212,7 @@ public:
 	/**
 	* テクスチャーを解放する関数
 	* @param[in] AllFlag  全て解放するならture,特定のテクスチャーだけを解放するならfalseで第二引数を指定する
-	* @param[in] key	登録したキー、またはID。デフォルト引数は999←登録されないだろう数値を代入している
+	* @param[in] key	登録したキー、またはID。デフォルト引数は999←登録されないだろう数値を代入している要検討
 	*/
 	void ReleaseTex(bool AllFlag,int key = 999);
 
@@ -228,7 +235,7 @@ public:
 	/**
 	* Xファイルを解放する関数.
 	* @param[in] AllFlag  全て解放するならture,特定のテクスチャーだけを解放するならfalseで第二引数を指定する
-	* @param[in] key	登録したキー、またはID。デフォルト引数は999←登録されないだろう数値を代入している
+	* @param[in] key	登録したキー、またはID。デフォルト引数は999←登録されないだろう数値を代入している要検討
 	*/
 	void ReleaseXFile(bool AllFlag,int key = 999);				
 
@@ -240,9 +247,10 @@ public:
 	void UpDateDI();											
 
 	/**
-	* キーの状態を確認する関数.
+	* キーの状態を確認する関数<br>
+	* 第二引数をなんとか変更したい@haga
 	* @param[in] DIK      ダイレクトインプットキー DIK_
-	* @param[in] keyName  キーの名前
+	* @param[in] keyName  キーの名前はenumにてA～Zと数字はONE,TWOと英語表記(InputKey.h参照)
 	* @return ボタンの状態
 	*/
 	BUTTON_STATE CheckKey(int DIK, KEYKIND keyName);				

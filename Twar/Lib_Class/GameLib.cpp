@@ -1,3 +1,13 @@
+#include "WindowCreator.h"	
+#include "GraphicsDevice.h"
+#include "InputDevice.h"
+#include "InputMouse.h"
+#include "TextureManager.h"
+#include "XFileManager.h"
+#include "SoundFileManager.h"
+#include "VertexManager.h"
+#include "DebugFont.h"
+#include "DebugTimer.h"
 #include "GameLib.h"
 
 
