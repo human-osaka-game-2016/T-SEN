@@ -15,7 +15,7 @@
 #include "GraphicsDevice.h"			//!< GraphicsDeviceのクラス
 #include "Vertex.h"					//!< 頂点クラス
 #include "XFile.h"					//!< Xファイルクラス
-#include "Font.h"					//!< フォントクラス
+#include "./Font/Font.h"			//!< フォントクラス
 
 //-------------------------------------------
 //　　　　　　 DirectInput

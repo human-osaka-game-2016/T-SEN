@@ -1,11 +1,11 @@
-/**
+ï»¿/**
 * @file Font.cpp
-* @brief ƒtƒHƒ“ƒg‚ğˆµ‚¤ƒNƒ‰ƒX‚Ìcpp
+* @brief ãƒ•ã‚©ãƒ³ãƒˆã‚’æ‰±ã†ã‚¯ãƒ©ã‚¹ã®cpp
 * @author haga
 */
-#include "Font.h"
+#include "./Font/Font.h"
 
-// ƒRƒ“ƒXƒgƒ‰ƒNƒ^
+// ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿
 Font::Font(IDirect3DDevice9*	pD3Device) :
 m_pD3Device(pD3Device),
 m_pFont(NULL),
@@ -22,14 +22,14 @@ m_width(10)
 		OUT_DEFAULT_PRECIS,
 		PROOF_QUALITY,
 		FIXED_PITCH | FF_MODERN,
-		TEXT("‚l‚r@‚oƒSƒVƒbƒN"),
+		TEXT("ï¼­ï¼³ã€€ï¼°ã‚´ã‚·ãƒƒã‚¯"),
 		&m_pFont)))
 	{
-		MessageBox(NULL,"ƒtƒHƒ“ƒgƒNƒ‰ƒX‚ğì¬‚Å‚«‚Ü‚¹‚ñ","Error",MB_OK);
+		MessageBox(NULL,"ãƒ•ã‚©ãƒ³ãƒˆã‚¯ãƒ©ã‚¹ã‚’ä½œæˆã§ãã¾ã›ã‚“","Error",MB_OK);
 	}
 }
 
-// ƒRƒ“ƒXƒgƒ‰ƒNƒ^ •¶š‚Ì‘å‚«‚³‚ğw’è‚·‚éê‡‚Ég—p
+// ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿ æ–‡å­—ã®å¤§ãã•ã‚’æŒ‡å®šã™ã‚‹å ´åˆã«ä½¿ç”¨
 Font::Font(IDirect3DDevice9*	pD3Device,INT height, UINT	width) :
 m_pD3Device(pD3Device),
 m_pFont(NULL),
@@ -46,20 +46,20 @@ m_width(width)
 		OUT_DEFAULT_PRECIS,
 		PROOF_QUALITY,
 		FIXED_PITCH | FF_MODERN,
-		TEXT("‚l‚r@‚oƒSƒVƒbƒN"),
+		TEXT("ï¼­ï¼³ã€€ï¼°ã‚´ã‚·ãƒƒã‚¯"),
 		&m_pFont)))
 	{
-		MessageBox(NULL, "ƒtƒHƒ“ƒgƒNƒ‰ƒX‚ğì¬‚Å‚«‚Ü‚¹‚ñ", "Error", MB_OK);
+		MessageBox(NULL, "ãƒ•ã‚©ãƒ³ãƒˆã‚¯ãƒ©ã‚¹ã‚’ä½œæˆã§ãã¾ã›ã‚“", "Error", MB_OK);
 	}
 }
 
-// ƒfƒXƒgƒ‰ƒNƒ^
+// ãƒ‡ã‚¹ãƒˆãƒ©ã‚¯ã‚¿
 Font::~Font()
 {
 	if (m_pFont != NULL)m_pFont->Release();
 }
 
-// ƒeƒLƒXƒg‚ğ•\¦‚·‚éŠÖ”
+// ãƒ†ã‚­ã‚¹ãƒˆã‚’è¡¨ç¤ºã™ã‚‹é–¢æ•°
 void Font::Draw(LPCTSTR pString, D3DXVECTOR2 pos)
 {
 	RECT rc;
@@ -72,14 +72,14 @@ void Font::Draw(LPCTSTR pString, D3DXVECTOR2 pos)
 	rc.bottom = (LONG)pos.y + desc.Height * strlen(pString);
 	m_pFont->DrawTextA(
 		NULL,							// NULL
-		pString,						// •`‰æƒeƒLƒXƒg
-		-1,								// ‘S‚Ä•\¦
-		&rc,							// •\¦”ÍˆÍ
-		DT_LEFT,						// ¶Šñ‚¹
-		D3DCOLOR_XRGB(255, 255, 255));	// ”’F
+		pString,						// æç”»ãƒ†ã‚­ã‚¹ãƒˆ
+		-1,								// å…¨ã¦è¡¨ç¤º
+		&rc,							// è¡¨ç¤ºç¯„å›²
+		DT_LEFT,						// å·¦å¯„ã›
+		D3DCOLOR_XRGB(255, 255, 255));	// ç™½è‰²
 }
 
-// ƒeƒLƒXƒg‚ğ•\¦‚·‚éŠÖ”(F‚Æ•¶šŠñ‚¹‚ğ•Ï‚¦‚ê‚é)
+// ãƒ†ã‚­ã‚¹ãƒˆã‚’è¡¨ç¤ºã™ã‚‹é–¢æ•°(è‰²ã¨æ–‡å­—å¯„ã›ã‚’å¤‰ãˆã‚Œã‚‹)
 void Font::Draw(LPCSTR pString, D3DXVECTOR2 pos, DWORD format, D3DCOLOR color)
 {
 	RECT rc;
@@ -93,17 +93,17 @@ void Font::Draw(LPCSTR pString, D3DXVECTOR2 pos, DWORD format, D3DCOLOR color)
 
 	m_pFont->DrawTextA(
 		NULL,		// NULL 
-		pString,	// •`‰æƒeƒLƒXƒg
-		-1,			// ‘S‚Ä•\¦
-		&rc,		// •\¦”ÍˆÍ
-		format,		// •¶šŠñ‚¹
-		color);		// •¶š‚ÌF
+		pString,	// æç”»ãƒ†ã‚­ã‚¹ãƒˆ
+		-1,			// å…¨ã¦è¡¨ç¤º
+		&rc,		// è¡¨ç¤ºç¯„å›²
+		format,		// æ–‡å­—å¯„ã›
+		color);		// æ–‡å­—ã®è‰²
 }
 
-// •¶š‚ÌƒtƒHƒ“ƒg‚È‚Ç‚ğÄİ’è‚·‚éŠÖ”
+// æ–‡å­—ã®ãƒ•ã‚©ãƒ³ãƒˆãªã©ã‚’å†è¨­å®šã™ã‚‹é–¢æ•°
 void Font::ReCreateFont(LPCTSTR pFacename, UINT weight, BOOL italic)
 {
-	// ƒtƒHƒ“ƒg‚ğˆê“xŠJ•ú‚·‚é
+	// ãƒ•ã‚©ãƒ³ãƒˆã‚’ä¸€åº¦é–‹æ”¾ã™ã‚‹
 	if (m_pFont != NULL)
 	{
 		m_pFont->Release();
@@ -123,6 +123,6 @@ void Font::ReCreateFont(LPCTSTR pFacename, UINT weight, BOOL italic)
 		pFacename,
 		&m_pFont)))
 	{
-		MessageBox(NULL, "ƒtƒHƒ“ƒgƒNƒ‰ƒX‚ğì¬‚Å‚«‚Ü‚¹‚ñ", "Error", MB_OK);
+		MessageBox(NULL, "ãƒ•ã‚©ãƒ³ãƒˆã‚¯ãƒ©ã‚¹ã‚’ä½œæˆã§ãã¾ã›ã‚“", "Error", MB_OK);
 	}
 }
