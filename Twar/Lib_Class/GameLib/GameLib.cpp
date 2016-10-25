@@ -362,7 +362,7 @@ void GameLib::PlayDSound(int key, SOUND_OPERATION operation)
 	
 }
 
-void GameLib::DrawFont(std::string text, float posX, float posY)
+void GameLib::DrawDebugFont(std::string text, float posX, float posY)
 {
 	DebugFont font;
 	font.Draw(text.c_str(),D3DXVECTOR2(posX,posY));

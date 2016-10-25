@@ -285,27 +285,27 @@ public:
 	//								デバック機能
 	//-------------------------------------------------------------------------------
 	/**
-	* 文字を表示させる関数.
+	* デバック用の文字を表示させる関数.
 	* @param[in] text 表示した文字
 	* @param[in] posX x座標
 	* @param[in] posY y座標
 	*/
-	void DrawFont(std::string text, float posX, float posY);						
+	void DrawDebugFont(std::string text, float posX, float posY);						
 
 	/**
-	* 時間計測を開始する関数.
+	* デバック用の時間計測を開始する関数.
 	* @param[in] timeName	計測したい時間の名前
 	*/
 	void StartTimer(std::string  timeName);											
 
 	/**
-	* 時間計測を終了する関数.
+	* デバック用の時間計測を終了する関数.
 	* @param[in] timeName	計測を終えたい時間の名前
 	*/
 	void EndTimer(std::string  timeName);											
 
 	/**
-	* 計測結果を表示する関数.
+	* デバック用の計測結果を表示する関数.
 	* @param[in] timeName	表示したい計測時間の名前
 	* @param[in] posX x座標
 	* @param[in] posY y座標
@@ -313,13 +313,13 @@ public:
 	void DrawResult(std::string  timeName,float posX,float posY);					
 
 	/**
-	* 計測結果を取得する関数.
+	* デバック用の時間計測した結果を取得する関数.
 	* @param[in] timeName	取得したい計測時間の名前
 	*/
 	DWORD GetResultTime(std::string  timeName);										
 
 	/**
-	* すべての時間結果とその合計時間を表示する関数.
+	* デバック用の時間計測した結果全てとその合計時間を表示する関数.
 	* @param[in] posX x座標
 	* @param[in] posY y座標
 	*/
