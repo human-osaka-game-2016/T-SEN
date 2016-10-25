@@ -71,7 +71,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="Camera.h" />
+    <ClInclude Include="Camera\Camera.h" />
     <ClInclude Include="DebugFont.h" />
     <ClInclude Include="DebugTimer.h" />
     <ClInclude Include="Font\Font.h" />
@@ -91,7 +91,7 @@
     <ClInclude Include="XFileManager.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Camera.cpp" />
+    <ClCompile Include="Camera\Camera.cpp" />
     <ClCompile Include="DebugFont.cpp" />
     <ClCompile Include="DebugTimer.cpp" />
     <ClCompile Include="Font\Font.cpp" />

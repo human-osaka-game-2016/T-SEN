@@ -8,11 +8,8 @@
 #include <d3dx9.h>
 #include <dinput.h>
 #include "GameLib.h"
-#include "WindowCreator.h"
-#include "GraphicsDevice.h"
-#include "InputDevice.h"
-#include "SoundFileManager.h"
-#include "Font.h"
+
+
 
 
 //#define FULLSCREEN
@@ -40,15 +37,12 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPTSTR lpCmdLin
 	//-------------------------------------------------------------------
 	//				         ウィンドウ生成
 	//-------------------------------------------------------------------	
-	//g_pGameWindow = new WindowCreator(WINDOW_TITLE, CLIENT_SIZE_W, CLIENT_SIZE_H);
 #ifndef FULLSCREEN
 
 	g_pGameLib->InitGameLib(WINDOW_TITLE, CLIENT_SIZE_W, CLIENT_SIZE_H,hInstance, WindowProc, true);
-	//g_pGameWindow->MakeWindow(hInstance, WindowProc, true);
 
 #else
 	g_pGameLib->InitGameLib(WINDOW_TITLE, CLIENT_SIZE_W, CLIENT_SIZE_H,hInstance, WindowProc, false);
-	//g_pGameWindow->MakeWindow(hInstance, WindowProc, false);
 
 #endif
 
@@ -96,9 +90,11 @@ LRESULT CALLBACK WindowProc(HWND hwnd, UINT message, WPARAM wparam, LPARAM lpara
 		if (a == IDYES)
 		{
 			PostQuitMessage(0);
+			
 		}
-	}
 		return  0;
+	}
+		
 		break;
 	case WM_KEYDOWN:
 		switch ((CHAR)wparam)
@@ -109,9 +105,10 @@ LRESULT CALLBACK WindowProc(HWND hwnd, UINT message, WPARAM wparam, LPARAM lpara
 			if (a == IDYES)
 			{
 				PostQuitMessage(0);
+				return 0;
 			}
 		}
-			return 0;
+			
 			break;
 		}
 		break;

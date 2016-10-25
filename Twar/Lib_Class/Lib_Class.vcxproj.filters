@@ -13,9 +13,6 @@
     <ClCompile Include="InputKey.cpp">
       <Filter>Lib_Class\GameLib\InputDevice\InputKey</Filter>
     </ClCompile>
-    <ClCompile Include="Camera.cpp">
-      <Filter>Lib_Class\Camera</Filter>
-    </ClCompile>
     <ClCompile Include="Light.cpp">
       <Filter>Lib_Class\Light</Filter>
     </ClCompile>
@@ -52,6 +49,9 @@
     <ClCompile Include="Font\Font.cpp">
       <Filter>Lib_Class\Font</Filter>
     </ClCompile>
+    <ClCompile Include="Camera\Camera.cpp">
+      <Filter>Lib_Class\Camera</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GraphicsDevice.h">
@@ -65,9 +65,6 @@
     </ClInclude>
     <ClInclude Include="InputKey.h">
       <Filter>Lib_Class\GameLib\InputDevice\InputKey</Filter>
-    </ClInclude>
-    <ClInclude Include="Camera.h">
-      <Filter>Lib_Class\Camera</Filter>
     </ClInclude>
     <ClInclude Include="Light.h">
       <Filter>Lib_Class\Light</Filter>
@@ -107,6 +104,9 @@
     </ClInclude>
     <ClInclude Include="Font\Font.h">
       <Filter>Lib_Class\Font</Filter>
+    </ClInclude>
+    <ClInclude Include="Camera\Camera.h">
+      <Filter>Lib_Class\Camera</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
