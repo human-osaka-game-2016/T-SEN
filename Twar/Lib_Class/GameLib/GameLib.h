@@ -75,10 +75,7 @@ public:
 
 	/** 
  	* GameLibの実体を取得する関数<br>
-	* Singltonパターン.
-	* @param[in] title  ウィンドウタイトル
-	* @param[in] width  ウィンドウの横幅
-	* @param[in] height ウインドウの縦幅
+	* Singletonパターン.
 	* @return GameLibクラス
 	*/
 	static GameLib& GetInstance()
