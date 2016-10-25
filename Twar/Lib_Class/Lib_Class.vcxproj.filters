@@ -1,20 +1,11 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <ClCompile Include="GraphicsDevice.cpp">
-      <Filter>Lib_Class\GameLib\GraphicsDevice</Filter>
-    </ClCompile>
-    <ClCompile Include="InputDevice.cpp">
-      <Filter>Lib_Class\GameLib\InputDevice</Filter>
-    </ClCompile>
     <ClCompile Include="InputMouse.cpp">
       <Filter>Lib_Class\GameLib\InputDevice\InputMouse</Filter>
     </ClCompile>
     <ClCompile Include="InputKey.cpp">
       <Filter>Lib_Class\GameLib\InputDevice\InputKey</Filter>
-    </ClCompile>
-    <ClCompile Include="Light.cpp">
-      <Filter>Lib_Class\Light</Filter>
     </ClCompile>
     <ClCompile Include="SoundFileManager.cpp">
       <Filter>Lib_Class\GameLib\SoundFileManager</Filter>
@@ -24,9 +15,6 @@
     </ClCompile>
     <ClCompile Include="Vertex.cpp">
       <Filter>Lib_Class\GameLib\VertexManager\Vertex</Filter>
-    </ClCompile>
-    <ClCompile Include="WindowCreator.cpp">
-      <Filter>Lib_Class\GameLib\WindowCreator</Filter>
     </ClCompile>
     <ClCompile Include="XFile.cpp">
       <Filter>Lib_Class\GameLib\XFileManager\XFile</Filter>
@@ -43,31 +31,34 @@
     <ClCompile Include="DebugFont.cpp">
       <Filter>Lib_Class\GameLib\DebugFont</Filter>
     </ClCompile>
-    <ClCompile Include="GameLib.cpp">
-      <Filter>Lib_Class\GameLib</Filter>
-    </ClCompile>
     <ClCompile Include="Font\Font.cpp">
       <Filter>Lib_Class\Font</Filter>
     </ClCompile>
     <ClCompile Include="Camera\Camera.cpp">
       <Filter>Lib_Class\Camera</Filter>
     </ClCompile>
+    <ClCompile Include="GameLib\GameLib.cpp">
+      <Filter>Lib_Class\GameLib</Filter>
+    </ClCompile>
+    <ClCompile Include="Light\Light.cpp">
+      <Filter>Lib_Class\Light</Filter>
+    </ClCompile>
+    <ClCompile Include="GameLib\WindowCreator.cpp">
+      <Filter>Lib_Class\GameLib</Filter>
+    </ClCompile>
+    <ClCompile Include="GameLib\GraphicsDevice.cpp">
+      <Filter>Lib_Class\GameLib</Filter>
+    </ClCompile>
+    <ClCompile Include="GameLib\InputDevice.cpp">
+      <Filter>Lib_Class\GameLib</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="GraphicsDevice.h">
-      <Filter>Lib_Class\GameLib\GraphicsDevice</Filter>
-    </ClInclude>
-    <ClInclude Include="InputDevice.h">
-      <Filter>Lib_Class\GameLib\InputDevice</Filter>
-    </ClInclude>
     <ClInclude Include="InputMouse.h">
       <Filter>Lib_Class\GameLib\InputDevice\InputMouse</Filter>
     </ClInclude>
     <ClInclude Include="InputKey.h">
       <Filter>Lib_Class\GameLib\InputDevice\InputKey</Filter>
-    </ClInclude>
-    <ClInclude Include="Light.h">
-      <Filter>Lib_Class\Light</Filter>
     </ClInclude>
     <ClInclude Include="LibClass.h">
       <Filter>Lib_Class</Filter>
@@ -80,9 +71,6 @@
     </ClInclude>
     <ClInclude Include="Vertex.h">
       <Filter>Lib_Class\GameLib\VertexManager\Vertex</Filter>
-    </ClInclude>
-    <ClInclude Include="WindowCreator.h">
-      <Filter>Lib_Class\GameLib\WindowCreator</Filter>
     </ClInclude>
     <ClInclude Include="XFile.h">
       <Filter>Lib_Class\GameLib\XFileManager\XFile</Filter>
@@ -99,14 +87,26 @@
     <ClInclude Include="DebugFont.h">
       <Filter>Lib_Class\GameLib\DebugFont</Filter>
     </ClInclude>
-    <ClInclude Include="GameLib.h">
-      <Filter>Lib_Class\GameLib</Filter>
-    </ClInclude>
     <ClInclude Include="Font\Font.h">
       <Filter>Lib_Class\Font</Filter>
     </ClInclude>
     <ClInclude Include="Camera\Camera.h">
       <Filter>Lib_Class\Camera</Filter>
+    </ClInclude>
+    <ClInclude Include="GameLib\GameLib.h">
+      <Filter>Lib_Class\GameLib</Filter>
+    </ClInclude>
+    <ClInclude Include="Light\Light.h">
+      <Filter>Lib_Class\Light</Filter>
+    </ClInclude>
+    <ClInclude Include="GameLib\WindowCreator.h">
+      <Filter>Lib_Class\GameLib</Filter>
+    </ClInclude>
+    <ClInclude Include="GameLib\GraphicsDevice.h">
+      <Filter>Lib_Class\GameLib</Filter>
+    </ClInclude>
+    <ClInclude Include="GameLib\InputDevice.h">
+      <Filter>Lib_Class\GameLib</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -125,9 +125,6 @@
     <Filter Include="Lib_Class\GameLib">
       <UniqueIdentifier>{e3625e2f-d1c8-46af-9c2c-12d9bcc3c9ce}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Lib_Class\GameLib\GraphicsDevice">
-      <UniqueIdentifier>{4baca559-1014-497b-b6ff-4c291e887561}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Lib_Class\GameLib\InputDevice">
       <UniqueIdentifier>{c1660ff2-f594-47bb-a1ed-ee33c74fdf42}</UniqueIdentifier>
     </Filter>
@@ -142,9 +139,6 @@
     </Filter>
     <Filter Include="Lib_Class\GameLib\TextureManager">
       <UniqueIdentifier>{1eb8def6-f5f5-4114-a8e3-73bfac8aa8fc}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Lib_Class\GameLib\WindowCreator">
-      <UniqueIdentifier>{f6762385-a0b3-4db8-8a7a-f385b30508d8}</UniqueIdentifier>
     </Filter>
     <Filter Include="Lib_Class\GameLib\XFileManager">
       <UniqueIdentifier>{15c6d2f2-2b7e-43fc-9069-fe36fd110c66}</UniqueIdentifier>

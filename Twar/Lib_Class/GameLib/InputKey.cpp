@@ -1,13 +1,13 @@
-/**
+ï»¿/**
 * @file InputKey.cpp
-* @brief  ‘€ìƒL[‚ÉŠÖ‚·‚éƒNƒ‰ƒX‚Ìcpp
+* @brief  æ“ä½œã‚­ãƒ¼ã«é–¢ã™ã‚‹ã‚¯ãƒ©ã‚¹ã®cpp
 * @author haga
 */
 #include <dinput.h>
 
 #include "InputKey.h"
 
-// ƒRƒ“ƒXƒgƒ‰ƒNƒ^
+// ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿
 InputKey::InputKey() : m_pKeyDevice(InputDevice::GetInstance().GetKeyDevice())
 {
 	for (int i = 0; i < KEYMAX;i++)
@@ -16,12 +16,12 @@ InputKey::InputKey() : m_pKeyDevice(InputDevice::GetInstance().GetKeyDevice())
 	} 
 }
 
-// ƒfƒXƒgƒ‰ƒNƒ^
+// ãƒ‡ã‚¹ãƒˆãƒ©ã‚¯ã‚¿
 InputKey::~InputKey()
 {
 }
 
-// ƒL[‚ÌXV
+// ã‚­ãƒ¼ã®æ›´æ–°
 void InputKey::UpdateKey()
 {
 	HRESULT hr = m_pKeyDevice->Acquire();
@@ -31,7 +31,7 @@ void InputKey::UpdateKey()
 	}
 }
 
-// ƒL[ƒ`ƒFƒbƒNŠÖ”
+// ã‚­ãƒ¼ãƒã‚§ãƒƒã‚¯é–¢æ•°
 BTN_STATE InputKey::CheckKey(int DIK, KEYKIND st)
 {
 	CheckState(&m_diks[DIK], st);
@@ -39,7 +39,7 @@ BTN_STATE InputKey::CheckKey(int DIK, KEYKIND st)
 	return m_Key[st];
 }
 
-// ó‘ÔŠm”FŠÖ”
+// çŠ¶æ…‹ç¢ºèªé–¢æ•°
 void InputKey::CheckState(BYTE* DIK, KEYKIND st)
 {
 	if ((*DIK) & 0x80)

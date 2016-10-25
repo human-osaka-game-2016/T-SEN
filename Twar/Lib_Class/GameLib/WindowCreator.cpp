@@ -1,12 +1,12 @@
-/**
+ï»¿/**
 * @file WindowCreator.cpp
-* @brief ƒEƒBƒ“ƒhƒE‚ğì¬‚·‚éƒNƒ‰ƒX
+* @brief ã‚¦ã‚£ãƒ³ãƒ‰ã‚¦ã‚’ä½œæˆã™ã‚‹ã‚¯ãƒ©ã‚¹
 * @author haga
 */
 #include <windows.h>
 #include"WindowCreator.h"
 
-// ƒRƒ“ƒXƒgƒ‰ƒNƒ^
+// ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿
 WindowCreator::WindowCreator(char* title, int width, int height) :
 m_hWnd(NULL),
 m_wTitle(title),
@@ -16,15 +16,15 @@ m_wType(true)
 {
 }
 
-// ƒfƒXƒgƒ‰ƒNƒ^
+// ãƒ‡ã‚¹ãƒˆãƒ©ã‚¯ã‚¿
 WindowCreator::~WindowCreator()
 {
 }
 
-// ƒEƒBƒ“ƒhƒE‚ğì¬‚·‚éŠÖ”
+// ã‚¦ã‚£ãƒ³ãƒ‰ã‚¦ã‚’ä½œæˆã™ã‚‹é–¢æ•°
 HRESULT WindowCreator::MakeWindow(HINSTANCE hInstance, LRESULT CALLBACK WndProc(HWND hWnd, UINT msg, WPARAM wp, LPARAM lp), bool windowType)
 {
-	// ƒEƒBƒ“ƒhƒEî•ñ‚Ìİ’è
+	// ã‚¦ã‚£ãƒ³ãƒ‰ã‚¦æƒ…å ±ã®è¨­å®š
 	m_wndc.cbSize = sizeof(m_wndc);
 	m_wndc.style = CS_HREDRAW | CS_VREDRAW;
 	m_wndc.lpfnWndProc = WndProc;
@@ -39,70 +39,70 @@ HRESULT WindowCreator::MakeWindow(HINSTANCE hInstance, LRESULT CALLBACK WndProc(
 
 	if (!RegisterClassEx(&m_wndc))
 	{
-		MessageBox(0, "ƒEƒBƒ“ƒhƒEƒNƒ‰ƒX‚Ìİ’è‚É¸”s‚µ‚Ü‚µ‚½B", NULL, MB_OK);
+		MessageBox(0, "ã‚¦ã‚£ãƒ³ãƒ‰ã‚¦ã‚¯ãƒ©ã‚¹ã®è¨­å®šã«å¤±æ•—ã—ã¾ã—ãŸã€‚", NULL, MB_OK);
 		return E_FAIL;
 	}
 
-	m_wType = windowType;  // ƒEƒBƒ“ƒhƒEƒ^ƒCƒv‚ğ•Û‚·‚é
+	m_wType = windowType;  // ã‚¦ã‚£ãƒ³ãƒ‰ã‚¦ã‚¿ã‚¤ãƒ—ã‚’ä¿æŒã™ã‚‹
 
-	// ƒEƒBƒ“ƒhƒE‚ğì‚é	
-	if (m_wType)			// ’ÊíƒEƒBƒ“ƒhƒE
+	// ã‚¦ã‚£ãƒ³ãƒ‰ã‚¦ã‚’ä½œã‚‹	
+	if (m_wType)			// é€šå¸¸ã‚¦ã‚£ãƒ³ãƒ‰ã‚¦
 	{
 		m_hWnd = CreateWindow(
-			m_wTitle,							// ƒEƒBƒ“ƒhƒE‚ÌƒNƒ‰ƒX–¼
-			m_wTitle, 							// ƒEƒBƒ“ƒhƒE‚Ìƒ^ƒCƒgƒ‹
-			WS_OVERLAPPEDWINDOW | WS_VISIBLE,	// ƒEƒBƒ“ƒhƒEƒXƒ^ƒCƒ‹
-			CW_USEDEFAULT,						// ƒEƒBƒ“ƒhƒE‚Ì‰¡•ûŒü‚ÌˆÊ’ux
-			CW_USEDEFAULT,						// ƒEƒBƒ“ƒhƒE‚Ìc•ûŒü‚ÌˆÊ’uy
-			m_wWidth,							// Widthi•j@
-			m_wHeight,							// Heighti‚‚³)
+			m_wTitle,							// ã‚¦ã‚£ãƒ³ãƒ‰ã‚¦ã®ã‚¯ãƒ©ã‚¹å
+			m_wTitle, 							// ã‚¦ã‚£ãƒ³ãƒ‰ã‚¦ã®ã‚¿ã‚¤ãƒˆãƒ«
+			WS_OVERLAPPEDWINDOW | WS_VISIBLE,	// ã‚¦ã‚£ãƒ³ãƒ‰ã‚¦ã‚¹ã‚¿ã‚¤ãƒ«
+			CW_USEDEFAULT,						// ã‚¦ã‚£ãƒ³ãƒ‰ã‚¦ã®æ¨ªæ–¹å‘ã®ä½ç½®x
+			CW_USEDEFAULT,						// ã‚¦ã‚£ãƒ³ãƒ‰ã‚¦ã®ç¸¦æ–¹å‘ã®ä½ç½®y
+			m_wWidth,							// Widthï¼ˆå¹…ï¼‰ã€€
+			m_wHeight,							// Heightï¼ˆé«˜ã•)
 			NULL,
 			NULL,
-			hInstance,							// ƒAƒvƒŠƒP[ƒVƒ‡ƒ“ƒCƒ“ƒXƒ^ƒ“ƒX‚Ìƒnƒ“ƒhƒ‹
+			hInstance,							// ã‚¢ãƒ—ãƒªã‚±ãƒ¼ã‚·ãƒ§ãƒ³ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã®ãƒãƒ³ãƒ‰ãƒ«
 			NULL
 			);
 
-		SetProcessDPIAware();					// ƒEƒBƒ“ƒhƒEƒTƒCƒY‚ğ’²®‚·‚éŠÖ”
+		SetProcessDPIAware();					// ã‚¦ã‚£ãƒ³ãƒ‰ã‚¦ã‚µã‚¤ã‚ºã‚’èª¿æ•´ã™ã‚‹é–¢æ•°
 		HDC hdc = GetDC(m_hWnd);
 		int aaa = GetDeviceCaps(hdc, LOGPIXELSX);
 
-		// ƒNƒ‰ƒCƒAƒ“ƒg—Ìˆæ‚ğ’²®‚·‚é
+		// ã‚¯ãƒ©ã‚¤ã‚¢ãƒ³ãƒˆé ˜åŸŸã‚’èª¿æ•´ã™ã‚‹
 		RECT client_rect;
 		RECT widow_rect;
 		GetWindowRect(m_hWnd, &widow_rect);
 		GetClientRect(m_hWnd, &client_rect);
 
-		// ³‚µ‚¢ƒEƒBƒ“ƒhƒEŠÔŠu‚ğ‹‚ß‚é(•)
+		// æ­£ã—ã„ã‚¦ã‚£ãƒ³ãƒ‰ã‚¦é–“éš”ã‚’æ±‚ã‚ã‚‹(å¹…)
 		widow_rect.right -= widow_rect.left;
 		client_rect.right -= client_rect.left;
 
-		// ³‚µ‚¢ƒEƒBƒ“ƒhƒEŠÔŠu‚ğ‹‚ß‚é(‚‚³)
+		// æ­£ã—ã„ã‚¦ã‚£ãƒ³ãƒ‰ã‚¦é–“éš”ã‚’æ±‚ã‚ã‚‹(é«˜ã•)
 		widow_rect.bottom -= widow_rect.top;
 		client_rect.bottom -= client_rect.top;
 
 		SetWindowPos(m_hWnd, HWND_TOP, 0, 0, (m_wWidth + (widow_rect.right - client_rect.right)), (m_wHeight + (widow_rect.bottom - client_rect.bottom)), SWP_NOMOVE);
 
-		GetWindowRect(m_hWnd, &m_wRect);		// ì‚Á‚½ƒEƒBƒ“ƒhƒEƒTƒCƒY‚ğ•Û‚µ‚Ä‚¨‚­
+		GetWindowRect(m_hWnd, &m_wRect);		// ä½œã£ãŸã‚¦ã‚£ãƒ³ãƒ‰ã‚¦ã‚µã‚¤ã‚ºã‚’ä¿æŒã—ã¦ãŠã
 	}
-	else				// ƒtƒ‹ƒXƒNƒŠ[ƒ“
+	else				// ãƒ•ãƒ«ã‚¹ã‚¯ãƒªãƒ¼ãƒ³
 	{
 		m_hWnd = CreateWindow(
-			m_wTitle,							// ƒEƒBƒ“ƒhƒE‚ÌƒNƒ‰ƒX–¼
-			m_wTitle, 							// ƒEƒBƒ“ƒhƒE‚Ìƒ^ƒCƒgƒ‹
-			WS_POPUP | WS_VISIBLE,				// ƒEƒBƒ“ƒhƒEƒXƒ^ƒCƒ‹
-			0,									// ƒEƒBƒ“ƒhƒE‚Ì‰¡•ûŒü‚ÌˆÊ’ux
-			0,									// ƒEƒBƒ“ƒhƒE‚Ìc•ûŒü‚ÌˆÊ’uy
-			m_wWidth,							// Widthi•j@
-			m_wHeight,							// Heighti‚‚³)
+			m_wTitle,							// ã‚¦ã‚£ãƒ³ãƒ‰ã‚¦ã®ã‚¯ãƒ©ã‚¹å
+			m_wTitle, 							// ã‚¦ã‚£ãƒ³ãƒ‰ã‚¦ã®ã‚¿ã‚¤ãƒˆãƒ«
+			WS_POPUP | WS_VISIBLE,				// ã‚¦ã‚£ãƒ³ãƒ‰ã‚¦ã‚¹ã‚¿ã‚¤ãƒ«
+			0,									// ã‚¦ã‚£ãƒ³ãƒ‰ã‚¦ã®æ¨ªæ–¹å‘ã®ä½ç½®x
+			0,									// ã‚¦ã‚£ãƒ³ãƒ‰ã‚¦ã®ç¸¦æ–¹å‘ã®ä½ç½®y
+			m_wWidth,							// Widthï¼ˆå¹…ï¼‰ã€€
+			m_wHeight,							// Heightï¼ˆé«˜ã•)
 			NULL,
 			NULL,
-			hInstance,							// ƒAƒvƒŠƒP[ƒVƒ‡ƒ“ƒCƒ“ƒXƒ^ƒ“ƒX‚Ìƒnƒ“ƒhƒ‹
+			hInstance,							// ã‚¢ãƒ—ãƒªã‚±ãƒ¼ã‚·ãƒ§ãƒ³ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã®ãƒãƒ³ãƒ‰ãƒ«
 			NULL
 			);
 	}
 	if (!m_hWnd)
 	{
-		MessageBox(0, "ƒEƒBƒ“ƒhƒE¶¬‚É¸”s‚µ‚Ü‚µ‚½B", NULL, MB_OK);
+		MessageBox(0, "ã‚¦ã‚£ãƒ³ãƒ‰ã‚¦ç”Ÿæˆã«å¤±æ•—ã—ã¾ã—ãŸã€‚", NULL, MB_OK);
 		return E_FAIL;
 	}
 
@@ -112,7 +112,7 @@ HRESULT WindowCreator::MakeWindow(HINSTANCE hInstance, LRESULT CALLBACK WndProc(
 }
 
 
-// ƒEƒBƒ“ƒhƒEƒTƒCƒY‚ğŒˆ’è‚·‚é
+// ã‚¦ã‚£ãƒ³ãƒ‰ã‚¦ã‚µã‚¤ã‚ºã‚’æ±ºå®šã™ã‚‹
 HRESULT WindowCreator::ChangeWindowSize()
 {
 	if (m_wType)
@@ -125,17 +125,17 @@ HRESULT WindowCreator::ChangeWindowSize()
 		SetWindowLong(m_hWnd, GWL_STYLE, WS_OVERLAPPEDWINDOW | WS_VISIBLE);
 		SetWindowPos(m_hWnd, HWND_TOP, 0, 0, m_wWidth, m_wHeight, SWP_NOMOVE);
 
-		// ƒNƒ‰ƒCƒAƒ“ƒg—Ìˆæ‚ğ’²®‚·‚é
+		// ã‚¯ãƒ©ã‚¤ã‚¢ãƒ³ãƒˆé ˜åŸŸã‚’èª¿æ•´ã™ã‚‹
 		RECT client_rect;
 		RECT widow_rect;
 		GetWindowRect(m_hWnd, &widow_rect);
 		GetClientRect(m_hWnd, &client_rect);
 
-		// ³‚µ‚¢ƒEƒBƒ“ƒhƒEŠÔŠu‚ğ‹‚ß‚é(•)
+		// æ­£ã—ã„ã‚¦ã‚£ãƒ³ãƒ‰ã‚¦é–“éš”ã‚’æ±‚ã‚ã‚‹(å¹…)
 		widow_rect.right -= widow_rect.left;
 		client_rect.right -= client_rect.left;
 
-		// ³‚µ‚¢ƒEƒBƒ“ƒhƒEŠÔŠu‚ğ‹‚ß‚é(‚‚³)
+		// æ­£ã—ã„ã‚¦ã‚£ãƒ³ãƒ‰ã‚¦é–“éš”ã‚’æ±‚ã‚ã‚‹(é«˜ã•)
 		widow_rect.bottom -= widow_rect.top;
 		client_rect.bottom -= client_rect.top;
 

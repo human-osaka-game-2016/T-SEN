@@ -1,4 +1,4 @@
-#include "WindowCreator.h"	
+ï»¿#include "WindowCreator.h"	
 #include "GraphicsDevice.h"
 #include "InputDevice.h"
 #include "InputMouse.h"
@@ -36,7 +36,7 @@ GameLib::~GameLib()
 	}
 }
 
-// ‰Šú‰»ŠÖ”
+// åˆæœŸåŒ–é–¢æ•°
 void GameLib::InitGameLib(char* title, int width, int height,HINSTANCE hInstance, LRESULT CALLBACK WndProc(HWND hWnd, UINT msg, WPARAM wp, LPARAM lp), bool windowType)
 {
 	m_wWidth = width;
@@ -44,12 +44,12 @@ void GameLib::InitGameLib(char* title, int width, int height,HINSTANCE hInstance
 	m_pWindowCreator = new WindowCreator(title, width, height);
 	
 	m_pGraphicsDevice = &GraphicsDevice::GetInstance();
-	if (windowType)				// ƒEƒBƒ“ƒhƒEƒTƒCƒY
+	if (windowType)				// ã‚¦ã‚£ãƒ³ãƒ‰ã‚¦ã‚µã‚¤ã‚º
 	{
 		m_pWindowCreator->MakeWindow(hInstance, WndProc, true);
 		m_pGraphicsDevice->InitDevice(m_pWindowCreator->GetHwnd(), true, m_wWidth, m_wHeight);
 	}
-	else						// ƒtƒ‹ƒXƒNƒŠ[ƒ“ƒTƒCƒY
+	else						// ãƒ•ãƒ«ã‚¹ã‚¯ãƒªãƒ¼ãƒ³ã‚µã‚¤ã‚º
 	{
 		m_pWindowCreator->MakeWindow(hInstance, WndProc, false);
 		m_pGraphicsDevice->InitDevice(m_pWindowCreator->GetHwnd(), false, m_wWidth, m_wHeight);
@@ -73,7 +73,7 @@ void GameLib::InitGameLib(char* title, int width, int height,HINSTANCE hInstance
 	m_pDebugTimer = new DebugTimer();
 }
 
-// ƒƒ‚ƒŠŠJ•úŠÖ”
+// ãƒ¡ãƒ¢ãƒªé–‹æ”¾é–¢æ•°
 void GameLib::ReleaseGameLib()
 {
 	if (!m_releaseFlag)
@@ -90,7 +90,7 @@ void GameLib::ReleaseGameLib()
 	}
 }
 
-// ƒEƒBƒ“ƒhƒEƒ^ƒCƒv‚ð•Ï‚¦‚éŠÖ”
+// ã‚¦ã‚£ãƒ³ãƒ‰ã‚¦ã‚¿ã‚¤ãƒ—ã‚’å¤‰ãˆã‚‹é–¢æ•°
 void GameLib::ChangeWindowMode()
 {
 	m_pGraphicsDevice->ChangeDisplayMode();
@@ -164,7 +164,7 @@ void GameLib::SetVtx(int key,float tuMin, float tuMax, float tvMin, float tvMax,
 
 void GameLib::ReleaseTex(bool AllFlag, int key)
 {
-	if (AllFlag)			// ‚·‚×‚Ä”jŠü‚·‚é‚È‚ç
+	if (AllFlag)			// ã™ã¹ã¦ç ´æ£„ã™ã‚‹ãªã‚‰
 	{
 		m_pTextureManager->ReleaseALL();
 		m_pVertexManager->ReleaseALL();
@@ -191,7 +191,7 @@ void GameLib::DrawXFile(int key)
 
 void GameLib::ReleaseXFile(bool AllFlag, int key)
 {
-	if (AllFlag)			// ‚·‚×‚Ä”jŠü‚·‚é‚È‚ç
+	if (AllFlag)			// ã™ã¹ã¦ç ´æ£„ã™ã‚‹ãªã‚‰
 	{
 		m_pXFileManager->ReleaseALL();
 	}

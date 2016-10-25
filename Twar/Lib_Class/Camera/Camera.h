@@ -7,7 +7,7 @@
 #define CAMERA_H
 
 #include <d3dx9.h>
-#include "../GraphicsDevice.h"
+#include "../GameLib/GraphicsDevice.h"
 
 /**
 * カメラクラス.

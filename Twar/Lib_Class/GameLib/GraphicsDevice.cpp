@@ -1,6 +1,6 @@
-/**
+﻿/**
 * @file GraphicsDevice.cpp
-* @brief �O���t�B�b�N�X�f�o�C�X�֘A�̃N���X��cpp
+* @brief グラフィックスデバイス関連のクラスのcpp
 * @author haga
 */
 #include <d3dx9.h>
@@ -8,14 +8,14 @@
 #include "GraphicsDevice.h"
 
 
-// �R���X�g���N�^
+// コンストラクタ
 GraphicsDevice::GraphicsDevice():
 m_pDirect3D(NULL),
 m_pD3Device(NULL)
 {
 }
 
-// �f�X�g���N�^
+// デストラクタ
 GraphicsDevice::~GraphicsDevice()
 {
 	if (m_pD3Device != NULL)
@@ -31,10 +31,10 @@ GraphicsDevice::~GraphicsDevice()
 	}
 }
 
-// DirectX�������֐�(���ŕ`��ݒ���s���Ă���)
+// DirectX初期化関数(中で描画設定も行っている)
 HRESULT	 GraphicsDevice::InitDevice(HWND hWnd, bool wType, int wWidth, int wHeight)
 {
-	// �E�B���h�E�֘A����ێ�����
+	// ウィンドウ関連情報を保持する
 	m_hWnd    = hWnd;
 	m_wWidth  = wWidth;
 	m_wHeight = wHeight;
@@ -43,25 +43,25 @@ HRESULT	 GraphicsDevice::InitDevice(HWND hWnd, bool wType, int wWidth, int wHeig
 
 	if (m_pDirect3D == NULL)
 	{
-		MessageBox(0, "Direct3D�̃C���^�[�t�F�C�X�̍쐬�Ɏ��s���܂����B", NULL, MB_OK);
+		MessageBox(0, "Direct3Dのインターフェイスの作成に失敗しました。", NULL, MB_OK);
 		return E_FAIL;
 	}
 
 	m_pDirect3D->GetAdapterDisplayMode(D3DADAPTER_DEFAULT,&m_d3ddm);
 
-	m_wType = wType;			// �E�B���h�E�̏�Ԃ�ێ�
+	m_wType = wType;			// ウィンドウの状態を保持
 
-	// �ʏ�E�B���h�E���[�h
-	ZeroMemory(&m_d3dppWindow,sizeof(D3DPRESENT_PARAMETERS));		// D3DPRESENT_INTERVAL_DEFAULT = 0 ���ݒ聨���j�^�̃��t���b�V�����[�g = FPS
+	// 通常ウィンドウモード
+	ZeroMemory(&m_d3dppWindow,sizeof(D3DPRESENT_PARAMETERS));		// D3DPRESENT_INTERVAL_DEFAULT = 0 が設定→モニタのリフレッシュレート = FPS
 	m_d3dppWindow.BackBufferFormat = m_d3ddm.Format;
 	m_d3dppWindow.BackBufferCount  = 1;
 	m_d3dppWindow.SwapEffect       = D3DSWAPEFFECT_DISCARD;
 	m_d3dppWindow.Windowed		   = TRUE;
 	m_d3dppWindow.EnableAutoDepthStencil = TRUE;
-	m_d3dppWindow.AutoDepthStencilFormat = D3DFMT_D24S8;			// Z�o�b�t�@24�r�b�g�A�X�e���V���o�b�t�@8�r�b�g �Ȃ̂�OK
-	m_d3dppWindow.Flags = D3DPRESENTFLAG_DISCARD_DEPTHSTENCIL;	// �_�u���X�e���V��
+	m_d3dppWindow.AutoDepthStencilFormat = D3DFMT_D24S8;			// Zバッファ24ビット、ステンシルバッファ8ビット なのでOK
+	m_d3dppWindow.Flags = D3DPRESENTFLAG_DISCARD_DEPTHSTENCIL;	// ダブルステンシル
 	
-	// �t���X�N���[�����[�h(BackBuffer�̐��l�͉��u��)
+	// フルスクリーンモード(BackBufferの数値は仮置き)
 	ZeroMemory(&m_d3dppFull, sizeof(D3DPRESENT_PARAMETERS));
 	m_d3dppFull.BackBufferWidth = m_wWidth;
 	m_d3dppFull.BackBufferHeight = m_wHeight;
@@ -87,16 +87,16 @@ HRESULT	 GraphicsDevice::InitDevice(HWND hWnd, bool wType, int wWidth, int wHeig
 		m_d3dpp = m_d3dppFull;
 	}
 
-	// �f�o�C�X�����
+	// デバイスを作る
 	m_pDirect3D->CreateDevice(D3DADAPTER_DEFAULT,D3DDEVTYPE_HAL,hWnd,D3DCREATE_SOFTWARE_VERTEXPROCESSING,&m_d3dpp, &m_pD3Device);
 
 	if (m_pD3Device == NULL)
 	{
-		MessageBox(0, "Direct3D�̃f�o�C�X�̍쐬�Ɏ��s���܂����B", NULL, MB_OK);
+		MessageBox(0, "Direct3Dのデバイスの作成に失敗しました。", NULL, MB_OK);
 		return E_FAIL;
 	}
 
-	// �r���[�|�[�g�̐ݒ�
+	// ビューポートの設定
 	D3DVIEWPORT9 vp;
 	vp.X = 0;
 	vp.Y = 0;
@@ -109,18 +109,18 @@ HRESULT	 GraphicsDevice::InitDevice(HWND hWnd, bool wType, int wWidth, int wHeig
 		return E_FAIL;
 	}
 
-	// �`��ݒ�
+	// 描画設定
 	SetRenderState();
 	
 	return S_OK;
 }
 
-// �`��ݒ�
+// 描画設定
 void GraphicsDevice::SetRenderState()
 {
-	// �`��̐ݒ�
+	// 描画の設定
 	m_pD3Device->SetRenderState(D3DRS_ALPHABLENDENABLE, true);
-	m_pD3Device->SetRenderState(D3DRS_SRCBLEND, D3DBLEND_SRCALPHA);  //SRC�̐ݒ�
+	m_pD3Device->SetRenderState(D3DRS_SRCBLEND, D3DBLEND_SRCALPHA);  //SRCの設定
 	m_pD3Device->SetRenderState(D3DRS_DESTBLEND, D3DBLEND_INVSRCALPHA);
 	m_pD3Device->SetRenderState(D3DRS_DIFFUSEMATERIALSOURCE, D3DMCS_COLOR1);
 
@@ -135,69 +135,69 @@ void GraphicsDevice::SetRenderState()
 	m_pD3Device->SetTextureStageState(0, D3DTSS_ALPHAOP, D3DTOP_MODULATE);
 }
 
-// 3D�Ŏg�p����`��ݒ� 
+// 3Dで使用する描画設定 
 void GraphicsDevice::SetRenderState3D()
 {
-	m_pD3Device->SetRenderState(D3DRS_ZENABLE, TRUE);				// Z�o�b�t�@������L���ɂ���
-//  m_pD3Device->SetRenderState( D3DRS_CULLMODE, D3DCULL_NONE );	// �J�����O���Ȃ�
-	m_pD3Device->SetRenderState(D3DRS_CULLMODE, D3DCULL_CCW);	    // �J�����O����
+	m_pD3Device->SetRenderState(D3DRS_ZENABLE, TRUE);				// Zバッファ処理を有効にする
+//  m_pD3Device->SetRenderState( D3DRS_CULLMODE, D3DCULL_NONE );	// カリングしない
+	m_pD3Device->SetRenderState(D3DRS_CULLMODE, D3DCULL_CCW);	    // カリングする
 }
 
-// �`��J�n����
+// 描画開始処理
 void GraphicsDevice::StartRender()
 {
-	// ��ʂ̏���
+	// 画面の消去
 	m_pD3Device->Clear(0, NULL, D3DCLEAR_TARGET | D3DCLEAR_ZBUFFER, D3DCOLOR_XRGB(0x00, 0x00, 0x00), 1.0, 0);
-	// �`��̊J�n
+	// 描画の開始
 	m_pD3Device->BeginScene();
 }
 
-// �`��J�n���� ���Œ��_�t�H�[�}�b�g���ݒ肵�Ă���
+// 描画開始処理 中で頂点フォーマットも設定している
 void GraphicsDevice::StartRender(DWORD FVF)
 {
-	// ��ʂ̏���
+	// 画面の消去
 	m_pD3Device->Clear(0, NULL, D3DCLEAR_TARGET | D3DCLEAR_ZBUFFER, D3DCOLOR_XRGB(0x00, 0x00, 0x00), 1.0, 0);
-	// �`��̊J�n
+	// 描画の開始
 	m_pD3Device->BeginScene();
-	// �`��̃t�H�[�}�b�g��ݒ�
+	// 描画のフォーマットを設定
 	m_pD3Device->SetFVF(FVF);
 }
 
-// �`��I������
+// 描画終了処理
 void GraphicsDevice::EndRender()
 {
-	// �`��̏I�� 
+	// 描画の終了 
 	m_pD3Device->EndScene();
 
-	// �\��
+	// 表示
 	m_pD3Device->Present(NULL, NULL, NULL, NULL);
 }
 
-// �`��̃t�H�[�}�b�g��ݒ肷��֐�
+// 描画のフォーマットを設定する関数
 void GraphicsDevice::SetFVF(DWORD FVF)
 {
 	m_pD3Device->SetFVF(FVF);
 }
 
-// �E�B���h�E���[�h���ύX�����ꍇ�f�o�C�X�֘A���Đݒ肷��
+// ウィンドウモードが変更した場合デバイス関連を再設定する
 HRESULT GraphicsDevice::ChangeDisplayMode()
 {
 	if (m_wType)
 	{
 		m_d3dpp = m_d3dppFull;
-		m_wType = false; // �t���X�N���[�����[�h�ɕύX
+		m_wType = false; // フルスクリーンモードに変更
 	}
 	else
 	{
 		m_d3dpp = m_d3dppWindow;
-		m_wType = true; // �ʏ탂�[�h�ɕύX
+		m_wType = true; // 通常モードに変更
 	}
 	if (FAILED(m_pD3Device->Reset(&m_d3dpp)))
 	{
 		return E_FAIL;
 	}
 
-	// �r���[�|�[�g�̐ݒ�
+	// ビューポートの設定
 	D3DVIEWPORT9 vp;
 	vp.X = 0;
 	vp.Y = 0;

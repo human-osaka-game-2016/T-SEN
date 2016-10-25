@@ -1,12 +1,12 @@
-/**
+ï»¿/**
 * @file   InputDevice.cpp
-* @brief  DirectInputŠÖ˜AƒNƒ‰ƒX‚Ìcpp
+* @brief  DirectInputé–¢é€£ã‚¯ãƒ©ã‚¹ã®cpp
 * @author haga
 */
 #include <dinput.h>
 #include "InputDevice.h"
 
-// ƒRƒ“ƒXƒgƒ‰ƒNƒ^
+// ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿
 InputDevice::InputDevice() : m_pDInput(NULL),
 m_pKeyDevice(NULL),
 m_pMouseDevice(NULL),
@@ -14,7 +14,7 @@ m_hWnd(NULL)
 {
 }
 
-// ƒfƒXƒgƒ‰ƒNƒ^(‚±‚±‚ÅƒfƒoƒCƒX‚È‚Ç‚ğŠJ•ú‚µ‚Ä‚¢‚é)
+// ãƒ‡ã‚¹ãƒˆãƒ©ã‚¯ã‚¿(ã“ã“ã§ãƒ‡ãƒã‚¤ã‚¹ãªã©ã‚’é–‹æ”¾ã—ã¦ã„ã‚‹)
 InputDevice::~InputDevice()
 {
 	if (m_pKeyDevice)
@@ -36,87 +36,87 @@ InputDevice::~InputDevice()
 	}
 }
 
-// DirectInput¶¬
+// DirectInputç”Ÿæˆ
 HRESULT InputDevice::InitDinput()
 {
-	//	DirectInput ƒIƒuƒWƒFƒNƒg‚Ìì¬
+	//	DirectInput ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®ä½œæˆ
 	if (FAILED(DirectInput8Create(GetModuleHandle(NULL),DIRECTINPUT_VERSION, IID_IDirectInput8, (VOID**)&m_pDInput, NULL)))
 	{
-		MessageBox(0, "DirectInputƒIƒuƒWƒFƒNƒg¶¬‚É¸”s‚µ‚Ü‚µ‚½B", NULL, MB_OK);
+		MessageBox(0, "DirectInputã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆç”Ÿæˆã«å¤±æ•—ã—ã¾ã—ãŸã€‚", NULL, MB_OK);
 		return E_FAIL;
 	}
 	return S_OK;
 }
 
-// ƒL[ƒ{[ƒhƒfƒoƒCƒX‰Šú‰»
+// ã‚­ãƒ¼ãƒœãƒ¼ãƒ‰ãƒ‡ãƒã‚¤ã‚¹åˆæœŸåŒ–
 HRESULT InputDevice::InitDinputKey(HWND hWnd)
 {
-	// ƒƒ“ƒo[‚Éƒnƒ“ƒhƒ‹‚ğŠi”[‚·‚é
+	// ãƒ¡ãƒ³ãƒãƒ¼ã«ãƒãƒ³ãƒ‰ãƒ«ã‚’æ ¼ç´ã™ã‚‹
 	m_hWnd = hWnd;
 
-	//	ƒL[ƒ{[ƒh‚Ì‰Šú‰»
+	//	ã‚­ãƒ¼ãƒœãƒ¼ãƒ‰ã®åˆæœŸåŒ–
 	if (FAILED(m_pDInput->CreateDevice(GUID_SysKeyboard,
 		&m_pKeyDevice, NULL)))
 	{
-		MessageBox(0, "DirectInputƒL[ƒ{[ƒh‰Šú‰»‚É¸”s‚µ‚Ü‚µ‚½B", NULL, MB_OK);
+		MessageBox(0, "DirectInputã‚­ãƒ¼ãƒœãƒ¼ãƒ‰åˆæœŸåŒ–ã«å¤±æ•—ã—ã¾ã—ãŸã€‚", NULL, MB_OK);
 		return E_FAIL;
 	}
 
-	//	ƒf[ƒ^ƒtƒH[ƒ}ƒbƒg
+	//	ãƒ‡ãƒ¼ã‚¿ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆ
 	if (FAILED(m_pKeyDevice->SetDataFormat(&c_dfDIKeyboard)))
 	{
 		return E_FAIL;
 	}
 
-	//	‹¦’²ƒŒƒxƒ‹
+	//	å”èª¿ãƒ¬ãƒ™ãƒ«
 	if (FAILED(m_pKeyDevice->SetCooperativeLevel(hWnd, DISCL_NONEXCLUSIVE | DISCL_FOREGROUND)))
 	{
 		return E_FAIL;
 	}
 
-	// ƒAƒNƒZƒX‹–‰Â
+	// ã‚¢ã‚¯ã‚»ã‚¹è¨±å¯
 	m_pKeyDevice->Acquire();
 	return S_OK;
 }
 
-// ƒ}ƒEƒXƒfƒoƒCƒX‰Šú‰»
+// ãƒã‚¦ã‚¹ãƒ‡ãƒã‚¤ã‚¹åˆæœŸåŒ–
 HRESULT InputDevice::InitDinputMouse(HWND hWnd)
 {
-	//	ƒL[ƒ{[ƒh‚Ì‰Šú‰»
+	//	ã‚­ãƒ¼ãƒœãƒ¼ãƒ‰ã®åˆæœŸåŒ–
 	if (FAILED(m_pDInput->CreateDevice(GUID_SysMouse,
 		&m_pMouseDevice, NULL)))
 	{
-		MessageBox(0, "DirectInputƒL[ƒ{[ƒh‰Šú‰»‚É¸”s‚µ‚Ü‚µ‚½B", NULL, MB_OK);
+		MessageBox(0, "DirectInputã‚­ãƒ¼ãƒœãƒ¼ãƒ‰åˆæœŸåŒ–ã«å¤±æ•—ã—ã¾ã—ãŸã€‚", NULL, MB_OK);
 		return E_FAIL;
 	}
 
-	//	ƒf[ƒ^ƒtƒH[ƒ}ƒbƒg
+	//	ãƒ‡ãƒ¼ã‚¿ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆ
 	if (FAILED(m_pMouseDevice->SetDataFormat(&c_dfDIMouse2)))
 	{
 		return E_FAIL;
 	}
 
-	// ²ƒ‚[ƒh‚ğİ’èi‘Š‘Î’lƒ‚[ƒh‚Éİ’èj
+	// è»¸ãƒ¢ãƒ¼ãƒ‰ã‚’è¨­å®šï¼ˆç›¸å¯¾å€¤ãƒ¢ãƒ¼ãƒ‰ã«è¨­å®šï¼‰
 	DIPROPDWORD diprop;
-	diprop.diph.dwSize = sizeof(diprop);					// •ïŠÜ‚·‚é\‘¢‘Ì‚ÌƒTƒCƒY
-	diprop.diph.dwHeaderSize = sizeof(diprop.diph);			// DIPROPHEADER \‘¢‘Ì‚ÌƒTƒCƒY
-	diprop.diph.dwObj = 0;									// ƒAƒNƒZƒX‚·‚éƒvƒƒpƒeƒB‚ª‘®‚·‚éƒIƒuƒWƒFƒNƒg
-	diprop.diph.dwHow = DIPH_DEVICE;						// dwObj ƒƒ“ƒo‚Ì‰ğß•û–@‚ğw’è‚·‚é’l
-	diprop.dwData = 1000;									// İ’è‚Ü‚½‚Íæ“¾‚³‚ê‚éƒvƒƒpƒeƒB’l
-	//	diprop.dwData		= DIPROPAXISMODE_ABS;	// â‘Î’lƒ‚[ƒh‚Ìê‡
+	diprop.diph.dwSize = sizeof(diprop);					// åŒ…å«ã™ã‚‹æ§‹é€ ä½“ã®ã‚µã‚¤ã‚º
+	diprop.diph.dwHeaderSize = sizeof(diprop.diph);			// DIPROPHEADER æ§‹é€ ä½“ã®ã‚µã‚¤ã‚º
+	diprop.diph.dwObj = 0;									// ã‚¢ã‚¯ã‚»ã‚¹ã™ã‚‹ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ãŒå±ã™ã‚‹ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
+	diprop.diph.dwHow = DIPH_DEVICE;						// dwObj ãƒ¡ãƒ³ãƒã®è§£é‡ˆæ–¹æ³•ã‚’æŒ‡å®šã™ã‚‹å€¤
+	diprop.dwData = 1000;									// è¨­å®šã¾ãŸã¯å–å¾—ã•ã‚Œã‚‹ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å€¤
+	//	diprop.dwData		= DIPROPAXISMODE_ABS;	// çµ¶å¯¾å€¤ãƒ¢ãƒ¼ãƒ‰ã®å ´åˆ
 	if (FAILED(m_pMouseDevice->SetProperty(DIPROP_BUFFERSIZE, &diprop.diph)))
 	{
-		MessageBox(0, "²ƒ‚[ƒh‚Ìİ’è‚É¸”s", NULL, MB_OK);
+		MessageBox(0, "è»¸ãƒ¢ãƒ¼ãƒ‰ã®è¨­å®šã«å¤±æ•—", NULL, MB_OK);
 		return false;
 	}
 
-	//	‹¦’²ƒŒƒxƒ‹
+	//	å”èª¿ãƒ¬ãƒ™ãƒ«
 	if (FAILED(m_pMouseDevice->SetCooperativeLevel(hWnd, DISCL_NONEXCLUSIVE | DISCL_FOREGROUND)))
 	{
 		return E_FAIL;
 	}
 
-	// ƒAƒNƒZƒX‹–‰Â
+	// ã‚¢ã‚¯ã‚»ã‚¹è¨±å¯
 	m_pMouseDevice->Acquire();
 	return S_OK;
 }

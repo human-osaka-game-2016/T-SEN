@@ -1,17 +1,17 @@
-/**
+ï»¿/**
 * @file   InputMouse.cpp
-* @brief  ƒ}ƒEƒX‘€ì‚ÉŠÖ‚·‚éƒNƒ‰ƒX.
+* @brief  ãƒã‚¦ã‚¹æ“ä½œã«é–¢ã™ã‚‹ã‚¯ãƒ©ã‚¹.
 * @author haga
 */
 #include "InputDevice.h"
 #include "InputMouse.h"
 
-// ƒRƒ“ƒXƒgƒ‰ƒNƒ^
+// ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿
 InputMouse::InputMouse() :
 m_pMouseDevice(InputDevice::GetInstance().GetMouseDevice()),
 m_hWnd(InputDevice::GetInstance().GethWnd())
 {
-	// ƒNƒ‰ƒCƒAƒ“ƒgƒTƒCƒY‚ğæ“¾
+	// ã‚¯ãƒ©ã‚¤ã‚¢ãƒ³ãƒˆã‚µã‚¤ã‚ºã‚’å–å¾—
 	RECT rec;		
 	GetClientRect(m_hWnd,&rec);
 	m_wndWid = rec.right - rec.left;
@@ -33,21 +33,21 @@ m_hWnd(InputDevice::GetInstance().GethWnd())
 	}
 }
 
-// ƒfƒXƒgƒ‰ƒNƒ^
+// ãƒ‡ã‚¹ãƒˆãƒ©ã‚¯ã‚¿
 InputMouse::~InputMouse()
 {
 }
 
-// ƒ}ƒEƒX‚Ìƒf[ƒ^XV
+// ãƒã‚¦ã‚¹ã®ãƒ‡ãƒ¼ã‚¿æ›´æ–°
 void InputMouse::UpdateMouse()
 {
 	m_wheel = 0;
 
-	DIDEVICEOBJECTDATA od;			// ƒfƒoƒCƒXƒIƒuƒWƒFƒNƒgƒf[ƒ^‚ğŠi”[‚·‚é•Ï”
+	DIDEVICEOBJECTDATA od;			// ãƒ‡ãƒã‚¤ã‚¹ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆãƒ‡ãƒ¼ã‚¿ã‚’æ ¼ç´ã™ã‚‹å¤‰æ•°
 	DWORD dwItems = 1;
 	HRESULT hr;
 
-	// ƒNƒ‰ƒCƒAƒ“ƒgƒTƒCƒY‚ğæ“¾
+	// ã‚¯ãƒ©ã‚¤ã‚¢ãƒ³ãƒˆã‚µã‚¤ã‚ºã‚’å–å¾—
 	RECT rec;
 	GetWindowRect(m_hWnd, &rec);
 
@@ -68,23 +68,23 @@ void InputMouse::UpdateMouse()
 		}
 		else
 		{
-			POINT pos;				// “üè‚µ‚½ƒ}ƒEƒXÀ•W‚ğˆê“I‚ÉŠi”[‚·‚é•Ï”
+			POINT pos;				// å…¥æ‰‹ã—ãŸãƒã‚¦ã‚¹åº§æ¨™ã‚’ä¸€æ™‚çš„ã«æ ¼ç´ã™ã‚‹å¤‰æ•°
 			
 			switch (od.dwOfs)
 			{
-			case DIMOFS_X:							// ƒ}ƒEƒX‚Ì…•½ˆÚ“®
-				GetCursorPos(&pos);					// ƒ}ƒEƒXÀ•W‚ğæ“¾‚·‚é
-				ScreenToClient(m_hWnd, &pos);		// ƒXƒNƒŠ[ƒ“À•W‚©‚çƒNƒ‰ƒCƒAƒ“ƒgÀ•W‚Ö‚Æ•ÏX‚·‚é
+			case DIMOFS_X:							// ãƒã‚¦ã‚¹ã®æ°´å¹³ç§»å‹•
+				GetCursorPos(&pos);					// ãƒã‚¦ã‚¹åº§æ¨™ã‚’å–å¾—ã™ã‚‹
+				ScreenToClient(m_hWnd, &pos);		// ã‚¹ã‚¯ãƒªãƒ¼ãƒ³åº§æ¨™ã‹ã‚‰ã‚¯ãƒ©ã‚¤ã‚¢ãƒ³ãƒˆåº§æ¨™ã¸ã¨å¤‰æ›´ã™ã‚‹
 				m_posX = pos.x;
 				break;
 
-			case DIMOFS_Y:							// ƒ}ƒEƒX‚Ì‚’¼ˆÚ“®
+			case DIMOFS_Y:							// ãƒã‚¦ã‚¹ã®å‚ç›´ç§»å‹•
 				GetCursorPos(&pos);
 				ScreenToClient(m_hWnd, &pos);
 				m_posY = pos.y;
 				break;
 
-			case DIMOFS_Z:							// ƒ}ƒEƒX‚ÌZ(ƒzƒC[ƒ‹)“®ì
+			case DIMOFS_Z:							// ãƒã‚¦ã‚¹ã®Z(ãƒ›ã‚¤ãƒ¼ãƒ«)å‹•ä½œ
 
 				m_wheel = od.dwData;
 				if (m_wheel > 0)
@@ -97,7 +97,7 @@ void InputMouse::UpdateMouse()
 				}
 				break;
 
-			case DIMOFS_BUTTON0:					// ¶ƒ{ƒ^ƒ“‚Ìó‘Ô
+			case DIMOFS_BUTTON0:					// å·¦ãƒœã‚¿ãƒ³ã®çŠ¶æ…‹
 				m_LDown = (od.dwData & 0x80) ? true : false;
 				if (m_LDown)
 				{
@@ -109,7 +109,7 @@ void InputMouse::UpdateMouse()
 				}
 				break;
 
-			case DIMOFS_BUTTON1:					// ‰Eƒ{ƒ^ƒ“‚Ìó‘Ô
+			case DIMOFS_BUTTON1:					// å³ãƒœã‚¿ãƒ³ã®çŠ¶æ…‹
 				m_RDown = (od.dwData & 0x80) ? true : false;
 				if (m_RDown)
 				{
@@ -121,7 +121,7 @@ void InputMouse::UpdateMouse()
 				}
 				break;
 
-			case DIMOFS_BUTTON2:					// ’†ƒ{ƒ^ƒ“‚Ìó‘Ô
+			case DIMOFS_BUTTON2:					// ä¸­ãƒœã‚¿ãƒ³ã®çŠ¶æ…‹
 				m_MDown = (od.dwData & 0x80) ? true : false;
 				if (m_MDown)
 				{
@@ -140,10 +140,10 @@ void InputMouse::UpdateMouse()
 }
 
 
-// ó‘Ô‚ğŠm”F‚·‚éŠÖ”
+// çŠ¶æ…‹ã‚’ç¢ºèªã™ã‚‹é–¢æ•°
 void InputMouse::CheckState(MOUSEBUTTON mouseButton)
 {
-	bool mouseClick = false;		// ƒ}ƒEƒX‚ªƒNƒŠƒbƒN‚³‚ê‚½‚©
+	bool mouseClick = false;		// ãƒã‚¦ã‚¹ãŒã‚¯ãƒªãƒƒã‚¯ã•ã‚ŒãŸã‹
 
 	switch (mouseButton)
 	{

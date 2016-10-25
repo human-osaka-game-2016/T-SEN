@@ -6,7 +6,7 @@
 #ifndef LIGHT_H
 #define LIGHT_H
 #include <d3dx9.h>
-#include "../GraphicsDevice.h"
+#include "../GameLib/GraphicsDevice.h"
 
 /**
 * ライトに関するクラス
