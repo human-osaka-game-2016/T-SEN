@@ -37,9 +37,6 @@
     <ClCompile Include="DebugTimer.cpp">
       <Filter>Lib_Class\GameLib\DebugTimer</Filter>
     </ClCompile>
-    <ClCompile Include="Font.cpp">
-      <Filter>Lib_Class\Font</Filter>
-    </ClCompile>
     <ClCompile Include="XFileManager.cpp">
       <Filter>Lib_Class\GameLib\XFileManager</Filter>
     </ClCompile>
@@ -51,6 +48,9 @@
     </ClCompile>
     <ClCompile Include="GameLib.cpp">
       <Filter>Lib_Class\GameLib</Filter>
+    </ClCompile>
+    <ClCompile Include="Font\Font.cpp">
+      <Filter>Lib_Class\Font</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -93,9 +93,6 @@
     <ClInclude Include="DebugTimer.h">
       <Filter>Lib_Class\GameLib\DebugTimer</Filter>
     </ClInclude>
-    <ClInclude Include="Font.h">
-      <Filter>Lib_Class\Font</Filter>
-    </ClInclude>
     <ClInclude Include="XFileManager.h">
       <Filter>Lib_Class\GameLib\XFileManager</Filter>
     </ClInclude>
@@ -107,6 +104,9 @@
     </ClInclude>
     <ClInclude Include="GameLib.h">
       <Filter>Lib_Class\GameLib</Filter>
+    </ClInclude>
+    <ClInclude Include="Font\Font.h">
+      <Filter>Lib_Class\Font</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

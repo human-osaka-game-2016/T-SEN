@@ -3,7 +3,7 @@
 * @brief フォントを扱うクラスのcpp
 * @author haga
 */
-#include "./Font/Font.h"
+#include "../Font/Font.h"
 
 // コンストラクタ
 Font::Font(IDirect3DDevice9*	pD3Device) :
