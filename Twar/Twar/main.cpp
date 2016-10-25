@@ -9,9 +9,6 @@
 #include <dinput.h>
 #include "./GameLib/GameLib.h"
 
-
-
-
 //#define FULLSCREEN
 
 #define WINDOW_TITLE TEXT("T戦")		// ウィンドウタイトル
@@ -46,8 +43,6 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPTSTR lpCmdLin
 
 #endif
 
-
-
 	//-------------------------------------------------------------------
 	//						メッセージループ
 	//-------------------------------------------------------------------
@@ -73,7 +68,6 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPTSTR lpCmdLin
 			}
 		}
 	}
-
 
 	g_pGameLib->ReleaseGameLib();
 

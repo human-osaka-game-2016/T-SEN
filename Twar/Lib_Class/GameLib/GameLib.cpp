@@ -1,13 +1,13 @@
-﻿#include "WindowCreator.h"	
-#include "GraphicsDevice.h"
-#include "InputDevice.h"
-#include "InputMouse.h"
-#include "TextureManager.h"
-#include "XFileManager.h"
-#include "SoundFileManager.h"
-#include "VertexManager.h"
-#include "DebugFont.h"
-#include "DebugTimer.h"
+﻿#include "./Lib/WindowCreator.h"	
+#include "./Lib/GraphicsDevice.h"
+#include "./Lib/InputDevice.h"
+#include "./Lib/InputMouse.h"
+#include "./Lib/TextureManager.h"
+#include "./Lib/XFileManager.h"
+#include "./Lib/SoundFileManager.h"
+#include "./Lib/VertexManager.h"
+#include "./Lib/DebugFont.h"
+#include "./Lib/DebugTimer.h"
 #include "GameLib.h"
 
 
@@ -95,6 +95,16 @@ void GameLib::ChangeWindowMode()
 {
 	m_pGraphicsDevice->ChangeDisplayMode();
 	m_pWindowCreator->ChangeWindowSize();
+}
+
+int GameLib::GetWindowWidth()
+{ 
+	return m_wWidth; 
+}
+
+int GameLib::GetWindowHeight()
+{ 
+	return m_wHeight; 
 }
 
 const IDirect3DDevice9* GameLib:: GetDevice()

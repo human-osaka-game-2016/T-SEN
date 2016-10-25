@@ -7,8 +7,8 @@
 #include "Light.h"
 
 // コンストラクタ 環境光
-Light::Light(D3DXVECTOR3 direction) :
-m_pD3Device(GraphicsDevice::GetInstance().GetDevice()),
+Light::Light(LPDIRECT3DDEVICE9 pD3Device,D3DXVECTOR3 direction) :
+m_pD3Device(pD3Device),
 m_direction(direction),
 m_ambientColor(0x00111111)
 {
@@ -25,8 +25,8 @@ m_ambientColor(0x00111111)
 }
 
 // コンストラクタ 
-Light::Light(D3DXVECTOR3 lightPos,D3DXVECTOR3 direction):
-m_pD3Device(GraphicsDevice::GetInstance().GetDevice()),
+Light::Light(LPDIRECT3DDEVICE9 pD3Device,D3DXVECTOR3 lightPos, D3DXVECTOR3 direction) :
+m_pD3Device(pD3Device),
 m_direction(direction),
 m_lightPos(lightPos),
 m_ambientColor(0x00111111)

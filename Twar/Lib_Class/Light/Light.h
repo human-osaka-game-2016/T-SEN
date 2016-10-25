@@ -6,7 +6,6 @@
 #ifndef LIGHT_H
 #define LIGHT_H
 #include <d3dx9.h>
-#include "../GameLib/GraphicsDevice.h"
 
 /**
 * ライトに関するクラス
@@ -26,14 +25,14 @@ public:
 	* コンストラクタ
 	* @param[in] direction ライトの向き
 	*/
-	Light(D3DXVECTOR3 direction);
+	Light(LPDIRECT3DDEVICE9 pD3Device,D3DXVECTOR3 direction);
 
 	/**
 	* コンストラクタ
 	* @param[in] lightPos  ライトの位置
 	* @param[in] direction ライトの向き
 	*/
-	Light(D3DXVECTOR3 lightPos,D3DXVECTOR3 direction);
+	Light(LPDIRECT3DDEVICE9 pD3Device,D3DXVECTOR3 lightPos, D3DXVECTOR3 direction);
 
 	/**デストラクタ*/
 	~Light();

@@ -7,7 +7,6 @@
 #define CAMERA_H
 
 #include <d3dx9.h>
-#include "../GameLib/GraphicsDevice.h"
 
 /**
 * カメラクラス.
@@ -21,7 +20,7 @@ private:
 
 public:
 	/**コンストラクタ*/
-	Camera(float width,float height);
+	Camera(LPDIRECT3DDEVICE9 pD3Device,float width, float height);
 	/**デストラクタ*/
 	~Camera();
 	/**

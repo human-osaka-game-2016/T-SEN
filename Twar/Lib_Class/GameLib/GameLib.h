@@ -10,7 +10,7 @@
 #include <iostream>
 #include <d3d9.h>
 #include <d3dx9.h>
-#include "InputKey.h"
+#include "./Lib/InputKey.h"
 using namespace std;
 
 class WindowCreator;
@@ -62,22 +62,9 @@ enum SOUND_OPERATION
 class GameLib
 {
 private:
-	WindowCreator*		m_pWindowCreator;
-	GraphicsDevice*		m_pGraphicsDevice;
-	InputDevice*		m_pInputDevice;
-	SoundFileManager*   m_pSoundFileManager;
-	InputKey*			m_pInputKey;
-	InputMouse*			m_pInputMouse;
-	TextureManager*     m_pTextureManager;
-	XFileManager*		m_pXFileManager;
-	VertexManager*		m_pVertexManager;
-	DebugTimer*			m_pDebugTimer;
-	int				    m_wWidth;			//!< ウインドウの幅
-	int					m_wHeight;			//!< ウィンドウの高さ
-	bool				m_releaseFlag;		//!< メモリ解放したかどうかのフラグ
-
 	/**
 	* コンストラクタ.
+	* Singltonパターンなのでprivate
 	*/
 	GameLib();
 
@@ -118,10 +105,10 @@ public:
 	void ChangeWindowMode();			
 
 	/**ウィンドウの横幅を取得する関数*/
-	int GetWindowWidth(){ return m_wWidth; }	
+	int GetWindowWidth();
 
 	/**ウィンドウの縦幅を取得する関数*/
-	int GetWindowHeight(){ return m_wHeight; }		
+	int GetWindowHeight();
 
 	//------------------------------------------------------------------------------------
 	//									描画関連関数
@@ -340,7 +327,22 @@ public:
 	* @param[in] posX x座標
 	* @param[in] posY y座標
 	*/
-	void DrawAllResult(float posX,float posY);										
+	void DrawAllResult(float posX,float posY);		
+
+private:
+	WindowCreator*		m_pWindowCreator;
+	GraphicsDevice*		m_pGraphicsDevice;
+	InputDevice*		m_pInputDevice;
+	SoundFileManager*   m_pSoundFileManager;
+	InputKey*			m_pInputKey;
+	InputMouse*			m_pInputMouse;
+	TextureManager*     m_pTextureManager;
+	XFileManager*		m_pXFileManager;
+	VertexManager*		m_pVertexManager;
+	DebugTimer*			m_pDebugTimer;
+	int				    m_wWidth;			//!< ウインドウの幅
+	int					m_wHeight;			//!< ウィンドウの高さ
+	bool				m_releaseFlag;		//!< メモリ解放したかどうかのフラグ
  };
 
 #endif	// GAMELIB_H

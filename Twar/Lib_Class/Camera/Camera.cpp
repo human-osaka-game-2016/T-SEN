@@ -1,8 +1,8 @@
 ﻿#include "Camera.h"
 
 // コンストラクタ
-Camera::Camera(float width, float height) :
-m_pD3Device(GraphicsDevice::GetInstance().GetDevice()),
+Camera::Camera(LPDIRECT3DDEVICE9 pD3Device,float width, float height) :
+m_pD3Device(pD3Device),
 m_windowWidth(width),
 m_windowHeight(height)
 {
