@@ -1,4 +1,4 @@
-#include "DebugFont.h"
+ï»¿#include "DebugFont.h"
 
 
 DebugFont::DebugFont(INT height, UINT width, D3DCOLOR color):
@@ -18,10 +18,10 @@ m_color(color)
 		OUT_DEFAULT_PRECIS,
 		PROOF_QUALITY,
 		FIXED_PITCH | FF_MODERN,
-		TEXT("‚l‚r@‚oƒSƒVƒbƒN"),
+		TEXT("ï¼­ï¼³ã€€ï¼°ã‚´ã‚·ãƒƒã‚¯"),
 		&m_pFont)))
 	{
-		MessageBox(NULL, "ƒtƒHƒ“ƒgƒNƒ‰ƒX‚ðì¬‚Å‚«‚Ü‚¹‚ñ", "Error", MB_OK);
+		MessageBox(NULL, "ãƒ•ã‚©ãƒ³ãƒˆã‚¯ãƒ©ã‚¹ã‚’ä½œæˆã§ãã¾ã›ã‚“", "Error", MB_OK);
 	}
 }
 
@@ -34,7 +34,7 @@ DebugFont::~DebugFont()
 	}
 }
 
-// •¶Žš•`‰æŠÖ”
+// æ–‡å­—æç”»é–¢æ•°
 void DebugFont::Draw(LPCSTR pString, D3DXVECTOR2 pos)
 {
 	RECT rc;
@@ -47,14 +47,14 @@ void DebugFont::Draw(LPCSTR pString, D3DXVECTOR2 pos)
 	rc.bottom = (LONG)pos.y + desc.Height * strlen(pString);
 	m_pFont->DrawTextA(
 		NULL,							// NULL
-		pString,						// •`‰æƒeƒLƒXƒg
-		-1,								// ‘S‚Ä•\Ž¦
-		&rc,							// •\Ž¦”ÍˆÍ
-		DT_LEFT,						// ¶Šñ‚¹
-		m_color);						// F
+		pString,						// æç”»ãƒ†ã‚­ã‚¹ãƒˆ
+		-1,								// å…¨ã¦è¡¨ç¤º
+		&rc,							// è¡¨ç¤ºç¯„å›²
+		DT_LEFT,						// å·¦å¯„ã›
+		m_color);						// è‰²
 }
 
-// ƒƒ‚ƒŠŠJ•úŠÖ”
+// ãƒ¡ãƒ¢ãƒªé–‹æ”¾é–¢æ•°
 void DebugFont::Release()
 {
 	m_pFont->Release();

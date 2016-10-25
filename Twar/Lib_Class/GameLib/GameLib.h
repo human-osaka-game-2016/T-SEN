@@ -1,6 +1,6 @@
 ﻿/**
 * @file GameLib.h
-* @brief  Facadeパターンのライブラリ作成
+* @brief  Facadeパターンのライブラリ
 * @author haga
 */
 #ifndef GAMELIB_H

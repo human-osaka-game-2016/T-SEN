@@ -1,6 +1,6 @@
-/**
+ï»¿/**
 * @file TextureManager.h
-* @brief ƒeƒNƒXƒ`ƒƒ[‚ğŠÇ—‚·‚éƒNƒ‰ƒX‚Ìh
+* @brief ãƒ†ã‚¯ã‚¹ãƒãƒ£ãƒ¼ã‚’ç®¡ç†ã™ã‚‹ã‚¯ãƒ©ã‚¹ã®h
 * @author haga
 */
 
@@ -24,8 +24,8 @@ void TextureManager::Load(int key, char* filePath)
 	m_texture[key] = tex;
 	if (FAILED(D3DXCreateTextureFromFile(m_pD3Device, filePath, &m_texture[key])))
 	{
-		// “Ç‚İ‚İ¸”s‚µ‚½‚çƒGƒ‰[
-		MessageBox(0, "‰æ‘œ‚Ì“Ç‚İ‚İ‚É¸”s‚µ‚Ü‚µ‚½B", NULL, MB_OK);
+		// èª­ã¿è¾¼ã¿å¤±æ•—ã—ãŸã‚‰ã‚¨ãƒ©ãƒ¼
+		MessageBox(0, "ç”»åƒã®èª­ã¿è¾¼ã¿ã«å¤±æ•—ã—ã¾ã—ãŸã€‚", NULL, MB_OK);
 	}
 
 }
@@ -37,8 +37,8 @@ void TextureManager::LoadEx(int key, char* filePath, int a, int r, int g, int b,
 	if (size)
 	{
 		if (FAILED(D3DXCreateTextureFromFileEx(
-			m_pD3Device,			//	ƒCƒ“ƒ^[ƒtƒFƒCƒX‚Ö‚Ìƒ|ƒCƒ“ƒ^
-			filePath,					//	‰æ‘œƒtƒ@ƒCƒ‹–¼
+			m_pD3Device,			//	ã‚¤ãƒ³ã‚¿ãƒ¼ãƒ•ã‚§ã‚¤ã‚¹ã¸ã®ãƒã‚¤ãƒ³ã‚¿
+			filePath,					//	ç”»åƒãƒ•ã‚¡ã‚¤ãƒ«å
 			D3DX_DEFAULT,
 			D3DX_DEFAULT,
 			D3DX_DEFAULT,
@@ -53,10 +53,10 @@ void TextureManager::LoadEx(int key, char* filePath, int a, int r, int g, int b,
 			&m_texture[key]
 			)))
 		{
-			MessageBox(0, "‰æ‘œ‚Ì“Ç‚İ‚İ‚É¸”s‚µ‚Ü‚µ‚½B", NULL, MB_OK);
+			MessageBox(0, "ç”»åƒã®èª­ã¿è¾¼ã¿ã«å¤±æ•—ã—ã¾ã—ãŸã€‚", NULL, MB_OK);
 		}
 	}
-	else			//‚Q‚Ì‚×‚«æ‚¶‚á‚È‚¢‚Ì‚È‚ç
+	else			//ï¼’ã®ã¹ãä¹—ã˜ã‚ƒãªã„ã®ãªã‚‰
 	{
 		if (FAILED(D3DXCreateTextureFromFileEx(
 			m_pD3Device,
@@ -73,7 +73,7 @@ void TextureManager::LoadEx(int key, char* filePath, int a, int r, int g, int b,
 			NULL, NULL,
 			&m_texture[key])))
 		{
-			MessageBox(0, "‰æ‘œ‚Ì“Ç‚İ‚İ‚É¸”s‚µ‚Ü‚µ‚½B", NULL, MB_OK);
+			MessageBox(0, "ç”»åƒã®èª­ã¿è¾¼ã¿ã«å¤±æ•—ã—ã¾ã—ãŸã€‚", NULL, MB_OK);
 		}
 
 	}

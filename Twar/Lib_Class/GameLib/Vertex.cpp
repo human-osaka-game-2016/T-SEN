@@ -1,11 +1,11 @@
-/**
+ï»¿/**
 * @file   Vertex.h
-* @brief  ƒo[ƒeƒbƒNƒXƒNƒ‰ƒX‚Ìcpp
+* @brief  ãƒãƒ¼ãƒ†ãƒƒã‚¯ã‚¹ã‚¯ãƒ©ã‚¹ã®cpp
 * @author haga
 */
 #include "Vertex.h"
 
-// ƒRƒ“ƒXƒgƒ‰ƒNƒ^
+// ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿
 Vertex::Vertex(float width, float height, float depth, float tuMax, float tvMax,float tuMin, float tvMin) :
 m_pD3Device(GraphicsDevice::GetInstance().GetDevice()),
 m_texWidth(width),
@@ -22,12 +22,12 @@ m_tvMin(tuMin)
 	}
 }
 
-// ƒfƒXƒgƒ‰ƒNƒ^
+// ãƒ‡ã‚¹ãƒˆãƒ©ã‚¯ã‚¿
 Vertex::~Vertex()
 {
 }
 
-// •`‰æ(XYÀ•W‚Ål‚¦‚éê‡)
+// æç”»(XYåº§æ¨™ã§è€ƒãˆã‚‹å ´åˆ)
 void Vertex::Draw(LPDIRECT3DTEXTURE9 pTexture, float posX, float posY)
 {
 	CUSTOMVERTEX vtex[] = {
@@ -47,7 +47,7 @@ void Vertex::Draw(LPDIRECT3DTEXTURE9 pTexture, float posX, float posY)
 	m_pD3Device->DrawPrimitiveUP(D3DPT_TRIANGLEFAN, 2, vtex, sizeof(CUSTOMVERTEX));
 }
 
-// •`‰æ XZÀ•W‚Ål‚¦‚éê‡
+// æç”» XZåº§æ¨™ã§è€ƒãˆã‚‹å ´åˆ
 void Vertex::Draw(LPDIRECT3DTEXTURE9 pTexture, float posX, float posY, float posZ)
 {
 	CUSTOMVERTEX vtex[] = {
@@ -68,7 +68,7 @@ void Vertex::Draw(LPDIRECT3DTEXTURE9 pTexture, float posX, float posY, float pos
 	m_pD3Device->DrawPrimitiveUP(D3DPT_TRIANGLEFAN, 2, vtex, sizeof(CUSTOMVERTEX));
 }
 
-// •`‰æ(ƒeƒNƒXƒ`ƒƒ[‚Ì’†S‚ÉÀ•W‚ğ‡‚í‚¹‚é)
+// æç”»(ãƒ†ã‚¯ã‚¹ãƒãƒ£ãƒ¼ã®ä¸­å¿ƒã«åº§æ¨™ã‚’åˆã‚ã›ã‚‹)
 void Vertex::DrawCenterPos(LPDIRECT3DTEXTURE9 pTexture, float posX, float posY)
 {
 
@@ -89,7 +89,7 @@ void Vertex::DrawCenterPos(LPDIRECT3DTEXTURE9 pTexture, float posX, float posY)
 }
 
 
-// •`‰æ(ƒeƒNƒXƒ`ƒƒ[‚Ì’†S‚ÉÀ•W‚ğ‡‚í‚¹‚é)ˆø”‚ÉZÀ•W’Ç‰Á
+// æç”»(ãƒ†ã‚¯ã‚¹ãƒãƒ£ãƒ¼ã®ä¸­å¿ƒã«åº§æ¨™ã‚’åˆã‚ã›ã‚‹)å¼•æ•°ã«Zåº§æ¨™è¿½åŠ 
 void Vertex::DrawCenterPos(LPDIRECT3DTEXTURE9 pTexture, float posX, float posY, float posZ)
 {
 
@@ -110,14 +110,14 @@ void Vertex::DrawCenterPos(LPDIRECT3DTEXTURE9 pTexture, float posX, float posY, 
 	m_pD3Device->DrawPrimitiveUP(D3DPT_TRIANGLEFAN, 2, vtex, sizeof(CUSTOMVERTEX));
 }
 
-// ƒeƒNƒXƒ`ƒƒ[ƒTƒCƒY‚ğƒZƒbƒg‚·‚éŠÖ”
+// ãƒ†ã‚¯ã‚¹ãƒãƒ£ãƒ¼ã‚µã‚¤ã‚ºã‚’ã‚»ãƒƒãƒˆã™ã‚‹é–¢æ•°
 void Vertex::SetTexSize(float texWidth, float texHeight)
 {
 	m_texWidth = texWidth;
 	m_texheight = texHeight;
 }
 
-// tu,tv’l‚ğİ’è‚·‚éŠÖ”
+// tu,två€¤ã‚’è¨­å®šã™ã‚‹é–¢æ•°
 void Vertex::SetTuTvVal(float tuMin, float tuMax, float tvMin, float tvMax)
 {
 	m_tuMin = tuMin;
@@ -126,7 +126,7 @@ void Vertex::SetTuTvVal(float tuMin, float tuMax, float tvMin, float tvMax)
 	m_tvMax = tvMax;
 }
 
-// F‚ğİ’è‚·‚éŠÖ”
+// è‰²ã‚’è¨­å®šã™ã‚‹é–¢æ•°
 void Vertex::SetColor(DWORD color)
 {
 	for (int i = 0; i < 4; i++)

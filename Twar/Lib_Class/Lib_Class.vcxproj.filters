@@ -1,36 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <ClCompile Include="InputMouse.cpp">
-      <Filter>Lib_Class\GameLib\InputDevice\InputMouse</Filter>
-    </ClCompile>
-    <ClCompile Include="InputKey.cpp">
-      <Filter>Lib_Class\GameLib\InputDevice\InputKey</Filter>
-    </ClCompile>
-    <ClCompile Include="SoundFileManager.cpp">
-      <Filter>Lib_Class\GameLib\SoundFileManager</Filter>
-    </ClCompile>
-    <ClCompile Include="TextureManager.cpp">
-      <Filter>Lib_Class\GameLib\TextureManager</Filter>
-    </ClCompile>
-    <ClCompile Include="Vertex.cpp">
-      <Filter>Lib_Class\GameLib\VertexManager\Vertex</Filter>
-    </ClCompile>
-    <ClCompile Include="XFile.cpp">
-      <Filter>Lib_Class\GameLib\XFileManager\XFile</Filter>
-    </ClCompile>
-    <ClCompile Include="DebugTimer.cpp">
-      <Filter>Lib_Class\GameLib\DebugTimer</Filter>
-    </ClCompile>
-    <ClCompile Include="XFileManager.cpp">
-      <Filter>Lib_Class\GameLib\XFileManager</Filter>
-    </ClCompile>
-    <ClCompile Include="VertexManager.cpp">
-      <Filter>Lib_Class\GameLib\VertexManager</Filter>
-    </ClCompile>
-    <ClCompile Include="DebugFont.cpp">
-      <Filter>Lib_Class\GameLib\DebugFont</Filter>
-    </ClCompile>
     <ClCompile Include="Font\Font.cpp">
       <Filter>Lib_Class\Font</Filter>
     </ClCompile>
@@ -52,40 +22,40 @@
     <ClCompile Include="GameLib\InputDevice.cpp">
       <Filter>Lib_Class\GameLib</Filter>
     </ClCompile>
+    <ClCompile Include="GameLib\InputKey.cpp">
+      <Filter>Lib_Class\GameLib</Filter>
+    </ClCompile>
+    <ClCompile Include="GameLib\InputMouse.cpp">
+      <Filter>Lib_Class\GameLib</Filter>
+    </ClCompile>
+    <ClCompile Include="GameLib\XFile.cpp">
+      <Filter>Lib_Class\GameLib</Filter>
+    </ClCompile>
+    <ClCompile Include="GameLib\XFileManager.cpp">
+      <Filter>Lib_Class\GameLib</Filter>
+    </ClCompile>
+    <ClCompile Include="GameLib\TextureManager.cpp">
+      <Filter>Lib_Class\GameLib</Filter>
+    </ClCompile>
+    <ClCompile Include="GameLib\SoundFileManager.cpp">
+      <Filter>Lib_Class\GameLib</Filter>
+    </ClCompile>
+    <ClCompile Include="GameLib\DebugFont.cpp">
+      <Filter>Lib_Class\GameLib</Filter>
+    </ClCompile>
+    <ClCompile Include="GameLib\DebugTimer.cpp">
+      <Filter>Lib_Class\GameLib</Filter>
+    </ClCompile>
+    <ClCompile Include="GameLib\Vertex.cpp">
+      <Filter>Lib_Class\GameLib</Filter>
+    </ClCompile>
+    <ClCompile Include="GameLib\VertexManager.cpp">
+      <Filter>Lib_Class\GameLib</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="InputMouse.h">
-      <Filter>Lib_Class\GameLib\InputDevice\InputMouse</Filter>
-    </ClInclude>
-    <ClInclude Include="InputKey.h">
-      <Filter>Lib_Class\GameLib\InputDevice\InputKey</Filter>
-    </ClInclude>
     <ClInclude Include="LibClass.h">
       <Filter>Lib_Class</Filter>
-    </ClInclude>
-    <ClInclude Include="SoundFileManager.h">
-      <Filter>Lib_Class\GameLib\SoundFileManager</Filter>
-    </ClInclude>
-    <ClInclude Include="TextureManager.h">
-      <Filter>Lib_Class\GameLib\TextureManager</Filter>
-    </ClInclude>
-    <ClInclude Include="Vertex.h">
-      <Filter>Lib_Class\GameLib\VertexManager\Vertex</Filter>
-    </ClInclude>
-    <ClInclude Include="XFile.h">
-      <Filter>Lib_Class\GameLib\XFileManager\XFile</Filter>
-    </ClInclude>
-    <ClInclude Include="DebugTimer.h">
-      <Filter>Lib_Class\GameLib\DebugTimer</Filter>
-    </ClInclude>
-    <ClInclude Include="XFileManager.h">
-      <Filter>Lib_Class\GameLib\XFileManager</Filter>
-    </ClInclude>
-    <ClInclude Include="VertexManager.h">
-      <Filter>Lib_Class\GameLib\VertexManager</Filter>
-    </ClInclude>
-    <ClInclude Include="DebugFont.h">
-      <Filter>Lib_Class\GameLib\DebugFont</Filter>
     </ClInclude>
     <ClInclude Include="Font\Font.h">
       <Filter>Lib_Class\Font</Filter>
@@ -108,6 +78,36 @@
     <ClInclude Include="GameLib\InputDevice.h">
       <Filter>Lib_Class\GameLib</Filter>
     </ClInclude>
+    <ClInclude Include="GameLib\InputKey.h">
+      <Filter>Lib_Class\GameLib</Filter>
+    </ClInclude>
+    <ClInclude Include="GameLib\InputMouse.h">
+      <Filter>Lib_Class\GameLib</Filter>
+    </ClInclude>
+    <ClInclude Include="GameLib\XFile.h">
+      <Filter>Lib_Class\GameLib</Filter>
+    </ClInclude>
+    <ClInclude Include="GameLib\XFileManager.h">
+      <Filter>Lib_Class\GameLib</Filter>
+    </ClInclude>
+    <ClInclude Include="GameLib\TextureManager.h">
+      <Filter>Lib_Class\GameLib</Filter>
+    </ClInclude>
+    <ClInclude Include="GameLib\SoundFileManager.h">
+      <Filter>Lib_Class\GameLib</Filter>
+    </ClInclude>
+    <ClInclude Include="GameLib\DebugFont.h">
+      <Filter>Lib_Class\GameLib</Filter>
+    </ClInclude>
+    <ClInclude Include="GameLib\DebugTimer.h">
+      <Filter>Lib_Class\GameLib</Filter>
+    </ClInclude>
+    <ClInclude Include="GameLib\Vertex.h">
+      <Filter>Lib_Class\GameLib</Filter>
+    </ClInclude>
+    <ClInclude Include="GameLib\VertexManager.h">
+      <Filter>Lib_Class\GameLib</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Lib_Class">
@@ -124,39 +124,6 @@
     </Filter>
     <Filter Include="Lib_Class\GameLib">
       <UniqueIdentifier>{e3625e2f-d1c8-46af-9c2c-12d9bcc3c9ce}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Lib_Class\GameLib\InputDevice">
-      <UniqueIdentifier>{c1660ff2-f594-47bb-a1ed-ee33c74fdf42}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Lib_Class\GameLib\InputDevice\InputMouse">
-      <UniqueIdentifier>{4554b1f4-1c38-4363-825d-899f4176e842}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Lib_Class\GameLib\InputDevice\InputKey">
-      <UniqueIdentifier>{bf145da0-fc23-48df-867d-ef42628c98c2}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Lib_Class\GameLib\SoundFileManager">
-      <UniqueIdentifier>{4caa17f6-89a4-40ce-a516-d428123767fa}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Lib_Class\GameLib\TextureManager">
-      <UniqueIdentifier>{1eb8def6-f5f5-4114-a8e3-73bfac8aa8fc}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Lib_Class\GameLib\XFileManager">
-      <UniqueIdentifier>{15c6d2f2-2b7e-43fc-9069-fe36fd110c66}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Lib_Class\GameLib\XFileManager\XFile">
-      <UniqueIdentifier>{3bc0e0ab-da63-485f-a1a3-ddc03357b161}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Lib_Class\GameLib\DebugTimer">
-      <UniqueIdentifier>{2bf95e45-e589-4cd1-8cff-6654480b8760}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Lib_Class\GameLib\VertexManager">
-      <UniqueIdentifier>{ed9c311f-73de-44af-a876-129f19fe96fe}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Lib_Class\GameLib\VertexManager\Vertex">
-      <UniqueIdentifier>{26bf02ee-680b-4292-ba98-db2b308152f3}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Lib_Class\GameLib\DebugFont">
-      <UniqueIdentifier>{7619f11d-e4f3-4b1c-aadb-07be99e3a0ad}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

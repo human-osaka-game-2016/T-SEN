@@ -1,8 +1,8 @@
-/**
+﻿/**
 * @file LibClass.h
-* @brief Lib_Class�̃w�b�_�[�t�@�C�����܂Ƃ߂��w�b�_�[�t�@�C��<br>
-* �w�b�_�[���t�B���^�[���Ƃɕ����Ă���<br>
-* �����܂ł��̃w�b�_�[�͊m�F�p�Ȃ̂ŁAinclude�͂��Ȃ�����
+* @brief Lib_Classのヘッダーファイルをまとめたヘッダーファイル<br>
+* ヘッダーをフィルターごとに分けている<br>
+* あくまでこのヘッダーは確認用なので、includeはしないこと
 * @author haga
 */
 
@@ -10,39 +10,39 @@
 #define LIB_CLASS_H
 
 //--------------------------------------------
-//�@�@�@�@�@ DirectXGraphics
+//　　　　　 DirectXGraphics
 //--------------------------------------------
-#include "GraphicsDevice.h"			//!< GraphicsDevice�̃N���X
-#include "Vertex.h"					//!< ���_�N���X
-#include "XFile.h"					//!< X�t�@�C���N���X
-#include "./Font/Font.h"			//!< �t�H���g�N���X
+#include "./GameLib/GraphicsDevice.h"			//!< GraphicsDeviceのクラス
+#include "./GameLib/Vertex.h"					//!< 頂点クラス
+#include "./GameLib/XFile.h"					//!< Xファイルクラス
+#include "./Font/Font.h"			//!< フォントクラス
 
 //-------------------------------------------
-//�@�@�@�@�@�@ DirectInput
+//　　　　　　 DirectInput
 //-------------------------------------------
-#include "InputDevice.h"			//!< DirectInput�f�o�C�X�֘A�N���X
-#include "InputKey.h"				//!< �L�[�{�[�h����֘A�N���X
-#include "InputMouse.h"				//!< �}�E�X����֘A�N���X
+#include "./GameLib/InputDevice.h"			//!< DirectInputデバイス関連クラス
+#include "./GameLib/InputKey.h"				//!< キーボード操作関連クラス
+#include "./GameLib/InputMouse.h"				//!< マウス操作関連クラス
 
 //-------------------------------------------
 //				DirectSound
 //-------------------------------------------
-#include "SoundFileManager.h"
+#include "./GameLib/SoundFileManager.h"
 
 //-------------------------------------------
-//�@�@�@�@�@	WindowCreater
+//　　　　　	WindowCreater
 //-------------------------------------------
-#include "WindowCreator.h"			//!< Window�֘A�N���X
+#include "./GameLib/WindowCreator.h"			//!< Window関連クラス
 
 //-------------------------------------------
-//				���̑�
+//				その他
 //-------------------------------------------
-#include "./Camera/Camera.h"					//!< �J�����N���X
-#include "./Light/Light.h"					//!< ���C�g�N���X
-#include "DebugTimer.h"				//!< �f�o�b�N�^�C�}�[�N���X
+#include "./Camera/Camera.h"					//!< カメラクラス
+#include "./Light/Light.h"					//!< ライトクラス
+#include "./GameLib/DebugTimer.h"				//!< デバックタイマークラス
 
 /*
-�ݒ肷��Lib
+設定するLib
 #pragma comment (lib,"winmm.lib")
 #pragma comment (lib,"d3d9.lib")
 #pragma comment (lib,"d3dx9.lib")

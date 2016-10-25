@@ -1,6 +1,6 @@
-/**
+ï»¿/**
 * @file SoundFileManager.cpp
-* @brief ƒTƒEƒ“ƒh‚ğŠÇ—‚·‚éƒNƒ‰ƒX‚Ìcpp
+* @brief ã‚µã‚¦ãƒ³ãƒ‰ã‚’ç®¡ç†ã™ã‚‹ã‚¯ãƒ©ã‚¹ã®cpp
 * @author haga
 */
 
@@ -23,11 +23,11 @@ SoundFileManager::~SoundFileManager()
 void SoundFileManager::InitSound(HWND hWnd)
 {
 	DirectSoundCreate8(NULL, &m_pDSound8, NULL);
-	// ‹¦’²ƒŒƒxƒ‹İ’è
+	// å”èª¿ãƒ¬ãƒ™ãƒ«è¨­å®š
 	m_pDSound8->SetCooperativeLevel(hWnd, DSSCL_NORMAL);
 }
 
-// WAVEƒtƒ@ƒCƒ‹ƒI[ƒvƒ“ŠÖ”
+// WAVEãƒ•ã‚¡ã‚¤ãƒ«ã‚ªãƒ¼ãƒ—ãƒ³é–¢æ•°
 bool SoundFileManager::OpenWave(TCHAR* filepath, WAVEFORMATEX* waveFormatEx, char** pwaveData, DWORD* dataSize)
 {
 	if (filepath == 0)
@@ -36,13 +36,13 @@ bool SoundFileManager::OpenWave(TCHAR* filepath, WAVEFORMATEX* waveFormatEx, cha
 	HMMIO hMmio = NULL;
 	MMIOINFO mmioInfo;
 
-	// waveƒtƒ@ƒCƒ‹ƒI[ƒvƒ“
+	// waveãƒ•ã‚¡ã‚¤ãƒ«ã‚ªãƒ¼ãƒ—ãƒ³
 	memset(&mmioInfo, 0, sizeof(MMIOINFO));
 	hMmio = mmioOpen(filepath, &mmioInfo, MMIO_READ);
 	if (!hMmio)
-		return false; // ƒtƒ@ƒCƒ‹ƒI[ƒvƒ“¸”s
+		return false; // ãƒ•ã‚¡ã‚¤ãƒ«ã‚ªãƒ¼ãƒ—ãƒ³å¤±æ•—
 
-	// RIFFƒ`ƒƒƒ“ƒNŒŸõ
+	// RIFFãƒãƒ£ãƒ³ã‚¯æ¤œç´¢
 	MMRESULT mmRes;
 	MMCKINFO riffChunk;
 	riffChunk.fccType = mmioFOURCC('W', 'A', 'V', 'E');
@@ -52,7 +52,7 @@ bool SoundFileManager::OpenWave(TCHAR* filepath, WAVEFORMATEX* waveFormatEx, cha
 		return false;
 	}
 
-	// ƒtƒH[ƒ}ƒbƒgƒ`ƒƒƒ“ƒNŒŸõ
+	// ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆãƒãƒ£ãƒ³ã‚¯æ¤œç´¢
 	MMCKINFO formatChunk;
 	formatChunk.ckid = mmioFOURCC('f', 'm', 't', ' ');
 	mmRes = mmioDescend(hMmio, &formatChunk, &riffChunk, MMIO_FINDCHUNK);
@@ -69,7 +69,7 @@ bool SoundFileManager::OpenWave(TCHAR* filepath, WAVEFORMATEX* waveFormatEx, cha
 
 	mmioAscend(hMmio, &formatChunk, 0);
 
-	// ƒf[ƒ^ƒ`ƒƒƒ“ƒNŒŸõ
+	// ãƒ‡ãƒ¼ã‚¿ãƒãƒ£ãƒ³ã‚¯æ¤œç´¢
 	MMCKINFO dataChunk;
 	dataChunk.ckid = mmioFOURCC('d', 'a', 't', 'a');
 	mmRes = mmioDescend(hMmio, &dataChunk, &riffChunk, MMIO_FINDCHUNK);
@@ -85,7 +85,7 @@ bool SoundFileManager::OpenWave(TCHAR* filepath, WAVEFORMATEX* waveFormatEx, cha
 	}
 	*dataSize = size;
 
-	// ƒnƒ“ƒhƒ‹ƒNƒ[ƒY
+	// ãƒãƒ³ãƒ‰ãƒ«ã‚¯ãƒ­ãƒ¼ã‚º
 	mmioClose(hMmio, 0);
 
 	return true;
@@ -94,7 +94,7 @@ bool SoundFileManager::OpenWave(TCHAR* filepath, WAVEFORMATEX* waveFormatEx, cha
 HRESULT SoundFileManager::LoadSound(int key,TCHAR* filePath)
 {
 	LPDIRECTSOUNDBUFFER8 pDSBuffer = NULL;
-	// Waveƒtƒ@ƒCƒ‹ƒI[ƒvƒ“
+	// Waveãƒ•ã‚¡ã‚¤ãƒ«ã‚ªãƒ¼ãƒ—ãƒ³
 	WAVEFORMATEX wFmt;
 	char *pWaveData = 0;
 	DWORD waveSize = 0;
@@ -124,10 +124,10 @@ HRESULT SoundFileManager::LoadSound(int key,TCHAR* filePath)
 	}
 
 
-	// ƒZƒJƒ“ƒ_ƒŠƒoƒbƒtƒ@‚ÉWaveƒf[ƒ^‘‚«‚İ
-	//‰¹ºƒf[ƒ^
+	// ã‚»ã‚«ãƒ³ãƒ€ãƒªãƒãƒƒãƒ•ã‚¡ã«Waveãƒ‡ãƒ¼ã‚¿æ›¸ãè¾¼ã¿
+	//éŸ³å£°ãƒ‡ãƒ¼ã‚¿
 	LPVOID lpvWrite = 0;
-	//‰¹ºƒf[ƒ^‚Ì‘å‚«‚³
+	//éŸ³å£°ãƒ‡ãƒ¼ã‚¿ã®å¤§ãã•
 	DWORD dwLength = 0;
 	if (DS_OK == pDSBuffer->Lock(0, 0, &lpvWrite, &dwLength, NULL, NULL, DSBLOCK_ENTIREBUFFER))
 	{
@@ -135,7 +135,7 @@ HRESULT SoundFileManager::LoadSound(int key,TCHAR* filePath)
 		pDSBuffer->Unlock(lpvWrite, dwLength, NULL, 0);
 	}
 
-	delete[] pWaveData; // Œ³‰¹‚Í‚à‚¤‚¢‚ç‚È‚¢
+	delete[] pWaveData; // å…ƒéŸ³ã¯ã‚‚ã†ã„ã‚‰ãªã„
 
 
 	m_soundMap[key] = pDSBuffer;
@@ -143,7 +143,7 @@ HRESULT SoundFileManager::LoadSound(int key,TCHAR* filePath)
 	return S_OK;
 }
 
-// ‰¹Šy‚ğÄ¶‚·‚éŠÖ”
+// éŸ³æ¥½ã‚’å†ç”Ÿã™ã‚‹é–¢æ•°
 void SoundFileManager::SoundPlayer(int key, SOUND_MODE sMode)
 {
 	switch (sMode)
@@ -172,14 +172,14 @@ void SoundFileManager::SoundPlayer(int key, SOUND_MODE sMode)
 	}
 }
 
-// ƒTƒEƒ“ƒh‰ğ•úŠÖ”
+// ã‚µã‚¦ãƒ³ãƒ‰è§£æ”¾é–¢æ•°
 void SoundFileManager::Release(int key)
 {
 	m_soundMap[key]->Release();
 	m_soundMap.erase(key);
 }
 
-// ‰ğ•úŠÖ”
+// è§£æ”¾é–¢æ•°
 void SoundFileManager::ReleaseALL()
 {
 	for (auto itr = m_soundMap.begin(); itr != m_soundMap.end(); ++itr)

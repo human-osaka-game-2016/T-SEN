@@ -1,41 +1,41 @@
-/**
+ï»¿/**
 * @file main.cpp
-* @brief Tí‚Ìmain.cpp‚Å‚·
+* @brief Tæˆ¦ã®main.cppã§ã™
 * @author haga
 */
 #include <windows.h>
 #include <crtdbg.h>
 #include <d3dx9.h>
 #include <dinput.h>
-#include "GameLib.h"
+#include "./GameLib/GameLib.h"
 
 
 
 
 //#define FULLSCREEN
 
-#define WINDOW_TITLE TEXT("Tí")		// ƒEƒBƒ“ƒhƒEƒ^ƒCƒgƒ‹
-#define CLIENT_SIZE_W 1600				// ƒNƒ‰ƒCƒAƒ“ƒgƒTƒCƒY‚Ì•
-#define CLIENT_SIZE_H 900 				// ƒNƒ‰ƒCƒAƒ“ƒgƒTƒCƒY‚Ì‚‚³
-#define GAME_FPS (1000 / 60)			// ƒQ[ƒ€FPS
+#define WINDOW_TITLE TEXT("Tæˆ¦")		// ã‚¦ã‚£ãƒ³ãƒ‰ã‚¦ã‚¿ã‚¤ãƒˆãƒ«
+#define CLIENT_SIZE_W 1600				// ã‚¯ãƒ©ã‚¤ã‚¢ãƒ³ãƒˆã‚µã‚¤ã‚ºã®å¹…
+#define CLIENT_SIZE_H 900 				// ã‚¯ãƒ©ã‚¤ã‚¢ãƒ³ãƒˆã‚µã‚¤ã‚ºã®é«˜ã•
+#define GAME_FPS (1000 / 60)			// ã‚²ãƒ¼ãƒ FPS
 
 GameLib*		g_pGameLib = NULL;
 
-// ƒvƒƒV[ƒWƒƒŠÖ”
+// ãƒ—ãƒ­ã‚·ãƒ¼ã‚¸ãƒ£é–¢æ•°
 LRESULT CALLBACK WindowProc(HWND hwnd, UINT message, WPARAM wparam, LPARAM lparam);
 
 
-// ƒGƒ“ƒgƒŠƒ|ƒCƒ“ƒg
+// ã‚¨ãƒ³ãƒˆãƒªãƒã‚¤ãƒ³ãƒˆ
 int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPTSTR lpCmdLine, int nCmdShow)
 {
-	// ƒƒ‚ƒŠƒŠ[ƒNŒŸo
+	// ãƒ¡ãƒ¢ãƒªãƒªãƒ¼ã‚¯æ¤œå‡º
 	_CrtSetDbgFlag(_CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF);
 
 	MSG msg;
 
 	g_pGameLib = &GameLib::GetInstance();
 	//-------------------------------------------------------------------
-	//				         ƒEƒBƒ“ƒhƒE¶¬
+	//				         ã‚¦ã‚£ãƒ³ãƒ‰ã‚¦ç”Ÿæˆ
 	//-------------------------------------------------------------------	
 #ifndef FULLSCREEN
 
@@ -49,12 +49,12 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPTSTR lpCmdLin
 
 
 	//-------------------------------------------------------------------
-	//						ƒƒbƒZ[ƒWƒ‹[ƒv
+	//						ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ãƒ«ãƒ¼ãƒ—
 	//-------------------------------------------------------------------
 
 
-	DWORD currentTime = timeGetTime();		// Œ»İ‚ÌŠÔ
-	DWORD oldTime = timeGetTime();			// ‘O‚ÌŠÔ
+	DWORD currentTime = timeGetTime();		// ç¾åœ¨ã®æ™‚é–“
+	DWORD oldTime = timeGetTime();			// å‰ã®æ™‚é–“
 
 	ZeroMemory(&msg, sizeof(msg));
 	while (msg.message != WM_QUIT)
@@ -79,14 +79,14 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPTSTR lpCmdLin
 
 	return (INT)msg.wParam;
 }
-// ƒEƒCƒ“ƒhƒEƒvƒƒV[ƒWƒƒŠÖ”
+// ã‚¦ã‚¤ãƒ³ãƒ‰ã‚¦ãƒ—ãƒ­ã‚·ãƒ¼ã‚¸ãƒ£é–¢æ•°
 LRESULT CALLBACK WindowProc(HWND hwnd, UINT message, WPARAM wparam, LPARAM lparam)
 {
 	switch (message)
 	{
 	case WM_DESTROY:
 	{
-		int a = MessageBox(hwnd, TEXT("I‚í‚è‚Ü‚·‚©H"), TEXT("I—¹"), MB_YESNO);
+		int a = MessageBox(hwnd, TEXT("çµ‚ã‚ã‚Šã¾ã™ã‹ï¼Ÿ"), TEXT("çµ‚äº†"), MB_YESNO);
 		if (a == IDYES)
 		{
 			PostQuitMessage(0);
@@ -101,7 +101,7 @@ LRESULT CALLBACK WindowProc(HWND hwnd, UINT message, WPARAM wparam, LPARAM lpara
 		{
 		case VK_ESCAPE:
 		{
-			int a = MessageBox(hwnd, TEXT("I‚í‚è‚Ü‚·‚©H"), TEXT("I—¹"), MB_YESNO);
+			int a = MessageBox(hwnd, TEXT("çµ‚ã‚ã‚Šã¾ã™ã‹ï¼Ÿ"), TEXT("çµ‚äº†"), MB_YESNO);
 			if (a == IDYES)
 			{
 				PostQuitMessage(0);
@@ -113,10 +113,10 @@ LRESULT CALLBACK WindowProc(HWND hwnd, UINT message, WPARAM wparam, LPARAM lpara
 		}
 		break;
 
-	case WM_SYSKEYDOWN:     // Alt + “ÁêƒL[‚Ìˆ—‚Ég‚¤
+	case WM_SYSKEYDOWN:     // Alt + ç‰¹æ®Šã‚­ãƒ¼ã®å‡¦ç†ã«ä½¿ã†
 		switch ((CHAR)wparam)
 		{
-		case VK_RETURN:     // Alt + Enter‚ğ‰Ÿ‚·‚ÆƒEƒBƒ“ƒhƒEØ‚è‘Ö‚¦
+		case VK_RETURN:     // Alt + Enterã‚’æŠ¼ã™ã¨ã‚¦ã‚£ãƒ³ãƒ‰ã‚¦åˆ‡ã‚Šæ›¿ãˆ
 			g_pGameLib->ChangeWindowMode();
 			break;
 		default:

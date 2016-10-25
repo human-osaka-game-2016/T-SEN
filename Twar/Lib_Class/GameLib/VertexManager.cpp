@@ -1,6 +1,6 @@
-/**
+ï»¿/**
 * @file VertexManager.cpp
-* @brief VertexƒNƒ‰ƒX‚ğŠÇ—‚·‚éƒNƒ‰ƒX
+* @brief Vertexã‚¯ãƒ©ã‚¹ã‚’ç®¡ç†ã™ã‚‹ã‚¯ãƒ©ã‚¹
 * @author haga
 */
 #include "VertexManager.h"
@@ -16,7 +16,7 @@ VertexManager::~VertexManager()
 	ReleaseALL();
 }
 
-// ƒo[ƒeƒbƒNƒXƒNƒ‰ƒX‚ğì¬‚µA“o˜^‚·‚éŠÖ”
+// ãƒãƒ¼ãƒ†ãƒƒã‚¯ã‚¹ã‚¯ãƒ©ã‚¹ã‚’ä½œæˆã—ã€ç™»éŒ²ã™ã‚‹é–¢æ•°
 void VertexManager::CreateVertex(int key, float width, float height, float depth,
 	float tuMax, float tvMax, float tuMin, float tvMin)
 {
@@ -25,55 +25,55 @@ void VertexManager::CreateVertex(int key, float width, float height, float depth
 	m_vertex[key] = vtx;
 }
 
-// XY²‚Å•`‰æ‚·‚éŠÖ”
+// XYè»¸ã§æç”»ã™ã‚‹é–¢æ•°
 void VertexManager::Draw(int key, LPDIRECT3DTEXTURE9 pTexture, float x, float y)
 {
 	m_vertex[key].Draw(pTexture,x,y);
 }
 
-// XZ²‚Å•`‰æ‚·‚éŠÖ”
+// XZè»¸ã§æç”»ã™ã‚‹é–¢æ•°
 void VertexManager::Draw(int key, LPDIRECT3DTEXTURE9 pTexture, float x, float y, float z)
 {
 	m_vertex[key].Draw(pTexture, x, y,z);
 }
 
-// XY²‚Åƒo[ƒeƒbƒNƒX‚Ì’†SÀ•W‚Å•`‰æ‚·‚éŠÖ”
+// XYè»¸ã§ãƒãƒ¼ãƒ†ãƒƒã‚¯ã‚¹ã®ä¸­å¿ƒåº§æ¨™ã§æç”»ã™ã‚‹é–¢æ•°
 void VertexManager::DrawCenterPos(int key, LPDIRECT3DTEXTURE9 pTexture, float x, float y)
 {
 	m_vertex[key].DrawCenterPos(pTexture, x, y);
 }
 
-// XZ²‚Åƒo[ƒeƒbƒNƒX‚Ì’†SÀ•W‚Å•`‰æ‚·‚éŠÖ”
+// XZè»¸ã§ãƒãƒ¼ãƒ†ãƒƒã‚¯ã‚¹ã®ä¸­å¿ƒåº§æ¨™ã§æç”»ã™ã‚‹é–¢æ•°
 void VertexManager::DrawCenterPos(int key, LPDIRECT3DTEXTURE9 pTexture, float x, float y, float z)
 {
 	m_vertex[key].DrawCenterPos(pTexture, x, y,z);
 }
 
-// ƒTƒCƒY‚ğ•ÏX‚·‚éŠÖ”
+// ã‚µã‚¤ã‚ºã‚’å¤‰æ›´ã™ã‚‹é–¢æ•°
 void VertexManager::SetSize(int key, float width, float height, float depth)
 {
 	m_vertex[key].SetTexSize(width,height);
 }
 
-// tu’l‚Ætv’l‚ğ•ÏX‚·‚éŠÖ”
+// tuå€¤ã¨två€¤ã‚’å¤‰æ›´ã™ã‚‹é–¢æ•°
 void VertexManager::SetTuTv(int key, float tuMin, float tuMax, float tvMin, float tvMax)
 {
 	m_vertex[key].SetTuTvVal(tuMin,tuMax,tvMin,tvMax);
 }
 
-// F‚ğ•ÏX‚·‚éŠÖ”
+// è‰²ã‚’å¤‰æ›´ã™ã‚‹é–¢æ•°
 void VertexManager::SetColor(int key, DWORD color)
 {
 	m_vertex[key].SetColor(color);
 }
 
-// ƒo[ƒeƒbƒNƒX‚ğ‰ğ•ú‚·‚éŠÖ”
+// ãƒãƒ¼ãƒ†ãƒƒã‚¯ã‚¹ã‚’è§£æ”¾ã™ã‚‹é–¢æ•°
 void VertexManager::Release(int key)
 {
 	m_vertex.erase(key);
 }
 
-// ‘S‚Ä‚Ìƒo[ƒeƒbƒNƒX‚ğ‰ğ•ú‚·‚éŠÖ”
+// å…¨ã¦ã®ãƒãƒ¼ãƒ†ãƒƒã‚¯ã‚¹ã‚’è§£æ”¾ã™ã‚‹é–¢æ•°
 void VertexManager::ReleaseALL()
 {
 	m_vertex.clear();
