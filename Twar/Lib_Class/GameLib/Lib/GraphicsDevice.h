@@ -17,15 +17,12 @@
 class GraphicsDevice
 {
 private:
-	HWND					m_hWnd;			//!< ウィンドウハンドル
 	IDirect3D9*				m_pDirect3D;	//!< Direct3Dのインターフェイス
 	IDirect3DDevice9*		m_pD3Device;	//!< Direct3Dのデバイス
 	D3DDISPLAYMODE			m_d3ddm;		//!< ディスプレイ
 	D3DPRESENT_PARAMETERS	m_d3dpp;		//!< パラメーター
 	D3DPRESENT_PARAMETERS	m_d3dppWindow;	//!< 通常パラメーター
 	D3DPRESENT_PARAMETERS	m_d3dppFull;	//!< フルスクリーン用パラメーター
-	int						m_wWidth;		//!< ウィンドウ、もしくはクライアント領域の幅
-	int						m_wHeight;		//!< ウィンドウ、もしくはクライアント領域の高さ
 	bool					m_wType;		//!< ウィンドウタイプ trueなら通常 falseならフルスクリーン
 
 public:

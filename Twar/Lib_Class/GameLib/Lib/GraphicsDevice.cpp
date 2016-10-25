@@ -34,11 +34,6 @@ GraphicsDevice::~GraphicsDevice()
 // DirectX初期化関数(中で描画設定も行っている)
 HRESULT	 GraphicsDevice::InitDevice(HWND hWnd, bool wType, int wWidth, int wHeight)
 {
-	// ウィンドウ関連情報を保持する
-	m_hWnd    = hWnd;
-	m_wWidth  = wWidth;
-	m_wHeight = wHeight;
-
 	m_pDirect3D = Direct3DCreate9(D3D_SDK_VERSION);
 
 	if (m_pDirect3D == NULL)
@@ -63,19 +58,20 @@ HRESULT	 GraphicsDevice::InitDevice(HWND hWnd, bool wType, int wWidth, int wHeig
 	
 	// フルスクリーンモード(BackBufferの数値は仮置き)
 	ZeroMemory(&m_d3dppFull, sizeof(D3DPRESENT_PARAMETERS));
-	m_d3dppFull.BackBufferWidth = m_wWidth;
-	m_d3dppFull.BackBufferHeight = m_wHeight;
+	m_d3dppFull.BackBufferWidth = wWidth;
+	m_d3dppFull.BackBufferHeight = wHeight;
 	m_d3dppFull.BackBufferFormat = m_d3ddm.Format;
 	m_d3dppFull.BackBufferCount = 1;
 	m_d3dppFull.SwapEffect = D3DSWAPEFFECT_DISCARD;
 	m_d3dppFull.hDeviceWindow = hWnd;
 	m_d3dppFull.Windowed = FALSE;
+	m_d3dppFull.PresentationInterval = D3DPRESENT_INTERVAL_DEFAULT;
 	m_d3dppFull.EnableAutoDepthStencil = TRUE;
-	m_d3dppFull.AutoDepthStencilFormat = D3DFMT_UNKNOWN;
+	m_d3dppFull.AutoDepthStencilFormat = D3DFMT_D24S8;
 	m_d3dppFull.Flags = 0;
 	m_d3dppFull.FullScreen_RefreshRateInHz = 0;
-	m_d3dppFull.PresentationInterval = D3DPRESENT_INTERVAL_IMMEDIATE;
-	m_d3dppFull.PresentationInterval = D3DPRESENT_INTERVAL_ONE;
+	//m_d3dppFull.PresentationInterval = D3DPRESENT_INTERVAL_IMMEDIATE;
+	//m_d3dppFull.PresentationInterval = D3DPRESENT_INTERVAL_ONE;
 
 	ZeroMemory(&m_d3dpp, sizeof(D3DPRESENT_PARAMETERS));
 	if (m_wType)
