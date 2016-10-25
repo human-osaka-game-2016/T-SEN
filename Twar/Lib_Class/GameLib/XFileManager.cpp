@@ -1,6 +1,6 @@
-/**
+ï»¿/**
 * @file	XFileManager.cpp
-* @brief Xƒtƒ@ƒCƒ‹‚ğŠÇ—‚·‚éƒNƒ‰ƒX
+* @brief Xãƒ•ã‚¡ã‚¤ãƒ«ã‚’ç®¡ç†ã™ã‚‹ã‚¯ãƒ©ã‚¹
 * @author haga
 */
 #include "XFile.h"
@@ -17,7 +17,7 @@ XFileManager::~XFileManager()
 	ReleaseALL();
 }
 
-// Xƒtƒ@ƒCƒ‹‚ğ“Ç‚İ‚ŞŠÖ”
+// Xãƒ•ã‚¡ã‚¤ãƒ«ã‚’èª­ã¿è¾¼ã‚€é–¢æ•°
 void XFileManager::Load(int key, LPCTSTR pFilePath)
 {
 	XFile xFile;
@@ -26,20 +26,20 @@ void XFileManager::Load(int key, LPCTSTR pFilePath)
 
 }
 
-// Xƒtƒ@ƒCƒ‹‚ğ•`‰æ‚·‚éŠÖ”
+// Xãƒ•ã‚¡ã‚¤ãƒ«ã‚’æç”»ã™ã‚‹é–¢æ•°
 void XFileManager::Draw(int key)
 {
 	m_xFile[key].DrawX();
 }
 
-// ‰ğ•úŠÖ”
+// è§£æ”¾é–¢æ•°
 void XFileManager::Release(int key)
 {
 	m_xFile[key].Release();
 	m_xFile.erase(key);
 }
 
-// ŠÇ—‚µ‚Ä‚¢‚éƒtƒ@ƒCƒ‹‚ğ‚·‚×‚Ä‰ğ•ú‚·‚éŠÖ”
+// ç®¡ç†ã—ã¦ã„ã‚‹ãƒ•ã‚¡ã‚¤ãƒ«ã‚’ã™ã¹ã¦è§£æ”¾ã™ã‚‹é–¢æ•°
 void XFileManager::ReleaseALL()
 {
 	for (auto itr = m_xFile.begin(); itr != m_xFile.end();itr++)
