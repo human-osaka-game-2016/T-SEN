@@ -36,10 +36,10 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPTSTR lpCmdLin
 	//-------------------------------------------------------------------	
 #ifndef FULLSCREEN
 
-	g_pGameLib->InitGameLib(WINDOW_TITLE, CLIENT_SIZE_W, CLIENT_SIZE_H,hInstance, WindowProc, true);
+	g_pGameLib->InitGameLib(WINDOW_TITLE, CLIENT_SIZE_W, CLIENT_SIZE_H,WindowProc, true);
 
 #else
-	g_pGameLib->InitGameLib(WINDOW_TITLE, CLIENT_SIZE_W, CLIENT_SIZE_H,hInstance, WindowProc, false);
+	g_pGameLib->InitGameLib(WINDOW_TITLE, CLIENT_SIZE_W, CLIENT_SIZE_H,WindowProc, false);
 
 #endif
 

@@ -92,11 +92,10 @@ public:
 	* @param[in] title  ウィンドウタイトル
 	* @param[in] width  ウィンドウの横幅
 	* @param[in] height ウインドウの縦幅
-	* @param[in] hInstance	インスタンスハンドル
 	* @param[in] Wndproc	ウィンドウプロシージャ関数
 	* @param[in] windowType ウィンドウタイプ trueなら通常,falseならフルスクリーン
 	*/
-	void InitGameLib(char* title, int width, int height,HINSTANCE hInstance, LRESULT CALLBACK WndProc(HWND hWnd, UINT msg, WPARAM wp, LPARAM lp), bool windowType);
+	void InitGameLib(char* title, int width, int height,LRESULT CALLBACK WndProc(HWND,UINT,WPARAM,LPARAM), bool windowType);
 
 	/**メモリ開放関数*/
 	void ReleaseGameLib();

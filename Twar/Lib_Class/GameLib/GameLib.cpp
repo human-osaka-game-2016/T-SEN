@@ -37,10 +37,12 @@ GameLib::~GameLib()
 }
 
 // 初期化関数
-void GameLib::InitGameLib(char* title, int width, int height,HINSTANCE hInstance, LRESULT CALLBACK WndProc(HWND hWnd, UINT msg, WPARAM wp, LPARAM lp), bool windowType)
+void GameLib::InitGameLib(char* title, int width, int height,LRESULT CALLBACK WndProc(HWND, UINT,WPARAM, LPARAM), bool windowType)
 {
 	m_wWidth = width;
 	m_wHeight = height;
+	HINSTANCE hInstance = GetModuleHandle(NULL);
+
 	m_pWindowCreator = new WindowCreator(title, width, height);
 	
 	m_pGraphicsDevice = &GraphicsDevice::GetInstance();
