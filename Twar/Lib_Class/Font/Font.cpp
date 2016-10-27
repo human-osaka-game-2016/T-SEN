@@ -80,7 +80,7 @@ void Font::Draw(LPCTSTR pString, D3DXVECTOR2 pos)
 }
 
 // テキストを表示する関数(色と文字寄せを変えれる)
-void Font::Draw(LPCSTR pString, D3DXVECTOR2 pos, DWORD format, D3DCOLOR color)
+void Font::Draw(LPCTSTR pString, D3DXVECTOR2 pos, DWORD format, D3DCOLOR color)
 {
 	RECT rc;
 	D3DXFONT_DESC desc;

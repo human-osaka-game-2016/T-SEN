@@ -49,7 +49,7 @@ public:
 	* @param[in] format	テキストタイプ DT_LEFT(左寄せ) or DT_RIGHT(右寄せ) or DT_BOTTOM(下寄せ) or DT_TOP(上寄せ)
 	* @param[in] color		文字の色
 	*/
-	void Draw(LPCSTR pString, D3DXVECTOR2 pos, DWORD format, D3DCOLOR color);
+	void Draw(LPCTSTR pString, D3DXVECTOR2 pos, DWORD format, D3DCOLOR color);
 
 	/**
 	* 文字のフォントなどを再設定する関数

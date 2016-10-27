@@ -33,7 +33,7 @@ public:
 	* @param[in] pos		テキストを表示したい座標
 	* @param[in] color		文字の色
 	*/
-	void Draw(LPCSTR pString, D3DXVECTOR2 pos);
+	void Draw(LPCTSTR pString, D3DXVECTOR2 pos);
 
 	/**mメモリ開放関数*/
 	void Release();

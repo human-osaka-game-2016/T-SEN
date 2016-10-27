@@ -40,7 +40,7 @@ DebugFont::~DebugFont()
 }
 
 // 文字描画関数
-void DebugFont::Draw(LPCSTR pString, D3DXVECTOR2 pos)
+void DebugFont::Draw(LPCTSTR pString, D3DXVECTOR2 pos)
 {
 	RECT rc;
 	D3DXFONT_DESC desc;
