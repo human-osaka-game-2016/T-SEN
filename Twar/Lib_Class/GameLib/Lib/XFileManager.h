@@ -6,8 +6,9 @@
 #ifndef XFILE_MANAGER_H
 #define XFILE_MANAGER_H
 
+#include <d3dx9.h>
 #include <map>
-using namespace std;
+
 
 class XFile;
 

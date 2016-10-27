@@ -8,7 +8,6 @@
 
 #include <map>
 #include "Vertex.h"
-using namespace std;
 
 class VertexManager
 {

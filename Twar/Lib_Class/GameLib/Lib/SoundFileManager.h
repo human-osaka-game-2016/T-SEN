@@ -10,7 +10,6 @@
 #include <mmsystem.h>
 #include <map>
 #include <dsound.h>
-using namespace std;
 
 //#pragma comment(lib, "dsound.lib")
 

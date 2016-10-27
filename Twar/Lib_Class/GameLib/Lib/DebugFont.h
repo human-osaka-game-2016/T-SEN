@@ -1,5 +1,5 @@
 ﻿/**
-* @file DebugFontクラス
+* @file DebugFont.h
 * @brief デバックで使用するフォントのクラス
 * @author haga
 */

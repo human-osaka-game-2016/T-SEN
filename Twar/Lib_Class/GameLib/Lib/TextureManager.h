@@ -10,7 +10,6 @@
 #include <d3d9.h>
 #include "GraphicsDevice.h"
 #include <map>
-using namespace std;
 
 class TextureManager
 {

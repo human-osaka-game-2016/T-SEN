@@ -1,4 +1,9 @@
-﻿#include "DebugFont.h"
+﻿/**
+* @file DebugFont.cpp
+* @brief デバックで使用するフォントのクラス
+* @author haga
+*/
+#include "DebugFont.h"
 
 
 DebugFont::DebugFont(INT height, UINT width, D3DCOLOR color):

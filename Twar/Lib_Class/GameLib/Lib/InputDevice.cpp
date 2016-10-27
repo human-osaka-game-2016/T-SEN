@@ -107,7 +107,7 @@ HRESULT InputDevice::InitDinputMouse(HWND hWnd)
 	if (FAILED(m_pMouseDevice->SetProperty(DIPROP_BUFFERSIZE, &diprop.diph)))
 	{
 		MessageBox(0, "軸モードの設定に失敗", NULL, MB_OK);
-		return false;
+		return E_FAIL;
 	}
 
 	//	協調レベル

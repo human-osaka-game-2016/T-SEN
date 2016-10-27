@@ -1,4 +1,9 @@
-﻿#include "Camera.h"
+﻿/**
+* @file  Camera.cpp
+* @brief カメラクラス
+* @author haga
+*/
+#include "Camera.h"
 
 // コンストラクタ
 Camera::Camera(LPDIRECT3DDEVICE9 pD3Device,float width, float height) :
