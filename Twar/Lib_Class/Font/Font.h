@@ -29,7 +29,7 @@ public:
 	* @param[in] height		文字の高さ
 	* @param[in] width		文字の幅
 	*/
-	Font(IDirect3DDevice9*	pD3Device,INT height, UINT width);
+	Font(IDirect3DDevice9*	pD3Device,INT height, INT width);
 
 	/**デストラクタ*/
 	~Font();

@@ -42,9 +42,5 @@ void XFileManager::Release(int key)
 // 管理しているファイルをすべて解放する関数
 void XFileManager::ReleaseALL()
 {
-	for (auto itr = m_xFile.begin(); itr != m_xFile.end();itr++)
-	{
-		//itr->second.Release();
-	}
 	m_xFile.clear();
 }

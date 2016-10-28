@@ -5,7 +5,6 @@
 */
 #include "../Font/Font.h"
 
-// コンストラクタ
 Font::Font(IDirect3DDevice9*	pD3Device) :
 m_pD3Device(pD3Device),
 m_pFont(NULL),
@@ -30,7 +29,7 @@ m_width(10)
 }
 
 // コンストラクタ 文字の大きさを指定する場合に使用
-Font::Font(IDirect3DDevice9*	pD3Device,INT height, UINT	width) :
+Font::Font(IDirect3DDevice9*	pD3Device,INT height, INT	width) :
 m_pD3Device(pD3Device),
 m_pFont(NULL),
 m_height(height),
@@ -53,7 +52,7 @@ m_width(width)
 	}
 }
 
-// デストラクタ
+
 Font::~Font()
 {
 	if (m_pFont != NULL)m_pFont->Release();
@@ -70,7 +69,7 @@ void Font::Draw(LPCTSTR pString, D3DXVECTOR2 pos)
 	rc.top = (LONG)pos.y;
 	rc.right = (LONG)pos.x + desc.Width * strlen(pString);
 	rc.bottom = (LONG)pos.y + desc.Height * strlen(pString);
-	m_pFont->DrawTextA(
+	m_pFont->DrawText(
 		NULL,							// NULL
 		pString,						// 描画テキスト
 		-1,								// 全て表示
@@ -91,7 +90,7 @@ void Font::Draw(LPCTSTR pString, D3DXVECTOR2 pos, DWORD format, D3DCOLOR color)
 	rc.right = (LONG)pos.x + desc.Width * strlen(pString);
 	rc.bottom = (LONG)pos.y + desc.Height * strlen(pString);
 
-	m_pFont->DrawTextA(
+	m_pFont->DrawText(
 		NULL,		// NULL 
 		pString,	// 描画テキスト
 		-1,			// 全て表示

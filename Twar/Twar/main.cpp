@@ -5,9 +5,7 @@
 */
 #include <windows.h>
 #include <crtdbg.h>
-#include <d3dx9.h>
-#include <dinput.h>
-#include "./GameLib/GameLib.h"
+#include "GameLib/GameLib.h"
 
 //#define FULLSCREEN
 
@@ -80,8 +78,8 @@ LRESULT CALLBACK WindowProc(HWND hwnd, UINT message, WPARAM wparam, LPARAM lpara
 	{
 	case WM_DESTROY:
 	{
-		int a = MessageBox(hwnd, TEXT("終わりますか？"), TEXT("終了"), MB_YESNO);
-		if (a == IDYES)
+		int answer = MessageBox(hwnd, TEXT("終わりますか？"), TEXT("終了"), MB_YESNO);
+		if (answer == IDYES)
 		{
 			PostQuitMessage(0);
 			
@@ -95,8 +93,8 @@ LRESULT CALLBACK WindowProc(HWND hwnd, UINT message, WPARAM wparam, LPARAM lpara
 		{
 		case VK_ESCAPE:
 		{
-			int a = MessageBox(hwnd, TEXT("終わりますか？"), TEXT("終了"), MB_YESNO);
-			if (a == IDYES)
+			int answer = MessageBox(hwnd, TEXT("終わりますか？"), TEXT("終了"), MB_YESNO);
+			if (answer == IDYES)
 			{
 				PostQuitMessage(0);
 				return 0;

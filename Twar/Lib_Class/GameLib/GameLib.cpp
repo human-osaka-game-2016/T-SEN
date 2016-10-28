@@ -37,7 +37,7 @@ GameLib::~GameLib()
 }
 
 // 初期化関数
-void GameLib::InitGameLib(char* title, int width, int height,LRESULT CALLBACK WndProc(HWND, UINT,WPARAM, LPARAM), bool windowType)
+void GameLib::InitGameLib(TCHAR*  title, int width, int height, LRESULT CALLBACK WndProc(HWND, UINT, WPARAM, LPARAM), bool windowType)
 {
 	m_wWidth = width;
 	m_wHeight = height;
@@ -144,27 +144,27 @@ void GameLib::CreateVtx(int key, float width, float height, float depth)
 	m_pVertexManager->CreateVertex(key,width,height,depth);
 }
 
-void GameLib::DrawXY(int key, bool center, float posX, float posY)
+void GameLib::DrawXY(int texKey, int vtxKey, bool center, float posX, float posY)
 {
 	if (center)
 	{
-		m_pVertexManager->DrawCenterPos(key,m_pTextureManager->GetTex(key),posX,posY);
+		m_pVertexManager->DrawCenterPos(vtxKey,m_pTextureManager->GetTex(texKey),posX,posY);
 	}
 	else
 	{
-		m_pVertexManager->Draw(key, m_pTextureManager->GetTex(key), posX, posY);
+		m_pVertexManager->Draw(vtxKey, m_pTextureManager->GetTex(texKey), posX, posY);
 	}
 }
 
-void GameLib::DrawXZ(int key, bool center, float posX, float posY, float posZ)
+void GameLib::DrawXZ(int texKey, int vtxKey, bool center, float posX, float posY, float posZ)
 {
 	if (center)
 	{
-		m_pVertexManager->DrawCenterPos(key, m_pTextureManager->GetTex(key), posX, posY,posZ);
+		m_pVertexManager->DrawCenterPos(vtxKey, m_pTextureManager->GetTex(texKey), posX, posY,posZ);
 	}
 	else
 	{
-		m_pVertexManager->Draw(key, m_pTextureManager->GetTex(key), posX, posY,posZ);
+		m_pVertexManager->Draw(vtxKey, m_pTextureManager->GetTex(texKey), posX, posY,posZ);
 	}
 }
 

@@ -17,7 +17,7 @@ private:
 	WNDCLASSEX  m_wndc;				//!< ウィンドウクラス
 	HWND		m_hWnd;				//!< ウィンドウハンドル
 	RECT		m_wRect;			//!< ウインドウサイズを保持しておく変数
-	char*       m_wTitle;			//!< ウィンドウのタイトル
+	TCHAR*      m_wTitle;			//!< ウィンドウのタイトル
 	int		    m_wWidth;			//!< ウインドウの幅
 	int			m_wHeight;			//!< ウィンドウの高さ
 	bool		m_wType;			//!< ウィンドウサイズが通常ならtrue,フルスクリーンならfalse
@@ -29,7 +29,7 @@ public:
 	* @param[in] width	ウインドウのクライアントサイズ(幅)
 	* @param[in] height	ウインドウのクライアントサイズ(高さ)
 	*/
-	WindowCreator(char* title, int width, int height);
+	WindowCreator(TCHAR*  title, int width, int height);
 
 	/**デストラクタ*/
 	~WindowCreator();

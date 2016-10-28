@@ -10,7 +10,7 @@
 #include <iostream>
 #include <d3d9.h>
 #include <d3dx9.h>
-#include "./Lib/InputKey.h"
+#include "Lib/InputKey.h"
 
 class WindowCreator;
 class GraphicsDevice;
@@ -91,7 +91,7 @@ public:
 	* @param[in] Wndproc	ウィンドウプロシージャ関数
 	* @param[in] windowType ウィンドウタイプ trueなら通常,falseならフルスクリーン
 	*/
-	void InitGameLib(char* title, int width, int height,LRESULT CALLBACK WndProc(HWND,UINT,WPARAM,LPARAM), bool windowType);
+	void InitGameLib(TCHAR*  title, int width, int height, LRESULT CALLBACK WndProc(HWND, UINT, WPARAM, LPARAM), bool windowType);
 
 	/**メモリ開放関数*/
 	void ReleaseGameLib();
@@ -174,22 +174,24 @@ public:
 
 	/**
 	* テクスチャーを(XY座標)において描画する関数
-	* @param[in] key	登録したキー、またはID
+	* @param[in] texKey	テクスチャーを登録したキー、またはID
+	* @param[in] vtxKey バーテックスを登録したキー、またはID
 	* @param[in] center 位置座標をテクスチャーの中心にするならtrue,違うならfalse
 	* @param[in] posX	x座標
 	* @param[in] posY   y座標
 	*/
-	void DrawXY(int key,bool center,float posX,float posY);													
+	void DrawXY(int texKey,int vtxKey,bool center,float posX,float posY);													
 
 	/**
 	* テクスチャーをXZ座標で描画する関数
-	* @param[in] key	登録したキー、またはID
+	* @param[in] texKey	テクスチャーを登録したキー、またはID
+	* @param[in] vtxKey バーテックスを登録したキー、またはID
 	* @param[in] center 位置座標をテクスチャーの中心にするならtrue,違うならfalse
 	* @param[in] posX	x座標
 	* @param[in] posY   y座標
 	* @param[in] posZ   z座標
 	*/
-	void DrawXZ(int key, bool center,float posX, float posY, float posZ);
+	void DrawXZ(int texKey, int vtxKey, bool center, float posX, float posY, float posZ);
 
 	/**
 	* テクスチャーを解放する関数

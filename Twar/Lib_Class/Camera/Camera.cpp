@@ -5,17 +5,26 @@
 */
 #include "Camera.h"
 
-// コンストラクタ
-Camera::Camera(LPDIRECT3DDEVICE9 pD3Device,float width, float height) :
+Camera::Camera(LPDIRECT3DDEVICE9 pD3Device) :
 m_pD3Device(pD3Device),
-m_windowWidth(width),
-m_windowHeight(height)
+m_windowWidth(0),
+m_windowHeight(0)
 {
 }
 
-// デストラクタ
 Camera::~Camera()
 {
+}
+
+
+/**
+* ウインドウの幅と高さを取得する関数<br>
+*
+*/
+void Camera::InitWindowsize(float wWidth, float wHeight)
+{
+	m_windowWidth = wWidth;
+	m_windowHeight = wHeight;
 }
 
 // 視点座標変換と射影座標変換を行う関数(数値は仮置き)

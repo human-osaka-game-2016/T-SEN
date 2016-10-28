@@ -20,9 +20,17 @@ private:
 
 public:
 	/**コンストラクタ*/
-	Camera(LPDIRECT3DDEVICE9 pD3Device,float width, float height);
+	Camera(LPDIRECT3DDEVICE9 pD3Device);
 	/**デストラクタ*/
 	~Camera();
+
+	/**
+	* ウインドウの幅と高さを取得す る関数<br>
+	* @param[in] wWidth ウィンドウの幅
+	* @param[in] wHeight ウィンドウの高さ
+	*/
+	void InitWindowsize(float wWidth, float wHeight);
+
 	/**
 	* 視点座標変換と射影座標変換を行う関数.
 	* @param[in] vEyePt			カメラの位置

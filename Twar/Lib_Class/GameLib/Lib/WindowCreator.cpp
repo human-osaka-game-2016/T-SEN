@@ -6,8 +6,8 @@
 #include <windows.h>
 #include"WindowCreator.h"
 
-// コンストラクタ
-WindowCreator::WindowCreator(char* title, int width, int height) :
+
+WindowCreator::WindowCreator(TCHAR*  title, int width, int height) :
 m_hWnd(NULL),
 m_wTitle(title),
 m_wWidth(width),
@@ -16,10 +16,10 @@ m_wType(true)
 {
 }
 
-// デストラクタ
 WindowCreator::~WindowCreator()
 {
 }
+
 
 // ウィンドウを作成する関数
 HRESULT WindowCreator::MakeWindow(HINSTANCE hInstance, LRESULT CALLBACK WndProc(HWND hWnd, UINT msg, WPARAM wp, LPARAM lp), bool windowType)

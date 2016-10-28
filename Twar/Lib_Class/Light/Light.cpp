@@ -88,7 +88,7 @@ void Light::SetLightRange(float range)
 	m_light.Range = range;
 }
 
-// ディヒューズをセットする
+// ディフューズをセットする
 void Light::SetDiffuse(float dR, float dG, float dB)
 {
 	m_light.Diffuse.r = dR;

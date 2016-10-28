@@ -50,7 +50,7 @@ void DebugFont::Draw(LPCTSTR pString, D3DXVECTOR2 pos)
 	rc.top = (LONG)pos.y;
 	rc.right = (LONG)pos.x + desc.Width * strlen(pString);
 	rc.bottom = (LONG)pos.y + desc.Height * strlen(pString);
-	m_pFont->DrawTextA(
+	m_pFont->DrawText(
 		NULL,							// NULL
 		pString,						// 描画テキスト
 		-1,								// 全て表示
