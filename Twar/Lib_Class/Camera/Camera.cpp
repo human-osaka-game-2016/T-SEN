@@ -17,10 +17,8 @@ Camera::~Camera()
 }
 
 
-/**
-* ウインドウの幅と高さを取得する関数<br>
-*
-*/
+
+// ウインドウの幅と高さを取得する関数<br>
 void Camera::InitWindowsize(float wWidth, float wHeight)
 {
 	m_windowWidth = wWidth;

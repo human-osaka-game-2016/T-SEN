@@ -23,8 +23,8 @@ XFile::~XFile()
 		m_pMesh->Release();
 		m_pMesh = NULL;
 	}
-	delete m_pMaterials;
-	delete m_pTextures;
+	delete[] m_pMaterials;
+	delete[] m_pTextures;
 }
 
 // Xファイルからデータを読み込む関数
