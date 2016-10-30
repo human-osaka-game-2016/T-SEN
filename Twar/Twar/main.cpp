@@ -6,6 +6,7 @@
 #include <windows.h>
 #include <crtdbg.h>
 #include "GameLib/GameLib.h"
+#include "Scene/SceneManager.h"
 
 //#define FULLSCREEN
 
@@ -41,6 +42,8 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPTSTR lpCmdLin
 
 #endif
 
+	SceneManager* pSceneManager = new SceneManager();
+
 	//-------------------------------------------------------------------
 	//						メッセージループ
 	//-------------------------------------------------------------------
@@ -62,10 +65,16 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPTSTR lpCmdLin
 			currentTime = timeGetTime();
 			if (currentTime - oldTime >= GAME_FPS)
 			{
+				if (pSceneManager->Run())
+				{
+					break;
+				}
 				oldTime = timeGetTime();
 			}
 		}
 	}
+
+	delete pSceneManager;
 
 	g_pGameLib->ReleaseGameLib();
 
