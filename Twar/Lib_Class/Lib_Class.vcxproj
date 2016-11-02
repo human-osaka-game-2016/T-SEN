@@ -39,8 +39,8 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <IncludePath>$(DXSDK_DIR)Include;$(IncludePath)</IncludePath>
-    <LibraryPath>$(DXSDK_DIR)Lib\x86;$(LibraryPath)</LibraryPath>
+    <IncludePath>$(DXSDK_DIR)Include;C:\Program Files\Autodesk\FBX\FBX SDK\2016.1\include;$(IncludePath)</IncludePath>
+    <LibraryPath>$(DXSDK_DIR)Lib\x86;C:\Program Files\Autodesk\FBX\FBX SDK\2016.1\lib\vs2013\x86\debug;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <IncludePath>$(DXSDK_DIR)Include;$(IncludePath)</IncludePath>
@@ -72,6 +72,8 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="Camera\Camera.h" />
+    <ClInclude Include="Fbx\FbxModel.h" />
+    <ClInclude Include="Fbx\FbxRelated.h" />
     <ClInclude Include="Font\Font.h" />
     <ClInclude Include="GameLib\GameLib.h" />
     <ClInclude Include="GameLib\Lib\DebugFont.h" />
@@ -92,6 +94,8 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Camera\Camera.cpp" />
+    <ClCompile Include="Fbx\FbxModel.cpp" />
+    <ClCompile Include="Fbx\FbxRelated.cpp" />
     <ClCompile Include="Font\Font.cpp" />
     <ClCompile Include="GameLib\GameLib.cpp" />
     <ClCompile Include="GameLib\Lib\DebugFont.cpp" />

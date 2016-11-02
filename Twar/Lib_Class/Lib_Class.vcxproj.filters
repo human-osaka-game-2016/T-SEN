@@ -52,6 +52,12 @@
     <ClCompile Include="GameLib\Lib\XFileManager.cpp">
       <Filter>GameLib\LIb</Filter>
     </ClCompile>
+    <ClCompile Include="Fbx\FbxModel.cpp">
+      <Filter>Fbx</Filter>
+    </ClCompile>
+    <ClCompile Include="Fbx\FbxRelated.cpp">
+      <Filter>Fbx</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Font\Font.h">
@@ -106,6 +112,12 @@
       <Filter>GameLib\LIb</Filter>
     </ClInclude>
     <ClInclude Include="LibClass.h" />
+    <ClInclude Include="Fbx\FbxModel.h">
+      <Filter>Fbx</Filter>
+    </ClInclude>
+    <ClInclude Include="Fbx\FbxRelated.h">
+      <Filter>Fbx</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Camera">
@@ -122,6 +134,9 @@
     </Filter>
     <Filter Include="Light">
       <UniqueIdentifier>{bf79eb00-eaab-4442-a521-1509cb123ae0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fbx">
+      <UniqueIdentifier>{4a4b02ec-1014-4bd3-8a5a-eb7206dfb5a4}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>
