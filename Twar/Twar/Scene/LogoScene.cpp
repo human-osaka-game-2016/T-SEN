@@ -3,6 +3,7 @@
 * @brief ロゴシーンのcpp
 * @author haga
 */
+#include "GameLib/GameLib.h"
 #include "LogoScene.h"
 
 LogoScene::LogoScene()

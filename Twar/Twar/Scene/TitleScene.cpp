@@ -3,6 +3,7 @@
 * @brief  タイトルシーンのcpp
 * @author haga
 */
+#include "GameLib/GameLib.h"
 #include "TitleScene.h"
 #include "../GameData/SaveDataManager.h"
 

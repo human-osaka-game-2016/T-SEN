@@ -3,6 +3,7 @@
 * @brief エンドロールシーンのcpp
 * @author haga
 */
+#include "GameLib/GameLib.h"
 #include "EndRollScene.h"
 
 
