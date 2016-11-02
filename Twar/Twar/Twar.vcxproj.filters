@@ -5,13 +5,69 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
-    <Filter Include="main">
+    <Filter Include="Twar">
       <UniqueIdentifier>{974cbe2c-a200-40e0-8df4-6b3b96d595e4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Twar\Scene">
+      <UniqueIdentifier>{be9005e2-a12c-4e6e-9a40-fae35b910412}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Twar\GameData">
+      <UniqueIdentifier>{76d75aae-00f2-40ba-9445-9b61c24ecc5f}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
-      <Filter>main</Filter>
+      <Filter>Twar</Filter>
     </ClCompile>
+    <ClCompile Include="Scene\SceneManager.cpp">
+      <Filter>Twar\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="Scene\Scene.cpp">
+      <Filter>Twar\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="GameData\SaveDataManager.cpp">
+      <Filter>Twar\GameData</Filter>
+    </ClCompile>
+    <ClCompile Include="Scene\SceneFactory.cpp">
+      <Filter>Twar\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="Scene\LogoScene.cpp">
+      <Filter>Twar\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="Scene\TitleScene.cpp">
+      <Filter>Twar\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="Scene\GameScene.cpp">
+      <Filter>Twar\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="Scene\EndRollScene.cpp">
+      <Filter>Twar\Scene</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Scene\SceneManager.h">
+      <Filter>Twar\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="Scene\Scene.h">
+      <Filter>Twar\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="GameData\SaveDataManager.h">
+      <Filter>Twar\GameData</Filter>
+    </ClInclude>
+    <ClInclude Include="Scene\SceneFactory.h">
+      <Filter>Twar\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="Scene\LogoScene.h">
+      <Filter>Twar\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="Scene\TitleScene.h">
+      <Filter>Twar\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="Scene\GameScene.h">
+      <Filter>Twar\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="Scene\EndRollScene.h">
+      <Filter>Twar\Scene</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
