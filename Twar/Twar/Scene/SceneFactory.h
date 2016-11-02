@@ -14,6 +14,7 @@ class SaveDataManager;
 class SceneFactory
 {
 public:
+
 	/**
 	* 実体を取得する関数<br>
 	* Singletonパターン
@@ -39,14 +40,14 @@ public:
 	Scene* CreateScene(SCENE_ID sceneID);
 
 	/**デストラクタ*/
-	~SceneFactory(){};
+	~SceneFactory();
 
 private:
 	/**
 	* コンストラクタ<br>
 	* Singletonパターンの為private
 	*/
-	SceneFactory(){};
+	SceneFactory();
 	SaveDataManager* m_pSaveDataManager;	 //!< セーブデータを管理するクラス
 };
 

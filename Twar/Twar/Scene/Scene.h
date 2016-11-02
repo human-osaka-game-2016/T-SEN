@@ -1,12 +1,13 @@
 ﻿/**
 * @file Scene.h
-* @brief シーンの基底クラス
+* @brief シーンの基底(抽象クラス)
 * @author haga
 */
 
 #ifndef SCENE_H
 #define SCENE_H
 
+class GameLib;
 /**シーンID*/
 enum SCENE_ID
 {
@@ -31,6 +32,9 @@ public:
 
 	/**描画関数*/
 	virtual void Draw() = 0;
+
+private:
+	GameLib*		  m_pGameLib;			//!< ライブラリ
 };
 
 #endif	// SCENE_H

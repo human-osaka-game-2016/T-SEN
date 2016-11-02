@@ -10,6 +10,7 @@
 
 
 class GameLib;
+class SaveDataManager;
 /**
 * シーンを管理するクラス
 */
@@ -38,12 +39,13 @@ public:
 	bool Run();
 
 private:
-	GameLib*		m_pGameLib;			//!< ライブラリ
-	Scene*			m_pScene;			//!< シーン
-	SCENE_ID        m_currentSceneID;   //!< 現在のシーンID
-	SCENE_ID		m_nextSceneID;		//!< 次のシーンID
-	STEP			m_step;				//!< 処理ステップ
-	bool			m_gameEnd;			//!< ゲーム終了フラグ
+	GameLib*		  m_pGameLib;			//!< ライブラリ
+	SaveDataManager*  m_pSaveDataManager;	//!< セーブデータ管理クラス
+	Scene*			  m_pScene;				//!< シーン
+	SCENE_ID          m_currentSceneID;		//!< 現在のシーンID
+	SCENE_ID		  m_nextSceneID;		//!< 次のシーンID
+	STEP			  m_step;				//!< 処理ステップ
+	bool			  m_gameEnd;			//!< ゲーム終了フラグ
 
 	/**コントロール関数*/
 	void Control();
