@@ -73,6 +73,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="GameData\GameDataManager.cpp" />
     <ClCompile Include="GameData\SaveDataManager.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Scene\EndRollScene.cpp" />
@@ -84,6 +85,7 @@
     <ClCompile Include="Scene\TitleScene.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="GameData\GameDataManager.h" />
     <ClInclude Include="GameData\SaveDataManager.h" />
     <ClInclude Include="Scene\EndRollScene.h" />
     <ClInclude Include="Scene\GameScene.h" />

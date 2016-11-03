@@ -43,6 +43,9 @@
     <ClCompile Include="Scene\EndRollScene.cpp">
       <Filter>Twar\Scene</Filter>
     </ClCompile>
+    <ClCompile Include="GameData\GameDataManager.cpp">
+      <Filter>Twar\GameData</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Scene\SceneManager.h">
@@ -68,6 +71,9 @@
     </ClInclude>
     <ClInclude Include="Scene\EndRollScene.h">
       <Filter>Twar\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="GameData\GameDataManager.h">
+      <Filter>Twar\GameData</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
