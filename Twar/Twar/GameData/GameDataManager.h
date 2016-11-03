@@ -15,4 +15,4 @@ public:
 	~GameDataManager();
 };
 
-#endif // !GAMEDATA_MANAGER_H
+#endif // GAMEDATA_MANAGER_H
