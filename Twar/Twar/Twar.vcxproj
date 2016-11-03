@@ -74,6 +74,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="GameData\GameDataManager.cpp" />
+    <ClCompile Include="GameData\GameTimer.cpp" />
     <ClCompile Include="GameData\SaveDataManager.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Scene\EndRollScene.cpp" />
@@ -86,6 +87,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GameData\GameDataManager.h" />
+    <ClInclude Include="GameData\GameTimer.h" />
     <ClInclude Include="GameData\SaveDataManager.h" />
     <ClInclude Include="Scene\EndRollScene.h" />
     <ClInclude Include="Scene\GameScene.h" />
