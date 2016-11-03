@@ -46,6 +46,9 @@
     <ClCompile Include="GameData\GameDataManager.cpp">
       <Filter>Twar\GameData</Filter>
     </ClCompile>
+    <ClCompile Include="GameData\GameTimer.cpp">
+      <Filter>Twar\GameData</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Scene\SceneManager.h">
@@ -73,6 +76,9 @@
       <Filter>Twar\Scene</Filter>
     </ClInclude>
     <ClInclude Include="GameData\GameDataManager.h">
+      <Filter>Twar\GameData</Filter>
+    </ClInclude>
+    <ClInclude Include="GameData\GameTimer.h">
       <Filter>Twar\GameData</Filter>
     </ClInclude>
   </ItemGroup>
