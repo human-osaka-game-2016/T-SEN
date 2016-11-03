@@ -73,6 +73,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Field\FieldManager.cpp" />
     <ClCompile Include="GameData\GameDataManager.cpp" />
     <ClCompile Include="GameData\GameTimer.cpp" />
     <ClCompile Include="GameData\SaveDataManager.cpp" />
@@ -86,6 +87,7 @@
     <ClCompile Include="Scene\TitleScene.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Field\FieldManager.h" />
     <ClInclude Include="GameData\GameDataManager.h" />
     <ClInclude Include="GameData\GameTimer.h" />
     <ClInclude Include="GameData\SaveDataManager.h" />
