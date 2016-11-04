@@ -78,6 +78,7 @@
     <ClCompile Include="GameData\GameTimer.cpp" />
     <ClCompile Include="GameData\SaveDataManager.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="Ocene.cpp" />
     <ClCompile Include="Scene\EndRollScene.cpp" />
     <ClCompile Include="Scene\GameScene.cpp" />
     <ClCompile Include="Scene\LogoScene.cpp" />
@@ -85,12 +86,14 @@
     <ClCompile Include="Scene\SceneFactory.cpp" />
     <ClCompile Include="Scene\SceneManager.cpp" />
     <ClCompile Include="Scene\TitleScene.cpp" />
+    <ClCompile Include="Sky.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Field\FieldManager.h" />
     <ClInclude Include="GameData\GameDataManager.h" />
     <ClInclude Include="GameData\GameTimer.h" />
     <ClInclude Include="GameData\SaveDataManager.h" />
+    <ClInclude Include="Ocene.h" />
     <ClInclude Include="Scene\EndRollScene.h" />
     <ClInclude Include="Scene\GameScene.h" />
     <ClInclude Include="Scene\LogoScene.h" />
@@ -98,6 +101,7 @@
     <ClInclude Include="Scene\SceneFactory.h" />
     <ClInclude Include="Scene\SceneManager.h" />
     <ClInclude Include="Scene\TitleScene.h" />
+    <ClInclude Include="Sky.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

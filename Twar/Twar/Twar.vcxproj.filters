@@ -11,11 +11,11 @@
     <Filter Include="Twar\Scene">
       <UniqueIdentifier>{be9005e2-a12c-4e6e-9a40-fae35b910412}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Twar\GameData">
-      <UniqueIdentifier>{76d75aae-00f2-40ba-9445-9b61c24ecc5f}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Twar\Field">
       <UniqueIdentifier>{030eac73-f8b9-4a25-897c-b49e587da5a4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Twar\GameData">
+      <UniqueIdentifier>{76d75aae-00f2-40ba-9445-9b61c24ecc5f}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -55,6 +55,12 @@
     <ClCompile Include="Field\FieldManager.cpp">
       <Filter>Twar\Field</Filter>
     </ClCompile>
+    <ClCompile Include="Ocene.cpp">
+      <Filter>Twar\Field</Filter>
+    </ClCompile>
+    <ClCompile Include="Sky.cpp">
+      <Filter>Twar\Field</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Scene\SceneManager.h">
@@ -88,6 +94,12 @@
       <Filter>Twar\GameData</Filter>
     </ClInclude>
     <ClInclude Include="Field\FieldManager.h">
+      <Filter>Twar\Field</Filter>
+    </ClInclude>
+    <ClInclude Include="Ocene.h">
+      <Filter>Twar\Field</Filter>
+    </ClInclude>
+    <ClInclude Include="Sky.h">
       <Filter>Twar\Field</Filter>
     </ClInclude>
   </ItemGroup>
