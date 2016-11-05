@@ -74,11 +74,12 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Field\FieldManager.cpp" />
+    <ClCompile Include="Field\Ocene.cpp" />
+    <ClCompile Include="Field\Sky.cpp" />
     <ClCompile Include="GameData\GameDataManager.cpp" />
     <ClCompile Include="GameData\GameTimer.cpp" />
     <ClCompile Include="GameData\SaveDataManager.cpp" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="Ocene.cpp" />
     <ClCompile Include="Scene\EndRollScene.cpp" />
     <ClCompile Include="Scene\GameScene.cpp" />
     <ClCompile Include="Scene\LogoScene.cpp" />
@@ -86,7 +87,6 @@
     <ClCompile Include="Scene\SceneFactory.cpp" />
     <ClCompile Include="Scene\SceneManager.cpp" />
     <ClCompile Include="Scene\TitleScene.cpp" />
-    <ClCompile Include="Sky.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Field\FieldManager.h" />

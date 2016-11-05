@@ -55,10 +55,10 @@
     <ClCompile Include="Field\FieldManager.cpp">
       <Filter>Twar\Field</Filter>
     </ClCompile>
-    <ClCompile Include="Ocene.cpp">
+    <ClCompile Include="Field\Ocene.cpp">
       <Filter>Twar\Field</Filter>
     </ClCompile>
-    <ClCompile Include="Sky.cpp">
+    <ClCompile Include="Field\Sky.cpp">
       <Filter>Twar\Field</Filter>
     </ClCompile>
   </ItemGroup>
