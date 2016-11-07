@@ -1,11 +1,19 @@
-﻿#include"Sky.h"
+﻿/**
+* @file  Sky.cpp
+* @brief Skyクラス実装
+* @author Matsuda
+*/
+#include"Sky.h"
+#include"GameLib/GameLib.h"
+#include"GameLib/Lib/GraphicsDevice.h"
+#include"GameLib/Lib/XFile.h"
 
-Sky::Sky():
-m_pD3Device(GraphicsDevice::GetInstance().GetDevice()),
-m_Pos(),
-m_Scale()
+Sky::Sky()
+	:m_pD3Device(GraphicsDevice::GetInstance().GetDevice())
+	,m_Pos()
+	,m_Scale()
 {
-	m_xFile.LoadXFile(TEXT("Sky.x"));
+	m_xFile->LoadXFile(TEXT("Sky.x"));
 }
 
 Sky::~Sky()
@@ -29,5 +37,5 @@ void Sky::Draw()
 	D3DXMatrixMultiply(&matWorld, &matWorld, &matScale);
 	D3DXMatrixMultiply(&matWorld, &matWorld, &matPos);
 	m_pD3Device->SetTransform(D3DTS_WORLD, &matWorld);
-	m_xFile.DrawX();
+	m_xFile->DrawX();
 }

@@ -74,7 +74,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Field\FieldManager.cpp" />
-    <ClCompile Include="Field\Ocene.cpp" />
+    <ClCompile Include="Field\Ocean.cpp" />
     <ClCompile Include="Field\Sky.cpp" />
     <ClCompile Include="GameData\GameDataManager.cpp" />
     <ClCompile Include="GameData\GameTimer.cpp" />
@@ -90,7 +90,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Field\FieldManager.h" />
-    <ClInclude Include="Field\Ocene.h" />
+    <ClInclude Include="Field\Ocean.h" />
     <ClInclude Include="Field\Sky.h" />
     <ClInclude Include="GameData\GameDataManager.h" />
     <ClInclude Include="GameData\GameTimer.h" />

@@ -1,21 +1,16 @@
 ﻿/**
 * @file  FieldManager.h
-* @brief フィールドを管理するFieldManagerのh
+* @brief FieldManagerクラス実装
 * @author Matsuda
 */
-
 #ifndef FIELDMANAGER_H
 #define FIELDMANAGER_H
 
-#include"Ocene.h"
+#include"Ocean.h"
 #include"Sky.h"
 
 class FieldManager
 {
-private:
-	Ocene*   m_Ocene;
-	Sky*     m_Sky;
-
 public:
 	/**コンストラクタ*/
 	FieldManager();
@@ -28,5 +23,10 @@ public:
 
 	/**描画関数*/
 	void Draw();
+
+private:
+	Ocean*   m_Ocean;
+	Sky*     m_Sky;
 };
-#endif
+#endif//FIELDMANAGER_H
+

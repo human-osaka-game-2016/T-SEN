@@ -1,34 +1,37 @@
 ﻿/**
-* @file  Ocene.h
-* @brief 海のh
+* @file  Ocean.h
+* @brief Oceanクラス実装
 * @author Matsuda
 */
-#ifndef OCENE_H
-#define OCENE_H
+#ifndef OCEAN_H
+#define OCEAN_H
 
 #include <d3dx9.h>
-#include "GameLib/Lib/XFile.h"
-#include "GameLib/Lib/GraphicsDevice.h"
 
-class Ocene
+class GameLib;
+class XFile;
+
+class Ocean
 {
-private:
-	IDirect3DDevice9* m_pD3Device;
-	XFile			  m_xFile;
-	D3DXVECTOR3       m_Pos;
-	float             m_Scale;
 public:
 	/**コンストラクタ*/
-	Ocene();
+	Ocean();
 
 	/**デストラクタ*/
-	~Ocene();
+	~Ocean();
 
 	/**コントロール関数*/
 	void Control();
 
 	/**描画関数*/
 	void Draw();
+
+private:
+	IDirect3DDevice9* m_pD3Device;
+	GameLib*          m_pGameLib;
+	XFile*			  m_xFile;
+	D3DXVECTOR3       m_Pos;
+	float             m_Scale;
 };
 
-#endif
+#endif//OCEANE_H

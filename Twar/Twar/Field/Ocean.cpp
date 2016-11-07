@@ -1,24 +1,33 @@
-﻿#include"Ocene.h"
+﻿/**
+* @file  Ocean.cpp
+* @brief Oceanクラス実装
+* @author Matsuda
+*/
+#include"Ocean.h"
+#include"GameLib/GameLib.h"
+#include"GameLib/Lib/GraphicsDevice.h"
+#include"GameLib/Lib/XFile.h"
 
-Ocene::Ocene():
-m_pD3Device(GraphicsDevice::GetInstance().GetDevice()),
-m_Pos(),
-m_Scale()
+
+Ocean::Ocean()
+	:m_pD3Device(GraphicsDevice::GetInstance().GetDevice())
+	,m_Pos()
+	,m_Scale()
 {
-	m_xFile.LoadXFile(TEXT("sea.x"));
+	m_xFile->LoadXFile(TEXT("sea.x"));
 }
 
-Ocene::~Ocene()
+Ocean::~Ocean()
 {
 
 }
 
-void Ocene::Control()
+void Ocean::Control()
 {
 
 }
 
-void Ocene::Draw()
+void Ocean::Draw()
 {
 	D3DXMATRIX      matWorld;						// ワールド座標
 	D3DXMATRIX		matPos;							// 移動用行列
@@ -29,5 +38,5 @@ void Ocene::Draw()
 	D3DXMatrixMultiply(&matWorld, &matWorld, &matScale);
 	D3DXMatrixMultiply(&matWorld, &matWorld, &matPos);
 	m_pD3Device->SetTransform(D3DTS_WORLD, &matWorld);
-	m_xFile.DrawX();
+	m_xFile->DrawX();
 }
