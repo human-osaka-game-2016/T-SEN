@@ -17,9 +17,6 @@
     <Filter Include="Twar\GameData">
       <UniqueIdentifier>{76d75aae-00f2-40ba-9445-9b61c24ecc5f}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Effect">
-      <UniqueIdentifier>{f39cc5ed-d58b-404a-a8ec-bd4542692986}</UniqueIdentifier>
-    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -58,10 +55,10 @@
     <ClCompile Include="Field\FieldManager.cpp">
       <Filter>Twar\Field</Filter>
     </ClCompile>
-    <ClCompile Include="Field\Sky.cpp">
+    <ClCompile Include="Field\Ocean.cpp">
       <Filter>Twar\Field</Filter>
     </ClCompile>
-    <ClCompile Include="Field\Ocean.cpp">
+    <ClCompile Include="Field\Sky.cpp">
       <Filter>Twar\Field</Filter>
     </ClCompile>
   </ItemGroup>
@@ -102,22 +99,8 @@
     <ClInclude Include="Field\Sky.h">
       <Filter>Twar\Field</Filter>
     </ClInclude>
-    <ClInclude Include="resource.h" />
     <ClInclude Include="Field\Ocean.h">
       <Filter>Twar\Field</Filter>
     </ClInclude>
-  </ItemGroup>
-  <ItemGroup>
-    <ResourceCompile Include="Twar.rc">
-      <Filter>リソース ファイル</Filter>
-    </ResourceCompile>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="html1.htm" />
-  </ItemGroup>
-  <ItemGroup>
-    <FxCompile Include="Ocene.fx">
-      <Filter>Effect</Filter>
-    </FxCompile>
   </ItemGroup>
 </Project>

@@ -6,9 +6,9 @@
 #include "FieldManager.h"
 
 FieldManager::FieldManager()
+	:m_Ocean(new Ocean())
+	, m_Sky(new Sky())
 {
-	m_Ocean = new Ocean();
-	m_Sky = new Sky();
 }
 
 FieldManager::~FieldManager()

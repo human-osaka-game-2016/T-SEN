@@ -113,7 +113,7 @@ public:
 	* 残すべきか悩んだが、デバイスを取得して方法を残した方がいいという意見が多数だったので残しておく@haga
 	* @return デバイスのポインタ
 	*/
-	const IDirect3DDevice9* GetDevice();					
+	IDirect3DDevice9* GetDevice();					
 
 	/**
 	* 描画開始処理関数.

@@ -27,10 +27,10 @@ public:
 	void Draw();
 
 private:
-	IDirect3DDevice9* m_pD3Device;
 	GameLib*          m_pGameLib;
 	XFile*			  m_xFile;
 	D3DXVECTOR3       m_Pos;
 	float             m_Scale;
 };
 #endif//SKY_H
+
