@@ -1,4 +1,9 @@
-﻿#ifndef SKY_H
+﻿/**
+* @file  Sky.h
+* @brief 空のh
+* @author Matsuda
+*/
+#ifndef SKY_H
 #define SKY_H
 
 #include <d3dx9.h>
@@ -13,9 +18,16 @@ private:
 	D3DXVECTOR3       m_Pos;
 	float             m_Scale;
 public:
+	/**コンストラクタ*/
 	Sky();
+
+	/**デストラクタ*/
 	~Sky();
+
+	/**コントロール関数*/
 	void Control();
+
+	/**描画関数*/
 	void Draw();
 };
 #endif

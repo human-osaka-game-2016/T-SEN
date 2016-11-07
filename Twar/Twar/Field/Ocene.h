@@ -1,4 +1,9 @@
-﻿#ifndef OCENE_H
+﻿/**
+* @file  Ocene.h
+* @brief 海のh
+* @author Matsuda
+*/
+#ifndef OCENE_H
 #define OCENE_H
 
 #include <d3dx9.h>
@@ -13,9 +18,16 @@ private:
 	D3DXVECTOR3       m_Pos;
 	float             m_Scale;
 public:
+	/**コンストラクタ*/
 	Ocene();
+
+	/**デストラクタ*/
 	~Ocene();
+
+	/**コントロール関数*/
 	void Control();
+
+	/**描画関数*/
 	void Draw();
 };
 

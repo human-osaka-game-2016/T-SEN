@@ -90,10 +90,12 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Field\FieldManager.h" />
+    <ClInclude Include="Field\Ocene.h" />
+    <ClInclude Include="Field\Sky.h" />
     <ClInclude Include="GameData\GameDataManager.h" />
     <ClInclude Include="GameData\GameTimer.h" />
     <ClInclude Include="GameData\SaveDataManager.h" />
-    <ClInclude Include="Ocene.h" />
+    <ClInclude Include="resource.h" />
     <ClInclude Include="Scene\EndRollScene.h" />
     <ClInclude Include="Scene\GameScene.h" />
     <ClInclude Include="Scene\LogoScene.h" />
@@ -101,7 +103,19 @@
     <ClInclude Include="Scene\SceneFactory.h" />
     <ClInclude Include="Scene\SceneManager.h" />
     <ClInclude Include="Scene\TitleScene.h" />
-    <ClInclude Include="Sky.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="Twar.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="html1.htm">
+      <DeploymentContent>true</DeploymentContent>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <FxCompile Include="Ocene.fx">
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Effect</ShaderType>
+    </FxCompile>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
