@@ -14,11 +14,11 @@
     <Filter Include="Twar\GameData">
       <UniqueIdentifier>{76d75aae-00f2-40ba-9445-9b61c24ecc5f}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Twar\SubScene">
+      <UniqueIdentifier>{2c125ec9-6ad2-42cd-8f85-48b3079c6c82}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="main.cpp">
-      <Filter>Twar</Filter>
-    </ClCompile>
     <ClCompile Include="Scene\SceneManager.cpp">
       <Filter>Twar\Scene</Filter>
     </ClCompile>
@@ -48,6 +48,36 @@
     </ClCompile>
     <ClCompile Include="GameData\GameTimer.cpp">
       <Filter>Twar\GameData</Filter>
+    </ClCompile>
+    <ClCompile Include="SubScene\SubScene.cpp">
+      <Filter>Twar\SubScene</Filter>
+    </ClCompile>
+    <ClCompile Include="main.cpp">
+      <Filter>Twar</Filter>
+    </ClCompile>
+    <ClCompile Include="SubScene\Opening.cpp">
+      <Filter>Twar\SubScene</Filter>
+    </ClCompile>
+    <ClCompile Include="SubScene\Home.cpp">
+      <Filter>Twar\SubScene</Filter>
+    </ClCompile>
+    <ClCompile Include="SubScene\Shipyard.cpp">
+      <Filter>Twar\SubScene</Filter>
+    </ClCompile>
+    <ClCompile Include="SubScene\Formation.cpp">
+      <Filter>Twar\SubScene</Filter>
+    </ClCompile>
+    <ClCompile Include="SubScene\Battle.cpp">
+      <Filter>Twar\SubScene</Filter>
+    </ClCompile>
+    <ClCompile Include="SubScene\BattleResult.cpp">
+      <Filter>Twar\SubScene</Filter>
+    </ClCompile>
+    <ClCompile Include="SubScene\Ending.cpp">
+      <Filter>Twar\SubScene</Filter>
+    </ClCompile>
+    <ClCompile Include="SubScene\WorldSituation.cpp">
+      <Filter>Twar\SubScene</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -80,6 +110,33 @@
     </ClInclude>
     <ClInclude Include="GameData\GameTimer.h">
       <Filter>Twar\GameData</Filter>
+    </ClInclude>
+    <ClInclude Include="SubScene\SubScene.h">
+      <Filter>Twar\SubScene</Filter>
+    </ClInclude>
+    <ClInclude Include="SubScene\Opening.h">
+      <Filter>Twar\SubScene</Filter>
+    </ClInclude>
+    <ClInclude Include="SubScene\Home.h">
+      <Filter>Twar\SubScene</Filter>
+    </ClInclude>
+    <ClInclude Include="SubScene\Shipyard.h">
+      <Filter>Twar\SubScene</Filter>
+    </ClInclude>
+    <ClInclude Include="SubScene\Formation.h">
+      <Filter>Twar\SubScene</Filter>
+    </ClInclude>
+    <ClInclude Include="SubScene\Battle.h">
+      <Filter>Twar\SubScene</Filter>
+    </ClInclude>
+    <ClInclude Include="SubScene\BattleResult.h">
+      <Filter>Twar\SubScene</Filter>
+    </ClInclude>
+    <ClInclude Include="SubScene\Ending.h">
+      <Filter>Twar\SubScene</Filter>
+    </ClInclude>
+    <ClInclude Include="SubScene\WorldSituation.h">
+      <Filter>Twar\SubScene</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
