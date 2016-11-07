@@ -12,7 +12,8 @@ FieldManager::~FieldManager()
 
 void FieldManager::Control()
 {
-
+	m_Ocene->Control();
+	m_Sky->Control();
 }
 
 void FieldManager::Draw()
