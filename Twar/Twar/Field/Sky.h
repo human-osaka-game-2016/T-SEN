@@ -1,6 +1,6 @@
 ﻿/**
 * @file  Sky.h
-* @brief Skyクラスの実装
+* @brief Skyクラスのヘッダー
 * @author Matsuda
 */
 #ifndef SKY_H
@@ -10,6 +10,10 @@
 
 class GameLib;
 class XFile;
+
+/**
+*Skyクラス
+*/
 
 class Sky
 {

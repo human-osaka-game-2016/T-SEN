@@ -1,6 +1,6 @@
 ﻿/**
 * @file  Ocean.h
-* @brief Oceanクラス実装
+* @brief Oceanクラスのヘッダー
 * @author Matsuda
 */
 #ifndef OCEAN_H
@@ -10,6 +10,10 @@
 
 class GameLib;
 class XFile;
+
+/**
+*Oceanクラス
+*/
 
 class Ocean
 {

@@ -1,6 +1,6 @@
 ﻿/**
 * @file  FieldManager.h
-* @brief FieldManagerクラス実装
+* @brief FieldManagerクラスのヘッダー
 * @author Matsuda
 */
 #ifndef FIELDMANAGER_H
@@ -8,6 +8,10 @@
 
 #include"Ocean.h"
 #include"Sky.h"
+
+/**
+*FieldManagerクラス
+*/
 
 class FieldManager
 {
