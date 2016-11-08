@@ -11,7 +11,7 @@
     <Filter Include="Twar\Scene">
       <UniqueIdentifier>{be9005e2-a12c-4e6e-9a40-fae35b910412}</UniqueIdentifier>
     </Filter>
-<Filter Include="Twar\Field">
+    <Filter Include="Twar\Field">
       <UniqueIdentifier>{030eac73-f8b9-4a25-897c-b49e587da5a4}</UniqueIdentifier>
     </Filter>
     <Filter Include="Twar\GameData">
@@ -22,9 +22,6 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="main.cpp">
-      <Filter>Twar</Filter>
-    </ClCompile>
     <ClCompile Include="Scene\SceneManager.cpp">
       <Filter>Twar\Scene</Filter>
     </ClCompile>
@@ -55,15 +52,7 @@
     <ClCompile Include="GameData\GameTimer.cpp">
       <Filter>Twar\GameData</Filter>
     </ClCompile>
-    <ClCompile Include="Field\FieldManager.cpp">
-      <Filter>Twar\Field</Filter>
-    </ClCompile>
-    <ClCompile Include="Field\Ocean.cpp">
-      <Filter>Twar\Field</Filter>
-    </ClCompile>
-    <ClCompile Include="Field\Sky.cpp">
-      <Filter>Twar\Field</Filter>
-    </ClCompile>
+<<<<<<< HEAD
     <ClCompile Include="SubScene\SubScene.cpp">
       <Filter>Twar\SubScene</Filter>
     </ClCompile>
@@ -93,6 +82,16 @@
     </ClCompile>
     <ClCompile Include="SubScene\WorldSituation.cpp">
       <Filter>Twar\SubScene</Filter>
+=======
+    <ClCompile Include="Field\FieldManager.cpp">
+      <Filter>Twar\Field</Filter>
+    </ClCompile>
+    <ClCompile Include="Field\Ocean.cpp">
+      <Filter>Twar\Field</Filter>
+    </ClCompile>
+    <ClCompile Include="Field\Sky.cpp">
+      <Filter>Twar\Field</Filter>
+>>>>>>> FieldManager
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -125,16 +124,8 @@
     </ClInclude>
     <ClInclude Include="GameData\GameTimer.h">
       <Filter>Twar\GameData</Filter>
-       </ClInclude>
-    <ClInclude Include="Field\FieldManager.h">
-      <Filter>Twar\Field</Filter>
     </ClInclude>
-    <ClInclude Include="Field\Sky.h">
-      <Filter>Twar\Field</Filter>
-    </ClInclude>
-    <ClInclude Include="Field\Ocean.h">
-      <Filter>Twar\Field</Filter>
-    </ClInclude>
+<<<<<<< HEAD
     <ClInclude Include="SubScene\SubScene.h">
       <Filter>Twar\SubScene</Filter>
     </ClInclude>
@@ -161,6 +152,16 @@
     </ClInclude>
     <ClInclude Include="SubScene\WorldSituation.h">
       <Filter>Twar\SubScene</Filter>
+=======
+    <ClInclude Include="Field\FieldManager.h">
+      <Filter>Twar\Field</Filter>
+    </ClInclude>
+    <ClInclude Include="Field\Sky.h">
+      <Filter>Twar\Field</Filter>
+    </ClInclude>
+    <ClInclude Include="Field\Ocean.h">
+      <Filter>Twar\Field</Filter>
+>>>>>>> FieldManager
     </ClInclude>
   </ItemGroup>
 </Project>
