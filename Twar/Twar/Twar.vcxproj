@@ -94,6 +94,7 @@
     <ClCompile Include="SubScene\Opening.cpp" />
     <ClCompile Include="SubScene\BattleResult.cpp" />
     <ClCompile Include="SubScene\Shipyard.cpp" />
+    <ClCompile Include="SubScene\SubSceneFactory.cpp" />
     <ClCompile Include="SubScene\WorldSituation.cpp" />
     <ClCompile Include="SubScene\SubScene.cpp" />
   </ItemGroup>
@@ -118,6 +119,7 @@
     <ClInclude Include="SubScene\Opening.h" />
     <ClInclude Include="SubScene\BattleResult.h" />
     <ClInclude Include="SubScene\Shipyard.h" />
+    <ClInclude Include="SubScene\SubSceneFactory.h" />
     <ClInclude Include="SubScene\WorldSituation.h" />
     <ClInclude Include="SubScene\SubScene.h" />
   </ItemGroup>

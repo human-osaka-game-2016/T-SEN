@@ -11,7 +11,7 @@
     <Filter Include="Twar\Scene">
       <UniqueIdentifier>{be9005e2-a12c-4e6e-9a40-fae35b910412}</UniqueIdentifier>
     </Filter>
-<Filter Include="Twar\Field">
+    <Filter Include="Twar\Field">
       <UniqueIdentifier>{030eac73-f8b9-4a25-897c-b49e587da5a4}</UniqueIdentifier>
     </Filter>
     <Filter Include="Twar\GameData">
@@ -94,6 +94,9 @@
     <ClCompile Include="SubScene\WorldSituation.cpp">
       <Filter>Twar\SubScene</Filter>
     </ClCompile>
+    <ClCompile Include="SubScene\SubSceneFactory.cpp">
+      <Filter>Twar\SubScene</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Scene\SceneManager.h">
@@ -125,7 +128,7 @@
     </ClInclude>
     <ClInclude Include="GameData\GameTimer.h">
       <Filter>Twar\GameData</Filter>
-       </ClInclude>
+    </ClInclude>
     <ClInclude Include="Field\FieldManager.h">
       <Filter>Twar\Field</Filter>
     </ClInclude>
@@ -160,6 +163,9 @@
       <Filter>Twar\SubScene</Filter>
     </ClInclude>
     <ClInclude Include="SubScene\WorldSituation.h">
+      <Filter>Twar\SubScene</Filter>
+    </ClInclude>
+    <ClInclude Include="SubScene\SubSceneFactory.h">
       <Filter>Twar\SubScene</Filter>
     </ClInclude>
   </ItemGroup>
