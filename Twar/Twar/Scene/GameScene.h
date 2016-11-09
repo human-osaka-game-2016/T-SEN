@@ -1,6 +1,6 @@
 ﻿/**
 * @file GameScene.h
-* @brief ゲームシーンのh
+* @brief GameSceneクラスヘッダ
 * @author haga
 */
 #ifndef GAME_SCENE_H
@@ -10,12 +10,15 @@
 #include "../SubScene/SubScene.h"
 
 class SaveDataManager;
+class GameDataManager;
+class GameTimer;
+
 class GameScene :public Scene
 {
 public:
 	/**
 	* コンストラクタ
-	* @param[in] pSaveDataManager	セーブデータを管理するクラスのポインタ
+	* @param[in] pSaveDataManager	SaveDataManagerクラスのインスタンスへのポインタ
 	*/
 	explicit GameScene(SaveDataManager* pSaveDataManager);
 
@@ -29,7 +32,20 @@ public:
 	virtual void Draw();
 
 private:
-	SaveDataManager*  m_pSaveDataManager;	//!< セーブデータ管理クラス
+	/**SubSceneの処理ステップ*/
+	enum STEP_SUBSCENE
+	{
+		CREATE_SUBSCENE,		//!< SubScene生成
+		RUN_SUBSCENE,			//!< SubScene実行
+		DELETE_SUBSCENE			//!< SubScene破棄
+	};
+	SaveDataManager*	    m_pSaveDataManager;		//!< SaveDataManagerクラスのインスタンスへのポインタ
+	GameDataManager*        m_pGameDataManager;		//!< GameDataManagerクラスのポインタ
+	GameTimer*			    m_pGameTimer;			//!< GameTimerクラスのポインタ
+	sub_scene::SubScene*    m_pSubScene;			//!< SubSceneクラスのポインタ
+	STEP_SUBSCENE			m_step;					//!< SubSceneクラスの処理ステップ
+	sub_scene::SUBSCENE_ID	m_currentSubSceneID;	//!< 現在のSubSceneのIDを格納する変数
+	sub_scene::SUBSCENE_ID	m_nextSubSceneID;		//!< 次のSubSceneのIDを格納する変数
 };
 
 
