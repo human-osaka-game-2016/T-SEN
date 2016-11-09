@@ -16,9 +16,9 @@ GameScene::GameScene(SaveDataManager* pSaveDataManager)
 	, m_pGameDataManager(new GameDataManager())
 	, m_pGameTimer(new GameTimer())
 	, m_pSubScene(nullptr)
-	, m_step(CREATE_SUBSCENE)
-	, m_currentSubSceneID(sub_scene::OPENING)
-	, m_nextSubSceneID(sub_scene::OPENING)
+	, m_Step(CREATE_SUBSCENE)
+	, m_CurrentSubSceneID(sub_scene::OPENING)
+	, m_NextSubSceneID(sub_scene::OPENING)
 {
 }
 
@@ -39,25 +39,26 @@ SCENE_ID GameScene::Control()
 {
 	if (m_pSubScene == nullptr)
 	{
-		m_currentSubSceneID = m_nextSubSceneID;
+		m_CurrentSubSceneID = m_NextSubSceneID;
 
-		if (m_currentSubSceneID == sub_scene::GAME_CLEAR)		// ゲームクリアならエンドロールシーンへ移行
+		if (m_CurrentSubSceneID == sub_scene::GAME_CLEAR)		// ゲームクリアならエンドロールシーンへ移行
 		{
 			return ENDROLL_SCENE;
 		}
-		else if (m_currentSubSceneID == sub_scene::GAME_OVER)	// ゲームオーバーならタイトルシーンへ移行
+		else if (m_CurrentSubSceneID == sub_scene::GAME_OVER,
+			m_CurrentSubSceneID == sub_scene::GAME_END)		// ゲームオーバーもしくはゲーム終了したらタイトルシーンへ移行
 		{
 			return TITLE_SCENE;
 		}
 	}
 
-	switch (m_step)
+	switch (m_Step)
 	{
 	case CREATE_SUBSCENE:
 		if (m_pSubScene == nullptr)
 		{
-			m_pSubScene = sub_scene::SubSceneFactory::GetInstance().CreateSubScene(m_currentSubSceneID);
-			m_step = RUN_SUBSCENE;
+			m_pSubScene = sub_scene::SubSceneFactory::GetInstance().CreateSubScene(m_CurrentSubSceneID);
+			m_Step = RUN_SUBSCENE;
 		}
 		break;
 
@@ -65,9 +66,9 @@ SCENE_ID GameScene::Control()
 
 		if (m_pSubScene != nullptr)
 		{
-			if ((m_nextSubSceneID = m_pSubScene->Control()) != m_currentSubSceneID)
+			if ((m_NextSubSceneID = m_pSubScene->Control()) != m_CurrentSubSceneID)
 			{
-				m_step = DELETE_SUBSCENE;
+				m_Step = DELETE_SUBSCENE;
 			}
 		}
 
@@ -78,7 +79,7 @@ SCENE_ID GameScene::Control()
 		{
 			delete m_pSubScene;
 			m_pSubScene = nullptr;
-			m_step = CREATE_SUBSCENE;
+			m_Step = CREATE_SUBSCENE;
 		}
 		break;
 	}
@@ -89,7 +90,7 @@ SCENE_ID GameScene::Control()
 // 描画関数
 void GameScene::Draw()
 {
-	if (m_pSubScene != nullptr && m_step == RUN_SUBSCENE)
+	if (m_pSubScene != nullptr && m_Step == RUN_SUBSCENE)
 	{
 		m_pSubScene->Draw();
 	}

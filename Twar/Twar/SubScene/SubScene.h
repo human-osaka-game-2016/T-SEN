@@ -26,6 +26,7 @@ enum SUBSCENE_ID
 	ENDING,				//!< エンディングシーン
 	GAME_CLEAR,			//!< ゲームクリア
 	GAME_OVER,			//!< ゲームオーバー
+	GAME_END,			//!< ゲーム終了
 };
 
 /**

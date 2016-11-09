@@ -43,9 +43,9 @@ private:
 	GameDataManager*        m_pGameDataManager;		//!< GameDataManagerクラスのポインタ
 	GameTimer*			    m_pGameTimer;			//!< GameTimerクラスのポインタ
 	sub_scene::SubScene*    m_pSubScene;			//!< SubSceneクラスのポインタ
-	STEP_SUBSCENE			m_step;					//!< SubSceneクラスの処理ステップ
-	sub_scene::SUBSCENE_ID	m_currentSubSceneID;	//!< 現在のSubSceneのIDを格納する変数
-	sub_scene::SUBSCENE_ID	m_nextSubSceneID;		//!< 次のSubSceneのIDを格納する変数
+	STEP_SUBSCENE			m_Step;					//!< SubSceneクラスの処理ステップ
+	sub_scene::SUBSCENE_ID	m_CurrentSubSceneID;	//!< 現在のSubSceneのIDを格納する変数
+	sub_scene::SUBSCENE_ID	m_NextSubSceneID;		//!< 次のSubSceneのIDを格納する変数
 };
 
 
