@@ -7,6 +7,7 @@
 #define GAME_SCENE_H
 
 #include "Scene.h"
+#include "../SubScene/SubScene.h"
 
 class SaveDataManager;
 class GameScene :public Scene
