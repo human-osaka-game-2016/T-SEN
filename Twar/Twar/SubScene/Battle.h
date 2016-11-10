@@ -11,6 +11,7 @@
 class Light;
 class FieldManager;
 class CameraController;
+class TestThread;
 
 namespace sub_scene
 {
@@ -41,6 +42,7 @@ private:
 	Light*                  m_pLight;					//!< ライト
 	FieldManager*           m_pFieldManager;
 	CameraController*       m_pCameraController;
+	TestThread*				m_thread;
 };
 
 }

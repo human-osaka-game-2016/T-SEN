@@ -201,6 +201,11 @@ void GameLib::DrawXFile(int key)
 	m_pXFileManager->Draw(key);
 }
 
+LPDIRECT3DTEXTURE9  GameLib::GetTex(int key)
+{
+	return m_pTextureManager->GetTex(key);
+}
+
 void GameLib::ReleaseXFile(bool AllFlag, int key)
 {
 	if (AllFlag)			// すべて破棄するなら

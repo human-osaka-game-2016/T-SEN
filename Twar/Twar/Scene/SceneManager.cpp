@@ -13,7 +13,7 @@ m_pGameLib(&GameLib::GetInstance()),
 m_pSaveDataManager(new SaveDataManager()),
 m_pScene(nullptr),
 m_currentSceneID(GAME_SCENE),
-m_nextSceneID(GAME_SCENE),
+m_nextSceneID(TITLE_SCENE),
 m_step(SCENE_CREATE),
 m_gameEnd(false)
 {
@@ -82,6 +82,7 @@ void SceneManager::Control()
 		if (m_pScene != nullptr)
 		{
 			delete m_pScene;
+			m_pScene = nullptr;
 			m_step = SCENE_CREATE;
 		}
 		break;

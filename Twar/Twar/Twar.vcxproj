@@ -98,6 +98,7 @@
     <ClCompile Include="SubScene\SubSceneFactory.cpp" />
     <ClCompile Include="SubScene\WorldSituation.cpp" />
     <ClCompile Include="SubScene\SubScene.cpp" />
+    <ClCompile Include="Thread\TestThread.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CameraController\CameraController.h" />
@@ -124,6 +125,7 @@
     <ClInclude Include="SubScene\SubSceneFactory.h" />
     <ClInclude Include="SubScene\WorldSituation.h" />
     <ClInclude Include="SubScene\SubScene.h" />
+    <ClInclude Include="Thread\TestThread.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -193,6 +193,9 @@ public:
 	*/
 	void DrawXZ(int texKey, int vtxKey, bool center, float posX, float posY, float posZ);
 
+	/**テクスチャー取得関数*/
+	LPDIRECT3DTEXTURE9 GetTex(int key);
+
 	/**
 	* テクスチャーを解放する関数
 	* @param[in] AllFlag  全て解放するならture,特定のテクスチャーだけを解放するならfalseで第二引数を指定する
