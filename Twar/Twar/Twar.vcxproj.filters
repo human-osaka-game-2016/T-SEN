@@ -26,6 +26,9 @@
     <Filter Include="Twar\Thread">
       <UniqueIdentifier>{42c7f2a8-8b89-4e83-adb4-17dc94be49f1}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Twar\Ship">
+      <UniqueIdentifier>{ba84fad3-5767-4ed2-bff0-1a6e8740a903}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -109,6 +112,21 @@
     <ClCompile Include="Thread\TestThread.cpp">
       <Filter>Twar\Thread</Filter>
     </ClCompile>
+    <ClCompile Include="Ship\BattleShip.cpp">
+      <Filter>Twar\Ship</Filter>
+    </ClCompile>
+    <ClCompile Include="Ship\Cruiser.cpp">
+      <Filter>Twar\Ship</Filter>
+    </ClCompile>
+    <ClCompile Include="Ship\Destroyer.cpp">
+      <Filter>Twar\Ship</Filter>
+    </ClCompile>
+    <ClCompile Include="Ship\Ship.cpp">
+      <Filter>Twar\Ship</Filter>
+    </ClCompile>
+    <ClCompile Include="Ship\ShipManager.cpp">
+      <Filter>Twar\Ship</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Scene\SceneManager.h">
@@ -185,6 +203,21 @@
     </ClInclude>
     <ClInclude Include="Thread\TestThread.h">
       <Filter>Twar\Thread</Filter>
+    </ClInclude>
+    <ClInclude Include="Ship\BattleShip.h">
+      <Filter>Twar\Ship</Filter>
+    </ClInclude>
+    <ClInclude Include="Ship\Cruiser.h">
+      <Filter>Twar\Ship</Filter>
+    </ClInclude>
+    <ClInclude Include="Ship\Destroyer.h">
+      <Filter>Twar\Ship</Filter>
+    </ClInclude>
+    <ClInclude Include="Ship\Ship.h">
+      <Filter>Twar\Ship</Filter>
+    </ClInclude>
+    <ClInclude Include="Ship\ShipManager.h">
+      <Filter>Twar\Ship</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

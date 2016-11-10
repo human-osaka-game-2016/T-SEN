@@ -7,6 +7,7 @@
 #define BATTLE_H
 
 #include "SubScene.h"
+#include "../Ship/ShipManager.h"
 
 class Light;
 class FieldManager;
@@ -42,7 +43,8 @@ private:
 	Light*                  m_pLight;					//!< ライト
 	FieldManager*           m_pFieldManager;
 	CameraController*       m_pCameraController;
-	TestThread*				m_thread;
+	TestThread*				m_pThread;
+	ShipManager*			m_pShipManager;
 };
 
 }

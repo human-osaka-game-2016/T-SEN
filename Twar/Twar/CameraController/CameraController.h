@@ -45,7 +45,7 @@ public:
 	/**
 	* 座標変換関数
 	*/
-	void TransformView();
+	void TransformView(D3DXVECTOR3 vLookPt);
 
 	/**
 	* ゲッター関数
