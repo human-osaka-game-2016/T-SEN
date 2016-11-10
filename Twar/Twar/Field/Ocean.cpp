@@ -8,10 +8,10 @@
 #include"GameLib/Lib/XFile.h"
 
 Ocean::Ocean()
-	:m_Pos()
-	,m_Scale()
+	:m_Pos(0,-5,0)
+	,m_Scale(100)
 {
-	m_xFile->LoadXFile(TEXT("sea.x"));
+	GameLib::GetInstance().LoadXFile(1,TEXT("../Resouce\\sea.x"));
 }
 
 Ocean::~Ocean()
@@ -26,6 +26,7 @@ void Ocean::Control()
 
 void Ocean::Draw()
 {
+	GameLib::GetInstance().SetFVF(USER_VERTEX_FVF);
 	D3DXMATRIX      matWorld;						// ワールド座標
 	D3DXMATRIX		matPos;							// 移動用行列
 	D3DXMATRIX      matScale;
@@ -35,5 +36,5 @@ void Ocean::Draw()
 	D3DXMatrixMultiply(&matWorld, &matWorld, &matScale);
 	D3DXMatrixMultiply(&matWorld, &matWorld, &matPos);
 	GameLib::GetInstance().GetDevice()->SetTransform(D3DTS_WORLD, &matWorld);
-	m_xFile->DrawX();
+	GameLib::GetInstance().DrawXFile(1);
 }

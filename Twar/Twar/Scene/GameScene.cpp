@@ -17,8 +17,8 @@ GameScene::GameScene(SaveDataManager* pSaveDataManager)
 	, m_pGameTimer(new GameTimer())
 	, m_pSubScene(nullptr)
 	, m_Step(CREATE_SUBSCENE)
-	, m_CurrentSubSceneID(sub_scene::OPENING)
-	, m_NextSubSceneID(sub_scene::OPENING)
+	, m_CurrentSubSceneID(sub_scene::BATTLE)
+	, m_NextSubSceneID(sub_scene::BATTLE)
 {
 }
 

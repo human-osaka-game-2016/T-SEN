@@ -20,6 +20,9 @@
     <Filter Include="Twar\SubScene">
       <UniqueIdentifier>{2c125ec9-6ad2-42cd-8f85-48b3079c6c82}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Twar\CameraController">
+      <UniqueIdentifier>{7aa51ab0-5100-4396-b3d9-08fc7396d37b}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -97,6 +100,9 @@
     <ClCompile Include="SubScene\SubSceneFactory.cpp">
       <Filter>Twar\SubScene</Filter>
     </ClCompile>
+    <ClCompile Include="CameraController\CameraController.cpp">
+      <Filter>Twar\CameraController</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Scene\SceneManager.h">
@@ -167,6 +173,9 @@
     </ClInclude>
     <ClInclude Include="SubScene\SubSceneFactory.h">
       <Filter>Twar\SubScene</Filter>
+    </ClInclude>
+    <ClInclude Include="CameraController\CameraController.h">
+      <Filter>Twar\CameraController</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

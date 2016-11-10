@@ -4,11 +4,15 @@
 * @author Matsuda
 */
 #include "FieldManager.h"
+#include "Ocean.h"
+#include "Sky.h"
 
 FieldManager::FieldManager()
-	:m_Ocean(new Ocean())
-	, m_Sky(new Sky())
+	:m_Ocean(nullptr)
+	, m_Sky(nullptr)
 {
+	m_Ocean = new Ocean();
+	m_Sky = new Sky();
 }
 
 FieldManager::~FieldManager()
@@ -20,11 +24,11 @@ FieldManager::~FieldManager()
 void FieldManager::Control()
 {
 	m_Ocean->Control();
-	m_Sky->Control();
+	//m_Sky->Control();
 }
 
 void FieldManager::Draw()
 {
 	m_Ocean->Draw();
-	m_Sky->Draw();
+	//m_Sky->Draw();
 }

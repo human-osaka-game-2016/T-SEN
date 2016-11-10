@@ -11,6 +11,7 @@
 class SaveDataManager;
 class GameDataManager;
 class GameTimer;
+class FieldManager;
 
 
 namespace sub_scene
@@ -62,7 +63,7 @@ private:
 	SaveDataManager* m_pSaveDataManager;		//!< SaveDataManagerクラスのインスタンスへのポインタ
 	GameDataManager* m_pGameDataManager;		//!< GameDataManagerクラスのインスタンスへのポインタ
 	GameTimer*		 m_pGameTimer;				//!< GameTimerクラスのインスタンスへのポインタ
-
+	FieldManager*    m_pFieldManager;           //!< FieldManagerクラスのインスタンスへのポインタ
 };
 
 }

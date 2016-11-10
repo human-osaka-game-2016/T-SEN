@@ -6,8 +6,8 @@
 #ifndef FIELDMANAGER_H
 #define FIELDMANAGER_H
 
-#include"Ocean.h"
-#include"Sky.h"
+class Ocean;
+class Sky;
 
 /**
 *FieldManagerクラス

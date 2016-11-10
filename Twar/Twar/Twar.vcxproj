@@ -73,6 +73,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="CameraController\CameraController.cpp" />
     <ClCompile Include="Field\FieldManager.cpp" />
     <ClCompile Include="Field\Ocean.cpp" />
     <ClCompile Include="Field\Sky.cpp" />
@@ -99,6 +100,7 @@
     <ClCompile Include="SubScene\SubScene.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="CameraController\CameraController.h" />
     <ClInclude Include="Field\FieldManager.h" />
     <ClInclude Include="Field\Ocean.h" />
     <ClInclude Include="Field\Sky.h" />

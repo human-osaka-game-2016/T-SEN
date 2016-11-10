@@ -10,6 +10,7 @@
 
 class GameLib;
 class XFile;
+class CameraController;
 
 /**
 *Oceanクラス
@@ -33,6 +34,7 @@ public:
 private:
 	GameLib*          m_pGameLib;
 	XFile*			  m_xFile;
+	CameraController*       m_pCameraController;
 	D3DXVECTOR3       m_Pos;
 	float             m_Scale;
 };

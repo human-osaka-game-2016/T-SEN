@@ -65,7 +65,7 @@ SubScene* SubSceneFactory::CreateSubScene(SUBSCENE_ID subSceneID)
 		break;
 
 	case BATTLE:
-		pSubScene = new Battle(m_pGameDataManager, m_pGameTimer);
+		pSubScene = new Battle(m_pGameDataManager,m_pFieldManager, m_pGameTimer);
 		break;
 
 	case BATTLE_RESULT:

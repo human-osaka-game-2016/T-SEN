@@ -8,6 +8,10 @@
 
 #include "SubScene.h"
 
+class Light;
+class FieldManager;
+class CameraController;
+
 namespace sub_scene
 {
 
@@ -22,7 +26,7 @@ public:
 	* @param pGameDataManager GameDataManagerクラスのインスタンスへのポインタ
 	* @param pGameTimer		  GameTimerクラスのインスタンスへのポインタ
 	*/
-	Battle(GameDataManager* pGameDataManager, GameTimer* pGameTimer);
+	Battle(GameDataManager* pGameDataManager, FieldManager* pFieldManager, GameTimer* pGameTimer);
 
 	/**デストラクタ*/
 	virtual ~Battle();
@@ -33,6 +37,10 @@ public:
 	/**描画関数*/
 	virtual void Draw();
 
+private:
+	Light*                  m_pLight;					//!< ライト
+	FieldManager*           m_pFieldManager;
+	CameraController*       m_pCameraController;
 };
 
 }

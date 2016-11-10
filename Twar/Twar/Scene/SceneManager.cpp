@@ -12,8 +12,8 @@ SceneManager::SceneManager():
 m_pGameLib(&GameLib::GetInstance()),
 m_pSaveDataManager(new SaveDataManager()),
 m_pScene(nullptr),
-m_currentSceneID(LOGO_SCENE),
-m_nextSceneID(LOGO_SCENE),
+m_currentSceneID(GAME_SCENE),
+m_nextSceneID(GAME_SCENE),
 m_step(SCENE_CREATE),
 m_gameEnd(false)
 {

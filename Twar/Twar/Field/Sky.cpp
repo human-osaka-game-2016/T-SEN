@@ -8,10 +8,10 @@
 #include"GameLib/Lib/XFile.h"
 
 Sky::Sky()
-	:m_Pos()
-	,m_Scale()
+	:m_Pos(0,0,0)
+	,m_Scale(1000)
 {
-	m_xFile->LoadXFile(TEXT("Sky.x"));
+	//m_xFile->LoadXFile(TEXT("Resource/Sky.x"));
 }
 
 Sky::~Sky()
