@@ -34,14 +34,16 @@ Battle::~Battle()
 
 SUBSCENE_ID Battle::Control()
 {
-	m_pCameraController->Control();
+	
 	m_pFieldManager->Control();
+	m_pCameraController->Control();
 
 	return SUBSCENE_ID::BATTLE;
 }
 
 void sub_scene::Battle::Draw()
 {
+	m_pCameraController->TransformView();
 	m_pFieldManager->Draw();
 }
 

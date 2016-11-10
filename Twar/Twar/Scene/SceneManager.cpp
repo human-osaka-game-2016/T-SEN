@@ -34,6 +34,8 @@ bool SceneManager::Run()
 {
 	m_pGameLib->UpDateDI();
 
+	m_pGameLib->GetDevice()->SetRenderState(D3DRS_LIGHTING, false);
+
 	Control();
 
 	m_pGameLib->StartRender();

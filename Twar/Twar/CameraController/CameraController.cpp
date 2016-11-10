@@ -12,7 +12,7 @@
 CameraController::CameraController():
 m_pCamera(new Camera(GameLib::GetInstance().GetDevice())),
 m_pInputKey(new InputKey()),
-m_vEyePt(0.0f,10.0f,-5.0f),
+m_vEyePt(0.0f,20.0f,-10.0f),
 m_vLookPt(0.0f, 0.0f, 0.0f),
 m_angle(50.f)
 {
@@ -21,51 +21,32 @@ m_angle(50.f)
 // デストラクタ
 CameraController::~CameraController()
 {
+	delete m_pInputKey;
 	delete m_pCamera;
 }
 
 // コントロール関数
 void CameraController::Control()
 {
-	m_pCamera->InitWindowsize(1280.f, 720.f);
-	GameLib::GetInstance().UpDateDI();
-	GameLib::GetInstance().CheckKey(m_pInputKey->m_diks[DIK_W], W);
-	GameLib::GetInstance().CheckKey(m_pInputKey->m_diks[DIK_S], S);
-	GameLib::GetInstance().CheckKey(m_pInputKey->m_diks[DIK_D], D);
-	GameLib::GetInstance().CheckKey(m_pInputKey->m_diks[DIK_A], A);
-	GameLib::GetInstance().CheckKey(m_pInputKey->m_diks[DIK_Z], Z);
-	GameLib::GetInstance().CheckKey(m_pInputKey->m_diks[DIK_X], X);
+	m_pCamera->InitWindowsize(1600.f, 900.f);
 
-	if (m_pInputKey->m_Key[W] == ON)
+	if (GameLib::GetInstance().CheckKey(DIK_W, W) == ON)
 	{
-		m_vEyePt.y += 0.1f;
+		m_vEyePt.y += 0.5f;
 	}
-	if (m_pInputKey->m_Key[S] == ON)
+	if (GameLib::GetInstance().CheckKey(DIK_S, S) == ON)
 	{
-		m_vEyePt.y -= 0.1f;
+		m_vEyePt.y -= 0.5f;
 	}
-	if (m_pInputKey->m_Key[D] == ON)
+	if (GameLib::GetInstance().CheckKey(DIK_D, D) == ON)
 	{
-		m_vEyePt.x += 0.2f;
+		m_vEyePt.x += 0.5f;
 	}
-	if (m_pInputKey->m_Key[A] == ON)
+	if (GameLib::GetInstance().CheckKey(DIK_A, A) == ON)
 	{
-		m_vEyePt.x -= 0.2f;
+		m_vEyePt.x -= 0.5f;
 	}
-	if (m_pInputKey->m_Key[Z] == ON)
-	{
-		if (m_angle <= 90.f)
-		{
-			m_angle += 0.1f;
-		}
-	}
-	if (m_pInputKey->m_Key[X] == ON)
-	{
-		if (m_angle >= 0.f)
-		{
-			m_angle -= 0.1f;
-		}
-	}
+
 
 }
 
