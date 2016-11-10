@@ -12,8 +12,8 @@
 CameraController::CameraController():
 m_pCamera(new Camera(GameLib::GetInstance().GetDevice())),
 m_pInputKey(new InputKey()),
-m_vEyePt(0.0f,20.0f,-10.0f),
-m_vLookPt(0.0f, 0.0f, 0.0f),
+m_vEyePt(0.0f,10.0f,0.0f),
+m_vLookPt(0.0f, 10.0f, -5.0f),
 m_angle(50.f)
 {
 }
@@ -32,19 +32,19 @@ void CameraController::Control()
 
 	if (GameLib::GetInstance().CheckKey(DIK_W, W) == ON)
 	{
-		m_vEyePt.y += 0.5f;
+		m_vEyePt.y -= 0.5f;
 	}
 	if (GameLib::GetInstance().CheckKey(DIK_S, S) == ON)
 	{
-		m_vEyePt.y -= 0.5f;
+		m_vEyePt.y += 0.5f;
 	}
 	if (GameLib::GetInstance().CheckKey(DIK_D, D) == ON)
 	{
-		m_vEyePt.x += 0.5f;
+		m_vEyePt.x -= 0.5f;
 	}
 	if (GameLib::GetInstance().CheckKey(DIK_A, A) == ON)
 	{
-		m_vEyePt.x -= 0.5f;
+		m_vEyePt.x += 0.5f;
 	}
 
 

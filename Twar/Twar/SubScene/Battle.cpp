@@ -14,12 +14,11 @@
 namespace sub_scene
 {
 
-	Battle::Battle(GameDataManager* pGameDataManager,FieldManager* pFieldManager, GameTimer* pGameTimer)
+	Battle::Battle(GameDataManager* pGameDataManager, GameTimer* pGameTimer)
 {
 	m_pLight = new Light(GameLib::GetInstance().GetDevice(), D3DXVECTOR3{ 0, 0, 0 });
 	m_pCameraController = new CameraController();
 	m_pGameDataManager = pGameDataManager;
-	m_pFieldManager = pFieldManager;
 	m_pGameTimer = pGameTimer;
 	m_pFieldManager = new FieldManager();
 }
@@ -29,6 +28,7 @@ Battle::~Battle()
 {
 	delete m_pFieldManager;
 	delete m_pCameraController;
+	delete m_pLight;
 }
 
 

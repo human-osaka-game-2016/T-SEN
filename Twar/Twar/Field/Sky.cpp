@@ -11,7 +11,7 @@ Sky::Sky()
 	:m_Pos(0,0,0)
 	,m_Scale(1000)
 {
-	//m_xFile->LoadXFile(TEXT("Resource/Sky.x"));
+	GameLib::GetInstance().LoadXFile(2, TEXT("../Resouce\\Sky.x"));
 }
 
 Sky::~Sky()
@@ -26,6 +26,7 @@ void Sky::Control()
 
 void Sky::Draw()
 {
+	GameLib::GetInstance().SetFVF(USER_VERTEX_FVF);
 	D3DXMATRIX      matWorld;						// ワールド座標
 	D3DXMATRIX		matPos;							// 移動用行列
 	D3DXMATRIX      matScale;
@@ -35,5 +36,5 @@ void Sky::Draw()
 	D3DXMatrixMultiply(&matWorld, &matWorld, &matScale);
 	D3DXMatrixMultiply(&matWorld, &matWorld, &matPos);
 	GameLib::GetInstance().GetDevice()->SetTransform(D3DTS_WORLD, &matWorld);
-	m_xFile->DrawX();
+	GameLib::GetInstance().DrawXFile(2);
 }

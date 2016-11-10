@@ -24,11 +24,11 @@ FieldManager::~FieldManager()
 void FieldManager::Control()
 {
 	m_Ocean->Control();
-	//m_Sky->Control();
+	m_Sky->Control();
 }
 
 void FieldManager::Draw()
 {
 	m_Ocean->Draw();
-	//m_Sky->Draw();
+	m_Sky->Draw();
 }

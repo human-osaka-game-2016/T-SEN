@@ -26,7 +26,7 @@ public:
 	* @param pGameDataManager GameDataManagerクラスのインスタンスへのポインタ
 	* @param pGameTimer		  GameTimerクラスのインスタンスへのポインタ
 	*/
-	Battle(GameDataManager* pGameDataManager, FieldManager* pFieldManager, GameTimer* pGameTimer);
+	Battle(GameDataManager* pGameDataManager, GameTimer* pGameTimer);
 
 	/**デストラクタ*/
 	virtual ~Battle();
