@@ -43,7 +43,7 @@ namespace sub_scene
 			ShipManager::DESTROYER
 		};
 
-		char ally = 2, enemy = 2;
+		char ally = 3, enemy = 3;
 		m_pShipManager->Create(&ally, &enemy, shipID);
 
 		m_pThread->DeleteTestThread();
