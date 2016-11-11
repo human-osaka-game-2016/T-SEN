@@ -152,7 +152,7 @@ void InputMouse::CheckState(MOUSEBUTTON mouseButton)
 		break;
 
 	case MouseRight:
-		mouseClick = GetIsLAction();
+		mouseClick = GetIsRAction();
 		break;
 
 	case MouseCenter:

@@ -6,7 +6,17 @@ m_ObjPos(*pos),
 m_pD3Device(GraphicsDevice::GetInstance().GetDevice()),
 m_pcameraController(&CameraController::GetInstance())
 {
-	
+	m_CameraPos.x = m_ObjPos.x;
+	m_CameraPos.y = m_ObjPos.y + 50.f;
+	m_CameraPos.z = m_ObjPos.z;
+
+	m_LookatPos.x = m_ObjPos.x;
+	m_LookatPos.y = m_ObjPos.y;
+	m_LookatPos.z = m_ObjPos.z;
+
+	m_Angle = 50.f;
+
+	m_Zoom = false;
 }
 
 
@@ -34,22 +44,13 @@ void Ship::Draw()
 {
 }
 
-void Ship::TransWorld(const D3DXVECTOR3* pos, const D3DXMATRIX* rotation)
+void Ship::TransWorld()
 {
 	D3DXMATRIX      matWorld;						// ワールド座標
-	D3DXVECTOR3		vecTarget(-0.5f, 0.f, 0.f);
 	D3DXMATRIX		matPos;							// 移動用行列
-	//	D3DXMATRIX		Rotation;
-	//	D3DXMATRIX		tmpPos;
 	D3DXMatrixIdentity(&matWorld);					// 単位行列
-	//	D3DXMatrixRotationY(&Rotation, rotate * 3.141592f / 180.f);
-	D3DXVec3TransformCoord(&vecTarget, &vecTarget, rotation);
-	D3DXVec3Add(&vecTarget, &vecTarget, pos);
-	D3DXMatrixTranslation(&matPos, vecTarget.x, vecTarget.y, vecTarget.z);
-	//	tmpPos = Rotation;
-	//	Rotation *= matPos;
-	D3DXMatrixMultiply(&matWorld, &matWorld, rotation);
-	//	matPos *= tmpPos;
+	D3DXMatrixTranslation(&matPos, m_ObjPos.x, m_ObjPos.y, m_ObjPos.z);
+	D3DXMatrixMultiply(&matWorld, &matWorld, &m_Rotation);
 	D3DXMatrixMultiply(&matWorld, &matWorld, &matPos);
 	m_pD3Device->SetTransform(D3DTS_WORLD, &matWorld);
 
@@ -78,3 +79,25 @@ void Ship::TransWorld(const D3DXVECTOR3* pos, const D3DXMATRIX* rotation)
 	*/
 }
 
+
+void Ship::CameraTransWorld(float radius)
+{
+//	D3DXMATRIX      matWorld;						// ワールド座標
+	D3DXVECTOR3		cameraPos(0.f, 0.f, -radius);
+//	D3DXMATRIX		matPos;							// 移動用行列
+//	D3DXMatrixIdentity(&matWorld);					// 単位行列
+	D3DXVec3TransformCoord(&cameraPos, &cameraPos, &m_CameraRotation);
+	D3DXVec3Add(&cameraPos, &cameraPos, &m_CameraPos);
+	m_CameraPos.x = cameraPos.x;
+	m_CameraPos.z = cameraPos.z;
+//	D3DXMatrixTranslation(&matPos, vecTarget.x, vecTarget.y, vecTarget.z);
+//	D3DXMatrixMultiply(&matWorld, &matWorld, rotation);
+//	D3DXMatrixMultiply(&matWorld, &matWorld, &matPos);
+//	m_pD3Device->SetTransform(D3DTS_WORLD, &matWorld);
+
+	D3DXVECTOR3		lookatPos(0.f, 0.f, radius);
+	D3DXVec3TransformCoord(&lookatPos, &lookatPos, &m_CameraRotation);
+	D3DXVec3Add(&lookatPos, &lookatPos, &m_LookatPos);
+	m_LookatPos.x = lookatPos.x;
+	m_LookatPos.z = lookatPos.z;
+}

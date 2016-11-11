@@ -7,7 +7,7 @@
 #include "GameLib/Lib/GraphicsDevice.h"
 #include "GameLib/Lib/InputKey.h"
 #include "GameLib/Lib/InputMouse.h"
-
+#include "GameLib/GameLib.h"
 
 
 class Ship
@@ -37,7 +37,14 @@ protected:
 	InputKey				m_InputKey;
 	InputMouse				m_Mouse;				//!< マウス
 	D3DXMATRIX				m_Rotation;
-	int						m_Rotate;
+	D3DXMATRIX				m_CameraRotation;
+	float						m_Rotate;
+	float						m_CameraRotate;
+
+	D3DXVECTOR3				m_CameraPos;
+	D3DXVECTOR3				m_LookatPos;
+	float					m_Angle;
+	bool					m_Zoom;
 
 	virtual void Player() = 0;
 	virtual void Ally() = 0;
@@ -52,7 +59,9 @@ public:
 	~Ship();
 	virtual void Draw();
 	virtual void Control();
-	void TransWorld(const D3DXVECTOR3* pos, const D3DXMATRIX* rotation);
+	void TransWorld();
+	void CameraTransWorld(float radius);
+
 };
 
 #endif	//	SHIP_H

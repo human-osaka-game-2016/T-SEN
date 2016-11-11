@@ -51,7 +51,7 @@ void CameraController::Control()
 }
 
 // À•W•ÏŠ·ŠÖ”
-void CameraController::TransformView(D3DXVECTOR3 vLookPt)
+void CameraController::TransformView(D3DXVECTOR3 vEyePt, D3DXVECTOR3 vLookPt, float angle)
 {
-	m_pCamera->LookInCamera(&m_vEyePt,&vLookPt,&m_angle);
+	m_pCamera->LookInCamera(&vEyePt,&vLookPt,&angle);
 }

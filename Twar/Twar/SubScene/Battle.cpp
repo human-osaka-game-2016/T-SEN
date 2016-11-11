@@ -17,7 +17,7 @@ namespace sub_scene
 
 	Battle::Battle(GameDataManager* pGameDataManager, GameTimer* pGameTimer)
 	{
-		GameLib::GetInstance().LoadTexEx(1, "../Resouce//Load.png", 255, 0, 0, 0, false);
+		GameLib::GetInstance().LoadTexEx(1, "../Resouce//tsenlord.png", 255, 0, 0, 0, false);
 		m_pThread = new TestThread();
 		m_pThread->CreateTestThread(GameLib::GetInstance().GetTex(1));
 		m_pLight = new Light(GameLib::GetInstance().GetDevice(), D3DXVECTOR3{ 0, 0, 0 });
@@ -35,7 +35,7 @@ namespace sub_scene
 			ShipManager::BATTLESHIP,
 			ShipManager::CRUISER,
 			ShipManager::DESTROYER,
-			ShipManager::BATTLESHIP,
+			ShipManager::DESTROYER,
 			ShipManager::CRUISER,
 			ShipManager::DESTROYER,
 			ShipManager::BATTLESHIP,
@@ -43,7 +43,7 @@ namespace sub_scene
 			ShipManager::DESTROYER
 		};
 
-		char ally = 6, enemy = 6;
+		char ally = 1, enemy = 1;
 		m_pShipManager->Create(&ally, &enemy, shipID);
 
 		m_pThread->DeleteTestThread();
@@ -73,7 +73,8 @@ namespace sub_scene
 
 	void sub_scene::Battle::Draw()
 	{
-		m_pCameraController->TransformView(m_pShipManager->GetPlayerPos());
+		m_pShipManager->CameraTransform();
+		m_pCameraController->TransformView(m_pShipManager->GetCameraPos(), m_pShipManager->GetLookAtPos(), m_pShipManager->GetAngle());
 		m_pShipManager->Draw();
 		m_pFieldManager->Draw();
 	}

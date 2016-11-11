@@ -64,10 +64,11 @@ public:
 	};
 	*/
 
-	D3DXVECTOR3 GetPlayerPos()
-	{
-		return m_Army[0]->m_ObjPos;
-	}
+	D3DXVECTOR3 GetPlayerPos(){ return m_Army[0]->m_ObjPos; }
+	D3DXVECTOR3 GetCameraPos(){	return m_Army[0]->m_CameraPos; }
+	D3DXVECTOR3 GetLookAtPos(){	return m_Army[0]->m_LookatPos; }
+	float GetAngle(){ return m_Army[0]->m_Angle; }
+	void CameraTransform(){ m_Army[0]->CameraTransWorld(100.f); }
 
 	ShipManager();
 	~ShipManager();

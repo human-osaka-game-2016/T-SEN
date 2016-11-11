@@ -125,7 +125,7 @@ void Cruiser::Enemy()
 void Cruiser::Draw()
 {
 	D3DXMatrixRotationY(&m_Rotation, m_Rotate * 3.141592f / 360.f);
-	TransWorld(&m_ObjPos, &m_Rotation);		// ワールド座標変換
+	TransWorld();		// ワールド座標変換
 //	m_pcameraController->TransformView();
 	m_pFbx->DrawFbx();
 }

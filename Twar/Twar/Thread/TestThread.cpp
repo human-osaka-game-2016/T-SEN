@@ -68,10 +68,10 @@ DWORD WINAPI TestThread::ThreadFunc(LPVOID tex)
 {
 	CUSTOMVERTEX threadBG[] =
 	{
-		{	 0,	400, 0.5f, 1.0f, 0xFFFFFFFF, 0.0f, 0.0f },
-		{ 1600, 400, 0.5f, 1.0f, 0xFFFFFFFF, 1.0f, 0.0f },
-		{ 1600, 500, 0.5f, 1.0f, 0xFFFFFFFF, 1.0f, 1.0f },
-		{	 0, 500, 0.5f, 1.0f, 0xFFFFFFFF, 0.0f, 1.0f },
+		{	 0,	  0, 0.5f, 1.0f, 0xFFFFFFFF, 0.0f, 0.0f },
+		{ 1600,   0, 0.5f, 1.0f, 0xFFFFFFFF, 1.0f, 0.0f },
+		{ 1600, 900, 0.5f, 1.0f, 0xFFFFFFFF, 1.0f, 1.0f },
+		{	 0, 900, 0.5f, 1.0f, 0xFFFFFFFF, 0.0f, 1.0f },
 	};
 
 	LPDIRECT3DTEXTURE9 threadTex = reinterpret_cast<LPDIRECT3DTEXTURE9>(tex);
