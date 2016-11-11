@@ -9,7 +9,7 @@
 
 Ocean::Ocean()
 	:m_Pos(0,0,0)
-	,m_Scale(100)
+	,m_Scale(400)
 {
 	GameLib::GetInstance().LoadXFile(1,TEXT("../Resouce\\sea.x"));
 }
