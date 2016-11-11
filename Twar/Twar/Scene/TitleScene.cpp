@@ -10,7 +10,7 @@
 TitleScene::TitleScene(SaveDataManager* pSaveDataManager):
 m_pSaveDataManager(pSaveDataManager)
 {
-	GameLib::GetInstance().LoadTexEx(1, "../Resouce//title.jpg", 255, 0, 0, 0, false);
+	GameLib::GetInstance().LoadTexEx(1, "../Resouce//tsentitle.png", 255, 0, 0, 0, false);
 	GameLib::GetInstance().CreateVtx(1,1600,900);
 }
 

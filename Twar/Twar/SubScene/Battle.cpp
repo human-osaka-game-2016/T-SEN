@@ -17,7 +17,7 @@ namespace sub_scene
 
 	Battle::Battle(GameDataManager* pGameDataManager, GameTimer* pGameTimer)
 	{
-		GameLib::GetInstance().LoadTexEx(99, "../Resouce//tsenload.png", 255, 0, 0, 0, false);
+		GameLib::GetInstance().LoadTexEx(99, "../Resouce//tsenload3.png", 255, 0, 0, 0, false);
 		m_pThread = new TestThread();
 		m_pThread->CreateTestThread(GameLib::GetInstance().GetTex(99));
 		m_pLight = new Light(GameLib::GetInstance().GetDevice(), D3DXVECTOR3{ 0, 0, 0 });
