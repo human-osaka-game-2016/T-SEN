@@ -8,8 +8,8 @@
 #include"GameLib/Lib/XFile.h"
 
 Ocean::Ocean()
-	:m_Pos(0,1,0)
-	,m_Scale(1)
+	:m_Pos(0.0,5.0,0.0)
+	,m_Scale(1.0)
 {
 	GameLib::GetInstance().LoadXFile(1,TEXT("../Resouce\\sea.x"));
 }

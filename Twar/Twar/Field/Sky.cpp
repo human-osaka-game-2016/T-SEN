@@ -8,8 +8,8 @@
 #include"GameLib/Lib/XFile.h"
 
 Sky::Sky()
-	:m_Pos(0,0,0)
-	,m_Scale(4000)
+	:m_Pos(0.0,0.0,0.0)
+	,m_Scale(4000.0)
 {
 	GameLib::GetInstance().LoadXFile(2, TEXT("../Resouce\\Sky.x"));
 }
