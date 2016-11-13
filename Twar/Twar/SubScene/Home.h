@@ -19,11 +19,11 @@ class Home :public SubScene
 public:
 	/**
 	* コンストラクタ
-	* @param pSaveDataManager SaveDataManagerクラスのインスタンスへのポインタ
 	* @param pGameDataManager GameDataManagerクラスのインスタンスへのポインタ
 	* @param pGameTimer		  GameTimerクラスのインスタンスへのポインタ
+	* @param pSaveDataManager SaveDataManagerクラスのインスタンスへのポインタ
 	*/
-	Home(SaveDataManager* pSaveDataManager, GameDataManager* pGameDataManager, GameTimer* pGameTimer);
+	Home(GameDataManager* pGameDataManager, GameTimer* pGameTimer, SaveDataManager* pSaveDataManager);
 
 	/**デストラクタ*/
 	virtual ~Home();
@@ -39,4 +39,4 @@ public:
 
 }
 
-#endif
+#endif // HOME_H

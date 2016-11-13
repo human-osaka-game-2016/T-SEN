@@ -1,6 +1,6 @@
 ﻿/**
 * @file SceneFactory.h
-* @brief  シーンを作成するクラスのh
+* @brief  SceneFactoryクラスヘッダ
 * @author haga
 */
 #ifndef SCENE_FACTORY_H
@@ -48,7 +48,7 @@ private:
 	* Singletonパターンの為private
 	*/
 	SceneFactory();
-	SaveDataManager* m_pSaveDataManager;	 //!< セーブデータを管理するクラス
+	SaveDataManager* m_pSaveDataManager;	 //!< SaveDataManagerクラスのインスタンスへのポインタ
 };
 
 #endif // SCENE_FACTORY_H

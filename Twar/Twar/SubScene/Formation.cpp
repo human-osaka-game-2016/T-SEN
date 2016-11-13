@@ -11,8 +11,8 @@ namespace sub_scene
 {
 
 Formation::Formation(GameDataManager* pGameDataManager)
+	: SubScene(pGameDataManager)
 {
-	m_pGameDataManager = pGameDataManager;
 }
 
 

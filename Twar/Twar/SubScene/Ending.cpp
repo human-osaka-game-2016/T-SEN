@@ -9,9 +9,9 @@
 namespace sub_scene
 {
 
-sub_scene::Ending::Ending(GameDataManager* pGameDataManager) 
+sub_scene::Ending::Ending(GameDataManager* pGameDataManager)
+	: SubScene(pGameDataManager)
 {
-	m_pGameDataManager = pGameDataManager;
 }
 
 

@@ -12,9 +12,8 @@ namespace sub_scene
 {
 
 Shipyard::Shipyard(GameDataManager* pGameDataManager, GameTimer* pGameTimer)
+	: SubScene(pGameDataManager, pGameTimer)
 {
-	m_pGameDataManager = pGameDataManager;
-	m_pGameTimer = pGameTimer;
 }
 
 

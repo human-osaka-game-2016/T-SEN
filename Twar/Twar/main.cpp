@@ -1,6 +1,6 @@
 ﻿/**
 * @file main.cpp
-* @brief T戦のmain.cppです
+* @brief T戦のmain.cpp
 * @author haga
 */
 #include <windows.h>
@@ -29,7 +29,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPTSTR lpCmdLin
 
 	MSG msg;
 
-	g_pGameLib = &GameLib::GetInstance();
+	g_pGameLib = &GameLib::Instance();
 	//-------------------------------------------------------------------
 	//				         ウィンドウ生成
 	//-------------------------------------------------------------------	
@@ -91,9 +91,8 @@ LRESULT CALLBACK WindowProc(HWND hwnd, UINT message, WPARAM wparam, LPARAM lpara
 		if (answer == IDYES)
 		{
 			PostQuitMessage(0);
-			
+			return  0;
 		}
-		return  0;
 	}
 		
 		break;

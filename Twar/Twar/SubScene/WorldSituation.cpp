@@ -12,11 +12,9 @@ namespace sub_scene
 {
 
 WorldSituation::WorldSituation(GameDataManager* pGameDataManager, GameTimer* pGameTimer)
+	: SubScene(pGameDataManager, pGameTimer)
 {
-	m_pGameDataManager = pGameDataManager;
-	m_pGameTimer = pGameTimer;
 }
-
 
 WorldSituation::~WorldSituation()
 {

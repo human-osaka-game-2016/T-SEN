@@ -36,4 +36,4 @@ public:
 };
 
 }
-#endif // !FORMATION_H
+#endif // FORMATION_H

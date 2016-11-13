@@ -6,6 +6,7 @@
 #ifndef SUB_SCENE_H
 #define SUB_SCENE_H
 
+class GameLib;
 class SaveDataManager;
 class GameDataManager;
 class GameTimer;
@@ -36,7 +37,7 @@ class SubScene
 {
 public:
 	/**コンストラクタ*/
-	SubScene();
+	SubScene(GameDataManager* pGameDataManager = nullptr, GameTimer* pGameTimer = nullptr, SaveDataManager* pSaveDataManager = nullptr);
 
 	/**デストラクタ*/
 	virtual ~SubScene();
@@ -47,11 +48,10 @@ public:
 	/**描画関数*/
 	virtual void Draw() = 0;
 protected:
-
-	SaveDataManager* m_pSaveDataManager;		//!< SaveDataManagerクラスのインスタンスへのポインタ
+	GameLib&		 m_rGameLib;				//!< GameLibクラス
 	GameDataManager* m_pGameDataManager;		//!< GameDataManagerクラスのインスタンスへのポインタ
 	GameTimer*		 m_pGameTimer;				//!< GameTimerクラスのインスタンスへのポインタ
-
+	SaveDataManager* m_pSaveDataManager;		//!< SaveDataManagerクラスのインスタンスへのポインタ
 };
 
 }

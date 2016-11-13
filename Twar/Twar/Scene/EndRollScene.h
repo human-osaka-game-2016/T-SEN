@@ -1,16 +1,18 @@
 ﻿/**
 * @file  EndRollScene.h
-* @brief エンドロールシーンのh
+* @brief EndRollSceneクラスヘッダ
 * @author haga
 */
 #ifndef END_ROLL_SCENE_H
 #define END_ROLL_SCENE_H
 
 #include "Scene.h"
+/**
+* エンドロールシーンのクラス
+*/
 class EndRollScene :public Scene
 {
 public:
-
 	/**コンストラクタ*/
 	EndRollScene();
 
@@ -25,4 +27,4 @@ public:
 
 };
 
-#endif // !END_ROLL_SCENE_H
+#endif // END_ROLL_SCENE_H

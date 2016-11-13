@@ -1,10 +1,10 @@
 ﻿/**
-* @file Situation.h
-* @brief Situationクラスヘッダ
+* @file WorldSituation.h
+* @brief WorldSituationクラスヘッダ
 * @author haga
 */
-#ifndef SITUATION_H
-#define SITUATION_H
+#ifndef WORLD_SITUATION_H
+#define WORLD_SITUATION_H
 
 #include "SubScene.h"
 
@@ -37,4 +37,4 @@ public:
 
 }
 
-#endif // SITUATION_H
+#endif // WORLD_SITUATION_H

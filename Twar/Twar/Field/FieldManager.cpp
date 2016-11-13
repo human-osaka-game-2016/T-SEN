@@ -6,25 +6,25 @@
 #include "FieldManager.h"
 
 FieldManager::FieldManager()
-	:m_Ocean(new Ocean())
-	, m_Sky(new Sky())
+	: m_pOcean(new Ocean())
+	, m_pSky(new Sky())
 {
 }
 
 FieldManager::~FieldManager()
 {
-	delete m_Ocean;
-	delete m_Sky;
+	delete m_pOcean;
+	delete m_pSky;
 }
 
 void FieldManager::Control()
 {
-	m_Ocean->Control();
-	m_Sky->Control();
+	m_pOcean->Control();
+	m_pSky->Control();
 }
 
 void FieldManager::Draw()
 {
-	m_Ocean->Draw();
-	m_Sky->Draw();
+	m_pOcean->Draw();
+	m_pSky->Draw();
 }

@@ -1,6 +1,6 @@
 ﻿/**
 * @file BattleResult.h
-* @brief BattleResultクラスヘッダ 
+* @brief BattleResultクラスヘッダ
 * @author haga
 */
 #ifndef BATTLE_RESULT_H
@@ -19,11 +19,11 @@ class BattleResult :public SubScene
 public:
 	/**
 	* コンストラクタ
-	* @param pSaveDataManager SaveDataManagerクラスのインスタンスへのポインタ
 	* @param pGameDataManager GameDataManagerクラスのインスタンスへのポインタ
 	* @param pGameTimer		  GameTimerクラスのインスタンスへのポインタ
+	* @param pSaveDataManager SaveDataManagerクラスのインスタンスへのポインタ
 	*/
-	BattleResult(SaveDataManager* pSaveDataManager, GameDataManager* pGameDataManager, GameTimer* pGameTimer);
+	BattleResult(GameDataManager* pGameDataManager, GameTimer* pGameTimer, SaveDataManager* pSaveDataManager);
 
 	/**デストラクタ*/
 	virtual ~BattleResult();

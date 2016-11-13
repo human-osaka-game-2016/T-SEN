@@ -1,13 +1,13 @@
 ﻿/**
-* @file Scene.h
-* @brief シーンの基底クラス
+* @file Scene.cpp
+* @brief Sceneクラス実装
 * @author haga
 */
 #include "GameLib/GameLib.h"
 #include "Scene.h"
 
-Scene::Scene():
-m_pGameLib(&GameLib::GetInstance())
+Scene::Scene()
+	: m_rGameLib(GameLib::Instance())
 {
 }
 
