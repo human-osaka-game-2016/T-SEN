@@ -1,6 +1,6 @@
 ﻿/**
 * @file SubScene.cpp
-* @brief   SubSceneクラス実装
+* @brief SubSceneクラス実装
 * @author haga
 */
 #include "GameLib/GameLib.h"

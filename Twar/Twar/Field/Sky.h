@@ -1,5 +1,5 @@
 ﻿/**
-* @file  Sky.h
+* @file Sky.h
 * @brief Skyクラスヘッダ
 * @author Matsuda
 */

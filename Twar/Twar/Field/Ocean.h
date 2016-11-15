@@ -1,5 +1,5 @@
 ﻿/**
-* @file  Ocean.h
+* @file Ocean.h
 * @brief Oceanクラスヘッダ
 * @author Matsuda
 */

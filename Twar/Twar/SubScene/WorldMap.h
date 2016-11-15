@@ -1,10 +1,10 @@
 ﻿/**
-* @file WorldSituation.h
-* @brief WorldSituationクラスヘッダ
+* @file WorldMap.h
+* @brief WorldMapクラスヘッダ
 * @author haga
 */
-#ifndef WORLD_SITUATION_H
-#define WORLD_SITUATION_H
+#ifndef WORLD_MAP_H
+#define WORLD_MAP_H
 
 #include "SubScene.h"
 
@@ -14,7 +14,7 @@ namespace sub_scene
 /**
 * 情勢(外交などを行う)シーンのクラス
 */
-class WorldSituation :public SubScene
+class WorldMap :public SubScene
 {
 public:
 	/**
@@ -22,10 +22,10 @@ public:
 	* @param pGameDataManager GameDataManagerクラスのインスタンスへのポインタ
 	* @param pGameTimer		  GameTimerクラスのインスタンスへのポインタ
 	*/
-	WorldSituation(GameDataManager* pGameDataManager, GameTimer* pGameTimer);
+	WorldMap(GameDataManager* pGameDataManager, GameTimer* pGameTimer);
 
 	/**デストラクタ*/
-	virtual ~WorldSituation();
+	virtual ~WorldMap();
 
 	/**コントロール関数*/
 	virtual SUBSCENE_ID Control();
@@ -37,4 +37,4 @@ public:
 
 }
 
-#endif // WORLD_SITUATION_H
+#endif // WORLD_MAP_H

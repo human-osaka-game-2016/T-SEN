@@ -4,9 +4,9 @@
 * @author haga
 */
 #include "GameLib/GameLib.h"
-#include "../GameData/SaveDataManager.h"
 #include "../GameData/GameDataManager.h"
 #include "../GameData/GameTimer.h"
+#include "../GameData/SaveDataManager.h"
 #include "BattleResult.h"
 
 namespace sub_scene

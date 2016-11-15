@@ -10,7 +10,7 @@
 #include "Opening.h"
 #include "Home.h"
 #include "Shipyard.h"
-#include "WorldSituation.h"
+#include "WorldMap.h"
 #include "Formation.h"
 #include "Battle.h"
 #include "BattleResult.h"
@@ -56,8 +56,8 @@ SubScene* SubSceneFactory::CreateSubScene(SUBSCENE_ID subSceneID)
 		pSubScene = new Shipyard(m_pGameDataManager, m_pGameTimer);
 		break;
 
-	case WORLD_SITUATION:
-		pSubScene = new WorldSituation(m_pGameDataManager, m_pGameTimer);
+	case WORLD_MAP:
+		pSubScene = new WorldMap(m_pGameDataManager, m_pGameTimer);
 		break;
 
 	case FORMATION:

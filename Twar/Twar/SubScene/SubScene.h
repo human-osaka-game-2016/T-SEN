@@ -1,6 +1,6 @@
 ﻿/**
 * @file SubScene.h
-* @brief  SubSceneクラスヘッダ
+* @brief SubSceneクラスヘッダ
 * @author haga
 */
 #ifndef SUB_SCENE_H
@@ -20,7 +20,7 @@ enum SUBSCENE_ID
 	OPENING,			//!< オープニングシーン
 	HOME,				//!< 鎮守府シーン
 	SHIPYARD,			//!< 造船所シーン 
-	WORLD_SITUATION,	//!< 世界情勢シーン
+	WORLD_MAP,			//!< 世界地図シーン
 	FORMATION,			//!< 編成シーン
 	BATTLE,				//!< 戦闘シーン
 	BATTLE_RESULT,		//!< 戦闘結果表示シーン
