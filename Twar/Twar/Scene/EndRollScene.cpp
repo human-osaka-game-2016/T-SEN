@@ -1,5 +1,5 @@
 ﻿/**
-* @file  EndRollScene.cpp
+* @file EndRollScene.cpp
 * @brief EndRollSceneクラス実装
 * @author haga
 */

@@ -1,6 +1,6 @@
 ﻿/**
 * @file SceneFactory.h
-* @brief  SceneFactoryクラスヘッダ
+* @brief SceneFactoryクラスヘッダ
 * @author haga
 */
 #ifndef SCENE_FACTORY_H

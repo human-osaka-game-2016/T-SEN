@@ -1,5 +1,5 @@
 ﻿/**
-* @file  EndRollScene.h
+* @file EndRollScene.h
 * @brief EndRollSceneクラスヘッダ
 * @author haga
 */

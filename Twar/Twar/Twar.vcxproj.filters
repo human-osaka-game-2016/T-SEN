@@ -91,10 +91,10 @@
     <ClCompile Include="SubScene\Ending.cpp">
       <Filter>Twar\SubScene</Filter>
     </ClCompile>
-    <ClCompile Include="SubScene\WorldSituation.cpp">
+    <ClCompile Include="SubScene\SubSceneFactory.cpp">
       <Filter>Twar\SubScene</Filter>
     </ClCompile>
-    <ClCompile Include="SubScene\SubSceneFactory.cpp">
+    <ClCompile Include="SubScene\WorldMap.cpp">
       <Filter>Twar\SubScene</Filter>
     </ClCompile>
   </ItemGroup>
@@ -162,10 +162,10 @@
     <ClInclude Include="SubScene\Ending.h">
       <Filter>Twar\SubScene</Filter>
     </ClInclude>
-    <ClInclude Include="SubScene\WorldSituation.h">
+    <ClInclude Include="SubScene\SubSceneFactory.h">
       <Filter>Twar\SubScene</Filter>
     </ClInclude>
-    <ClInclude Include="SubScene\SubSceneFactory.h">
+    <ClInclude Include="SubScene\WorldMap.h">
       <Filter>Twar\SubScene</Filter>
     </ClInclude>
   </ItemGroup>

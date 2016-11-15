@@ -1,6 +1,6 @@
 ﻿/**
 * @file SaveDataManager.h
-* @brief  SaveDataManagerクラスヘッダ
+* @brief SaveDataManagerクラスヘッダ
 * @author haga
 */
 #ifndef SAVE_DATA_MANAGER_H

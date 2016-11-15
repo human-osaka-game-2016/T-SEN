@@ -1,6 +1,6 @@
 ﻿/**
-* @file   TitleScene.h
-* @brief  TitleSceneクラスヘッダ
+* @file TitleScene.h
+* @brief TitleSceneクラスヘッダ
 * @author haga
 */
 #ifndef TITLE_SCENE_H

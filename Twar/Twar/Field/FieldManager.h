@@ -1,5 +1,5 @@
 ﻿/**
-* @file  FieldManager.h
+* @file FieldManager.h
 * @brief FieldManagerクラスヘッダ
 * @author Matsuda
 */

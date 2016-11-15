@@ -1,6 +1,6 @@
 ﻿/**
 * @file SceneFactory.cpp
-* @brief  SceneFactoryクラス実装
+* @brief SceneFactoryクラス実装
 * @author haga
 */
 #include "Scene.h"

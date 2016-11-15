@@ -1,6 +1,6 @@
 ﻿/**
-* @file   TitleScene.cpp
-* @brief  TitleSceneクラス実装
+* @file TitleScene.cpp
+* @brief TitleSceneクラス実装
 * @author haga
 */
 #include "GameLib/GameLib.h"
