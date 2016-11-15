@@ -1,6 +1,6 @@
 ﻿/**
 * @file Scene.h
-* @brief シーンの基底(抽象クラス)
+* @brief Sceneクラスヘッダ
 * @author haga
 */
 
@@ -18,6 +18,9 @@ enum SCENE_ID
 	GAME_END			//!< ゲーム終了
 };
 
+/**
+* シーンクラス(基底クラス)
+*/
 class Scene
 {
 public:
@@ -34,7 +37,7 @@ public:
 	virtual void Draw() = 0;
 
 private:
-	GameLib*		  m_pGameLib;			//!< ライブラリ
+	GameLib&		  m_rGameLib;			//!< GameLibクラス
 };
 
 #endif	// SCENE_H

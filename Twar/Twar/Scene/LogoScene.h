@@ -1,6 +1,6 @@
 ﻿/**
 * @file LogoScene.h
-* @brief ロゴシーンのh
+* @brief LogoSceneクラスヘッダ
 * @author haga
 */
 #ifndef LOGO_SCENE_H
@@ -8,6 +8,9 @@
 
 #include "Scene.h"
 
+/**
+* ロゴシーンのクラス
+*/
 class LogoScene :public Scene
 {
 public:

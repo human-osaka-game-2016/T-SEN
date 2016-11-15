@@ -1,6 +1,6 @@
 ﻿/**
 * @file  EndRollScene.cpp
-* @brief エンドロールシーンのcpp
+* @brief EndRollSceneクラス実装
 * @author haga
 */
 #include "GameLib/GameLib.h"

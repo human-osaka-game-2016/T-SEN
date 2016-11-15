@@ -1,13 +1,15 @@
 ﻿/**
 * @file GameDataManager.h
-* @brief ゲームデータを管理するクラスのh
+* @brief GameDatamanagerクラスヘッダ
 * @author haga
 * @note 2016/11/03ファイル作成したが、実装はまだ行っていない
 */
-#ifndef GAMEDATA_MANAGER_H
-#define GAMEDATA_MANAGER_H
+#ifndef GAME_DATA_MANAGER_H
+#define GAME_DATA_MANAGER_H
 
-
+/**
+* ゲームデータを管理するクラス
+*/
 class GameDataManager
 {
 public:

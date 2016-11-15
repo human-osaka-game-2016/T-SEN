@@ -39,10 +39,10 @@ private:
 		RUN_SUBSCENE,			//!< SubScene実行
 		DELETE_SUBSCENE			//!< SubScene破棄
 	};
+	GameDataManager*        m_pGameDataManager;		//!< GameDataManagerクラスのインスタンスへのポインタ
+	GameTimer*			    m_pGameTimer;			//!< GameTimerクラスのインスタンスへのポインタ
 	SaveDataManager*	    m_pSaveDataManager;		//!< SaveDataManagerクラスのインスタンスへのポインタ
-	GameDataManager*        m_pGameDataManager;		//!< GameDataManagerクラスのポインタ
-	GameTimer*			    m_pGameTimer;			//!< GameTimerクラスのポインタ
-	sub_scene::SubScene*    m_pSubScene;			//!< SubSceneクラスのポインタ
+	sub_scene::SubScene*    m_pSubScene;			//!< SubSceneクラスの継承クラスのインスタンスへのポインタ
 	STEP_SUBSCENE			m_Step;					//!< SubSceneクラスの処理ステップ
 	sub_scene::SUBSCENE_ID	m_CurrentSubSceneID;	//!< 現在のSubSceneのIDを格納する変数
 	sub_scene::SUBSCENE_ID	m_NextSubSceneID;		//!< 次のSubSceneのIDを格納する変数

@@ -3,8 +3,8 @@
 * @brief SubSceneFactoryクラスヘッダ
 * @author haga
 */
-#ifndef SUBSCENE_FACTORY_H
-#define SUBSCENE_FACTORY_H
+#ifndef SUB_SCENE_FACTORY_H
+#define SUB_SCENE_FACTORY_H
 
 #include "SubScene.h"
 
@@ -27,7 +27,7 @@ public:
 	* Singletonパターン
 	* return SubSceneFactoryのインスタンス
 	*/
-	static SubSceneFactory& GetInstance()
+	static SubSceneFactory& Instance()
 	{
 		static SubSceneFactory subSceneFactory;
 
@@ -36,11 +36,11 @@ public:
 
 	/**
 	* 初期化関数
-	* @param[in] pSaveDataManager	SaveDataManagerクラスのインスタンスへのポインタ
 	* @param[in] pGameDataManager	GameDataManagerクラスのインスタンスへのポインタ
 	* @param[in] pGameTimer			GameTimerクラスのインスタンスへのポインタ
+	* @param[in] pSaveDataManager	SaveDataManagerクラスのインスタンスへのポインタ
 	*/
-	void Init(SaveDataManager* pSaveDataManager, GameDataManager* pGameDataManager, GameTimer* pGameTimer);
+	void Init(GameDataManager* pGameDataManager, GameTimer* pGameTimer, SaveDataManager* pSaveDataManager);
 
 	/**
 	* サブシーンを作成する関数<br>
@@ -67,4 +67,4 @@ private:
 
 }
 
-#endif	// SUBSCENE_FACTORY_H
+#endif	// SUB_SCENE_FACTORY_H

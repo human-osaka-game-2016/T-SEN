@@ -75,9 +75,9 @@ public:
 	/** 
  	* GameLibの実体を取得する関数<br>
 	* Singletonパターン.
-	* @return GameLibクラス
+	* @return GameLibクラスのインスタンス
 	*/
-	static GameLib& GetInstance()
+	static GameLib& Instance()
 	{
 		static GameLib gameLib;
 		return gameLib;
@@ -337,8 +337,8 @@ private:
 	XFileManager*		m_pXFileManager;
 	VertexManager*		m_pVertexManager;
 	DebugTimer*			m_pDebugTimer;
-	int				    m_wWidth;			//!< ウインドウの幅
-	int					m_wHeight;			//!< ウィンドウの高さ
+	int				    m_WinWidth;			//!< ウインドウの幅
+	int					m_WinHeight;		//!< ウィンドウの高さ
 	bool				m_releaseFlag;		//!< メモリ解放したかどうかのフラグ
  };
 

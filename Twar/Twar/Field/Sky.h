@@ -1,6 +1,6 @@
 ﻿/**
 * @file  Sky.h
-* @brief Skyクラスのヘッダー
+* @brief Skyクラスヘッダ
 * @author Matsuda
 */
 #ifndef SKY_H
@@ -14,7 +14,6 @@ class XFile;
 /**
 *Skyクラス
 */
-
 class Sky
 {
 public:
@@ -32,7 +31,7 @@ public:
 
 private:
 	GameLib*          m_pGameLib;
-	XFile*			  m_xFile;
+	XFile*			  m_pXFile;
 	D3DXVECTOR3       m_Pos;
 	float             m_Scale;
 };

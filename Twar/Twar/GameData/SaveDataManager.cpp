@@ -1,6 +1,6 @@
 ﻿/**
 * @file SaveDataManager.cpp
-* @brief  セーブデータを管理するクラスのcpp
+* @brief  SaveDataManagerクラス実装
 * @author haga
 * @note 2016/10/31作成したが、まだ中の実装は行っていない
 */

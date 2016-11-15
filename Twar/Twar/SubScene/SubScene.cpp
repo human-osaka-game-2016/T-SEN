@@ -9,10 +9,11 @@
 namespace sub_scene
 {
 
-SubScene::SubScene()
-	: m_pSaveDataManager(nullptr)
-	, m_pGameDataManager(nullptr)
-	, m_pGameTimer(nullptr)
+SubScene::SubScene(GameDataManager* pGameDataManager, GameTimer* pGameTimer, SaveDataManager* pSaveDataManager)
+	: m_rGameLib(GameLib::Instance())
+	, m_pGameDataManager(pGameDataManager)
+	, m_pGameTimer(pGameTimer)
+	, m_pSaveDataManager(pSaveDataManager)
 {
 }
 

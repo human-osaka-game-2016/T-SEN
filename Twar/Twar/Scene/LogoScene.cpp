@@ -1,6 +1,6 @@
 ﻿/**
 * @file LogoScene.cpp
-* @brief ロゴシーンのcpp
+* @brief LogoSceneクラス実装
 * @author haga
 */
 #include "GameLib/GameLib.h"

@@ -21,8 +21,8 @@ m_pInputKey(NULL),
 m_pTextureManager(NULL),
 m_pXFileManager(NULL),
 m_pVertexManager(NULL),
-m_wWidth(0),
-m_wHeight(0),
+m_WinWidth(0),
+m_WinHeight(0),
 m_releaseFlag(false)
 {	
 }
@@ -39,8 +39,8 @@ GameLib::~GameLib()
 // 初期化関数
 void GameLib::InitGameLib(TCHAR*  title, int width, int height, LRESULT CALLBACK WndProc(HWND, UINT, WPARAM, LPARAM), bool windowType)
 {
-	m_wWidth = width;
-	m_wHeight = height;
+	m_WinWidth = width;
+	m_WinHeight = height;
 	HINSTANCE hInstance = GetModuleHandle(NULL);
 
 	m_pWindowCreator = new WindowCreator(title, width, height);
@@ -49,12 +49,12 @@ void GameLib::InitGameLib(TCHAR*  title, int width, int height, LRESULT CALLBACK
 	if (windowType)				// ウィンドウサイズ
 	{
 		m_pWindowCreator->MakeWindow(hInstance, WndProc, true);
-		m_pGraphicsDevice->InitDevice(m_pWindowCreator->GetHwnd(), true, m_wWidth, m_wHeight);
+		m_pGraphicsDevice->InitDevice(m_pWindowCreator->GetHwnd(), true, m_WinWidth, m_WinHeight);
 	}
 	else						// フルスクリーンサイズ
 	{
 		m_pWindowCreator->MakeWindow(hInstance, WndProc, false);
-		m_pGraphicsDevice->InitDevice(m_pWindowCreator->GetHwnd(), false, m_wWidth, m_wHeight);
+		m_pGraphicsDevice->InitDevice(m_pWindowCreator->GetHwnd(), false, m_WinWidth, m_WinHeight);
 	}
 
 	m_pGraphicsDevice->SetRenderState3D();
@@ -101,12 +101,12 @@ void GameLib::ChangeWindowMode()
 
 int GameLib::GetWindowWidth()
 { 
-	return m_wWidth; 
+	return m_WinWidth;
 }
 
 int GameLib::GetWindowHeight()
 { 
-	return m_wHeight; 
+	return m_WinHeight;
 }
 
 IDirect3DDevice9* GameLib:: GetDevice()

@@ -12,9 +12,8 @@ namespace sub_scene
 {
 
 Battle::Battle(GameDataManager* pGameDataManager, GameTimer* pGameTimer)
+	:SubScene(pGameDataManager, pGameTimer)
 {
-	m_pGameDataManager = pGameDataManager;
-	m_pGameTimer = pGameTimer;
 }
 
 

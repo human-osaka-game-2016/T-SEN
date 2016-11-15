@@ -1,6 +1,6 @@
 ﻿/**
 * @file SceneManager.h
-* @brief シーンを管理するクラスSceneManagerのh
+* @brief SceneManegerクラスヘッダ
 * @author haga
 */
 #ifndef SCENE_MANAGER_H
@@ -16,15 +16,6 @@ class SaveDataManager;
 */
 class SceneManager
 {
-private:
-	/**シーン処理ステップ*/
-	enum STEP
-	{
-		SCENE_CREATE,		//!< シーンを生成する
-		SCENE_RUN,			//!< シーンを実行する
-		SCENE_DELETE		//!< シーンを削除する
-	};
-
 public:
 	/**コンストラクタ*/
 	SceneManager();
@@ -34,18 +25,26 @@ public:
 	/**
 	* ゲーム実行関数<br>
 	* @return true		ゲーム終了
-    * @return false     ゲーム続行
+	* @return false     ゲーム続行
 	*/
 	bool Run();
 
 private:
+	/**シーン処理ステップ*/
+	enum STEP
+	{
+		SCENE_CREATE,		//!< シーンを生成する
+		SCENE_RUN,			//!< シーンを実行する
+		SCENE_DELETE		//!< シーンを削除する
+	};
+
 	GameLib*		  m_pGameLib;			//!< ライブラリ
-	SaveDataManager*  m_pSaveDataManager;	//!< セーブデータ管理クラス
-	Scene*			  m_pScene;				//!< シーン
-	SCENE_ID          m_currentSceneID;		//!< 現在のシーンID
-	SCENE_ID		  m_nextSceneID;		//!< 次のシーンID
-	STEP			  m_step;				//!< 処理ステップ
-	bool			  m_gameEnd;			//!< ゲーム終了フラグ
+	SaveDataManager*  m_pSaveDataManager;	//!< SaveDataManagerクラスのインスタンスへのポインタ
+	Scene*			  m_pScene;				//!< Sceneの継承クラスのインスタンスへのポインタ
+	SCENE_ID          m_CurrentSceneID;		//!< 現在のシーンID
+	SCENE_ID		  m_NextSceneID;		//!< 次のシーンID
+	STEP			  m_Step;				//!< 処理ステップ
+	bool			  m_IsEnd;				//!< 終了フラグ
 
 	/**コントロール関数*/
 	void Control();

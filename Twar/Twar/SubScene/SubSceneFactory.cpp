@@ -31,32 +31,32 @@ SubSceneFactory::~SubSceneFactory()
 {
 }
 
-void SubSceneFactory::Init(SaveDataManager* pSaveDataManager, GameDataManager* pGameDataManager, GameTimer* pGameTimer)
+void SubSceneFactory::Init(GameDataManager* pGameDataManager, GameTimer* pGameTimer, SaveDataManager* pSaveDataManager)
 {
-	m_pSaveDataManager = pSaveDataManager;
 	m_pGameDataManager = pGameDataManager;
 	m_pGameTimer = pGameTimer;
+	m_pSaveDataManager = pSaveDataManager;
 }
 
 SubScene* SubSceneFactory::CreateSubScene(SUBSCENE_ID subSceneID)
 {
 	SubScene* pSubScene = nullptr;
 
-	switch (subSceneID)
+	switch(subSceneID)
 	{
 	case OPENING:
 		pSubScene = new Opening();
 		break;
 
 	case HOME:
-		pSubScene = new Home(m_pSaveDataManager, m_pGameDataManager, m_pGameTimer);
+		pSubScene = new Home(m_pGameDataManager, m_pGameTimer, m_pSaveDataManager);
 		break;
 
 	case SHIPYARD:
 		pSubScene = new Shipyard(m_pGameDataManager, m_pGameTimer);
 		break;
 
-	case WORLD_SITUATION :
+	case WORLD_SITUATION:
 		pSubScene = new WorldSituation(m_pGameDataManager, m_pGameTimer);
 		break;
 
@@ -69,7 +69,7 @@ SubScene* SubSceneFactory::CreateSubScene(SUBSCENE_ID subSceneID)
 		break;
 
 	case BATTLE_RESULT:
-		pSubScene = new BattleResult(m_pSaveDataManager, m_pGameDataManager, m_pGameTimer);
+		pSubScene = new BattleResult(m_pGameDataManager, m_pGameTimer, m_pSaveDataManager);
 		break;
 
 	case ENDING:

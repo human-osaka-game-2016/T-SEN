@@ -12,11 +12,9 @@
 namespace sub_scene
 {
 
-Home::Home(SaveDataManager* pSaveDataManager, GameDataManager* pGameDataManager, GameTimer* pGameTimer) 
+Home::Home(GameDataManager* pGameDataManager, GameTimer* pGameTimer, SaveDataManager* pSaveDataManager)
+	: SubScene(pGameDataManager, pGameTimer, pSaveDataManager)
 {
-	m_pSaveDataManager = pSaveDataManager;
-	m_pGameDataManager = pGameDataManager;
-	m_pGameTimer = pGameTimer;
 }
 
 Home::~Home()

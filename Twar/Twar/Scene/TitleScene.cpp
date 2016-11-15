@@ -1,14 +1,14 @@
 ﻿/**
 * @file   TitleScene.cpp
-* @brief  タイトルシーンのcpp
+* @brief  TitleSceneクラス実装
 * @author haga
 */
 #include "GameLib/GameLib.h"
 #include "TitleScene.h"
 #include "../GameData/SaveDataManager.h"
 
-TitleScene::TitleScene(SaveDataManager* pSaveDataManager):
-m_pSaveDataManager(pSaveDataManager)
+TitleScene::TitleScene(SaveDataManager* pSaveDataManager)
+	: m_pSaveDataManager(pSaveDataManager)
 {
 }
 

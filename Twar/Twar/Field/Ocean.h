@@ -1,6 +1,6 @@
 ﻿/**
 * @file  Ocean.h
-* @brief Oceanクラスのヘッダー
+* @brief Oceanクラスヘッダ
 * @author Matsuda
 */
 #ifndef OCEAN_H
@@ -14,7 +14,6 @@ class XFile;
 /**
 *Oceanクラス
 */
-
 class Ocean
 {
 public:
@@ -32,7 +31,7 @@ public:
 
 private:
 	GameLib*          m_pGameLib;
-	XFile*			  m_xFile;
+	XFile*			  m_pXFile;
 	D3DXVECTOR3       m_Pos;
 	float             m_Scale;
 };

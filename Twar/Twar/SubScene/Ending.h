@@ -37,6 +37,6 @@ public:
 
 }
 
-#endif // !ENDING__H
+#endif // ENDING__H
 
 

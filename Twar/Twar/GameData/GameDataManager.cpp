@@ -1,6 +1,6 @@
 ﻿/**
 * @file GameDataManager.cpp
-* @brief ゲームデータを管理するクラスのcpp
+* @brief GameDataManagerクラス実装
 * @author haga
 * @note 2016/11/03ファイル作成したが、実装はまだ行っていない
 */

@@ -38,4 +38,4 @@ public:
 
 }
 
-#endif // !SHIPYARD_H
+#endif // SHIPYARD_H

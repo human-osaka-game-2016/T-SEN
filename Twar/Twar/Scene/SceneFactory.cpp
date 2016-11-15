@@ -1,6 +1,6 @@
 ﻿/**
 * @file SceneFactory.cpp
-* @brief  シーンを作成するクラスのcpp
+* @brief  SceneFactoryクラス実装
 * @author haga
 */
 #include "Scene.h"
@@ -12,8 +12,8 @@
 #include "SceneFactory.h"
 
 
-SceneFactory::SceneFactory():
-m_pSaveDataManager(nullptr)
+SceneFactory::SceneFactory()
+	: m_pSaveDataManager(nullptr)
 {
 }
 
@@ -32,7 +32,7 @@ Scene* SceneFactory::CreateScene(SCENE_ID sceneID)
 {
 	Scene* pScene = nullptr;
 
-	switch (sceneID)
+	switch(sceneID)
 	{
 	case LOGO_SCENE:
 		pScene = new LogoScene();

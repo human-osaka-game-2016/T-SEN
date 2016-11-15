@@ -39,12 +39,12 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <IncludePath>$(DXSDK_DIR)Include;C:\Program Files\Autodesk\FBX\FBX SDK\2016.1\include;$(IncludePath)</IncludePath>
-    <LibraryPath>$(DXSDK_DIR)Lib\x86;C:\Program Files\Autodesk\FBX\FBX SDK\2016.1\lib\vs2013\x86\debug;$(LibraryPath)</LibraryPath>
+    <IncludePath>$(FBXSDK_DIR)include;$(DXSDK_DIR)Include;C:\Program Files\Autodesk\FBX\FBX SDK\2016.1\include;$(IncludePath)</IncludePath>
+    <LibraryPath>$(FBXSDK_DIR)lib\vs2013\x86\release;$(FBXSDK_DIR)lib\vs2013\x86\debug;$(DXSDK_DIR)Lib\x86;C:\Program Files\Autodesk\FBX\FBX SDK\2016.1\lib\vs2013\x86\debug;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
-    <IncludePath>$(DXSDK_DIR)Include;$(IncludePath)</IncludePath>
-    <LibraryPath>$(DXSDK_DIR)Lib\x86;$(LibraryPath)</LibraryPath>
+    <IncludePath>$(FBXSDK_DIR)include;$(DXSDK_DIR)Include;$(IncludePath)</IncludePath>
+    <LibraryPath>$(FBXSDK_DIR)lib\vs2013\x86\release;$(FBXSDK_DIR)lib\vs2013\x86\debug;$(DXSDK_DIR)Lib\x86;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>

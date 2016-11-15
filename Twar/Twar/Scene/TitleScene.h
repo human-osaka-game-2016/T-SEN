@@ -1,6 +1,6 @@
 ﻿/**
 * @file   TitleScene.h
-* @brief  タイトルシーンのh
+* @brief  TitleSceneクラスヘッダ
 * @author haga
 */
 #ifndef TITLE_SCENE_H
@@ -9,12 +9,16 @@
 #include "Scene.h"
 
 class SaveDataManager;
+
+/**
+* タイトルシーンのクラス
+*/
 class TitleScene :public Scene
 {
 public:
 	/**
 	* コンストラクタ
-	* @param[in] pSaveDataManager セーブデータを管理するクラスのポインタ
+	* @param[in] pSaveDataManager SaveDataManagerクラスのインスタンスへのポインタ
 	*/
 	explicit TitleScene(SaveDataManager* pSaveDataManager);
 
@@ -28,7 +32,7 @@ public:
 	virtual void Draw();
 
 private:
-	SaveDataManager*  m_pSaveDataManager;	//!< セーブデータ管理クラス
+	SaveDataManager*  m_pSaveDataManager;	//!< SaveDataManagerクラスのインスタンスへのポインタ
 };
 
 #endif // TITLE_SCENE_H
