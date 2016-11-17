@@ -3,8 +3,6 @@
 * @brief  操作キーに関するクラスのcpp
 * @author haga
 */
-#include <dinput.h>
-
 #include "InputKey.h"
 
 // コンストラクタ

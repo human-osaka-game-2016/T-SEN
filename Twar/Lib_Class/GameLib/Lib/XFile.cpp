@@ -18,13 +18,7 @@ m_dwNumMaterials(0)
 // デストラクタ
 XFile::~XFile()
 {
-	if (m_pMesh)
-	{
-		m_pMesh->Release();
-		m_pMesh = NULL;
-	}
-	delete[] m_pMaterials;
-	delete[] m_pTextures;
+	Release();
 }
 
 // Xファイルからデータを読み込む関数
@@ -94,6 +88,6 @@ void XFile::Release()
 		m_pMesh->Release();
 		m_pMesh = NULL;
 	}
-	delete m_pMaterials;
-	delete m_pTextures;
+	delete[] m_pMaterials;
+	delete[] m_pTextures;
 }

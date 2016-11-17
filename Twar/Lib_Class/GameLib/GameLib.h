@@ -1,6 +1,6 @@
 ﻿/**
 * @file GameLib.h
-* @brief  Facadeパターンのライブラリ
+* @brief GameLibクラスヘッダ
 * @author haga
 */
 #ifndef GAMELIB_H
@@ -56,7 +56,7 @@ enum SOUND_OPERATION
 };
 
 /**
-* ライブラリのクラス	
+*  Facadeパターンのライブラリのクラス
 */
 class GameLib
 {
@@ -68,12 +68,12 @@ private:
 	GameLib();
 
 public:
-	
+
 	/**デストラクタ*/
 	~GameLib();
 
-	/** 
- 	* GameLibの実体を取得する関数<br>
+	/**
+	* GameLibの実体を取得する関数<br>
 	* Singletonパターン.
 	* @return GameLibクラスのインスタンス
 	*/
@@ -89,15 +89,15 @@ public:
 	* @param[in] width  ウィンドウの横幅
 	* @param[in] height ウインドウの縦幅
 	* @param[in] Wndproc	ウィンドウプロシージャ関数
-	* @param[in] windowType ウィンドウタイプ trueなら通常,falseならフルスクリーン
+	* @param[in] isFullScreen  trueならフルスクリーン,falseなら通常
 	*/
-	void InitGameLib(TCHAR*  title, int width, int height, LRESULT CALLBACK WndProc(HWND, UINT, WPARAM, LPARAM), bool windowType);
+	void InitGameLib(TCHAR*  title, int width, int height, LRESULT CALLBACK WndProc(HWND, UINT, WPARAM, LPARAM), bool isFullScreen);
 
 	/**メモリ開放関数*/
 	void ReleaseGameLib();
 
 	/**ウィンドウをフルスクリーンかウィンドウサイズに変える関数*/
-	void ChangeWindowMode();			
+	void ChangeWindowMode();
 
 	/**ウィンドウの横幅を取得する関数*/
 	int GetWindowWidth();
@@ -113,7 +113,7 @@ public:
 	* 残すべきか悩んだが、デバイスを取得して方法を残した方がいいという意見が多数だったので残しておく@haga
 	* @return デバイスのポインタ
 	*/
-	IDirect3DDevice9* GetDevice();					
+	IDirect3DDevice9* GetDevice();
 
 	/**
 	* 描画開始処理関数.
@@ -122,13 +122,13 @@ public:
 	void StartRender(DWORD FVF = DIRECT3DFVF_CUSTOMVERTEX);
 
 	/**描画終了処理関数*/
-	void EndRender();											
+	void EndRender();
 
 	/**
 	* 頂点フォーマットを設定する関数
 	* @param[in] FVF 頂点フォーマット
 	*/
-	void SetFVF(DWORD FVF);										
+	void SetFVF(DWORD FVF);
 
 	//---------------------------------------------------------------------------------------
 	//								テクスチャー関連関数
@@ -138,7 +138,7 @@ public:
 	* @param[in] key		登録するキー、またはID(enumで作成を想定)
 	* @param[in] filepath   ファイル名
 	*/
-	void LoadTex(int key, char* filePath);																	
+	void LoadTex(int key, char* filePath);
 
 	/**
 	* テクスチャーを詳細設定して読み込む関数.
@@ -150,7 +150,13 @@ public:
 	* @param[in] b			色のB値 0～255
 	* @param[in] size		テクスチャーのサイズが２のべき乗ならtrue,違うならfalse
 	*/
-	void LoadTexEx(int key, char* filePath,int a, int r, int g, int b, bool size );				
+	void LoadTexEx(int key, char* filePath, int a, int r, int g, int b, bool size);
+
+	/**
+	* テクスチャーのアドレスを取得する関数
+	* @param[in] key	登録したID
+	*/
+	LPDIRECT3DTEXTURE9 GetTexture(int key);
 
 	/**
 	* バーテックスを作成する関数.
@@ -159,7 +165,7 @@ public:
 	* @param[in] height 高さ(Y軸)
 	* @param[in] depth  奥行(Z軸) デフォルト引数値は0.0f
 	*/
-	void CreateVtx(int key, float width, float height, float depth = 0.0f);									
+	void CreateVtx(int key, float width, float height, float depth = 0.0f);
 
 	/**
 	* バーテックスの変更を行う関数.
@@ -170,35 +176,64 @@ public:
 	* @param[in] tvax	tv値の最大値
 	* @param[in] color  色情報(ARGB) デフォルト引数値は0xFFFFFFFF
 	*/
-	void SetVtx(int key, float tuMin, float tuMax, float tvMin, float tvMax, DWORD color = 0xFFFFFFFF);		 
+	void SetVtx(int key, float tuMin, float tuMax, float tvMin, float tvMax, DWORD color = 0xFFFFFFFF);
 
 	/**
-	* テクスチャーを(XY座標)において描画する関数
+	* テクスチャー(XY座標)の座標を左端にあわせて描画する関数
 	* @param[in] texKey	テクスチャーを登録したキー、またはID
 	* @param[in] vtxKey バーテックスを登録したキー、またはID
 	* @param[in] center 位置座標をテクスチャーの中心にするならtrue,違うならfalse
 	* @param[in] posX	x座標
 	* @param[in] posY   y座標
 	*/
-	void DrawXY(int texKey,int vtxKey,bool center,float posX,float posY);													
+	void DrawXY(int texKey, int vtxKey, bool center, float posX, float posY);
+
+	/**
+	* テクスチャー(XY座標)の中心に座標をあわせて描画する関数
+	* @param[in] texKey	テクスチャーを登録したキー、またはID
+	* @param[in] vtxKey バーテックスを登録したキー、またはID
+	* @param[in] posX	x座標
+	* @param[in] posY   y座標
+	*/
+	void DrawXYCenterPos(int texKey, int vtxKey, float posX, float posY);
 
 	/**
 	* テクスチャーをXZ座標で描画する関数
 	* @param[in] texKey	テクスチャーを登録したキー、またはID
 	* @param[in] vtxKey バーテックスを登録したキー、またはID
-	* @param[in] center 位置座標をテクスチャーの中心にするならtrue,違うならfalse
 	* @param[in] posX	x座標
 	* @param[in] posY   y座標
 	* @param[in] posZ   z座標
 	*/
-	void DrawXZ(int texKey, int vtxKey, bool center, float posX, float posY, float posZ);
+	void DrawXZ(int texKey, int vtxKey, float posX, float posY, float posZ);
+
+	/**
+	* テクスチャー(XZ座標)の中心に座標をあわせて描画する関数
+	* @param[in] texKey	テクスチャーを登録したキー、またはID
+	* @param[in] vtxKey バーテックスを登録したキー、またはID
+	* @param[in] posX	x座標
+	* @param[in] posY   y座標
+	* @param[in] posZ   z座標
+	*/
+	void DrawXZCenterPos(int texKey, int vtxKey, float posX, float posY, float posZ);
 
 	/**
 	* テクスチャーを解放する関数
-	* @param[in] AllFlag  全て解放するならture,特定のテクスチャーだけを解放するならfalseで第二引数を指定する
-	* @param[in] key	登録したキー、またはID。デフォルト引数は999←登録されないだろう数値を代入している要検討
+	* @param[in] key	登録したキー、またはID。
 	*/
-	void ReleaseTex(bool AllFlag,int key = 999);
+	void ReleaseTex(int key);
+
+	/**現在管理しているすべてのテクスチャーを解放する関数*/
+	void ReleaseAllTex();
+
+	/**
+	* バーテックスを解放する関数
+	* @param[in] key	登録したキー、またはID。
+	*/
+	void ReleaseVertex(int key);
+
+	/**バーテックスを全て解放する関数*/
+	void ReleaseAllVertex();
 
 	//-------------------------------------------------------------------------------------
 	//								Xファイル関連関数
@@ -208,27 +243,29 @@ public:
 	* @param[in] key		 登録するキー、またはID(enumで作成を想定)
 	* @param[in] pFilepath   ファイル名
 	*/
-	void LoadXFile(int key, LPCTSTR pFilePath);					
+	void LoadXFile(int key, LPCTSTR pFilePath);
 
 	/**
 	* Xファイルを描画する関数.
 	* @param[in] key	登録したキー、またはID
 	*/
-	void DrawXFile(int key);				
+	void DrawXFile(int key);
 
 	/**
 	* Xファイルを解放する関数.
-	* @param[in] AllFlag  全て解放するならture,特定のテクスチャーだけを解放するならfalseで第二引数を指定する
-	* @param[in] key	登録したキー、またはID。デフォルト引数は999←登録されないだろう数値を代入している要検討
+	* @param[in] key	登録したキー、またはID。
 	*/
-	void ReleaseXFile(bool AllFlag,int key = 999);				
+	void ReleaseXFile(int key);
+
+	/** Xファイルを全て解放する関数*/
+	void ReleaseAllXFile();
 
 	//-----------------------------------------------------------------------------------------------------
 	//									入力デバイス関連関数
 	//-----------------------------------------------------------------------------------------------------
 
 	/**ダイレクトインプットをアップデートする関数*/
-	void UpDateDI();											
+	void UpdateDI();
 
 	/**
 	* キーの状態を確認する関数<br>
@@ -237,7 +274,7 @@ public:
 	* @param[in] keyName  キーの名前はenumにてA～Zと数字はONE,TWOと英語表記(InputKey.h参照)
 	* @return ボタンの状態
 	*/
-	BUTTON_STATE CheckKey(int DIK, KEYKIND keyName);				
+	BUTTON_STATE CheckKey(int DIK, KEYKIND keyName);
 
 	/**
 	* マウスの左ボタンの状態を取得する関数
@@ -255,7 +292,7 @@ public:
 	* マウスのホイールの状態を取得する関数.
 	* @return ホイールの状態
 	*/
-	WHEEL_STATE GetWheelState();								
+	WHEEL_STATE GetWheelState();
 
 	/**
 	* マウスの座標を取得する関数<br>
@@ -265,6 +302,29 @@ public:
 	*/
 	void GetMousePos(float* mousePosX, float* mousePosY);
 
+	/**
+	* マウスカーソルを表示するかどうかを設定する関数
+	* @param[in] isVisible 表示はtrue,非表示ならfalse
+	* @attention この関数はフレームごとによぶとおかしい挙動になるので、注意
+	*/
+	void ShowMouseCursor(bool isVisible);
+
+	/**
+	* マウスの座標をセット.
+	* @param[in] x		  座標x
+	* @param[in] y		  座標y
+	*/
+	void SetMousePos(int x, int y);
+
+	/**マウスの座標を中心にもってくる*/
+	void SetMousePosCenter();
+
+	/**
+	* マウスの動く範囲をウィンドウ内に制限する関数<br>
+	* @note 動く範囲を自由に設定できるように改良の余地あり。
+	*/
+	void RestrictMouseCursor();
+
 	//--------------------------------------------------------------------------
 	//							サウンド関連関数
 	//--------------------------------------------------------------------------
@@ -273,7 +333,7 @@ public:
 	* @param[in] key	  登録するキー、またはID(enumで作成を想定)
 	* @param[in] filePath ファイル名
 	*/
-	void LoadSound(int key,TCHAR* filePath);											
+	void LoadSound(int key, TCHAR* filePath);
 
 	/**
 	* 音楽を鳴らす関数
@@ -291,19 +351,19 @@ public:
 	* @param[in] posX x座標
 	* @param[in] posY y座標
 	*/
-	void DrawDebugFont(std::string text, float posX, float posY);						
+	void DrawDebugFont(std::string text, float posX, float posY);
 
 	/**
 	* デバック用の時間計測を開始する関数.
 	* @param[in] timeName	計測したい時間の名前
 	*/
-	void StartTimer(std::string  timeName);											
+	void StartTimer(std::string timeName);
 
 	/**
 	* デバック用の時間計測を終了する関数.
 	* @param[in] timeName	計測を終えたい時間の名前
 	*/
-	void EndTimer(std::string  timeName);											
+	void EndTimer(std::string timeName);
 
 	/**
 	* デバック用の計測結果を表示する関数.
@@ -311,20 +371,20 @@ public:
 	* @param[in] posX x座標
 	* @param[in] posY y座標
 	*/
-	void DrawResult(std::string  timeName,float posX,float posY);					
+	void DrawResult(std::string timeName, float posX, float posY);
 
 	/**
 	* デバック用の時間計測した結果を取得する関数.
 	* @param[in] timeName	取得したい計測時間の名前
 	*/
-	DWORD GetResultTime(std::string  timeName);										
+	DWORD GetResultTime(std::string timeName);
 
 	/**
 	* デバック用の時間計測した結果全てとその合計時間を表示する関数.
 	* @param[in] posX x座標
 	* @param[in] posY y座標
 	*/
-	void DrawAllResult(float posX,float posY);		
+	void DrawAllResult(float posX, float posY);
 
 private:
 	WindowCreator*		m_pWindowCreator;
@@ -339,8 +399,7 @@ private:
 	DebugTimer*			m_pDebugTimer;
 	int				    m_WinWidth;			//!< ウインドウの幅
 	int					m_WinHeight;		//!< ウィンドウの高さ
-	bool				m_releaseFlag;		//!< メモリ解放したかどうかのフラグ
- };
+};
 
 #endif	// GAMELIB_H
 

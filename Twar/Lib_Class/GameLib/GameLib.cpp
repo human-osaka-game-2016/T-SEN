@@ -1,61 +1,55 @@
-﻿#include "./Lib/WindowCreator.h"	
-#include "./Lib/GraphicsDevice.h"
-#include "./Lib/InputDevice.h"
-#include "./Lib/InputMouse.h"
-#include "./Lib/TextureManager.h"
-#include "./Lib/XFileManager.h"
-#include "./Lib/SoundFileManager.h"
-#include "./Lib/VertexManager.h"
-#include "./Lib/DebugFont.h"
-#include "./Lib/DebugTimer.h"
+﻿/**
+* @file GameLib.cpp
+* @brief GameLibクラス実装
+* @author haga
+*/
+#include "Lib/WindowCreator.h"	
+#include "Lib/GraphicsDevice.h"
+#include "Lib/InputDevice.h"
+#include "Lib/InputMouse.h"
+#include "Lib/TextureManager.h"
+#include "Lib/XFileManager.h"
+#include "Lib/SoundFileManager.h"
+#include "Lib/VertexManager.h"
+#include "Lib/DebugFont.h"
+#include "Lib/DebugTimer.h"
 #include "GameLib.h"
 
 
-GameLib::GameLib():
-m_pWindowCreator(NULL),
-m_pGraphicsDevice(NULL),
-m_pInputDevice(NULL),
-m_pSoundFileManager(NULL),
-m_pInputMouse(NULL),
-m_pInputKey(NULL),
-m_pTextureManager(NULL),
-m_pXFileManager(NULL),
-m_pVertexManager(NULL),
-m_WinWidth(0),
-m_WinHeight(0),
-m_releaseFlag(false)
-{	
+GameLib::GameLib()
+	: m_pWindowCreator(nullptr)
+	, m_pGraphicsDevice(nullptr)
+	, m_pInputDevice(nullptr)
+	, m_pSoundFileManager(nullptr)
+	, m_pInputMouse(nullptr)
+	, m_pInputKey(nullptr)
+	, m_pTextureManager(nullptr)
+	, m_pXFileManager(nullptr)
+	, m_pVertexManager(nullptr)
+	, m_WinWidth(0)
+	, m_WinHeight(0)
+{
 }
 
 
 GameLib::~GameLib()
 {
-	if (!m_releaseFlag)
-	{
-		ReleaseGameLib();
-	}
+	ReleaseGameLib();
 }
 
 // 初期化関数
-void GameLib::InitGameLib(TCHAR*  title, int width, int height, LRESULT CALLBACK WndProc(HWND, UINT, WPARAM, LPARAM), bool windowType)
+void GameLib::InitGameLib(TCHAR*  title, int width, int height, LRESULT CALLBACK WndProc(HWND, UINT, WPARAM, LPARAM), bool isFullScreen)
 {
 	m_WinWidth = width;
 	m_WinHeight = height;
 	HINSTANCE hInstance = GetModuleHandle(NULL);
 
 	m_pWindowCreator = new WindowCreator(title, width, height);
-	
+
 	m_pGraphicsDevice = &GraphicsDevice::GetInstance();
-	if (windowType)				// ウィンドウサイズ
-	{
-		m_pWindowCreator->MakeWindow(hInstance, WndProc, true);
-		m_pGraphicsDevice->InitDevice(m_pWindowCreator->GetHwnd(), true, m_WinWidth, m_WinHeight);
-	}
-	else						// フルスクリーンサイズ
-	{
-		m_pWindowCreator->MakeWindow(hInstance, WndProc, false);
-		m_pGraphicsDevice->InitDevice(m_pWindowCreator->GetHwnd(), false, m_WinWidth, m_WinHeight);
-	}
+
+	m_pWindowCreator->MakeWindow(hInstance, WndProc, isFullScreen);
+	m_pGraphicsDevice->InitDevice(m_pWindowCreator->GetHwnd(), isFullScreen, m_WinWidth, m_WinHeight);
 
 	m_pGraphicsDevice->SetRenderState3D();
 
@@ -78,18 +72,26 @@ void GameLib::InitGameLib(TCHAR*  title, int width, int height, LRESULT CALLBACK
 // メモリ開放関数
 void GameLib::ReleaseGameLib()
 {
-	if (!m_releaseFlag)
-	{
-		delete m_pDebugTimer;
-		delete m_pVertexManager;
-		delete m_pXFileManager;
-		delete m_pTextureManager;
-		delete m_pInputMouse;
-		delete m_pInputKey;
-		delete m_pWindowCreator;
+	delete m_pDebugTimer;
+	m_pDebugTimer = nullptr;
 
-		m_releaseFlag = true;
-	}
+	delete m_pVertexManager;
+	m_pVertexManager = nullptr;
+
+	delete m_pXFileManager;
+	m_pXFileManager = nullptr;
+
+	delete m_pTextureManager;
+	m_pTextureManager = nullptr;
+
+	delete m_pInputMouse;
+	m_pInputMouse = nullptr;
+
+	delete m_pInputKey;
+	m_pInputKey = nullptr;
+
+	delete m_pWindowCreator;
+	m_pWindowCreator = nullptr;
 }
 
 // ウィンドウタイプを変える関数
@@ -100,18 +102,18 @@ void GameLib::ChangeWindowMode()
 }
 
 int GameLib::GetWindowWidth()
-{ 
+{
 	return m_WinWidth;
 }
 
 int GameLib::GetWindowHeight()
-{ 
+{
 	return m_WinHeight;
 }
 
-IDirect3DDevice9* GameLib:: GetDevice()
+IDirect3DDevice9* GameLib::GetDevice()
 {
-	return (m_pGraphicsDevice->GetDevice());
+	return ( m_pGraphicsDevice->GetDevice() );
 }
 
 void GameLib::StartRender(DWORD FVF)
@@ -136,64 +138,68 @@ void GameLib::LoadTex(int key, char* filePath)
 
 void GameLib::LoadTexEx(int key, char* filePath, int a, int r, int g, int b, bool size)
 {
-	m_pTextureManager->LoadEx(key, filePath,a,r,g,b,size);
+	m_pTextureManager->LoadEx(key, filePath, a, r, g, b, size);
+}
+
+LPDIRECT3DTEXTURE9 GameLib::GetTexture(int key)
+{
+	return m_pTextureManager->GetTex(key);
 }
 
 void GameLib::CreateVtx(int key, float width, float height, float depth)
 {
-	m_pVertexManager->CreateVertex(key,width,height,depth);
+	m_pVertexManager->CreateVertex(key, width, height, depth);
 }
 
 void GameLib::DrawXY(int texKey, int vtxKey, bool center, float posX, float posY)
 {
-	if (center)
-	{
-		m_pVertexManager->DrawCenterPos(vtxKey,m_pTextureManager->GetTex(texKey),posX,posY);
-	}
-	else
-	{
-		m_pVertexManager->Draw(vtxKey, m_pTextureManager->GetTex(texKey), posX, posY);
-	}
+	m_pVertexManager->Draw(vtxKey, m_pTextureManager->GetTex(texKey), posX, posY);
 }
 
-void GameLib::DrawXZ(int texKey, int vtxKey, bool center, float posX, float posY, float posZ)
+void GameLib::DrawXYCenterPos(int texKey, int vtxKey, float posX, float posY)
 {
-	if (center)
-	{
-		m_pVertexManager->DrawCenterPos(vtxKey, m_pTextureManager->GetTex(texKey), posX, posY,posZ);
-	}
-	else
-	{
-		m_pVertexManager->Draw(vtxKey, m_pTextureManager->GetTex(texKey), posX, posY,posZ);
-	}
+	m_pVertexManager->DrawCenterPos(vtxKey, m_pTextureManager->GetTex(texKey), posX, posY);
 }
 
-void GameLib::SetVtx(int key,float tuMin, float tuMax, float tvMin, float tvMax, DWORD color)
+void GameLib::DrawXZ(int texKey, int vtxKey, float posX, float posY, float posZ)
 {
-	m_pVertexManager->SetTuTv(key,tuMin, tuMax, tvMin, tvMax);
-	m_pVertexManager->SetColor(key,color);
+	m_pVertexManager->Draw(vtxKey, m_pTextureManager->GetTex(texKey), posX, posY, posZ);
 }
 
-void GameLib::ReleaseTex(bool AllFlag, int key)
+void GameLib::DrawXZCenterPos(int texKey, int vtxKey, float posX, float posY, float posZ)
 {
-	if (AllFlag)			// すべて破棄するなら
-	{
-		m_pTextureManager->ReleaseALL();
-		m_pVertexManager->ReleaseALL();
-	}
-	else
-	{
-		if (key != 999)
-		{
-			m_pTextureManager->Release(key);
-			m_pVertexManager->Release(key);
-		}
-	}
+	m_pVertexManager->DrawCenterPos(vtxKey, m_pTextureManager->GetTex(texKey), posX, posY, posZ);
+}
+
+void GameLib::SetVtx(int key, float tuMin, float tuMax, float tvMin, float tvMax, DWORD color)
+{
+	m_pVertexManager->SetTuTv(key, tuMin, tuMax, tvMin, tvMax);
+	m_pVertexManager->SetColor(key, color);
+}
+
+void GameLib::ReleaseTex(int key)
+{
+	m_pTextureManager->Release(key);
+}
+
+void GameLib::ReleaseAllTex()
+{
+	m_pTextureManager->ReleaseALL();
+}
+
+void GameLib::ReleaseVertex(int key)
+{
+	m_pVertexManager->Release(key);
+}
+
+void GameLib::ReleaseAllVertex()
+{
+	m_pVertexManager->ReleaseALL();
 }
 
 void GameLib::LoadXFile(int key, LPCTSTR pFilePath)
 {
-	m_pXFileManager->Load(key,pFilePath);
+	m_pXFileManager->Load(key, pFilePath);
 }
 
 void GameLib::DrawXFile(int key)
@@ -201,23 +207,17 @@ void GameLib::DrawXFile(int key)
 	m_pXFileManager->Draw(key);
 }
 
-void GameLib::ReleaseXFile(bool AllFlag, int key)
+void GameLib::ReleaseXFile(int key)
 {
-	if (AllFlag)			// すべて破棄するなら
-	{
-		m_pXFileManager->ReleaseALL();
-	}
-	else
-	{
-		if (key != 999)
-		{
-			m_pXFileManager->Release(key);
-		}
-		
-	}
+	m_pXFileManager->Release(key);
 }
 
-void GameLib::UpDateDI()
+void  GameLib::ReleaseAllXFile()
+{
+	m_pXFileManager->ReleaseALL();
+}
+
+void GameLib::UpdateDI()
 {
 	m_pInputKey->UpdateKey();
 	m_pInputMouse->UpdateMouse();
@@ -227,7 +227,7 @@ BUTTON_STATE GameLib::CheckKey(int DIK, KEYKIND keyName)
 {
 	BUTTON_STATE state;
 
-	switch (m_pInputKey->CheckKey(DIK, keyName))
+	switch(m_pInputKey->CheckKey(DIK, keyName))
 	{
 	case BTN_ON:
 		state = ON;
@@ -251,8 +251,8 @@ BUTTON_STATE GameLib::CheckKey(int DIK, KEYKIND keyName)
 BUTTON_STATE GameLib::ChecKMouseL()
 {
 	BUTTON_STATE state;
-	
-	switch (m_pInputMouse->ChecKMouse(MouseLeft))
+
+	switch(m_pInputMouse->ChecKMouse(MouseLeft))
 	{
 	case BTN_ON:
 		state = ON;
@@ -277,7 +277,7 @@ BUTTON_STATE GameLib::ChecKMouseR()
 {
 	BUTTON_STATE state;
 
-	switch (m_pInputMouse->ChecKMouse(MouseRight))
+	switch(m_pInputMouse->ChecKMouse(MouseRight))
 	{
 	case BTN_ON:
 		state = ON;
@@ -302,7 +302,7 @@ WHEEL_STATE GameLib::GetWheelState()
 {
 	WHEEL_STATE state;
 
-	switch (m_pInputMouse->GetWheelState())
+	switch(m_pInputMouse->GetWheelState())
 	{
 	case WHEEL_NONE:
 		state = ROLL_NONE;
@@ -321,18 +321,38 @@ WHEEL_STATE GameLib::GetWheelState()
 
 void GameLib::GetMousePos(float* mousePosX, float* mousePosY)
 {
-	*mousePosX = static_cast<float>(m_pInputMouse->GetPosX());
-	*mousePosY = static_cast<float>(m_pInputMouse->GetPosY());
+	*mousePosX = static_cast<float>( m_pInputMouse->GetPosX() );
+	*mousePosY = static_cast<float>( m_pInputMouse->GetPosY() );
 }
 
-void GameLib::LoadSound(int key,TCHAR* filePath)
+void GameLib::ShowMouseCursor(bool isVisible)
 {
-	m_pSoundFileManager->LoadSound(key,filePath);
+	m_pInputMouse->ShowMouseCursor(isVisible);
+}
+
+void GameLib::SetMousePos(int x, int y)
+{
+	m_pInputMouse->SetMouseCursor(x, y);
+}
+
+void GameLib::SetMousePosCenter()
+{
+	m_pInputMouse->SetMouseCenter();
+}
+
+void GameLib::RestrictMouseCursor()
+{
+	m_pInputMouse->RestrictCursor();
+}
+
+void GameLib::LoadSound(int key, TCHAR* filePath)
+{
+	m_pSoundFileManager->LoadSound(key, filePath);
 }
 
 void GameLib::PlayDSound(int key, SOUND_OPERATION operation)
 {
-	switch (operation)
+	switch(operation)
 	{
 	case SOUND_PLAY:
 		m_pSoundFileManager->SoundPlayer(key, SOUND_MODE::Play);
@@ -349,7 +369,7 @@ void GameLib::PlayDSound(int key, SOUND_OPERATION operation)
 	case SOUND_RESET:
 		m_pSoundFileManager->SoundPlayer(key, SOUND_MODE::Reset);
 		break;
-		
+
 	case SOUND_RESET_PLAY:
 		m_pSoundFileManager->SoundPlayer(key, SOUND_MODE::Reset_Play);
 		break;
@@ -359,13 +379,13 @@ void GameLib::PlayDSound(int key, SOUND_OPERATION operation)
 		break;
 
 	}
-	
+
 }
 
 void GameLib::DrawDebugFont(std::string text, float posX, float posY)
 {
 	DebugFont font;
-	font.Draw(text.c_str(),D3DXVECTOR2(posX,posY));
+	font.Draw(text.c_str(), D3DXVECTOR2(posX, posY));
 }
 
 void GameLib::StartTimer(std::string  timeName)
@@ -381,12 +401,12 @@ void GameLib::EndTimer(std::string  timeName)
 
 void GameLib::DrawResult(std::string  timeName, float posX, float posY)
 {
-	m_pDebugTimer->DrawResult(timeName,D3DXVECTOR2(posX,posY));
+	m_pDebugTimer->DrawResult(timeName, D3DXVECTOR2(posX, posY));
 }
 
 DWORD GameLib::GetResultTime(std::string  timeName)
 {
-	return (m_pDebugTimer->GetResult(timeName));
+	return ( m_pDebugTimer->GetResult(timeName) );
 }
 
 void GameLib::DrawAllResult(float posX, float posY)
