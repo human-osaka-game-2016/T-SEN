@@ -20,6 +20,15 @@
     <Filter Include="Twar\SubScene">
       <UniqueIdentifier>{2c125ec9-6ad2-42cd-8f85-48b3079c6c82}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Twar\Bullet">
+      <UniqueIdentifier>{056b3e24-fa22-4b8f-b268-5a62f36d899f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Twar\Ship">
+      <UniqueIdentifier>{f1f22bd5-40b6-46bb-969f-3c253dae3938}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Twar\LoadingThread">
+      <UniqueIdentifier>{87106c8e-5428-4201-81d6-5f02dc9217e2}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -97,6 +106,33 @@
     <ClCompile Include="SubScene\WorldMap.cpp">
       <Filter>Twar\SubScene</Filter>
     </ClCompile>
+    <ClCompile Include="Bullet.cpp">
+      <Filter>Twar\Bullet</Filter>
+    </ClCompile>
+    <ClCompile Include="Ship.cpp">
+      <Filter>Twar\Ship</Filter>
+    </ClCompile>
+    <ClCompile Include="Ap.cpp">
+      <Filter>Twar\Bullet</Filter>
+    </ClCompile>
+    <ClCompile Include="He.cpp">
+      <Filter>Twar\Bullet</Filter>
+    </ClCompile>
+    <ClCompile Include="Torpedo.cpp">
+      <Filter>Twar\Bullet</Filter>
+    </ClCompile>
+    <ClCompile Include="Destroyer.cpp">
+      <Filter>Twar\Ship</Filter>
+    </ClCompile>
+    <ClCompile Include="Cruiser.cpp">
+      <Filter>Twar\Ship</Filter>
+    </ClCompile>
+    <ClCompile Include="LoadingThread.cpp">
+      <Filter>Twar\LoadingThread</Filter>
+    </ClCompile>
+    <ClCompile Include="ShipManager.cpp">
+      <Filter>Twar\Ship</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Scene\SceneManager.h">
@@ -167,6 +203,33 @@
     </ClInclude>
     <ClInclude Include="SubScene\WorldMap.h">
       <Filter>Twar\SubScene</Filter>
+    </ClInclude>
+    <ClInclude Include="Bullet.h">
+      <Filter>Twar\Bullet</Filter>
+    </ClInclude>
+    <ClInclude Include="Ap.h">
+      <Filter>Twar\Bullet</Filter>
+    </ClInclude>
+    <ClInclude Include="He.h">
+      <Filter>Twar\Bullet</Filter>
+    </ClInclude>
+    <ClInclude Include="Torpedo.h">
+      <Filter>Twar\Bullet</Filter>
+    </ClInclude>
+    <ClInclude Include="Destroyer.h">
+      <Filter>Twar\Ship</Filter>
+    </ClInclude>
+    <ClInclude Include="Cruiser.h">
+      <Filter>Twar\Ship</Filter>
+    </ClInclude>
+    <ClInclude Include="LoadingThread.h">
+      <Filter>Twar\LoadingThread</Filter>
+    </ClInclude>
+    <ClInclude Include="ShipManager.h">
+      <Filter>Twar\Ship</Filter>
+    </ClInclude>
+    <ClInclude Include="Ship.h">
+      <Filter>Twar\Ship</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

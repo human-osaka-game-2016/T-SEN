@@ -73,12 +73,18 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Ap.cpp" />
+    <ClCompile Include="Bullet.cpp" />
+    <ClCompile Include="Cruiser.cpp" />
+    <ClCompile Include="Destroyer.cpp" />
     <ClCompile Include="Field\FieldManager.cpp" />
     <ClCompile Include="Field\Ocean.cpp" />
     <ClCompile Include="Field\Sky.cpp" />
     <ClCompile Include="GameData\GameDataManager.cpp" />
     <ClCompile Include="GameData\GameTimer.cpp" />
     <ClCompile Include="GameData\SaveDataManager.cpp" />
+    <ClCompile Include="He.cpp" />
+    <ClCompile Include="LoadingThread.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Scene\EndRollScene.cpp" />
     <ClCompile Include="Scene\GameScene.cpp" />
@@ -87,6 +93,8 @@
     <ClCompile Include="Scene\SceneFactory.cpp" />
     <ClCompile Include="Scene\SceneManager.cpp" />
     <ClCompile Include="Scene\TitleScene.cpp" />
+    <ClCompile Include="Ship.cpp" />
+    <ClCompile Include="ShipManager.cpp" />
     <ClCompile Include="SubScene\Battle.cpp" />
     <ClCompile Include="SubScene\Ending.cpp" />
     <ClCompile Include="SubScene\Formation.cpp" />
@@ -97,14 +105,21 @@
     <ClCompile Include="SubScene\SubSceneFactory.cpp" />
     <ClCompile Include="SubScene\WorldMap.cpp" />
     <ClCompile Include="SubScene\SubScene.cpp" />
+    <ClCompile Include="Torpedo.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Ap.h" />
+    <ClInclude Include="Bullet.h" />
+    <ClInclude Include="Cruiser.h" />
+    <ClInclude Include="Destroyer.h" />
     <ClInclude Include="Field\FieldManager.h" />
     <ClInclude Include="Field\Ocean.h" />
     <ClInclude Include="Field\Sky.h" />
     <ClInclude Include="GameData\GameDataManager.h" />
     <ClInclude Include="GameData\GameTimer.h" />
     <ClInclude Include="GameData\SaveDataManager.h" />
+    <ClInclude Include="He.h" />
+    <ClInclude Include="LoadingThread.h" />
     <ClInclude Include="Scene\EndRollScene.h" />
     <ClInclude Include="Scene\GameScene.h" />
     <ClInclude Include="Scene\LogoScene.h" />
@@ -112,6 +127,8 @@
     <ClInclude Include="Scene\SceneFactory.h" />
     <ClInclude Include="Scene\SceneManager.h" />
     <ClInclude Include="Scene\TitleScene.h" />
+    <ClInclude Include="Ship.h" />
+    <ClInclude Include="ShipManager.h" />
     <ClInclude Include="SubScene\Battle.h" />
     <ClInclude Include="SubScene\Ending.h" />
     <ClInclude Include="SubScene\Formation.h" />
@@ -122,6 +139,7 @@
     <ClInclude Include="SubScene\SubSceneFactory.h" />
     <ClInclude Include="SubScene\WorldMap.h" />
     <ClInclude Include="SubScene\SubScene.h" />
+    <ClInclude Include="Torpedo.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
