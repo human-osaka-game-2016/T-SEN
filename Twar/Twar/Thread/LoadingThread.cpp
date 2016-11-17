@@ -1,4 +1,4 @@
-#include "LoadingThread.h"
+﻿#include "LoadingThread.h"
 
 
 LoadingThread::LoadingThread()
