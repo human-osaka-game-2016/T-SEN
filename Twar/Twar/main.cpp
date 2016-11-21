@@ -15,11 +15,8 @@
 #define CLIENT_SIZE_H 900 				// クライアントサイズの高さ
 #define GAME_FPS (1000 / 60)			// ゲームFPS
 
-GameLib*		g_pGameLib = NULL;
-
 // プロシージャ関数
 LRESULT CALLBACK WindowProc(HWND hwnd, UINT message, WPARAM wparam, LPARAM lparam);
-
 
 // エントリポイント
 int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPTSTR lpCmdLine, int nCmdShow)
@@ -29,17 +26,13 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPTSTR lpCmdLin
 
 	MSG msg;
 
-	g_pGameLib = &GameLib::Instance();
 	//-------------------------------------------------------------------
 	//				         ウィンドウ生成
 	//-------------------------------------------------------------------	
 #ifndef FULLSCREEN
-
-	g_pGameLib->InitGameLib(WINDOW_TITLE, CLIENT_SIZE_W, CLIENT_SIZE_H,WindowProc, true);
-
+	GameLib::Instance().InitGameLib(WINDOW_TITLE, CLIENT_SIZE_W, CLIENT_SIZE_H,WindowProc, false);
 #else
-	g_pGameLib->InitGameLib(WINDOW_TITLE, CLIENT_SIZE_W, CLIENT_SIZE_H,WindowProc, false);
-
+	GameLib::Instance().InitGameLib(WINDOW_TITLE, CLIENT_SIZE_W, CLIENT_SIZE_H,WindowProc, true);
 #endif
 
 	SceneManager* pSceneManager = new SceneManager();
@@ -47,7 +40,6 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPTSTR lpCmdLin
 	//-------------------------------------------------------------------
 	//						メッセージループ
 	//-------------------------------------------------------------------
-
 
 	DWORD currentTime = timeGetTime();		// 現在の時間
 	DWORD oldTime = timeGetTime();			// 前の時間
@@ -76,10 +68,11 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPTSTR lpCmdLin
 
 	delete pSceneManager;
 
-	g_pGameLib->ReleaseGameLib();
+	GameLib::Instance().ReleaseGameLib();
 
 	return (INT)msg.wParam;
 }
+
 // ウインドウプロシージャ関数
 LRESULT CALLBACK WindowProc(HWND hwnd, UINT message, WPARAM wparam, LPARAM lparam)
 {
@@ -108,7 +101,6 @@ LRESULT CALLBACK WindowProc(HWND hwnd, UINT message, WPARAM wparam, LPARAM lpara
 				return 0;
 			}
 		}
-			
 			break;
 		}
 		break;
@@ -117,7 +109,7 @@ LRESULT CALLBACK WindowProc(HWND hwnd, UINT message, WPARAM wparam, LPARAM lpara
 		switch ((CHAR)wparam)
 		{
 		case VK_RETURN:     // Alt + Enterを押すとウィンドウ切り替え
-			g_pGameLib->ChangeWindowMode();
+			GameLib::Instance().ChangeWindowMode();
 			break;
 		default:
 			break;
