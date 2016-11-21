@@ -20,7 +20,7 @@ private:
 	TCHAR*      m_wTitle;			//!< ウィンドウのタイトル
 	int		    m_wWidth;			//!< ウインドウの幅
 	int			m_wHeight;			//!< ウィンドウの高さ
-	bool		m_wType;			//!< ウィンドウサイズが通常ならtrue,フルスクリーンならfalse
+	bool		m_isFullScreen;		//!< ウィンドウタイプ trueならフルスクリーン falseなら通常
 
 public:
 	/**
@@ -36,13 +36,13 @@ public:
 
 	/**
 	* ウィンドウを作成する関数<br>
-	* @param[in] hInstance	インスタンスハンドル
-	* @param[in] Wndproc	ウィンドウプロシージャ関数
-	* @param[in] windowType ウィンドウタイプ trueなら通常,falseならフルスクリーン
-	* @retval S_OK			ウィンドウ生成に成功した
-	* @retval E_FAIL		ウィンドウ生成に失敗した
+	* @param[in] hInstance		インスタンスハンドル
+	* @param[in] Wndproc		ウィンドウプロシージャ関数
+	* @param[in] isFullScreen	ウィンドウタイプ trueならフルスクリーン,falseなら通常画面
+	* @retval S_OK				ウィンドウ生成に成功した
+	* @retval E_FAIL			ウィンドウ生成に失敗した
 	*/
-	HRESULT MakeWindow(HINSTANCE hInstance, LRESULT CALLBACK WndProc(HWND hWnd, UINT msg, WPARAM wp, LPARAM lp), bool windowType);
+	HRESULT MakeWindow(HINSTANCE hInstance, LRESULT CALLBACK WndProc(HWND hWnd, UINT msg, WPARAM wp, LPARAM lp), bool isFullScreen);
 
 	/**
 	* ウィンドウサイズ変更

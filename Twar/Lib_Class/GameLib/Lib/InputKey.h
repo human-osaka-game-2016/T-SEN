@@ -6,8 +6,6 @@
 #ifndef INPUT_KEY_H
 #define INPUT_KEY_H
 
-
-#include <dinput.h>
 #include "InputDevice.h"
 
 /**キー種類*/

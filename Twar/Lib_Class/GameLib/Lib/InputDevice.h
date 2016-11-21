@@ -7,6 +7,7 @@
 #define	INPUT_DEVICE_H
 
 #include <dinput.h>
+
 /*
 * DirectInput関連クラス.
 */

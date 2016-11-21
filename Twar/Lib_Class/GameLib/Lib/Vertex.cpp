@@ -73,10 +73,10 @@ void Vertex::DrawCenterPos(LPDIRECT3DTEXTURE9 pTexture, float posX, float posY)
 {
 
 	CUSTOMVERTEX vtex[] = {
-		{ -m_texWidth, -m_texheight, m_texDepth, 1.0f, m_color[0], m_tuMin, m_tvMin },
-		{  m_texWidth, -m_texheight, m_texDepth, 1.0f, m_color[1], m_tuMax, m_tvMin },
-		{  m_texWidth,  m_texheight, m_texDepth, 1.0f, m_color[2], m_tuMax, m_tvMax },
-		{ -m_texWidth,  m_texheight, m_texDepth, 1.0f, m_color[3], m_tuMin, m_tvMax },
+		{ -m_texWidth / 2.0f, -m_texheight / 2.0f, m_texDepth, 1.0f, m_color[0], m_tuMin, m_tvMin },
+		{  m_texWidth / 2.0f, -m_texheight / 2.0f, m_texDepth, 1.0f, m_color[1], m_tuMax, m_tvMin },
+		{  m_texWidth / 2.0f,  m_texheight / 2.0f, m_texDepth, 1.0f, m_color[2], m_tuMax, m_tvMax },
+		{ -m_texWidth / 2.0f,  m_texheight / 2.0f, m_texDepth, 1.0f, m_color[3], m_tuMin, m_tvMax },
 	};
 
 	for (int i = 0; i < 4; i++)
@@ -94,10 +94,10 @@ void Vertex::DrawCenterPos(LPDIRECT3DTEXTURE9 pTexture, float posX, float posY, 
 {
 
 	CUSTOMVERTEX vtex[] = {
-		{ -m_texWidth, m_texheight,  m_texDepth, 1.0f, m_color[0], m_tuMin, m_tvMax },
-		{  m_texWidth, m_texheight,  m_texDepth, 1.0f, m_color[1], m_tuMax, m_tvMax },
-		{  m_texWidth, m_texheight, -m_texDepth, 1.0f, m_color[2], m_tuMax, m_tvMin },
-		{ -m_texWidth, m_texheight, -m_texDepth, 1.0f, m_color[3], m_tuMin, m_tvMin },
+		{ -m_texWidth / 2.0f, m_texheight,  m_texDepth / 2.0f, 1.0f, m_color[0], m_tuMin, m_tvMax },
+		{  m_texWidth / 2.0f, m_texheight,  m_texDepth / 2.0f, 1.0f, m_color[1], m_tuMax, m_tvMax },
+		{  m_texWidth / 2.0f, m_texheight, -m_texDepth / 2.0f, 1.0f, m_color[2], m_tuMax, m_tvMin },
+		{ -m_texWidth / 2.0f, m_texheight, -m_texDepth / 2.0f, 1.0f, m_color[3], m_tuMin, m_tvMin },
 	};
 
 	for (int i = 0; i < 4; i++)

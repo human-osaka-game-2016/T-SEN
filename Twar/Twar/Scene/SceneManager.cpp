@@ -29,7 +29,7 @@ SceneManager::~SceneManager()
 // ゲーム実行関数
 bool SceneManager::Run()
 {
-	m_pGameLib->UpDateDI();
+	m_pGameLib->UpdateDI();
 
 	Control();
 

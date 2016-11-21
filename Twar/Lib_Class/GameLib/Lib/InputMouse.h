@@ -6,7 +6,6 @@
 #ifndef INPUT_MOUSE_H
 #define INPUT_MOUSE_H
 
-#include <dinput.h>
 #include <d3dx9.h>
 #include "InputDevice.h"
 
@@ -39,7 +38,7 @@ private:
 	INT					 m_wndHgt;								//!< ウィンドドウサイズ高さ
 	LONG				 m_posX;								//!< マウスのx座標
 	LONG				 m_posY;								//!< マウスのy座標
-	LONG				 m_wheel;								//!< マウスのホイール
+	LONG				 m_Wheel;								//!< マウスのホイール
 	bool				 m_LDown;								//!< Update時点の左ボタン状態
 	bool				 m_RDown;								//!< Update時点の右ボタン状態
 	bool				 m_MDown;								//!< Update時点の中ボタン状態
@@ -49,9 +48,13 @@ private:
 	int					 m_PreMouse[MOUSEBUTTON::ButtonMAX];	//!< マウスのボタンの前の状態を格納する変数
 	BTN_STATE			 m_mouse[MOUSEBUTTON::ButtonMAX];		//!< マウスのボタンの状態を格納する変数
 
-	/**状態確認*/
+	/**マウスの左ボタンの状態確認*/
 	bool GetIsLAction() const { return m_LAction; }
+
+	/**マウスの右ボタンの状態確認*/
 	bool GetIsRAction() const { return m_RAction; }
+
+	/**マウスの真ん中ボタンの状態確認*/
 	bool GetIsMAction() const { return m_MAction; }
 
 	/**
@@ -65,7 +68,6 @@ public:
 	InputMouse();
 	/**デストラクタ*/
 	~InputMouse();
-
 
 	/**マウスの更新*/
 	void UpdateMouse();
@@ -83,22 +85,32 @@ public:
 	*/
 	WHEELSTATE GetWheelState();
 
-	/**マウス座標を取得する*/
+	/**マウスx座標を取得する*/
 	LONG GetPosX() const { return m_posX; }
+	/**マウスy座標を取得する*/
 	LONG GetPosY() const { return m_posY; }
-	LONG GetWheel() const { return m_wheel; }
+	/**ホイール状態を取得する*/
+	LONG GetWheel() const { return m_Wheel; }
 
-	
+	/**
+	* マウスカーソルの描画をONかOFFにする関数.
+	* @param[in] isVisible 表示するならtrue,非表示ならfalse
+	*/
+	void ShowMouseCursor(bool isVisible);
+
 	/**
 	* マウスの座標をセット.
-	* @param[in] x 座標x
-	* @param[in] y 座標y
+	* @param[in] isCenter 中心にマウスの座標を持ってくるかどうか
+	* @param[in] x		  座標x
+	* @param[in] y		  座標y
 	*/
-	void SetCursorPos(int x, int y)
-	{
-		m_posX = x;
-		m_posY = y;
-	}
+	void SetMouseCursor(int x, int y);
+
+	/**マウスの座標を中心にあわす*/
+	void SetMouseCenter();
+
+	/**マウスの動く範囲をウィンドウ内に制限する関数*/
+	void RestrictCursor();
 };
 
 #endif // INPUT_MOUSE_H

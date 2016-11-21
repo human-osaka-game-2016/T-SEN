@@ -23,7 +23,7 @@ private:
 	D3DPRESENT_PARAMETERS	m_d3dpp;		//!< パラメーター
 	D3DPRESENT_PARAMETERS	m_d3dppWindow;	//!< 通常パラメーター
 	D3DPRESENT_PARAMETERS	m_d3dppFull;	//!< フルスクリーン用パラメーター
-	bool					m_wType;		//!< ウィンドウタイプ trueなら通常 falseならフルスクリーン
+	bool					m_isFullScreen;	//!< ウィンドウタイプ trueならフルスクリーン falseなら通常
 
 public:
 	/**コンストラクタ*/
@@ -45,14 +45,14 @@ public:
 
 	/**
 	* DirectX初期化関数.
-	* @param[in] hWnd    ウィンドウハンドル
-	* @param[in] wType   ウィンドウタイプ  trueなら通常 falseならフルスクリーン
-	* @param[in] wWidth  ウィンドウサイズ幅
-	* @param[in] wHeight ウィンドウサイズ高さ
-	* @retval S_OK		DirectX初期化成功
-	* @retval E_FAIL	DirectX初期化失敗
+	* @param[in] hWnd			ウィンドウハンドル
+	* @param[in] isFullScreen   ウィンドウタイプ  trueならフルスクリーン falseなら通常
+	* @param[in] wWidth			ウィンドウサイズ幅
+	* @param[in] wHeight		ウィンドウサイズ高さ
+	* @retval S_OK				DirectX初期化成功
+	* @retval E_FAIL			DirectX初期化失敗
 	*/
-	HRESULT	 InitDevice(HWND hWnd,bool wType,int wWidth,int wHeight);
+	HRESULT	 InitDevice(HWND hWnd, bool isFullScreen, int wWidth, int wHeight);
 
 	/**
 	* RenderStateの初期設定.

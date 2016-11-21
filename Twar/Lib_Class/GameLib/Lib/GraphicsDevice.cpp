@@ -32,7 +32,7 @@ GraphicsDevice::~GraphicsDevice()
 }
 
 // DirectX初期化関数(中で描画設定も行っている)
-HRESULT	 GraphicsDevice::InitDevice(HWND hWnd, bool wType, int wWidth, int wHeight)
+HRESULT	 GraphicsDevice::InitDevice(HWND hWnd, bool isFullScreen, int wWidth, int wHeight)
 {
 	m_pDirect3D = Direct3DCreate9(D3D_SDK_VERSION);
 
@@ -44,7 +44,7 @@ HRESULT	 GraphicsDevice::InitDevice(HWND hWnd, bool wType, int wWidth, int wHeig
 
 	m_pDirect3D->GetAdapterDisplayMode(D3DADAPTER_DEFAULT,&m_d3ddm);
 
-	m_wType = wType;			// ウィンドウの状態を保持
+	m_isFullScreen = isFullScreen;			// ウィンドウの状態を保持
 
 	// 通常ウィンドウモード
 	ZeroMemory(&m_d3dppWindow,sizeof(D3DPRESENT_PARAMETERS));		// D3DPRESENT_INTERVAL_DEFAULT = 0 が設定→モニタのリフレッシュレート = FPS
@@ -74,13 +74,14 @@ HRESULT	 GraphicsDevice::InitDevice(HWND hWnd, bool wType, int wWidth, int wHeig
 	//m_d3dppFull.PresentationInterval = D3DPRESENT_INTERVAL_ONE;
 
 	ZeroMemory(&m_d3dpp, sizeof(D3DPRESENT_PARAMETERS));
-	if (m_wType)
+	if(m_isFullScreen)
 	{
-		m_d3dpp = m_d3dppWindow;
+		m_d3dpp = m_d3dppFull;
+		
 	}
 	else
 	{
-		m_d3dpp = m_d3dppFull;
+		m_d3dpp = m_d3dppWindow;
 	}
 
 	// デバイスを作る
@@ -143,7 +144,7 @@ void GraphicsDevice::SetRenderState3D()
 void GraphicsDevice::StartRender()
 {
 	// 画面の消去
-	m_pD3Device->Clear(0, NULL, D3DCLEAR_TARGET | D3DCLEAR_ZBUFFER, D3DCOLOR_XRGB(0x00, 0x00, 0x00), 1.0, 0);
+	m_pD3Device->Clear(0, NULL, D3DCLEAR_STENCIL | D3DCLEAR_TARGET | D3DCLEAR_ZBUFFER, D3DCOLOR_XRGB(0x00, 0x00, 0x00), 1.0, 0);
 	// 描画の開始
 	m_pD3Device->BeginScene();
 }
@@ -152,7 +153,7 @@ void GraphicsDevice::StartRender()
 void GraphicsDevice::StartRender(DWORD FVF)
 {
 	// 画面の消去
-	m_pD3Device->Clear(0, NULL, D3DCLEAR_TARGET | D3DCLEAR_ZBUFFER, D3DCOLOR_XRGB(0x00, 0x00, 0x00), 1.0, 0);
+	m_pD3Device->Clear(0, NULL, D3DCLEAR_STENCIL | D3DCLEAR_TARGET | D3DCLEAR_ZBUFFER, D3DCOLOR_XRGB(0x00, 0x00, 0x00), 1.0, 0);
 	// 描画の開始
 	m_pD3Device->BeginScene();
 	// 描画のフォーマットを設定
@@ -178,15 +179,16 @@ void GraphicsDevice::SetFVF(DWORD FVF)
 // ウィンドウモードが変更した場合デバイス関連を再設定する
 HRESULT GraphicsDevice::ChangeDisplayMode()
 {
-	if (m_wType)
+	if (m_isFullScreen)
 	{
-		m_d3dpp = m_d3dppFull;
-		m_wType = false; // フルスクリーンモードに変更
+		m_d3dpp = m_d3dppWindow;
+		m_isFullScreen = false; // 通常モードに変更
 	}
 	else
 	{
-		m_d3dpp = m_d3dppWindow;
-		m_wType = true; // 通常モードに変更
+		m_d3dpp = m_d3dppFull;
+		m_isFullScreen = true; // フルスクリーンモードに変更
+		
 	}
 	if (FAILED(m_pD3Device->Reset(&m_d3dpp)))
 	{
