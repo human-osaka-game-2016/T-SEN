@@ -110,6 +110,15 @@ void Vertex::DrawCenterPos(LPDIRECT3DTEXTURE9 pTexture, float posX, float posY, 
 	m_pD3Device->DrawPrimitiveUP(D3DPT_TRIANGLEFAN, 2, vtex, sizeof(CUSTOMVERTEX));
 }
 
+// UVスクロールを行う関数
+void Vertex::ScrollUV(float scrollSpeedTu, float scrollSpeedTv)
+{
+	m_tuMin += scrollSpeedTu;
+	m_tuMax += scrollSpeedTu;
+	m_tvMin += scrollSpeedTv;
+	m_tvMax += scrollSpeedTv;
+}
+
 // テクスチャーサイズをセットする関数
 void Vertex::SetTexSize(float texWidth, float texHeight)
 {

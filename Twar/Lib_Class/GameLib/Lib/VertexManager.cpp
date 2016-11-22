@@ -49,6 +49,11 @@ void VertexManager::DrawCenterPos(int key, LPDIRECT3DTEXTURE9 pTexture, float x,
 	m_vertex[key].DrawCenterPos(pTexture, x, y,z);
 }
 
+void VertexManager::ScrollUV(int key, float scrollSpeedTu, float scrollSpeedTv)
+{
+	m_vertex[key].ScrollUV(scrollSpeedTu, scrollSpeedTv);
+}
+
 // サイズを変更する関数
 void VertexManager::SetSize(int key, float width, float height, float depth)
 {

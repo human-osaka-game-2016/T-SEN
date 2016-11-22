@@ -168,25 +168,47 @@ public:
 	void CreateVtx(int key, float width, float height, float depth = 0.0f);
 
 	/**
+	* バーテックスのサイズ変更を行う関数.
+	* @param[in] key	登録したキー、またはID
+	* @param[in] width	横幅(X軸)
+	* @param[in] height 高さ(Y軸)
+	* @param[in] depth  奥行(Z軸) デフォルト引数値は0.0f
+	*/
+	void SetVtxSize(int key,float width, float height, float depth = 0.0f);
+
+	/**
 	* バーテックスの変更を行う関数.
 	* @param[in] key	登録したキー、またはID
 	* @param[in] tuMin  tu値の最小値
 	* @param[in] tuMax  tu値の最大値
 	* @param[in] tvMin  tv値の最小値
 	* @param[in] tvax	tv値の最大値
-	* @param[in] color  色情報(ARGB) デフォルト引数値は0xFFFFFFFF
 	*/
-	void SetVtx(int key, float tuMin, float tuMax, float tvMin, float tvMax, DWORD color = 0xFFFFFFFF);
+	void SetVtxUV(int key, float tuMin, float tuMax, float tvMin, float tvMax);
+
+	/**
+	* バーテックスの頂点情報における色の変更を行う関数
+	* @param[in] key	登録したキー、またはID
+	* @param[in] color  色情報(ARGB) 
+	*/
+	void SetVtxColor(int key, DWORD color);
+
+	/**
+	* UVスクロールを行う関数
+	* @param[in] key			登録したキー、またはID
+	* @param[in] scrollSpeedTu	tuのスクロールの速さ(変化量)
+	* @param[in] scrollSpeedTv	tvのスクロールの速さ(変化量)
+	*/
+	void ScrollUV(int key, float scrollSpeedTu, float scrollSpeedTv);
 
 	/**
 	* テクスチャー(XY座標)の座標を左端にあわせて描画する関数
 	* @param[in] texKey	テクスチャーを登録したキー、またはID
 	* @param[in] vtxKey バーテックスを登録したキー、またはID
-	* @param[in] center 位置座標をテクスチャーの中心にするならtrue,違うならfalse
 	* @param[in] posX	x座標
 	* @param[in] posY   y座標
 	*/
-	void DrawXY(int texKey, int vtxKey, bool center, float posX, float posY);
+	void DrawXY(int texKey, int vtxKey, float posX, float posY);
 
 	/**
 	* テクスチャー(XY座標)の中心に座標をあわせて描画する関数

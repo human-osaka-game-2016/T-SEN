@@ -95,6 +95,13 @@ public:
 	void DrawCenterPos(LPDIRECT3DTEXTURE9 pTexture, float posX, float posY, float posZ);
 
 	/**
+	* UVスクロールを行う関数
+	* @param[in] scrollSpeedTu	tuのスクロールの速さ(変化量)
+	* @param[in] scrollSpeedTv	tvのスクロールの速さ(変化量)
+	*/
+	void ScrollUV(float scrollSpeedTu, float scrollSpeedTv);
+
+	/**
 	* テクスチャーサイズをセットする関数.
 	* @param[in] texWidth  テクスチャーの幅
 	* @param[in] texHeight テクスチャーの高さ
