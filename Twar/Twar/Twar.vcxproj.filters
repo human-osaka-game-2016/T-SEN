@@ -32,6 +32,12 @@
     <Filter Include="Twar\CameraController">
       <UniqueIdentifier>{4e780aac-fd4b-4a06-9ead-4b7ac8eddede}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Twar\Title">
+      <UniqueIdentifier>{fd2c6fdd-9d05-4f49-bba4-5bee44b99bef}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Twar\Button">
+      <UniqueIdentifier>{1c0b10be-02b7-4c36-b0ca-bd9ae68f8227}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -139,6 +145,24 @@
     <ClCompile Include="CameraController\CameraController.cpp">
       <Filter>Twar\CameraController</Filter>
     </ClCompile>
+    <ClCompile Include="Button\MenuButton.cpp">
+      <Filter>Twar\Button</Filter>
+    </ClCompile>
+    <ClCompile Include="Title\TitleBackground.cpp">
+      <Filter>Twar\Title</Filter>
+    </ClCompile>
+    <ClCompile Include="Title\TitleLogo.cpp">
+      <Filter>Twar\Title</Filter>
+    </ClCompile>
+    <ClCompile Include="Title\TitleMenu.cpp">
+      <Filter>Twar\Title</Filter>
+    </ClCompile>
+    <ClCompile Include="GameData\DataMenu.cpp">
+      <Filter>Twar\GameData</Filter>
+    </ClCompile>
+    <ClCompile Include="GameData\DataSlot.cpp">
+      <Filter>Twar\GameData</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Scene\SceneManager.h">
@@ -239,6 +263,27 @@
     </ClInclude>
     <ClInclude Include="CameraController\CameraController.h">
       <Filter>Twar\CameraController</Filter>
+    </ClInclude>
+    <ClInclude Include="Button\MenuButton.h">
+      <Filter>Twar\Button</Filter>
+    </ClInclude>
+    <ClInclude Include="Title\TitleBackground.h">
+      <Filter>Twar\Title</Filter>
+    </ClInclude>
+    <ClInclude Include="Title\TitleLogo.h">
+      <Filter>Twar\Title</Filter>
+    </ClInclude>
+    <ClInclude Include="Title\TitleMenu.h">
+      <Filter>Twar\Title</Filter>
+    </ClInclude>
+    <ClInclude Include="GameData\DataMenu.h">
+      <Filter>Twar\GameData</Filter>
+    </ClInclude>
+    <ClInclude Include="GameData\DataSlot.h">
+      <Filter>Twar\GameData</Filter>
+    </ClInclude>
+    <ClInclude Include="Title\TitleCommonDeclaration.h">
+      <Filter>Twar\Title</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
