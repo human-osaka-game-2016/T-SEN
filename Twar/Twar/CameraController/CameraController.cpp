@@ -25,3 +25,4 @@ void CameraController::TransformView(D3DXVECTOR3 vEyePt, D3DXVECTOR3 vLookPt, fl
 {
 	m_pCamera->LookInCamera(&vEyePt,&vLookPt,&angle);
 }
+
