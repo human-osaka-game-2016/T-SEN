@@ -136,7 +136,7 @@
     <ClCompile Include="Thread\LoadingThread.cpp">
       <Filter>Twar\LoadingThread</Filter>
     </ClCompile>
-    <ClCompile Include="CameraController.cpp">
+    <ClCompile Include="CameraController\CameraController.cpp">
       <Filter>Twar\CameraController</Filter>
     </ClCompile>
   </ItemGroup>
@@ -237,7 +237,7 @@
     <ClInclude Include="Thread\LoadingThread.h">
       <Filter>Twar\LoadingThread</Filter>
     </ClInclude>
-    <ClInclude Include="CameraController.h">
+    <ClInclude Include="CameraController\CameraController.h">
       <Filter>Twar\CameraController</Filter>
     </ClInclude>
   </ItemGroup>
