@@ -100,7 +100,6 @@ public:
 
 	/**
 	* マウスの座標をセット.
-	* @param[in] isCenter 中心にマウスの座標を持ってくるかどうか
 	* @param[in] x		  座標x
 	* @param[in] y		  座標y
 	*/

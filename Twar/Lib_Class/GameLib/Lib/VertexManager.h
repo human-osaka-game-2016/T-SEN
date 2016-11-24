@@ -73,6 +73,14 @@ public:
 	void DrawCenterPos(int key, LPDIRECT3DTEXTURE9 pTexture, float x, float y,float z);
 
 	/**
+	* UVスクロールを行う関数
+	* @param[in] key			mapのキー
+	* @param[in] scrollSpeedTu	tuのスクロールの速さ(変化量)
+	* @param[in] scrollSpeedTv	tvのスクロールの速さ(変化量)
+	*/
+	void ScrollUV(int key,float scrollSpeedTu, float scrollSpeedTv);
+
+	/**
 	* サイズを変更する関数
 	* @param[in] key	mapのキー
 	* @param[in] width	横幅(X軸)

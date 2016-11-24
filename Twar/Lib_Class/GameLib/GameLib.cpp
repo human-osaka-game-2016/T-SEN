@@ -151,7 +151,27 @@ void GameLib::CreateVtx(int key, float width, float height, float depth)
 	m_pVertexManager->CreateVertex(key, width, height, depth);
 }
 
-void GameLib::DrawXY(int texKey, int vtxKey, bool center, float posX, float posY)
+void GameLib::SetVtxSize(int key, float width, float height, float depth)
+{
+	m_pVertexManager->SetSize(key,width,height,depth);
+}
+
+void GameLib::SetVtxUV(int key, float tuMin, float tuMax, float tvMin, float tvMax)
+{
+	m_pVertexManager->SetTuTv(key, tuMin, tuMax, tvMin, tvMax);
+}
+
+void GameLib::SetVtxColor(int key, DWORD color)
+{
+	m_pVertexManager->SetColor(key, color);
+}
+
+void GameLib::ScrollUV(int key, float scrollSpeedTu, float scrollSpeedTv)
+{
+	m_pVertexManager->ScrollUV(key, scrollSpeedTu, scrollSpeedTv);
+}
+
+void GameLib::DrawXY(int texKey, int vtxKey, float posX, float posY)
 {
 	m_pVertexManager->Draw(vtxKey, m_pTextureManager->GetTex(texKey), posX, posY);
 }
@@ -169,12 +189,6 @@ void GameLib::DrawXZ(int texKey, int vtxKey, float posX, float posY, float posZ)
 void GameLib::DrawXZCenterPos(int texKey, int vtxKey, float posX, float posY, float posZ)
 {
 	m_pVertexManager->DrawCenterPos(vtxKey, m_pTextureManager->GetTex(texKey), posX, posY, posZ);
-}
-
-void GameLib::SetVtx(int key, float tuMin, float tuMax, float tvMin, float tvMax, DWORD color)
-{
-	m_pVertexManager->SetTuTv(key, tuMin, tuMax, tvMin, tvMax);
-	m_pVertexManager->SetColor(key, color);
 }
 
 void GameLib::ReleaseTex(int key)
