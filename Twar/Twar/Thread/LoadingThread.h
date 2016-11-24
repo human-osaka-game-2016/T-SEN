@@ -2,8 +2,6 @@
 * @file		LoadingThread.h
 * @brief	LoadingThreadクラスヘッダ
 * @author	haga
-* @todo		2016/11/21 作成したが、ライブラリの機能不足のため頂点情報がむき出しになっているので後で修正します。
-* 
 */
 #ifndef LOADING_THREAD_H
 #define LOADING_THREAD_H
@@ -37,14 +35,10 @@ private:
 	/**ループ関数(スレッドの実体)*/
 	static void LoopLoadingScreen();
 
-	/**
-	* コントロール関数.
-	*/
+	/**コントロール関数*/
 	static void Control();
 
-	/**
-	* 描画関数
-	*/
+	/**描画関数*/
 	static void Draw();
 
 	/**
