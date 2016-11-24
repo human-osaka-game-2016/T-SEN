@@ -16,13 +16,14 @@
 std::thread*	LoadingThread::m_pThread = nullptr;
 bool			LoadingThread::m_IsLoading = false;
 int				LoadingThread::m_TexID = INT_MAX;			// 登録されないだろう数値を代入している
+int				LoadingThread::m_VtxID = INT_MAX;			// 登録されないだろう数値を代入している
 
 //-----------------------------------------------------------------------------------------------------//
 //Static public functions
 //-----------------------------------------------------------------------------------------------------//
 
 //	スレッドを作成する関数
-void LoadingThread::CreateThread(int texID)
+void LoadingThread::CreateThread(int texID,int vtxID)
 {
 	if(m_pThread != nullptr)			// スレッドがあるかどうかチェック
 	{
@@ -31,6 +32,7 @@ void LoadingThread::CreateThread(int texID)
 	}
 
 	m_TexID = texID;
+	m_VtxID = vtxID;
 	m_IsLoading = true;
 	m_pThread = new std::thread(LoopLoadingScreen);
 }
