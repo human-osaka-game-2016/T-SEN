@@ -77,6 +77,7 @@
     <ClCompile Include="Bullet\Bullet.cpp" />
     <ClCompile Include="Bullet\He.cpp" />
     <ClCompile Include="Bullet\Torpedo.cpp" />
+    <ClCompile Include="CameraController\CameraController.cpp" />
     <ClCompile Include="Field\FieldManager.cpp" />
     <ClCompile Include="Field\Ocean.cpp" />
     <ClCompile Include="Field\Sky.cpp" />
@@ -112,6 +113,7 @@
     <ClInclude Include="Bullet\Bullet.h" />
     <ClInclude Include="Bullet\He.h" />
     <ClInclude Include="Bullet\Torpedo.h" />
+    <ClInclude Include="CameraController\CameraController.h" />
     <ClInclude Include="Field\FieldManager.h" />
     <ClInclude Include="Field\Ocean.h" />
     <ClInclude Include="Field\Sky.h" />

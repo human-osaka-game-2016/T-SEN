@@ -29,6 +29,9 @@
     <Filter Include="Twar\LoadingThread">
       <UniqueIdentifier>{87106c8e-5428-4201-81d6-5f02dc9217e2}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Twar\CameraController">
+      <UniqueIdentifier>{4e780aac-fd4b-4a06-9ead-4b7ac8eddede}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -133,6 +136,9 @@
     <ClCompile Include="Thread\LoadingThread.cpp">
       <Filter>Twar\LoadingThread</Filter>
     </ClCompile>
+    <ClCompile Include="CameraController\CameraController.cpp">
+      <Filter>Twar\CameraController</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Scene\SceneManager.h">
@@ -230,6 +236,9 @@
     </ClInclude>
     <ClInclude Include="Thread\LoadingThread.h">
       <Filter>Twar\LoadingThread</Filter>
+    </ClInclude>
+    <ClInclude Include="CameraController\CameraController.h">
+      <Filter>Twar\CameraController</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
