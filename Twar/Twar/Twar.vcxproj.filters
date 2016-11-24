@@ -139,6 +139,9 @@
     <ClCompile Include="CameraController\CameraController.cpp">
       <Filter>Twar\CameraController</Filter>
     </ClCompile>
+    <ClCompile Include="Ship\BattleShip.cpp">
+      <Filter>Twar\Ship</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Scene\SceneManager.h">
@@ -239,6 +242,9 @@
     </ClInclude>
     <ClInclude Include="CameraController\CameraController.h">
       <Filter>Twar\CameraController</Filter>
+    </ClInclude>
+    <ClInclude Include="Ship\BattleShip.h">
+      <Filter>Twar\Ship</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
