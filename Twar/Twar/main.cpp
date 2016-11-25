@@ -8,7 +8,7 @@
 #include "GameLib/GameLib.h"
 #include "Scene/SceneManager.h"
 
-//#define FULLSCREEN
+#define WINDOW_MODE						// ウィンドウモード(通常)
 
 #define WINDOW_TITLE TEXT("T戦")		// ウィンドウタイトル
 #define CLIENT_SIZE_W 1600				// クライアントサイズの幅
@@ -26,22 +26,22 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPTSTR lpCmdLin
 
 	MSG msg;
 
-	//-------------------------------------------------------------------
+	//-------------------------------------------------------------------//
 	//				         ウィンドウ生成
-	//-------------------------------------------------------------------	
-#ifndef FULLSCREEN
+	//-------------------------------------------------------------------//	
+#ifdef WINDOW_MODE		//	ウィンドウモード(通常)
 	GameLib::Instance().InitGameLib(WINDOW_TITLE, CLIENT_SIZE_W, CLIENT_SIZE_H,WindowProc, false);
-#else
+#else					//　フルスクリーンモード
 	GameLib::Instance().InitGameLib(WINDOW_TITLE, CLIENT_SIZE_W, CLIENT_SIZE_H,WindowProc, true);
 #endif
 
 	SceneManager* pSceneManager = new SceneManager();
 
-	//-------------------------------------------------------------------
+	//-------------------------------------------------------------------//
 	//						メッセージループ
-	//-------------------------------------------------------------------
+	//-------------------------------------------------------------------//
 
-	DWORD currentTime = timeGetTime();		// 現在の時間
+	DWORD currentTime;						// 現在の時間
 	DWORD oldTime = timeGetTime();			// 前の時間
 
 	ZeroMemory(&msg, sizeof(msg));
