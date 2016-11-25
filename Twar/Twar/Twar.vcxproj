@@ -77,10 +77,13 @@
     <ClCompile Include="Bullet\Bullet.cpp" />
     <ClCompile Include="Bullet\He.cpp" />
     <ClCompile Include="Bullet\Torpedo.cpp" />
+    <ClCompile Include="Button\MenuButton.cpp" />
     <ClCompile Include="CameraController\CameraController.cpp" />
     <ClCompile Include="Field\FieldManager.cpp" />
     <ClCompile Include="Field\Ocean.cpp" />
     <ClCompile Include="Field\Sky.cpp" />
+    <ClCompile Include="GameData\DataMenu.cpp" />
+    <ClCompile Include="GameData\DataSlot.cpp" />
     <ClCompile Include="GameData\GameDataManager.cpp" />
     <ClCompile Include="GameData\GameTimer.cpp" />
     <ClCompile Include="GameData\SaveDataManager.cpp" />
@@ -107,16 +110,22 @@
     <ClCompile Include="SubScene\WorldMap.cpp" />
     <ClCompile Include="SubScene\SubScene.cpp" />
     <ClCompile Include="Thread\LoadingThread.cpp" />
+    <ClCompile Include="Title\TitleBackground.cpp" />
+    <ClCompile Include="Title\TitleLogo.cpp" />
+    <ClCompile Include="Title\TitleMenu.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Bullet\Ap.h" />
     <ClInclude Include="Bullet\Bullet.h" />
     <ClInclude Include="Bullet\He.h" />
     <ClInclude Include="Bullet\Torpedo.h" />
+    <ClInclude Include="Button\MenuButton.h" />
     <ClInclude Include="CameraController\CameraController.h" />
     <ClInclude Include="Field\FieldManager.h" />
     <ClInclude Include="Field\Ocean.h" />
     <ClInclude Include="Field\Sky.h" />
+    <ClInclude Include="GameData\DataMenu.h" />
+    <ClInclude Include="GameData\DataSlot.h" />
     <ClInclude Include="GameData\GameDataManager.h" />
     <ClInclude Include="GameData\GameTimer.h" />
     <ClInclude Include="GameData\SaveDataManager.h" />
@@ -142,6 +151,10 @@
     <ClInclude Include="SubScene\WorldMap.h" />
     <ClInclude Include="SubScene\SubScene.h" />
     <ClInclude Include="Thread\LoadingThread.h" />
+    <ClInclude Include="Title\TitleBackground.h" />
+    <ClInclude Include="Title\TitleCommonDeclaration.h" />
+    <ClInclude Include="Title\TitleLogo.h" />
+    <ClInclude Include="Title\TitleMenu.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
