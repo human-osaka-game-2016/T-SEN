@@ -2,7 +2,6 @@
 * @file		TitleBackground.h
 * @brief	TitleBackgroundクラスヘッダ
 * @author	haga
-* @todo		2016/11/24ファイル作成のみ。実装は後で行う
 */
 
 #ifndef TITLE_BACKGROUND_H
@@ -14,8 +13,14 @@
 class TitleBackground
 {
 public:
+	/**コンストラクタ*/
 	TitleBackground();
+
+	/**デストラクタ*/
 	~TitleBackground();
+
+	/**描画関数*/
+	void Draw();
 };
 
 #endif	// TITLE_BACKGROUND_H
