@@ -17,6 +17,9 @@ enum TITLE_SCENE_STATE
 };
 
 class SaveDataManager;
+class TitleBackground;
+class TitleLogo;
+class TitleMenu;
 
 /**
 * タイトルシーンのクラス
@@ -41,6 +44,9 @@ public:
 
 private:
 	SaveDataManager*	m_pSaveDataManager;		//!< SaveDataManagerクラスのインスタンスへのポインタ
+	TitleBackground*	m_pTitleBackground;		//!< TitleBackgroundクラスのインスタンスへのポインタ	
+	TitleLogo*			m_pTitleLogo;			//!< TitleLogoクラスへのインスタンスへのポインタ
+	TitleMenu*			m_pTitleMenu;			//!< TitleMenuクラスへのインスタンスへのポインタ
 	TITLE_SCENE_STATE	m_TitleSceneState;		//!< タイトルシーンの状態 
 };
 
