@@ -1,7 +1,7 @@
 ﻿/**
-* @file TitleScene.cpp
-* @brief TitleSceneクラス実装
-* @author haga
+* @file		TitleScene.cpp
+* @brief	TitleSceneクラス実装
+* @author	haga
 */
 #include "GameLib/GameLib.h"
 #include "TitleScene.h"
