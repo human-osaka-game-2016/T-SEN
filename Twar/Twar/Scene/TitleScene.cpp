@@ -9,6 +9,7 @@
 
 TitleScene::TitleScene(SaveDataManager* pSaveDataManager)
 	: m_pSaveDataManager(pSaveDataManager)
+	, m_TitleSceneState(NONE)
 {
 }
 

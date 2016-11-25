@@ -8,6 +8,14 @@
 
 #include "Scene.h"
 
+/**タイトルシーンの状態*/
+enum TITLE_SCENE_STATE
+{
+	GAME_START,				//!< ゲームを開始する
+	DATA_LOAD,				//!< データをロードする
+	NONE,					//!< 通常状態
+};
+
 class SaveDataManager;
 
 /**
@@ -32,7 +40,8 @@ public:
 	virtual void Draw();
 
 private:
-	SaveDataManager*  m_pSaveDataManager;	//!< SaveDataManagerクラスのインスタンスへのポインタ
+	SaveDataManager*	m_pSaveDataManager;		//!< SaveDataManagerクラスのインスタンスへのポインタ
+	TITLE_SCENE_STATE	m_TitleSceneState;		//!< タイトルシーンの状態 
 };
 
 #endif // TITLE_SCENE_H
