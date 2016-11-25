@@ -16,7 +16,7 @@ enum TEXTURE_ID
 	TITLE_BACKGROUND,		//!< タイトル背景
 	TITLE_LOGO,				//!< タイトルロゴ
 	TITLE_BUTTON,			//!< タイトルで使用するボタン
-	SAVE_SLOT,				//!< セーブデータスロット関連
+	DATA_MENU,				//!< セーブデータスロット関連
 	TEX_MAX
 };
 

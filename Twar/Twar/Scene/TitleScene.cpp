@@ -17,7 +17,7 @@ TitleScene::TitleScene(SaveDataManager* pSaveDataManager)
 	, m_pTitleMenu(new TitleMenu())
 	, m_TitleSceneState(NONE)
 {
-	// テクスチャーを読み込み、書き込む
+	// テクスチャーを読み込む
 }
 
 TitleScene::~TitleScene()
