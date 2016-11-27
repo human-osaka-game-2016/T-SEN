@@ -7,19 +7,19 @@
 #include "TitleCommonDeclaration.h"
 #include "TitleLogo.h"
 
-// ロゴの大きさ
-const float TitleLogo::m_LogoWidth = 800.f;
-const float TitleLogo::m_LogoHeight = 100.f;
-
+/**@todo 現在数値は仮置きのもの*/
 TitleLogo::TitleLogo()
 	: m_PosX(0.0f)
 	, m_PosY(0.0f)
 {
-	GameLib::Instance().CreateVtx(title_scene::LOGO, m_LogoWidth, m_LogoHeight);
+	float logoWidth  = 800.f;
+	float logoHeight = 300.f;
+	GameLib::Instance().CreateVtx(title_enum::LOGO_VTX, logoWidth, logoHeight);
 }
 
 TitleLogo::~TitleLogo()
 {
+	//　リソース解放はTitleSceneのデストラクタで一括で行う
 }
 
 
@@ -30,5 +30,5 @@ void TitleLogo::Control()
 
 void TitleLogo::Draw()
 {
-	GameLib::Instance().DrawXYCenterPos(title_scene::TITLE_LOGO,title_scene::LOGO,);
+	GameLib::Instance().DrawXYCenterPos(title_enum::LOGO_TEX,title_enum::LOGO_VTX,m_PosX,m_PosY);
 }
