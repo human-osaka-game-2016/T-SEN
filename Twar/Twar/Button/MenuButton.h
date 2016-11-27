@@ -15,7 +15,22 @@ class MenuButton
 {
 public:
 	MenuButton();
+
 	~MenuButton();
+
+	void SetButtonData(int texID,int vtxID,float width,float height);
+
+	void Enlarge(float width,float height);
+
+	void Reinstate();
+
+	void Draw();
+
+private:
+	int		m_TexID;
+	int		m_VtxID;
+	float	m_Width;
+	float	m_Height;
 };
 
 #endif	// MENU_BUTTON_H

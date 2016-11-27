@@ -9,7 +9,7 @@
 #include "Scene.h"
 
 /**タイトルシーンの状態*/
-enum TITLE_SCENE_STATE
+enum TITLE_STATE
 {
 	GAME_START,				//!< ゲームを開始する
 	DATA_LOAD,				//!< データをロードする
@@ -47,7 +47,7 @@ private:
 	TitleBackground*	m_pTitleBackground;		//!< TitleBackgroundクラスのインスタンスへのポインタ	
 	TitleLogo*			m_pTitleLogo;			//!< TitleLogoクラスへのインスタンスへのポインタ
 	TitleMenu*			m_pTitleMenu;			//!< TitleMenuクラスへのインスタンスへのポインタ
-	TITLE_SCENE_STATE	m_TitleSceneState;		//!< タイトルシーンの状態 
+	TITLE_STATE			m_TitleSceneState;		//!< タイトルシーンの状態 
 };
 
 #endif // TITLE_SCENE_H

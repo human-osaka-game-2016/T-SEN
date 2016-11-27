@@ -21,7 +21,7 @@ TitleScene::TitleScene(SaveDataManager* pSaveDataManager)
 }
 
 TitleScene::~TitleScene()
-{	// deleteしてnullptrで初期化している
+{
 	delete m_pTitleMenu;
 	m_pTitleMenu = nullptr;
 
@@ -35,34 +35,38 @@ TitleScene::~TitleScene()
 // コントロール関数
 SCENE_ID TitleScene::Control()
 {
-	if(m_TitleSceneState == DATA_LOAD)			
+	switch( m_TitleSceneState )
 	{
+	case NONE:
+		m_pTitleLogo->Control();
+		m_TitleSceneState = m_pTitleMenu->Control();
+		break;
 
-	}
-	else
-	{
+	case DATA_LOAD:
+		/**@todo	2016/11/27：まだ実装していない*/
+		break;
 
-	}
-
-	if(m_TitleSceneState == GAME_START)			
-	{
-		// ゲームスタート状態ならゲームシーンへ移行
+	case GAME_START:
 		return GAME_SCENE;
+		break;
 	}
-
+	
 	return TITLE_SCENE;
 }
 
 // 描画関数
 void TitleScene::Draw()
 {
+	m_pTitleBackground->Draw();
 
 	if(m_TitleSceneState == DATA_LOAD)
 	{
+		/**@todo	2016/11/27：まだ実装していない*/
 
 	}
 	else
 	{
-
+		m_pTitleLogo->Draw();
+		m_pTitleMenu->Draw();
 	}
 }
