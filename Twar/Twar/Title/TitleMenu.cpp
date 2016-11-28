@@ -21,7 +21,7 @@ TitleMenu::TitleMenu(bool hasSaveData)
 	GameLib::Instance().SetVtxUV(TitleScene::START_BTN_VTX, 0.0f, 1.0f, 0.0f, 0.5f);
 	m_MenuButton.emplace_back(TitleScene::BUTTON_TEX, TitleScene::START_BTN_VTX, buttonWidth, buttonHeight, startButtonPos);
 
-	if(hasSaveData)		//　セーブデータを格納する変数
+	if(hasSaveData)		//　セーブデータがあればボタンを作成
 	{
 		D3DXVECTOR2	dataLoadButtonPos = { 800.f, 400.f };		//!< データロードボタンの座標
 		GameLib::Instance().CreateVtx(TitleScene::CONTINUE_BTN_VTX, buttonWidth, buttonHeight);

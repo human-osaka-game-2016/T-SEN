@@ -2,7 +2,7 @@
 * @file		MenuButton.cpp
 * @brief	MenuButtonクラス実装
 * @author	haga
-* @todo		2016/11/28実装するが、バーテックスクラスを改良して再度見直す
+* @todo		2016/11/28実装するが、バーテックスクラスを改良して再度見直し、補正値をなくす
 */
 
 #include "GameLib/GameLib.h"
