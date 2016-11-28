@@ -14,17 +14,27 @@
 class MenuButton
 {
 public:
-	MenuButton();
+	/**
+	* コンストラクタ.
+	* @param texID テクスチャーのID
+	* @param vtxID バーテックスのID
+	* @param width 横幅
+	* @param height 縦幅
+	*/
+	MenuButton(int texID, int vtxID, float width, float height);
 
 	~MenuButton();
-
-	void SetButtonData(int texID,int vtxID,float width,float height);
 
 	void Enlarge(float width,float height);
 
 	void Reinstate();
 
-	void Draw();
+	/**
+	* 描画関数.
+	* @param posX x座標
+	* @param posY y座標
+	*/
+	void Draw(float posX,float posY);
 
 private:
 	int		m_TexID;

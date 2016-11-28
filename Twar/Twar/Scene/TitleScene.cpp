@@ -14,9 +14,10 @@ TitleScene::TitleScene(SaveDataManager* pSaveDataManager)
 	: m_pSaveDataManager(pSaveDataManager)
 	, m_pTitleBackground(new TitleBackground())
 	, m_pTitleLogo(new TitleLogo())
-	, m_pTitleMenu(new TitleMenu())
-	, m_TitleSceneState(NONE)
+	, m_TitleSceneState(TitleScene::STATE::NONE)
 {
+	/** @todo ここでセーブデータの有無をメニュークラスにわたす仕組みはまだ未実装 */
+	m_pTitleMenu = new TitleMenu(false);
 	// テクスチャーを読み込む
 }
 
@@ -37,17 +38,17 @@ SCENE_ID TitleScene::Control()
 {
 	switch( m_TitleSceneState )
 	{
-	case NONE:					// 通常モード
+	case TitleScene::STATE::NONE:					// 通常モード
 		m_pTitleLogo->Control();
 		m_TitleSceneState = m_pTitleMenu->Control();
 		break;
 
-	case DATA_LOAD:				// データロード画面を描画
+	case TitleScene::STATE::DATA_LOAD:				// データロード画面を描画
 		/**@todo	2016/11/27：まだ実装していない*/
 
 		break;
 
-	case GAME_START:			// ゲームを開始する
+	case TitleScene::STATE::GAME_START:			// ゲームを開始する
 		return GAME_SCENE;
 		break;
 	}
@@ -60,7 +61,7 @@ void TitleScene::Draw()
 {
 	m_pTitleBackground->Draw();
 
-	if(m_TitleSceneState == DATA_LOAD)
+	if(m_TitleSceneState == TitleScene::STATE::DATA_LOAD)
 	{
 		/**@todo	2016/11/27：まだ実装していない*/
 

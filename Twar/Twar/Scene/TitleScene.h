@@ -8,14 +8,6 @@
 
 #include "Scene.h"
 
-/**タイトルシーンの状態*/
-enum TITLE_STATE
-{
-	GAME_START,				//!< ゲームを開始する
-	DATA_LOAD,				//!< データをロードする
-	NONE,					//!< 通常状態
-};
-
 class SaveDataManager;
 class TitleBackground;
 class TitleLogo;
@@ -27,6 +19,14 @@ class TitleMenu;
 class TitleScene :public Scene
 {
 public:
+	/**タイトルシーンの状態*/
+	enum STATE
+	{
+		GAME_START,				//!< ゲームを開始する
+		DATA_LOAD,				//!< データをロードする
+		NONE,					//!< 通常状態
+	};
+
 	/**TextureID*/
 	enum TEXTURE_ID
 	{
@@ -70,7 +70,7 @@ private:
 	TitleBackground*	m_pTitleBackground;		//!< TitleBackgroundクラスのインスタンスへのポインタ	
 	TitleLogo*			m_pTitleLogo;			//!< TitleLogoクラスへのインスタンスへのポインタ
 	TitleMenu*			m_pTitleMenu;			//!< TitleMenuクラスへのインスタンスへのポインタ
-	TITLE_STATE			m_TitleSceneState;		//!< タイトルシーンの状態 
+	STATE				m_TitleSceneState;		//!< タイトルシーンの状態 
 };
 
 #endif // TITLE_SCENE_H
