@@ -9,8 +9,8 @@
 
 /**@todo 現在数値は仮置きのもの*/
 TitleLogo::TitleLogo()
-	: m_PosX(0.0f)
-	, m_PosY(0.0f)
+	: m_PosX(800.0f)
+	, m_PosY(150.0f)
 {
 	float logoWidth  = 800.f;
 	float logoHeight = 300.f;
