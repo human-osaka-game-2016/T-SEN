@@ -26,7 +26,6 @@ public:
 	void Draw();
 
 private:
-	TITLE_STATE			m_CurrentMenu;		//!< 現在のメニュー
 	MenuButton*			m_pStartBtn;		//!< スタートボタン
 	MenuButton*			m_pDataLoadBtn;		//!< データロードボタン
 	bool				m_HasSaveData;		//!< セーブデータがあるかどうか

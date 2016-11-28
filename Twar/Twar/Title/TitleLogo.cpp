@@ -4,7 +4,7 @@
 * @author	haga
 */
 #include "GameLib/GameLib.h"
-#include "TitleCommonDeclaration.h"
+#include "../Scene/TitleScene.h"
 #include "TitleLogo.h"
 
 /**@todo 現在数値は仮置きのもの*/
@@ -14,7 +14,7 @@ TitleLogo::TitleLogo()
 {
 	float logoWidth  = 800.f;
 	float logoHeight = 300.f;
-	GameLib::Instance().CreateVtx(title_enum::LOGO_VTX, logoWidth, logoHeight);
+	GameLib::Instance().CreateVtx(TitleScene::LOGO_VTX, logoWidth, logoHeight);
 }
 
 TitleLogo::~TitleLogo()
@@ -30,5 +30,5 @@ void TitleLogo::Control()
 
 void TitleLogo::Draw()
 {
-	GameLib::Instance().DrawXYCenterPos(title_enum::LOGO_TEX,title_enum::LOGO_VTX,m_PosX,m_PosY);
+	GameLib::Instance().DrawXYCenterPos(TitleScene::LOGO_TEX, TitleScene::LOGO_VTX, m_PosX, m_PosY);
 }

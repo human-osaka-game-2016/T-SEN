@@ -22,6 +22,7 @@ void MenuButton::SetButtonData(int texID, int vtxID, float width, float height)
 	m_VtxID = vtxID;
 	m_Width = width;
 	m_Height = height;
+	//GameLib::CreateVtx();
 }
 
 void MenuButton::Enlarge(float width, float height)

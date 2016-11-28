@@ -37,16 +37,17 @@ SCENE_ID TitleScene::Control()
 {
 	switch( m_TitleSceneState )
 	{
-	case NONE:
+	case NONE:					// 通常モード
 		m_pTitleLogo->Control();
 		m_TitleSceneState = m_pTitleMenu->Control();
 		break;
 
-	case DATA_LOAD:
+	case DATA_LOAD:				// データロード画面を描画
 		/**@todo	2016/11/27：まだ実装していない*/
+
 		break;
 
-	case GAME_START:
+	case GAME_START:			// ゲームを開始する
 		return GAME_SCENE;
 		break;
 	}

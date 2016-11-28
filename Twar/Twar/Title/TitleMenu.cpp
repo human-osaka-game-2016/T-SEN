@@ -12,8 +12,7 @@
 
 
 TitleMenu::TitleMenu()
-	: m_CurrentMenu(NONE)
-	, m_HasSaveData(false)
+	: m_HasSaveData(false)
 {
 	m_pStartBtn = new MenuButton();
 	m_pDataLoadBtn = new MenuButton();
@@ -25,11 +24,12 @@ TitleMenu::~TitleMenu()
 
 TITLE_STATE TitleMenu::Control()
 {
-
+	// マウスとボタンによる衝突判定
+	
 
 	if(GameLib::Instance().ChecKMouseL() == ON)
 	{
-		return m_CurrentMenu;
+		
 	}
 
 	return TITLE_STATE::NONE;

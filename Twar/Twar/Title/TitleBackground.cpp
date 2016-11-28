@@ -5,7 +5,7 @@
 */
 
 #include "GameLib/GameLib.h"
-#include "TitleCommonDeclaration.h"
+#include "../Scene/TitleScene.h"
 #include "TitleBackground.h"
 
 TitleBackground::TitleBackground()
@@ -13,7 +13,7 @@ TitleBackground::TitleBackground()
 	// ウィンドウサイズ(クライアント領域)を求めて背景のサイズにする
 	float cliantWidthSize = static_cast<float>( GameLib::Instance().GetWindowWidth() );
 	float cliantHeightSize = static_cast<float>( GameLib::Instance().GetWindowHeight() );
-	GameLib::Instance().CreateVtx(title_enum::BACKGROUND_VTX, cliantWidthSize, cliantHeightSize);
+	GameLib::Instance().CreateVtx(TitleScene::BACKGROUND_VTX, cliantWidthSize, cliantHeightSize);
 }
 
 TitleBackground::~TitleBackground()
@@ -25,5 +25,5 @@ TitleBackground::~TitleBackground()
 void TitleBackground::Draw()
 {
 	// 0.0f2つはxy座標のこと
-	GameLib::Instance().DrawXY(title_enum::BACKGROUND_TEX, title_enum::BACKGROUND_VTX, 0.0f, 0.0f);
+	GameLib::Instance().DrawXY(TitleScene::BACKGROUND_TEX, TitleScene::BACKGROUND_VTX, 0.0f, 0.0f);
 }
