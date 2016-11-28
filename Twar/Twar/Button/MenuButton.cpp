@@ -20,6 +20,7 @@ MenuButton::MenuButton(int texID, int vtxID, float width, float height, D3DXVECT
 
 MenuButton::~MenuButton()
 {
+	//　リソース解放はTitleSceneのデストラクタで一括で行う
 }
 
 // コントロール関数

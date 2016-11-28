@@ -32,6 +32,7 @@ TitleMenu::TitleMenu(bool hasSaveData)
 
 TitleMenu::~TitleMenu()
 {
+	//　リソース解放はTitleSceneのデストラクタで一括で行う
 }
 
 // コントロール関数
