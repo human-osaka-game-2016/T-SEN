@@ -81,7 +81,7 @@ void TitleMenu::Draw()
 	}
 }
 
-TitleScene::STATE SelectButton()
+TitleScene::STATE TitleMenu::SelectButton()
 {
 	D3DXVECTOR2 mousePos;	// マウスの座標
 	GameLib::Instance().GetMousePos(&mousePos.x,&mousePos.y);
@@ -95,8 +95,11 @@ TitleScene::STATE SelectButton()
 	else if(mousePos.x > dataLoadButtonPos.x && mousePos.x < ( dataLoadButtonPos.x + buttonWidth )
 		&& mousePos.y > dataLoadButtonPos.y && mousePos.y < ( dataLoadButtonPos.y + buttonHeight ))
 	{
-		// データロードボタンを選んでいる場合
-		return TitleScene::STATE::DATA_LOAD;
+		if(m_HasSaveData)
+		{
+			// データロードボタンを選んでいる場合
+			return TitleScene::STATE::DATA_LOAD;
+		}
 	}
 
 	return TitleScene::STATE::NONE;
