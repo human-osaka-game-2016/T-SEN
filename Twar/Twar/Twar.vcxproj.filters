@@ -282,8 +282,5 @@
     <ClInclude Include="GameData\DataSlot.h">
       <Filter>Twar\GameData</Filter>
     </ClInclude>
-    <ClInclude Include="Title\TitleCommonDeclaration.h">
-      <Filter>Twar\Title</Filter>
-    </ClInclude>
   </ItemGroup>
 </Project>

@@ -152,7 +152,6 @@
     <ClInclude Include="SubScene\SubScene.h" />
     <ClInclude Include="Thread\LoadingThread.h" />
     <ClInclude Include="Title\TitleBackground.h" />
-    <ClInclude Include="Title\TitleCommonDeclaration.h" />
     <ClInclude Include="Title\TitleLogo.h" />
     <ClInclude Include="Title\TitleMenu.h" />
   </ItemGroup>

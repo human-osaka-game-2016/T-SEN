@@ -16,7 +16,7 @@ TitleScene::TitleScene(SaveDataManager* pSaveDataManager)
 	, m_pTitleLogo(new TitleLogo())
 	, m_TitleSceneState(TitleScene::STATE::NONE)
 {
-	/** @todo ここでセーブデータの有無をメニュークラスにわたす仕組みはまだ未実装 */
+	/** @todo ここでセーブデータの有無をメニュークラスにわたす。仕組みはまだ未実装 */
 	m_pTitleMenu = new TitleMenu(false);
 	// テクスチャーを読み込む
 }
@@ -44,6 +44,7 @@ SCENE_ID TitleScene::Control()
 		break;
 
 	case TitleScene::STATE::DATA_LOAD:				// データロード画面を描画
+
 		/**@todo	2016/11/27：まだ実装していない*/
 
 		break;

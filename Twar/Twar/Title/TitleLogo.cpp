@@ -22,7 +22,6 @@ TitleLogo::~TitleLogo()
 	//　リソース解放はTitleSceneのデストラクタで一括で行う
 }
 
-
 void TitleLogo::Control()
 {
 	/**@todo	光るエフェクトなどが決まっていないので、決まり次第実装*/
