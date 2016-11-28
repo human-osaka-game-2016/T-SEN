@@ -55,7 +55,7 @@ TitleScene::STATE TitleMenu::Control()
 		break;
 
 	case TitleScene::STATE::DATA_LOAD:
-		m_pDataLoadButton->Enlarge(10.f,10.f);
+		//m_pDataLoadButton->Enlarge(10.f,10.f);
 		break;
 
 	case TitleScene::STATE::GAME_START:
