@@ -21,7 +21,7 @@ public:
 	* コンストラクタ.
 	* @param hasSaveData セーブデータがあるかどうか
 	*/
-	TitleMenu(bool hasSaveData);
+	explicit TitleMenu(bool hasSaveData);
 
 	~TitleMenu();
 
