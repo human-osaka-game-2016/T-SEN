@@ -32,8 +32,8 @@ TitleScene::~TitleScene()
 	delete m_pTitleBackground;
 	m_pTitleBackground = nullptr;
 
-	GameLib::Instance().ReleaseAllTex();
-	GameLib::Instance().ReleaseAllVertex();
+	m_rGameLib.ReleaseAllTex();
+	m_rGameLib.ReleaseAllVertex();
 }
 
 // コントロール関数
