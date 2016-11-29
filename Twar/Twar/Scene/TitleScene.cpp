@@ -16,7 +16,7 @@ TitleScene::TitleScene(SaveDataManager* pSaveDataManager)
 	, m_pTitleLogo(new TitleLogo())
 	, m_TitleSceneState(TitleScene::STATE::NONE)
 {
-	/** @todo ここでセーブデータの有無をメニュークラスにわたす。仕組みはまだ未実装 */
+	/** @todo ここでセーブデータの有無をメニュークラスにわたす。仕組みはまだ未実装nのためfalseを渡している */
 	m_pTitleMenu = new TitleMenu(false);
 	// テクスチャーを読み込む
 }
@@ -31,6 +31,9 @@ TitleScene::~TitleScene()
 
 	delete m_pTitleBackground;
 	m_pTitleBackground = nullptr;
+
+	GameLib::Instance().ReleaseAllTex();
+	GameLib::Instance().ReleaseAllVertex();
 }
 
 // コントロール関数
