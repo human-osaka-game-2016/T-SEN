@@ -73,8 +73,8 @@ void MenuButton::CheckCollisionCursor()
 		correctionValue = 10.f;
 	}
 
-	if(mousePos.x > m_Pos.x && mousePos.x < (m_Width + correctionValue)
-		&& mousePos.y > m_Pos.y && mousePos.y < (m_Height + correctionValue))
+	if(mousePos.x > m_Pos.x - ( m_Width / 2 ) && mousePos.x < ( m_Width / 2+ m_Pos.x + correctionValue )
+		&& mousePos.y > m_Pos.y - ( m_Height / 2 ) && mousePos.y < ( m_Height / 2 + m_Pos.y + correctionValue ))
 	{
 		m_HasCollided = true;
 	}
