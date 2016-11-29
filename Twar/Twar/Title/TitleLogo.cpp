@@ -10,10 +10,10 @@
 /**@todo 現在数値は仮置きのもの*/
 TitleLogo::TitleLogo()
 	: m_PosX(800.0f)
-	, m_PosY(150.0f)
+	, m_PosY(280.0f)
 {
-	float logoWidth  = 800.f;
-	float logoHeight = 300.f;
+	float logoWidth  = 1024.f;
+	float logoHeight = 512.f;
 	GameLib::Instance().CreateVtx(TitleScene::LOGO_VTX, logoWidth, logoHeight);
 }
 

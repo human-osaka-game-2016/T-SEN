@@ -13,8 +13,8 @@
 TitleMenu::TitleMenu(bool hasSaveData)
 	: m_MenuSelectState(TitleScene::STATE::NONE)
 {
-	float			buttonWidth = 300.f;						//!< ボタンの横幅
-	float			buttonHeight = 200.f;						//!< ボタンの縦幅
+	float			buttonWidth = 512.f;						//!< ボタンの横幅
+	float			buttonHeight = 128.f;						//!< ボタンの縦幅
 
 	D3DXVECTOR2		startButtonPos = { 800.f, 600.f };			//!< スタートボタンの座標
 	GameLib::Instance().CreateVtx(TitleScene::START_BTN_VTX, buttonWidth, buttonHeight);		
@@ -23,7 +23,7 @@ TitleMenu::TitleMenu(bool hasSaveData)
 
 	if(hasSaveData)		//　セーブデータがあればボタンを作成
 	{
-		D3DXVECTOR2	dataLoadButtonPos = { 800.f, 710.f };		//!< データロードボタンの座標
+		D3DXVECTOR2	dataLoadButtonPos = { 800.f, 770.f };		//!< データロードボタンの座標
 		GameLib::Instance().CreateVtx(TitleScene::CONTINUE_BTN_VTX, buttonWidth, buttonHeight);
 		GameLib::Instance().SetVtxUV(TitleScene::CONTINUE_BTN_VTX, 0.0f, 1.0f, 0.5f, 1.0f);
 		m_MenuButton.emplace_back(TitleScene::BUTTON_TEX, TitleScene::CONTINUE_BTN_VTX, buttonWidth, buttonHeight, dataLoadButtonPos);

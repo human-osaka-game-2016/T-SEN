@@ -50,7 +50,7 @@ void MenuButton::Draw()
 // 大きさを変える
 void MenuButton::Enlarge()
 {
-	float correctionValue = 10.f;		// 補正値
+	float correctionValue = 20.f;		// 補正値
 	GameLib::Instance().SetVtxSize(m_VtxID, (m_Width + correctionValue), (m_Height + correctionValue));
 }
 
@@ -70,7 +70,7 @@ void MenuButton::CheckCollisionCursor()
 	float correctionValue = 0.0f;		// 補正値
 	if(m_HasCollided)
 	{
-		correctionValue = 10.f;
+		correctionValue = 20.f;
 	}
 
 	if(mousePos.x > m_Pos.x - ( m_Width / 2 ) && mousePos.x < ( m_Width / 2+ m_Pos.x + correctionValue )
