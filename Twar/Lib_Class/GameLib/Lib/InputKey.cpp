@@ -1,12 +1,13 @@
 ﻿/**
-* @file InputKey.cpp
-* @brief  操作キーに関するクラスのcpp
-* @author haga
+* @file		InputKey.cpp
+* @brief	InputKeyクラス実装
+* @author	haga
 */
 #include "InputKey.h"
 
 // コンストラクタ
-InputKey::InputKey() : m_pKeyDevice(InputDevice::GetInstance().GetKeyDevice())
+InputKey::InputKey() 
+	: m_pKeyDevice(InputDevice::GetInstance().GetKeyDevice())
 {
 	for (int i = 0; i < KEYMAX;i++)
 	{

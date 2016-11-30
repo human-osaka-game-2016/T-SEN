@@ -1,6 +1,6 @@
 ﻿/**
 * @file   InputKey.h
-* @brief  操作キーに関するクラスのh
+* @brief  InputKeyクラスヘッダ
 * @author haga
 */
 #ifndef INPUT_KEY_H
@@ -57,7 +57,6 @@ enum  KEYKIND
 	NINE,
 	KEYMAX,
 };
-
 
 
 /**

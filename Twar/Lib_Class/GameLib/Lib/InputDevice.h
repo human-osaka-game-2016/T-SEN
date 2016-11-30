@@ -6,11 +6,8 @@
 #ifndef INPUT_DEVICE_H
 #define	INPUT_DEVICE_H
 
+#define DIRECTINPUT_VERSION  0x0800
 #include <dinput.h>
-
-/*
-* DirectInput関連クラス.
-*/
 
 /**ボタンの状態確認*/
 enum BTN_STATE
@@ -21,6 +18,9 @@ enum BTN_STATE
 	BTN_RELEASE,	//!< キーを離す
 };
 
+/*
+* DirectInput関連クラス.
+*/
 class InputDevice
 {
 private:

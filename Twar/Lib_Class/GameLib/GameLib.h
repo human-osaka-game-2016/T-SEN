@@ -1,7 +1,7 @@
 ﻿/**
-* @file GameLib.h
-* @brief GameLibクラスヘッダ
-* @author haga
+* @file		GameLib.h
+* @brief	GameLibクラスヘッダ
+* @author	haga
 */
 #ifndef GAMELIB_H
 #define GAMELIB_H
@@ -10,7 +10,6 @@
 #include <iostream>
 #include <d3d9.h>
 #include <d3dx9.h>
-#include "Lib/InputKey.h"
 
 class WindowCreator;
 class GraphicsDevice;
@@ -22,6 +21,8 @@ class SoundFileManager;
 class VertexManager;
 class DebugFont;
 class DebugTimer;
+
+enum KEYKIND;
 
 
 #define DIRECT3DFVF_CUSTOMVERTEX (D3DFVF_XYZRHW | D3DFVF_DIFFUSE | D3DFVF_TEX1)		//!< 頂点フォーマット
@@ -153,7 +154,7 @@ public:
 	void LoadTexEx(int key, char* filePath, int a, int r, int g, int b, bool size);
 
 	/**
-	* テクスチャーのアドレスを取得する関数
+	* テクスチャーへのポインタを取得する関数
 	* @param[in] key	登録したID
 	*/
 	LPDIRECT3DTEXTURE9 GetTexture(int key);
@@ -177,7 +178,7 @@ public:
 	void SetVtxSize(int key,float width, float height, float depth = 0.0f);
 
 	/**
-	* バーテックスの変更を行う関数.
+	* バーテックスのUV変更を行う関数.
 	* @param[in] key	登録したキー、またはID
 	* @param[in] tuMin  tu値の最小値
 	* @param[in] tuMax  tu値の最大値
@@ -238,6 +239,27 @@ public:
 	* @param[in] posZ   z座標
 	*/
 	void DrawXZCenterPos(int texKey, int vtxKey, float posX, float posY, float posZ);
+
+	/**
+	* バーテックスの横幅を取得する関数.
+	* @param[in] vtxKey バーテックスを登録したキー、またはID
+	* @return バーテックスの横幅
+	*/
+	float GetVtxWidth(int vtxKey);
+	
+	/**
+	* バーテックスの縦幅を取得する関数.
+	* @param[in] vtxKey バーテックスを登録したキー、またはID
+	* @return バーテックスの縦幅
+	*/
+	float GetVtxHeight(int vtxKey);
+
+	/**
+	* バーテックスの奥行きを取得する関数.
+	* @param[in] vtxKey バーテックスを登録したキー、またはID
+	* @return バーテックスの奥行き
+	*/
+	float GetVtxDepth(int vtxKey);
 
 	/**
 	* テクスチャーを解放する関数
@@ -351,18 +373,29 @@ public:
 	//							サウンド関連関数
 	//--------------------------------------------------------------------------
 	/**
-	* 音声を読み込む関数.
+	* 音を読み込む関数.
 	* @param[in] key	  登録するキー、またはID(enumで作成を想定)
 	* @param[in] filePath ファイル名
 	*/
 	void LoadSound(int key, TCHAR* filePath);
 
 	/**
-	* 音楽を鳴らす関数
-	* @param[in] key		 登録するキー、またはID(enumで作成を想定)
+	* 音を鳴らす関数
+	* @param[in] key		 登録したキー、またはID
 	* @param[in] operation   音楽の再生方法
 	*/
 	void PlayDSound(int key, SOUND_OPERATION operation);
+
+	/**
+	* 音を解放する関数
+	* @param[in] key		 登録したキー、またはID
+	*/
+	void ReleaseSound(int key);
+
+	/**
+	* 読み込んだ全ての音を解放する関数
+	*/
+	void ReleaseAllSound();
 
 	//-------------------------------------------------------------------------------
 	//								デバック機能

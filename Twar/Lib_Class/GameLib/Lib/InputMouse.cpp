@@ -1,6 +1,6 @@
 ﻿/**
 * @file		InputMouse.cpp
-* @brief	マウス操作に関するクラス.
+* @brief	InputMouseクラス実装
 * @author	haga
 */
 #include "InputMouse.h"
@@ -227,10 +227,12 @@ void InputMouse::SetMouseCenter()
 
 	if(currentWnd == m_hWnd)					// ゲームウィンドウがアクティブかどうか
 	{
-		RECT rect;
-		GetClientRect(m_hWnd, &rect);
-		int mousePosX = static_cast<int>( ( ( rect.right - rect.left ) / 2 ) + rect.left );
-		int mousePosY = static_cast<int>( ( ( rect.bottom - rect.top ) / 2 ) + rect.top );
+		RECT winRect;
+		RECT clientRect;
+		GetWindowRect(m_hWnd, &winRect);
+		GetClientRect(m_hWnd, &clientRect);
+		int mousePosX = static_cast<int>( ( ( clientRect.right - clientRect.left ) / 2 ) + winRect.left );
+		int mousePosY = static_cast<int>( ( ( clientRect.bottom - clientRect.top ) / 2 ) + winRect.top );
 		SetCursorPos(mousePosX, mousePosY);
 	}
 }

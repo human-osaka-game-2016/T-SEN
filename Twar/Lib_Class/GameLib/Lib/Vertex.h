@@ -1,7 +1,7 @@
 ﻿/**
-* @file   Vertex.h
-* @brief  バーテックスクラス
-* @author haga
+* @file		Vertex.h
+* @brief	Vertexクラスヘッダ
+* @author	haga
 */
 #ifndef VERTEX_H
 #define VERTEX_H
@@ -9,88 +9,87 @@
 #include "GraphicsDevice.h"
 
 /**
-* カスタムバーテックス構造体.
+* バーテックス構造体.
 */
 struct CUSTOMVERTEX
 {
 	FLOAT	x, y, z, rhw;	//!< 座標系
 	DWORD	color;			//!< 色
-	FLOAT	tu, tv;			//!< テクスチャーのtu,tv値
+	FLOAT	tu, tv;			//!< tu,tv値
 };
 
-
 /**
-* バーテックスクラス
+* バーテックス(頂点情報)を管理するクラス
 */
 class Vertex
 {
 private:
-	IDirect3DDevice9*		m_pD3Device;			//!< デバイス
-	float					m_texWidth;		  	    //!< テクスチャーの幅
-	float					m_texheight;			//!< テクスチャーの高さ
-	float					m_texDepth;				//!< テクスチャーの奥行き
-	float					m_tuMax;				//!< テクスチャーのtu最大値
-	float					m_tuMin;				//!< テクスチャーのtu最小値
-	float					m_tvMax;				//!< テクスチャーのtv最大値
-	float					m_tvMin;				//!< テクスチャーのtv最小値
-	DWORD                   m_color[4];				//!< 色の値
+	IDirect3DDevice9*		m_pD3Device;			//!< Direct3Dのデバイス
+	float					m_VtxWidth;		  	    //!< バーテックスの横幅
+	float					m_VtxHeight;			//!< バーテックスの縦幅
+	float					m_VtxDepth;				//!< バーテックスの奥行き
+	float					m_TuMin;				//!< バーテックスのtu最小値
+	float					m_TuMax;				//!< バーテックスのtu最大値
+	float					m_TvMin;				//!< バーテックスのtv最小値
+	float					m_TvMax;				//!< バーテックスのtv最大値
+	DWORD                   m_Color[4];				//!< バーテックスの色の値
 
 public:
-	
+
 	/**
 	* コンストラクタ.
 	* 数値を指定するときに使用<br>
 	* 奥行も指定する場合に作成.
-	* @param[in] width  幅
+	* @param[in] width	幅
 	* @param[in] height 高さ
 	* @param[in] deoth	奥行き
-	* @param[in] tuMax	 tu値の最大値
-	* @param[in] tvMax	 tv値の最大値
-	* @param[in] tuMin	 tu値の最小値
-	* @param[in] tvMin	 tv値の最小値
+	* @param[in] tuMin	tu値の最小値
+	* @param[in] tuMax	tu値の最大値
+	* @param[in] tvMin	tv値の最小値
+	* @param[in] tvMax	tv値の最大値
 	*/
-	Vertex(float width = 0.0f,float height = 0.0f,float depth = 0.0f,float tuMax = 1.0f,float tvMax = 1.0f,float tuMin = 0.0f,float tvMin = 0.0f);
+	Vertex(float width = 0.0f, float height = 0.0f, float depth = 0.0f, float tuMin = 0.0f, float tuMax = 1.0f, float tvMin = 0.0f, float tvMax = 1.0f);
 
 	/**デストラクタ*/
 	~Vertex();
 
 	/**
-	* 通常描画関数<br>
-	* テクスチャーの左上に座標をセットする<br>
-	* @param[in] texture テクスチャークラスのポインタ
-	* @param[in] posX     X座標
-	* @param[in] posY     Y座標
+	* 2D通常描画関数<br>
+	* バーテックスの左上の頂点に座標をセットする<br>
+	* @param[in] pTexture テクスチャーへのポインタ
+	* @param[in] posX     x軸の位置座標
+	* @param[in] posY     y軸の位置座標
 	*/
 	void Draw(LPDIRECT3DTEXTURE9 pTexture, float posX, float posY);
 
 	/**
-	* 通常描画関数<br>
-	* テクスチャーの左上に座標をセットする<br>
+	* 3D通常描画関数<br>
+	* バーテックスの左上の頂点に座標をセットする<br>
 	* こちらはZ座標も引数として渡す.
-	* @param[in] texture テクスチャークラスのポインタ
-	* @param[in] posX     X座標
-	* @param[in] posY     Y座標
-	* @param[in] posZ	  Z座標(デフォルト引数は0.0f)
+	* @param[in] pTexture テクスチャーへのポインタ
+	* @param[in] posX     x軸の位置座標
+	* @param[in] posY     y軸の位置座標
+	* @param[in] posZ	  z軸の位置座標
 	*/
 	void Draw(LPDIRECT3DTEXTURE9 pTexture, float posX, float posY, float posZ);
 
 	/**
-	* 描画関数<br>
-	* テクスチャーの中心に座標をセットする<br>
-	* @param[in] texture テクスチャークラスのポインタ
-	* @param[in] posX     X座標
-	* @param[in] posY     Y座標
+	* 2D描画関数<br>
+	* バーテックスの中心に座標をセットする<br>
+	* @param[in] pTexture テクスチャーへのポインタ
+	* @param[in] posX     x軸の位置座標
+	* @param[in] posY     y軸の位置座標
 	*/
 	void DrawCenterPos(LPDIRECT3DTEXTURE9 pTexture, float posX, float posY);
 
 	/**
-	* 描画関数<br>
-	* テクスチャーの中心に座標をセットする<br>
+	* 3D描画関数<br>
+	* バーテックスの中心に座標をセットする<br>
 	* Z座標も引数として渡す.
-	* @param[in] texture テクスチャークラスのポインタ
-	* @param[in] posX     X座標
-	* @param[in] posY     Y座標
-	* @param[in] posZ	  Z座標(デフォルト引数は0.0f)
+	* @param[in] pTexture テクスチャーへのポインタ
+	* @param[in] posX     x軸の位置座標
+	* @param[in] posY     y軸の位置座標
+	* @param[in] posZ	  z軸の位置座標
 	*/
 	void DrawCenterPos(LPDIRECT3DTEXTURE9 pTexture, float posX, float posY, float posZ);
 
@@ -102,11 +101,11 @@ public:
 	void ScrollUV(float scrollSpeedTu, float scrollSpeedTv);
 
 	/**
-	* テクスチャーサイズをセットする関数.
-	* @param[in] texWidth  テクスチャーの幅
-	* @param[in] texHeight テクスチャーの高さ
+	* バーテックスサイズをセットする関数.
+	* @param[in] vtxWidth  バーテックスの幅
+	* @param[in] vtxHeight バーテックスの高さ
 	*/
-	void SetTexSize(float texWidth, float texHeight);
+	void SetSize(float vtxWidth, float vtxHeight);
 
 	/**
 	* tu,tv値を設定する関数.
@@ -115,14 +114,32 @@ public:
 	* @param[in] tvMin tv値の最小値
 	* @param[in] tvMax tv値の最大値
 	*/
-	void SetTuTvVal(float tuMin,float tuMax, float tvMin,float tvMax);
+	void SetTuTvVal(float tuMin, float tuMax, float tvMin, float tvMax);
 
 	/**
-	* テクスチャー色をセットする関数.
+	* バーテックスの色情報を設定する関数.
 	* @param[in] color  色の設定
 	*/
 	void SetColor(DWORD color);
 
+	/**
+	* バーテックスの横幅のサイズを取得する関数
+	* @return m_VtxWidth	バーテックスの横幅
+	*/
+	float GetVtxWidth(){ return m_VtxWidth; }
+
+	/**
+	* バーテックスの縦幅のサイズを取得する関数
+	* @return m_VtxHeight	バーテックスの縦幅
+	*/
+	float GetVtxHeight(){ return m_VtxHeight; }
+
+	/**
+	* バーテックスの奥行のサイズを取得する関数
+	* @return m_VtxDepth	バーテックスの奥行
+	*/
+	float GetVtxDepth(){ return m_VtxDepth; }
+
 };
 
-#endif
+#endif		// VERTEX_H

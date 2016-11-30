@@ -1,11 +1,12 @@
 ﻿/**
-* @file GameLib.cpp
-* @brief GameLibクラス実装
-* @author haga
+* @file		GameLib.cpp
+* @brief	GameLibクラス実装
+* @author	haga
 */
 #include "Lib/WindowCreator.h"	
 #include "Lib/GraphicsDevice.h"
 #include "Lib/InputDevice.h"
+#include "Lib/InputKey.h"
 #include "Lib/InputMouse.h"
 #include "Lib/TextureManager.h"
 #include "Lib/XFileManager.h"
@@ -14,7 +15,6 @@
 #include "Lib/DebugFont.h"
 #include "Lib/DebugTimer.h"
 #include "GameLib.h"
-
 
 GameLib::GameLib()
 	: m_pWindowCreator(nullptr)
@@ -30,7 +30,6 @@ GameLib::GameLib()
 	, m_WinHeight(0)
 {
 }
-
 
 GameLib::~GameLib()
 {
@@ -189,6 +188,21 @@ void GameLib::DrawXZ(int texKey, int vtxKey, float posX, float posY, float posZ)
 void GameLib::DrawXZCenterPos(int texKey, int vtxKey, float posX, float posY, float posZ)
 {
 	m_pVertexManager->DrawCenterPos(vtxKey, m_pTextureManager->GetTex(texKey), posX, posY, posZ);
+}
+
+float GameLib::GetVtxWidth(int vtxKey)
+{
+	return m_pVertexManager->GetVtxWidth(vtxKey);
+}
+
+float GameLib::GetVtxHeight(int vtxKey)
+{
+	return m_pVertexManager->GetVtxHeight(vtxKey);
+}
+
+float GameLib::GetVtxDepth(int vtxKey)
+{
+	return m_pVertexManager->GetVtxDepth(vtxKey);
 }
 
 void GameLib::ReleaseTex(int key)
@@ -394,6 +408,16 @@ void GameLib::PlayDSound(int key, SOUND_OPERATION operation)
 
 	}
 
+}
+
+void GameLib::ReleaseSound(int key)
+{
+	m_pSoundFileManager->Release(key);
+}
+
+void GameLib::ReleaseAllSound()
+{
+	m_pSoundFileManager->ReleaseALL();
 }
 
 void GameLib::DrawDebugFont(std::string text, float posX, float posY)
