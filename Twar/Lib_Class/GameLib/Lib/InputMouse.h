@@ -1,7 +1,7 @@
 ﻿/**
-* @file   InputMouse.h
-* @brief  マウス操作に関するクラス
-* @author haga
+* @file		InputMouse.h
+* @brief	InputMouseクラスヘッダ
+* @author	haga
 */
 #ifndef INPUT_MOUSE_H
 #define INPUT_MOUSE_H
