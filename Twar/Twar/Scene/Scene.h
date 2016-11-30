@@ -36,7 +36,7 @@ public:
 	/**描画関数*/
 	virtual void Draw() = 0;
 
-private:
+protected:
 	GameLib&		  m_rGameLib;			//!< GameLibクラス
 };
 

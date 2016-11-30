@@ -14,8 +14,22 @@
 class TitleLogo
 {
 public:
+	/**コンストラクタ*/
 	TitleLogo();
+
+	/**デストラクタ*/
 	~TitleLogo();
+
+	/**コントロール関数*/
+	void Control();
+
+	/**描画関数*/
+	void Draw();
+
+private:
+	float			   m_PosX;				//!< タイトルロゴのx座標
+	float			   m_PosY;				//!< タイトルロゴのy座標
+
 };
 
 #endif	// TITLE_LOGO_H
