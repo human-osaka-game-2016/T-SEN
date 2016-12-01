@@ -3,14 +3,12 @@
 	@brief ShipManagerクラスヘッダ
 	@author kawaguchi
 */
+
 #ifndef SHIP_H
 #define	SHIP_H
 
 #include "Fbx/FbxRelated.h"
 #include "../CameraController/CameraController.h"
-#include "GameLib/Lib/GraphicsDevice.h"
-#include "GameLib/Lib/InputKey.h"
-#include "GameLib/Lib/InputMouse.h"
 #include "GameLib/GameLib.h"
 
 /**
@@ -40,11 +38,8 @@ protected:
 		ENEMY
 	};
 
-	IDirect3DDevice9*		m_pD3Device;			//!<	Direct3Dのデバイス
 	D3DXVECTOR3		        m_ObjPos;				//!<	座標
 	CameraController*		m_pcameraController;	//!<	カメラコントローラー
-	InputKey				m_InputKey;				//!<	コントロールキー
-	InputMouse				m_Mouse;				//!<	マウス
 	FbxModel*				m_pFbx;					//!<	モデルデータ
 	
 	ATTR					m_Attr;					//!<	Shipの属性
@@ -55,7 +50,6 @@ protected:
 	*/
 	D3DXMATRIX				m_Rotation;
 	float					m_Rotate;
-	float					m_RotateSpeed;
 
 	/**
 		船体の傾き関係
@@ -66,16 +60,32 @@ protected:
 	bool					m_IsLeftSlantLimit;
 
 	/**
-		カメラの回転関係
+		船体の揺れ関係
 	*/
+	bool					m_IsUp;
+	static const float		m_PitchSpeed;
+	static const float		m_PitchUpperLimit;
+	static const float		m_PitchLowerLimit;
+
+	/**
+		船体の速度関係
+	*/
+	static const float		m_SpeedLimit;			//!<	限界速度
+	static const float		m_LimitArrivalFlame;	//!<	限界速度到達フレーム
+	static const float		m_DecelerationSpeed;	//!<	減速スピード
+
+	/**
+	カメラの関係
+	*/
+	static const float		m_CameraHeight;
 	D3DXMATRIX				m_CameraRotation;
 	float					m_CameraRotate;
 	D3DXVECTOR3				m_CameraPos;
 	D3DXVECTOR3				m_LookatPos;
 	float					m_Angle;
 	bool					m_IsZoom;
-
-	const float				m_DecelerationSpeed = 0.002f;	//!<	減速スピード
+	static const float		m_NormalAngle;
+	static const float		m_ZoomAngle;
 
 	/**	case Control of "the player" */
 	virtual void ControlPlayer() = 0;

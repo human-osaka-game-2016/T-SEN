@@ -1,30 +1,33 @@
-﻿#include "ShipManager.h"
+﻿/**
+	@file ShipManager.h
+	@brief ShipManagerクラスcpp
+	@author kawaguchi
+*/
+
+#include "ShipManager.h"
 
 ShipManager::ShipManager()
 {
-	RECT movebleRange { 0, 0, 1600, 900 };
-	ClipCursor(&movebleRange);
-	SetCursorPos(800, 450);
-	ShowCursor(false);
+	//	仮置き
+	m_TemplatePos[0] = { -250.f, -4.f, -500.f };
+	m_TemplatePos[1] = { -150.f, -4.f, -500.f };
+	m_TemplatePos[2] = {  -50.f, -4.f, -500.f };
+	m_TemplatePos[3] = {   50.f, -4.f, -500.f };
+	m_TemplatePos[4] = {  150.f, -4.f, -500.f };
+	m_TemplatePos[5] = {  250.f, -4.f, -500.f };
+	m_TemplatePos[6] = { -250.f, -4.f,  500.f };
+	m_TemplatePos[7] = { -150.f, -4.f,  500.f };
+	m_TemplatePos[8] = {  -50.f, -4.f,  500.f };
+	m_TemplatePos[9] = {   50.f, -4.f,  500.f };
+	m_TemplatePos[10] = { 150.f, -4.f,  500.f };
+	m_TemplatePos[11] = { 250.f, -4.f,  500.f };
 
-	m_TemplatePos[0] = { -250, -4, -500 };
-	m_TemplatePos[1] = { -150, -4, -500 };
-	m_TemplatePos[2] = {  -50, -4, -500 };
-	m_TemplatePos[3] = {   50, -4, -500 };
-	m_TemplatePos[4] = {  150, -4, -500 };
-	m_TemplatePos[5] = {  250, -4, -500 };
-	m_TemplatePos[6] = { -250, -4,  500 };
-	m_TemplatePos[7] = { -150, -4,  500 };
-	m_TemplatePos[8] = {  -50, -4,  500 };
-	m_TemplatePos[9] = {   50, -4,  500 };
-	m_TemplatePos[10] = { 150, -4,  500 };
-	m_TemplatePos[11] = { 250, -4,  500 };
 	if (!m_BattleShip.LoadFbx("fbx/kongou.fbx"))
 	{
 		// 読み込み失敗したらエラー
 		MessageBox(0, "FBXファイルの読み込みに失敗しました。", NULL, MB_OK);
 	}
-	if (!m_Cruiser.LoadFbx("fbx/tama3.fbx"))
+	if (!m_Cruiser.LoadFbx("fbx/kongou.fbx"))
 	{
 		// 読み込み失敗したらエラー
 		MessageBox(0, "FBXファイルの読み込みに失敗しました。", NULL, MB_OK);
@@ -78,10 +81,11 @@ void ShipManager::Create(char* army, char* enemy, SHIP_ID* shipID)
 {
 	m_ArmyCount = *army;
 	m_EnemyCount = *enemy;
+	int EnemyShipIDStartPoint = 6;
 
 	for (char i = 0; i < m_ArmyCount; i++)
 	{
-		Ship* tmp = NULL;
+		Ship* tmp = nullptr;
 
 		switch (shipID[i])
 		{
@@ -113,22 +117,22 @@ void ShipManager::Create(char* army, char* enemy, SHIP_ID* shipID)
 		m_Army.push_back(tmp);
 	}
 
-	for (char i = 0; i < m_EnemyCount; i++)
+	for (char i = EnemyShipIDStartPoint; i < m_EnemyCount + EnemyShipIDStartPoint; i++)
 	{
-		Ship* tmp = NULL;
+		Ship* tmp = nullptr;
 
-		switch (shipID[i + 6])
+		switch (shipID[i])
 		{
 		case BATTLESHIP:
-			tmp = new BattleShip(&m_TemplatePos[i + 6]);
+			tmp = new BattleShip(&m_TemplatePos[i]);
 			tmp->m_pFbx = m_BattleShip.m_pModel;
 			break;
 		case CRUISER:
-			tmp = new Cruiser(&m_TemplatePos[i + 6]);
+			tmp = new Cruiser(&m_TemplatePos[i]);
 			tmp->m_pFbx = m_Cruiser.m_pModel;
 			break;
 		case DESTROYER:
-			tmp = new Destroyer(&m_TemplatePos[i + 6]);
+			tmp = new Destroyer(&m_TemplatePos[i]);
 			tmp->m_pFbx = m_Destroyer.m_pModel;
 			break;
 		case NONE:
@@ -139,3 +143,4 @@ void ShipManager::Create(char* army, char* enemy, SHIP_ID* shipID)
 		m_Enemy.push_back(tmp);
 	}
 }
+

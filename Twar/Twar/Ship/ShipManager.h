@@ -3,6 +3,7 @@
 	@brief ShipManagerクラスヘッダ
 	@author kawaguchi
 */
+
 #ifndef SHIPMANAGER_H
 #define SHIPMANAGER_H
 
@@ -19,7 +20,7 @@ class ShipManager
 	friend class Ship;
 
 private:
-	D3DXVECTOR3 m_TemplatePos[12];		//!<	自艦、味方艦、敵艦の初期位置
+	D3DXVECTOR3 m_TemplatePos[12];		//!<	自艦、味方艦、敵艦の初期位置	仮置き
 	FbxRelated m_BattleShip;			//!<	戦艦のモデルデータ
 	FbxRelated m_Cruiser;				//!<	巡洋艦のモデルデータ
 	FbxRelated m_Destroyer;				//!<	駆逐艦のモデルデータ

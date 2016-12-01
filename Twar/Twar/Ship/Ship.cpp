@@ -1,27 +1,30 @@
-﻿#include "Ship.h"
+﻿/**
+	@file ShipManager.h
+	@brief ShipManagerクラスcpp
+	@author kawaguchi
+*/
 
+#include "Ship.h"
 
-Ship::Ship(D3DXVECTOR3* pos, STATUS status):
-m_ObjPos(*pos),
-m_pD3Device(GraphicsDevice::GetInstance().GetDevice()),
-m_pcameraController(&CameraController::GetInstance()),
-m_Status(status),
-m_CameraPos({pos->x, pos->y + 50.f, pos->z}),
-m_LookatPos({ pos->x, pos->y + 50.f, pos->z }),
-m_Angle(50.f),
-m_IsZoom(false)
+const float	Ship::m_LimitArrivalFlame	= 500.f;
+const float	Ship::m_DecelerationSpeed	= 0.002f;
+const float	Ship::m_PitchSpeed			= 0.025f;
+const float	Ship::m_PitchUpperLimit		= -6.f;
+const float	Ship::m_PitchLowerLimit		= -2.f;
+const float Ship::m_CameraHeight		= 50.f;
+const float	Ship::m_NormalAngle			= 50.f;
+const float	Ship::m_ZoomAngle			= 10.f;
+
+Ship::Ship(D3DXVECTOR3* pos, STATUS status)
+	: m_ObjPos(*pos)
+	, m_pcameraController(&CameraController::GetInstance())
+	, m_Status(status)
+	, m_CameraPos({ pos->x, pos->y + m_CameraHeight, pos->z })
+	, m_LookatPos({ pos->x, pos->y + m_CameraHeight, pos->z })
+	, m_Angle(m_NormalAngle)
+	, m_IsZoom(false)
+	, m_IsUp(false)
 {
-//	m_CameraPos.x = m_ObjPos.x;
-//	m_CameraPos.y = m_ObjPos.y + 50.f;
-//	m_CameraPos.z = m_ObjPos.z;
-//
-//	m_LookatPos.x = m_ObjPos.x;
-//	m_LookatPos.y = m_ObjPos.y + 50.f;
-//	m_LookatPos.z = m_ObjPos.z;
-//
-//	m_Angle = 50.f;
-//
-//	m_IsZoom = false;
 }
 
 
@@ -57,7 +60,7 @@ void Ship::TransWorld()
 	D3DXMatrixTranslation(&matPos, m_ObjPos.x, m_ObjPos.y, m_ObjPos.z);
 	D3DXMatrixMultiply(&matWorld, &m_Slope, &m_Rotation);
 	D3DXMatrixMultiply(&matWorld, &matWorld, &matPos);
-	m_pD3Device->SetTransform(D3DTS_WORLD, &matWorld);
+	GameLib::Instance().GetDevice()->SetTransform(D3DTS_WORLD, &matWorld);
 }
 
 

@@ -3,6 +3,7 @@
 	@brief ShipManagerクラスヘッダ
 	@author kawaguchi
 */
+
 #ifndef	DESTROYER_H
 #define DESTROYER_H
 
@@ -22,8 +23,6 @@ private:
 
 	/**	case Control of "the enemy" */
 	virtual void ControlEnemy();
-
-	const float m_SpeedLimit = 2.f;		//!<	限界速度
 
 public:
 	/**	コンストラクタ */
