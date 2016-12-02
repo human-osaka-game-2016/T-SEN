@@ -1,8 +1,9 @@
-/**
-	@file   CameraController.h
-	@brief  ƒJƒƒ‰ƒRƒ“ƒgƒ[ƒ‰[ƒNƒ‰ƒX‚Ìh
-	@author kawaguchi
+ï»¿/**
+* @file   CameraController.h
+* @brief  CameraControllerã‚¯ãƒ©ã‚¹ãƒ˜ãƒƒãƒ€
+* @author kawaguchi
 */
+
 #ifndef CAMERA_CONTROLLER_H
 #define CAMERA_CONTROLLER_H
 
@@ -11,20 +12,15 @@
 class Camera;
 
 /**
-* ƒJƒƒ‰ƒRƒ“ƒgƒ[ƒ‰[ƒNƒ‰ƒX‚Ìh
+* ã‚«ãƒ¡ãƒ©ã®ã‚³ãƒ³ãƒˆãƒ­ãƒ¼ãƒ©ãƒ¼ã‚¯ãƒ©ã‚¹
 */
 class CameraController
 {
-private:
-	Camera*		m_pCamera;			//!< ƒJƒƒ‰
-
 public:
-	/**ƒRƒ“ƒXƒgƒ‰ƒNƒ^*/
-	CameraController();
-	/**ƒfƒXƒgƒ‰ƒNƒ^*/
-	~CameraController();
-
-	// À‘Ì‚ğ‚Â‚­‚é
+	/**
+	* Singletonãƒ‘ã‚¿ãƒ¼ãƒ³<br>
+	* å®Ÿä½“ã‚’ã¤ãã‚‹é–¢æ•°.
+	*/
 	static CameraController &GetInstance()
 	{
 		static CameraController m_cameraController;
@@ -33,9 +29,24 @@ public:
 	}
 
 	/**
-	* À•W•ÏŠ·ŠÖ”
+	* åº§æ¨™å¤‰æ›é–¢æ•°.
+	* @param vEyePt		ã‚«ãƒ¡ãƒ©ã®ä½ç½®
+	* @param vLookPt	æ³¨è¦–ç‚¹
+	* @param angle		è¦–é‡è§’
 	*/
 	void TransformView(D3DXVECTOR3 vEyePt, D3DXVECTOR3 vLookPt, float angle);
+
+	/**ãƒ‡ã‚¹ãƒˆãƒ©ã‚¯ã‚¿*/
+	~CameraController();
+
+private:
+	/**
+	* ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿.
+	* Singletonãƒ‘ã‚¿ãƒ¼ãƒ³ã®ç‚ºprivate
+	*/
+	CameraController();
+
+	Camera*		m_pCamera;			//!< Cameraã‚¯ãƒ©ã‚¹ã®ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã¸ã®ãƒã‚¤ãƒ³ã‚¿
 };
 
 #endif	// CAMERA_CONTROLLER_H
