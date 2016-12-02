@@ -1,11 +1,10 @@
 ﻿/**
-* @file FbxRelated.cpp
-* @brief Fbxモデルのデータを読み込むクラスのcpp
-* @author 川口
+* @file		FbxRelated.cpp
+* @brief	FbxRelatedクラス実装
+* @author	kawaguchi
 */
 
 #include "FbxRelated.h"
-
 
 FbxRelated::FbxRelated()
 {
@@ -15,12 +14,10 @@ FbxRelated::FbxRelated()
 	m_pModel->m_pFbxModelData = new FbxModel::FbxModelData;
 }
 
-
 FbxRelated::~FbxRelated()
 {
 	Release();
 }
-
 
 void FbxRelated::Release()
 {

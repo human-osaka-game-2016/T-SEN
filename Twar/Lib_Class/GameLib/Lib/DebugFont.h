@@ -1,7 +1,7 @@
 ﻿/**
-* @file DebugFont.h
-* @brief デバックで使用するフォントのクラス
-* @author haga
+* @file		DebugFont.h
+* @brief	DebugFontクラスヘッダ
+* @author	haga
 */
 
 #ifndef DEBUG_FONT_H
@@ -10,6 +10,9 @@
 #include<d3dx9.h>
 #include"GraphicsDevice.h"
 
+/**
+* デバックで使用するフォントクラス
+*/
 class DebugFont
 {
 private:

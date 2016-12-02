@@ -231,8 +231,8 @@ void InputMouse::SetMouseCenter()
 		RECT clientRect;
 		GetWindowRect(m_hWnd, &winRect);
 		GetClientRect(m_hWnd, &clientRect);
-		int mousePosX = static_cast<int>( ( ( clientRect.right - clientRect.left ) / 2 ) + winRect.left );
-		int mousePosY = static_cast<int>( ( ( clientRect.bottom - clientRect.top ) / 2 ) + winRect.top );
+		int mousePosX = static_cast<int>( winRect.left + ( ( clientRect.right - clientRect.left ) / 2 ) );
+		int mousePosY = static_cast<int>( winRect.bottom - ( ( clientRect.bottom - clientRect.top ) / 2 ) );
 		SetCursorPos(mousePosX, mousePosY);
 	}
 }

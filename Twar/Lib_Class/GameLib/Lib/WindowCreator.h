@@ -1,12 +1,14 @@
 ﻿/**
-* @file WindowCreator.h
-* @brief ウィンドウを作成するクラス
-* @author haga
-* @data 2016/09/28
+* @file		WindowCreator.h
+* @brief	WindowCreatorクラスヘッダ
+* @author	haga
+* @data		2016/09/28
 */
 #ifndef WINDOW_CREATOR_H
 #define WINDOW_CREATOR_H
+
 #include <windows.h>
+
 /*
 *ウィンドウを作成するクラス
 */

@@ -1,7 +1,7 @@
 ﻿/**
-* @file GraphicsDevice.h
-* @brief グラフィックスデバイス関連のクラスのh
-* @author haga
+* @file		GraphicsDevice.h
+* @brief	GraphicsDeviceクラスヘッダ
+* @author	haga
 */
 #ifndef GRAPHIC_DEVICE_H
 #define GRAPHIC_DEVICE_H

@@ -1,16 +1,15 @@
 ﻿/**
-* @file	XFileManager.cpp
-* @brief Xファイルを管理するクラス
-* @author haga
+* @file		XFileManager.cpp
+* @brief	XFileManagerクラス実装
+* @author	haga
 */
+
 #include "XFile.h"
 #include "XFileManager.h"
-
 
 XFileManager::XFileManager()
 {
 }
-
 
 XFileManager::~XFileManager()
 {

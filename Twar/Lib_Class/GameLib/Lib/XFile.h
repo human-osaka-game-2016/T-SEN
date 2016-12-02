@@ -1,7 +1,7 @@
 ﻿/**
-* @file   XFile.h
-* @brief  Xファイルを扱うクラスのh
-* @author haga
+* @file		XFile.h
+* @brief	XFileクラスヘッダ
+* @author	haga
 */
 #ifndef XFILE_H
 #define XFILE_H

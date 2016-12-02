@@ -1,7 +1,7 @@
 ﻿/**
-* @file   InputDevice.h
-* @brief  DirectInput関連クラスのh
-* @author haga
+* @file		InputDevice.h
+* @brief	InputDeviceクラスヘッダ
+* @author	haga
 */
 #ifndef INPUT_DEVICE_H
 #define	INPUT_DEVICE_H

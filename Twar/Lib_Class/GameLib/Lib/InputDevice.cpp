@@ -1,7 +1,7 @@
 ﻿/**
-* @file   InputDevice.cpp
-* @brief  DirectInput関連クラスのcpp
-* @author haga
+* @file		InputDevice.cpp
+* @brief	InputDeviceクラス実装
+* @author	haga
 */
 
 #include "InputDevice.h"

@@ -1,17 +1,20 @@
 ﻿/**
-* @file XFileManager.h
-* @brief Xファイルを一括で扱うクラスのh
-* @haga
+* @file		XFileManager.h
+* @brief	XFileManagerクラスヘッダ
+* @author	haga
 */
+
 #ifndef XFILE_MANAGER_H
 #define XFILE_MANAGER_H
 
 #include <d3dx9.h>
 #include <map>
 
-
 class XFile;
 
+/**
+* Xファイルを一括で扱うクラス.
+*/
 class XFileManager
 {
 private:

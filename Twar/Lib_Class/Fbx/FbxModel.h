@@ -1,7 +1,7 @@
 ﻿/**
-* @file FbxModel.h
-* @brief Fbxモデルのデータを詰めるクラスのh
-* @author 川口
+* @file		FbxModel.h
+* @brief	FbxModelクラスヘッダ
+* @author	kawaguchi
 */
 
 #ifndef FBXMODEL_H
@@ -15,10 +15,11 @@
 #include <vector>
 #include "../GameLib/Lib/GraphicsDevice.h"
 
-using namespace std;
-
 #define MY_FVF (D3DFVF_XYZ | D3DFVF_NORMAL | D3DFVF_TEX2)
 
+/**
+* Fbxモデルのデータを詰めるクラス
+*/
 class FbxModel
 {
 	friend class FbxRelated;
