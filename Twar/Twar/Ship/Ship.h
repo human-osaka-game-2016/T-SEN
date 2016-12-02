@@ -7,9 +7,11 @@
 #ifndef SHIP_H
 #define	SHIP_H
 
-#include "Fbx/FbxRelated.h"
-#include "../CameraController/CameraController.h"
-#include "GameLib/GameLib.h"
+#include <d3dx9.h>
+
+class FbxModel;
+class CameraController;
+class GameLib;
 
 /**
 	Ship全体の親クラス
@@ -18,7 +20,7 @@ class Ship
 {
 	friend class ShipManager;
 
-protected:
+public:
 	/**
 		ステータス
 	*/
@@ -29,6 +31,32 @@ protected:
 	};
 
 	/**
+		コンストラクタ
+		@param	pos			オブジェクトの中心座標
+		@param	status		ステータス
+	*/
+	Ship(D3DXVECTOR3* pos, STATUS status);
+
+	/**	デストラクタ */
+	~Ship();
+
+	/**	描画関数 */
+	virtual void Draw();
+
+	/**	コントロール関数 */
+	virtual void Control();
+
+	/**	ワールド座標変換関数 */
+	void TransWorld();
+
+	/**
+		カメラ座標と注視点を決める関数
+		@param	radius		カメラ座標と注視点の中点
+	*/
+	void CameraTransWorld(float radius);
+
+protected:
+	/**
 		Shipの属性
 	*/
 	enum ATTR
@@ -38,9 +66,10 @@ protected:
 		ENEMY
 	};
 
-	D3DXVECTOR3		        m_ObjPos;				//!<	座標
-	CameraController*		m_pcameraController;	//!<	カメラコントローラー
+	GameLib&				m_pGameLib;				//!<	GameLib
 	FbxModel*				m_pFbx;					//!<	モデルデータ
+	D3DXVECTOR3		        m_ObjPos;				//!<	座標
+	CameraController&		m_pcameraController;	//!<	カメラコントローラー
 	
 	ATTR					m_Attr;					//!<	Shipの属性
 	STATUS					m_Status;				//!<	ステータス
@@ -95,37 +124,6 @@ protected:
 	
 	/**	case Control of "the enemy" */
 	virtual void ControlEnemy() = 0;
-
-private:
-
-	
-
-public:
-	/**
-		コンストラクタ
-		@param	pos			オブジェクトの中心座標
-		@param	status		ステータス
-	*/
-	Ship(D3DXVECTOR3* pos, STATUS status);
-
-	/**	デストラクタ */
-	~Ship();
-
-	/**	描画関数 */
-	virtual void Draw();
-	
-	/**	コントロール関数 */
-	virtual void Control();
-	
-	/**	ワールド座標変換関数 */
-	void TransWorld();
-	
-	/**
-		カメラ座標と注視点を決める関数
-		@param	radius		カメラ座標と注視点の中点
-	*/
-	void CameraTransWorld(float radius);
-
 };
 
 #endif	//	SHIP_H

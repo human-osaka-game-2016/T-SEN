@@ -5,6 +5,9 @@
 */
 
 #include "Ship.h"
+#include "GameLib/GameLib.h"
+#include "../CameraController/CameraController.h"
+#include "Fbx/FbxModel.h"
 
 const float	Ship::m_LimitArrivalFlame	= 500.f;
 const float	Ship::m_DecelerationSpeed	= 0.002f;
@@ -16,8 +19,10 @@ const float	Ship::m_NormalAngle			= 50.f;
 const float	Ship::m_ZoomAngle			= 10.f;
 
 Ship::Ship(D3DXVECTOR3* pos, STATUS status)
-	: m_ObjPos(*pos)
-	, m_pcameraController(&CameraController::GetInstance())
+	: m_pGameLib(GameLib::Instance())
+	, m_pFbx(new FbxModel)
+	, m_ObjPos(*pos)
+	, m_pcameraController(CameraController::GetInstance())
 	, m_Status(status)
 	, m_CameraPos({ pos->x, pos->y + m_CameraHeight, pos->z })
 	, m_LookatPos({ pos->x, pos->y + m_CameraHeight, pos->z })
@@ -60,7 +65,7 @@ void Ship::TransWorld()
 	D3DXMatrixTranslation(&matPos, m_ObjPos.x, m_ObjPos.y, m_ObjPos.z);
 	D3DXMatrixMultiply(&matWorld, &m_Slope, &m_Rotation);
 	D3DXMatrixMultiply(&matWorld, &matWorld, &matPos);
-	GameLib::Instance().GetDevice()->SetTransform(D3DTS_WORLD, &matWorld);
+	m_pGameLib.GetDevice()->SetTransform(D3DTS_WORLD, &matWorld);
 }
 
 

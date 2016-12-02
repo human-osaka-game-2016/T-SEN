@@ -5,6 +5,8 @@
 */
 
 #include "BattleShip.h"
+#include "GameLib/GameLib.h"
+#include "Fbx/FbxModel.h"
 
 const float BattleShip::m_SpeedLimit = 1.f;
 
@@ -66,12 +68,12 @@ void BattleShip::ControlPlayer()
 
 	D3DXVec3TransformCoord(&vecAxisZ, &vecAxisZ, &m_Rotation);
 
-	if (GameLib::Instance().ChecKMouseR() == PUSH)
+	if (m_pGameLib.ChecKMouseR() == PUSH)
 	{
 		m_Angle = m_ZoomAngle;
 		m_IsZoom = true;
 	}
-	else if (GameLib::Instance().ChecKMouseR() == RELEASE)
+	else if (m_pGameLib.ChecKMouseR() == RELEASE)
 	{
 		m_Angle = m_NormalAngle;
 		m_IsZoom = false;
@@ -91,9 +93,9 @@ void BattleShip::ControlPlayer()
 
 	float nextSpeed;
 
-	if (GameLib::Instance().CheckKey(DIK_W, W) - OFF + GameLib::Instance().CheckKey(DIK_S, S) - OFF)
+	if (m_pGameLib.CheckKey(DIK_W, W) - OFF + m_pGameLib.CheckKey(DIK_S, S) - OFF)
 	{
-		if (GameLib::Instance().CheckKey(DIK_W, W) == ON)
+		if (m_pGameLib.CheckKey(DIK_W, W) == ON)
 		{
 			nextSpeed = m_Status.m_Speed + m_SpeedLimit / m_LimitArrivalFlame;
 
@@ -116,7 +118,7 @@ void BattleShip::ControlPlayer()
 			}
 		}
 
-		if (GameLib::Instance().CheckKey(DIK_S, S) == ON)
+		if (m_pGameLib.CheckKey(DIK_S, S) == ON)
 		{
 			nextSpeed = m_Status.m_Speed - m_SpeedLimit / m_LimitArrivalFlame;
 
@@ -177,7 +179,7 @@ void BattleShip::ControlPlayer()
 
 	if (m_Status.m_Speed > 0)
 	{
-		if (GameLib::Instance().CheckKey(DIK_A, A) == ON)
+		if (m_pGameLib.CheckKey(DIK_A, A) == ON)
 		{
 			nextSlant = m_Slant + tiltSpeed;
 
@@ -217,7 +219,7 @@ void BattleShip::ControlPlayer()
 			}
 		}
 
-		if (GameLib::Instance().CheckKey(DIK_D, D) == ON)
+		if (m_pGameLib.CheckKey(DIK_D, D) == ON)
 		{
 			nextSlant = m_Slant - tiltSpeed;
 
@@ -259,7 +261,7 @@ void BattleShip::ControlPlayer()
 	}
 	else if (m_Status.m_Speed < 0)
 	{
-		if (GameLib::Instance().CheckKey(DIK_A, A) == ON)
+		if (m_pGameLib.CheckKey(DIK_A, A) == ON)
 		{
 			nextSlant = m_Slant - tiltSpeed;
 
@@ -299,7 +301,7 @@ void BattleShip::ControlPlayer()
 			}
 		}
 
-		if (GameLib::Instance().CheckKey(DIK_D, D) == ON)
+		if (m_pGameLib.CheckKey(DIK_D, D) == ON)
 		{
 			nextSlant = m_Slant + tiltSpeed;
 
@@ -344,7 +346,7 @@ void BattleShip::ControlPlayer()
 
 	float mousePosX, mousePosY;
 
-	GameLib::Instance().GetMousePos(&mousePosX, &mousePosY);
+	m_pGameLib.GetMousePos(&mousePosX, &mousePosY);
 
 	HWND hWnd = InputDevice::GetInstance().GethWnd();
 	RECT rect;

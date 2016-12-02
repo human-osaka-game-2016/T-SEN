@@ -14,16 +14,6 @@
 */
 class Destroyer : public Ship
 {
-private:
-	/**	case Control of "the player" */
-	virtual void ControlPlayer();
-
-	/**	case Control of "the ally" */
-	virtual void ControlAlly();
-
-	/**	case Control of "the enemy" */
-	virtual void ControlEnemy();
-
 public:
 	/**	コンストラクタ */
 	Destroyer(D3DXVECTOR3* pos);
@@ -36,6 +26,16 @@ public:
 
 	/**	描画関数 */
 	virtual void Draw();
+
+private:
+	/**	case Control of "the player" */
+	virtual void ControlPlayer();
+
+	/**	case Control of "the ally" */
+	virtual void ControlAlly();
+
+	/**	case Control of "the enemy" */
+	virtual void ControlEnemy();
 };
 
 #endif	//	DESTROYER_H

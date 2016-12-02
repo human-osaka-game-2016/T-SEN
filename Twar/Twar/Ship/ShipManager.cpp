@@ -4,9 +4,13 @@
 	@author kawaguchi
 */
 
+#include "Fbx/FbxRelated.h"
 #include "ShipManager.h"
 
 ShipManager::ShipManager()
+	: m_BattleShip(new FbxRelated)
+	, m_Cruiser(new FbxRelated)
+	, m_Destroyer(new FbxRelated)
 {
 	//	仮置き
 	m_TemplatePos[0] = { -250.f, -4.f, -500.f };
@@ -22,17 +26,17 @@ ShipManager::ShipManager()
 	m_TemplatePos[10] = { 150.f, -4.f,  500.f };
 	m_TemplatePos[11] = { 250.f, -4.f,  500.f };
 
-	if (!m_BattleShip.LoadFbx("fbx/kongou.fbx"))
+	if (!m_BattleShip->LoadFbx("fbx/kongou.fbx"))
 	{
 		// 読み込み失敗したらエラー
 		MessageBox(0, "FBXファイルの読み込みに失敗しました。", NULL, MB_OK);
 	}
-	if (!m_Cruiser.LoadFbx("fbx/kongou.fbx"))
+	if (!m_Cruiser->LoadFbx("fbx/kongou.fbx"))
 	{
 		// 読み込み失敗したらエラー
 		MessageBox(0, "FBXファイルの読み込みに失敗しました。", NULL, MB_OK);
 	}
-	if (!m_Destroyer.LoadFbx("fbx/kongou.fbx"))
+	if (!m_Destroyer->LoadFbx("fbx/kongou.fbx"))
 	{
 		// 読み込み失敗したらエラー
 		MessageBox(0, "FBXファイルの読み込みに失敗しました。", NULL, MB_OK);
@@ -91,15 +95,15 @@ void ShipManager::Create(char* army, char* enemy, SHIP_ID* shipID)
 		{
 		case BATTLESHIP:
 			tmp = new BattleShip(&m_TemplatePos[i]);
-			tmp->m_pFbx = m_BattleShip.m_pModel;
+			tmp->m_pFbx = m_BattleShip->m_pModel;
 			break;
 		case CRUISER:
 			tmp = new Cruiser(&m_TemplatePos[i]);
-			tmp->m_pFbx = m_Cruiser.m_pModel;
+			tmp->m_pFbx = m_Cruiser->m_pModel;
 			break;
 		case DESTROYER:
 			tmp = new Destroyer(&m_TemplatePos[i]);
-			tmp->m_pFbx = m_Destroyer.m_pModel;
+			tmp->m_pFbx = m_Destroyer->m_pModel;
 			break;
 		case NONE:
 			continue;
@@ -125,15 +129,15 @@ void ShipManager::Create(char* army, char* enemy, SHIP_ID* shipID)
 		{
 		case BATTLESHIP:
 			tmp = new BattleShip(&m_TemplatePos[i]);
-			tmp->m_pFbx = m_BattleShip.m_pModel;
+			tmp->m_pFbx = m_BattleShip->m_pModel;
 			break;
 		case CRUISER:
 			tmp = new Cruiser(&m_TemplatePos[i]);
-			tmp->m_pFbx = m_Cruiser.m_pModel;
+			tmp->m_pFbx = m_Cruiser->m_pModel;
 			break;
 		case DESTROYER:
 			tmp = new Destroyer(&m_TemplatePos[i]);
-			tmp->m_pFbx = m_Destroyer.m_pModel;
+			tmp->m_pFbx = m_Destroyer->m_pModel;
 			break;
 		case NONE:
 			continue;
