@@ -109,6 +109,7 @@
     <ClCompile Include="SubScene\SubSceneFactory.cpp" />
     <ClCompile Include="SubScene\WorldMap.cpp" />
     <ClCompile Include="SubScene\SubScene.cpp" />
+    <ClCompile Include="TeamLogo\TeamLogo.cpp" />
     <ClCompile Include="Thread\LoadingThread.cpp" />
     <ClCompile Include="Title\TitleBackground.cpp" />
     <ClCompile Include="Title\TitleLogo.cpp" />
@@ -150,6 +151,7 @@
     <ClInclude Include="SubScene\SubSceneFactory.h" />
     <ClInclude Include="SubScene\WorldMap.h" />
     <ClInclude Include="SubScene\SubScene.h" />
+    <ClInclude Include="TeamLogo\TeamLogo.h" />
     <ClInclude Include="Thread\LoadingThread.h" />
     <ClInclude Include="Title\TitleBackground.h" />
     <ClInclude Include="Title\TitleLogo.h" />
