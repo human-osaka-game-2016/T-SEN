@@ -1,5 +1,5 @@
 ﻿/**
-	@file ShipManager.h
+	@file ShipManager.cpp
 	@brief ShipManagerクラスcpp
 	@author kawaguchi
 */
