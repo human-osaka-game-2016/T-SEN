@@ -75,6 +75,7 @@
   <ItemGroup>
     <ClCompile Include="Bullet\Ap.cpp" />
     <ClCompile Include="Bullet\Bullet.cpp" />
+    <ClCompile Include="Bullet\BulletManager.cpp" />
     <ClCompile Include="Bullet\He.cpp" />
     <ClCompile Include="Bullet\Torpedo.cpp" />
     <ClCompile Include="Button\MenuButton.cpp" />
@@ -118,6 +119,7 @@
   <ItemGroup>
     <ClInclude Include="Bullet\Ap.h" />
     <ClInclude Include="Bullet\Bullet.h" />
+    <ClInclude Include="Bullet\BulletManager.h" />
     <ClInclude Include="Bullet\He.h" />
     <ClInclude Include="Bullet\Torpedo.h" />
     <ClInclude Include="Button\MenuButton.h" />

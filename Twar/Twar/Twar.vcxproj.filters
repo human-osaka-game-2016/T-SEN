@@ -169,6 +169,9 @@
     <ClCompile Include="TeamLogo\TeamLogo.cpp">
       <Filter>Twar\TeamLogo</Filter>
     </ClCompile>
+    <ClCompile Include="Bullet\BulletManager.cpp">
+      <Filter>Twar\Bullet</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Scene\SceneManager.h">
@@ -290,6 +293,9 @@
     </ClInclude>
     <ClInclude Include="TeamLogo\TeamLogo.h">
       <Filter>Twar\TeamLogo</Filter>
+    </ClInclude>
+    <ClInclude Include="Bullet\BulletManager.h">
+      <Filter>Twar\Bullet</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
