@@ -80,6 +80,10 @@
     <ClCompile Include="Bullet\Torpedo.cpp" />
     <ClCompile Include="Button\MenuButton.cpp" />
     <ClCompile Include="CameraController\CameraController.cpp" />
+    <ClCompile Include="Collision.cpp" />
+    <ClCompile Include="CollisionManager.cpp" />
+    <ClCompile Include="Enemy.cpp" />
+    <ClCompile Include="EnemyManager.cpp" />
     <ClCompile Include="Field\FieldManager.cpp" />
     <ClCompile Include="Field\Ocean.cpp" />
     <ClCompile Include="Field\Sky.cpp" />
@@ -88,6 +92,7 @@
     <ClCompile Include="GameData\GameDataManager.cpp" />
     <ClCompile Include="GameData\GameTimer.cpp" />
     <ClCompile Include="GameData\SaveDataManager.cpp" />
+    <ClCompile Include="HomeBackGround.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Scene\EndRollScene.cpp" />
     <ClCompile Include="Scene\GameScene.cpp" />
@@ -124,6 +129,10 @@
     <ClInclude Include="Bullet\Torpedo.h" />
     <ClInclude Include="Button\MenuButton.h" />
     <ClInclude Include="CameraController\CameraController.h" />
+    <ClInclude Include="Collision.h" />
+    <ClInclude Include="CollisionManager.h" />
+    <ClInclude Include="Enemy.h" />
+    <ClInclude Include="EnemyManager.h" />
     <ClInclude Include="Field\FieldManager.h" />
     <ClInclude Include="Field\Ocean.h" />
     <ClInclude Include="Field\Sky.h" />
@@ -132,6 +141,7 @@
     <ClInclude Include="GameData\GameDataManager.h" />
     <ClInclude Include="GameData\GameTimer.h" />
     <ClInclude Include="GameData\SaveDataManager.h" />
+    <ClInclude Include="HomeBackGround.h" />
     <ClInclude Include="Scene\EndRollScene.h" />
     <ClInclude Include="Scene\GameScene.h" />
     <ClInclude Include="Scene\LogoScene.h" />

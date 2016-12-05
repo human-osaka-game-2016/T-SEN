@@ -41,6 +41,15 @@
     <Filter Include="Twar\TeamLogo">
       <UniqueIdentifier>{bc96b1ec-b269-415a-b75b-242255456d3f}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Twar\Enemy">
+      <UniqueIdentifier>{c3a6b20a-4d84-4a3c-8d79-14a4fdb16ff5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Twar\Collision">
+      <UniqueIdentifier>{21aebc7d-a495-4240-aa87-7442afdfadf7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Twar\HomeBackGround">
+      <UniqueIdentifier>{4985bd3c-1e90-4274-9f4c-aa6caa952518}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -172,6 +181,21 @@
     <ClCompile Include="Bullet\BulletManager.cpp">
       <Filter>Twar\Bullet</Filter>
     </ClCompile>
+    <ClCompile Include="EnemyManager.cpp">
+      <Filter>Twar\Enemy</Filter>
+    </ClCompile>
+    <ClCompile Include="Enemy.cpp">
+      <Filter>Twar\Enemy</Filter>
+    </ClCompile>
+    <ClCompile Include="Collision.cpp">
+      <Filter>Twar\Collision</Filter>
+    </ClCompile>
+    <ClCompile Include="CollisionManager.cpp">
+      <Filter>Twar\Collision</Filter>
+    </ClCompile>
+    <ClCompile Include="HomeBackGround.cpp">
+      <Filter>Twar\HomeBackGround</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Scene\SceneManager.h">
@@ -296,6 +320,21 @@
     </ClInclude>
     <ClInclude Include="Bullet\BulletManager.h">
       <Filter>Twar\Bullet</Filter>
+    </ClInclude>
+    <ClInclude Include="Enemy.h">
+      <Filter>Twar\Enemy</Filter>
+    </ClInclude>
+    <ClInclude Include="EnemyManager.h">
+      <Filter>Twar\Enemy</Filter>
+    </ClInclude>
+    <ClInclude Include="Collision.h">
+      <Filter>Twar\Collision</Filter>
+    </ClInclude>
+    <ClInclude Include="CollisionManager.h">
+      <Filter>Twar\Collision</Filter>
+    </ClInclude>
+    <ClInclude Include="HomeBackGround.h">
+      <Filter>Twar\HomeBackGround</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
