@@ -1,7 +1,7 @@
 ﻿/**
-* @file GraphicsDevice.cpp
-* @brief グラフィックスデバイス関連のクラスのcpp
-* @author haga
+* @file		GraphicsDevice.cpp
+* @brief	GraphicsDeviceクラス実装
+* @author	haga
 */
 #include <d3dx9.h>
 #include <d3d9.h>
@@ -9,9 +9,9 @@
 
 
 // コンストラクタ
-GraphicsDevice::GraphicsDevice():
-m_pDirect3D(NULL),
-m_pD3Device(NULL)
+GraphicsDevice::GraphicsDevice()
+	: m_pDirect3D(NULL)
+	, m_pD3Device(NULL)
 {
 }
 

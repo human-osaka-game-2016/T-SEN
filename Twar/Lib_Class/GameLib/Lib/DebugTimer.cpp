@@ -1,7 +1,7 @@
 ﻿/**
-* @file	DebugTimer.cpp
-* @brief デバックの為の時間を計測するクラスのcpp
-* @author haga
+* @file		DebugTimer.cpp
+* @brief	DebugTimerクラス実装
+* @author	haga
 */
 #include <windows.h>
 #include <string>

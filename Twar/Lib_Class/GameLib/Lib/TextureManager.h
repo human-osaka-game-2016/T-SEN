@@ -1,7 +1,7 @@
 ﻿/**
-* @file TextureManager.h
-* @brief テクスチャーを管理するクラスのh
-* @author haga
+* @file		TextureManager.h
+* @brief	TextureManagerクラス実装
+* @author	haga
 */
 #ifndef TEXTURE_MANAGER_H
 #define TEXTURE_MANAGER_H
@@ -11,6 +11,9 @@
 #include "GraphicsDevice.h"
 #include <map>
 
+/**
+* テクスチャーを管理するクラス.
+*/
 class TextureManager
 {
 private:

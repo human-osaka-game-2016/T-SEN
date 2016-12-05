@@ -1,7 +1,7 @@
 ﻿/**
-* @file   DebugTimer.h
-* @brief   デバックの為の時間を計測するクラスのh
-* @author haga
+* @file		DebugTimer.h
+* @brief	DebugTimerクラスヘッダ
+* @author	haga
 */
 #ifndef DEBUG_TIMER_H
 #define DEBUG_TIMER_H
@@ -9,7 +9,6 @@
 #include <iostream>
 #include <vector>
 #include "DebugFont.h"
-
 
 /**
 * デバック用タイマークラス<br>

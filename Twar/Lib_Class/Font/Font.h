@@ -1,7 +1,7 @@
 ﻿/**
-* @file Font.h
-* @brief フォントを扱うクラスのh
-* @author haga
+* @file		Font.h
+* @brief	Fontクラスヘッダ
+* @author	haga
 */
 #ifndef FONT_H
 #define FONT_H

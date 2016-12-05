@@ -1,8 +1,8 @@
 ﻿/**
-* @file LibClass.h
-* @brief Lib_Classのヘッダーファイルをまとめたヘッダー<br>
-* あくまでこのヘッダーは確認用なので、includeはしないこと
-* @author haga
+* @file		LibClass.h
+* @brief	Lib_Classのヘッダーファイルをまとめたヘッダー<br>
+*			あくまでこのヘッダーは確認用なので、includeはしないこと
+* @author	haga
 */
 
 #define LIB_CLASS_H

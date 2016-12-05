@@ -1,25 +1,24 @@
 ﻿/**
-* @file WindowCreator.cpp
-* @brief ウィンドウを作成するクラス
-* @author haga
+* @file		WindowCreator.cpp
+* @brief	WindowCreatorクラス実装
+* @author	haga
 */
+
 #include <windows.h>
 #include"WindowCreator.h"
 
-
-WindowCreator::WindowCreator(TCHAR*  title, int width, int height) :
-m_hWnd(NULL),
-m_wTitle(title),
-m_wWidth(width),
-m_wHeight(height),
-m_isFullScreen(false)
+WindowCreator::WindowCreator(TCHAR*  title, int width, int height) 
+	: m_hWnd(NULL)
+	, m_wTitle(title)
+	, m_wWidth(width)
+	, m_wHeight(height)
+	, m_isFullScreen(false)
 {
 }
 
 WindowCreator::~WindowCreator()
 {
 }
-
 
 // ウィンドウを作成する関数
 HRESULT WindowCreator::MakeWindow(HINSTANCE hInstance, LRESULT CALLBACK WndProc(HWND hWnd, UINT msg, WPARAM wp, LPARAM lp), bool isFullScreen)

@@ -1,16 +1,16 @@
 ﻿/**
-* @file  Light.h
-* @brief ライトに関するクラス
-* @author haga
+* @file		Light.h
+* @brief	Lightクラス実装
+* @author	haga
 */
 
 #include "Light.h"
 
 // コンストラクタ 環境光
-Light::Light(LPDIRECT3DDEVICE9 pD3Device,D3DXVECTOR3 direction) :
-m_pD3Device(pD3Device),
-m_direction(direction),
-m_ambientColor(0x00111111)
+Light::Light(LPDIRECT3DDEVICE9 pD3Device,D3DXVECTOR3 direction) 
+	: m_pD3Device(pD3Device)
+	, m_direction(direction)
+	, m_ambientColor(0x00111111)
 {
 	ZeroMemory(&m_light, sizeof(D3DLIGHT9));
 	m_light.Type = D3DLIGHT_DIRECTIONAL;
@@ -25,11 +25,11 @@ m_ambientColor(0x00111111)
 }
 
 // コンストラクタ 
-Light::Light(LPDIRECT3DDEVICE9 pD3Device,D3DXVECTOR3 lightPos, D3DXVECTOR3 direction) :
-m_pD3Device(pD3Device),
-m_direction(direction),
-m_lightPos(lightPos),
-m_ambientColor(0x00111111)
+Light::Light(LPDIRECT3DDEVICE9 pD3Device,D3DXVECTOR3 lightPos, D3DXVECTOR3 direction) 
+	: m_pD3Device(pD3Device)
+	, m_direction(direction)
+	, m_lightPos(lightPos)
+	, m_ambientColor(0x00111111)
 {
 	ZeroMemory(&m_light, sizeof(D3DLIGHT9));
 	m_light.Type = D3DLIGHT_SPOT;

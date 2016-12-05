@@ -1,18 +1,16 @@
 ﻿/**
-* @file FbxModel.cpp
-* @brief Fbxモデルのデータを詰めるクラスのcpp
-* @author 川口
+* @file		FbxModel.cpp
+* @brief	FbxModelクラス実装
+* @author	kawaguchi
 */
 
 #include "FbxModel.h"
 
-
-FbxModel::FbxModel():
-m_pDevice(GraphicsDevice::GetInstance().GetDevice())
+FbxModel::FbxModel()
+	: m_pDevice(GraphicsDevice::GetInstance().GetDevice())
 {
 	m_pFbxModelData= NULL;
 }
-
 
 FbxModel::~FbxModel()
 {

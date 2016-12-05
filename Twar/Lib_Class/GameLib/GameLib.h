@@ -14,6 +14,7 @@
 class WindowCreator;
 class GraphicsDevice;
 class InputDevice;
+class Inputkey;
 class InputMouse;
 class TextureManager;
 class XFileManager;
@@ -23,7 +24,6 @@ class DebugFont;
 class DebugTimer;
 
 enum KEYKIND;
-
 
 #define DIRECT3DFVF_CUSTOMVERTEX (D3DFVF_XYZRHW | D3DFVF_DIFFUSE | D3DFVF_TEX1)		//!< 頂点フォーマット
 #define USER_VERTEX_FVF (D3DFVF_XYZ | D3DFVF_NORMAL | D3DFVF_TEX1)					//!< 頂点フォーマット(XYZと法線とテクスチャー)

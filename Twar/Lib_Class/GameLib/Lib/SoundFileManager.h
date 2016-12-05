@@ -1,7 +1,7 @@
 ﻿/**
-* @file SoundFileManager
-* @brief  サウンドを管理するクラスのh
-* @author haga
+* @file		SoundFileManager.h
+* @brief	SoundFileManagerクラスヘッダ
+* @author	haga
 */
 #ifndef SOUND_FILE_MANAGER_H
 #define SOUND_FILE_MANAGER_H
@@ -10,8 +10,6 @@
 #include <mmsystem.h>
 #include <map>
 #include <dsound.h>
-
-//#pragma comment(lib, "dsound.lib")
 
 /**音楽の再生方式*/
 enum SOUND_MODE

@@ -1,15 +1,16 @@
 ﻿/**
-* @file Font.cpp
-* @brief フォントを扱うクラスのcpp
-* @author haga
+* @file		Font.cpp
+* @brief	Fontクラス実装
+* @author	haga
 */
+
 #include "../Font/Font.h"
 
-Font::Font(IDirect3DDevice9*	pD3Device) :
-m_pD3Device(pD3Device),
-m_pFont(NULL),
-m_height(20),
-m_width(10)
+Font::Font(IDirect3DDevice9*	pD3Device) 
+	: m_pD3Device(pD3Device)
+	, m_pFont(NULL)
+	, m_height(20)
+	, m_width(10)
 {
 	if (FAILED(D3DXCreateFont(m_pD3Device,
 		m_height,
@@ -29,11 +30,11 @@ m_width(10)
 }
 
 // コンストラクタ 文字の大きさを指定する場合に使用
-Font::Font(IDirect3DDevice9*	pD3Device,INT height, INT	width) :
-m_pD3Device(pD3Device),
-m_pFont(NULL),
-m_height(height),
-m_width(width)
+Font::Font(IDirect3DDevice9*	pD3Device,INT height, INT	width) 
+	: m_pD3Device(pD3Device)
+	, m_pFont(NULL)
+	, m_height(height)
+	, m_width(width)
 {
 	if (FAILED(D3DXCreateFont(m_pD3Device,
 		m_height,

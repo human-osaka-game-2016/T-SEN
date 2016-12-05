@@ -1,7 +1,7 @@
 ﻿/**
-* @file FbxRelated.h
-* @brief Fbxモデルのデータを読み込むクラスのh
-* @author 川口
+* @file		FbxRelated.h
+* @brief	FbxRelatedクラスヘッダ
+* @author	kawaguchi
 */
 
 #ifndef FBXRELATED_H

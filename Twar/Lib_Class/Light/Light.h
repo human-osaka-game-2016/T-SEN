@@ -1,7 +1,7 @@
 ﻿/**
-* @file  Light.h
-* @brief ライトに関するクラス
-* @author haga
+* @file		Light.h
+* @brief	Lightクラスヘッダ
+* @author	haga
 */
 #ifndef LIGHT_H
 #define LIGHT_H

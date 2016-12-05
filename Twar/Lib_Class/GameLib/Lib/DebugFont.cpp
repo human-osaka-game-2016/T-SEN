@@ -1,17 +1,16 @@
 ﻿/**
-* @file DebugFont.cpp
-* @brief デバックで使用するフォントのクラス
-* @author haga
+* @file		DebugFont.cpp
+* @brief	DebugFontクラス実装
+* @author	haga
 */
 #include "DebugFont.h"
 
-
-DebugFont::DebugFont(INT height, UINT width, D3DCOLOR color):
-m_pD3Device(GraphicsDevice::GetInstance().GetDevice()),
-m_pFont(NULL),
-m_height(height),
-m_width(width),
-m_color(color)
+DebugFont::DebugFont(INT height, UINT width, D3DCOLOR color)
+	: m_pD3Device(GraphicsDevice::GetInstance().GetDevice())
+	, m_pFont(NULL)
+	, m_height(height)
+	, m_width(width)
+	, m_color(color)
 {
 	if (FAILED(D3DXCreateFont(m_pD3Device,
 		m_height,
@@ -29,7 +28,6 @@ m_color(color)
 		MessageBox(NULL, "フォントクラスを作成できません", "Error", MB_OK);
 	}
 }
-
 
 DebugFont::~DebugFont()
 {
