@@ -38,6 +38,9 @@
     <Filter Include="Twar\Button">
       <UniqueIdentifier>{1c0b10be-02b7-4c36-b0ca-bd9ae68f8227}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Twar\TeamLogo">
+      <UniqueIdentifier>{bc96b1ec-b269-415a-b75b-242255456d3f}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -163,6 +166,12 @@
     <ClCompile Include="GameData\DataSlot.cpp">
       <Filter>Twar\GameData</Filter>
     </ClCompile>
+    <ClCompile Include="TeamLogo\TeamLogo.cpp">
+      <Filter>Twar\TeamLogo</Filter>
+    </ClCompile>
+    <ClCompile Include="Bullet\BulletManager.cpp">
+      <Filter>Twar\Bullet</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Scene\SceneManager.h">
@@ -281,6 +290,12 @@
     </ClInclude>
     <ClInclude Include="GameData\DataSlot.h">
       <Filter>Twar\GameData</Filter>
+    </ClInclude>
+    <ClInclude Include="TeamLogo\TeamLogo.h">
+      <Filter>Twar\TeamLogo</Filter>
+    </ClInclude>
+    <ClInclude Include="Bullet\BulletManager.h">
+      <Filter>Twar\Bullet</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
