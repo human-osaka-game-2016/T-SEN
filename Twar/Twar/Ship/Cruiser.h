@@ -1,9 +1,41 @@
-ï»¿#pragma once
-class Cruiser :
-	public Ship
+/**
+	@file ShipManager.h
+	@brief ShipManagerƒNƒ‰ƒXƒwƒbƒ_
+	@author kawaguchi
+*/
+
+#ifndef	CRUISER_H
+#define CRUISER_H
+
+#include "Ship.h"
+
+/**
+	„—mŠÍƒNƒ‰ƒX
+*/
+class Cruiser : public Ship
 {
 public:
-	Cruiser();
+	/**	ƒRƒ“ƒXƒgƒ‰ƒNƒ^ */
+	Cruiser(D3DXVECTOR3* pos);
+
+	/**	ƒfƒXƒgƒ‰ƒNƒ^ */
 	~Cruiser();
+
+	/**	ƒRƒ“ƒgƒ[ƒ‹ŠÖ” */
+	virtual void Control();
+
+	/**	•`‰æŠÖ” */
+	virtual void Draw();
+
+private:
+	/**	case Control of "the player" */
+	virtual void ControlPlayer();
+
+	/**	case Control of "the ally" */
+	virtual void ControlAlly();
+
+	/**	case Control of "the enemy" */
+	virtual void ControlEnemy();
 };
 
+#endif	//	CRUISER_H

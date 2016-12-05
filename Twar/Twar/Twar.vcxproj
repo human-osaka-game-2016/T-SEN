@@ -39,8 +39,8 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <IncludePath>$(DXSDK_DIR)include;$(SolutionDir)Lib_Class;$(IncludePath)</IncludePath>
-    <LibraryPath>$(DXSDK_DIR)Lib\x86;$(OutDir);$(LibraryPath)</LibraryPath>
+    <IncludePath>$(DXSDK_DIR)include;$(SolutionDir)Lib_Class;C:\Program Files\Autodesk\FBX\FBX SDK\2016.1\include;$(IncludePath)</IncludePath>
+    <LibraryPath>$(DXSDK_DIR)Lib\x86;$(OutDir);C:\Program Files\Autodesk\FBX\FBX SDK\2016.1\lib\vs2013\x86\debug;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <IncludePath>$(DXSDK_DIR)include;$(SolutionDir)Lib_Class;$(IncludePath)</IncludePath>
@@ -54,7 +54,7 @@
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>Lib_Class.lib;winmm.lib;d3d9.lib;d3dx9.lib;dinput8.lib;Dsound.lib;dxguid.lib;shlwapi.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>libfbxsdk-md.lib;Lib_Class.lib;winmm.lib;d3d9.lib;d3dx9.lib;dinput8.lib;Dsound.lib;dxguid.lib;shlwapi.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -101,6 +101,7 @@
     <ClCompile Include="Scene\SceneFactory.cpp" />
     <ClCompile Include="Scene\SceneManager.cpp" />
     <ClCompile Include="Scene\TitleScene.cpp" />
+    <ClCompile Include="Ship\BattleShip.cpp" />
     <ClCompile Include="Ship\Cruiser.cpp" />
     <ClCompile Include="Ship\Destroyer.cpp" />
     <ClCompile Include="Ship\Ship.cpp" />
@@ -149,6 +150,7 @@
     <ClInclude Include="Scene\SceneFactory.h" />
     <ClInclude Include="Scene\SceneManager.h" />
     <ClInclude Include="Scene\TitleScene.h" />
+    <ClInclude Include="Ship\BattleShip.h" />
     <ClInclude Include="Ship\Cruiser.h" />
     <ClInclude Include="Ship\Destroyer.h" />
     <ClInclude Include="Ship\Ship.h" />

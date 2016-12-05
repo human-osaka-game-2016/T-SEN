@@ -157,6 +157,9 @@
     <ClCompile Include="CameraController\CameraController.cpp">
       <Filter>Twar\CameraController</Filter>
     </ClCompile>
+    <ClCompile Include="Ship\BattleShip.cpp">
+      <Filter>Twar\Ship</Filter>
+    </ClCompile>
     <ClCompile Include="Button\MenuButton.cpp">
       <Filter>Twar\Button</Filter>
     </ClCompile>
@@ -296,6 +299,9 @@
     </ClInclude>
     <ClInclude Include="CameraController\CameraController.h">
       <Filter>Twar\CameraController</Filter>
+       </ClInclude>
+    <ClInclude Include="Ship\BattleShip.h">
+      <Filter>Twar\Ship</Filter>
     </ClInclude>
     <ClInclude Include="Button\MenuButton.h">
       <Filter>Twar\Button</Filter>

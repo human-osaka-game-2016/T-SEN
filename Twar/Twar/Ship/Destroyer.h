@@ -1,9 +1,41 @@
-ï»¿#pragma once
-class Destroyer :
-	public Ship
+/**
+	@file ShipManager.h
+	@brief ShipManagerƒNƒ‰ƒXƒwƒbƒ_
+	@author kawaguchi
+*/
+
+#ifndef	DESTROYER_H
+#define DESTROYER_H
+
+#include "Ship.h"
+
+/**
+	‹ì’€ŠÍƒNƒ‰ƒX
+*/
+class Destroyer : public Ship
 {
 public:
-	Destroyer();
+	/**	ƒRƒ“ƒXƒgƒ‰ƒNƒ^ */
+	Destroyer(D3DXVECTOR3* pos);
+
+	/**	ƒfƒXƒgƒ‰ƒNƒ^ */
 	~Destroyer();
+
+	/**	ƒRƒ“ƒgƒ[ƒ‹ŠÖ” */
+	virtual void Control();
+
+	/**	•`‰æŠÖ” */
+	virtual void Draw();
+
+private:
+	/**	case Control of "the player" */
+	virtual void ControlPlayer();
+
+	/**	case Control of "the ally" */
+	virtual void ControlAlly();
+
+	/**	case Control of "the enemy" */
+	virtual void ControlEnemy();
 };
 
+#endif	//	DESTROYER_H
