@@ -47,7 +47,7 @@
     <Filter Include="Twar\Collision">
       <UniqueIdentifier>{21aebc7d-a495-4240-aa87-7442afdfadf7}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Twar\HomeBackGround">
+    <Filter Include="Twar\Home">
       <UniqueIdentifier>{4985bd3c-1e90-4274-9f4c-aa6caa952518}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
@@ -184,20 +184,26 @@
     <ClCompile Include="Bullet\BulletManager.cpp">
       <Filter>Twar\Bullet</Filter>
     </ClCompile>
-    <ClCompile Include="EnemyManager.cpp">
-      <Filter>Twar\Enemy</Filter>
-    </ClCompile>
-    <ClCompile Include="Enemy.cpp">
-      <Filter>Twar\Enemy</Filter>
-    </ClCompile>
-    <ClCompile Include="Collision.cpp">
+    <ClCompile Include="Collision\Collision.cpp">
       <Filter>Twar\Collision</Filter>
     </ClCompile>
-    <ClCompile Include="CollisionManager.cpp">
+    <ClCompile Include="Collision\CollisionManager.cpp">
       <Filter>Twar\Collision</Filter>
     </ClCompile>
-    <ClCompile Include="HomeBackGround.cpp">
-      <Filter>Twar\HomeBackGround</Filter>
+    <ClCompile Include="Enemy\Enemy.cpp">
+      <Filter>Twar\Enemy</Filter>
+    </ClCompile>
+    <ClCompile Include="Enemy\EnemyManager.cpp">
+      <Filter>Twar\Enemy</Filter>
+    </ClCompile>
+    <ClCompile Include="Home\HomeBackGround.cpp">
+      <Filter>Twar\Home</Filter>
+    </ClCompile>
+    <ClCompile Include="Bullet\EnemyBullet.cpp">
+      <Filter>Twar\Bullet</Filter>
+    </ClCompile>
+    <ClCompile Include="Home\HomeMenu.cpp">
+      <Filter>Twar\Home</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -299,7 +305,7 @@
     </ClInclude>
     <ClInclude Include="CameraController\CameraController.h">
       <Filter>Twar\CameraController</Filter>
-       </ClInclude>
+    </ClInclude>
     <ClInclude Include="Ship\BattleShip.h">
       <Filter>Twar\Ship</Filter>
     </ClInclude>
@@ -327,20 +333,26 @@
     <ClInclude Include="Bullet\BulletManager.h">
       <Filter>Twar\Bullet</Filter>
     </ClInclude>
-    <ClInclude Include="Enemy.h">
-      <Filter>Twar\Enemy</Filter>
-    </ClInclude>
-    <ClInclude Include="EnemyManager.h">
-      <Filter>Twar\Enemy</Filter>
-    </ClInclude>
-    <ClInclude Include="Collision.h">
+    <ClInclude Include="Collision\Collision.h">
       <Filter>Twar\Collision</Filter>
     </ClInclude>
-    <ClInclude Include="CollisionManager.h">
+    <ClInclude Include="Collision\CollisionManager.h">
       <Filter>Twar\Collision</Filter>
     </ClInclude>
-    <ClInclude Include="HomeBackGround.h">
-      <Filter>Twar\HomeBackGround</Filter>
+    <ClInclude Include="Enemy\Enemy.h">
+      <Filter>Twar\Enemy</Filter>
+    </ClInclude>
+    <ClInclude Include="Enemy\EnemyManager.h">
+      <Filter>Twar\Enemy</Filter>
+    </ClInclude>
+    <ClInclude Include="Home\HomeBackGround.h">
+      <Filter>Twar\Home</Filter>
+    </ClInclude>
+    <ClInclude Include="Bullet\EnemyBullet.h">
+      <Filter>Twar\Bullet</Filter>
+    </ClInclude>
+    <ClInclude Include="Home\HomeMenu.h">
+      <Filter>Twar\Home</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
