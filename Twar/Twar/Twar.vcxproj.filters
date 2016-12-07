@@ -41,14 +41,14 @@
     <Filter Include="Twar\TeamLogo">
       <UniqueIdentifier>{bc96b1ec-b269-415a-b75b-242255456d3f}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Twar\Enemy">
-      <UniqueIdentifier>{c3a6b20a-4d84-4a3c-8d79-14a4fdb16ff5}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Twar\Collision">
       <UniqueIdentifier>{21aebc7d-a495-4240-aa87-7442afdfadf7}</UniqueIdentifier>
     </Filter>
     <Filter Include="Twar\Home">
       <UniqueIdentifier>{4985bd3c-1e90-4274-9f4c-aa6caa952518}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Twar\Monster">
+      <UniqueIdentifier>{dafeaa0d-dcc4-4e1f-8497-6c581f43206d}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -190,20 +190,20 @@
     <ClCompile Include="Collision\CollisionManager.cpp">
       <Filter>Twar\Collision</Filter>
     </ClCompile>
-    <ClCompile Include="Enemy\Enemy.cpp">
-      <Filter>Twar\Enemy</Filter>
-    </ClCompile>
-    <ClCompile Include="Enemy\EnemyManager.cpp">
-      <Filter>Twar\Enemy</Filter>
-    </ClCompile>
     <ClCompile Include="Home\HomeBackGround.cpp">
       <Filter>Twar\Home</Filter>
     </ClCompile>
-    <ClCompile Include="Bullet\EnemyBullet.cpp">
-      <Filter>Twar\Bullet</Filter>
-    </ClCompile>
     <ClCompile Include="Home\HomeMenu.cpp">
       <Filter>Twar\Home</Filter>
+    </ClCompile>
+    <ClCompile Include="Monster\Monster.cpp">
+      <Filter>Twar\Monster</Filter>
+    </ClCompile>
+    <ClCompile Include="Monster\MonsterManager.cpp">
+      <Filter>Twar\Monster</Filter>
+    </ClCompile>
+    <ClCompile Include="Bullet\MonsterBullet.cpp">
+      <Filter>Twar\Bullet</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -339,20 +339,20 @@
     <ClInclude Include="Collision\CollisionManager.h">
       <Filter>Twar\Collision</Filter>
     </ClInclude>
-    <ClInclude Include="Enemy\Enemy.h">
-      <Filter>Twar\Enemy</Filter>
-    </ClInclude>
-    <ClInclude Include="Enemy\EnemyManager.h">
-      <Filter>Twar\Enemy</Filter>
-    </ClInclude>
     <ClInclude Include="Home\HomeBackGround.h">
       <Filter>Twar\Home</Filter>
     </ClInclude>
-    <ClInclude Include="Bullet\EnemyBullet.h">
-      <Filter>Twar\Bullet</Filter>
-    </ClInclude>
     <ClInclude Include="Home\HomeMenu.h">
       <Filter>Twar\Home</Filter>
+    </ClInclude>
+    <ClInclude Include="Monster\Monster.h">
+      <Filter>Twar\Monster</Filter>
+    </ClInclude>
+    <ClInclude Include="Monster\MonsterManager.h">
+      <Filter>Twar\Monster</Filter>
+    </ClInclude>
+    <ClInclude Include="Bullet\MonsterBullet.h">
+      <Filter>Twar\Bullet</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
