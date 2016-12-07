@@ -10,11 +10,12 @@
 #include <iostream>
 #include <d3d9.h>
 #include <d3dx9.h>
+#include "Lib/InputKey.h"
 
 class WindowCreator;
 class GraphicsDevice;
 class InputDevice;
-class Inputkey;
+class InputKey;
 class InputMouse;
 class TextureManager;
 class XFileManager;
