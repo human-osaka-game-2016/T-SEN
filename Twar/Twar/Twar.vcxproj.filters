@@ -50,6 +50,9 @@
     <Filter Include="Twar\Monster">
       <UniqueIdentifier>{dafeaa0d-dcc4-4e1f-8497-6c581f43206d}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Twar\Battle">
+      <UniqueIdentifier>{03f66e6d-4184-45af-b491-7dfe3ca7673b}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -205,6 +208,12 @@
     <ClCompile Include="Bullet\MonsterBullet.cpp">
       <Filter>Twar\Bullet</Filter>
     </ClCompile>
+    <ClCompile Include="Battle\BattleStateManager.cpp">
+      <Filter>Twar\Battle</Filter>
+    </ClCompile>
+    <ClCompile Include="GameData\BattleDataManager.cpp">
+      <Filter>Twar\GameData</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Scene\SceneManager.h">
@@ -353,6 +362,12 @@
     </ClInclude>
     <ClInclude Include="Bullet\MonsterBullet.h">
       <Filter>Twar\Bullet</Filter>
+    </ClInclude>
+    <ClInclude Include="Battle\BattleStateManager.h">
+      <Filter>Twar\Battle</Filter>
+    </ClInclude>
+    <ClInclude Include="GameData\BattleDataManager.h">
+      <Filter>Twar\GameData</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
