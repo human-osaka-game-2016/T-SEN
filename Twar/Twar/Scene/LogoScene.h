@@ -1,13 +1,14 @@
 ﻿/**
 * @file LogoScene.h
 * @brief LogoSceneクラスヘッダ
-* @author haga
+* @author haga.ichikawa
 */
 #ifndef LOGO_SCENE_H
 #define LOGO_SCENE_H
 
 #include "Scene.h"
 
+class TeamLogo;
 /**
 * ロゴシーンのクラス
 */
@@ -22,6 +23,9 @@ public:
 	virtual SCENE_ID Control();
 	/**描画関数*/
 	virtual void Draw();
+
+private:
+	TeamLogo*  m_pTeamLogo;		//!< TeamLogoクラスのインスタンスのポインタ
 };
 
 #endif	// LOGO_SCENE_H

@@ -1,11 +1,11 @@
-﻿#include "MonsterBullet.h"
-
-
-MonsterBullet::MonsterBullet()
-{
-}
-
-
-MonsterBullet::~MonsterBullet()
-{
-}
+﻿//#include "MonsterBullet.h"
+//
+//
+//MonsterBullet::MonsterBullet()
+//{
+//}
+//
+//
+//MonsterBullet::~MonsterBullet()
+//{
+//}
