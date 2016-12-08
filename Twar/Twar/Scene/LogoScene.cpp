@@ -4,16 +4,19 @@
 * @author haga
 */
 #include "GameLib/GameLib.h"
+#include "../TeamLogo/TeamLogo.h"
 #include "LogoScene.h"
-#include "TeamLogo.h"
+
 
 LogoScene::LogoScene()
+	:m_pTeamLogo (new TeamLogo())
 {
 }
 
 
 LogoScene::~LogoScene()
 {
+	delete m_pTeamLogo;
 }
 
 // コントロール関数

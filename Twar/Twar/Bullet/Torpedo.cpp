@@ -1,11 +1,11 @@
-﻿#include "Torpedo.h"
-
-
-Torpedo::Torpedo()
-{
-}
-
-
-Torpedo::~Torpedo()
-{
-}
+﻿//#include "Torpedo.h"
+//
+//
+//Torpedo::Torpedo()
+//{
+//}
+//
+//
+//Torpedo::~Torpedo()
+//{
+//}

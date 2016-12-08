@@ -6,7 +6,6 @@
 #ifndef TEAM_LOGO_H
 #define TEAM_LOHO_H
 
-class GameLib;
 /**
 * チームロゴのクラス
 */

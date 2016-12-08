@@ -8,7 +8,7 @@
 #include "GameLib/GameLib.h"
 #include "Fbx/FbxModel.h"
 
-const float Cruiser::m_SpeedLimit = 1.5f;
+//const float Cruiser::m_SpeedLimit = 1.5f;
 
 Cruiser::Cruiser(D3DXVECTOR3* pos)
 	: Ship(pos, { 2500, 0.f })

@@ -1,8 +1,8 @@
 ﻿#pragma once
-class MonsterBullet :public Bullet
-{
-public:
-	MonsterBullet();
-	~MonsterBullet();
-};
+//class MonsterBullet :public Bullet
+//{
+//public:
+//	MonsterBullet();
+//	~MonsterBullet();
+//};
 

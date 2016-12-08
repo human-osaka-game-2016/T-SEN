@@ -10,7 +10,10 @@
 TeamLogo::TeamLogo()
 
 {
-	GameLib::Instance().LoadTex(1, "狐.jpg");
+	float logoWidth = 1024.f;
+	float logoHeight = 512.f;
+	GameLib::Instance().LoadTex(TEAMLOGO_TEX, "../Resouce/20141228_111729_foxinfonet.jpg");
+	GameLib::Instance().CreateVtx(TeamLogo::TEAMLOGO_TEX, logoWidth, logoHeight);
 }
 
 TeamLogo::~TeamLogo()
@@ -21,10 +24,10 @@ TeamLogo::~TeamLogo()
 /** コントロール関数*/
 void TeamLogo::Contlrol()
 {
-	//GameLib::SetVtxColor(1, )
+	
 }
 
 void TeamLogo::Draw()
 {
-	GameLib::Instance().DrawXY(1, 1, 400, 225);
+	GameLib::Instance().DrawXY(TeamLogo::TEAMLOGO_TEX, TeamLogo::TEAMLOGO_TEX, 320, 200);
 }

@@ -8,7 +8,7 @@
 #include "GameLib/GameLib.h"
 #include "Fbx/FbxModel.h"
 
-const float Destroyer::m_SpeedLimit = 2.f;
+//const float Destroyer::m_SpeedLimit = 2.f;
 
 Destroyer::Destroyer(D3DXVECTOR3* pos)
 	: Ship(pos, { 1500, 0.f })

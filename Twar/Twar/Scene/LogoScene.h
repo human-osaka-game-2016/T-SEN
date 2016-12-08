@@ -25,7 +25,7 @@ public:
 	virtual void Draw();
 
 private:
-	TeamLogo*	m_pTeamLogo;	//!< TitleBackgroundクラスのインスタンスへのポインタ
+	TeamLogo*  m_pTeamLogo;	//!< TitleBackgroundクラスのインスタンスへのポインタ
 };
 
 #endif	// LOGO_SCENE_H
