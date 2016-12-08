@@ -8,6 +8,7 @@
 
 #include "Scene.h"
 
+class TeamLogo;
 /**
 * ロゴシーンのクラス
 */
@@ -22,6 +23,9 @@ public:
 	virtual SCENE_ID Control();
 	/**描画関数*/
 	virtual void Draw();
+
+private:
+	TeamLogo*	m_pTeamLogo;	//!< TitleBackgroundクラスのインスタンスへのポインタ
 };
 
 #endif	// LOGO_SCENE_H

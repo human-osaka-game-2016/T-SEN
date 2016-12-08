@@ -5,6 +5,7 @@
 */
 #include "GameLib/GameLib.h"
 #include "LogoScene.h"
+#include "TeamLogo.h"
 
 LogoScene::LogoScene()
 {
@@ -24,4 +25,5 @@ SCENE_ID LogoScene::Control()
 // 描画関数
 void LogoScene::Draw()
 {
+	m_pTeamLogo->Draw();
 }
