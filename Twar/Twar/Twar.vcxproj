@@ -73,6 +73,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Battle\BattleStateManager.cpp" />
     <ClCompile Include="Bullet\Ap.cpp" />
     <ClCompile Include="Bullet\Bullet.cpp" />
     <ClCompile Include="Bullet\BulletManager.cpp" />
@@ -86,6 +87,7 @@
     <ClCompile Include="Field\FieldManager.cpp" />
     <ClCompile Include="Field\Ocean.cpp" />
     <ClCompile Include="Field\Sky.cpp" />
+    <ClCompile Include="GameData\BattleDataManager.cpp" />
     <ClCompile Include="GameData\DataMenu.cpp" />
     <ClCompile Include="GameData\DataSlot.cpp" />
     <ClCompile Include="GameData\GameDataManager.cpp" />
@@ -125,6 +127,7 @@
     <ClCompile Include="Title\TitleMenu.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Battle\BattleStateManager.h" />
     <ClInclude Include="Bullet\Ap.h" />
     <ClInclude Include="Bullet\Bullet.h" />
     <ClInclude Include="Bullet\BulletManager.h" />
@@ -138,6 +141,7 @@
     <ClInclude Include="Field\FieldManager.h" />
     <ClInclude Include="Field\Ocean.h" />
     <ClInclude Include="Field\Sky.h" />
+    <ClInclude Include="GameData\BattleDataManager.h" />
     <ClInclude Include="GameData\DataMenu.h" />
     <ClInclude Include="GameData\DataSlot.h" />
     <ClInclude Include="GameData\GameDataManager.h" />
