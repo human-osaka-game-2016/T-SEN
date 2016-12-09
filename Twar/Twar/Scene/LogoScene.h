@@ -1,7 +1,7 @@
 ﻿/**
 * @file LogoScene.h
 * @brief LogoSceneクラスヘッダ
-* @author haga
+* @author haga.ichikawa
 */
 #ifndef LOGO_SCENE_H
 #define LOGO_SCENE_H
@@ -25,7 +25,8 @@ public:
 	virtual void Draw();
 
 private:
-	TeamLogo*  m_pTeamLogo;	//!< TitleBackgroundクラスのインスタンスへのポインタ
+	TeamLogo*  m_pTeamLogo;		//!< TitleBackgroundクラスのインスタンスへのポインタ
+	bool IsFadeEnd;
 };
 
 #endif	// LOGO_SCENE_H
