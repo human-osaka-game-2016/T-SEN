@@ -8,9 +8,6 @@
 
 #include <d3dx9.h>
 
-class GameLib;
-class XFile;
-
 /**
 *Skyクラス
 */
@@ -30,8 +27,6 @@ public:
 	void Draw();
 
 private:
-	GameLib*          m_pGameLib;
-	XFile*			  m_pXFile;
 	D3DXVECTOR3       m_Pos;
 	float             m_Scale;
 };

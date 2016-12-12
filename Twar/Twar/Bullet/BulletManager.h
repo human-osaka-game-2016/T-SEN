@@ -37,7 +37,7 @@ public:
 	void Draw();
 	
 	/**Bulletê∂ê¨ä÷êî*/
-	void Creat(char* pCount, BULLET_ID* pBulletID);
+	void Create(char* pCount, BULLET_ID* pBulletID);
 
 private:
 	ApBullet* m_pAPBullet;

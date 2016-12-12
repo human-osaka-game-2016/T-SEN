@@ -364,12 +364,12 @@ void BattleShip::ControlPlayer()
 		m_LookatPos.y = nextLookPos;
 	}
 
-	float nextRotate = m_CameraRotate + (mousePosX - centerPosY) * 0.05f;			//!<	0.05	仮の感度(ゲーム中に変更できるようにする、かもしれない)
+	//float nextRotate = m_CameraRotate + (mousePosX - centerPosY) * 0.05f;			//!<	0.05	仮の感度(ゲーム中に変更できるようにする、かもしれない)
 
-	if (nextRotate <= m_Rotate + 150.f && nextRotate >= m_Rotate - 150.f)		//!<	150		船の前方から見える角度(左右150°ずつ)
-	{
-		m_CameraRotate = nextRotate;
-	}
+	//if (nextRotate <= m_Rotate + 150.f && nextRotate >= m_Rotate - 150.f)		//!<	150		船の前方から見える角度(左右150°ずつ)
+	//{
+	//	m_CameraRotate = nextRotate;
+	//}
 
 	m_CameraPos.x = m_LookatPos.x = m_ObjPos.x;
 	m_CameraPos.z = m_LookatPos.z = m_ObjPos.z;

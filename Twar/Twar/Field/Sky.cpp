@@ -5,14 +5,12 @@
 */
 #include"Sky.h"
 #include"GameLib/GameLib.h"
-#include"GameLib/Lib/XFile.h"
 
 Sky::Sky()
-	: m_pXFile(new XFile())
-	, m_Pos(0.0f, 0.0f, 0.0f)
-	, m_Scale(0.0f)
+	: m_Pos(0.0f, 0.0f, 0.0f)
+	, m_Scale(4000.0f)
 {
-	m_pXFile->LoadXFile(TEXT("Sky.x"));
+	GameLib::Instance().LoadXFile(2, "../Resouce//Sky.x");
 }
 
 Sky::~Sky()
@@ -36,5 +34,5 @@ void Sky::Draw()
 	D3DXMatrixMultiply(&matWorld, &matWorld, &matScale);
 	D3DXMatrixMultiply(&matWorld, &matWorld, &matPos);
 	GameLib::Instance().GetDevice()->SetTransform(D3DTS_WORLD, &matWorld);
-	m_pXFile->DrawX();
+	GameLib::Instance().DrawXFile(2);
 }

@@ -6,11 +6,13 @@
 
 #include "Fbx/FbxRelated.h"
 #include "ShipManager.h"
+#include "../Bullet/BulletManager.h"
 
 ShipManager::ShipManager()
 	: m_BattleShip(new FbxRelated)
 	, m_Cruiser(new FbxRelated)
 	, m_Destroyer(new FbxRelated)
+	, m_pBulletManager(new BulletManager())
 {
 	//	仮置き
 	m_TemplatePos[0] = { -250.f, -4.f, -500.f };
@@ -41,6 +43,12 @@ ShipManager::ShipManager()
 		// 読み込み失敗したらエラー
 		MessageBox(0, "FBXファイルの読み込みに失敗しました。", NULL, MB_OK);
 	}
+	BulletManager::BULLET_ID bulletID[3] =
+	{
+		BulletManager::APBULLET,
+	};
+	char bullet = 1;
+	m_pBulletManager->Create(&bullet, bulletID);
 }
 
 
@@ -54,6 +62,10 @@ ShipManager::~ShipManager()
 	{
 		delete m_Enemy[i];
 	}
+	delete m_BattleShip;
+	delete m_Cruiser;
+	delete m_Destroyer;
+	delete m_pBulletManager;
 	ShowCursor(true);
 }
 
@@ -67,6 +79,7 @@ void ShipManager::Control()
 	{
 		m_Enemy[i]->Control();
 	}
+	m_pBulletManager->Control(GetPlayerPos(),GetAngle());
 }
 
 void ShipManager::Draw()
@@ -79,6 +92,7 @@ void ShipManager::Draw()
 	{
 		m_Enemy[i]->Draw();
 	}
+	m_pBulletManager->Draw();
 }
 
 void ShipManager::Create(char* army, char* enemy, SHIP_ID* shipID)

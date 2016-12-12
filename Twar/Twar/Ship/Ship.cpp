@@ -20,7 +20,7 @@ const float	Ship::m_ZoomAngle			= 10.f;
 
 Ship::Ship(D3DXVECTOR3* pos, STATUS status)
 	: m_pGameLib(GameLib::Instance())
-	, m_pFbx(new FbxModel)
+	, m_pFbx(nullptr)
 	, m_ObjPos(*pos)
 	, m_pcameraController(CameraController::GetInstance())
 	, m_Status(status)
