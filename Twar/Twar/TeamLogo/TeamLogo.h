@@ -17,7 +17,13 @@ class TeamLogo
 public:
 	enum TEXTURE_ID
 	{
-		TEAMLOGO_TEX,			//!< タイトル背景
+		TEAM_LOGO_TEX,			//!< タイトル背景
+	};
+
+	enum LOGOSTATE
+	{
+		LOGO_FADE_IN,			//!<フェードイン
+		LOGO_FADE_OUT,			//!<フェードアウト
 	};
 
 	/**コンストラクタ*/
@@ -31,15 +37,14 @@ public:
 	void Draw();
 
 
-	enum LOGOSTATE
-	{
-		LOGOFADE_IN,			//!<フェードイン
-		LOGOFADE_OUT,			//!<フェードアウト
-	};
-	LOGOSTATE		m_LogoState;
+private:
+	LOGOSTATE		m_LogoState;		//!<ロゴステイト
 
-	BYTE m_alpha;
+	BYTE m_Alpha;						//!<α値を変動する変数
 	
-	bool m_TeamLogoIsEnd;		//!< 
+	bool m_TeamLogoIsEnd;				//!<ロゴシーンの終了を見る変数
+
+	float posX;
+	float posY;
 };
 #endif // TEAM_LOGO_H

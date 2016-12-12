@@ -25,8 +25,8 @@ public:
 	virtual void Draw();
 
 private:
-	TeamLogo*  m_pTeamLogo;		//!< TitleBackgroundクラスのインスタンスへのポインタ
-	bool IsFadeEnd;
+	TeamLogo*  m_pTeamLogo;		//!< TitleBackgroundクラスのポインタ
+	bool IsFadeEnd;				//!< フェードが終わったかを見る変数
 };
 
 #endif	// LOGO_SCENE_H
