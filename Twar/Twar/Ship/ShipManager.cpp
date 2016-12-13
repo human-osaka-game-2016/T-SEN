@@ -79,7 +79,7 @@ void ShipManager::Control()
 	{
 		m_Enemy[i]->Control();
 	}
-	m_pBulletManager->Control(GetPlayerPos(),GetAngle());
+	m_pBulletManager->Control(GetPlayerPos(),GetRotate());
 }
 
 void ShipManager::Draw()

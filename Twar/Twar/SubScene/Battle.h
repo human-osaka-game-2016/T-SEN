@@ -12,7 +12,6 @@ class Light;
 class FieldManager;
 class CameraController;
 class LoadingThread;
-class BulletManager;
 class MonsterManager;
 class ShipManager;
 
@@ -45,7 +44,6 @@ private:
 	FieldManager*           m_pFieldManager;
 	CameraController*       m_pCameraController;
 	LoadingThread*			m_pLoadingThread;
-	BulletManager*          m_pBulletManager;
 	MonsterManager*         m_pMonsterManager;
 	ShipManager*			m_pShipManager;
 	

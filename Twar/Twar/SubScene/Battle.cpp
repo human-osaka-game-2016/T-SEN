@@ -66,6 +66,7 @@ SUBSCENE_ID Battle::Control()
 	m_pMonsterManager->Control();
 	m_pShipManager->Control();
 	m_pShipManager->CameraTransform();
+	//GameLib::Instance().SetMousePosCenter();
 	return SUBSCENE_ID::BATTLE;
 }
 
