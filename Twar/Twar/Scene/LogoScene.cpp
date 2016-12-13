@@ -9,8 +9,9 @@
 
 
 LogoScene::LogoScene()
-	:m_pTeamLogo (new TeamLogo())
+	: m_pTeamLogo (new TeamLogo())
 {
+
 }
 
 

@@ -10,12 +10,12 @@
 TeamLogo::TeamLogo() 
 	: m_Alpha(0x00)
 	, m_LogoState(LOGO_FADE_IN)
-	, m_TeamLogoIsEnd(false)
+	, m_IsEnd(false)
+	, m_PosX(320.f)
+    , m_PosY(240.f)
 {
 	float logoWidth = 1024.f;
 	float logoHeight = 512.f;
-	posX = 320.f;
-	posY = 240.f;
 	GameLib::Instance().LoadTex(TEAM_LOGO_TEX, "../Resouce/20141228_111729_foxinfonet.jpg");
 	GameLib::Instance().CreateVtx(TeamLogo::TEAM_LOGO_TEX, logoWidth, logoHeight);
 }
@@ -46,17 +46,17 @@ bool TeamLogo::Contlrol()
 		}
 		else
 		{
-			m_TeamLogoIsEnd = true;
+			m_IsEnd = true;
 		}
-			break;
+		break;
 	}
 
-	return m_TeamLogoIsEnd;
+	return m_IsEnd;
 }
 
 void TeamLogo::Draw()
 {
 	DWORD color = D3DCOLOR_ARGB(m_Alpha, 0xFF, 0xFF, 0xFF);
 	GameLib::Instance().SetVtxColor(TeamLogo::TEAM_LOGO_TEX, color);
-	GameLib::Instance().DrawXY(TeamLogo::TEAM_LOGO_TEX, TeamLogo::TEAM_LOGO_TEX, TeamLogo::posX, TeamLogo::posY);
+	GameLib::Instance().DrawXY(TeamLogo::TEAM_LOGO_TEX, TeamLogo::TEAM_LOGO_TEX, m_PosX, m_PosY);
 }

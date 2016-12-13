@@ -20,7 +20,7 @@ public:
 		TEAM_LOGO_TEX,			//!< タイトル背景
 	};
 
-	enum LOGOSTATE
+	enum LOGO_STATE
 	{
 		LOGO_FADE_IN,			//!<フェードイン
 		LOGO_FADE_OUT,			//!<フェードアウト
@@ -38,13 +38,13 @@ public:
 
 
 private:
-	LOGOSTATE		m_LogoState;		//!<ロゴステイト
+	LOGO_STATE		m_LogoState;		//!<ロゴステイト
 
 	BYTE m_Alpha;						//!<α値を変動する変数
 	
-	bool m_TeamLogoIsEnd;				//!<ロゴシーンの終了を見る変数
+	bool m_IsEnd;				//!<ロゴシーンの終了を見る変数
 
-	float posX;
-	float posY;
+	float m_PosX;						//!<Xの頂点情報
+	float m_PosY;						//!<Yの頂点情報
 };
 #endif // TEAM_LOGO_H
