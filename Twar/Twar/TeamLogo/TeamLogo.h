@@ -44,7 +44,7 @@ private:
 	
 	bool m_IsEnd;				//!<ロゴシーンの終了を見る変数
 
-	float m_PosX;						//!<Xの頂点情報
-	float m_PosY;						//!<Yの頂点情報
+	float m_PosX;						//!<Xの座標情報
+	float m_PosY;						//!<Yの座標情報
 };
 #endif // TEAM_LOGO_H
