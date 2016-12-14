@@ -39,7 +39,7 @@ void ApBullet::Control(D3DXVECTOR3 Pos, float Rotate)
 		{
 			pData = new Data;
 			pData->BulletPos = Pos;
-			pData->BulletPos.y += 10;
+			pData->BulletPos.y += 20;
 			pData->Rotate = Rotate;
 			PushBack(pData);
 		}
@@ -54,6 +54,11 @@ void ApBullet::Control(D3DXVECTOR3 Pos, float Rotate)
 
 		if (Pos.z - pData->BulletPos.z > DrawRange || Pos.z - pData->BulletPos.z<-DrawRange ||
 			Pos.x - pData->BulletPos.x>DrawRange || Pos.x - pData->BulletPos.x < -DrawRange)
+		{
+			pData->BulletPos.y -= 1;
+		}
+
+		if (pData->BulletPos.y <= 0)
 		{
 			m_Data.hasDrawn = false;
 			m_Data.hasInited = false;
