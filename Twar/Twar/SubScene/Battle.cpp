@@ -66,18 +66,16 @@ SUBSCENE_ID Battle::Control()
 	m_pMonsterManager->Control();
 	m_pShipManager->Control();
 	m_pShipManager->CameraTransform();
-	//GameLib::Instance().SetMousePosCenter();
+	GameLib::Instance().SetMousePosCenter();
 	return SUBSCENE_ID::BATTLE;
 }
 
 void sub_scene::Battle::Draw()
 {
+	CameraController::GetInstance().TransformView(m_pShipManager->GetCameraPos(), m_pShipManager->GetLookAtPos(), m_pShipManager->GetAngle());
 	m_pShipManager->Draw();
 	m_pMonsterManager->Draw();
 	m_pFieldManager->Draw();
-	CameraController::GetInstance().TransformView(m_pShipManager->GetCameraPos(), m_pShipManager->GetLookAtPos(), m_pShipManager->GetAngle());
-	
-	
 }
 
 }

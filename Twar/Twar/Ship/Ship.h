@@ -99,7 +99,6 @@ protected:
 	/**
 		船体の速度関係
 	*/
-	static const float		m_SpeedLimit;			//!<	限界速度
 	static const float		m_LimitArrivalFlame;	//!<	限界速度到達フレーム
 	static const float		m_DecelerationSpeed;	//!<	減速スピード
 

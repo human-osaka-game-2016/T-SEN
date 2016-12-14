@@ -8,7 +8,7 @@
 #include "GameLib/GameLib.h"
 #include "Fbx/FbxModel.h"
 
-//const float Destroyer::m_SpeedLimit = 2.f;
+const float Destroyer::m_SpeedLimit = 2.f;
 
 Destroyer::Destroyer(D3DXVECTOR3* pos)
 	: Ship(pos, { 1500, 0.f })
@@ -71,28 +71,16 @@ void Destroyer::ControlPlayer()
 
 	D3DXVec3TransformCoord(&vecAxisZ, &vecAxisZ, &m_Rotation);
 
-	if (m_pGameLib.ChecKMouseR() == PUSH)
+	if (m_pGameLib.ChecKMouseR() == ON)
 	{
 		m_Angle = m_ZoomAngle;
 		m_IsZoom = true;
 	}
-	else if (m_pGameLib.ChecKMouseR() == RELEASE)
+	else if (m_pGameLib.ChecKMouseR() == OFF)
 	{
 		m_Angle = m_NormalAngle;
 		m_IsZoom = false;
 	}
-
-	if (m_Rotate == 360.f)						//!<	360 = 一回転の角度
-	{
-		m_Rotate -= 360.f;
-		m_CameraRotate -= 360.f;
-	}
-	if (m_Rotate == -360.f)
-	{
-		m_Rotate += 360.f;
-		m_CameraRotate += 360.f;
-	}
-
 
 	float nextSpeed;
 
@@ -345,33 +333,52 @@ void Destroyer::ControlPlayer()
 		}
 	}
 
-	m_ObjPos += vecAxisZ * m_Status.m_Speed;
-
-	float mousePosX, mousePosY;
-
-	m_pGameLib.GetMousePos(&mousePosX, &mousePosY);
-
-	HWND hWnd = InputDevice::GetInstance().GethWnd();
-	RECT rect;
-	GetClientRect(hWnd, &rect);
-	ClientToScreen(hWnd, (LPPOINT)rect.left);
-	ClientToScreen(hWnd, (LPPOINT)rect.right);
-
-	float centerPosX = ((rect.right - rect.left) / 2) + rect.left;
-	float centerPosY = ((rect.bottom - rect.top) / 2) + rect.top;
-
-	float nextLookPos = m_LookatPos.y - (mousePosY - centerPosX) * 0.05f;			//!<	0.05	仮の感度(ゲーム中に変更できるようにする、かもしれない)
-
-	if (nextLookPos <= 100.f && nextLookPos >= 25.f)							//!<	100, 25	目で見て決めたカメラの上限と下限
+	if (m_Rotate <= 360.f)						//!<	360 = 一回転の角度
 	{
-		m_LookatPos.y = nextLookPos;
+		m_Rotate -= 360.f;
+		m_CameraRotate -= 360.f;
+	}
+	if (m_Rotate >= -360.f)
+	{
+		m_Rotate += 360.f;
+		m_CameraRotate += 360.f;
 	}
 
-	float nextRotate = m_CameraRotate + (mousePosX - centerPosY) * 0.05f;			//!<	0.05	仮の感度(ゲーム中に変更できるようにする、かもしれない)
+	m_ObjPos += vecAxisZ * m_Status.m_Speed;
+
+	POINT newCursor;
+	GetCursorPos(&newCursor);
+
+	HWND hWnd = InputDevice::GetInstance().GethWnd();
+
+	RECT winRect;
+	RECT clientRect;
+	GetWindowRect(hWnd, &winRect);
+	GetClientRect(hWnd, &clientRect);
+	int centerPosX = static_cast<int>(winRect.left + ((clientRect.right - clientRect.left) / 2));
+	int centerPosY = static_cast<int>(winRect.bottom - ((clientRect.bottom - clientRect.top) / 2));
+
+
+	float nextLookatPos = m_LookatPos.y - (newCursor.y - centerPosY) * 0.05f;			//!<	0.05	仮の感度(ゲーム中に変更できるようにする、かもしれない)
+
+	if (nextLookatPos <= 100.f && nextLookatPos >= 25.f)							//!<	100, 25	目で見て決めたカメラの上限と下限
+	{
+		m_LookatPos.y = nextLookatPos;
+	}
+
+	float nextRotate = m_CameraRotate + (newCursor.x - centerPosX) * 0.05f;			//!<	0.05	仮の感度(ゲーム中に変更できるようにする、かもしれない)
 
 	if (nextRotate <= m_Rotate + 150.f && nextRotate >= m_Rotate - 150.f)		//!<	150		船の前方から見える角度(左右150°ずつ)
 	{
 		m_CameraRotate = nextRotate;
+	}
+	else if (nextRotate >= m_Rotate + 150.f)
+	{
+		m_CameraRotate = m_Rotate + 150.f;
+	}
+	else if (nextRotate <= m_Rotate - 150.f)
+	{
+		m_CameraRotate = m_Rotate - 150.f;
 	}
 
 	m_CameraPos.x = m_LookatPos.x = m_ObjPos.x;
