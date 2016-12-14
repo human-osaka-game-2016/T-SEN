@@ -53,6 +53,9 @@
     <Filter Include="Twar\Battle">
       <UniqueIdentifier>{03f66e6d-4184-45af-b491-7dfe3ca7673b}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Twar\Effect">
+      <UniqueIdentifier>{471f0516-e307-440a-bc4b-1bec7fa9e50a}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -214,6 +217,15 @@
     <ClCompile Include="GameData\BattleDataManager.cpp">
       <Filter>Twar\GameData</Filter>
     </ClCompile>
+    <ClCompile Include="Effect\EffcetManager.cpp">
+      <Filter>Twar\Effect</Filter>
+    </ClCompile>
+    <ClCompile Include="Effect\Effect.cpp">
+      <Filter>Twar\Effect</Filter>
+    </ClCompile>
+    <ClCompile Include="Effect\Explosion.cpp">
+      <Filter>Twar\Effect</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Scene\SceneManager.h">
@@ -368,6 +380,15 @@
     </ClInclude>
     <ClInclude Include="GameData\BattleDataManager.h">
       <Filter>Twar\GameData</Filter>
+    </ClInclude>
+    <ClInclude Include="Effect\EffcetManager.h">
+      <Filter>Twar\Effect</Filter>
+    </ClInclude>
+    <ClInclude Include="Effect\Effect.h">
+      <Filter>Twar\Effect</Filter>
+    </ClInclude>
+    <ClInclude Include="Effect\Explosion.h">
+      <Filter>Twar\Effect</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -84,6 +84,9 @@
     <ClCompile Include="CameraController\CameraController.cpp" />
     <ClCompile Include="Collision\Collision.cpp" />
     <ClCompile Include="Collision\CollisionManager.cpp" />
+    <ClCompile Include="Effect\EffcetManager.cpp" />
+    <ClCompile Include="Effect\Effect.cpp" />
+    <ClCompile Include="Effect\Explosion.cpp" />
     <ClCompile Include="Field\FieldManager.cpp" />
     <ClCompile Include="Field\Ocean.cpp" />
     <ClCompile Include="Field\Sky.cpp" />
@@ -138,6 +141,9 @@
     <ClInclude Include="CameraController\CameraController.h" />
     <ClInclude Include="Collision\Collision.h" />
     <ClInclude Include="Collision\CollisionManager.h" />
+    <ClInclude Include="Effect\EffcetManager.h" />
+    <ClInclude Include="Effect\Effect.h" />
+    <ClInclude Include="Effect\Explosion.h" />
     <ClInclude Include="Field\FieldManager.h" />
     <ClInclude Include="Field\Ocean.h" />
     <ClInclude Include="Field\Sky.h" />
