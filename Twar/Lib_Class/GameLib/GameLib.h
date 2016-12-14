@@ -225,41 +225,29 @@ public:
 	* 3D空間におけるXY平面ポリゴンの通常描画関数<br>
 	* @param[in] texKey		テクスチャーを登録したキー、またはID
 	* @param[in] vtxKey		バーテックスを登録したキー、またはID
-	* @param[in] posX		x軸の位置座標
-	* @param[in] posY		y軸の位置座標
-	* @param[in] posZ		z軸の位置座標
 	*/
-	void Draw3DXY(int texKey, int vtxKey, float posX, float posY, float posZ);
+	void Draw3DXY(int texKey, int vtxKey);
 
 	/**
 	* 3D空間におけるXY平面ポリゴンの中心に座標をあわせて描画する関数
 	* @param[in] texKey		テクスチャーを登録したキー、またはID
 	* @param[in] vtxKey		バーテックスを登録したキー、またはID
-	* @param[in] posX		x軸の位置座標
-	* @param[in] posY		y軸の位置座標
-	* @param[in] posZ		z軸の位置座標
 	*/
-	void Draw3DXYCenterPos(int texKey, int vtxKey, float posX, float posY, float posZ);
+	void Draw3DXYCenterPos(int texKey, int vtxKey);
 
 	/**
 	* 3D空間におけるXZ平面ポリゴンの通常描画関数<br>
 	* @param[in] texKey	テクスチャーを登録したキー、またはID
 	* @param[in] vtxKey バーテックスを登録したキー、またはID
-	* @param[in] posX	x座標
-	* @param[in] posY   y座標
-	* @param[in] posZ   z座標
 	*/
-	void Draw3DXZ(int texKey, int vtxKey, float posX, float posY, float posZ);
+	void Draw3DXZ(int texKey, int vtxKey);
 
 	/**
 	* 3D空間におけるXZ平面ポリゴンの中心に座標をあわせて描画する関数
 	* @param[in] texKey	テクスチャーを登録したキー、またはID
 	* @param[in] vtxKey バーテックスを登録したキー、またはID
-	* @param[in] posX	x座標
-	* @param[in] posY   y座標
-	* @param[in] posZ   z座標
 	*/
-	void Draw3DXZCenterPos(int texKey, int vtxKey, float posX, float posY, float posZ);
+	void Draw3DXZCenterPos(int texKey, int vtxKey);
 
 	/**
 	* バーテックスの横幅を取得する関数.

@@ -84,7 +84,7 @@
     <ClCompile Include="CameraController\CameraController.cpp" />
     <ClCompile Include="Collision\Collision.cpp" />
     <ClCompile Include="Collision\CollisionManager.cpp" />
-    <ClCompile Include="Effect\EffcetManager.cpp" />
+    <ClCompile Include="Effect\EffectManager.cpp" />
     <ClCompile Include="Effect\Effect.cpp" />
     <ClCompile Include="Effect\Explosion.cpp" />
     <ClCompile Include="Field\FieldManager.cpp" />
@@ -141,7 +141,7 @@
     <ClInclude Include="CameraController\CameraController.h" />
     <ClInclude Include="Collision\Collision.h" />
     <ClInclude Include="Collision\CollisionManager.h" />
-    <ClInclude Include="Effect\EffcetManager.h" />
+    <ClInclude Include="Effect\EffectManager.h" />
     <ClInclude Include="Effect\Effect.h" />
     <ClInclude Include="Effect\Explosion.h" />
     <ClInclude Include="Field\FieldManager.h" />

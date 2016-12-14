@@ -217,13 +217,13 @@
     <ClCompile Include="GameData\BattleDataManager.cpp">
       <Filter>Twar\GameData</Filter>
     </ClCompile>
-    <ClCompile Include="Effect\EffcetManager.cpp">
-      <Filter>Twar\Effect</Filter>
-    </ClCompile>
     <ClCompile Include="Effect\Effect.cpp">
       <Filter>Twar\Effect</Filter>
     </ClCompile>
     <ClCompile Include="Effect\Explosion.cpp">
+      <Filter>Twar\Effect</Filter>
+    </ClCompile>
+    <ClCompile Include="Effect\EffectManager.cpp">
       <Filter>Twar\Effect</Filter>
     </ClCompile>
   </ItemGroup>
@@ -381,13 +381,13 @@
     <ClInclude Include="GameData\BattleDataManager.h">
       <Filter>Twar\GameData</Filter>
     </ClInclude>
-    <ClInclude Include="Effect\EffcetManager.h">
-      <Filter>Twar\Effect</Filter>
-    </ClInclude>
     <ClInclude Include="Effect\Effect.h">
       <Filter>Twar\Effect</Filter>
     </ClInclude>
     <ClInclude Include="Effect\Explosion.h">
+      <Filter>Twar\Effect</Filter>
+    </ClInclude>
+    <ClInclude Include="Effect\EffectManager.h">
       <Filter>Twar\Effect</Filter>
     </ClInclude>
   </ItemGroup>
