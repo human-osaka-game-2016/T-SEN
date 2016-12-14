@@ -5,14 +5,12 @@
 */
 #include"Ocean.h"
 #include"GameLib/GameLib.h"
-#include"GameLib/Lib/XFile.h"
 
 Ocean::Ocean()
-	: m_pXFile(new XFile())
-	, m_Pos(0.0f, 0.0f, 0.0f)
-	, m_Scale(0.0f)
+	: m_Pos(0.0f, 3.0f, 0.0f)
+	, m_Scale(1.0f)
 {
-	m_pXFile->LoadXFile(TEXT("sea.x"));
+	GameLib::Instance().LoadXFile(1, "../Resouce//sea.x");
 }
 
 Ocean::~Ocean()
@@ -36,5 +34,5 @@ void Ocean::Draw()
 	D3DXMatrixMultiply(&matWorld, &matWorld, &matScale);
 	D3DXMatrixMultiply(&matWorld, &matWorld, &matPos);
 	GameLib::Instance().GetDevice()->SetTransform(D3DTS_WORLD, &matWorld);
-	m_pXFile->DrawX();
+	GameLib::Instance().DrawXFile(1);
 }

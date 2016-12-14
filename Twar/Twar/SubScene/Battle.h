@@ -8,6 +8,13 @@
 
 #include "SubScene.h"
 
+class Light;
+class FieldManager;
+class CameraController;
+class LoadingThread;
+class MonsterManager;
+class ShipManager;
+
 namespace sub_scene
 {
 
@@ -32,7 +39,14 @@ public:
 
 	/**描画関数*/
 	virtual void Draw();
-
+private:
+	Light*                  m_pLight;					//!< ライト
+	FieldManager*           m_pFieldManager;
+	CameraController*       m_pCameraController;
+	LoadingThread*			m_pLoadingThread;
+	MonsterManager*         m_pMonsterManager;
+	ShipManager*			m_pShipManager;
+	
 };
 
 }

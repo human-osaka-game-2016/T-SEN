@@ -24,6 +24,7 @@ void FieldManager::Control()
 }
 
 void FieldManager::Draw()
+
 {
 	m_pOcean->Draw();
 	m_pSky->Draw();

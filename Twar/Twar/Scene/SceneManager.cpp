@@ -12,8 +12,8 @@ SceneManager::SceneManager()
 	: m_pGameLib(&GameLib::Instance())
 	, m_pSaveDataManager(new SaveDataManager())
 	, m_pScene(nullptr)
-	, m_CurrentSceneID(LOGO_SCENE)
-	, m_NextSceneID(LOGO_SCENE)
+	, m_CurrentSceneID(TITLE_SCENE)
+	, m_NextSceneID(TITLE_SCENE)
 	, m_Step(SCENE_CREATE)
 	, m_IsEnd(false)
 {
@@ -34,6 +34,8 @@ bool SceneManager::Run()
 	Control();
 
 	m_pGameLib->StartRender();
+
+	GameLib::Instance().GetDevice()->SetRenderState(D3DRS_LIGHTING, FALSE);
 
 	Draw();
 

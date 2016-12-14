@@ -19,6 +19,8 @@ TitleScene::TitleScene(SaveDataManager* pSaveDataManager)
 	/** @todo ここでセーブデータの有無をメニュークラスにわたす。仕組みはまだ未実装nのためfalseを渡している */
 	m_pTitleMenu = new TitleMenu(false);
 	// テクスチャーを読み込む
+	GameLib::Instance().LoadTexEx(BACKGROUND_TEX, "../Resouce//tsentitle.png", 255, 0, 0, 0, false);
+	GameLib::Instance().LoadTex(BUTTON_TEX, "../Resouce//title_button.png");
 }
 
 TitleScene::~TitleScene()
@@ -53,7 +55,8 @@ SCENE_ID TitleScene::Control()
 		break;
 
 	case TitleScene::STATE::GAME_START:			// ゲームを開始する
-		return GAME_SCENE;
+
+			return GAME_SCENE;
 		break;
 	}
 	
@@ -72,7 +75,7 @@ void TitleScene::Draw()
 	}
 	else
 	{
-		m_pTitleLogo->Draw();
+		//m_pTitleLogo->Draw();
 		m_pTitleMenu->Draw();
 	}
 }

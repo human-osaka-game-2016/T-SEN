@@ -16,6 +16,7 @@
 using namespace std;
 
 class FbxRelated;
+class BulletManager;
 
 /**
 	Ship管理クラス
@@ -42,7 +43,7 @@ public:
 	D3DXVECTOR3 GetCameraPos(){ return m_Army[0]->m_CameraPos; }
 	D3DXVECTOR3 GetLookAtPos(){ return m_Army[0]->m_LookatPos; }
 	float GetAngle(){ return m_Army[0]->m_Angle; }
-
+	float GetRotate(){ return m_Army[0]->m_Rotate;}
 	/**	コンストラクタ */
 	ShipManager();
 
@@ -64,13 +65,14 @@ public:
 	void Create(char* army, char* enemy, SHIP_ID* shipID);
 
 	/**	カメラ位置を決める関数 */
-	void CameraTransform(){ m_Army[0]->CameraTransWorld(100.f); }
+	void CameraTransform(){ m_Army[0]->CameraTransWorld(200.f); }
 
 private:
 	D3DXVECTOR3 m_TemplatePos[12];		//!<	自艦、味方艦、敵艦の初期位置	仮置き
 	FbxRelated* m_BattleShip;			//!<	戦艦のモデルデータ
 	FbxRelated* m_Cruiser;				//!<	巡洋艦のモデルデータ
 	FbxRelated* m_Destroyer;			//!<	駆逐艦のモデルデータ
+	BulletManager* m_pBulletManager;
 	std::vector<Ship*> m_Army;			//!<	自艦＋味方艦の実体
 	std::vector<Ship*> m_Enemy;			//!<	敵艦の実体
 	char m_ArmyCount;					//!<	自艦＋味方艦の数

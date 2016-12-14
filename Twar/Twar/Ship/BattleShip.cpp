@@ -68,12 +68,12 @@ void BattleShip::ControlPlayer()
 
 	D3DXVec3TransformCoord(&vecAxisZ, &vecAxisZ, &m_Rotation);
 
-	if (m_pGameLib.ChecKMouseR() == PUSH)
+	if (m_pGameLib.ChecKMouseR() == ON)
 	{
 		m_Angle = m_ZoomAngle;
 		m_IsZoom = true;
 	}
-	else if (m_pGameLib.ChecKMouseR() == RELEASE)
+	else if (m_pGameLib.ChecKMouseR() == OFF)
 	{
 		m_Angle = m_NormalAngle;
 		m_IsZoom = false;
@@ -364,15 +364,16 @@ void BattleShip::ControlPlayer()
 		m_LookatPos.y = nextLookPos;
 	}
 
-	float nextRotate = m_CameraRotate + (mousePosX - centerPosY) * 0.05f;			//!<	0.05	仮の感度(ゲーム中に変更できるようにする、かもしれない)
+	//float nextRotate = m_CameraRotate + (mousePosX - centerPosY) * 0.05f;			//!<	0.05	仮の感度(ゲーム中に変更できるようにする、かもしれない)
 
-	if (nextRotate <= m_Rotate + 150.f && nextRotate >= m_Rotate - 150.f)		//!<	150		船の前方から見える角度(左右150°ずつ)
-	{
-		m_CameraRotate = nextRotate;
-	}
-
+	//if (nextRotate <= m_Rotate + 150.f && nextRotate >= m_Rotate - 150.f)		//!<	150		船の前方から見える角度(左右150°ずつ)
+	//{
+	//	m_CameraRotate = nextRotate;
+	//}
+	
 	m_CameraPos.x = m_LookatPos.x = m_ObjPos.x;
 	m_CameraPos.z = m_LookatPos.z = m_ObjPos.z;
+	D3DXMatrixRotationY(&m_CameraRotation, m_CameraRotate * 3.141592f / 180.f);			//	円周率
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -397,7 +398,6 @@ void BattleShip::Draw()
 {
 	D3DXMatrixRotationY(&m_Rotation, m_Rotate * 3.141592f / 180.f);						//	円周率
 	D3DXMatrixRotationZ(&m_Slope, m_Slant * 3.141592f / 180.f);							//	円周率
-	D3DXMatrixRotationY(&m_CameraRotation, m_CameraRotate * 3.141592f / 180.f);			//	円周率
 	TransWorld();		// ワールド座標変換
 	if (!m_IsZoom)
 	{
