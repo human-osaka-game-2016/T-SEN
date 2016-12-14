@@ -4,7 +4,15 @@
 * @author	haga
 */
 
+//-------------------------------------------------------------------------------------------------------------------------------------//
+//Includes
+//-------------------------------------------------------------------------------------------------------------------------------------//
+
 #include "VertexManager.h"
+
+//------------------------------------------------------------------------------------------------------------------------------------//
+//Public functions
+//------------------------------------------------------------------------------------------------------------------------------------//
 
 VertexManager::VertexManager()
 {
@@ -24,30 +32,43 @@ void VertexManager::CreateVertex(int key, float width, float height, float depth
 	m_Vertex[key] = vtx;
 }
 
-// XY軸で描画する関数
-void VertexManager::Draw(int key, LPDIRECT3DTEXTURE9 pTexture, float posX, float posY)
+// 2Dの通常描画関数
+void VertexManager::Draw2D(int key, LPDIRECT3DTEXTURE9 pTexture, float posX, float posY)
 {
-	m_Vertex[key].Draw(pTexture, posX, posY);
+	m_Vertex[key].Draw2D(pTexture, posX, posY);
 }
 
-// XZ軸で描画する関数
-void VertexManager::Draw(int key, LPDIRECT3DTEXTURE9 pTexture, float posX, float posY, float posZ)
+// 3D空間におけるXY平面におけるポリゴンの通常描画関数
+void VertexManager::Draw3DXY(int key, LPDIRECT3DTEXTURE9 pTexture, float posX, float posY, float posZ)
 {
-	m_Vertex[key].Draw(pTexture, posX, posY, posZ);
+	m_Vertex[key].Draw3DXY(pTexture, posX, posY, posZ);
 }
 
-// XY軸でバーテックスの中心座標で描画する関数
-void VertexManager::DrawCenterPos(int key, LPDIRECT3DTEXTURE9 pTexture, float posX, float posY)
+// 3D空間におけるXZ平面におけるポリゴンの通常描画関数
+void VertexManager::Draw3DXZ(int key, LPDIRECT3DTEXTURE9 pTexture, float posX, float posY, float posZ)
 {
-	m_Vertex[key].DrawCenterPos(pTexture, posX, posY);
+	m_Vertex[key].Draw3DXZ(pTexture, posX, posY, posZ);
 }
 
-// XZ軸でバーテックスの中心座標で描画する関数
-void VertexManager::DrawCenterPos(int key, LPDIRECT3DTEXTURE9 pTexture, float posX, float posY, float posZ)
+// 2Dの描画関数(中心に座標をあわせる)
+void VertexManager::Draw2DCenterPos(int key, LPDIRECT3DTEXTURE9 pTexture, float posX, float posY)
 {
-	m_Vertex[key].DrawCenterPos(pTexture, posX, posY, posZ);
+	m_Vertex[key].Draw2DCenterPos(pTexture, posX, posY);
 }
 
+// 3D空間におけるXY平面ポリゴンの描画関数(中心に座標を合わせる)
+void VertexManager::Draw3DXYCenterPos(int key, LPDIRECT3DTEXTURE9 pTexture, float posX, float posY, float posZ)
+{
+	m_Vertex[key].Draw3DXYCenterPos(pTexture, posX, posY, posZ);
+}
+
+// 3D空間におけるXZ平面ポリゴンの描画関数(中心に座標を合わせる)
+void VertexManager::Draw3DXZCenterPos(int key, LPDIRECT3DTEXTURE9 pTexture, float posX, float posY, float posZ)
+{
+	m_Vertex[key].Draw3DXZCenterPos(pTexture, posX, posY, posZ);
+}
+
+// UVスクロールする関数
 void VertexManager::ScrollUV(int key, float scrollSpeedTu, float scrollSpeedTv)
 {
 	m_Vertex[key].ScrollUV(scrollSpeedTu, scrollSpeedTv);
