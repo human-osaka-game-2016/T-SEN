@@ -9,11 +9,21 @@
 #include "GraphicsDevice.h"
 
 /**
-* バーテックス構造体.
+* 2D用の頂点情報構造体.
 */
 struct CUSTOMVERTEX
 {
 	FLOAT	x, y, z, rhw;	//!< 座標系
+	DWORD	color;			//!< 色
+	FLOAT	tu, tv;			//!< tu,tv値
+};
+
+/**
+* 3D用の頂点情報構造体
+*/
+struct CUSTOMVERTEX3D
+{
+	FLOAT	x, y, z;		//!< 座標系
 	DWORD	color;			//!< 色
 	FLOAT	tu, tv;			//!< tu,tv値
 };
@@ -55,23 +65,29 @@ public:
 
 	/**
 	* 2D通常描画関数<br>
-	* バーテックスの左上の頂点に座標をセットする<br>
 	* @param[in] pTexture テクスチャーへのポインタ
 	* @param[in] posX     x軸の位置座標
 	* @param[in] posY     y軸の位置座標
 	*/
-	void Draw(LPDIRECT3DTEXTURE9 pTexture, float posX, float posY);
+	void Draw2D(LPDIRECT3DTEXTURE9 pTexture, float posX, float posY);
 
 	/**
-	* 3D通常描画関数<br>
-	* バーテックスの左上の頂点に座標をセットする<br>
-	* こちらはZ座標も引数として渡す.
+	* 3D空間におけるXY平面ポリゴンの通常描画関数<br>
 	* @param[in] pTexture テクスチャーへのポインタ
 	* @param[in] posX     x軸の位置座標
 	* @param[in] posY     y軸の位置座標
 	* @param[in] posZ	  z軸の位置座標
 	*/
-	void Draw(LPDIRECT3DTEXTURE9 pTexture, float posX, float posY, float posZ);
+	void Draw3DXY(LPDIRECT3DTEXTURE9 pTexture, float posX, float posY, float posZ);
+
+	/**
+	* 3D空間におけるXZ平面ポリゴンの通常描画関数<br>
+	* @param[in] pTexture テクスチャーへのポインタ
+	* @param[in] posX     x軸の位置座標
+	* @param[in] posY     y軸の位置座標
+	* @param[in] posZ	  z軸の位置座標
+	*/
+	void Draw3DXZ(LPDIRECT3DTEXTURE9 pTexture, float posX, float posY, float posZ);
 
 	/**
 	* 2D描画関数<br>
@@ -80,18 +96,27 @@ public:
 	* @param[in] posX     x軸の位置座標
 	* @param[in] posY     y軸の位置座標
 	*/
-	void DrawCenterPos(LPDIRECT3DTEXTURE9 pTexture, float posX, float posY);
+	void Draw2DCenterPos(LPDIRECT3DTEXTURE9 pTexture, float posX, float posY);
 
 	/**
-	* 3D描画関数<br>
+	* 3D空間におけるXY平面ポリゴンの描画関数<br>
 	* バーテックスの中心に座標をセットする<br>
-	* Z座標も引数として渡す.
 	* @param[in] pTexture テクスチャーへのポインタ
 	* @param[in] posX     x軸の位置座標
 	* @param[in] posY     y軸の位置座標
 	* @param[in] posZ	  z軸の位置座標
 	*/
-	void DrawCenterPos(LPDIRECT3DTEXTURE9 pTexture, float posX, float posY, float posZ);
+	void Draw3DXYCenterPos(LPDIRECT3DTEXTURE9 pTexture, float posX, float posY, float posZ);
+
+	/**
+	* 3D空間におけるXZ平面ポリゴンの描画関数<br>
+	* バーテックスの中心に座標をセットする<br>
+	* @param[in] pTexture テクスチャーへのポインタ
+	* @param[in] posX     x軸の位置座標
+	* @param[in] posY     y軸の位置座標
+	* @param[in] posZ	  z軸の位置座標
+	*/
+	void Draw3DXZCenterPos(LPDIRECT3DTEXTURE9 pTexture, float posX, float posY, float posZ);
 
 	/**
 	* UVスクロールを行う関数

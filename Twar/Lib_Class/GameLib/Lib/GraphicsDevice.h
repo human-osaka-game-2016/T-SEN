@@ -10,7 +10,7 @@
 #include <d3dx9.h>
 
 #define D3DFVF_CUSTOMVERTEX (D3DFVF_XYZRHW | D3DFVF_DIFFUSE | D3DFVF_TEX1)		//!< 頂点フォーマットのマクロ
-#define USERVERTE_FVF (D3DFVF_XYZ | D3DFVF_NORMAL | D3DFVF_TEX1)				//!< 頂点フォーマットのマクロ(法線ベクトルを含む)
+#define USERVERTE_FVF (D3DFVF_XYZ | D3DFVF_DIFFUSE | D3DFVF_TEX1)				//!< 3D用頂点フォーマットのマクロ
 /**
 * DirectXのデバイス関連のクラス.
 */

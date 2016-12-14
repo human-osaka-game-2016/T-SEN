@@ -39,42 +39,65 @@ public:
 		float tuMin = 0.0f, float tuMax = 1.0f, float tvMin = 0.0f,float tvMax = 1.0f);
 
 	/**
-	* XY軸で描画する関数
+	* 2D通常描画関数
 	* @param[in] key		登録したキー
 	* @param[in] pTexture   テクスチャーへのポインタ
 	* @param[in] posX		x軸の位置座標
 	* @param[in] posY		y軸の位置座標
 	*/
-	void Draw(int key, LPDIRECT3DTEXTURE9 pTexture,float posX,float posY);
+	void Draw2D(int key, LPDIRECT3DTEXTURE9 pTexture,float posX,float posY);
+	
+	/**
+	* 3D空間におけるXY平面ポリゴンの通常描画関数<br>
+	* @param[in] key		登録したキー
+	* @param[in] pTexture	テクスチャーへのポインタ
+	* @param[in] posX		x軸の位置座標
+	* @param[in] posY		y軸の位置座標
+	* @param[in] posZ		z軸の位置座標
+	*/
+	void Draw3DXY(int key, LPDIRECT3DTEXTURE9 pTexture, float posX, float posY, float posZ);
 
 	/**
-	* XZ軸で描画する関数
+	* 3D空間におけるXZ平面ポリゴンの通常描画関数<br>
 	* @param[in] key		登録したキー
 	* @param[in] pTexture   テクスチャーへのポインタ
 	* @param[in] posX		x軸の位置座標
 	* @param[in] posY		y軸の位置座標
 	* @param[in] posZ		z軸の位置座標
 	*/
-	void Draw(int key, LPDIRECT3DTEXTURE9 pTexture, float posX, float posY, float posZ);
+	void Draw3DXZ(int key, LPDIRECT3DTEXTURE9 pTexture, float posX, float posY, float posZ);
 
 	/**
-	* XY軸でバーテックスの中心座標で描画する関数
+	* 2D描画関数<br>
+	* バーテックスの中心に座標をセットする<br>
 	* @param[in] key		登録したキー
 	* @param[in] pTexture   テクスチャーへのポインタ
 	* @param[in] posX		x軸の位置座標
 	* @param[in] posY		y軸の位置座標
 	*/
-	void DrawCenterPos(int key, LPDIRECT3DTEXTURE9 pTexture,float posX,float posY);
+	void Draw2DCenterPos(int key, LPDIRECT3DTEXTURE9 pTexture,float posX,float posY);
 
 	/**
-	* XZ軸でバーテックスの中心座標で描画する関数
+	* 3D空間におけるXY平面ポリゴンの描画関数<br>
+	* バーテックスの中心に座標をセットする<br>
+	* @param[in] key		登録したキー
+	* @param[in] pTexture	テクスチャーへのポインタ
+	* @param[in] posX		x軸の位置座標
+	* @param[in] posY		y軸の位置座標
+	* @param[in] posZ		z軸の位置座標
+	*/
+	void Draw3DXYCenterPos(int key, LPDIRECT3DTEXTURE9 pTexture, float posX, float posY, float posZ);
+
+	/**
+	* 3D空間におけるXZ平面ポリゴンの描画関数<br>
+	* バーテックスの中心に座標をセットする<br>
 	* @param[in] key		登録したキー
 	* @param[in] pTexture   テクスチャーへのポインタ
 	* @param[in] posX		x軸の位置座標
 	* @param[in] posY		y軸の位置座標
 	* @param[in] posZ		z軸の位置座標
 	*/
-	void DrawCenterPos(int key, LPDIRECT3DTEXTURE9 pTexture, float posX, float posY,float posZ);
+	void Draw3DXZCenterPos(int key, LPDIRECT3DTEXTURE9 pTexture, float posX, float posY, float posZ);
 
 	/**
 	* UVスクロールを行う関数

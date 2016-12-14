@@ -43,12 +43,14 @@ ShipManager::ShipManager()
 		// 読み込み失敗したらエラー
 		MessageBox(0, "FBXファイルの読み込みに失敗しました。", NULL, MB_OK);
 	}
+	/*
 	BulletManager::BULLET_ID bulletID[3] =
 	{
 		BulletManager::APBULLET,
 	};
 	char bullet = 1;
 	m_pBulletManager->Create(&bullet, bulletID);
+	*/
 }
 
 
