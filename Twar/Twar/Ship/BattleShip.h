@@ -28,6 +28,8 @@ public:
 	virtual void Draw();
 
 private:
+	static const float		m_SpeedLimit;			//!<	ŒÀŠE‘¬“x
+
 	/**	case Control of "the player" */
 	virtual void ControlPlayer();
 

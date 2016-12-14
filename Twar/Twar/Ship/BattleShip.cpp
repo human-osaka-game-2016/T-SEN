@@ -79,18 +79,6 @@ void BattleShip::ControlPlayer()
 		m_IsZoom = false;
 	}
 
-	if (m_Rotate == 360.f)						//!<	360 = 一回転の角度
-	{
-		m_Rotate -= 360.f;
-		m_CameraRotate -= 360.f;
-	}
-	if (m_Rotate == -360.f)
-	{
-		m_Rotate += 360.f;
-		m_CameraRotate += 360.f;
-	}
-
-
 	float nextSpeed;
 
 	if (m_pGameLib.CheckKey(DIK_W, W) - OFF + m_pGameLib.CheckKey(DIK_S, S) - OFF)
@@ -342,38 +330,56 @@ void BattleShip::ControlPlayer()
 		}
 	}
 
-	m_ObjPos += vecAxisZ * m_Status.m_Speed;
-
-	float mousePosX, mousePosY;
-
-	m_pGameLib.GetMousePos(&mousePosX, &mousePosY);
-
-	HWND hWnd = InputDevice::GetInstance().GethWnd();
-	RECT rect;
-	GetClientRect(hWnd, &rect);
-	ClientToScreen(hWnd, (LPPOINT)rect.left);
-	ClientToScreen(hWnd, (LPPOINT)rect.right);
-
-	float centerPosX = ((rect.right - rect.left) / 2) + rect.left;
-	float centerPosY = ((rect.bottom - rect.top) / 2) + rect.top;
-
-	float nextLookPos = m_LookatPos.y - (mousePosY - centerPosX) * 0.05f;			//!<	0.05	仮の感度(ゲーム中に変更できるようにする、かもしれない)
-
-	if (nextLookPos <= 100.f && nextLookPos >= 25.f)							//!<	100, 25	目で見て決めたカメラの上限と下限
+	if (m_Rotate <= 360.f)						//!<	360 = 一回転の角度
 	{
-		m_LookatPos.y = nextLookPos;
+		m_Rotate -= 360.f;
+		m_CameraRotate -= 360.f;
+	}
+	if (m_Rotate >= -360.f)
+	{
+		m_Rotate += 360.f;
+		m_CameraRotate += 360.f;
 	}
 
-	//float nextRotate = m_CameraRotate + (mousePosX - centerPosY) * 0.05f;			//!<	0.05	仮の感度(ゲーム中に変更できるようにする、かもしれない)
+	m_ObjPos += vecAxisZ * m_Status.m_Speed;
 
-	//if (nextRotate <= m_Rotate + 150.f && nextRotate >= m_Rotate - 150.f)		//!<	150		船の前方から見える角度(左右150°ずつ)
-	//{
-	//	m_CameraRotate = nextRotate;
-	//}
+	POINT newCursor;
+	GetCursorPos(&newCursor);
+
+	HWND hWnd = InputDevice::GetInstance().GethWnd();
+
+	RECT winRect;
+	RECT clientRect;
+	GetWindowRect(hWnd, &winRect);
+	GetClientRect(hWnd, &clientRect);
+	int centerPosX = static_cast<int>(winRect.left + ((clientRect.right - clientRect.left) / 2));
+	int centerPosY = static_cast<int>(winRect.bottom - ((clientRect.bottom - clientRect.top) / 2));
+
+
+	float nextLookatPos = m_LookatPos.y - (newCursor.y - centerPosY) * 0.05f;			//!<	0.05	仮の感度(ゲーム中に変更できるようにする、かもしれない)
+
+	if (nextLookatPos <= 100.f && nextLookatPos >= 25.f)							//!<	100, 25	目で見て決めたカメラの上限と下限
+	{
+		m_LookatPos.y = nextLookatPos;
+	}
+
+	float nextRotate = m_CameraRotate + (newCursor.x - centerPosX) * 0.05f;			//!<	0.05	仮の感度(ゲーム中に変更できるようにする、かもしれない)
+
+	if (nextRotate <= m_Rotate + 150.f && nextRotate >= m_Rotate - 150.f)		//!<	150		船の前方から見える角度(左右150°ずつ)
+	{
+		m_CameraRotate = nextRotate;
+	}
+	else if (nextRotate >= m_Rotate + 150.f)
+	{
+		m_CameraRotate = m_Rotate + 150.f;
+	}
+	else if (nextRotate <= m_Rotate - 150.f)
+	{
+		m_CameraRotate = m_Rotate - 150.f;
+	}
 	
 	m_CameraPos.x = m_LookatPos.x = m_ObjPos.x;
 	m_CameraPos.z = m_LookatPos.z = m_ObjPos.z;
-	D3DXMatrixRotationY(&m_CameraRotation, m_CameraRotate * 3.141592f / 180.f);			//	円周率
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -398,6 +404,7 @@ void BattleShip::Draw()
 {
 	D3DXMatrixRotationY(&m_Rotation, m_Rotate * 3.141592f / 180.f);						//	円周率
 	D3DXMatrixRotationZ(&m_Slope, m_Slant * 3.141592f / 180.f);							//	円周率
+	D3DXMatrixRotationY(&m_CameraRotation, m_CameraRotate * 3.141592f / 180.f);			//	円周率
 	TransWorld();		// ワールド座標変換
 	if (!m_IsZoom)
 	{
