@@ -96,7 +96,7 @@
     <ClCompile Include="GameData\GameDataManager.cpp" />
     <ClCompile Include="GameData\GameTimer.cpp" />
     <ClCompile Include="GameData\SaveDataManager.cpp" />
-    <ClCompile Include="Home\HomeBackGround.cpp" />
+    <ClCompile Include="Home\HomeBackground.cpp" />
     <ClCompile Include="Home\HomeMenu.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Monster\Monster.cpp" />
@@ -153,7 +153,7 @@
     <ClInclude Include="GameData\GameDataManager.h" />
     <ClInclude Include="GameData\GameTimer.h" />
     <ClInclude Include="GameData\SaveDataManager.h" />
-    <ClInclude Include="Home\HomeBackGround.h" />
+    <ClInclude Include="Home\HomeBackground.h" />
     <ClInclude Include="Home\HomeMenu.h" />
     <ClInclude Include="Monster\Monster.h" />
     <ClInclude Include="Monster\MonsterManager.h" />

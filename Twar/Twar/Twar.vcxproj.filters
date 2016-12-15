@@ -196,9 +196,6 @@
     <ClCompile Include="Collision\CollisionManager.cpp">
       <Filter>Twar\Collision</Filter>
     </ClCompile>
-    <ClCompile Include="Home\HomeBackGround.cpp">
-      <Filter>Twar\Home</Filter>
-    </ClCompile>
     <ClCompile Include="Home\HomeMenu.cpp">
       <Filter>Twar\Home</Filter>
     </ClCompile>
@@ -225,6 +222,9 @@
     </ClCompile>
     <ClCompile Include="Effect\EffectManager.cpp">
       <Filter>Twar\Effect</Filter>
+    </ClCompile>
+    <ClCompile Include="Home\HomeBackground.cpp">
+      <Filter>Twar\Home</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -360,9 +360,6 @@
     <ClInclude Include="Collision\CollisionManager.h">
       <Filter>Twar\Collision</Filter>
     </ClInclude>
-    <ClInclude Include="Home\HomeBackGround.h">
-      <Filter>Twar\Home</Filter>
-    </ClInclude>
     <ClInclude Include="Home\HomeMenu.h">
       <Filter>Twar\Home</Filter>
     </ClInclude>
@@ -389,6 +386,9 @@
     </ClInclude>
     <ClInclude Include="Effect\EffectManager.h">
       <Filter>Twar\Effect</Filter>
+    </ClInclude>
+    <ClInclude Include="Home\HomeBackground.h">
+      <Filter>Twar\Home</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

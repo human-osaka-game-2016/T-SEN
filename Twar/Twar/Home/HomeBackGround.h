@@ -1,8 +1,8 @@
 ﻿#pragma once
-class HomeBackGround
+class HomeBackground
 {
 public:
-	HomeBackGround();
-	~HomeBackGround();
+	HomeBackground();
+	~HomeBackground();
 };
 
