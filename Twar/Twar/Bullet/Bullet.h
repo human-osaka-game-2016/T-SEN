@@ -24,7 +24,6 @@ protected:
 		float Rotate;
 		bool hasDrawn;
 		bool hasInited;
-
 		Data* pBefore;
 		Data* pNext;
 		D3DXMATRIX Matrix;
@@ -32,7 +31,7 @@ protected:
 	Data* m_pFirst;
 	Data* m_pLast;
 	Data m_Data;
-
+	D3DXMATRIX m_Rotation;
 public:
 	/**コンストラクタ*/
 	Bullet();

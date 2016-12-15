@@ -8,7 +8,7 @@
 
 BulletManager::BulletManager()
 {
-	m_APBullet.LoadFbx("fbx/tama3.FBX");
+	m_APBullet.LoadFbx("fbx/tama_0.FBX");
 }
 
 BulletManager::~BulletManager()

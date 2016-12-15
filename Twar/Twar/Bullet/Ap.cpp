@@ -26,11 +26,11 @@ void ApBullet::Control(D3DXVECTOR3 Pos, float Rotate)
 {
 	float BulletSpeed = 10.f;
 	float DrawRange = 1000;
-	static int BulletTime = 3;
-
+	static int BulletTime = 0;
+	
 	Data* pData = nullptr;
-
-	if (GameLib::Instance().CheckKey(DIK_1, ONE) == PUSH&&BulletTime++ >= 3)
+	BulletTime++;
+	if (GameLib::Instance().CheckKey(DIK_1, ONE) == PUSH&&BulletTime >= 120)
 	{
 		m_Data.hasDrawn = true;
 		m_Data.hasInited = true;
@@ -39,6 +39,7 @@ void ApBullet::Control(D3DXVECTOR3 Pos, float Rotate)
 		{
 			pData = new Data;
 			pData->BulletPos = Pos;
+			pData->BulletPos.y += 20;
 			pData->Rotate = Rotate;
 			PushBack(pData);
 		}
@@ -48,11 +49,16 @@ void ApBullet::Control(D3DXVECTOR3 Pos, float Rotate)
 
 	while (pData)
 	{
-		pData->BulletPos.z += cos(3.141592 / 360 * pData->Rotate)*BulletSpeed;
-		pData->BulletPos.x += sin(3.141592 / 360 * pData->Rotate)*BulletSpeed;
+		pData->BulletPos.z += cos(3.141592 / 180 * pData->Rotate)*BulletSpeed;
+		pData->BulletPos.x += sin(3.141592 / 180 * pData->Rotate)*BulletSpeed;
 
 		if (Pos.z - pData->BulletPos.z > DrawRange || Pos.z - pData->BulletPos.z<-DrawRange ||
 			Pos.x - pData->BulletPos.x>DrawRange || Pos.x - pData->BulletPos.x < -DrawRange)
+		{
+			pData->BulletPos.y -= 1;
+		}
+
+		if (pData->BulletPos.y <= 0)
 		{
 			m_Data.hasDrawn = false;
 			m_Data.hasInited = false;

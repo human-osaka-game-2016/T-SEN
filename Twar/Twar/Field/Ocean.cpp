@@ -7,7 +7,7 @@
 #include"GameLib/GameLib.h"
 
 Ocean::Ocean()
-	: m_Pos(0.0f, 3.0f, 0.0f)
+	: m_Pos(0.0f, 2.0f, 0.0f)
 	, m_Scale(1.0f)
 {
 	GameLib::Instance().LoadXFile(1, "../Resouce//sea.x");
