@@ -330,12 +330,12 @@ void BattleShip::ControlPlayer()
 		}
 	}
 
-	if (m_Rotate <= 360.f)						//!<	360 = 一回転の角度
+	if (m_Rotate >= 360.f)						//!<	360 = 一回転の角度
 	{
 		m_Rotate -= 360.f;
 		m_CameraRotate -= 360.f;
 	}
-	if (m_Rotate >= -360.f)
+	if (m_Rotate <= -360.f)
 	{
 		m_Rotate += 360.f;
 		m_CameraRotate += 360.f;
