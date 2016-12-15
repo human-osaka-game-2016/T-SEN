@@ -32,6 +32,7 @@ protected:
 	Data* m_pLast;
 	Data m_Data;
 	D3DXMATRIX m_Rotation;
+	LPD3DXMESH m_pMesh;
 public:
 	/**コンストラクタ*/
 	Bullet();
