@@ -16,7 +16,7 @@ public:
 
 	void CheckState();
 
-	bool InformCollision(){ return m_IsExist; }
+	bool InformCollision();
 
 	D3DXVECTOR3 GetPos(){ return m_Pos; }
 	float		GetRadius(){ return m_Radius; }

@@ -33,12 +33,12 @@ ShipManager::ShipManager()
 		// 読み込み失敗したらエラー
 		MessageBox(0, "FBXファイルの読み込みに失敗しました。", NULL, MB_OK);
 	}
-	if (!m_Cruiser->LoadFbx("fbx/kongou.fbx"))
+	if (!m_Cruiser->LoadFbx("fbx/tenryu.fbx"))
 	{
 		// 読み込み失敗したらエラー
 		MessageBox(0, "FBXファイルの読み込みに失敗しました。", NULL, MB_OK);
 	}
-	if (!m_Destroyer->LoadFbx("fbx/kongou.fbx"))
+	if (!m_Destroyer->LoadFbx("fbx/minekaze_new_anime.fbx"))
 	{
 		// 読み込み失敗したらエラー
 		MessageBox(0, "FBXファイルの読み込みに失敗しました。", NULL, MB_OK);
@@ -81,7 +81,7 @@ void ShipManager::Control()
 	{
 		m_Enemy[i]->Control();
 	}
-	m_pBulletManager->Control(GetPlayerPos(),GetRotate());
+	m_pBulletManager->Control(GetPlayerPos(),GetCameraRotate());
 }
 
 void ShipManager::Draw()

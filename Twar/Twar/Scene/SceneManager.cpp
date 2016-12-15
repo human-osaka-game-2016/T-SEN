@@ -18,6 +18,7 @@ SceneManager::SceneManager()
 	, m_IsEnd(false)
 {
 	SceneFactory::Instance().Init(m_pSaveDataManager);
+	//m_NextSceneID = GAME_SCENE;
 }
 
 SceneManager::~SceneManager()
@@ -33,9 +34,11 @@ bool SceneManager::Run()
 
 	Control();
 
+	GameLib::Instance().GetDevice()->SetRenderState(D3DRS_LIGHTING, FALSE);
+
 	m_pGameLib->StartRender();
 
-	GameLib::Instance().GetDevice()->SetRenderState(D3DRS_LIGHTING, FALSE);
+	
 
 	Draw();
 

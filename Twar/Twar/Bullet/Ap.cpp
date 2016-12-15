@@ -16,6 +16,7 @@ ApBullet::ApBullet()
 	m_Data.BulletPos = D3DXVECTOR3(0.f, 0.f, 0.f);
 	m_Data.hasDrawn = false;
 	m_Data.hasInited = false;
+	BulletTime=0;
 	LPD3DXMESH m_pMesh = nullptr;
 	m_Collision = new Collision(20.f);
 }
@@ -34,13 +35,12 @@ ApBullet::~ApBullet()
 //コントロール関数
 void ApBullet::Control(D3DXVECTOR3 Pos, float Rotate)
 {
-	float BulletSpeed = 10.f;
+	float BulletSpeed = 50.f;
 	float DrawRange = 1000;
-	static int BulletTime = 0;
 	
 	Data* pData = nullptr;
 	BulletTime++;
-	if (GameLib::Instance().CheckKey(DIK_1, ONE) == PUSH&&BulletTime >= 120)
+	if (GameLib::Instance().ChecKMouseL() == ON&&BulletTime >= 30&&!m_Data.hasDrawn)
 	{
 		m_Data.hasDrawn = true;
 		m_Data.hasInited = true;
@@ -49,7 +49,7 @@ void ApBullet::Control(D3DXVECTOR3 Pos, float Rotate)
 		{
 			pData = new Data;
 			pData->BulletPos = Pos;
-			pData->BulletPos.y += 50;
+			pData->BulletPos.y += 20;
 			pData->Rotate = Rotate;
 			PushBack(pData);
 		}
@@ -105,11 +105,11 @@ void ApBullet::Draw()
 			D3DXMatrixTranslation(&pData->Matrix, pData->BulletPos.x, pData->BulletPos.y, pData->BulletPos.z);
 			D3DXMatrixMultiply(&matWorld, &matWorld, &pData->Matrix);
 			GameLib::Instance().GetDevice()->SetTransform(D3DTS_WORLD, &matWorld);
-			m_pFbx->DrawFbx();
+			//m_pFbx->DrawFbx();
 			pData = pData->pNext;
-			D3DXCreateSphere(GameLib::Instance().GetDevice(),20,64,32,&m_pMesh,nullptr);
+			D3DXCreateSphere(GameLib::Instance().GetDevice(),5,64,32,&m_pMesh,nullptr);
+			m_pMesh->DrawSubset(0);
 		}
-		m_pMesh->DrawSubset(0);
 	}
 }
 

@@ -20,10 +20,10 @@
 HomeMenu::HomeMenu()
 	: m_MenuSelectState(sub_scene::Home::NOMAL)
 {
-	float			buttonWidth = 512.f;						//!< ボタンの横幅
-	float			buttonHeight = 128.f;						//!< ボタンの縦幅
+	float			buttonWidth = 128.f;						//!< ボタンの横幅
+	float			buttonHeight = 512.f;						//!< ボタンの縦幅
 
-	D3DXVECTOR2		battleStartBtnPos = { 800.f, 780.f };			//!< 出撃ボタンの座標
+	D3DXVECTOR2		battleStartBtnPos = { 204.f, 456.f };			//!< 出撃ボタンの座標
 	GameLib::Instance().CreateVtx(sub_scene::Home::BATTLE_START_BTN_VTX, buttonWidth, buttonHeight);
 	GameLib::Instance().SetVtxUV(sub_scene::Home::BATTLE_START_BTN_VTX, 0.0f, 1.0f, 0.0f, 1.0f);
 	m_MenuButton.emplace_back(sub_scene::Home::MENU_BTN_TEX, sub_scene::Home::BATTLE_START_BTN_VTX, buttonWidth, buttonHeight, battleStartBtnPos);

@@ -27,3 +27,12 @@ void Collision::CheckState()
 	m_IsExist = true;
 }
 
+bool Collision :: InformCollision()
+{
+	if(m_IsExist)
+	{
+		m_IsExist = false;
+		return true;
+	}
+	return false;
+}

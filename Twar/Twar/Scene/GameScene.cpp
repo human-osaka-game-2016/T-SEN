@@ -21,6 +21,7 @@ GameScene::GameScene(SaveDataManager* pSaveDataManager)
 	, m_NextSubSceneID(sub_scene::HOME)
 {
 	sub_scene::SubSceneFactory::Instance().Init(m_pGameDataManager, m_pGameTimer, m_pSaveDataManager);
+	//m_NextSubSceneID = sub_scene::BATTLE;
 }
 
 

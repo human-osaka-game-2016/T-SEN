@@ -15,7 +15,7 @@
 #include <vector>
 #include "../GameLib/Lib/GraphicsDevice.h"
 
-#define MY_FVF (D3DFVF_XYZ | D3DFVF_NORMAL | D3DFVF_TEX2)
+#define MY_FVF (D3DFVF_XYZ | D3DFVF_NORMAL | D3DFVF_TEX1)
 
 /**
 * Fbxモデルのデータを詰めるクラス

@@ -28,7 +28,6 @@ Battle::Battle(GameDataManager* pGameDataManager, GameTimer* pGameTimer)
 
 	/**@todo  ここの数値は仮置き*/
 	GameLib::Instance().LoadTex(EXPLOSION_TEX, "../Resouce/Effect.dds");
-	//GameLib::Instance().LoadTexEx(EXPLOSION_TEX, "../Resouce//manzi-01a1_200x.png", 255, 0, 0, 0, false);
 	GameLib::Instance().CreateVtx(EXPLOSION_VTX, 100.f, 100.f);
 	GameLib::Instance().SetVtxUV(EXPLOSION_VTX, 0.0f, 0.25f, 0.0f, 0.25f);
 	EffectManager::Instance().RegisterID(EffectManager::EXPLOSION, EXPLOSION_TEX, EXPLOSION_VTX);
@@ -41,21 +40,21 @@ Battle::Battle(GameDataManager* pGameDataManager, GameTimer* pGameTimer)
 
 	ShipManager::SHIP_ID shipID[12] =
 	{
-		ShipManager::BATTLESHIP,
-		ShipManager::CRUISER,
-		ShipManager::DESTROYER,
-		ShipManager::BATTLESHIP,
-		ShipManager::CRUISER,
-		ShipManager::DESTROYER,
 		ShipManager::DESTROYER,
 		ShipManager::CRUISER,
-		ShipManager::DESTROYER,
 		ShipManager::BATTLESHIP,
+		ShipManager::DESTROYER,
+		ShipManager::CRUISER,
+		ShipManager::BATTLESHIP,
+		ShipManager::DESTROYER,
+		ShipManager::CRUISER,
+		ShipManager::BATTLESHIP,
+		ShipManager::DESTROYER,
 		ShipManager::CRUISER,
 		ShipManager::DESTROYER
 	};
 
-	char ally = 1, enemy = 1;
+	char ally = 3, enemy = 3;
 	m_pShipManager->Create(&ally, &enemy, shipID);
 	LoadingThread::DiscardThread();
 }
@@ -79,7 +78,10 @@ SUBSCENE_ID Battle::Control()
 	//m_rGameLib.GetDevice()->SetRenderState(D3DRS_SPECULARENABLE, TRUE);
 	CollisionManager::Instance().ClearData();
 	m_pFieldManager->Control();
-	m_pMonsterManager->Control();
+	if(m_pMonsterManager->Control())
+	{
+		return SUBSCENE_ID::BATTLE_RESULT;
+	}
 	EffectManager::Instance().Control();
 	m_pShipManager->Control();
 	m_pShipManager->CameraTransform();
@@ -94,9 +96,10 @@ void sub_scene::Battle::Draw()
 {
 	CameraController::GetInstance().TransformView(m_pShipManager->GetCameraPos(), m_pShipManager->GetLookAtPos(), m_pShipManager->GetAngle());
 	m_pShipManager->Draw();
-	EffectManager::Instance().Draw();
+	
 	m_pMonsterManager->Draw();
 	m_pFieldManager->Draw();
+	EffectManager::Instance().Draw();
 }
 
 }

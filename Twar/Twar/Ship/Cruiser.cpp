@@ -13,6 +13,10 @@ const float Cruiser::m_SpeedLimit = 1.5f;
 Cruiser::Cruiser(D3DXVECTOR3* pos)
 	: Ship(pos, { 2500, 0.f })
 {
+	m_PitchSpeed = 0.025f;
+	m_PitchUpperLimit = -4.f;
+	m_PitchLowerLimit = -2.f;
+	m_ObjPos.y = m_PitchLowerLimit + (m_PitchUpperLimit - m_PitchLowerLimit) / 2;
 }
 
 
@@ -38,15 +42,14 @@ void Cruiser::Control()
 		break;
 	}
 
-	static bool IsUp = false;
 
-	if (IsUp)
+	if (m_IsUp)
 	{
 		m_ObjPos.y += m_PitchSpeed;
 
 		if (m_ObjPos.y >= m_PitchLowerLimit)
 		{
-			IsUp = false;
+			m_IsUp = false;
 		}
 	}
 	else
@@ -55,7 +58,7 @@ void Cruiser::Control()
 
 		if (m_ObjPos.y <= m_PitchUpperLimit)
 		{
-			IsUp = true;
+			m_IsUp = true;
 		}
 	}
 }
@@ -333,12 +336,12 @@ void Cruiser::ControlPlayer()
 		}
 	}
 
-	if (m_Rotate <= 360.f)						//!<	360 = 一回転の角度
+	if (m_Rotate >= 360.f)						//!<	360 = 一回転の角度
 	{
 		m_Rotate -= 360.f;
 		m_CameraRotate -= 360.f;
 	}
-	if (m_Rotate >= -360.f)
+	if (m_Rotate <= -360.f)
 	{
 		m_Rotate += 360.f;
 		m_CameraRotate += 360.f;

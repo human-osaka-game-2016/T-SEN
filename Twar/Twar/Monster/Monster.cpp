@@ -13,6 +13,7 @@
 #include "Fbx/FbxRelated.h"
 #include "Monster.h"
 #include "../Collision/Collision.h"
+#include "../Effect/EffectManager.h"
 
 //--------------------------------------------------------------------------------------------------------------------------------------//
 //Namespace
@@ -29,16 +30,16 @@ const float			shortAttackRange = 600.f;					// 近距離攻撃範囲
 const float			longAttackRange = 3000.f;					// 遠距離攻撃範囲
 const int			nonAttackTime = 3600;						// 攻撃状態において攻撃していない時間
 const int			moveTime = 300;								// 移動時間
-const float			PosYMinLimit = -360.f;						// y軸における位置座標の下の限界
+const float			PosYMinLimit = -340.f;						// y軸における位置座標の下の限界
 const float			upDownSpeed = 1.0f;							// 上下運動における速度
 const int			fadeOutTime = 300;							// HPが0になった後、消えていく時間
 const int			posNum = 3;									// モンスター位置座標の数
 
 // 出現位置テーブル
 const D3DXVECTOR3	appearancePos[posNum] = {
-	{100.f, 0.0f, 100.f},
-	{200.f, 0.0f, 200.f},
-	{300.f, 0.0f, 300.f}
+	{0.f, 0.0f, 0.f},
+	{0.f, 0.0f, 0.f},
+	{0.f, 0.0f, 0.f}
 };
 
 }
@@ -50,7 +51,7 @@ const D3DXVECTOR3	appearancePos[posNum] = {
 Monster::Monster(FbxModel* model)
 	: m_Angle(180.0f)
 	, m_pModel(model)
-	, m_Collision(new Collision(360.f))
+	, m_Collision(new Collision(100.f))
 	, m_Status({5,0,300})
 	, m_State(Monster::STANDBY)
 	, m_AttackInterValCount(0)
@@ -92,6 +93,15 @@ bool Monster::Control()
 		break;
 
 	case DEATH:
+		Fall();
+		//D3DXVECTOR3 effectPos = m_Pos;
+		//effectPos.z -= 200.f;
+		//EffectManager::Instance().Create(effectPos, EffectManager::EXPLOSION);
+		if(m_Pos.y <= PosYMinLimit)
+		{
+			m_HasDisappeared = true;
+		}
+		
 		break;
 	}
 

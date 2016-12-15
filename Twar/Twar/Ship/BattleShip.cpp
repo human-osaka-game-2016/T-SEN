@@ -13,6 +13,10 @@ const float BattleShip::m_SpeedLimit = 1.f;
 BattleShip::BattleShip(D3DXVECTOR3* pos)
 	: Ship(pos, { 7500, 0.f})
 {
+	m_PitchSpeed = 0.025f;
+	m_PitchUpperLimit = -6.f;
+	m_PitchLowerLimit = -2.f;
+	m_ObjPos.y = m_PitchLowerLimit + (m_PitchUpperLimit - m_PitchLowerLimit) / 2;
 }
 
 

@@ -20,7 +20,7 @@ public:
 
 	~MonsterManager();
 
-	void Control();
+	bool Control();
 
 	void Draw();
 

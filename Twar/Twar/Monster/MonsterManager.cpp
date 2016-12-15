@@ -33,22 +33,40 @@ MonsterManager::~MonsterManager()
 	delete m_pMonsterFbx;
 }
 
-void MonsterManager::Control()
+bool MonsterManager::Control()
 {
-	for(auto i : m_pMonster)
+	for(auto i = m_pMonster.begin(); i != m_pMonster.end();)
 	{
-		if(i->Control())		
+		if((*i)->Control())		
 		{// 消滅していたら削除する
-			delete i;
-			i = nullptr;
+			delete ( *i );
+			( *i ) = nullptr;
+			i = m_pMonster.erase(i);
+			continue;
 		}
+
+		i++;
 	}
+
+	if(m_pMonster.size() == 0)
+	{
+		return true;
+	}
+
+	return false;
 }
 
 void MonsterManager::Draw()
 {
-	for(auto i : m_pMonster)
+	if(m_pMonster.size() > 0)
 	{
-		i->Draw();
+		for(auto i : m_pMonster)
+		{
+			if(i != nullptr)
+			{
+				i->Draw();
+			}
+			
+		}
 	}
 }

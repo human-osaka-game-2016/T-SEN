@@ -80,8 +80,8 @@ void Home::Draw()
 void Home::InitHomeScene()
 {
 	/**@todo 仮画像のﾊﾟｽにしておく*/
-	m_rGameLib.LoadTexEx(Home::BACKGROUND_TEX, "../Resouce/tsentitle.png", 255, 0, 0, 0, false);
-	m_rGameLib.LoadTexEx(Home::MENU_BTN_TEX, "../Resouce/title_button.png", 255, 0, 0, 0, false);
+	m_rGameLib.LoadTexEx(Home::BACKGROUND_TEX, "../Resouce/homeBack.png", 255, 0, 0, 0, false);
+	m_rGameLib.LoadTex(Home::MENU_BTN_TEX, "../Resouce/homeButton.png");
 }
 
 }

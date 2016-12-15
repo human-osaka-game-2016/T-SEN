@@ -19,8 +19,8 @@ TitleScene::TitleScene(SaveDataManager* pSaveDataManager)
 	/** @todo ここでセーブデータの有無をメニュークラスにわたす。仕組みはまだ未実装nのためfalseを渡している */
 	m_pTitleMenu = new TitleMenu(false);
 	// テクスチャーを読み込む
-	GameLib::Instance().LoadTexEx(BACKGROUND_TEX, "../Resouce//tsentitle.png", 255, 0, 0, 0, false);
-	GameLib::Instance().LoadTex(BUTTON_TEX, "../Resouce//title_button.png");
+	GameLib::Instance().LoadTexEx(BACKGROUND_TEX, "../Resouce/title.png", 255, 0, 0, 0, false);
+	GameLib::Instance().LoadTex(BUTTON_TEX, "../Resouce//titleButton.png");
 }
 
 TitleScene::~TitleScene()

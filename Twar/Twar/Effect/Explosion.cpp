@@ -66,6 +66,42 @@ bool Explosion::Control()
 
 void Explosion::Draw()
 {
+	GameLib::Instance().GetDevice()->SetRenderState(D3DRS_ALPHABLENDENABLE, TRUE);
+	GameLib::Instance().GetDevice()->SetRenderState(D3DRS_SRCBLEND, D3DBLEND_SRCALPHA);  //SRCの設定
+	GameLib::Instance().GetDevice()->SetRenderState(D3DRS_DESTBLEND, D3DBLEND_INVSRCALPHA);
+	GameLib::Instance().GetDevice()->SetRenderState(D3DRS_DIFFUSEMATERIALSOURCE, D3DMCS_COLOR1);
+
+	//GameLib::Instance().GetDevice()->SetRenderState(D3DRS_ALPHATESTENABLE, TRUE);
+	//GameLib::Instance().GetDevice()->SetRenderState(D3DRS_ALPHAREF, 0);
+	//GameLib::Instance().GetDevice()->SetRenderState(D3DRS_ALPHAFUNC, D3DCMP_GREATER);
+
+
+	GameLib::Instance().GetDevice()->SetTextureStageState(0, D3DTSS_COLORARG1, D3DTA_TEXTURE);
+	GameLib::Instance().GetDevice()->SetTextureStageState(0, D3DTSS_COLORARG2, D3DTA_DIFFUSE);
+
+	GameLib::Instance().GetDevice()->SetTextureStageState(0, D3DTSS_COLOROP, D3DTOP_MODULATE);
+
+	GameLib::Instance().GetDevice()->SetTextureStageState(0, D3DTSS_ALPHAARG1, D3DTA_TEXTURE);
+	GameLib::Instance().GetDevice()->SetTextureStageState(0, D3DTSS_ALPHAARG2, D3DTA_DIFFUSE);
+
+	GameLib::Instance().GetDevice()->SetTextureStageState(0, D3DTSS_ALPHAOP, D3DTOP_MODULATE);
+
 	Transform3D();
 	GameLib::Instance().Draw3DXYCenterPos(m_TexID, m_VtxID);
+
+	GameLib::Instance().GetDevice()->SetRenderState(D3DRS_ALPHABLENDENABLE, TRUE);
+	GameLib::Instance().GetDevice()->SetRenderState(D3DRS_SRCBLEND, D3DBLEND_SRCALPHA);  //SRCの設定
+	GameLib::Instance().GetDevice()->SetRenderState(D3DRS_DESTBLEND, D3DBLEND_INVSRCALPHA);
+	GameLib::Instance().GetDevice()->SetRenderState(D3DRS_DIFFUSEMATERIALSOURCE, D3DMCS_COLOR1);
+	GameLib::Instance().GetDevice()->SetRenderState(D3DRS_ALPHATESTENABLE, TRUE);
+
+	GameLib::Instance().GetDevice()->SetTextureStageState(0, D3DTSS_COLORARG1, D3DTA_TEXTURE);
+	GameLib::Instance().GetDevice()->SetTextureStageState(0, D3DTSS_COLORARG2, D3DTA_DIFFUSE);
+
+	GameLib::Instance().GetDevice()->SetTextureStageState(0, D3DTSS_COLOROP, D3DTOP_MODULATE);
+
+	GameLib::Instance().GetDevice()->SetTextureStageState(0, D3DTSS_ALPHAARG1, D3DTA_TEXTURE);
+	GameLib::Instance().GetDevice()->SetTextureStageState(0, D3DTSS_ALPHAARG2, D3DTA_DIFFUSE);
+
+	GameLib::Instance().GetDevice()->SetTextureStageState(0, D3DTSS_ALPHAOP, D3DTOP_MODULATE);
 }

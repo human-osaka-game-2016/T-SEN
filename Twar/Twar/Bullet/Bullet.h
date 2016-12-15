@@ -28,6 +28,7 @@ protected:
 		Data* pNext;
 		D3DXMATRIX Matrix;
 	};
+	int BulletTime;
 	Data* m_pFirst;
 	Data* m_pLast;
 	Data m_Data;
