@@ -43,7 +43,10 @@ void FbxRelated::Release()
 		delete m_pModel->m_pFbxModelData->uvSet.uvBuffer[i];
 	}
 
-	delete m_pModel->m_pFbxModelData->pTmpTexture;
+	if (m_pModel->m_pFbxModelData->fileTextureCount)
+	{
+		delete m_pModel->m_pFbxModelData->pTmpTexture;
+	}
 	delete m_pModel->m_pFbxModelData->pIndexBuffer;
 	delete m_pModel->m_pFbxModelData->pVertex;
 	delete m_pModel->m_pFbxModelData->pPolygonSize;
@@ -247,11 +250,38 @@ void FbxRelated::GetPosition(fbxsdk::FbxMesh* pMesh)
 		//	i番目の頂点の座標Xを取得
 		pTmpVertex[i].x = (float)pVertex[i][0];
 
+		if (m_pModel->maxX < pTmpVertex[i].x)
+		{
+			m_pModel->maxX = pTmpVertex[i].x;
+		}
+		if (m_pModel->minX > pTmpVertex[i].x)
+		{
+			m_pModel->minX = pTmpVertex[i].x;
+		}
+
 		//	i番目の頂点の座標Yを取得
 		pTmpVertex[i].y = (float)pVertex[i][1];
 
+		if (m_pModel->maxY < pTmpVertex[i].y)
+		{
+			m_pModel->maxY = pTmpVertex[i].y;
+		}
+		if (m_pModel->minY > pTmpVertex[i].y)
+		{
+			m_pModel->minY = pTmpVertex[i].y;
+		}
+
 		//	i番目の頂点の座標Zを取得
 		pTmpVertex[i].z = (float)pVertex[i][2];
+	
+		if (m_pModel->maxZ < pTmpVertex[i].z)
+		{
+			m_pModel->maxZ = pTmpVertex[i].z;
+		}
+		if (m_pModel->minZ > pTmpVertex[i].z)
+		{
+			m_pModel->minZ = pTmpVertex[i].z;
+		}
 	}
 
 	m_pModel->m_pFbxModelData->pVertex = new FbxModel::Vertex[m_pModel->m_pFbxModelData->indexCount];
