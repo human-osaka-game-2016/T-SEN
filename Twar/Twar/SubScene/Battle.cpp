@@ -12,6 +12,7 @@
 #include "../CameraController/CameraController.h"
 #include "../Monster/MonsterManager.h"
 #include "../Ship/ShipManager.h"
+#include "../Effect/EffectManager.h"
 #include "Battle.h"
 
 namespace sub_scene
@@ -20,9 +21,15 @@ namespace sub_scene
 Battle::Battle(GameDataManager* pGameDataManager, GameTimer* pGameTimer)
 	:SubScene(pGameDataManager, pGameTimer)
 {
-	GameLib::Instance().CreateVtx(99, 1600.f, 900.f);
-	GameLib::Instance().LoadTexEx(99, "../Resouce//tsenload3.png", 255, 0, 0, 0, false);
-	LoadingThread::CreateThread(99,99);
+	GameLib::Instance().CreateVtx(LOAD_THREAD_VTX, 1600.f, 900.f);
+	GameLib::Instance().LoadTexEx(LOAD_THREAD_TEX, "../Resouce//tsenload3.png", 255, 0, 0, 0, false);
+	LoadingThread::CreateThread(LOAD_THREAD_TEX, LOAD_THREAD_VTX);
+
+	/**@todo  ここの数値は仮置き*/
+	GameLib::Instance().LoadTex(EXPLOSION_TEX, "../Resouce/Effect.dds");
+	GameLib::Instance().CreateVtx(EXPLOSION_VTX, 200.f, 200.f);
+	EffectManager::Instance().RegisterID(EffectManager::EXPLOSION, EXPLOSION_TEX, EXPLOSION_VTX);
+	
 	m_pLight = new Light(GameLib::Instance().GetDevice(), D3DXVECTOR3{ 0, 0, 0 });
 	m_pMonsterManager = new MonsterManager(pGameDataManager);
 	m_pFieldManager = new FieldManager();
@@ -53,6 +60,7 @@ Battle::Battle(GameDataManager* pGameDataManager, GameTimer* pGameTimer)
 
 Battle::~Battle()
 {
+	EffectManager::Instance().ReleaseID();
 	delete m_pLight;
 	delete m_pFieldManager;
 	delete m_pMonsterManager;
@@ -64,6 +72,7 @@ SUBSCENE_ID Battle::Control()
 {
 	m_pFieldManager->Control();
 	m_pMonsterManager->Control();
+	EffectManager::Instance().Control();
 	m_pShipManager->Control();
 	m_pShipManager->CameraTransform();
 	GameLib::Instance().SetMousePosCenter();
@@ -74,6 +83,7 @@ void sub_scene::Battle::Draw()
 {
 	CameraController::GetInstance().TransformView(m_pShipManager->GetCameraPos(), m_pShipManager->GetLookAtPos(), m_pShipManager->GetAngle());
 	m_pShipManager->Draw();
+	EffectManager::Instance().Draw();
 	m_pMonsterManager->Draw();
 	m_pFieldManager->Draw();
 }

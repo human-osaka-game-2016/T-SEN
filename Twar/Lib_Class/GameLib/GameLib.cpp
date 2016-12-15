@@ -189,24 +189,24 @@ void GameLib::DrawXYCenterPos(int texKey, int vtxKey, float posX, float posY)
 	m_pVertexManager->Draw2DCenterPos(vtxKey, m_pTextureManager->GetTex(texKey), posX, posY);
 }
 
-void GameLib::Draw3DXY(int texKey, int vtxKey, float posX, float posY, float posZ)
+void GameLib::Draw3DXY(int texKey, int vtxKey)
 {
-	m_pVertexManager->Draw3DXY(vtxKey, m_pTextureManager->GetTex(texKey), posX, posY, posZ);
+	m_pVertexManager->Draw3DXY(vtxKey, m_pTextureManager->GetTex(texKey));
 }
 
-void GameLib::Draw3DXYCenterPos(int texKey, int vtxKey, float posX, float posY, float posZ)
+void GameLib::Draw3DXYCenterPos(int texKey, int vtxKey)
 {
-	m_pVertexManager->Draw3DXYCenterPos(vtxKey, m_pTextureManager->GetTex(texKey), posX, posY, posZ);
+	m_pVertexManager->Draw3DXYCenterPos(vtxKey, m_pTextureManager->GetTex(texKey));
 }
 
-void GameLib::Draw3DXZ(int texKey, int vtxKey, float posX, float posY, float posZ)
+void GameLib::Draw3DXZ(int texKey, int vtxKey)
 {
-	m_pVertexManager->Draw3DXZ(vtxKey, m_pTextureManager->GetTex(texKey), posX, posY, posZ);
+	m_pVertexManager->Draw3DXZ(vtxKey, m_pTextureManager->GetTex(texKey));
 }
 
-void GameLib::Draw3DXZCenterPos(int texKey, int vtxKey, float posX, float posY, float posZ)
+void GameLib::Draw3DXZCenterPos(int texKey, int vtxKey)
 {
-	m_pVertexManager->Draw3DXZCenterPos(vtxKey, m_pTextureManager->GetTex(texKey), posX, posY, posZ);
+	m_pVertexManager->Draw3DXZCenterPos(vtxKey, m_pTextureManager->GetTex(texKey));
 }
 
 float GameLib::GetVtxWidth(int vtxKey)

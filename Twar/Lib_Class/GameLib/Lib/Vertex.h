@@ -74,20 +74,14 @@ public:
 	/**
 	* 3D空間におけるXY平面ポリゴンの通常描画関数<br>
 	* @param[in] pTexture テクスチャーへのポインタ
-	* @param[in] posX     x軸の位置座標
-	* @param[in] posY     y軸の位置座標
-	* @param[in] posZ	  z軸の位置座標
 	*/
-	void Draw3DXY(LPDIRECT3DTEXTURE9 pTexture, float posX, float posY, float posZ);
+	void Draw3DXY(LPDIRECT3DTEXTURE9 pTexture);
 
 	/**
 	* 3D空間におけるXZ平面ポリゴンの通常描画関数<br>
 	* @param[in] pTexture テクスチャーへのポインタ
-	* @param[in] posX     x軸の位置座標
-	* @param[in] posY     y軸の位置座標
-	* @param[in] posZ	  z軸の位置座標
 	*/
-	void Draw3DXZ(LPDIRECT3DTEXTURE9 pTexture, float posX, float posY, float posZ);
+	void Draw3DXZ(LPDIRECT3DTEXTURE9 pTexture);
 
 	/**
 	* 2D描画関数<br>
@@ -102,21 +96,15 @@ public:
 	* 3D空間におけるXY平面ポリゴンの描画関数<br>
 	* バーテックスの中心に座標をセットする<br>
 	* @param[in] pTexture テクスチャーへのポインタ
-	* @param[in] posX     x軸の位置座標
-	* @param[in] posY     y軸の位置座標
-	* @param[in] posZ	  z軸の位置座標
 	*/
-	void Draw3DXYCenterPos(LPDIRECT3DTEXTURE9 pTexture, float posX, float posY, float posZ);
+	void Draw3DXYCenterPos(LPDIRECT3DTEXTURE9 pTexture);
 
 	/**
 	* 3D空間におけるXZ平面ポリゴンの描画関数<br>
 	* バーテックスの中心に座標をセットする<br>
 	* @param[in] pTexture テクスチャーへのポインタ
-	* @param[in] posX     x軸の位置座標
-	* @param[in] posY     y軸の位置座標
-	* @param[in] posZ	  z軸の位置座標
 	*/
-	void Draw3DXZCenterPos(LPDIRECT3DTEXTURE9 pTexture, float posX, float posY, float posZ);
+	void Draw3DXZCenterPos(LPDIRECT3DTEXTURE9 pTexture);
 
 	/**
 	* UVスクロールを行う関数

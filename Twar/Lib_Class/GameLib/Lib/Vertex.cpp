@@ -57,7 +57,7 @@ void Vertex::Draw2D(LPDIRECT3DTEXTURE9 pTexture, float posX, float posY)
 }
 
 // 3D空間におけるXY平面ポリゴンの描画関数
-void Vertex::Draw3DXY(LPDIRECT3DTEXTURE9 pTexture, float posX, float posY, float posZ)
+void Vertex::Draw3DXY(LPDIRECT3DTEXTURE9 pTexture)
 {
 	CUSTOMVERTEX3D vtex[] = {
 		{		0.0f, m_VtxHeight, m_VtxDepth, m_Color[0], m_TuMin, m_TvMin },
@@ -66,19 +66,12 @@ void Vertex::Draw3DXY(LPDIRECT3DTEXTURE9 pTexture, float posX, float posY, float
 		{		0.0f,		 0.0f, m_VtxDepth, m_Color[3], m_TuMin, m_TvMax },
 	};
 
-	for(int i = 0; i < 4; i++)
-	{
-		vtex[i].x += posX;
-		vtex[i].y += posY;
-		vtex[i].z += posZ;
-	}
-
 	m_pD3Device->SetTexture(0, pTexture);
 	m_pD3Device->DrawPrimitiveUP(D3DPT_TRIANGLEFAN, 2, vtex, sizeof(CUSTOMVERTEX3D));
 }
 
 // 3D空間におけるXZ平面ポリゴンの描画関数
-void Vertex::Draw3DXZ(LPDIRECT3DTEXTURE9 pTexture, float posX, float posY, float posZ)
+void Vertex::Draw3DXZ(LPDIRECT3DTEXTURE9 pTexture)
 {
 	CUSTOMVERTEX3D vtex[] = {
 		{		0.0f, m_VtxHeight, m_VtxDepth, m_Color[0], m_TuMin, m_TvMin },
@@ -86,13 +79,6 @@ void Vertex::Draw3DXZ(LPDIRECT3DTEXTURE9 pTexture, float posX, float posY, float
 		{ m_VtxWidth, m_VtxHeight,		 0.0f, m_Color[2], m_TuMax, m_TvMax },
 		{		0.0f, m_VtxHeight,		 0.0f, m_Color[3], m_TuMin, m_TvMax },
 	};
-
-	for (int i = 0; i < 4; i++)
-	{
-		vtex[i].x += posX;
-		vtex[i].y += posY;
-		vtex[i].z += posZ;
-	}
 
 	m_pD3Device->SetTexture(0, pTexture);
 	m_pD3Device->DrawPrimitiveUP(D3DPT_TRIANGLEFAN, 2, vtex, sizeof(CUSTOMVERTEX3D));
@@ -119,7 +105,7 @@ void Vertex::Draw2DCenterPos(LPDIRECT3DTEXTURE9 pTexture, float posX, float posY
 }
 
 //  3D空間におけるXY平面ポリゴンの描画関数(中心に座標を合わせる)
-void Vertex::Draw3DXYCenterPos(LPDIRECT3DTEXTURE9 pTexture, float posX, float posY, float posZ)
+void Vertex::Draw3DXYCenterPos(LPDIRECT3DTEXTURE9 pTexture)
 {
 	CUSTOMVERTEX3D vtex[] = {
 		{ -m_VtxWidth / 2.0f,  m_VtxHeight / 2.0f, m_VtxDepth, m_Color[0], m_TuMin, m_TvMin },
@@ -128,19 +114,13 @@ void Vertex::Draw3DXYCenterPos(LPDIRECT3DTEXTURE9 pTexture, float posX, float po
 		{ -m_VtxWidth / 2.0f, -m_VtxHeight / 2.0f, m_VtxDepth, m_Color[3], m_TuMin, m_TvMax },
 	};
 
-	for(int i = 0; i < 4; i++)
-	{
-		vtex[i].x += posX;
-		vtex[i].y += posY;
-		vtex[i].z += posZ;
-	}
 
 	m_pD3Device->SetTexture(0, pTexture);
 	m_pD3Device->DrawPrimitiveUP(D3DPT_TRIANGLEFAN, 2, vtex, sizeof(CUSTOMVERTEX3D));
 }
 
 // 3D空間におけるXZ平面ポリゴンの描画関数(中心に座標を合わせる)
-void Vertex::Draw3DXZCenterPos(LPDIRECT3DTEXTURE9 pTexture, float posX, float posY, float posZ)
+void Vertex::Draw3DXZCenterPos(LPDIRECT3DTEXTURE9 pTexture)
 {
 	CUSTOMVERTEX3D vtex[] = {
 		{ -m_VtxWidth / 2.0f, m_VtxHeight,  m_VtxDepth / 2.0f, m_Color[0], m_TuMin, m_TvMin },
@@ -148,13 +128,6 @@ void Vertex::Draw3DXZCenterPos(LPDIRECT3DTEXTURE9 pTexture, float posX, float po
 		{  m_VtxWidth / 2.0f, m_VtxHeight, -m_VtxDepth / 2.0f, m_Color[2], m_TuMax, m_TvMax },
 		{ -m_VtxWidth / 2.0f, m_VtxHeight, -m_VtxDepth / 2.0f, m_Color[3], m_TuMin, m_TvMax },
 	};
-
-	for (int i = 0; i < 4; i++)
-	{
-		vtex[i].x += posX;
-		vtex[i].y += posY;
-		vtex[i].z += posZ;
-	}
 
 	m_pD3Device->SetTexture(0, pTexture);
 	m_pD3Device->DrawPrimitiveUP(D3DPT_TRIANGLEFAN, 2, vtex, sizeof(CUSTOMVERTEX3D));

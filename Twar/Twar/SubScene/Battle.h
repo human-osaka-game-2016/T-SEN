@@ -24,6 +24,20 @@ namespace sub_scene
 class Battle :public SubScene
 {
 public:
+	/**TextureID*/
+	enum TEXTURE_ID
+	{
+		EXPLOSION_TEX,			//!< 爆発画像
+		LOAD_THREAD_TEX,		//!< ロード画面画像
+	};
+
+	/**VertexID*/
+	enum VERTEX_ID
+	{
+		EXPLOSION_VTX,			//!< 爆発のVertex
+		LOAD_THREAD_VTX,		//!< ロード画面のVertex
+	};
+
 	/**
 	* コンストラクタ
 	* @param pGameDataManager GameDataManagerクラスのインスタンスへのポインタ
