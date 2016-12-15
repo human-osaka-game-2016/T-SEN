@@ -14,11 +14,13 @@ ApBullet::ApBullet()
 	m_Data.BulletPos = D3DXVECTOR3(0.f, 0.f, 0.f);
 	m_Data.hasDrawn = false;
 	m_Data.hasInited = false;
+	LPD3DXMESH m_pMesh = nullptr;
 }
 
 ApBullet::~ApBullet()
 {
 	Clear();
+	m_pMesh->Release();
 }
 
 //コントロール関数
@@ -39,7 +41,7 @@ void ApBullet::Control(D3DXVECTOR3 Pos, float Rotate)
 		{
 			pData = new Data;
 			pData->BulletPos = Pos;
-			pData->BulletPos.y += 20;
+			pData->BulletPos.y += 50;
 			pData->Rotate = Rotate;
 			PushBack(pData);
 		}
@@ -76,9 +78,9 @@ void ApBullet::Draw()
 {
 	if (m_Data.hasDrawn)
 	{
-
 		D3DXMATRIX      matWorld;						// ワールド座標
 		Data* pData = m_pFirst;
+		
 		while (pData)
 		{
 			D3DXMatrixIdentity(&matWorld);  				// 単位行列
@@ -87,8 +89,9 @@ void ApBullet::Draw()
 			GameLib::Instance().GetDevice()->SetTransform(D3DTS_WORLD, &matWorld);
 			m_pFbx->DrawFbx();
 			pData = pData->pNext;
+			D3DXCreateSphere(GameLib::Instance().GetDevice(),20,64,32,&m_pMesh,nullptr);
 		}
-
+		m_pMesh->DrawSubset(0);
 	}
 }
 
