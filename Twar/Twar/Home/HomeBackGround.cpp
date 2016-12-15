@@ -1,11 +1,11 @@
-﻿#include "HomeBackGround.h"
+﻿#include "HomeBackground.h"
 
 
-HomeBackGround::HomeBackGround()
+HomeBackground::HomeBackground()
 {
 }
 
 
-HomeBackGround::~HomeBackGround()
+HomeBackground::~HomeBackground()
 {
 }
