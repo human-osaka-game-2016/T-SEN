@@ -186,16 +186,18 @@ void GameLib::DrawXY(int texKey, int vtxKey, float posX, float posY)
 
 void GameLib::DrawXYCenterPos(int texKey, int vtxKey, float posX, float posY)
 {
-	m_pVertexManager->Draw2DCenterPos(vtxKey, m_pTextureManager->GetTex(texKey), posX, posY);
+	m_pVertexManager->Draw2DCenterPos(vtxKey, m_pTextureManager->GetTex(texKey), posX, posY);	
 }
 
 void GameLib::Draw3DXY(int texKey, int vtxKey)
 {
+	SetFVF(USER_VERTEX_FVF);
 	m_pVertexManager->Draw3DXY(vtxKey, m_pTextureManager->GetTex(texKey));
 }
 
 void GameLib::Draw3DXYCenterPos(int texKey, int vtxKey)
 {
+	SetFVF(USER_VERTEX_FVF);
 	m_pVertexManager->Draw3DXYCenterPos(vtxKey, m_pTextureManager->GetTex(texKey));
 }
 

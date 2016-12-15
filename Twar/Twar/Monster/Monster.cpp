@@ -12,6 +12,7 @@
 #include "GameLib/GameLib.h"
 #include "Fbx/FbxRelated.h"
 #include "Monster.h"
+#include "../Collision/Collision.h"
 
 //--------------------------------------------------------------------------------------------------------------------------------------//
 //Namespace
@@ -49,7 +50,8 @@ const D3DXVECTOR3	appearancePos[posNum] = {
 Monster::Monster(FbxModel* model)
 	: m_Angle(180.0f)
 	, m_pModel(model)
-	, m_Status({0,0,300})
+	, m_Collision(new Collision(360.f))
+	, m_Status({5,0,300})
 	, m_State(Monster::STANDBY)
 	, m_AttackInterValCount(0)
 	, m_NonAttackTimeCount(0)
@@ -66,6 +68,7 @@ Monster::Monster(FbxModel* model)
 
 Monster::~Monster()
 {
+	delete m_Collision;
 	// リソース(モデル)解放はMonsterManagerにて行う
 }
 
@@ -77,6 +80,7 @@ bool Monster::Control()
 	{
 	case STANDBY:
 		SearchTarget();
+		m_Collision->SetData(m_Pos);
 		break;
 
 	case COMBAT:
@@ -112,7 +116,14 @@ void Monster::Draw()
 
 void Monster::JudgeColllision()
 {
-
+	if(m_Collision->InformCollision())
+	{
+		m_Status.Hp -= 1;
+		if(m_Status.Hp <= 0)
+		{
+			m_State = DEATH;
+		}
+	}
 }
 
 void Monster::SearchTarget()

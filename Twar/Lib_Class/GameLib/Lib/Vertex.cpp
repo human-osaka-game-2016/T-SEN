@@ -114,7 +114,6 @@ void Vertex::Draw3DXYCenterPos(LPDIRECT3DTEXTURE9 pTexture)
 		{ -m_VtxWidth / 2.0f, -m_VtxHeight / 2.0f, m_VtxDepth, m_Color[3], m_TuMin, m_TvMax },
 	};
 
-
 	m_pD3Device->SetTexture(0, pTexture);
 	m_pD3Device->DrawPrimitiveUP(D3DPT_TRIANGLEFAN, 2, vtex, sizeof(CUSTOMVERTEX3D));
 }

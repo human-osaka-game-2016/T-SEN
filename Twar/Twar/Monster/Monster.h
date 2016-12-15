@@ -11,6 +11,7 @@
 #include <d3dx9.h>
 #include <vector>
 
+class Collision;
 class FbxModel;
 
 /***
@@ -60,6 +61,7 @@ private:
 	D3DXMATRIX						m_MatWorld;					//!< ワールド変換行列
 	float							m_Angle;					//!< 角度(向く方向)
 	FbxModel*						m_pModel;					//!< モデルデータ
+	Collision*						m_Collision;				//!< 衝突クラス
 	Monster::STATUS					m_Status;					//!< ステータス
 	Monster::STATE					m_State;					//!< 敵の状態
 	int								m_AttackInterValCount;		//!< 攻撃間隔をカウント	

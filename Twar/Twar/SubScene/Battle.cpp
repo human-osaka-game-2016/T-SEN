@@ -13,6 +13,7 @@
 #include "../Monster/MonsterManager.h"
 #include "../Ship/ShipManager.h"
 #include "../Effect/EffectManager.h"
+#include "../Collision/CollisionManager.h"
 #include "Battle.h"
 
 namespace sub_scene
@@ -27,7 +28,9 @@ Battle::Battle(GameDataManager* pGameDataManager, GameTimer* pGameTimer)
 
 	/**@todo  ここの数値は仮置き*/
 	GameLib::Instance().LoadTex(EXPLOSION_TEX, "../Resouce/Effect.dds");
-	GameLib::Instance().CreateVtx(EXPLOSION_VTX, 200.f, 200.f);
+	//GameLib::Instance().LoadTexEx(EXPLOSION_TEX, "../Resouce//manzi-01a1_200x.png", 255, 0, 0, 0, false);
+	GameLib::Instance().CreateVtx(EXPLOSION_VTX, 100.f, 100.f);
+	GameLib::Instance().SetVtxUV(EXPLOSION_VTX, 0.0f, 0.25f, 0.0f, 0.25f);
 	EffectManager::Instance().RegisterID(EffectManager::EXPLOSION, EXPLOSION_TEX, EXPLOSION_VTX);
 	
 	m_pLight = new Light(GameLib::Instance().GetDevice(), D3DXVECTOR3{ 0, 0, 0 });
@@ -70,13 +73,21 @@ Battle::~Battle()
 
 SUBSCENE_ID Battle::Control()
 {
+	m_rGameLib.GetDevice()->SetRenderState(D3DRS_LIGHTING, FALSE);
+	//m_rGameLib.GetDevice()->SetRenderState(D3DRS_LIGHTING, TRUE);
+	//m_rGameLib.GetDevice()->SetRenderState(D3DRS_AMBIENT, 0x00555555);
+	//m_rGameLib.GetDevice()->SetRenderState(D3DRS_SPECULARENABLE, TRUE);
+	CollisionManager::Instance().ClearData();
 	m_pFieldManager->Control();
 	m_pMonsterManager->Control();
 	EffectManager::Instance().Control();
 	m_pShipManager->Control();
 	m_pShipManager->CameraTransform();
 	GameLib::Instance().SetMousePosCenter();
+	CollisionManager::Instance().CheckCollision();
+
 	return SUBSCENE_ID::BATTLE;
+
 }
 
 void sub_scene::Battle::Draw()

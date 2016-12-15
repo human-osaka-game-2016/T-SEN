@@ -5,6 +5,8 @@
 */
 #include "Ap.h"
 #include "GameLib/GameLib.h"
+#include "../Collision/Collision.h"
+#include "../Effect/EffectManager.h"
 
 ApBullet::ApBullet()
 {
@@ -15,12 +17,18 @@ ApBullet::ApBullet()
 	m_Data.hasDrawn = false;
 	m_Data.hasInited = false;
 	LPD3DXMESH m_pMesh = nullptr;
+	m_Collision = new Collision(20.f);
 }
 
 ApBullet::~ApBullet()
 {
 	Clear();
-	m_pMesh->Release();
+	if(m_pMesh != nullptr)
+	{
+		m_pMesh->Release();
+	}
+	delete m_Collision;
+	
 }
 
 //コントロール関数
@@ -51,6 +59,14 @@ void ApBullet::Control(D3DXVECTOR3 Pos, float Rotate)
 
 	while (pData)
 	{
+		if(m_Collision->InformCollision())
+		{
+			EffectManager::Instance().Create(pData->BulletPos, EffectManager::EXPLOSION);
+			m_Data.hasDrawn = false;
+			m_Data.hasInited = false;
+			pData = EraseNext(pData);
+			continue;
+		}
 		pData->BulletPos.z += cos(3.141592 / 180 * pData->Rotate)*BulletSpeed;
 		pData->BulletPos.x += sin(3.141592 / 180 * pData->Rotate)*BulletSpeed;
 
@@ -60,6 +76,7 @@ void ApBullet::Control(D3DXVECTOR3 Pos, float Rotate)
 			pData->BulletPos.y -= 1;
 		}
 
+		
 		if (pData->BulletPos.y <= 0)
 		{
 			m_Data.hasDrawn = false;
@@ -68,6 +85,7 @@ void ApBullet::Control(D3DXVECTOR3 Pos, float Rotate)
 		}
 		else
 		{
+			m_Collision->SetData(pData->BulletPos);
 			pData = pData->pNext;
 		}
 	}
