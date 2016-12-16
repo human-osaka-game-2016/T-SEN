@@ -65,8 +65,11 @@ private:
 	HomeMenu*			m_pHomeMenu;			//!< HomeMenuクラスのインスタンスへのポインタ
 	Home::STATE			m_CurrentState;			//!< Homeの現在の状態
 
-	/**シーンの初期化関数*/
-	void InitHomeScene();
+	/**
+	* 初期化関数<br>
+	* テクスチャー読み込みなどを行う
+	*/
+	void Init();
 
 };
 

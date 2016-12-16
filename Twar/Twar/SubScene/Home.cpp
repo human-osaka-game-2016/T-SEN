@@ -33,7 +33,7 @@ Home::Home(GameDataManager* pGameDataManager, GameTimer* pGameTimer, SaveDataMan
 	, m_pHomeMenu(new HomeMenu())
 	, m_CurrentState(Home::NOMAL)
 {
-	InitHomeScene();
+	Init();
 }
 
 Home::~Home()
@@ -77,11 +77,11 @@ void Home::Draw()
 //Private functions
 //-----------------------------------------------------------------------------------------------------------//
 
-void Home::InitHomeScene()
+void Home::Init()
 {
 	/**@todo 仮画像のﾊﾟｽにしておく*/
-	m_rGameLib.LoadTexEx(Home::BACKGROUND_TEX, "../Resouce/tsentitle.png", 255, 0, 0, 0, false);
-	m_rGameLib.LoadTexEx(Home::MENU_BTN_TEX, "../Resouce/title_button.png", 255, 0, 0, 0, false);
+	m_rGameLib.LoadTexEx(Home::BACKGROUND_TEX, "../Resouce/HomeScene/homeBackground.png", 255, 0, 0, 0, false);
+	m_rGameLib.LoadTex(Home::MENU_BTN_TEX, "../Resouce/HomeScene/homeButton.png");
 }
 
 }

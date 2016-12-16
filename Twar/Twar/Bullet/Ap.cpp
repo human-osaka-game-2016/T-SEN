@@ -20,7 +20,10 @@ ApBullet::ApBullet()
 ApBullet::~ApBullet()
 {
 	Clear();
-	m_pMesh->Release();
+	if(m_pMesh != nullptr)
+	{
+		m_pMesh->Release();
+	}
 }
 
 //コントロール関数

@@ -71,6 +71,12 @@ private:
 	TitleLogo*			m_pTitleLogo;			//!< TitleLogoクラスへのインスタンスへのポインタ
 	TitleMenu*			m_pTitleMenu;			//!< TitleMenuクラスへのインスタンスへのポインタ
 	STATE				m_TitleSceneState;		//!< タイトルシーンの状態 
+
+	/**
+	* 初期化関数<br>
+	* テクスチャー読み込みなどを行う
+	*/
+	void Init();
 };
 
 #endif // TITLE_SCENE_H
