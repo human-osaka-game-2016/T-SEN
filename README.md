@@ -1,4 +1,9 @@
 # T戦
+
+[![](https://img.shields.io/badge/Visual%20Studio-Community%202013-blue.svg)](https://www.microsoft.com/ja-jp/dev/products/community.aspx)
+[![](https://img.shields.io/badge/DirectX%20SDK-9.0c(June%202010)-yellow.svg)](https://www.microsoft.com/en-us/download/details.aspx?id=6812)
+[![](https://img.shields.io/badge/FBX%20SDK-2016.1-brightgreen.svg)](http://usa.autodesk.com/adsk/servlet/pc/item?id=24535361&siteID=123112)
+
 ##リポジトリ概要
 2016年後期チーム制作プロジェクト「T戦」のリポジトリになります。
 ##ゲーム概要
@@ -9,11 +14,11 @@
 
 - プラットホーム
   - Windows
-  
+
 - プレイ人数
   - 1人用
- 
-   
+
+
 ##必要ツールとSDK
 このプロジェクトをビルドするには下記のツールとSDKを用意する必要があります。
 ####必要ツール
@@ -24,16 +29,10 @@
 * Microsoft DirectX SDK (June 2010)
 
 
-  →ダウンロードは[こちら](https://www.microsoft.com/en-us/download/details.aspx?id=6812)
-
-
 * Autodesk Fbxsdk(2016.1)
 
 
-   →ダウンロードは[こちら](http://usa.autodesk.com/adsk/servlet/pc/item?id=24535361&siteID=123112)
-  
-  
-    　こちらのFbxsdkはVisualStudioの環境によってダウンロードするファイルが変わりますので
-  
-  
-     　VisualStudio2013のバージョンをダウンロードしてくだい。
+  こちらのFbxsdkはVisualStudioの環境によってダウンロードするファイルが変わりますので
+
+
+  VisualStudio2013のバージョンをダウンロードしてくだい。
