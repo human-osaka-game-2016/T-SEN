@@ -1,6 +1,6 @@
 # T戦
 
-[![](https://img.shields.io/badge/Visual%20Studio-Community%202013-blue.svg)](https://www.microsoft.com/ja-jp/dev/products/community.aspx)
+[![](https://img.shields.io/badge/Visual%20Studio-2013%20Community-blue.svg)](https://www.microsoft.com/ja-jp/dev/products/community.aspx)
 [![](https://img.shields.io/badge/DirectX%20SDK-9.0c(June%202010)-yellow.svg)](https://www.microsoft.com/en-us/download/details.aspx?id=6812)
 [![](https://img.shields.io/badge/FBX%20SDK-2016.1-brightgreen.svg)](http://usa.autodesk.com/adsk/servlet/pc/item?id=24535361&siteID=123112)
 
