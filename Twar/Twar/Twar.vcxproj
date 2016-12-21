@@ -74,11 +74,11 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Battle\BattleStateManager.cpp" />
+    <ClCompile Include="Battle\Radar.cpp" />
     <ClCompile Include="Bullet\Ap.cpp" />
     <ClCompile Include="Bullet\Bullet.cpp" />
     <ClCompile Include="Bullet\BulletManager.cpp" />
     <ClCompile Include="Bullet\He.cpp" />
-    <ClCompile Include="Bullet\MonsterBullet.cpp" />
     <ClCompile Include="Bullet\Torpedo.cpp" />
     <ClCompile Include="Button\MenuButton.cpp" />
     <ClCompile Include="CameraController\CameraController.cpp" />
@@ -100,6 +100,10 @@
     <ClCompile Include="Home\HomeMenu.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Monster\Monster.cpp" />
+    <ClCompile Include="Monster\MonsterBullet\MonsterBullet.cpp" />
+    <ClCompile Include="Monster\MonsterBullet\MonsterBulletManager.cpp" />
+    <ClCompile Include="Monster\MonsterBullet\LongRangeBullet.cpp" />
+    <ClCompile Include="Monster\MonsterBullet\ShortRangeBullet.cpp" />
     <ClCompile Include="Monster\MonsterManager.cpp" />
     <ClCompile Include="Scene\EndRollScene.cpp" />
     <ClCompile Include="Scene\GameScene.cpp" />
@@ -131,11 +135,11 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Battle\BattleStateManager.h" />
+    <ClInclude Include="Battle\Radar.h" />
     <ClInclude Include="Bullet\Ap.h" />
     <ClInclude Include="Bullet\Bullet.h" />
     <ClInclude Include="Bullet\BulletManager.h" />
     <ClInclude Include="Bullet\He.h" />
-    <ClInclude Include="Bullet\MonsterBullet.h" />
     <ClInclude Include="Bullet\Torpedo.h" />
     <ClInclude Include="Button\MenuButton.h" />
     <ClInclude Include="CameraController\CameraController.h" />
@@ -156,6 +160,10 @@
     <ClInclude Include="Home\HomeBackground.h" />
     <ClInclude Include="Home\HomeMenu.h" />
     <ClInclude Include="Monster\Monster.h" />
+    <ClInclude Include="Monster\MonsterBullet\MonsterBullet.h" />
+    <ClInclude Include="Monster\MonsterBullet\MonsterBulletManager.h" />
+    <ClInclude Include="Monster\MonsterBullet\LongRangeBullet.h" />
+    <ClInclude Include="Monster\MonsterBullet\ShortRangeBullet.h" />
     <ClInclude Include="Monster\MonsterManager.h" />
     <ClInclude Include="Scene\EndRollScene.h" />
     <ClInclude Include="Scene\GameScene.h" />
