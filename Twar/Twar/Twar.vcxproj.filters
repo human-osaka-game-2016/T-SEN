@@ -56,6 +56,9 @@
     <Filter Include="Twar\Effect">
       <UniqueIdentifier>{471f0516-e307-440a-bc4b-1bec7fa9e50a}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Twar\Monster\MonsterBullet">
+      <UniqueIdentifier>{f9e1ef7c-86f1-47d6-94c0-8fe92dbea07c}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -205,9 +208,6 @@
     <ClCompile Include="Monster\MonsterManager.cpp">
       <Filter>Twar\Monster</Filter>
     </ClCompile>
-    <ClCompile Include="Bullet\MonsterBullet.cpp">
-      <Filter>Twar\Bullet</Filter>
-    </ClCompile>
     <ClCompile Include="Battle\BattleStateManager.cpp">
       <Filter>Twar\Battle</Filter>
     </ClCompile>
@@ -225,6 +225,21 @@
     </ClCompile>
     <ClCompile Include="Home\HomeBackground.cpp">
       <Filter>Twar\Home</Filter>
+    </ClCompile>
+    <ClCompile Include="Monster\MonsterBullet\MonsterBullet.cpp">
+      <Filter>Twar\Monster\MonsterBullet</Filter>
+    </ClCompile>
+    <ClCompile Include="Monster\MonsterBullet\MonsterBulletManager.cpp">
+      <Filter>Twar\Monster\MonsterBullet</Filter>
+    </ClCompile>
+    <ClCompile Include="Monster\MonsterBullet\ShortRangeBullet.cpp">
+      <Filter>Twar\Monster\MonsterBullet</Filter>
+    </ClCompile>
+    <ClCompile Include="Monster\MonsterBullet\LongRangeBullet.cpp">
+      <Filter>Twar\Monster\MonsterBullet</Filter>
+    </ClCompile>
+    <ClCompile Include="Battle\Radar.cpp">
+      <Filter>Twar\Battle</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -369,9 +384,6 @@
     <ClInclude Include="Monster\MonsterManager.h">
       <Filter>Twar\Monster</Filter>
     </ClInclude>
-    <ClInclude Include="Bullet\MonsterBullet.h">
-      <Filter>Twar\Bullet</Filter>
-    </ClInclude>
     <ClInclude Include="Battle\BattleStateManager.h">
       <Filter>Twar\Battle</Filter>
     </ClInclude>
@@ -389,6 +401,21 @@
     </ClInclude>
     <ClInclude Include="Home\HomeBackground.h">
       <Filter>Twar\Home</Filter>
+    </ClInclude>
+    <ClInclude Include="Monster\MonsterBullet\MonsterBullet.h">
+      <Filter>Twar\Monster\MonsterBullet</Filter>
+    </ClInclude>
+    <ClInclude Include="Monster\MonsterBullet\MonsterBulletManager.h">
+      <Filter>Twar\Monster\MonsterBullet</Filter>
+    </ClInclude>
+    <ClInclude Include="Monster\MonsterBullet\ShortRangeBullet.h">
+      <Filter>Twar\Monster\MonsterBullet</Filter>
+    </ClInclude>
+    <ClInclude Include="Monster\MonsterBullet\LongRangeBullet.h">
+      <Filter>Twar\Monster\MonsterBullet</Filter>
+    </ClInclude>
+    <ClInclude Include="Battle\Radar.h">
+      <Filter>Twar\Battle</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
