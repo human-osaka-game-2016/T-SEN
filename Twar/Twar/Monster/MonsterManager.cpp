@@ -4,14 +4,23 @@
 * @author	haga
 */
 
+//---------------------------------------------------------------------------------------------------------------------------------------//
+//Includes
+//---------------------------------------------------------------------------------------------------------------------------------------//
+
 #include "Fbx/FbxRelated.h"
 #include "Monster.h"
 #include "MonsterManager.h"
+#include "MonsterBullet/MonsterBulletManager.h"
 
+//---------------------------------------------------------------------------------------------------------------------------------------//
+//Public functions
+//---------------------------------------------------------------------------------------------------------------------------------------//
 
 MonsterManager::MonsterManager(GameDataManager* pGameDataManager)
 	: m_pGameDataManager(pGameDataManager)
 	, m_pMonsterFbx(new FbxRelated())
+	, m_pBulletManager(new MonsterBulletManager())
 {
 	if(!m_pMonsterFbx->LoadFbx("fbx/golem_ascii.FBX"))
 	{
@@ -20,35 +29,47 @@ MonsterManager::MonsterManager(GameDataManager* pGameDataManager)
 	}
 	// GameDataManagerから敵の数をおしえてもらう
 	/**@todo	現在はまだ実装できていないで、適当に敵を作成*/
-	m_pMonster.emplace_back(new Monster(m_pMonsterFbx->m_pModel));
+	m_pMonsters.emplace_back(new Monster(m_pMonsterFbx->m_pModel, m_pBulletManager));
 }
 
 
 MonsterManager::~MonsterManager()
 {
-	for(auto i : m_pMonster)
+	for(auto monster : m_pMonsters)
 	{
-		delete i;
+		delete monster;
 	}
+	m_pMonsters.clear();
+
+	delete m_pBulletManager;
+
 	delete m_pMonsterFbx;
 }
 
 void MonsterManager::Control()
 {
-	for(auto i : m_pMonster)
+	for(auto itr = m_pMonsters.begin(); itr != m_pMonsters.end();)
 	{
-		if(i->Control())		
+		if((*itr)->Control())		
 		{// 消滅していたら削除する
-			delete i;
-			i = nullptr;
+			delete (*itr);
+			itr = m_pMonsters.erase(itr);
+		}
+		else
+		{
+			++itr;
 		}
 	}
+
+	m_pBulletManager->Control();
 }
 
 void MonsterManager::Draw()
 {
-	for(auto i : m_pMonster)
+	for(auto itr = m_pMonsters.begin(); itr != m_pMonsters.end(); ++itr)
 	{
-		i->Draw();
+		(*itr)->Draw();
 	}
+
+	m_pBulletManager->Draw();
 }
