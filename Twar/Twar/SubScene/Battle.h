@@ -14,6 +14,7 @@ class CameraController;
 class LoadingThread;
 class MonsterManager;
 class ShipManager;
+class BattleUIManager;
 
 namespace sub_scene
 {
@@ -29,6 +30,12 @@ public:
 	{
 		EXPLOSION_TEX,			//!< 爆発画像
 		LOAD_THREAD_TEX,		//!< ロード画面画像
+		LIFE,					//!< ライフID
+		LIFE_FLAME,				//!< 外装
+		LIFE_DECORATION,		//!< 装飾
+		METER_BG,
+		METER_DIAL,
+		METER_NEEDLE,
 	};
 
 	/**VertexID*/
@@ -36,6 +43,9 @@ public:
 	{
 		EXPLOSION_VTX,			//!< 爆発のVertex
 		LOAD_THREAD_VTX,		//!< ロード画面のVertex
+		LIFE_GAUGE,
+		LIFE_DECO_FLAME,
+		METER,
 	};
 
 	/**
@@ -60,7 +70,7 @@ private:
 	LoadingThread*			m_pLoadingThread;
 	MonsterManager*         m_pMonsterManager;
 	ShipManager*			m_pShipManager;
-	
+	BattleUIManager*		m_pUIManagaer;
 };
 
 }

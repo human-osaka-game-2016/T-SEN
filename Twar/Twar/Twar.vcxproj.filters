@@ -59,6 +59,9 @@
     <Filter Include="Twar\Monster\MonsterBullet">
       <UniqueIdentifier>{f9e1ef7c-86f1-47d6-94c0-8fe92dbea07c}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Twar\UI">
+      <UniqueIdentifier>{f2006dd5-b786-4ee6-8df7-6555eb0b4aa2}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -241,6 +244,21 @@
     <ClCompile Include="Battle\Radar.cpp">
       <Filter>Twar\Battle</Filter>
     </ClCompile>
+    <ClCompile Include="UI\BattleUIManager.cpp">
+      <Filter>Twar\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="UI\LifeGauge.cpp">
+      <Filter>Twar\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="UI\MonsterLifeGauge.cpp">
+      <Filter>Twar\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="UI\SpeedMeter.cpp">
+      <Filter>Twar\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="UI\UI.cpp">
+      <Filter>Twar\UI</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Scene\SceneManager.h">
@@ -416,6 +434,21 @@
     </ClInclude>
     <ClInclude Include="Battle\Radar.h">
       <Filter>Twar\Battle</Filter>
+    </ClInclude>
+    <ClInclude Include="UI\BattleUIManager.h">
+      <Filter>Twar\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="UI\LifeGauge.h">
+      <Filter>Twar\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="UI\MonsterLifeGauge.h">
+      <Filter>Twar\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="UI\SpeedMeter.h">
+      <Filter>Twar\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="UI\UI.h">
+      <Filter>Twar\UI</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

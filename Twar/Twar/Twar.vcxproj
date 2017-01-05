@@ -132,6 +132,11 @@
     <ClCompile Include="Title\TitleBackground.cpp" />
     <ClCompile Include="Title\TitleLogo.cpp" />
     <ClCompile Include="Title\TitleMenu.cpp" />
+    <ClCompile Include="UI\BattleUIManager.cpp" />
+    <ClCompile Include="UI\LifeGauge.cpp" />
+    <ClCompile Include="UI\MonsterLifeGauge.cpp" />
+    <ClCompile Include="UI\SpeedMeter.cpp" />
+    <ClCompile Include="UI\UI.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Battle\BattleStateManager.h" />
@@ -192,6 +197,11 @@
     <ClInclude Include="Title\TitleBackground.h" />
     <ClInclude Include="Title\TitleLogo.h" />
     <ClInclude Include="Title\TitleMenu.h" />
+    <ClInclude Include="UI\BattleUIManager.h" />
+    <ClInclude Include="UI\LifeGauge.h" />
+    <ClInclude Include="UI\MonsterLifeGauge.h" />
+    <ClInclude Include="UI\SpeedMeter.h" />
+    <ClInclude Include="UI\UI.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
