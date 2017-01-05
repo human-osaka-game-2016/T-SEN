@@ -1,11 +1,45 @@
-﻿#include "Collision.h"
+﻿
+//--------------------------------------------------------------------------------------------------------------------------------------//
+//Includes
+//--------------------------------------------------------------------------------------------------------------------------------------//
 
+#include "Collision.h"
+#include "CollisionManager.h"
 
-Collision::Collision()
+//--------------------------------------------------------------------------------------------------------------------------------------//
+//Public functions
+//--------------------------------------------------------------------------------------------------------------------------------------//
+
+Collision::Collision(float radius)
+	: m_Radius(radius)
+	, m_IsExist(false)
 {
 }
 
 
 Collision::~Collision()
 {
+}
+
+// 座標セット
+void Collision::SetData(const D3DXVECTOR3& pos)
+{
+	m_IsExist = false;
+	m_Pos = pos;
+	CollisionManager::Instance().SetCollision(this);
+}
+
+void Collision::CheckState()
+{
+	m_IsExist = true;
+}
+
+bool Collision::InformCollision()
+{
+	if(m_IsExist)
+	{
+		m_IsExist = false;
+		return true;
+	}
+	return false;
 }
