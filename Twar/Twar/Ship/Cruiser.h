@@ -19,7 +19,7 @@ public:
 	Cruiser(D3DXVECTOR3* pos);
 
 	/**	デストラクタ */
-	~Cruiser();
+	virtual ~Cruiser();
 
 	/**	コントロール関数 */
 	virtual void Control();

@@ -35,6 +35,7 @@ Ship::Ship(D3DXVECTOR3* pos, STATUS status)
 
 Ship::~Ship()
 {
+	
 }
 
 void Ship::Control()

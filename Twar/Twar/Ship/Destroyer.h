@@ -19,7 +19,7 @@ public:
 	Destroyer(D3DXVECTOR3* pos);
 
 	/**	デストラクタ */
-	~Destroyer();
+	virtual ~Destroyer();
 
 	/**	コントロール関数 */
 	virtual void Control();

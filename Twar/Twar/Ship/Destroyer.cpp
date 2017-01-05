@@ -7,17 +7,20 @@
 #include "Destroyer.h"
 #include "GameLib/GameLib.h"
 #include "Fbx/FbxModel.h"
+#include "../Collision/Collision.h"
 
 const float Destroyer::m_SpeedLimit = 2.f;
 
 Destroyer::Destroyer(D3DXVECTOR3* pos)
 	: Ship(pos, { 1500, 0.f })
 {
+	m_pCollision = new Collision(20.f);
 }
 
 
 Destroyer::~Destroyer()
 {
+	delete m_pCollision;
 }
 
 

@@ -55,7 +55,7 @@ Battle::Battle(GameDataManager* pGameDataManager, GameTimer* pGameTimer)
 		ShipManager::DESTROYER
 	};
 
-	char ally = 1, enemy = 1;
+	char ally = 3, enemy = 3;
 	m_pShipManager->Create(&ally, &enemy, shipID);
 	LoadingThread::DiscardThread();
 }

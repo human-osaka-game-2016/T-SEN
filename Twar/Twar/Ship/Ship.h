@@ -12,6 +12,7 @@
 class FbxModel;
 class CameraController;
 class GameLib;
+class Collision;
 
 /**
 	Ship全体の親クラス
@@ -38,7 +39,7 @@ public:
 	Ship(D3DXVECTOR3* pos, STATUS status);
 
 	/**	デストラクタ */
-	~Ship();
+	virtual ~Ship();
 
 	/**	描画関数 */
 	virtual void Draw();
@@ -114,6 +115,9 @@ protected:
 	bool					m_IsZoom;
 	static const float		m_NormalAngle;
 	static const float		m_ZoomAngle;
+
+
+	Collision*	m_pCollision;
 
 	/**	case Control of "the player" */
 	virtual void ControlPlayer() = 0;

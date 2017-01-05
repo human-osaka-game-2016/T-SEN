@@ -6,6 +6,7 @@
 
 #include "BattleShip.h"
 #include "GameLib/GameLib.h"
+#include "../Collision/Collision.h"
 #include "Fbx/FbxModel.h"
 
 const float BattleShip::m_SpeedLimit = 1.f;
@@ -13,11 +14,13 @@ const float BattleShip::m_SpeedLimit = 1.f;
 BattleShip::BattleShip(D3DXVECTOR3* pos)
 	: Ship(pos, { 7500, 0.f})
 {
+	m_pCollision = new Collision(30.f);
 }
 
 
 BattleShip::~BattleShip()
 {
+	delete m_pCollision;
 }
 
 void BattleShip::Control()

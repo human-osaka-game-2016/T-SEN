@@ -7,17 +7,21 @@
 #include "Cruiser.h"
 #include "GameLib/GameLib.h"
 #include "Fbx/FbxModel.h"
+#include "../Collision/Collision.h"
 
 const float Cruiser::m_SpeedLimit = 1.5f;
 
 Cruiser::Cruiser(D3DXVECTOR3* pos)
 	: Ship(pos, { 2500, 0.f })
 {
+	m_pCollision = new Collision(20.f);
+
 }
 
 
 Cruiser::~Cruiser()
 {
+	delete m_pCollision;
 }
 
 

@@ -19,7 +19,7 @@ public:
 	BattleShip(D3DXVECTOR3* pos);
 
 	/**	デストラクタ */
-	~BattleShip();
+	virtual ~BattleShip();
 
 	/**	コントロール関数 */
 	virtual void Control();
