@@ -11,6 +11,7 @@
 #include <d3dx9.h>
 #include <vector>
 
+class Collision;
 class FbxModel;
 class MonsterBulletManager;
 
@@ -78,6 +79,7 @@ private:
 	bool							m_HasMoved;					//!< 移動したかどうか
 	bool							m_HasVanished;				//!< 消滅したかどうか
 	MonsterBulletManager*			m_pBulletManager;			//!< MonsterBulletManagerクラスのインスタンスへのポインタ
+	Collision*						m_pCollision;				//!< 衝突クラスのインスタンスへのポインタ
 	
 
 	/**衝突を判断する関数*/

@@ -12,8 +12,10 @@
 #include <math.h>
 #include "GameLib/GameLib.h"
 #include "Fbx/FbxRelated.h"
+#include "../Collision/Collision.h"
 #include "Monster.h"
 #include "MonsterBullet/MonsterBulletManager.h"
+#include "../Effect/EffectManager.h"
 
 //--------------------------------------------------------------------------------------------------------------------------------------//
 //Namespace
@@ -62,6 +64,7 @@ Monster::Monster(FbxModel* pModel, MonsterBulletManager* pBulletManager)
 	, m_HasMoved(false)
 	, m_HasVanished(false)
 	, m_pBulletManager(pBulletManager)
+	, m_pCollision(new Collision(100.f))
 {
 	std::random_device seed_gen;
 	std::mt19937 mt(seed_gen());
@@ -71,6 +74,7 @@ Monster::Monster(FbxModel* pModel, MonsterBulletManager* pBulletManager)
 
 Monster::~Monster()
 {
+	delete m_pCollision;
 	// リソース(モデル)解放はMonsterManagerにて行う
 }
 
@@ -85,16 +89,19 @@ bool Monster::Control()
 		{
 			m_State = ROTATION;
 		}
+		m_pCollision->SetData(m_Pos);
 		break;
 
 	case ROTATION:
 		JudgeColllision();
 		Rotate();
+		m_pCollision->SetData(m_Pos);
 		break;
 
 	case COMBAT:
 		JudgeColllision();
 		AttackTarget();
+		m_pCollision->SetData(m_Pos);
 		break;
 
 	case MOVING:
@@ -127,6 +134,14 @@ void Monster::Draw()
 void Monster::JudgeColllision()
 {
 	// 衝突判定が入る予定
+	if(m_pCollision->InformCollision())
+	{
+		m_Status.Hp -= 1;
+		if(m_Status.Hp <= 0)
+		{
+			m_State = DEATH;
+		}
+	}
 }
 
 void Monster::SearchTarget()
@@ -334,6 +349,7 @@ void Monster::Rise()
 		m_State = Monster::STANDBY;
 		m_SearchRange = SearchRange;
 		m_MoveTimeCount = 0;
+		m_pCollision->SetData(m_Pos);
 		return;
 	}
 

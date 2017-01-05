@@ -9,6 +9,8 @@
 #include "Bullet.h"
 #include "fbx/FbxRelated.h"
 
+class Collision;
+
 class ApBullet :public Bullet
 {
 public:
@@ -39,6 +41,7 @@ public:
 	virtual void Clear();
 
 private:
+	Collision* m_pCollision;
 	FbxRelated m_APBullet;
 };
 #endif //APBULLET_H
