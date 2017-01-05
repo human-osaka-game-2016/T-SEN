@@ -10,7 +10,7 @@
 #include <d3dx9.h>
 
 class FbxModel;
-// class Collision;
+class Collision;
 
 /**
 * モンスターが放つ弾の基底クラス
@@ -49,7 +49,7 @@ protected:
 	float				m_BulletSpeedZ;		//!< Z軸における弾の速度
 	bool				m_HasVanished;		//!< 弾が消えたかどうかのフラグ
 
-	//Collision*			m_pCollision;	//!< 衝突判定
+	Collision*			m_pCollision;	//!< 衝突判定
 
 };
 

@@ -10,6 +10,8 @@
 
 #include "GameLib/GameLib.h"
 #include "Fbx/FbxRelated.h"
+#include "../../Collision/Collision.h"
+#include "../../Effect/EffectManager.h"
 #include "LongRangeBullet.h"
 
 //-------------------------------------------------------------------------------------------------------------------------------------//
@@ -39,6 +41,7 @@ LongRangeBullet::LongRangeBullet(FbxModel* pModel, const D3DXVECTOR3& rPos, floa
 	, m_RollingAngle(0.0f)
 	, m_IsWithinRange(true)
 {
+	m_pCollision = new Collision(30.f);
 	m_Pos.y += FiringHeight;
 	m_BulletSpeedX = static_cast<float>(cos(m_Radian) * BulletSpeed);
 	m_BulletSpeedZ = static_cast<float>(sin(m_Radian) * BulletSpeed);
@@ -46,12 +49,20 @@ LongRangeBullet::LongRangeBullet(FbxModel* pModel, const D3DXVECTOR3& rPos, floa
 
 LongRangeBullet::~LongRangeBullet()
 {
+	delete m_pCollision;
 	// モデルのリソース解放はMonsterBulletManagerにて行う
 }
 
 // コントロール関数
 bool LongRangeBullet::Control()
 {
+	if(m_pCollision->InformCollision())
+	{
+		EffectManager::Instance().Create(m_Pos, EffectManager::EXPLOSION);
+		m_HasVanished = true;
+		return m_HasVanished;
+	}
+
 	if(m_IsWithinRange)
 	{
 		m_Pos.x += m_BulletSpeedX;
@@ -84,6 +95,8 @@ bool LongRangeBullet::Control()
 	{ 
 		m_RollingAngle -= 360.f;		// 正規化
 	}
+
+	m_pCollision->SetData(m_Pos);
 
 	return m_HasVanished;
 }

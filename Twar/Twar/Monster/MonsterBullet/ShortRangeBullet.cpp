@@ -11,6 +11,8 @@
 #include <random>
 #include "GameLib/GameLib.h"
 #include "Fbx/FbxRelated.h"
+#include "../../Collision/Collision.h"
+#include "../../Effect/EffectManager.h"
 #include "ShortRangeBullet.h"
 
 //--------------------------------------------------------------------------------------------------------------------------------------//
@@ -45,6 +47,7 @@ ShortRangeBullet::ShortRangeBullet(FbxModel* pModel, const D3DXVECTOR3& rPos, fl
 	, m_StanbyTime(0)
 	, m_StanbyTimeCount(0)
 {
+	m_pCollision = new Collision(5.f);
 	m_Pos.y += FiringHeight;
 	m_BulletSpeedX = static_cast<float>(cos(m_Radian) * BulletSpeed);
 	m_BulletSpeedZ = static_cast<float>(sin(m_Radian) * BulletSpeed);
@@ -59,12 +62,20 @@ ShortRangeBullet::ShortRangeBullet(FbxModel* pModel, const D3DXVECTOR3& rPos, fl
 
 ShortRangeBullet::~ShortRangeBullet()
 {
+	delete m_pCollision;
 	// モデルのリソース解放はMonsterBulletManagerにて行う
 }
 
 // コントロール関数
 bool ShortRangeBullet::Control()
 {
+	if(m_pCollision->InformCollision())
+	{
+		EffectManager::Instance().Create(m_Pos, EffectManager::EXPLOSION);
+		m_HasVanished = true;
+		return m_HasVanished;
+	}
+
 	if(m_StanbyTime == m_StanbyTimeCount)
 	{
 		m_Pos.x += m_BulletSpeedX;
@@ -82,6 +93,9 @@ bool ShortRangeBullet::Control()
 	{
 		++m_StanbyTimeCount;
 	}
+
+	m_pCollision->SetData(m_Pos);
+
 	return m_HasVanished;
 }
 

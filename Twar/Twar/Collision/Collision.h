@@ -6,6 +6,12 @@
 class Collision
 {
 public:
+	enum CollisionID
+	{
+		MONSTER,
+		SHIP,
+
+	};
 
 	Collision(float radius);
 
