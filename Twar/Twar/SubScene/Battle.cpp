@@ -87,9 +87,10 @@ void sub_scene::Battle::Draw()
 {
 	CameraController::GetInstance().TransformView(m_pShipManager->GetCameraPos(), m_pShipManager->GetLookAtPos(), m_pShipManager->GetAngle());
 	m_pShipManager->Draw();
-	EffectManager::Instance().Draw();
+	
 	m_pMonsterManager->Draw();
 	m_pFieldManager->Draw();
+	EffectManager::Instance().Draw();
 }
 
 }

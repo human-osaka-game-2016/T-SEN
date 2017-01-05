@@ -9,6 +9,7 @@
 //Includes
 //--------------------------------------------------------------------------------------------------------------------------------------//
 
+#include "GameLib/GameLib.h"
 #include "../SubScene/Battle.h"
 #include "Effect.h"
 #include "EffectManager.h"
@@ -58,6 +59,7 @@ void EffectManager::Control()
 // 描画関数
 void EffectManager::Draw()
 {
+	GameLib::Instance().GetDevice()->SetFVF(USER_VERTEX_FVF);
 	if(m_Effect.size() > 0)
 	{
 		for(auto effect : m_Effect)
