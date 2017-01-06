@@ -47,7 +47,7 @@ ShortRangeBullet::ShortRangeBullet(FbxModel* pModel, const D3DXVECTOR3& rPos, fl
 	, m_StanbyTime(0)
 	, m_StanbyTimeCount(0)
 {
-	m_pCollision = new Collision(5.f);
+	m_pCollision = new Collision(5.f, Collision::MONSTER);
 	m_Pos.y += FiringHeight;
 	m_BulletSpeedX = static_cast<float>(cos(m_Radian) * BulletSpeed);
 	m_BulletSpeedZ = static_cast<float>(sin(m_Radian) * BulletSpeed);

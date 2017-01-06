@@ -41,7 +41,7 @@ LongRangeBullet::LongRangeBullet(FbxModel* pModel, const D3DXVECTOR3& rPos, floa
 	, m_RollingAngle(0.0f)
 	, m_IsWithinRange(true)
 {
-	m_pCollision = new Collision(30.f);
+	m_pCollision = new Collision(30.f, Collision::MONSTER);
 	m_Pos.y += FiringHeight;
 	m_BulletSpeedX = static_cast<float>(cos(m_Radian) * BulletSpeed);
 	m_BulletSpeedZ = static_cast<float>(sin(m_Radian) * BulletSpeed);

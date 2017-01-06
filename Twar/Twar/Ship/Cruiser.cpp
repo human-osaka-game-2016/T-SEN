@@ -12,10 +12,9 @@
 const float Cruiser::m_SpeedLimit = 1.5f;
 
 Cruiser::Cruiser(D3DXVECTOR3* pos)
-	: Ship(pos, { 2500, 0.f })
+	: Ship(pos, { 600, 0.f })
 {
-	m_pCollision = new Collision(20.f);
-
+	m_pCollision = new Collision(50.f, Collision::SHIP);
 }
 
 
@@ -27,6 +26,8 @@ Cruiser::~Cruiser()
 
 void Cruiser::Control()
 {
+	JudgeColllision();
+
 	switch (m_Attr)
 	{
 	case Ship::PLAYER:
@@ -61,6 +62,16 @@ void Cruiser::Control()
 		{
 			IsUp = true;
 		}
+	}
+
+	m_pCollision->SetData(m_ObjPos);
+}
+
+void Cruiser::JudgeColllision()
+{
+	if(m_pCollision->InformCollision())
+	{
+		m_Status.m_Hp -= 80;
 	}
 }
 

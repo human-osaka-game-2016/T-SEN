@@ -6,14 +6,13 @@
 class Collision
 {
 public:
-	enum CollisionID
+	enum COLLISION_ID
 	{
 		MONSTER,
 		SHIP,
-
 	};
 
-	Collision(float radius);
+	Collision(float radius, COLLISION_ID id);
 
 	~Collision();
 
@@ -27,10 +26,13 @@ public:
 
 	float		GetRadius(){ return m_Radius; }
 
+	COLLISION_ID GetID(){ return m_ID; }
+
 private:
 	D3DXVECTOR3		m_Pos;			//!< 座標
 	float			m_Radius;		//!< 半径
 	bool			m_IsExist;			//!< 衝突したかどうか
+	COLLISION_ID	m_ID;
 
 };
 

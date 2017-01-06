@@ -10,12 +10,12 @@
 //Public functions
 //--------------------------------------------------------------------------------------------------------------------------------------//
 
-Collision::Collision(float radius)
+Collision::Collision(float radius, COLLISION_ID id)
 	: m_Radius(radius)
 	, m_IsExist(false)
+	, m_ID(id)
 {
 }
-
 
 Collision::~Collision()
 {

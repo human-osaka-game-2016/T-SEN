@@ -27,6 +27,9 @@ public:
 	/**	•`‰æŠÖ” */
 	virtual void Draw();
 
+	/**Õ“Ë”»’è*/
+	void JudgeColllision();
+
 private:
 	static const float		m_SpeedLimit;			//!<	ŒÀŠE‘¬“x
 

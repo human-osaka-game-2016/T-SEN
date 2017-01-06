@@ -12,9 +12,9 @@
 const float BattleShip::m_SpeedLimit = 1.f;
 
 BattleShip::BattleShip(D3DXVECTOR3* pos)
-	: Ship(pos, { 7500, 0.f})
+	: Ship(pos, { 800, 0.f})
 {
-	m_pCollision = new Collision(30.f);
+	m_pCollision = new Collision(50.f, Collision::SHIP);
 }
 
 
@@ -25,6 +25,8 @@ BattleShip::~BattleShip()
 
 void BattleShip::Control()
 {
+	JudgeColllision();
+
 	switch (m_Attr)
 	{
 	case Ship::PLAYER:
@@ -57,6 +59,16 @@ void BattleShip::Control()
 		{
 			m_IsUp = true;
 		}
+	}
+
+	m_pCollision->SetData(m_ObjPos);
+}
+
+void BattleShip::JudgeColllision()
+{
+	if(m_pCollision->InformCollision())
+	{
+		m_Status.m_Hp -= 60;
 	}
 }
 

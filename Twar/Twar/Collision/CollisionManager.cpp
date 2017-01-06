@@ -42,8 +42,11 @@ void CollisionManager::CheckCollision()
 				float radius = (m_Collision[i]->GetRadius()) + (m_Collision[j]->GetRadius());
 				if(fLength < radius)
 				{
-					m_Collision[i]->CheckState();
-					m_Collision[j]->CheckState();
+					if(m_Collision[i]->GetID() != m_Collision[j]->GetID())
+					{
+						m_Collision[i]->CheckState();
+						m_Collision[j]->CheckState();
+					}
 				}
 			}
 

@@ -58,14 +58,14 @@ Monster::Monster(FbxModel* pModel, MonsterBulletManager* pBulletManager)
 	, m_State(Monster::STANDBY)
 	, m_SearchRange(SearchRange)
 	, m_RollingSpeed(0.0f)
-	, m_TargetPos({10000.0f, 10000.0f, 10000.0f})
+	, m_TargetPos({0.0f, 0.0f, 0.0f})
 	, m_AttackInterValCount(0)
 	, m_NonAttackTimeCount(0)
 	, m_MoveTimeCount(0)			
 	, m_HasMoved(false)
 	, m_HasVanished(false)
 	, m_pBulletManager(pBulletManager)
-	, m_pCollision(new Collision(100.f))
+	, m_pCollision(new Collision(100.f, Collision::MONSTER))
 {
 	std::random_device seed_gen;
 	std::mt19937 mt(seed_gen());

@@ -22,7 +22,7 @@
 namespace
 {
 
-const int		FiredBulletNum = 50;				// 近距離弾の発射回数
+const int		FiredBulletNum = 20;				// 近距離弾の発射回数
 const float		FiringRadian = 0.1256f;				// 近距離弾の発射方向(ラジアンを格納するため、変数名はradian)
 
 }

@@ -14,18 +14,18 @@ const float Destroyer::m_SpeedLimit = 2.f;
 Destroyer::Destroyer(D3DXVECTOR3* pos)
 	: Ship(pos, { 1500, 0.f })
 {
-	m_pCollision = new Collision(20.f);
+	m_pCollision = new Collision(50.f, Collision::SHIP);
 }
-
 
 Destroyer::~Destroyer()
 {
 	delete m_pCollision;
 }
 
-
 void Destroyer::Control()
 {
+	JudgeColllision();
+
 	switch (m_Attr)
 	{
 	case Ship::PLAYER:
@@ -60,6 +60,16 @@ void Destroyer::Control()
 		{
 			IsUp = true;
 		}
+	}
+
+	m_pCollision->SetData(m_ObjPos);
+}
+
+void Destroyer::JudgeColllision()
+{
+	if(m_pCollision->InformCollision())
+	{
+		m_Status.m_Hp -= 30;
 	}
 }
 

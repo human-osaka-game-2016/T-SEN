@@ -85,3 +85,5 @@ void Ship::CameraTransWorld(float radius)
 	m_LookatPos.z = lookatPos.z;
 }
 
+
+

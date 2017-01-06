@@ -17,7 +17,7 @@ ApBullet::ApBullet()
 	m_Data.hasDrawn = false;
 	m_Data.hasInited = false;
 	LPD3DXMESH m_pMesh = nullptr;
-	m_pCollision = new Collision(20.f);
+	m_pCollision = new Collision(20.f, Collision::SHIP);
 }
 
 ApBullet::~ApBullet()

@@ -56,6 +56,8 @@ public:
 	*/
 	void CameraTransWorld(float radius);
 
+	
+
 protected:
 	/**
 		Shipの属性
