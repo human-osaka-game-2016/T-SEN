@@ -4,6 +4,7 @@
 
 #include "GameLib/GameLib.h"
 #include "LifeGauge.h"
+#include "../Battle/BattleStateManager.h"
 
 //
 namespace
@@ -21,7 +22,7 @@ LifeGauge::LifeGauge(int lifeTexID, int flameTexID, int decoTexID, int lifeVtxID
 	: m_LifeTv(0.0f)
 	, m_LifeHeight(400.f)
 {
-	m_LifeMAX = 10;
+	m_LifeMAX = BattleStateManager::Instance().GetPlayerHp();
 	CurrentLife = m_LifeMAX;
 	m_LifeTvCount = 1.0f / m_LifeMAX;
 	m_LifePos.x = 50.f;
@@ -45,19 +46,16 @@ LifeGauge::~LifeGauge()
 
 void LifeGauge::Control()
 {
-	// CurrentLife =
-	// if(m_LifeMAX != CurrentLife)
+	CurrentLife = BattleStateManager::Instance().GetPlayerHp();
 
-	if(GameLib::Instance().CheckKey(DIK_K, K) == ON)
+	if(m_LifeMAX != CurrentLife)
 	{
-		if(m_LifeMAX != 0)
-		{
-			CurrentLife -= 1;
-			m_LifeTv += (m_LifeMAX - CurrentLife) * m_LifeTvCount;
-			m_LifePos.y += ((m_LifeMAX - CurrentLife) * m_LifePosCount) / 2.0f;
-			m_LifeHeight -= (m_LifeMAX - CurrentLife) * m_LifePosCount;;
-			m_LifeMAX = CurrentLife;
-		}
+
+		m_LifeTv += (m_LifeMAX - CurrentLife) * m_LifeTvCount;
+		m_LifePos.y += ((m_LifeMAX - CurrentLife) * m_LifePosCount) / 2.0f;
+		m_LifeHeight -= (m_LifeMAX - CurrentLife) * m_LifePosCount;;
+		m_LifeMAX = CurrentLife;
+
 	}
 }
 

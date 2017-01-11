@@ -44,6 +44,7 @@ public:
 	D3DXVECTOR3 GetLookAtPos(){ return m_Army[0]->m_LookatPos; }
 	float GetAngle(){ return m_Army[0]->m_Angle; }
 	float GetRotate(){ return m_Army[0]->m_Rotate; }
+	float GetCameraRotate(){ return m_Army[0]->m_CameraRotate; }
 	/**	コンストラクタ */
 	ShipManager();
 

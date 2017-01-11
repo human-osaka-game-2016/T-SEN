@@ -39,7 +39,7 @@ void ApBullet::Control(D3DXVECTOR3 Pos, float Rotate)
 	
 	Data* pData = nullptr;
 	BulletTime++;
-	if (GameLib::Instance().CheckKey(DIK_1, ONE) == PUSH&&BulletTime >= 120)
+	if (GameLib::Instance().ChecKMouseL() == PUSH&&BulletTime >= 120)
 	{
 		m_Data.hasDrawn = true;
 		m_Data.hasInited = true;
@@ -105,7 +105,7 @@ void ApBullet::Draw()
 			GameLib::Instance().GetDevice()->SetTransform(D3DTS_WORLD, &matWorld);
 			m_pFbx->DrawFbx();
 			pData = pData->pNext;
-			D3DXCreateSphere(GameLib::Instance().GetDevice(),20,64,32,&m_pMesh,nullptr);
+			D3DXCreateSphere(GameLib::Instance().GetDevice(),15,64,32,&m_pMesh,nullptr);
 		}
 		m_pMesh->DrawSubset(0);
 	}

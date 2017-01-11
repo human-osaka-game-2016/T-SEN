@@ -62,6 +62,9 @@
     <Filter Include="Twar\UI">
       <UniqueIdentifier>{f2006dd5-b786-4ee6-8df7-6555eb0b4aa2}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Twar\Ship\State">
+      <UniqueIdentifier>{a71e2ae5-df81-4288-95be-8a59e2227b43}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -259,6 +262,30 @@
     <ClCompile Include="UI\UI.cpp">
       <Filter>Twar\UI</Filter>
     </ClCompile>
+    <ClCompile Include="Ship\State\Attack.cpp">
+      <Filter>Twar\Ship\State</Filter>
+    </ClCompile>
+    <ClCompile Include="Ship\State\Evade.cpp">
+      <Filter>Twar\Ship\State</Filter>
+    </ClCompile>
+    <ClCompile Include="Ship\State\Pursuit.cpp">
+      <Filter>Twar\Ship\State</Filter>
+    </ClCompile>
+    <ClCompile Include="Ship\State\State.cpp">
+      <Filter>Twar\Ship\State</Filter>
+    </ClCompile>
+    <ClCompile Include="Ship\State\StateMachine.cpp">
+      <Filter>Twar\Ship\State</Filter>
+    </ClCompile>
+    <ClCompile Include="Ship\State\StateFactory.cpp">
+      <Filter>Twar\Ship\State</Filter>
+    </ClCompile>
+    <ClCompile Include="Bullet\AIBulletManager.cpp">
+      <Filter>Twar\Bullet</Filter>
+    </ClCompile>
+    <ClCompile Include="UI\Alignment.cpp">
+      <Filter>Twar\UI</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Scene\SceneManager.h">
@@ -448,6 +475,30 @@
       <Filter>Twar\UI</Filter>
     </ClInclude>
     <ClInclude Include="UI\UI.h">
+      <Filter>Twar\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="Ship\State\Attack.h">
+      <Filter>Twar\Ship\State</Filter>
+    </ClInclude>
+    <ClInclude Include="Ship\State\Evade.h">
+      <Filter>Twar\Ship\State</Filter>
+    </ClInclude>
+    <ClInclude Include="Ship\State\Pursuit.h">
+      <Filter>Twar\Ship\State</Filter>
+    </ClInclude>
+    <ClInclude Include="Ship\State\State.h">
+      <Filter>Twar\Ship\State</Filter>
+    </ClInclude>
+    <ClInclude Include="Ship\State\StateMachine.h">
+      <Filter>Twar\Ship\State</Filter>
+    </ClInclude>
+    <ClInclude Include="Ship\State\StateFactory.h">
+      <Filter>Twar\Ship\State</Filter>
+    </ClInclude>
+    <ClInclude Include="Bullet\AIBulletManager.h">
+      <Filter>Twar\Bullet</Filter>
+    </ClInclude>
+    <ClInclude Include="UI\Alignment.h">
       <Filter>Twar\UI</Filter>
     </ClInclude>
   </ItemGroup>

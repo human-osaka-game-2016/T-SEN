@@ -25,6 +25,8 @@ public:
 
 	D3DXVECTOR3 GetNearShipPos(const D3DXVECTOR3& rPos);
 
+	D3DXVECTOR3 GetMonsterPos(){ return m_MonsterPos; }
+
 	void SetShipPos(const D3DXVECTOR3& rPos);
 
 	void SetMonsterPos(const D3DXVECTOR3& rPos);

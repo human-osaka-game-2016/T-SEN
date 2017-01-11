@@ -29,7 +29,7 @@ private:
 	float			m_LifeTvCount;
 	int				m_LifeMAX;
 
-	int				CurrentLife;
+	int				m_CurrentLife;
 
 	void RotationMatrix(CUSTOMVERTEX* vertex);
 };

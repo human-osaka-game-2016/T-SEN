@@ -11,9 +11,6 @@
 
 const float	Ship::m_LimitArrivalFlame	= 500.f;
 const float	Ship::m_DecelerationSpeed	= 0.002f;
-const float	Ship::m_PitchSpeed			= 0.025f;
-const float	Ship::m_PitchUpperLimit		= -6.f;
-const float	Ship::m_PitchLowerLimit		= -2.f;
 const float Ship::m_CameraHeight		= 50.f;
 const float	Ship::m_NormalAngle			= 50.f;
 const float	Ship::m_ZoomAngle			= 10.f;

@@ -5,6 +5,7 @@
 
 #include "GameLib/GameLib.h"
 #include "MonsterLifeGauge.h"
+#include "../Battle/BattleStateManager.h"
 
 //--------------------------------------------------------------------------------------------------------------------------------------//
 //
@@ -29,8 +30,8 @@ MonsterLifeGauge::MonsterLifeGauge(int lifeTexID, int flameTexID)
 	, m_LifeHeight(VtxHeight)
 {
 	m_Angle = 90.f;
-	m_LifeMAX = 10;
-	CurrentLife = m_LifeMAX;
+	m_LifeMAX = BattleStateManager::Instance().GetMonsterHp();
+	m_CurrentLife = m_LifeMAX;
 	m_LifeTvCount = 1.0f / m_LifeMAX;
 	m_LifePos = Pos;
 	m_LifePosCount = VtxHeight / m_LifeMAX;
@@ -45,16 +46,15 @@ MonsterLifeGauge::~MonsterLifeGauge()
 
 void MonsterLifeGauge::Control()
 {
-	if(GameLib::Instance().CheckKey(DIK_K, K) == ON)
+	m_CurrentLife = BattleStateManager::Instance().GetMonsterHp();
+
+	if(m_LifeMAX != m_CurrentLife)
 	{
-		if(m_LifeMAX != 0)
-		{
-			CurrentLife -= 1;
-			m_LifeTv += (m_LifeMAX - CurrentLife) * m_LifeTvCount;
-			m_LifePos.x -= ((m_LifeMAX - CurrentLife) * m_LifePosCount) / 2.0f;
-			m_LifeHeight -= (m_LifeMAX - CurrentLife) * m_LifePosCount;
-			m_LifeMAX = CurrentLife;
-		}
+		m_CurrentLife -= 1;
+		m_LifeTv += (m_LifeMAX - m_CurrentLife) * m_LifeTvCount;
+		m_LifePos.x -= ((m_LifeMAX - m_CurrentLife) * m_LifePosCount) / 2.0f;
+		m_LifeHeight -= (m_LifeMAX - m_CurrentLife) * m_LifePosCount;
+		m_LifeMAX = m_CurrentLife;
 	}
 }
 

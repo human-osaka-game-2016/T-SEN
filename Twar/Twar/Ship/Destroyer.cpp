@@ -8,17 +8,24 @@
 #include "GameLib/GameLib.h"
 #include "Fbx/FbxModel.h"
 #include "../Collision/Collision.h"
+#include "State/StateMachine.h"
 
 const float Destroyer::m_SpeedLimit = 2.f;
 
 Destroyer::Destroyer(D3DXVECTOR3* pos)
-	: Ship(pos, { 1500, 0.f })
+	: Ship(pos, { 400, 0.f })
 {
-	m_pCollision = new Collision(50.f, Collision::SHIP);
+	m_PitchSpeed = 0.025f;
+	m_PitchUpperLimit = -3.f;
+	m_PitchLowerLimit = -2.f;
+	m_ObjPos.y = m_PitchLowerLimit + (m_PitchUpperLimit - m_PitchLowerLimit) / 2;
+	m_pCollision = new Collision(20.f, Collision::SHIP);
+	m_pStateMachine = new StateMachine(m_ObjPos, m_Rotate, m_Slant, m_SpeedLimit);
 }
 
 Destroyer::~Destroyer()
 {
+	delete m_pStateMachine;
 	delete m_pCollision;
 }
 
@@ -69,7 +76,7 @@ void Destroyer::JudgeColllision()
 {
 	if(m_pCollision->InformCollision())
 	{
-		m_Status.m_Hp -= 30;
+		m_Status.m_Hp -= 50;
 	}
 }
 
@@ -346,12 +353,12 @@ void Destroyer::ControlPlayer()
 		}
 	}
 
-	if (m_Rotate <= 360.f)						//!<	360 = 一回転の角度
+	if (m_Rotate >= 360.f)						//!<	360 = 一回転の角度
 	{
 		m_Rotate -= 360.f;
 		m_CameraRotate -= 360.f;
 	}
-	if (m_Rotate >= -360.f)
+	if (m_Rotate <= -360.f)
 	{
 		m_Rotate += 360.f;
 		m_CameraRotate += 360.f;
@@ -405,6 +412,12 @@ void Destroyer::ControlPlayer()
 //----------------------------------------------------------------------------------------------------------------------
 void Destroyer::ControlAlly()
 {
+	m_pStateMachine->SetStatus(m_Status);
+	m_pStateMachine->Update();
+	m_Rotate = m_pStateMachine->GetAngle();
+	m_Slant = m_pStateMachine->GetSlant();
+	m_ObjPos = m_pStateMachine->GetPos();
+	m_Status = m_pStateMachine->GetStatus();
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -414,6 +427,12 @@ void Destroyer::ControlAlly()
 //----------------------------------------------------------------------------------------------------------------------
 void Destroyer::ControlEnemy()
 {
+	m_pStateMachine->SetStatus(m_Status);
+	m_pStateMachine->Update();
+	m_Rotate = m_pStateMachine->GetAngle();
+	m_Slant = m_pStateMachine->GetSlant();
+	m_ObjPos = m_pStateMachine->GetPos();
+	m_Status = m_pStateMachine->GetStatus();
 }
 
 void Destroyer::Draw()

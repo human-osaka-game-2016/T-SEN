@@ -17,6 +17,19 @@ namespace sub_scene
 class BattleResult :public SubScene
 {
 public:
+	/**TextureID*/
+	enum TEXTURE_ID
+	{
+		VICTORY,
+		LOSE,
+	};
+
+	/**VertexID*/
+	enum VERTEX_ID
+	{
+		RESULT_DISP,
+	};
+
 	/**
 	* コンストラクタ
 	* @param pGameDataManager GameDataManagerクラスのインスタンスへのポインタ

@@ -11,12 +11,12 @@ TeamLogo::TeamLogo()
 	: m_Alpha(0x00)
 	, m_LogoState(LOGO_FADE_IN)
 	, m_IsEnd(false)
-	, m_PosX(320.f)
-    , m_PosY(240.f)
+	, m_PosX(0.f)
+    , m_PosY(0.f)
 {
-	float logoWidth = 1024.f;
-	float logoHeight = 512.f;
-	GameLib::Instance().LoadTex(TEAM_LOGO_TEX, "../Resouce/20141228_111729_foxinfonet.jpg");
+	float logoWidth = 1600.f;
+	float logoHeight = 900.f;
+	GameLib::Instance().LoadTex(TEAM_LOGO_TEX, "../Resouce/LOGO.png");
 	GameLib::Instance().CreateVtx(TeamLogo::TEAM_LOGO_TEX, logoWidth, logoHeight);
 }
 

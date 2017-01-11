@@ -60,6 +60,8 @@ public:
 	/**描画関数*/
 	virtual void Draw();
 
+	void ChooseShip();
+
 private:
 	HomeBackground*		m_pBackground;			//!< HomeBackgroundクラスのインスタンスへのポインタ
 	HomeMenu*			m_pHomeMenu;			//!< HomeMenuクラスのインスタンスへのポインタ

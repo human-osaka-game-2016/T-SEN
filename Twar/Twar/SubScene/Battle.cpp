@@ -15,6 +15,7 @@
 #include "../Effect/EffectManager.h"
 #include "../Collision/CollisionManager.h"
 #include "../UI/BattleUIManager.h"
+#include "../Battle/BattleStateManager.h"
 #include "Battle.h"
 
 namespace sub_scene
@@ -36,12 +37,12 @@ Battle::Battle(GameDataManager* pGameDataManager, GameTimer* pGameTimer)
 	m_pMonsterManager = new MonsterManager(pGameDataManager);
 	m_pFieldManager = new FieldManager();
 	m_pShipManager = new ShipManager();
-	m_pUIManagaer = new BattleUIManager();
+	BattleStateManager::Instance().Init();
 
 
 	ShipManager::SHIP_ID shipID[12] =
 	{
-		ShipManager::BATTLESHIP,
+		ShipManager::DESTROYER,
 		ShipManager::CRUISER,
 		ShipManager::DESTROYER,
 		ShipManager::BATTLESHIP,
@@ -55,20 +56,29 @@ Battle::Battle(GameDataManager* pGameDataManager, GameTimer* pGameTimer)
 		ShipManager::DESTROYER
 	};
 
-	char ally = 3, enemy = 3;
+	char ally = 3, enemy = 2;
 	m_pShipManager->Create(&ally, &enemy, shipID);
+
+	m_pUIManagaer = new BattleUIManager();
+	
 	LoadingThread::DiscardThread();
+
+	GameLib::Instance().ShowMouseCursor(false);
 }
 
 
 Battle::~Battle()
 {
+	
 	EffectManager::Instance().ReleaseID();
+	m_rGameLib.ReleaseAllVertex();
+	m_rGameLib.ReleaseAllTex();
 	delete m_pUIManagaer;
 	delete m_pLight;
 	delete m_pFieldManager;
 	delete m_pMonsterManager;
 	delete m_pShipManager;
+	GameLib::Instance().ShowMouseCursor(true);
 }
 
 
@@ -85,6 +95,10 @@ SUBSCENE_ID Battle::Control()
 	CollisionManager::Instance().CheckCollision();
 
 	m_pUIManagaer->Control();
+	if(BattleStateManager::Instance().CheckGameEnd())
+	{
+		return SUBSCENE_ID::BATTLE_RESULT;
+	}
 	return SUBSCENE_ID::BATTLE;
 }
 

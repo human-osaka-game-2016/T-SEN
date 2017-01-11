@@ -63,7 +63,6 @@ private:
 
 	D3DXVECTOR3						m_Pos;						//!< 位置座標
 	D3DXMATRIX						m_MatWorld;					//!< ワールド変換行列
-	float							m_Angle;					//!< 角度(向く方向)
 	float							m_Radian;					//!< ラジアンを格納する変数
 	FbxModel*						m_pModel;					//!< モデルデータ
 	Monster::STATUS					m_Status;					//!< ステータス

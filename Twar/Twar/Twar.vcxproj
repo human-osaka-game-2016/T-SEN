@@ -75,6 +75,7 @@
   <ItemGroup>
     <ClCompile Include="Battle\BattleStateManager.cpp" />
     <ClCompile Include="Battle\Radar.cpp" />
+    <ClCompile Include="Bullet\AIBulletManager.cpp" />
     <ClCompile Include="Bullet\Ap.cpp" />
     <ClCompile Include="Bullet\Bullet.cpp" />
     <ClCompile Include="Bullet\BulletManager.cpp" />
@@ -117,6 +118,12 @@
     <ClCompile Include="Ship\Destroyer.cpp" />
     <ClCompile Include="Ship\Ship.cpp" />
     <ClCompile Include="Ship\ShipManager.cpp" />
+    <ClCompile Include="Ship\State\Attack.cpp" />
+    <ClCompile Include="Ship\State\Evade.cpp" />
+    <ClCompile Include="Ship\State\Pursuit.cpp" />
+    <ClCompile Include="Ship\State\State.cpp" />
+    <ClCompile Include="Ship\State\StateFactory.cpp" />
+    <ClCompile Include="Ship\State\StateMachine.cpp" />
     <ClCompile Include="SubScene\Battle.cpp" />
     <ClCompile Include="SubScene\Ending.cpp" />
     <ClCompile Include="SubScene\Formation.cpp" />
@@ -132,6 +139,7 @@
     <ClCompile Include="Title\TitleBackground.cpp" />
     <ClCompile Include="Title\TitleLogo.cpp" />
     <ClCompile Include="Title\TitleMenu.cpp" />
+    <ClCompile Include="UI\Alignment.cpp" />
     <ClCompile Include="UI\BattleUIManager.cpp" />
     <ClCompile Include="UI\LifeGauge.cpp" />
     <ClCompile Include="UI\MonsterLifeGauge.cpp" />
@@ -141,6 +149,7 @@
   <ItemGroup>
     <ClInclude Include="Battle\BattleStateManager.h" />
     <ClInclude Include="Battle\Radar.h" />
+    <ClInclude Include="Bullet\AIBulletManager.h" />
     <ClInclude Include="Bullet\Ap.h" />
     <ClInclude Include="Bullet\Bullet.h" />
     <ClInclude Include="Bullet\BulletManager.h" />
@@ -182,6 +191,12 @@
     <ClInclude Include="Ship\Destroyer.h" />
     <ClInclude Include="Ship\Ship.h" />
     <ClInclude Include="Ship\ShipManager.h" />
+    <ClInclude Include="Ship\State\Attack.h" />
+    <ClInclude Include="Ship\State\Evade.h" />
+    <ClInclude Include="Ship\State\Pursuit.h" />
+    <ClInclude Include="Ship\State\State.h" />
+    <ClInclude Include="Ship\State\StateFactory.h" />
+    <ClInclude Include="Ship\State\StateMachine.h" />
     <ClInclude Include="SubScene\Battle.h" />
     <ClInclude Include="SubScene\Ending.h" />
     <ClInclude Include="SubScene\Formation.h" />
@@ -197,6 +212,7 @@
     <ClInclude Include="Title\TitleBackground.h" />
     <ClInclude Include="Title\TitleLogo.h" />
     <ClInclude Include="Title\TitleMenu.h" />
+    <ClInclude Include="UI\Alignment.h" />
     <ClInclude Include="UI\BattleUIManager.h" />
     <ClInclude Include="UI\LifeGauge.h" />
     <ClInclude Include="UI\MonsterLifeGauge.h" />

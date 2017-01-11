@@ -41,7 +41,7 @@ LongRangeBullet::LongRangeBullet(FbxModel* pModel, const D3DXVECTOR3& rPos, floa
 	, m_RollingAngle(0.0f)
 	, m_IsWithinRange(true)
 {
-	m_pCollision = new Collision(30.f, Collision::MONSTER);
+	m_pCollision = new Collision(50.f, Collision::MONSTER);
 	m_Pos.y += FiringHeight;
 	m_BulletSpeedX = static_cast<float>(cos(m_Radian) * BulletSpeed);
 	m_BulletSpeedZ = static_cast<float>(sin(m_Radian) * BulletSpeed);
@@ -117,11 +117,17 @@ void LongRangeBullet::Draw()
 	// 回転
 	D3DXMATRIX	matBank;
 	D3DXMatrixRotationZ(&matBank, D3DXToRadian(m_RollingAngle));
-	D3DXMatrixMultiply(&m_MatWorld, &m_MatWorld, &matBank);
+	matBank._41 = 0.0f;
+	matBank._42 = 0.0f;
+	matBank._43 = 0.0f;
+	m_MatWorld *= matBank;
+	//D3DXMatrixMultiply(&m_MatWorld, &m_MatWorld, &matBank);
 
-	D3DXMATRIX	matHeading;												
+	
+	D3DXMATRIX	matHeading;
 	D3DXMatrixRotationY(&matHeading, m_Radian);
 	D3DXMatrixMultiply(&m_MatWorld, &m_MatWorld, &matHeading);
+	
 
 	// 移動
 	D3DXMATRIX	matPosition;	// 位置座標行列

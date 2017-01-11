@@ -25,8 +25,8 @@ private:
 	int				m_TexID[ID_MAX];
 	int				m_VtxID;
 	D3DXVECTOR2		m_NeedlePos;
-	float			m_MaxSpeed;
-	float			m_MinSpeed;
+	float			m_SpeedLimit;
+	float			m_CurrentSpeed;
 	float			m_SpeedCount;
 
 	void RotationMatrix(CUSTOMVERTEX* vertex);

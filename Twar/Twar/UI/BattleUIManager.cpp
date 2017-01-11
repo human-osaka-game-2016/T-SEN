@@ -9,6 +9,7 @@
 #include "LifeGauge.h"
 #include "SpeedMeter.h"
 #include "MonsterLifeGauge.h"
+#include "Alignment.h"
 
 //-------------------------------------------------------------------------------------------------------------------------------------//
 //Public functions
@@ -20,6 +21,7 @@ BattleUIManager::BattleUIManager()
 	m_pUI.emplace_back(new LifeGauge(sub_scene::Battle::LIFE, sub_scene::Battle::LIFE_FLAME, sub_scene::Battle::LIFE_DECORATION, sub_scene::Battle::LIFE_GAUGE, sub_scene::Battle::LIFE_DECO_FLAME));
 	m_pUI.emplace_back(new SpeedMeter(sub_scene::Battle::METER_BG, sub_scene::Battle::METER_DIAL, sub_scene::Battle::METER_NEEDLE, sub_scene::Battle::METER));
 	m_pUI.emplace_back(new MonsterLifeGauge(sub_scene::Battle::LIFE, sub_scene::Battle::LIFE_FLAME));
+	m_pUI.emplace_back(new Alignment(sub_scene::Battle::ALIGNMENT, sub_scene::Battle::ALIGNMENTZOOM, sub_scene::Battle::ALIGNMENT_VTX));
 }
 
 BattleUIManager::~BattleUIManager()
@@ -64,4 +66,7 @@ void BattleUIManager::InitData()
 	GameLib::Instance().LoadTexEx(sub_scene::Battle::METER_BG, "../Resouce/SPEED_BG.png", 255, 0, 0, 0, false);
 	GameLib::Instance().LoadTexEx(sub_scene::Battle::METER_DIAL, "../Resouce/SPEED_FLAME.png", 255, 0, 0, 0, false);
 	GameLib::Instance().LoadTexEx(sub_scene::Battle::METER_NEEDLE, "../Resouce/SPEED_NEEDLE.png", 255, 0, 0, 0, false);
+
+	GameLib::Instance().LoadTexEx(sub_scene::Battle::ALIGNMENT, "../Resouce/Alignment.png", 255, 0, 0, 0, false);
+	GameLib::Instance().LoadTexEx(sub_scene::Battle::ALIGNMENTZOOM, "../Resouce/AlignmentZoom.png", 255, 255, 0, 0, false);
 }

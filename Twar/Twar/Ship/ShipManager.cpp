@@ -7,6 +7,8 @@
 #include "Fbx/FbxRelated.h"
 #include "ShipManager.h"
 #include "../Bullet/BulletManager.h"
+#include "../Battle/Radar.h"
+#include "../Battle/BattleStateManager.h"
 
 ShipManager::ShipManager()
 	: m_BattleShip(new FbxRelated)
@@ -56,6 +58,7 @@ ShipManager::ShipManager()
 
 ShipManager::~ShipManager()
 {
+	Radar::Instance().ClearData();
 	for (char i = 0; i < m_ArmyCount; i++)
 	{
 		delete m_Army[i];
@@ -73,15 +76,29 @@ ShipManager::~ShipManager()
 
 void ShipManager::Control()
 {
+	if(m_Army[0]->m_Status.m_Hp <= 0)
+	{
+		BattleStateManager::Instance().SetGameResult(false);
+	}
+
+	Radar::Instance().ClearData();
 	for (char i = 0; i < m_ArmyCount; i++)
 	{
 		m_Army[i]->Control();
+		Radar::Instance().SetShipPos(m_Army[i]->m_ObjPos);
+
 	}
+
+	BattleStateManager::Instance().SetPlayerHP(m_Army[0]->m_Status.m_Hp);
+	BattleStateManager::Instance().SetShipSpeed(m_Army[0]->m_Status.m_Speed);
+	BattleStateManager::Instance().SetZoomFlag(m_Army[0]->m_IsZoom);
+
 	for (char i = 0; i < m_EnemyCount; i++)
 	{
 		m_Enemy[i]->Control();
+		Radar::Instance().SetShipPos(m_Enemy[i]->m_ObjPos);
 	}
-	m_pBulletManager->Control(GetPlayerPos(),GetRotate());
+	m_pBulletManager->Control(GetPlayerPos(),GetCameraRotate());
 }
 
 void ShipManager::Draw()
@@ -107,6 +124,11 @@ void ShipManager::Create(char* army, char* enemy, SHIP_ID* shipID)
 	{
 		Ship* tmp = nullptr;
 
+		if(i == 0)
+		{
+			shipID[0] = BattleStateManager::Instance().GetShipID();
+		}
+
 		switch (shipID[i])
 		{
 		case BATTLESHIP:
@@ -129,12 +151,15 @@ void ShipManager::Create(char* army, char* enemy, SHIP_ID* shipID)
 		if (i == 0)
 		{
 			tmp->m_Attr = Ship::PLAYER;
+			BattleStateManager::Instance().SetPlayerHP(tmp->m_Status.m_Hp);
+			BattleStateManager::Instance().SetShipSpeed(tmp->m_Status.m_Speed);
 		}
 		else
 		{
 			tmp->m_Attr = Ship::ALLY;
 		}
 		m_Army.push_back(tmp);
+		
 	}
 
 	for (char i = EnemyShipIDStartPoint; i < m_EnemyCount + EnemyShipIDStartPoint; i++)

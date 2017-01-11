@@ -14,7 +14,11 @@ class GameDataManager
 {
 public:
 	GameDataManager();
+
 	~GameDataManager();
+
+private:
+
 };
 
 #endif // GAMEDATA_MANAGER_H

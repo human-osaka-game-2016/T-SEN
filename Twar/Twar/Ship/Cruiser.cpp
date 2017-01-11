@@ -7,6 +7,7 @@
 #include "Cruiser.h"
 #include "GameLib/GameLib.h"
 #include "Fbx/FbxModel.h"
+#include "State/StateMachine.h"
 #include "../Collision/Collision.h"
 
 const float Cruiser::m_SpeedLimit = 1.5f;
@@ -14,12 +15,18 @@ const float Cruiser::m_SpeedLimit = 1.5f;
 Cruiser::Cruiser(D3DXVECTOR3* pos)
 	: Ship(pos, { 600, 0.f })
 {
-	m_pCollision = new Collision(50.f, Collision::SHIP);
+	m_PitchSpeed = 0.025f;
+	m_PitchUpperLimit = -4.f;
+	m_PitchLowerLimit = -2.f;
+	m_ObjPos.y = m_PitchLowerLimit + (m_PitchUpperLimit - m_PitchLowerLimit) / 2;
+	m_pCollision = new Collision(30.f, Collision::SHIP);
+	m_pStateMachine = new StateMachine(m_ObjPos, m_Rotate, m_Slant, m_SpeedLimit);
 }
 
 
 Cruiser::~Cruiser()
 {
+	delete m_pStateMachine;
 	delete m_pCollision;
 }
 
@@ -71,7 +78,7 @@ void Cruiser::JudgeColllision()
 {
 	if(m_pCollision->InformCollision())
 	{
-		m_Status.m_Hp -= 80;
+		m_Status.m_Hp -= 30;
 	}
 }
 
@@ -348,12 +355,12 @@ void Cruiser::ControlPlayer()
 		}
 	}
 
-	if (m_Rotate <= 360.f)						//!<	360 = 一回転の角度
+	if (m_Rotate >= 360.f)						//!<	360 = 一回転の角度
 	{
 		m_Rotate -= 360.f;
 		m_CameraRotate -= 360.f;
 	}
-	if (m_Rotate >= -360.f)
+	if (m_Rotate <= -360.f)
 	{
 		m_Rotate += 360.f;
 		m_CameraRotate += 360.f;
@@ -407,6 +414,12 @@ void Cruiser::ControlPlayer()
 //----------------------------------------------------------------------------------------------------------------------
 void Cruiser::ControlAlly()
 {
+	m_pStateMachine->SetStatus(m_Status);
+	m_pStateMachine->Update();
+	m_Rotate = m_pStateMachine->GetAngle();
+	m_Slant = m_pStateMachine->GetSlant();
+	m_ObjPos = m_pStateMachine->GetPos();
+	m_Status = m_pStateMachine->GetStatus();
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -416,6 +429,12 @@ void Cruiser::ControlAlly()
 //----------------------------------------------------------------------------------------------------------------------
 void Cruiser::ControlEnemy()
 {
+	m_pStateMachine->SetStatus(m_Status);
+	m_pStateMachine->Update();
+	m_Rotate = m_pStateMachine->GetAngle();
+	m_Slant = m_pStateMachine->GetSlant();
+	m_ObjPos = m_pStateMachine->GetPos();
+	m_Status = m_pStateMachine->GetStatus();
 }
 
 void Cruiser::Draw()

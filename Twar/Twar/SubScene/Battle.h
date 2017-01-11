@@ -36,6 +36,8 @@ public:
 		METER_BG,
 		METER_DIAL,
 		METER_NEEDLE,
+		ALIGNMENT,
+		ALIGNMENTZOOM,
 	};
 
 	/**VertexID*/
@@ -46,6 +48,7 @@ public:
 		LIFE_GAUGE,
 		LIFE_DECO_FLAME,
 		METER,
+		ALIGNMENT_VTX,
 	};
 
 	/**

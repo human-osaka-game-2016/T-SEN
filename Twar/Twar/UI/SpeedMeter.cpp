@@ -4,6 +4,7 @@
 
 #include "GameLib/GameLib.h"
 #include "SpeedMeter.h"
+#include "../Battle/BattleStateManager.h"
 
 //-------------------------------------------------------------------------------------------------------------------------------------//
 //Namespace
@@ -15,6 +16,7 @@ namespace
 const D3DXVECTOR2		MeterPos = {140.f, 600.f};
 const float				MinTu = 0.37f;
 const float				MinTV = 0.3f;
+const float				SpeedLimit = 2.f;
 
 }
 
@@ -26,6 +28,8 @@ SpeedMeter::SpeedMeter(int bgTexID, int dialTexID, int needleTexID, int meterVtx
 	: m_NeedlePos({344.f, 900.f})
 {
 	m_Pos = MeterPos;
+	m_CurrentSpeed = BattleStateManager::Instance().GetShipSpeed();
+	m_SpeedCount = 85.f / SpeedLimit;
 	m_Angle = 0.0f;
 	m_TexID[BG] = bgTexID;
 	m_TexID[DIAL] = dialTexID;
@@ -40,20 +44,9 @@ SpeedMeter::~SpeedMeter()
 
 void SpeedMeter::Control()
 {
-	if(GameLib::Instance().CheckKey(DIK_H, H) == ON)
-	{
-		if(m_Angle <= 85.f)
-		{
-			m_Angle += 5.f;
-		}
-	}
-	if(GameLib::Instance().CheckKey(DIK_G, G) == ON)
-	{
-		if(m_Angle >= -85.f)
-		{
-			m_Angle -= 5.f;
-		}
-	}
+	m_CurrentSpeed = BattleStateManager::Instance().GetShipSpeed();
+	m_Angle = m_CurrentSpeed * m_SpeedCount;
+
 }
 
 void SpeedMeter::Draw()

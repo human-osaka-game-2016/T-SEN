@@ -7,19 +7,26 @@
 #include "BattleShip.h"
 #include "GameLib/GameLib.h"
 #include "../Collision/Collision.h"
+#include "State/StateMachine.h"
 #include "Fbx/FbxModel.h"
 
 const float BattleShip::m_SpeedLimit = 1.f;
 
 BattleShip::BattleShip(D3DXVECTOR3* pos)
-	: Ship(pos, { 800, 0.f})
+	: Ship(pos, { 1000, 0.f})
 {
+	m_PitchSpeed = 0.025f;
+	m_PitchUpperLimit = -6.f;
+	m_PitchLowerLimit = -2.f;
+	m_ObjPos.y = m_PitchLowerLimit + (m_PitchUpperLimit - m_PitchLowerLimit) / 2;
 	m_pCollision = new Collision(50.f, Collision::SHIP);
+	m_pStateMachine = new StateMachine(m_ObjPos, m_Rotate, m_Slant, m_SpeedLimit);
 }
 
 
 BattleShip::~BattleShip()
 {
+	delete m_pStateMachine;
 	delete m_pCollision;
 }
 
@@ -68,7 +75,7 @@ void BattleShip::JudgeColllision()
 {
 	if(m_pCollision->InformCollision())
 	{
-		m_Status.m_Hp -= 60;
+		m_Status.m_Hp -= 40;
 	}
 }
 
@@ -404,6 +411,12 @@ void BattleShip::ControlPlayer()
 //----------------------------------------------------------------------------------------------------------------------
 void BattleShip::ControlAlly()
 {
+	m_pStateMachine->SetStatus(m_Status);
+	m_pStateMachine->Update();
+	m_Rotate = m_pStateMachine->GetAngle();
+	m_Slant = m_pStateMachine->GetSlant();
+	m_ObjPos = m_pStateMachine->GetPos();
+	m_Status = m_pStateMachine->GetStatus();
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -413,6 +426,12 @@ void BattleShip::ControlAlly()
 //----------------------------------------------------------------------------------------------------------------------
 void BattleShip::ControlEnemy()
 {
+	m_pStateMachine->SetStatus(m_Status);
+	m_pStateMachine->Update();
+	m_Rotate = m_pStateMachine->GetAngle();
+	m_Slant = m_pStateMachine->GetSlant();
+	m_ObjPos = m_pStateMachine->GetPos();
+	m_Status = m_pStateMachine->GetStatus();
 }
 
 void BattleShip::Draw()

@@ -15,6 +15,8 @@
 #include "Home.h"
 #include "../Home/HomeBackGround.h"
 #include "../Home/HomeMenu.h"
+#include "../Battle/BattleStateManager.h"
+#include "../Ship/ShipManager.h"
 
 //-----------------------------------------------------------------------------------------------------------//
 //Namespace
@@ -34,6 +36,7 @@ Home::Home(GameDataManager* pGameDataManager, GameTimer* pGameTimer, SaveDataMan
 	, m_CurrentState(Home::NOMAL)
 {
 	Init();
+	BattleStateManager::Instance().SetShipID(ShipManager::DESTROYER);
 }
 
 Home::~Home()
@@ -64,6 +67,8 @@ SUBSCENE_ID Home::Control()
 		break;
 	}
 
+	ChooseShip();
+
 	return SUBSCENE_ID::HOME;
 }
 
@@ -71,6 +76,23 @@ void Home::Draw()
 {
 	m_pBackground->Draw();
 	m_pHomeMenu->Draw();
+}
+
+
+void Home::ChooseShip()
+{
+	if(m_rGameLib.CheckKey(DIK_1, ONE) == ON)
+	{
+		BattleStateManager::Instance().SetShipID(ShipManager::BATTLESHIP);
+	}
+	if(m_rGameLib.CheckKey(DIK_2, TWO) == ON)
+	{
+		BattleStateManager::Instance().SetShipID(ShipManager::CRUISER);
+	}
+	if(m_rGameLib.CheckKey(DIK_3, THREE) == ON)
+	{
+		BattleStateManager::Instance().SetShipID(ShipManager::DESTROYER);
+	}
 }
 
 //-----------------------------------------------------------------------------------------------------------//

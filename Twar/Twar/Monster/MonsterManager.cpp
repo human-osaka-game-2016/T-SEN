@@ -12,6 +12,7 @@
 #include "Monster.h"
 #include "MonsterManager.h"
 #include "MonsterBullet/MonsterBulletManager.h"
+#include "../Battle/BattleStateManager.h"
 
 //---------------------------------------------------------------------------------------------------------------------------------------//
 //Public functions
@@ -62,6 +63,11 @@ void MonsterManager::Control()
 	}
 
 	m_pBulletManager->Control();
+
+	if(m_pMonsters.empty())
+	{
+		BattleStateManager::Instance().SetGameResult(true);
+	}
 }
 
 void MonsterManager::Draw()

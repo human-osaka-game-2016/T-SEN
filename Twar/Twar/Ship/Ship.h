@@ -13,6 +13,7 @@ class FbxModel;
 class CameraController;
 class GameLib;
 class Collision;
+class StateMachine;
 
 /**
 	Ship全体の親クラス
@@ -56,7 +57,7 @@ public:
 	*/
 	void CameraTransWorld(float radius);
 
-	
+	bool Zoom(){ return m_IsZoom; }
 
 protected:
 	/**
@@ -95,9 +96,9 @@ protected:
 		船体の揺れ関係
 	*/
 	bool					m_IsUp;
-	static const float		m_PitchSpeed;
-	static const float		m_PitchUpperLimit;
-	static const float		m_PitchLowerLimit;
+	float					m_PitchSpeed;
+	float					m_PitchUpperLimit;
+	float					m_PitchLowerLimit;
 
 	/**
 		船体の速度関係
@@ -119,7 +120,8 @@ protected:
 	static const float		m_ZoomAngle;
 
 
-	Collision*	m_pCollision;
+	Collision*		m_pCollision;
+	StateMachine*	m_pStateMachine;
 
 	/**	case Control of "the player" */
 	virtual void ControlPlayer() = 0;
