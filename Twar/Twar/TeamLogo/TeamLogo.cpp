@@ -16,7 +16,7 @@ TeamLogo::TeamLogo()
 {
 	float logoWidth = 1024.f;
 	float logoHeight = 512.f;
-	GameLib::Instance().LoadTex(TEAM_LOGO_TEX, "../Resouce/20141228_111729_foxinfonet.jpg");
+	GameLib::Instance().LoadTex(TEAM_LOGO_TEX, "../Resouce/LogoScene/logo.png");
 	GameLib::Instance().CreateVtx(TeamLogo::TEAM_LOGO_TEX, logoWidth, logoHeight);
 }
 

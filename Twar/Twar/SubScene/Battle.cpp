@@ -22,11 +22,11 @@ Battle::Battle(GameDataManager* pGameDataManager, GameTimer* pGameTimer)
 	:SubScene(pGameDataManager, pGameTimer)
 {
 	GameLib::Instance().CreateVtx(LOAD_THREAD_VTX, 1600.f, 900.f);
-	GameLib::Instance().LoadTexEx(LOAD_THREAD_TEX, "../Resouce//tsenload3.png", 255, 0, 0, 0, false);
+	GameLib::Instance().LoadTexEx(LOAD_THREAD_TEX, "../Resouce/BattleScene/Thread/tsenLoad.png", 255, 0, 0, 0, false);
 	LoadingThread::CreateThread(LOAD_THREAD_TEX, LOAD_THREAD_VTX);
 
 	/**@todo  ここの数値は仮置き*/
-	GameLib::Instance().LoadTex(EXPLOSION_TEX, "../Resouce/Effect.dds");
+	GameLib::Instance().LoadTex(EXPLOSION_TEX, "../Resouce/BattleScene/Effect/Effect.dds");
 	GameLib::Instance().CreateVtx(EXPLOSION_VTX, 200.f, 200.f);
 	EffectManager::Instance().RegisterID(EffectManager::EXPLOSION, EXPLOSION_TEX, EXPLOSION_VTX);
 	
@@ -52,7 +52,7 @@ Battle::Battle(GameDataManager* pGameDataManager, GameTimer* pGameTimer)
 		ShipManager::DESTROYER
 	};
 
-	char ally = 1, enemy = 1;
+	char ally = 2, enemy = 2;
 	m_pShipManager->Create(&ally, &enemy, shipID);
 	LoadingThread::DiscardThread();
 }

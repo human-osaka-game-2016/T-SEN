@@ -37,13 +37,13 @@ MonsterBulletManager::MonsterBulletManager()
 {
 	// モデルデータ読み込み
 	/**@todo 2016/12/23現在モデルデータは仮置き*/
-	if(!m_pLongRangeBulletModel->LoadFbx("fbx/tenryu.fbx"))
+	if(!m_pLongRangeBulletModel->LoadFbx("fbx/ganseki.FBX"))
 	{
 		// 読み込み失敗したらエラー
 		MessageBox(0, "遠距離弾のFBXファイルの読み込みに失敗しました。", NULL, MB_OK);
 	}
 
-	if(!m_pShortRangeBulletModel->LoadFbx("fbx/tenryu.fbx"))
+	if(!m_pShortRangeBulletModel->LoadFbx("fbx/ganseki.FBX"))
 	{
 		// 読み込み失敗したらエラー
 		MessageBox(0, "近距離弾のFBXファイルの読み込みに失敗しました。", NULL, MB_OK);
