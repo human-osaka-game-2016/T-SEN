@@ -10,7 +10,7 @@ Ocean::Ocean()
 	: m_Pos(0.0f, 2.0f, 0.0f)
 	, m_Scale(1.0f)
 {
-	GameLib::Instance().LoadXFile(1, "../Resouce//sea.x");
+	GameLib::Instance().LoadXFile(1, "../Resouce/BattleScene/Xfile/sea.x");
 }
 
 Ocean::~Ocean()

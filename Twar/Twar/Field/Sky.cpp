@@ -10,7 +10,7 @@ Sky::Sky()
 	: m_Pos(0.0f, 0.0f, 0.0f)
 	, m_Scale(4000.0f)
 {
-	GameLib::Instance().LoadXFile(2, "../Resouce//Sky.x");
+	GameLib::Instance().LoadXFile(2, "../Resouce/BattleScene/Xfile/Sky.x");
 }
 
 Sky::~Sky()
