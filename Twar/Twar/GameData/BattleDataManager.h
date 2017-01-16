@@ -14,8 +14,22 @@
 class BattleDataManager
 {
 public:
-	BattleDataManager();
+	static BattleDataManager& Instance()
+	{
+		static BattleDataManager dataManager;
+		return dataManager;
+	}
 	~BattleDataManager();
+	void SetPlayerHp(int hp);
+	void SetPlayerSpeed(float speed);
+	int GetPlayerHp();
+	float GetPlayerSpeed();
+
+private:
+	BattleDataManager();
+
+	int m_PlayerHp;
+	float m_PlayerSpeed;
 };
 
 

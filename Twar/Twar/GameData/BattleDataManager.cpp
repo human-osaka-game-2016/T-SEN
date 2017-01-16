@@ -15,3 +15,13 @@ BattleDataManager::BattleDataManager()
 BattleDataManager::~BattleDataManager()
 {
 }
+
+void BattleDataManager::SetPlayerHp(int hp)
+{
+	m_PlayerHp = hp;
+}
+
+void BattleDataManager::SetPlayerSpeed(float speed)
+{
+	m_PlayerSpeed = speed;
+}
