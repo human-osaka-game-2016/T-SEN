@@ -7,14 +7,14 @@
 #include "../GameData/GameDataManager.h"
 #include "../GameData/GameTimer.h"
 #include "SubSceneFactory.h"
-#include "Opening.h"
-#include "Home.h"
-#include "Shipyard.h"
-#include "WorldMap.h"
-#include "Formation.h"
-#include "Battle.h"
-#include "BattleResult.h"
-#include "Ending.h"
+#include "Opening/Opening.h"
+#include "Home/Home.h"
+#include "Shipyard/Shipyard.h"
+#include "WorldMap/WorldMap.h"
+#include "Formation/Formation.h"
+#include "Battle/Battle.h"
+#include "BattleResult/BattleResult.h"
+#include "Ending/Ending.h"
 
 
 namespace sub_scene

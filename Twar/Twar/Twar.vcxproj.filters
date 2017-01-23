@@ -11,53 +11,86 @@
     <Filter Include="Twar\Scene">
       <UniqueIdentifier>{be9005e2-a12c-4e6e-9a40-fae35b910412}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Twar\Field">
-      <UniqueIdentifier>{030eac73-f8b9-4a25-897c-b49e587da5a4}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Twar\GameData">
       <UniqueIdentifier>{76d75aae-00f2-40ba-9445-9b61c24ecc5f}</UniqueIdentifier>
     </Filter>
     <Filter Include="Twar\SubScene">
       <UniqueIdentifier>{2c125ec9-6ad2-42cd-8f85-48b3079c6c82}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Twar\Bullet">
-      <UniqueIdentifier>{056b3e24-fa22-4b8f-b268-5a62f36d899f}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Twar\Ship">
-      <UniqueIdentifier>{f1f22bd5-40b6-46bb-969f-3c253dae3938}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Twar\LoadingThread">
-      <UniqueIdentifier>{87106c8e-5428-4201-81d6-5f02dc9217e2}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Twar\CameraController">
-      <UniqueIdentifier>{4e780aac-fd4b-4a06-9ead-4b7ac8eddede}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Twar\Title">
-      <UniqueIdentifier>{fd2c6fdd-9d05-4f49-bba4-5bee44b99bef}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Twar\Button">
       <UniqueIdentifier>{1c0b10be-02b7-4c36-b0ca-bd9ae68f8227}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Twar\TeamLogo">
-      <UniqueIdentifier>{bc96b1ec-b269-415a-b75b-242255456d3f}</UniqueIdentifier>
+    <Filter Include="Twar\Scene\LogScene">
+      <UniqueIdentifier>{37334708-6439-4057-a3d3-58c85c084b54}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Twar\Collision">
+    <Filter Include="Twar\Scene\TitleScene">
+      <UniqueIdentifier>{455907bb-2784-4c78-9aeb-24c20f1135cb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Twar\SubScene\Home">
+      <UniqueIdentifier>{9049f913-8504-40c4-ada4-3ed9d9dd789b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Twar\Thread">
+      <UniqueIdentifier>{87106c8e-5428-4201-81d6-5f02dc9217e2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Twar\SubScene\Battle">
+      <UniqueIdentifier>{0d6cde80-3c2c-4645-a033-0a6e4830d49a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Twar\SubScene\Battle\Monster">
+      <UniqueIdentifier>{35de289f-8243-40a2-8cc1-d5d9098e2736}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Twar\SubScene\Battle\Monster\MonsterBullet">
+      <UniqueIdentifier>{321db0dd-5bcb-4747-859c-53566ab1751e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Twar\SubScene\Battle\CameraController">
+      <UniqueIdentifier>{4e780aac-fd4b-4a06-9ead-4b7ac8eddede}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Twar\SubScene\Battle\Field">
+      <UniqueIdentifier>{030eac73-f8b9-4a25-897c-b49e587da5a4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Twar\SubScene\Battle\Collision">
       <UniqueIdentifier>{21aebc7d-a495-4240-aa87-7442afdfadf7}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Twar\Home">
-      <UniqueIdentifier>{4985bd3c-1e90-4274-9f4c-aa6caa952518}</UniqueIdentifier>
+    <Filter Include="Twar\SubScene\Battle\Bullet">
+      <UniqueIdentifier>{056b3e24-fa22-4b8f-b268-5a62f36d899f}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Twar\Monster">
-      <UniqueIdentifier>{dafeaa0d-dcc4-4e1f-8497-6c581f43206d}</UniqueIdentifier>
+    <Filter Include="Twar\SubScene\Battle\Ship">
+      <UniqueIdentifier>{f1f22bd5-40b6-46bb-969f-3c253dae3938}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Twar\Battle">
-      <UniqueIdentifier>{03f66e6d-4184-45af-b491-7dfe3ca7673b}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Twar\Effect">
+    <Filter Include="Twar\SubScene\Battle\Effect">
       <UniqueIdentifier>{471f0516-e307-440a-bc4b-1bec7fa9e50a}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Twar\Monster\MonsterBullet">
-      <UniqueIdentifier>{f9e1ef7c-86f1-47d6-94c0-8fe92dbea07c}</UniqueIdentifier>
+    <Filter Include="Twar\SubScene\Battle\Radar">
+      <UniqueIdentifier>{cb38ada8-c6cc-4568-b445-9b2d124883fc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Twar\SubScene\Battle\BattleState">
+      <UniqueIdentifier>{90e00e71-32e8-4b9e-976d-8a3e1013f7d6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Twar\SubScene\Battle\BattleData">
+      <UniqueIdentifier>{36ccb9d5-7277-411e-b868-e2630f7f63f3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Twar\SubScene\BattleResult">
+      <UniqueIdentifier>{9816fd68-b737-4453-964f-234befe4141b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Twar\SubScene\WorldMap">
+      <UniqueIdentifier>{fc348c6d-3059-4389-971e-a4fb5d368171}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Twar\SubScene\Ending">
+      <UniqueIdentifier>{a311019d-2cf5-4b27-a0f7-0985f305d7ca}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Twar\SubScene\Opening">
+      <UniqueIdentifier>{e13d80b6-ac5a-44e6-b755-fe53a6edc99b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Twar\SubScene\Shipyard">
+      <UniqueIdentifier>{f354e5da-d549-4f18-99ff-7e616b168534}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Twar\SubScene\Formation">
+      <UniqueIdentifier>{2cb94972-59ea-421f-b782-bd4d213c97f9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Twar\Scene\GameScene">
+      <UniqueIdentifier>{73f2b983-b564-411f-9604-53cbd26e35d3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Twar\Scene\EndRollScene">
+      <UniqueIdentifier>{c78ab6d5-de0a-4887-97c9-75893e835e27}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -76,32 +109,11 @@
     <ClCompile Include="Scene\SceneFactory.cpp">
       <Filter>Twar\Scene</Filter>
     </ClCompile>
-    <ClCompile Include="Scene\LogoScene.cpp">
-      <Filter>Twar\Scene</Filter>
-    </ClCompile>
-    <ClCompile Include="Scene\TitleScene.cpp">
-      <Filter>Twar\Scene</Filter>
-    </ClCompile>
-    <ClCompile Include="Scene\GameScene.cpp">
-      <Filter>Twar\Scene</Filter>
-    </ClCompile>
-    <ClCompile Include="Scene\EndRollScene.cpp">
-      <Filter>Twar\Scene</Filter>
-    </ClCompile>
     <ClCompile Include="GameData\GameDataManager.cpp">
       <Filter>Twar\GameData</Filter>
     </ClCompile>
     <ClCompile Include="GameData\GameTimer.cpp">
       <Filter>Twar\GameData</Filter>
-    </ClCompile>
-    <ClCompile Include="Field\FieldManager.cpp">
-      <Filter>Twar\Field</Filter>
-    </ClCompile>
-    <ClCompile Include="Field\Ocean.cpp">
-      <Filter>Twar\Field</Filter>
-    </ClCompile>
-    <ClCompile Include="Field\Sky.cpp">
-      <Filter>Twar\Field</Filter>
     </ClCompile>
     <ClCompile Include="SubScene\SubScene.cpp">
       <Filter>Twar\SubScene</Filter>
@@ -109,77 +121,14 @@
     <ClCompile Include="main.cpp">
       <Filter>Twar</Filter>
     </ClCompile>
-    <ClCompile Include="SubScene\Opening.cpp">
-      <Filter>Twar\SubScene</Filter>
-    </ClCompile>
-    <ClCompile Include="SubScene\Home.cpp">
-      <Filter>Twar\SubScene</Filter>
-    </ClCompile>
-    <ClCompile Include="SubScene\Shipyard.cpp">
-      <Filter>Twar\SubScene</Filter>
-    </ClCompile>
-    <ClCompile Include="SubScene\Formation.cpp">
-      <Filter>Twar\SubScene</Filter>
-    </ClCompile>
-    <ClCompile Include="SubScene\Battle.cpp">
-      <Filter>Twar\SubScene</Filter>
-    </ClCompile>
-    <ClCompile Include="SubScene\BattleResult.cpp">
-      <Filter>Twar\SubScene</Filter>
-    </ClCompile>
-    <ClCompile Include="SubScene\Ending.cpp">
-      <Filter>Twar\SubScene</Filter>
-    </ClCompile>
     <ClCompile Include="SubScene\SubSceneFactory.cpp">
       <Filter>Twar\SubScene</Filter>
     </ClCompile>
-    <ClCompile Include="SubScene\WorldMap.cpp">
-      <Filter>Twar\SubScene</Filter>
-    </ClCompile>
-    <ClCompile Include="Bullet\Ap.cpp">
-      <Filter>Twar\Bullet</Filter>
-    </ClCompile>
-    <ClCompile Include="Bullet\Bullet.cpp">
-      <Filter>Twar\Bullet</Filter>
-    </ClCompile>
-    <ClCompile Include="Bullet\He.cpp">
-      <Filter>Twar\Bullet</Filter>
-    </ClCompile>
-    <ClCompile Include="Bullet\Torpedo.cpp">
-      <Filter>Twar\Bullet</Filter>
-    </ClCompile>
-    <ClCompile Include="Ship\Cruiser.cpp">
-      <Filter>Twar\Ship</Filter>
-    </ClCompile>
-    <ClCompile Include="Ship\Destroyer.cpp">
-      <Filter>Twar\Ship</Filter>
-    </ClCompile>
-    <ClCompile Include="Ship\Ship.cpp">
-      <Filter>Twar\Ship</Filter>
-    </ClCompile>
-    <ClCompile Include="Ship\ShipManager.cpp">
-      <Filter>Twar\Ship</Filter>
-    </ClCompile>
     <ClCompile Include="Thread\LoadingThread.cpp">
-      <Filter>Twar\LoadingThread</Filter>
-    </ClCompile>
-    <ClCompile Include="CameraController\CameraController.cpp">
-      <Filter>Twar\CameraController</Filter>
-    </ClCompile>
-    <ClCompile Include="Ship\BattleShip.cpp">
-      <Filter>Twar\Ship</Filter>
+      <Filter>Twar\Thread</Filter>
     </ClCompile>
     <ClCompile Include="Button\MenuButton.cpp">
       <Filter>Twar\Button</Filter>
-    </ClCompile>
-    <ClCompile Include="Title\TitleBackground.cpp">
-      <Filter>Twar\Title</Filter>
-    </ClCompile>
-    <ClCompile Include="Title\TitleLogo.cpp">
-      <Filter>Twar\Title</Filter>
-    </ClCompile>
-    <ClCompile Include="Title\TitleMenu.cpp">
-      <Filter>Twar\Title</Filter>
     </ClCompile>
     <ClCompile Include="GameData\DataMenu.cpp">
       <Filter>Twar\GameData</Filter>
@@ -187,59 +136,143 @@
     <ClCompile Include="GameData\DataSlot.cpp">
       <Filter>Twar\GameData</Filter>
     </ClCompile>
-    <ClCompile Include="TeamLogo\TeamLogo.cpp">
-      <Filter>Twar\TeamLogo</Filter>
+    <ClCompile Include="Scene\LogoScene\LogoScene.cpp">
+      <Filter>Twar\Scene\LogScene</Filter>
     </ClCompile>
-    <ClCompile Include="Bullet\BulletManager.cpp">
-      <Filter>Twar\Bullet</Filter>
+    <ClCompile Include="Scene\LogoScene\TeamLogo.cpp">
+      <Filter>Twar\Scene\LogScene</Filter>
     </ClCompile>
-    <ClCompile Include="Collision\Collision.cpp">
-      <Filter>Twar\Collision</Filter>
+    <ClCompile Include="Scene\TitleScene\TitleScene.cpp">
+      <Filter>Twar\Scene\TitleScene</Filter>
     </ClCompile>
-    <ClCompile Include="Collision\CollisionManager.cpp">
-      <Filter>Twar\Collision</Filter>
+    <ClCompile Include="Scene\TitleScene\TitleBackground.cpp">
+      <Filter>Twar\Scene\TitleScene</Filter>
     </ClCompile>
-    <ClCompile Include="Home\HomeMenu.cpp">
-      <Filter>Twar\Home</Filter>
+    <ClCompile Include="Scene\TitleScene\TitleLogo.cpp">
+      <Filter>Twar\Scene\TitleScene</Filter>
     </ClCompile>
-    <ClCompile Include="Monster\Monster.cpp">
-      <Filter>Twar\Monster</Filter>
+    <ClCompile Include="Scene\TitleScene\TitleMenu.cpp">
+      <Filter>Twar\Scene\TitleScene</Filter>
     </ClCompile>
-    <ClCompile Include="Monster\MonsterManager.cpp">
-      <Filter>Twar\Monster</Filter>
+    <ClCompile Include="SubScene\Home\Home.cpp">
+      <Filter>Twar\SubScene\Home</Filter>
     </ClCompile>
-    <ClCompile Include="Battle\BattleStateManager.cpp">
-      <Filter>Twar\Battle</Filter>
+    <ClCompile Include="SubScene\Home\HomeBackGround.cpp">
+      <Filter>Twar\SubScene\Home</Filter>
     </ClCompile>
-    <ClCompile Include="GameData\BattleDataManager.cpp">
-      <Filter>Twar\GameData</Filter>
+    <ClCompile Include="SubScene\Home\HomeMenu.cpp">
+      <Filter>Twar\SubScene\Home</Filter>
     </ClCompile>
-    <ClCompile Include="Effect\Effect.cpp">
-      <Filter>Twar\Effect</Filter>
+    <ClCompile Include="SubScene\Battle\Battle.cpp">
+      <Filter>Twar\SubScene\Battle</Filter>
     </ClCompile>
-    <ClCompile Include="Effect\Explosion.cpp">
-      <Filter>Twar\Effect</Filter>
+    <ClCompile Include="SubScene\Battle\Monster\Monster.cpp">
+      <Filter>Twar\SubScene\Battle\Monster</Filter>
     </ClCompile>
-    <ClCompile Include="Effect\EffectManager.cpp">
-      <Filter>Twar\Effect</Filter>
+    <ClCompile Include="SubScene\Battle\Monster\MonsterManager.cpp">
+      <Filter>Twar\SubScene\Battle\Monster</Filter>
     </ClCompile>
-    <ClCompile Include="Home\HomeBackground.cpp">
-      <Filter>Twar\Home</Filter>
+    <ClCompile Include="SubScene\Battle\Monster\MonsterBullet\LongRangeBullet.cpp">
+      <Filter>Twar\SubScene\Battle\Monster\MonsterBullet</Filter>
     </ClCompile>
-    <ClCompile Include="Monster\MonsterBullet\MonsterBullet.cpp">
-      <Filter>Twar\Monster\MonsterBullet</Filter>
+    <ClCompile Include="SubScene\Battle\Monster\MonsterBullet\MonsterBullet.cpp">
+      <Filter>Twar\SubScene\Battle\Monster\MonsterBullet</Filter>
     </ClCompile>
-    <ClCompile Include="Monster\MonsterBullet\MonsterBulletManager.cpp">
-      <Filter>Twar\Monster\MonsterBullet</Filter>
+    <ClCompile Include="SubScene\Battle\Monster\MonsterBullet\MonsterBulletManager.cpp">
+      <Filter>Twar\SubScene\Battle\Monster\MonsterBullet</Filter>
     </ClCompile>
-    <ClCompile Include="Monster\MonsterBullet\ShortRangeBullet.cpp">
-      <Filter>Twar\Monster\MonsterBullet</Filter>
+    <ClCompile Include="SubScene\Battle\Monster\MonsterBullet\ShortRangeBullet.cpp">
+      <Filter>Twar\SubScene\Battle\Monster\MonsterBullet</Filter>
     </ClCompile>
-    <ClCompile Include="Monster\MonsterBullet\LongRangeBullet.cpp">
-      <Filter>Twar\Monster\MonsterBullet</Filter>
+    <ClCompile Include="SubScene\Battle\CameraController\CameraController.cpp">
+      <Filter>Twar\SubScene\Battle\CameraController</Filter>
     </ClCompile>
-    <ClCompile Include="Battle\Radar.cpp">
-      <Filter>Twar\Battle</Filter>
+    <ClCompile Include="SubScene\Battle\Field\FieldManager.cpp">
+      <Filter>Twar\SubScene\Battle\Field</Filter>
+    </ClCompile>
+    <ClCompile Include="SubScene\Battle\Field\Ocean.cpp">
+      <Filter>Twar\SubScene\Battle\Field</Filter>
+    </ClCompile>
+    <ClCompile Include="SubScene\Battle\Field\Sky.cpp">
+      <Filter>Twar\SubScene\Battle\Field</Filter>
+    </ClCompile>
+    <ClCompile Include="SubScene\Battle\Collision\Collision.cpp">
+      <Filter>Twar\SubScene\Battle\Collision</Filter>
+    </ClCompile>
+    <ClCompile Include="SubScene\Battle\Collision\CollisionManager.cpp">
+      <Filter>Twar\SubScene\Battle\Collision</Filter>
+    </ClCompile>
+    <ClCompile Include="SubScene\Battle\Bullet\Ap.cpp">
+      <Filter>Twar\SubScene\Battle\Bullet</Filter>
+    </ClCompile>
+    <ClCompile Include="SubScene\Battle\Bullet\Bullet.cpp">
+      <Filter>Twar\SubScene\Battle\Bullet</Filter>
+    </ClCompile>
+    <ClCompile Include="SubScene\Battle\Bullet\BulletManager.cpp">
+      <Filter>Twar\SubScene\Battle\Bullet</Filter>
+    </ClCompile>
+    <ClCompile Include="SubScene\Battle\Bullet\He.cpp">
+      <Filter>Twar\SubScene\Battle\Bullet</Filter>
+    </ClCompile>
+    <ClCompile Include="SubScene\Battle\Bullet\Torpedo.cpp">
+      <Filter>Twar\SubScene\Battle\Bullet</Filter>
+    </ClCompile>
+    <ClCompile Include="SubScene\Battle\Ship\BattleShip.cpp">
+      <Filter>Twar\SubScene\Battle\Ship</Filter>
+    </ClCompile>
+    <ClCompile Include="SubScene\Battle\Ship\Cruiser.cpp">
+      <Filter>Twar\SubScene\Battle\Ship</Filter>
+    </ClCompile>
+    <ClCompile Include="SubScene\Battle\Ship\Destroyer.cpp">
+      <Filter>Twar\SubScene\Battle\Ship</Filter>
+    </ClCompile>
+    <ClCompile Include="SubScene\Battle\Ship\Ship.cpp">
+      <Filter>Twar\SubScene\Battle\Ship</Filter>
+    </ClCompile>
+    <ClCompile Include="SubScene\Battle\Ship\ShipManager.cpp">
+      <Filter>Twar\SubScene\Battle\Ship</Filter>
+    </ClCompile>
+    <ClCompile Include="SubScene\Battle\Effect\Effect.cpp">
+      <Filter>Twar\SubScene\Battle\Effect</Filter>
+    </ClCompile>
+    <ClCompile Include="SubScene\Battle\Effect\EffectManager.cpp">
+      <Filter>Twar\SubScene\Battle\Effect</Filter>
+    </ClCompile>
+    <ClCompile Include="SubScene\Battle\Effect\Explosion.cpp">
+      <Filter>Twar\SubScene\Battle\Effect</Filter>
+    </ClCompile>
+    <ClCompile Include="SubScene\Battle\Radar\Radar.cpp">
+      <Filter>Twar\SubScene\Battle\Radar</Filter>
+    </ClCompile>
+    <ClCompile Include="SubScene\Battle\BattleState\BattleStateManager.cpp">
+      <Filter>Twar\SubScene\Battle\BattleState</Filter>
+    </ClCompile>
+    <ClCompile Include="SubScene\Battle\BattleData\BattleDataManager.cpp">
+      <Filter>Twar\SubScene\Battle\BattleData</Filter>
+    </ClCompile>
+    <ClCompile Include="SubScene\BattleResult\BattleResult.cpp">
+      <Filter>Twar\SubScene\BattleResult</Filter>
+    </ClCompile>
+    <ClCompile Include="SubScene\WorldMap\WorldMap.cpp">
+      <Filter>Twar\SubScene\WorldMap</Filter>
+    </ClCompile>
+    <ClCompile Include="SubScene\Ending\Ending.cpp">
+      <Filter>Twar\SubScene\Ending</Filter>
+    </ClCompile>
+    <ClCompile Include="SubScene\Opening\Opening.cpp">
+      <Filter>Twar\SubScene\Opening</Filter>
+    </ClCompile>
+    <ClCompile Include="SubScene\Shipyard\Shipyard.cpp">
+      <Filter>Twar\SubScene\Shipyard</Filter>
+    </ClCompile>
+    <ClCompile Include="SubScene\Formation\Formation.cpp">
+      <Filter>Twar\SubScene\Formation</Filter>
+    </ClCompile>
+    <ClCompile Include="Scene\GameScene\GameScene.cpp">
+      <Filter>Twar\Scene\GameScene</Filter>
+    </ClCompile>
+    <ClCompile Include="Scene\EndRollScene\EndRollScene.cpp">
+      <Filter>Twar\Scene\EndRollScene</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -255,107 +288,23 @@
     <ClInclude Include="Scene\SceneFactory.h">
       <Filter>Twar\Scene</Filter>
     </ClInclude>
-    <ClInclude Include="Scene\LogoScene.h">
-      <Filter>Twar\Scene</Filter>
-    </ClInclude>
-    <ClInclude Include="Scene\TitleScene.h">
-      <Filter>Twar\Scene</Filter>
-    </ClInclude>
-    <ClInclude Include="Scene\GameScene.h">
-      <Filter>Twar\Scene</Filter>
-    </ClInclude>
-    <ClInclude Include="Scene\EndRollScene.h">
-      <Filter>Twar\Scene</Filter>
-    </ClInclude>
     <ClInclude Include="GameData\GameDataManager.h">
       <Filter>Twar\GameData</Filter>
     </ClInclude>
     <ClInclude Include="GameData\GameTimer.h">
       <Filter>Twar\GameData</Filter>
     </ClInclude>
-    <ClInclude Include="Field\FieldManager.h">
-      <Filter>Twar\Field</Filter>
-    </ClInclude>
-    <ClInclude Include="Field\Sky.h">
-      <Filter>Twar\Field</Filter>
-    </ClInclude>
-    <ClInclude Include="Field\Ocean.h">
-      <Filter>Twar\Field</Filter>
-    </ClInclude>
     <ClInclude Include="SubScene\SubScene.h">
-      <Filter>Twar\SubScene</Filter>
-    </ClInclude>
-    <ClInclude Include="SubScene\Opening.h">
-      <Filter>Twar\SubScene</Filter>
-    </ClInclude>
-    <ClInclude Include="SubScene\Home.h">
-      <Filter>Twar\SubScene</Filter>
-    </ClInclude>
-    <ClInclude Include="SubScene\Shipyard.h">
-      <Filter>Twar\SubScene</Filter>
-    </ClInclude>
-    <ClInclude Include="SubScene\Formation.h">
-      <Filter>Twar\SubScene</Filter>
-    </ClInclude>
-    <ClInclude Include="SubScene\Battle.h">
-      <Filter>Twar\SubScene</Filter>
-    </ClInclude>
-    <ClInclude Include="SubScene\BattleResult.h">
-      <Filter>Twar\SubScene</Filter>
-    </ClInclude>
-    <ClInclude Include="SubScene\Ending.h">
       <Filter>Twar\SubScene</Filter>
     </ClInclude>
     <ClInclude Include="SubScene\SubSceneFactory.h">
       <Filter>Twar\SubScene</Filter>
     </ClInclude>
-    <ClInclude Include="SubScene\WorldMap.h">
-      <Filter>Twar\SubScene</Filter>
-    </ClInclude>
-    <ClInclude Include="Bullet\Ap.h">
-      <Filter>Twar\Bullet</Filter>
-    </ClInclude>
-    <ClInclude Include="Bullet\Bullet.h">
-      <Filter>Twar\Bullet</Filter>
-    </ClInclude>
-    <ClInclude Include="Bullet\He.h">
-      <Filter>Twar\Bullet</Filter>
-    </ClInclude>
-    <ClInclude Include="Bullet\Torpedo.h">
-      <Filter>Twar\Bullet</Filter>
-    </ClInclude>
-    <ClInclude Include="Ship\Cruiser.h">
-      <Filter>Twar\Ship</Filter>
-    </ClInclude>
-    <ClInclude Include="Ship\Destroyer.h">
-      <Filter>Twar\Ship</Filter>
-    </ClInclude>
-    <ClInclude Include="Ship\Ship.h">
-      <Filter>Twar\Ship</Filter>
-    </ClInclude>
-    <ClInclude Include="Ship\ShipManager.h">
-      <Filter>Twar\Ship</Filter>
-    </ClInclude>
     <ClInclude Include="Thread\LoadingThread.h">
-      <Filter>Twar\LoadingThread</Filter>
-    </ClInclude>
-    <ClInclude Include="CameraController\CameraController.h">
-      <Filter>Twar\CameraController</Filter>
-    </ClInclude>
-    <ClInclude Include="Ship\BattleShip.h">
-      <Filter>Twar\Ship</Filter>
+      <Filter>Twar\Thread</Filter>
     </ClInclude>
     <ClInclude Include="Button\MenuButton.h">
       <Filter>Twar\Button</Filter>
-    </ClInclude>
-    <ClInclude Include="Title\TitleBackground.h">
-      <Filter>Twar\Title</Filter>
-    </ClInclude>
-    <ClInclude Include="Title\TitleLogo.h">
-      <Filter>Twar\Title</Filter>
-    </ClInclude>
-    <ClInclude Include="Title\TitleMenu.h">
-      <Filter>Twar\Title</Filter>
     </ClInclude>
     <ClInclude Include="GameData\DataMenu.h">
       <Filter>Twar\GameData</Filter>
@@ -363,59 +312,143 @@
     <ClInclude Include="GameData\DataSlot.h">
       <Filter>Twar\GameData</Filter>
     </ClInclude>
-    <ClInclude Include="TeamLogo\TeamLogo.h">
-      <Filter>Twar\TeamLogo</Filter>
+    <ClInclude Include="Scene\LogoScene\LogoScene.h">
+      <Filter>Twar\Scene\LogScene</Filter>
     </ClInclude>
-    <ClInclude Include="Bullet\BulletManager.h">
-      <Filter>Twar\Bullet</Filter>
+    <ClInclude Include="Scene\LogoScene\TeamLogo.h">
+      <Filter>Twar\Scene\LogScene</Filter>
     </ClInclude>
-    <ClInclude Include="Collision\Collision.h">
-      <Filter>Twar\Collision</Filter>
+    <ClInclude Include="Scene\TitleScene\TitleScene.h">
+      <Filter>Twar\Scene\TitleScene</Filter>
     </ClInclude>
-    <ClInclude Include="Collision\CollisionManager.h">
-      <Filter>Twar\Collision</Filter>
+    <ClInclude Include="Scene\TitleScene\TitleBackground.h">
+      <Filter>Twar\Scene\TitleScene</Filter>
     </ClInclude>
-    <ClInclude Include="Home\HomeMenu.h">
-      <Filter>Twar\Home</Filter>
+    <ClInclude Include="Scene\TitleScene\TitleLogo.h">
+      <Filter>Twar\Scene\TitleScene</Filter>
     </ClInclude>
-    <ClInclude Include="Monster\Monster.h">
-      <Filter>Twar\Monster</Filter>
+    <ClInclude Include="Scene\TitleScene\TitleMenu.h">
+      <Filter>Twar\Scene\TitleScene</Filter>
     </ClInclude>
-    <ClInclude Include="Monster\MonsterManager.h">
-      <Filter>Twar\Monster</Filter>
+    <ClInclude Include="SubScene\Home\Home.h">
+      <Filter>Twar\SubScene\Home</Filter>
     </ClInclude>
-    <ClInclude Include="Battle\BattleStateManager.h">
-      <Filter>Twar\Battle</Filter>
+    <ClInclude Include="SubScene\Home\HomeBackGround.h">
+      <Filter>Twar\SubScene\Home</Filter>
     </ClInclude>
-    <ClInclude Include="GameData\BattleDataManager.h">
-      <Filter>Twar\GameData</Filter>
+    <ClInclude Include="SubScene\Home\HomeMenu.h">
+      <Filter>Twar\SubScene\Home</Filter>
     </ClInclude>
-    <ClInclude Include="Effect\Effect.h">
-      <Filter>Twar\Effect</Filter>
+    <ClInclude Include="SubScene\Battle\Battle.h">
+      <Filter>Twar\SubScene\Battle</Filter>
     </ClInclude>
-    <ClInclude Include="Effect\Explosion.h">
-      <Filter>Twar\Effect</Filter>
+    <ClInclude Include="SubScene\Battle\Monster\Monster.h">
+      <Filter>Twar\SubScene\Battle\Monster</Filter>
     </ClInclude>
-    <ClInclude Include="Effect\EffectManager.h">
-      <Filter>Twar\Effect</Filter>
+    <ClInclude Include="SubScene\Battle\Monster\MonsterManager.h">
+      <Filter>Twar\SubScene\Battle\Monster</Filter>
     </ClInclude>
-    <ClInclude Include="Home\HomeBackground.h">
-      <Filter>Twar\Home</Filter>
+    <ClInclude Include="SubScene\Battle\Monster\MonsterBullet\LongRangeBullet.h">
+      <Filter>Twar\SubScene\Battle\Monster\MonsterBullet</Filter>
     </ClInclude>
-    <ClInclude Include="Monster\MonsterBullet\MonsterBullet.h">
-      <Filter>Twar\Monster\MonsterBullet</Filter>
+    <ClInclude Include="SubScene\Battle\Monster\MonsterBullet\MonsterBullet.h">
+      <Filter>Twar\SubScene\Battle\Monster\MonsterBullet</Filter>
     </ClInclude>
-    <ClInclude Include="Monster\MonsterBullet\MonsterBulletManager.h">
-      <Filter>Twar\Monster\MonsterBullet</Filter>
+    <ClInclude Include="SubScene\Battle\Monster\MonsterBullet\MonsterBulletManager.h">
+      <Filter>Twar\SubScene\Battle\Monster\MonsterBullet</Filter>
     </ClInclude>
-    <ClInclude Include="Monster\MonsterBullet\ShortRangeBullet.h">
-      <Filter>Twar\Monster\MonsterBullet</Filter>
+    <ClInclude Include="SubScene\Battle\Monster\MonsterBullet\ShortRangeBullet.h">
+      <Filter>Twar\SubScene\Battle\Monster\MonsterBullet</Filter>
     </ClInclude>
-    <ClInclude Include="Monster\MonsterBullet\LongRangeBullet.h">
-      <Filter>Twar\Monster\MonsterBullet</Filter>
+    <ClInclude Include="SubScene\Battle\CameraController\CameraController.h">
+      <Filter>Twar\SubScene\Battle\CameraController</Filter>
     </ClInclude>
-    <ClInclude Include="Battle\Radar.h">
-      <Filter>Twar\Battle</Filter>
+    <ClInclude Include="SubScene\Battle\Field\FieldManager.h">
+      <Filter>Twar\SubScene\Battle\Field</Filter>
+    </ClInclude>
+    <ClInclude Include="SubScene\Battle\Field\Ocean.h">
+      <Filter>Twar\SubScene\Battle\Field</Filter>
+    </ClInclude>
+    <ClInclude Include="SubScene\Battle\Field\Sky.h">
+      <Filter>Twar\SubScene\Battle\Field</Filter>
+    </ClInclude>
+    <ClInclude Include="SubScene\Battle\Collision\Collision.h">
+      <Filter>Twar\SubScene\Battle\Collision</Filter>
+    </ClInclude>
+    <ClInclude Include="SubScene\Battle\Collision\CollisionManager.h">
+      <Filter>Twar\SubScene\Battle\Collision</Filter>
+    </ClInclude>
+    <ClInclude Include="SubScene\Battle\Bullet\Ap.h">
+      <Filter>Twar\SubScene\Battle\Bullet</Filter>
+    </ClInclude>
+    <ClInclude Include="SubScene\Battle\Bullet\Bullet.h">
+      <Filter>Twar\SubScene\Battle\Bullet</Filter>
+    </ClInclude>
+    <ClInclude Include="SubScene\Battle\Bullet\BulletManager.h">
+      <Filter>Twar\SubScene\Battle\Bullet</Filter>
+    </ClInclude>
+    <ClInclude Include="SubScene\Battle\Bullet\He.h">
+      <Filter>Twar\SubScene\Battle\Bullet</Filter>
+    </ClInclude>
+    <ClInclude Include="SubScene\Battle\Bullet\Torpedo.h">
+      <Filter>Twar\SubScene\Battle\Bullet</Filter>
+    </ClInclude>
+    <ClInclude Include="SubScene\Battle\Ship\BattleShip.h">
+      <Filter>Twar\SubScene\Battle\Ship</Filter>
+    </ClInclude>
+    <ClInclude Include="SubScene\Battle\Ship\Cruiser.h">
+      <Filter>Twar\SubScene\Battle\Ship</Filter>
+    </ClInclude>
+    <ClInclude Include="SubScene\Battle\Ship\Destroyer.h">
+      <Filter>Twar\SubScene\Battle\Ship</Filter>
+    </ClInclude>
+    <ClInclude Include="SubScene\Battle\Ship\Ship.h">
+      <Filter>Twar\SubScene\Battle\Ship</Filter>
+    </ClInclude>
+    <ClInclude Include="SubScene\Battle\Ship\ShipManager.h">
+      <Filter>Twar\SubScene\Battle\Ship</Filter>
+    </ClInclude>
+    <ClInclude Include="SubScene\Battle\Effect\Effect.h">
+      <Filter>Twar\SubScene\Battle\Effect</Filter>
+    </ClInclude>
+    <ClInclude Include="SubScene\Battle\Effect\EffectManager.h">
+      <Filter>Twar\SubScene\Battle\Effect</Filter>
+    </ClInclude>
+    <ClInclude Include="SubScene\Battle\Effect\Explosion.h">
+      <Filter>Twar\SubScene\Battle\Effect</Filter>
+    </ClInclude>
+    <ClInclude Include="SubScene\Battle\Radar\Radar.h">
+      <Filter>Twar\SubScene\Battle\Radar</Filter>
+    </ClInclude>
+    <ClInclude Include="SubScene\Battle\BattleState\BattleStateManager.h">
+      <Filter>Twar\SubScene\Battle\BattleState</Filter>
+    </ClInclude>
+    <ClInclude Include="SubScene\Battle\BattleData\BattleDataManager.h">
+      <Filter>Twar\SubScene\Battle\BattleData</Filter>
+    </ClInclude>
+    <ClInclude Include="SubScene\BattleResult\BattleResult.h">
+      <Filter>Twar\SubScene\BattleResult</Filter>
+    </ClInclude>
+    <ClInclude Include="SubScene\WorldMap\WorldMap.h">
+      <Filter>Twar\SubScene\WorldMap</Filter>
+    </ClInclude>
+    <ClInclude Include="SubScene\Ending\Ending.h">
+      <Filter>Twar\SubScene\Ending</Filter>
+    </ClInclude>
+    <ClInclude Include="SubScene\Opening\Opening.h">
+      <Filter>Twar\SubScene\Opening</Filter>
+    </ClInclude>
+    <ClInclude Include="SubScene\Shipyard\Shipyard.h">
+      <Filter>Twar\SubScene\Shipyard</Filter>
+    </ClInclude>
+    <ClInclude Include="SubScene\Formation\Formation.h">
+      <Filter>Twar\SubScene\Formation</Filter>
+    </ClInclude>
+    <ClInclude Include="Scene\GameScene\GameScene.h">
+      <Filter>Twar\Scene\GameScene</Filter>
+    </ClInclude>
+    <ClInclude Include="Scene\EndRollScene\EndRollScene.h">
+      <Filter>Twar\Scene\EndRollScene</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
