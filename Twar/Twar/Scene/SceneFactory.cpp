@@ -4,10 +4,10 @@
 * @author haga
 */
 #include "Scene.h"
-#include "LogoScene.h"
-#include "TitleScene.h"
-#include "GameScene.h"
-#include "EndRollScene.h"
+#include "LogoScene/LogoScene.h"
+#include "TitleScene/TitleScene.h"
+#include "GameScene/GameScene.h"
+#include "EndRollScene/EndRollScene.h"
 #include "../GameData/SaveDataManager.h"
 #include "SceneFactory.h"
 
