@@ -14,6 +14,7 @@
 #include "Fbx/FbxRelated.h"
 #include "Monster.h"
 #include "MonsterBullet/MonsterBulletManager.h"
+#include "../Radar/Radar.h"
 
 //--------------------------------------------------------------------------------------------------------------------------------------//
 //Namespace
@@ -39,8 +40,8 @@ const int			PosCount			= 3;						// モンスター位置座標の数
 // 出現位置テーブル
 const D3DXVECTOR3	PositionTable[PosCount] = {
 	{ 100.f, 0.0f,  100.f},
-	{-200.f, 0.0f, -200.f},
-	{ 300.f, 0.0f,  300.f}
+	{-800.f, 0.0f, -800.f},
+	{ 800.f, 0.0f,  800.f}
 };
 
 }
@@ -56,6 +57,7 @@ Monster::Monster(FbxModel* pModel, MonsterBulletManager* pBulletManager)
 	, m_State(Monster::STANDBY)
 	, m_SearchRange(SearchRange)
 	, m_RollingSpeed(0.0f)
+	, m_TargetPos({0.0f, 0.0f, 0.0f})
 	, m_AttackInterValCount(0)
 	, m_NonAttackTimeCount(0)
 	, m_MoveTimeCount(0)			
@@ -132,7 +134,7 @@ void Monster::JudgeColllision()
 void Monster::SearchTarget()
 {
 	// ターゲットの座標を手に入れる部分が実装予定
-	// m_TargetPos = 
+	m_TargetPos = Radar::Instance().GetNearShipPos(m_Pos);
 
 	D3DXVECTOR3 vecLength = (m_Pos - m_TargetPos);
 	float length = D3DXVec3Length(&vecLength);
@@ -371,6 +373,7 @@ void Monster::ControlAttitude()
 	MoveParallel(m_Pos.x, m_Pos.y, m_Pos.z);
 }
 
+// 平行移動関数
 void Monster::MoveParallel(float x, float y, float z)
 {
 	D3DXMATRIX moveMatrix;						// 移動量の行列

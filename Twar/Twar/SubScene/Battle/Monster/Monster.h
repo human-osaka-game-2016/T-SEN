@@ -2,7 +2,6 @@
 * @file		Monster.h
 * @brief	Monsterクラスヘッダ
 * @author	haga
-* @todo		現在まだ実装できていない部分がある
 */
 
 #ifndef MONSTER_H

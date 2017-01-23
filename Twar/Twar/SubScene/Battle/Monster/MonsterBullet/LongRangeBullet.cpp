@@ -104,7 +104,10 @@ void LongRangeBullet::Draw()
 	// 回転
 	D3DXMATRIX	matBank;
 	D3DXMatrixRotationZ(&matBank, D3DXToRadian(m_RollingAngle));
-	D3DXMatrixMultiply(&m_MatWorld, &m_MatWorld, &matBank);
+	matBank._41 = 0.0f;
+	matBank._42 = 0.0f;
+	matBank._43 = 0.0f;
+	m_MatWorld *= matBank;
 
 	D3DXMATRIX	matHeading;												
 	D3DXMatrixRotationY(&matHeading, m_Radian);
