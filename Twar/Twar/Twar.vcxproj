@@ -80,6 +80,7 @@
     <ClCompile Include="GameData\GameTimer.cpp" />
     <ClCompile Include="GameData\SaveDataManager.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="Message\GameMessage.cpp" />
     <ClCompile Include="Scene\EndRollScene\EndRollScene.cpp" />
     <ClCompile Include="Scene\GameScene\GameScene.cpp" />
     <ClCompile Include="Scene\LogoScene\LogoScene.cpp" />
@@ -92,6 +93,8 @@
     <ClCompile Include="Scene\TitleScene\TitleMenu.cpp" />
     <ClCompile Include="Scene\TitleScene\TitleScene.cpp" />
     <ClCompile Include="SubScene\BattleResult\BattleResult.cpp" />
+    <ClCompile Include="SubScene\BattleResult\ResultBackground.cpp" />
+    <ClCompile Include="SubScene\BattleResult\ScoreResult.cpp" />
     <ClCompile Include="SubScene\Battle\Battle.cpp" />
     <ClCompile Include="SubScene\Battle\BattleData\BattleDataManager.cpp" />
     <ClCompile Include="SubScene\Battle\BattleState\BattleStateManager.cpp" />
@@ -140,6 +143,7 @@
     <ClInclude Include="GameData\GameDataManager.h" />
     <ClInclude Include="GameData\GameTimer.h" />
     <ClInclude Include="GameData\SaveDataManager.h" />
+    <ClInclude Include="Message\GameMessage.h" />
     <ClInclude Include="Scene\EndRollScene\EndRollScene.h" />
     <ClInclude Include="Scene\GameScene\GameScene.h" />
     <ClInclude Include="Scene\LogoScene\LogoScene.h" />
@@ -152,6 +156,8 @@
     <ClInclude Include="Scene\TitleScene\TitleMenu.h" />
     <ClInclude Include="Scene\TitleScene\TitleScene.h" />
     <ClInclude Include="SubScene\BattleResult\BattleResult.h" />
+    <ClInclude Include="SubScene\BattleResult\ResultBackground.h" />
+    <ClInclude Include="SubScene\BattleResult\ScoreResult.h" />
     <ClInclude Include="SubScene\Battle\Battle.h" />
     <ClInclude Include="SubScene\Battle\BattleData\BattleDataManager.h" />
     <ClInclude Include="SubScene\Battle\BattleState\BattleStateManager.h" />

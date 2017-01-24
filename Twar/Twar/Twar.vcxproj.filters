@@ -92,6 +92,9 @@
     <Filter Include="Twar\Scene\EndRollScene">
       <UniqueIdentifier>{c78ab6d5-de0a-4887-97c9-75893e835e27}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Twar\Message">
+      <UniqueIdentifier>{a22f1e4f-4c6b-4bd9-8995-53234a3953ec}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -274,6 +277,15 @@
     <ClCompile Include="Scene\EndRollScene\EndRollScene.cpp">
       <Filter>Twar\Scene\EndRollScene</Filter>
     </ClCompile>
+    <ClCompile Include="SubScene\BattleResult\ResultBackground.cpp">
+      <Filter>Twar\SubScene\BattleResult</Filter>
+    </ClCompile>
+    <ClCompile Include="Message\GameMessage.cpp">
+      <Filter>Twar\Message</Filter>
+    </ClCompile>
+    <ClCompile Include="SubScene\BattleResult\ScoreResult.cpp">
+      <Filter>Twar\SubScene\BattleResult</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Scene\SceneManager.h">
@@ -449,6 +461,15 @@
     </ClInclude>
     <ClInclude Include="Scene\EndRollScene\EndRollScene.h">
       <Filter>Twar\Scene\EndRollScene</Filter>
+    </ClInclude>
+    <ClInclude Include="SubScene\BattleResult\ResultBackground.h">
+      <Filter>Twar\SubScene\BattleResult</Filter>
+    </ClInclude>
+    <ClInclude Include="Message\GameMessage.h">
+      <Filter>Twar\Message</Filter>
+    </ClInclude>
+    <ClInclude Include="SubScene\BattleResult\ScoreResult.h">
+      <Filter>Twar\SubScene\BattleResult</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
