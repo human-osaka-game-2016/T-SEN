@@ -8,6 +8,10 @@
 
 #include "../SubScene.h"
 
+class ScoreResult;
+class ResultBackground;
+class GameMessage;
+
 namespace sub_scene
 {
 
@@ -16,7 +20,27 @@ namespace sub_scene
 */
 class BattleResult :public SubScene
 {
+
 public:
+	/**TextureID*/
+	enum TEXTURE_ID
+	{
+		RESULT_TEX,			//!< 結果画像のtexture
+	};
+
+	/**VertexID*/
+	enum VERTEX_ID
+	{
+		RESULT_VTX,			//!< 結果画像のvertex
+	};
+
+	/**シーンの状態*/
+	enum STATE
+	{
+		RESULT_FEDE_IN,		//!< 結果画像がフェードインしている状態  
+		SCORE_DISP,			//!< スコアが表示されている状態
+	};
+
 	/**
 	* コンストラクタ
 	* @param pGameDataManager GameDataManagerクラスのインスタンスへのポインタ
@@ -33,6 +57,12 @@ public:
 
 	/**描画関数*/
 	virtual void Draw();
+
+private:
+	ScoreResult*		m_pScoreResult;			//!< ScoreResultクラスのインスタンスへのポインタ
+	ResultBackground*	m_pBackground;			//!< ResultBackgroundクラスのインスタンスへのポインタ
+	GameMessage*		m_pMessage;				//!< GameMessageクラスのインスタンスへのポインタ
+	STATE				m_State;				//!< シーの状態を格納する変数
 
 };
 
