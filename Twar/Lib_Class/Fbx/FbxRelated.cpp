@@ -8,8 +8,8 @@
 
 FbxRelated::FbxRelated()
 {
-	m_pFbxManager	= NULL;
-	m_pFbxScene		= NULL;
+	m_pFbxManager = NULL;
+	m_pFbxScene = NULL;
 	m_pModel = new FbxModel;
 	m_pModel->m_pFbxModelData = new FbxModel::FbxModelData;
 }
@@ -35,7 +35,7 @@ void FbxRelated::Release()
 	/*
 	if (!m_pModel->m_pFbxModelData->pVertexColor)
 	{
-		delete m_pModel->m_pFbxModelData->pVertexColor;
+	delete m_pModel->m_pFbxModelData->pVertexColor;
 	}
 	*/
 	for (int i = 0; i < m_pModel->m_pFbxModelData->UvLayerCount; i++)
@@ -156,7 +156,7 @@ bool FbxRelated::LoadFbx(const char* pName)
 
 	// 三角形化(データによっては、四角形ポリゴンとか混ざっている場合がある) 
 	TriangulateRecursive(m_pFbxScene->GetRootNode(), m_pFbxScene);
-	
+
 	//	ルートノードを取得
 	fbxsdk::FbxNode* pRootNode = m_pFbxScene->GetRootNode();
 
@@ -177,7 +177,7 @@ bool FbxRelated::LoadFbx(const char* pName)
 
 
 void FbxRelated::GetMesh(fbxsdk::FbxNode* pNode)
-{	
+{
 	//	ノードも属性を取得
 	fbxsdk::FbxNodeAttribute* pAttr = pNode->GetNodeAttribute();
 
@@ -202,7 +202,7 @@ void FbxRelated::GetMesh(fbxsdk::FbxNode* pNode)
 			GetMaterialData(pMesh);
 
 			//	頂点カラーを取得
-//			GetVertexColor(pMesh);
+			//			GetVertexColor(pMesh);
 		}
 		break;
 		}
@@ -273,7 +273,7 @@ void FbxRelated::GetPosition(fbxsdk::FbxMesh* pMesh)
 
 		//	i番目の頂点の座標Zを取得
 		pTmpVertex[i].z = (float)pVertex[i][2];
-	
+
 		if (m_pModel->maxZ < pTmpVertex[i].z)
 		{
 			m_pModel->maxZ = pTmpVertex[i].z;
@@ -281,6 +281,19 @@ void FbxRelated::GetPosition(fbxsdk::FbxMesh* pMesh)
 		if (m_pModel->minZ > pTmpVertex[i].z)
 		{
 			m_pModel->minZ = pTmpVertex[i].z;
+		}
+
+		if (m_pModel->maxR < pTmpVertex[i].x)
+		{
+			m_pModel->maxR = pTmpVertex[i].x;
+		}
+		if (m_pModel->maxR < pTmpVertex[i].y)
+		{
+			m_pModel->maxR = pTmpVertex[i].y;
+		}
+		if (m_pModel->maxR < pTmpVertex[i].z)
+		{
+			m_pModel->maxR = pTmpVertex[i].z;
 		}
 	}
 
@@ -297,7 +310,7 @@ void FbxRelated::GetPosition(fbxsdk::FbxMesh* pMesh)
 		//	i番目の頂点の座標Zを取得
 		m_pModel->m_pFbxModelData->pVertex[i].Vec.z = pTmpVertex[pIndex[i]].z;
 	}
-	
+
 	//	インデックスバッファのハードコピー
 	m_pModel->m_pFbxModelData->pIndexBuffer = new int[m_pModel->m_pFbxModelData->indexCount];
 
@@ -473,7 +486,7 @@ void FbxRelated::GetVertexUV(fbxsdk::FbxMesh* pMesh)
 		m_pModel->m_pFbxModelData->pVertex[i].tu = m_pModel->m_pFbxModelData->uvSet.uvBuffer[0][i].x;
 		m_pModel->m_pFbxModelData->pVertex[i].tv = m_pModel->m_pFbxModelData->uvSet.uvBuffer[0][i].y;
 	}
-	
+
 }
 
 
@@ -567,10 +580,10 @@ void FbxRelated::GetMaterialData(fbxsdk::FbxMesh* pMesh)
 			GetTextureName(phong, fbxsdk::FbxSurfaceMaterial::sSpecular);
 
 			// 光沢
-//			shininess_ = (float)phong->GetShininess().Get();		??????????????
+			//			shininess_ = (float)phong->GetShininess().Get();		??????????????
 
 			// 反射
-//			reflectivity_ = (float)phong->GetReflectionFactor().Get();		??????????????
+			//			reflectivity_ = (float)phong->GetReflectionFactor().Get();		??????????????
 
 			MaterialData.Power = (float)phong->Shininess.Get();
 
@@ -685,67 +698,67 @@ void FbxRelated::GetTextureName(fbxsdk::FbxSurfaceMaterial* pMaterial, const cha
 /*
 void FbxRelated::GetVertexColor(fbxsdk::FbxMesh* pMesh)
 {
-	//	頂点カラーセット数を取得
-	int vColorLayerCount = pMesh->GetElementVertexColorCount();
+//	頂点カラーセット数を取得
+int vColorLayerCount = pMesh->GetElementVertexColorCount();
 
-	//	レイヤー数だけ回る
-	for (int i = 0; vColorLayerCount > i; i++)
-	{
-		//	法線セットを取得
-		fbxsdk::FbxGeometryElementVertexColor* pColor = pMesh->GetElementVertexColor(i);
+//	レイヤー数だけ回る
+for (int i = 0; vColorLayerCount > i; i++)
+{
+//	法線セットを取得
+fbxsdk::FbxGeometryElementVertexColor* pColor = pMesh->GetElementVertexColor(i);
 
-		//	マッピングモードの取得
-		fbxsdk::FbxGeometryElement::EMappingMode mappingMode = pColor->GetMappingMode();
+//	マッピングモードの取得
+fbxsdk::FbxGeometryElement::EMappingMode mappingMode = pColor->GetMappingMode();
 
-		//	リファレンスモードの取得
-		fbxsdk::FbxGeometryElement::EReferenceMode referenceMode = pColor->GetReferenceMode();
+//	リファレンスモードの取得
+fbxsdk::FbxGeometryElement::EReferenceMode referenceMode = pColor->GetReferenceMode();
 
-		//	マッピングモードの判別
-		switch (mappingMode)
-		{
-		case fbxsdk::FbxGeometryElement::eByControlPoint:
-			break;
+//	マッピングモードの判別
+switch (mappingMode)
+{
+case fbxsdk::FbxGeometryElement::eByControlPoint:
+break;
 
-		case fbxsdk::FbxGeometryElement::eByPolygon:
-			break;
+case fbxsdk::FbxGeometryElement::eByPolygon:
+break;
 
-		case fbxsdk::FbxGeometryElement::eByPolygonVertex:
+case fbxsdk::FbxGeometryElement::eByPolygonVertex:
 
-			//	リファレンスモードの判別
-			switch (referenceMode)
-			{
-			case fbxsdk::FbxGeometryElement::eIndexToDirect:
-			{
-				fbxsdk::FbxLayerElementArrayTemplate<int>* pIndex = &pColor->GetIndexArray();
-				int indexCount = pIndex->GetCount();
+//	リファレンスモードの判別
+switch (referenceMode)
+{
+case fbxsdk::FbxGeometryElement::eIndexToDirect:
+{
+fbxsdk::FbxLayerElementArrayTemplate<int>* pIndex = &pColor->GetIndexArray();
+int indexCount = pIndex->GetCount();
 
-				m_pModel->m_pFbxModelData->pVertexColor = new FbxModel::ColorRGBA[indexCount];
+m_pModel->m_pFbxModelData->pVertexColor = new FbxModel::ColorRGBA[indexCount];
 
-				//	頂点の数だけ頂点カラーを取得
-				for (int j = 0; indexCount > j; j++)
-				{
-					m_pModel->m_pFbxModelData->pVertexColor[j].r = (float)pColor->GetDirectArray().GetAt(pIndex->GetAt(j))[0];
-					m_pModel->m_pFbxModelData->pVertexColor[j].g = (float)pColor->GetDirectArray().GetAt(pIndex->GetAt(j))[1];
-					m_pModel->m_pFbxModelData->pVertexColor[j].b = (float)pColor->GetDirectArray().GetAt(pIndex->GetAt(j))[2];
-					m_pModel->m_pFbxModelData->pVertexColor[j].a = (float)pColor->GetDirectArray().GetAt(pIndex->GetAt(j))[3];
-				}
-			}
-			break;
+//	頂点の数だけ頂点カラーを取得
+for (int j = 0; indexCount > j; j++)
+{
+m_pModel->m_pFbxModelData->pVertexColor[j].r = (float)pColor->GetDirectArray().GetAt(pIndex->GetAt(j))[0];
+m_pModel->m_pFbxModelData->pVertexColor[j].g = (float)pColor->GetDirectArray().GetAt(pIndex->GetAt(j))[1];
+m_pModel->m_pFbxModelData->pVertexColor[j].b = (float)pColor->GetDirectArray().GetAt(pIndex->GetAt(j))[2];
+m_pModel->m_pFbxModelData->pVertexColor[j].a = (float)pColor->GetDirectArray().GetAt(pIndex->GetAt(j))[3];
+}
+}
+break;
 
-			case fbxsdk::FbxGeometryElement::eDirect:
-				break;
+case fbxsdk::FbxGeometryElement::eDirect:
+break;
 
-			case fbxsdk::FbxGeometryElement::eIndex:
-				break;
+case fbxsdk::FbxGeometryElement::eIndex:
+break;
 
-			default:
-				break;
-			}
-			break;
+default:
+break;
+}
+break;
 
-		default:
-			break;
-		}
-	}
+default:
+break;
+}
+}
 }
 */

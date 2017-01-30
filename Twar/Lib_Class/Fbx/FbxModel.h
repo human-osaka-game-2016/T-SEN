@@ -73,13 +73,13 @@ private:
 		std::vector<TextureData*> pTextureData;		//!<	テクスチャデータ
 		std::vector<D3DMATERIAL9> MaterialData;		//!<	マテリアルデータ
 
-}FbxModelData;
+	}FbxModelData;
 
 	FbxModelData* m_pFbxModelData;					//!<	全モデルデータ
 	IDirect3DDevice9*			m_pDevice;			//!<	Direct3Dのデバイス
 
 public:
-	float maxX, maxY, maxZ, minX, minY, minZ;
+	float maxX, maxY, maxZ, minX, minY, minZ, maxR;
 
 	FbxModel();
 	~FbxModel();

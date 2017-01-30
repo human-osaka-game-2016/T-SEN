@@ -13,6 +13,7 @@
 #include "Monster/MonsterManager.h"
 #include "Ship/ShipManager.h"
 #include "Effect/EffectManager.h"
+#include "Collision/CollisionManager.h"
 #include "Battle.h"
 
 namespace sub_scene
@@ -34,6 +35,7 @@ Battle::Battle(GameDataManager* pGameDataManager, GameTimer* pGameTimer)
 	m_pMonsterManager = new MonsterManager(pGameDataManager);
 	m_pFieldManager = new FieldManager();
 	m_pShipManager = new ShipManager();
+	m_pCollisionManager = new CollisionManager(m_pShipManager, m_pMonsterManager, m_pShipManager->GetBulletManager());
 
 
 	ShipManager::SHIP_ID shipID[12] =
@@ -70,6 +72,7 @@ Battle::~Battle()
 
 SUBSCENE_ID Battle::Control()
 {
+	m_pCollisionManager->Control();
 	m_pFieldManager->Control();
 	m_pMonsterManager->Control();
 	EffectManager::Instance().Control();
