@@ -1,6 +1,6 @@
 ﻿/**
-	@file ShipManager.h
-	@brief ShipManagerクラスヘッダ
+	@file Ship.h
+	@brief Shipクラスヘッダ
 	@author kawaguchi
 */
 
@@ -8,10 +8,12 @@
 #define	SHIP_H
 
 #include <d3dx9.h>
+//#include "ShipManager.h"
 
 class FbxModel;
 class CameraController;
 class GameLib;
+class ShipManager;
 
 /**
 	Ship全体の親クラス
@@ -30,12 +32,22 @@ public:
 		float m_Speed;
 	};
 
+	enum SHIP_ID						//!<	船の艦種を識別するID
+	{
+		BATTLESHIP,
+		CRUISER,
+		DESTROYER,
+
+		NONE,
+	};
+
+
 	/**
 		コンストラクタ
 		@param	pos			オブジェクトの中心座標
 		@param	status		ステータス
 	*/
-	Ship(D3DXVECTOR3* pos, STATUS status);
+	Ship(D3DXVECTOR3* pos, STATUS status, SHIP_ID ShipID);
 
 	/**	デストラクタ */
 	~Ship();
@@ -70,7 +82,7 @@ protected:
 	FbxModel*				m_pFbx;					//!<	モデルデータ
 	D3DXVECTOR3		        m_ObjPos;				//!<	座標
 	CameraController&		m_pcameraController;	//!<	カメラコントローラー
-	
+	int	m_ShipID;
 	ATTR					m_Attr;					//!<	Shipの属性
 	STATUS					m_Status;				//!<	ステータス
 
@@ -114,6 +126,9 @@ protected:
 	bool					m_IsZoom;
 	static const float		m_NormalAngle;
 	static const float		m_ZoomAngle;
+
+	bool				m_IsHit;
+	bool				m_IsRush;
 
 	/**	case Control of "the player" */
 	virtual void ControlPlayer() = 0;

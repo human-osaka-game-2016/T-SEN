@@ -79,7 +79,7 @@ private:
 	IDirect3DDevice9*			m_pDevice;			//!<	Direct3Dのデバイス
 
 public:
-	float maxX, maxY, maxZ, minX, minY, minZ;
+	float maxX, maxY, maxZ, minX, minY, minZ, maxR;
 
 	FbxModel();
 	~FbxModel();

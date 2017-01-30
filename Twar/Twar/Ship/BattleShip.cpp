@@ -11,7 +11,7 @@
 const float BattleShip::m_SpeedLimit = 1.f;
 
 BattleShip::BattleShip(D3DXVECTOR3* pos)
-	: Ship(pos, { 7500, 0.f})
+	: Ship(pos, { 7500, 0.f }, SHIP_ID::BATTLESHIP)
 {
 }
 
@@ -22,19 +22,36 @@ BattleShip::~BattleShip()
 
 void BattleShip::Control()
 {
-	switch (m_Attr)
+	if (!m_IsHit)
 	{
-	case Ship::PLAYER:
-		BattleShip::ControlPlayer();
-		break;
+		switch (m_Attr)
+		{
+		case Ship::PLAYER:
+			BattleShip::ControlPlayer();
+			break;
 
-	case Ship::ALLY:
-		BattleShip::ControlAlly();
-		break;
+		case Ship::ALLY:
+			BattleShip::ControlAlly();
+			break;
 
-	case Ship::ENEMY:
-		BattleShip::ControlEnemy();
-		break;
+		case Ship::ENEMY:
+			BattleShip::ControlEnemy();
+			break;
+		}
+	}
+	else
+	{
+		D3DXVECTOR3 vecAxisZ{ 0.f, 0.f, 1.f };			//!<	単位ベクトル
+		D3DXVec3TransformCoord(&vecAxisZ, &vecAxisZ, &m_Rotation);
+
+		m_ObjPos -= vecAxisZ * m_Status.m_Speed;
+		m_CameraPos.x = m_LookatPos.x = m_ObjPos.x;
+		m_CameraPos.z = m_LookatPos.z = m_ObjPos.z;
+
+		m_Status.m_Speed = 0.f;
+		m_Slant = 0.f;
+
+		m_IsHit = false;
 	}
 
 	if (m_IsUp)

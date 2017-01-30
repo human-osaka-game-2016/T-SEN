@@ -11,7 +11,7 @@
 const float Destroyer::m_SpeedLimit = 2.f;
 
 Destroyer::Destroyer(D3DXVECTOR3* pos)
-	: Ship(pos, { 1500, 0.f })
+	: Ship(pos, { 1500, 0.f }, SHIP_ID::DESTROYER)
 {
 }
 
@@ -23,30 +23,45 @@ Destroyer::~Destroyer()
 
 void Destroyer::Control()
 {
-	switch (m_Attr)
+	if (!m_IsHit)
 	{
-	case Ship::PLAYER:
-		Destroyer::ControlPlayer();
-		break;
+		switch (m_Attr)
+		{
+		case Ship::PLAYER:
+			Destroyer::ControlPlayer();
+			break;
 
-	case Ship::ALLY:
-		Destroyer::ControlAlly();
-		break;
+		case Ship::ALLY:
+			Destroyer::ControlAlly();
+			break;
 
-	case Ship::ENEMY:
-		Destroyer::ControlEnemy();
-		break;
+		case Ship::ENEMY:
+			Destroyer::ControlEnemy();
+			break;
+		}
+	}
+	else
+	{
+		D3DXVECTOR3 vecAxisZ{ 0.f, 0.f, 1.f };			//!<	単位ベクトル
+		D3DXVec3TransformCoord(&vecAxisZ, &vecAxisZ, &m_Rotation);
+
+		m_ObjPos -= vecAxisZ * m_Status.m_Speed;
+		m_CameraPos.x = m_LookatPos.x = m_ObjPos.x;
+		m_CameraPos.z = m_LookatPos.z = m_ObjPos.z;
+
+		m_Status.m_Speed = 0.f;
+		m_Slant = 0.f;
+
+		m_IsHit = false;
 	}
 
-	static bool IsUp = false;
-
-	if (IsUp)
+	if (m_IsUp)
 	{
 		m_ObjPos.y += m_PitchSpeed;
 
 		if (m_ObjPos.y >= m_PitchLowerLimit)
 		{
-			IsUp = false;
+			m_IsUp = false;
 		}
 	}
 	else
@@ -55,7 +70,7 @@ void Destroyer::Control()
 
 		if (m_ObjPos.y <= m_PitchUpperLimit)
 		{
-			IsUp = true;
+			m_IsUp = true;
 		}
 	}
 }
@@ -333,12 +348,12 @@ void Destroyer::ControlPlayer()
 		}
 	}
 
-	if (m_Rotate <= 360.f)						//!<	360 = 一回転の角度
+	if (m_Rotate >= 360.f)						//!<	360 = 一回転の角度
 	{
 		m_Rotate -= 360.f;
 		m_CameraRotate -= 360.f;
 	}
-	if (m_Rotate >= -360.f)
+	if (m_Rotate <= -360.f)
 	{
 		m_Rotate += 360.f;
 		m_CameraRotate += 360.f;

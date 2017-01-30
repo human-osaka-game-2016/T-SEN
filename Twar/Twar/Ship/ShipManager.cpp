@@ -43,6 +43,28 @@ ShipManager::ShipManager()
 		// 読み込み失敗したらエラー
 		MessageBox(0, "FBXファイルの読み込みに失敗しました。", NULL, MB_OK);
 	}
+
+	m_BattleShipSize.m_MaxX = m_BattleShip->m_pModel->maxX;
+	m_BattleShipSize.m_MaxY = m_BattleShip->m_pModel->maxY;
+	m_BattleShipSize.m_MaxZ = m_BattleShip->m_pModel->maxZ;
+	m_BattleShipSize.m_MinX = m_BattleShip->m_pModel->minX;
+	m_BattleShipSize.m_MinY = m_BattleShip->m_pModel->minY;
+	m_BattleShipSize.m_MinZ = m_BattleShip->m_pModel->minZ;
+	m_BattleShipSize.m_MaxR = m_BattleShip->m_pModel->maxR;
+	m_CruiserSize.m_MaxX = m_Cruiser->m_pModel->maxX;
+	m_CruiserSize.m_MaxY = m_Cruiser->m_pModel->maxY;
+	m_CruiserSize.m_MaxZ = m_Cruiser->m_pModel->maxZ;
+	m_CruiserSize.m_MinX = m_Cruiser->m_pModel->minX;
+	m_CruiserSize.m_MinY = m_Cruiser->m_pModel->minY;
+	m_CruiserSize.m_MinZ = m_Cruiser->m_pModel->minZ;
+	m_CruiserSize.m_MaxR = m_BattleShip->m_pModel->maxR;
+	m_DestroyerSize.m_MaxX = m_Destroyer->m_pModel->maxX;
+	m_DestroyerSize.m_MaxY = m_Destroyer->m_pModel->maxY;
+	m_DestroyerSize.m_MaxZ = m_Destroyer->m_pModel->maxZ;
+	m_DestroyerSize.m_MinX = m_Destroyer->m_pModel->minX;
+	m_DestroyerSize.m_MinY = m_Destroyer->m_pModel->minY;
+	m_DestroyerSize.m_MinZ = m_Destroyer->m_pModel->minZ;
+	m_DestroyerSize.m_MaxR = m_BattleShip->m_pModel->maxR;
 	
 	BulletManager::BULLET_ID bulletID[3] =
 	{
@@ -81,7 +103,7 @@ void ShipManager::Control()
 	{
 		m_Enemy[i]->Control();
 	}
-	m_pBulletManager->Control(GetPlayerPos(),GetRotate());
+	m_pBulletManager->Control(GetPlayerPos(), GetArmyRotate(0));
 }
 
 void ShipManager::Draw()

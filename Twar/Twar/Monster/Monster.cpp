@@ -57,6 +57,7 @@ Monster::Monster(FbxModel* model)
 	, m_IsMoving(false)					
 	, m_FadeOutTimeCount(0)
 	, m_HasDisappeared(false)
+	, m_IsHit(false)
 {
 	std::random_device seed_gen;
 	std::mt19937 mt(seed_gen());

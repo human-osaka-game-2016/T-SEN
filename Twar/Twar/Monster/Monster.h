@@ -70,6 +70,7 @@ private:
 	bool							m_HasDisappeared;			//!< 消滅したかどうか
 	//std::vector<MonsterBullet*>	m_pBullet;					//!< モンスターの発射する弾
 	//Collision*					m_pCollision				//!< 衝突判定を行うためのクラスへのインスタンス
+	bool							m_IsHit;
 
 	/**衝突を判断する関数*/
 	void	JudgeColllision();

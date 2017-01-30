@@ -282,6 +282,19 @@ void FbxRelated::GetPosition(fbxsdk::FbxMesh* pMesh)
 		{
 			m_pModel->minZ = pTmpVertex[i].z;
 		}
+
+		if (m_pModel->maxR < pTmpVertex[i].x)
+		{
+			m_pModel->maxR = pTmpVertex[i].x;
+		}
+		if (m_pModel->maxR < pTmpVertex[i].y)
+		{
+			m_pModel->maxR = pTmpVertex[i].y;
+		}
+		if (m_pModel->maxR < pTmpVertex[i].z)
+		{
+			m_pModel->maxR = pTmpVertex[i].z;
+		}
 	}
 
 	m_pModel->m_pFbxModelData->pVertex = new FbxModel::Vertex[m_pModel->m_pFbxModelData->indexCount];

@@ -1,6 +1,6 @@
 ﻿/**
-	@file ShipManager.cpp
-	@brief ShipManagerクラスcpp
+	@file Ship.cpp
+	@brief Shipクラスcpp
 	@author kawaguchi
 */
 
@@ -18,7 +18,7 @@ const float Ship::m_CameraHeight		= 50.f;
 const float	Ship::m_NormalAngle			= 50.f;
 const float	Ship::m_ZoomAngle			= 10.f;
 
-Ship::Ship(D3DXVECTOR3* pos, STATUS status)
+Ship::Ship(D3DXVECTOR3* pos, STATUS status, SHIP_ID ShipID)
 	: m_pGameLib(GameLib::Instance())
 	, m_pFbx(nullptr)
 	, m_ObjPos(*pos)
@@ -29,6 +29,8 @@ Ship::Ship(D3DXVECTOR3* pos, STATUS status)
 	, m_Angle(m_NormalAngle)
 	, m_IsZoom(false)
 	, m_IsUp(false)
+	, m_IsHit(false)
+	, m_IsRush(false)
 {
 }
 
