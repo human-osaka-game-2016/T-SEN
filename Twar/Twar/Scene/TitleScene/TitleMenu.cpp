@@ -8,6 +8,8 @@
 #include "GameLib/GameLib.h"
 #include "TitleMenu.h"
 #include "../../Button/MenuButton.h"
+#include "../../Button/BasicButton.h"
+#include "../../Button/ButtonFunction/ButtonFunctionList.h"
 
 /**@todo 現在数値は仮置きのもの。ここでボタンのバーテックス情報を作成しているのはなんとか直したい*/
 TitleMenu::TitleMenu(bool hasSaveData)
@@ -17,22 +19,24 @@ TitleMenu::TitleMenu(bool hasSaveData)
 	float			buttonHeight = 128.f;						//!< ボタンの縦幅
 
 	D3DXVECTOR2		startButtonPos = { 800.f, 700.f };			//!< スタートボタンの座標
-	GameLib::Instance().CreateVtx(TitleScene::START_BTN_VTX, buttonWidth, buttonHeight);		
-	GameLib::Instance().SetVtxUV(TitleScene::START_BTN_VTX, 0.0f, 1.0f, 0.0f, 1.0f);
-	m_MenuButton.emplace_back(TitleScene::BUTTON_TEX, TitleScene::START_BTN_VTX, buttonWidth, buttonHeight, startButtonPos);
+	GameLib::Instance().CreateVtx(TitleScene::START_BTN_VTX, buttonWidth, buttonHeight);
+	m_pButton.emplace_back(new ScaleFunction(new BasicButton(startButtonPos, TitleScene::BUTTON_TEX, TitleScene::START_BTN_VTX, buttonWidth, buttonHeight)));
 
 	if(hasSaveData)		//　セーブデータがあればボタンを作成
 	{
-		D3DXVECTOR2	dataLoadButtonPos = { 800.f, 770.f };		//!< データロードボタンの座標
-		GameLib::Instance().CreateVtx(TitleScene::CONTINUE_BTN_VTX, buttonWidth, buttonHeight);
-		GameLib::Instance().SetVtxUV(TitleScene::CONTINUE_BTN_VTX, 0.0f, 1.0f, 0.5f, 1.0f);
-		m_MenuButton.emplace_back(TitleScene::BUTTON_TEX, TitleScene::CONTINUE_BTN_VTX, buttonWidth, buttonHeight, dataLoadButtonPos);
+		//D3DXVECTOR2	dataLoadButtonPos = { 800.f, 770.f };		//!< データロードボタンの座標
+		//GameLib::Instance().CreateVtx(TitleScene::START_BTN_VTX, buttonWidth, buttonHeight);
+		//m_pButton.emplace_back(new ScaleFunction(new BasicButton(startButtonPos, TitleScene::BUTTON_TEX, TitleScene::CONTINUE_BTN_VTX, buttonWidth, buttonHeight)));
 	}
 }
 
 TitleMenu::~TitleMenu()
 {
-	//　リソース解放はTitleSceneのデストラクタで一括で行う
+	for(auto button : m_pButton)
+	{
+		delete button;
+	}
+	//　テクスチャーなどのリソース解放はTitleSceneのデストラクタで行う
 }
 
 // コントロール関数
@@ -44,11 +48,11 @@ TitleScene::STATE TitleMenu::Control()
 	//　絶対入らない値で初期化している
 	int currentButtonID = INT_MAX;
 
-	for(auto button : m_MenuButton)
+	for(auto button : m_pButton)
 	{
-		if(button.Control())
+		if(button->Control())
 		{
-			currentButtonID = button.GetVtxID();
+			currentButtonID = button->GetVtxID();
 			break;
 		}
 	}
@@ -78,9 +82,9 @@ TitleScene::STATE TitleMenu::Control()
 
 void TitleMenu::Draw()
 {
-	for(auto button : m_MenuButton)
+	for(auto button : m_pButton)
 	{
-		button.Draw();
+		button->Draw();
 	}
 }
 
