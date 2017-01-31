@@ -10,7 +10,7 @@
 #include <vector>
 #include "TitleScene.h"
 
-class MenuButton;
+class Button;
 /**
 * タイトルメニューの操作を管理するクラス.
 */
@@ -33,7 +33,7 @@ public:
 
 private:
 	TitleScene::STATE			m_MenuSelectState;		//!< メニューが選んでいるタイトルの状態
-	std::vector<MenuButton>		m_MenuButton;			//!< メニューボタン
+	std::vector<Button*>		m_pButton;				//!< ボタンクラス
 
 };
 

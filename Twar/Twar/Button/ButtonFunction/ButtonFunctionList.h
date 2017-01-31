@@ -7,7 +7,11 @@
 #ifndef BUTTON_FUNCTION_LIST_H
 #define BUTTON_FUNCTION_LIST_H
 
+// スケール処理を行う機能
+#include "ScaleFunction.h"
 
+// 明暗処理を行う機能
+#include "BrightnessFunction.h"
 
 #endif // BUTTON_FUNCTION_LIST_H
 
