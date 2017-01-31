@@ -1,15 +1,18 @@
-﻿/**
-* @file		Home.h
-* @brief	Homeクラスヘッダ
-* @author	haga
-*/
+﻿//==================================================================================================================================//
+//!< @file		Home.h
+//!< @brief		Homeクラスヘッダ
+//!< @author	haga
+//==================================================================================================================================//
+
 #ifndef HOME_H
 #define HOME_H
 
+#include <vector>
 #include "../SubScene.h"
 
 class HomeBackground;
 class HomeMenu;
+class GameWindow;
 
 namespace sub_scene
 {
@@ -20,27 +23,29 @@ namespace sub_scene
 class Home :public SubScene
 {
 public:
-	/**ホームの状態*/
-	enum STATE
-	{
-		BATTLE_START,			//!< バトルから編成に変わる可能性はあり
-		WORLD_MAP_START,		//!< 世界地図へ移行
-		SHIPYARD_START,			//!< 造船所へ移行
-		NOMAL,					//!< 通常状態
-	};
-
 	/**テクスチャーID*/
 	enum TEXTRE_ID
 	{
 		BACKGROUND_TEX,			//!< 背景テクスチャ
-		MENU_BTN_TEX,			//!< ホームのメニューボタンのテクスチャ
+		MENU_BTN_TEX,			//!< ホームのメニューのボタンテクスチャ
+		HOME_TEX,				//!< ホーム関連のテクスチャ
 	};
 
-	/*バーテックスID**/
+	/*VertexID**/
 	enum VERTEX_ID
 	{
-		BACKGROUND_VTX,			//!< 背景のバーテックス情報
-		BATTLE_START_BTN_VTX,	//!< 出撃ボタンのバーテックス情報
+		BACKGROUND_VTX,			//!< 背景
+		BATTLE_START_BTN_VTX,	//!< 出撃ボタン
+		POLITICS_BTN_VTX,		//!< 政略ボタン
+		SHIP_INFO_WIN_VTX,		//!< 軍艦情報ウィンドウ
+		SHIP_INFO_TEXT_VTX,		//!< 軍艦情報のテキスト
+		TIME_LIMIT_WIN_3_VTX,	//!< 撃退期限表示ウィンドウ(残り三日)
+		TIME_LIMIT_WIN_2_VTX,	//!< 撃退期限表示ウィンドウ(残り二日)
+		TIME_LIMIT_WIN_1_VTX,	//!< 撃退期限表示ウィンドウ(残り一日)
+		TENRYU_BTN_VTX,			//!< 天龍選択ボタン	
+		MINEKAZE_BTN_VTX,		//!< 峯風選択ボタン
+		KONGOU_BTN_VTX,			//!< 金剛選択ボタン
+		VTX_MAX,
 	};
 
 	/**
@@ -61,9 +66,9 @@ public:
 	virtual void Draw();
 
 private:
-	HomeBackground*		m_pBackground;			//!< HomeBackgroundクラスのインスタンスへのポインタ
-	HomeMenu*			m_pHomeMenu;			//!< HomeMenuクラスのインスタンスへのポインタ
-	Home::STATE			m_CurrentState;			//!< Homeの現在の状態
+	HomeBackground*					m_pBackground;			//!< HomeBackgroundクラスのインスタンスへのポインタ
+	HomeMenu*						m_pHomeMenu;			//!< HomeMenuクラスのインスタンスへのポインタ
+	std::vector<GameWindow*>		m_pGameWindows;			//!< GameWindowクラスのインスタンスへのポインタ
 
 	/**
 	* 初期化関数<br>
@@ -76,3 +81,7 @@ private:
 }
 
 #endif // HOME_H
+
+//==================================================================================================================================//
+//END OF FILE
+//==================================================================================================================================//

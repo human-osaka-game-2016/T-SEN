@@ -1,8 +1,8 @@
-﻿/**
-* @file		HomeBackground.h
-* @brief	HomeBackgroundクラスヘッダ
-* @author	haga
-*/
+﻿//==================================================================================================================================//
+//!< @file		HomeBackground.h
+//!< @brief		HomeBackgroundクラスヘッダ
+//!< @author	haga
+//==================================================================================================================================//
 
 #ifndef HOME_BACKGROUND_H
 #define HOME_BACKGROUND_H
@@ -14,11 +14,16 @@
 */
 class HomeBackground
 {
-public:
-	/**コンストラクタ*/
-	HomeBackground();
 
-	/**デストラクタ*/
+public:
+	/**
+	* Constructor
+	* @param texID	TextureID
+	* @param vtxID	VertexID
+	*/
+	HomeBackground(int texID, int vtxID);
+
+	/**Destructor*/
 	~HomeBackground();
 
 	/**描画関数*/
@@ -26,7 +31,13 @@ public:
 
 private:
 	D3DXVECTOR2			m_Pos;		//!< 位置座標
+	int					m_TexID;	//!< TextureID
+	int					m_VtxID;	//!< VertexID
 
 };
 
 #endif	// HOME_BACKGROUND_H
+
+//==================================================================================================================================//
+//END OF FILE
+//==================================================================================================================================//

@@ -15,14 +15,14 @@
 //Public functions
 //--------------------------------------------------------------------------------------------------------------//
 
-BasicButton::BasicButton(const D3DXVECTOR2& rPos, int texID, int vtxID, float width, float height)
+BasicButton::BasicButton(const D3DXVECTOR2& rPos, int texID, int vtxID)
 	: m_Pos(rPos)
 	, m_TexID(texID)
 	, m_VtxID(vtxID)
-	, m_Width(width)
-	, m_Height(height)
 {
 	// VertexなどはvtxIDを渡してくれるクラスで作成する
+	m_Width = GameLib::Instance().GetVtxWidth(m_VtxID);
+	m_Height = GameLib::Instance().GetVtxHeight(m_VtxID);
 }
 
 BasicButton::~BasicButton()
