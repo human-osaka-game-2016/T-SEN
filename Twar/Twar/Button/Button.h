@@ -14,6 +14,9 @@ public:
 	Button();
 	~Button();
 
+private:
+
+
 };
 
 
