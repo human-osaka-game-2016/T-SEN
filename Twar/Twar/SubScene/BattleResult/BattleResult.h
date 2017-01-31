@@ -11,6 +11,7 @@
 class ScoreResult;
 class ResultBackground;
 class GameMessage;
+class GameDataManager;
 
 namespace sub_scene
 {
@@ -63,7 +64,7 @@ private:
 	ResultBackground*	m_pBackground;			//!< ResultBackgroundクラスのインスタンスへのポインタ
 	GameMessage*		m_pMessage;				//!< GameMessageクラスのインスタンスへのポインタ
 	STATE				m_State;				//!< シーの状態を格納する変数
-
+	GameDataManager*    m_pGameDataManager;     //!< GameDataManagerクラスのインスタンスへのポインタ
 };
 
 }
