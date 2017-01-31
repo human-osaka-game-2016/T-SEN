@@ -95,6 +95,12 @@
     <Filter Include="Twar\Message">
       <UniqueIdentifier>{a22f1e4f-4c6b-4bd9-8995-53234a3953ec}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Twar\Button\ButtonFunction">
+      <UniqueIdentifier>{c7368f64-abdc-412b-924e-277661597941}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Twar\GameWindow">
+      <UniqueIdentifier>{210fcd11-e549-456c-9296-76109ea496f0}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -286,6 +292,30 @@
     <ClCompile Include="SubScene\BattleResult\ScoreResult.cpp">
       <Filter>Twar\SubScene\BattleResult</Filter>
     </ClCompile>
+    <ClCompile Include="Button\BasicButton.cpp">
+      <Filter>Twar\Button</Filter>
+    </ClCompile>
+    <ClCompile Include="Button\Button.cpp">
+      <Filter>Twar\Button</Filter>
+    </ClCompile>
+    <ClCompile Include="Button\ButtonFunction\BrightnessFunction.cpp">
+      <Filter>Twar\Button\ButtonFunction</Filter>
+    </ClCompile>
+    <ClCompile Include="Button\ButtonFunction\ButtonFunction.cpp">
+      <Filter>Twar\Button\ButtonFunction</Filter>
+    </ClCompile>
+    <ClCompile Include="Button\ButtonFunction\ScaleFunction.cpp">
+      <Filter>Twar\Button\ButtonFunction</Filter>
+    </ClCompile>
+    <ClCompile Include="GameWindow\GameWindow.cpp">
+      <Filter>Twar\GameWindow</Filter>
+    </ClCompile>
+    <ClCompile Include="GameWindow\ShipInfoWindow.cpp">
+      <Filter>Twar\GameWindow</Filter>
+    </ClCompile>
+    <ClCompile Include="GameWindow\TimeLimitWindow.cpp">
+      <Filter>Twar\GameWindow</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Scene\SceneManager.h">
@@ -470,6 +500,33 @@
     </ClInclude>
     <ClInclude Include="SubScene\BattleResult\ScoreResult.h">
       <Filter>Twar\SubScene\BattleResult</Filter>
+    </ClInclude>
+    <ClInclude Include="Button\BasicButton.h">
+      <Filter>Twar\Button</Filter>
+    </ClInclude>
+    <ClInclude Include="Button\Button.h">
+      <Filter>Twar\Button</Filter>
+    </ClInclude>
+    <ClInclude Include="Button\ButtonFunction\BrightnessFunction.h">
+      <Filter>Twar\Button\ButtonFunction</Filter>
+    </ClInclude>
+    <ClInclude Include="Button\ButtonFunction\ButtonFunction.h">
+      <Filter>Twar\Button\ButtonFunction</Filter>
+    </ClInclude>
+    <ClInclude Include="Button\ButtonFunction\ScaleFunction.h">
+      <Filter>Twar\Button\ButtonFunction</Filter>
+    </ClInclude>
+    <ClInclude Include="Button\ButtonFunction\ButtonFunctionList.h">
+      <Filter>Twar\Button\ButtonFunction</Filter>
+    </ClInclude>
+    <ClInclude Include="GameWindow\GameWindow.h">
+      <Filter>Twar\GameWindow</Filter>
+    </ClInclude>
+    <ClInclude Include="GameWindow\ShipInfoWindow.h">
+      <Filter>Twar\GameWindow</Filter>
+    </ClInclude>
+    <ClInclude Include="GameWindow\TimeLimitWindow.h">
+      <Filter>Twar\GameWindow</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
