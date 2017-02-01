@@ -22,10 +22,8 @@ public:
 	* @param rPos	位置座標
 	* @param texID	TextureID
 	* @param vtxID	VertexID
-	* @param width	ボタンの横幅
-	* @param height ボタンの縦幅
 	*/
-	BasicButton(const D3DXVECTOR2& rPos, int texID, int vtxID, float width, float height);
+	BasicButton(const D3DXVECTOR2& rPos, int texID, int vtxID);
 
 	/**Destructor*/
 	virtual ~BasicButton();

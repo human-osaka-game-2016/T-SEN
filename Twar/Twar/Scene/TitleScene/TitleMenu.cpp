@@ -7,7 +7,6 @@
 
 #include "GameLib/GameLib.h"
 #include "TitleMenu.h"
-#include "../../Button/MenuButton.h"
 #include "../../Button/BasicButton.h"
 #include "../../Button/ButtonFunction/ButtonFunctionList.h"
 
@@ -20,7 +19,7 @@ TitleMenu::TitleMenu(bool hasSaveData)
 
 	D3DXVECTOR2		startButtonPos = { 800.f, 700.f };			//!< スタートボタンの座標
 	GameLib::Instance().CreateVtx(TitleScene::START_BTN_VTX, buttonWidth, buttonHeight);
-	m_pButton.emplace_back(new ScaleFunction(new BasicButton(startButtonPos, TitleScene::BUTTON_TEX, TitleScene::START_BTN_VTX, buttonWidth, buttonHeight)));
+	m_pButton.emplace_back(new ScaleFunction(new BasicButton(startButtonPos, TitleScene::BUTTON_TEX, TitleScene::START_BTN_VTX)));
 
 	if(hasSaveData)		//　セーブデータがあればボタンを作成
 	{

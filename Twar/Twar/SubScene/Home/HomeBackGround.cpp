@@ -1,12 +1,12 @@
-﻿/**
-* @file		HomeBackground.cpp
-* @brief	HomeBackgroundクラス実装
-* @author	haga
-*/
+﻿//==================================================================================================================================//
+//!< @file		HomeBackground.cpp
+//!< @brief		HomeBackgroundクラス実装
+//!< @author	haga
+//==================================================================================================================================//
 
-//------------------------------------------------------------------------------------------------------------//
+//--------------------------------------------------------------------------------------------------------------//
 //Includes
-//------------------------------------------------------------------------------------------------------------//
+//--------------------------------------------------------------------------------------------------------------//
 
 #include "GameLib/GameLib.h"
 #include "HomeBackground.h"
@@ -16,11 +16,14 @@
 //Public functions
 //------------------------------------------------------------------------------------------------------------//
 
-HomeBackground::HomeBackground()
-	: m_Pos({ 0.0f, 0.0f })
+HomeBackground::HomeBackground(int texID, int vtxID)
+	: m_Pos({0.0f, 0.0f})
+	, m_TexID(texID)
+	, m_VtxID(vtxID)
 {
-	GameLib::Instance().CreateVtx(sub_scene::Home::BACKGROUND_VTX,
-		GameLib::Instance().GetWindowWidth(), GameLib::Instance().GetWindowHeight());
+	float backgroundWidth	= static_cast<float>(GameLib::Instance().GetWindowWidth());
+	float backgroundHeight  = static_cast<float>(GameLib::Instance().GetWindowHeight());
+	GameLib::Instance().CreateVtx(m_VtxID, backgroundWidth, backgroundHeight);
 }
 
 HomeBackground::~HomeBackground()
@@ -30,5 +33,9 @@ HomeBackground::~HomeBackground()
 
 void HomeBackground::Draw()
 {
-	GameLib::Instance().DrawXY(sub_scene::Home::BACKGROUND_TEX, sub_scene::Home::BACKGROUND_VTX, m_Pos.x, m_Pos.y);
+	GameLib::Instance().DrawXY(m_TexID, m_VtxID, m_Pos.x, m_Pos.y);
 }
+
+//==================================================================================================================================//
+//END OF FILE
+//==================================================================================================================================//
