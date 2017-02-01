@@ -136,9 +136,6 @@
     <ClCompile Include="Thread\LoadingThread.cpp">
       <Filter>Twar\Thread</Filter>
     </ClCompile>
-    <ClCompile Include="Button\MenuButton.cpp">
-      <Filter>Twar\Button</Filter>
-    </ClCompile>
     <ClCompile Include="GameData\DataMenu.cpp">
       <Filter>Twar\GameData</Filter>
     </ClCompile>
@@ -316,6 +313,9 @@
     <ClCompile Include="GameWindow\TimeLimitWindow.cpp">
       <Filter>Twar\GameWindow</Filter>
     </ClCompile>
+    <ClCompile Include="GameWindow\ShipInfoBackWindow.cpp">
+      <Filter>Twar\GameWindow</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Scene\SceneManager.h">
@@ -344,9 +344,6 @@
     </ClInclude>
     <ClInclude Include="Thread\LoadingThread.h">
       <Filter>Twar\Thread</Filter>
-    </ClInclude>
-    <ClInclude Include="Button\MenuButton.h">
-      <Filter>Twar\Button</Filter>
     </ClInclude>
     <ClInclude Include="GameData\DataMenu.h">
       <Filter>Twar\GameData</Filter>
@@ -526,6 +523,9 @@
       <Filter>Twar\GameWindow</Filter>
     </ClInclude>
     <ClInclude Include="GameWindow\TimeLimitWindow.h">
+      <Filter>Twar\GameWindow</Filter>
+    </ClInclude>
+    <ClInclude Include="GameWindow\ShipInfoBackWindow.h">
       <Filter>Twar\GameWindow</Filter>
     </ClInclude>
   </ItemGroup>
