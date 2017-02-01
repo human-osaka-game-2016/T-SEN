@@ -1,10 +1,10 @@
 ﻿/**
-* @file Shipyard.h
-* @brief Shipyardクラスヘッダ
+* @file Policy.h
+* @brief Policyクラスヘッダ
 * @author haga
 */
-#ifndef SHIPYARD_H
-#define SHIPYARD_H
+#ifndef Policy_H
+#define Policy_H
 
 #include "../SubScene.h"
 
@@ -14,7 +14,7 @@ namespace sub_scene
 /**
 * 造船所シーンのクラス
 */
-class Shipyard :public SubScene
+class Policy :public SubScene
 {
 public:
 	/**
@@ -22,10 +22,10 @@ public:
 	* @param pGameDataManager GameDataManagerクラスのインスタンスへのポインタ
 	* @param pGameTimer		  GameTimerクラスのインスタンスへのポインタ
 	*/
-	Shipyard(GameDataManager* pGameDataManager, GameTimer* pGameTimer);
+	Policy(GameDataManager* pGameDataManager, GameTimer* pGameTimer);
 
 	/**デストラクタ*/
-	virtual ~Shipyard();
+	virtual ~Policy();
 
 	/**コントロール関数*/
 	virtual SUBSCENE_ID Control();
@@ -38,4 +38,4 @@ public:
 
 }
 
-#endif // SHIPYARD_H
+#endif // Policy_H
