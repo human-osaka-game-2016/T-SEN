@@ -61,10 +61,6 @@ SUBSCENE_ID Home::Control()
 
 	case Home::NOMAL:
 		m_CurrentState = m_pHomeMenu->Control();
-		if (m_rGameLib.CheckKey(DIK_SPACE, SPACE) == PUSH)
-		{
-			return SUBSCENE_ID::BATTLE_RESULT;
-		}
 		break;
 	}
 
