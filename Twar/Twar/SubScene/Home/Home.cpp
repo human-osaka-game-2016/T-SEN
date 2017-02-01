@@ -17,6 +17,7 @@
 #include "HomeMenu.h"
 #include "../../GameWindow/GameWindow.h"
 #include "../../GameWindow/ShipInfoWindow.h"
+#include "../../GameWindow/ShipInfoBackWindow.h"
 #include "../../GameWindow/TimeLimitWindow.h"
 
 //-----------------------------------------------------------------------------------------------------------//
@@ -27,7 +28,7 @@ namespace sub_scene
 {
 
 //-----------------------------------------------------------------------------------------------------------//
-//Unnmaed namespace 
+//Unnamed namespace 
 //-----------------------------------------------------------------------------------------------------------//
 
 namespace
@@ -35,8 +36,9 @@ namespace
 
 const	float			HomeTextureWidth	  = 2048.f;						//	Home::HOME_TEXの横幅
 const	float			HomeTextureHeight	  = 2048.f;						//	Home::HOME_TEXの横幅
-const	D3DXVECTOR2		ShipInfoWinPos		  = { 825.f, 150.f };			//	軍艦情報ウィンドウの位置座標
-const	D3DXVECTOR2		TimeLimitWinPos		  = { 1200.f, 725.f };			//	撃退期限ウィンドウの位置座標
+const	D3DXVECTOR2		ShipInfoWinPos		  = {  825.f, 150.f };			//	軍艦情報ウィンドウの位置座標
+const	D3DXVECTOR2		ShipInfoBackWinPos	  = {  700.f,  50.f };			//	軍艦情報背景ウィンドウの位置座標
+const	D3DXVECTOR2		TimeLimitWinPos		  = {  900.f, 625.f };			//	撃退期限ウィンドウの位置座標
 
 }
 
@@ -51,13 +53,15 @@ Home::Home(GameDataManager* pGameDataManager, GameTimer* pGameTimer, SaveDataMan
 {
 	Init();
 	m_pHomeMenu = new HomeMenu(pGameDataManager);
+	m_pGameWindows.emplace_back(new ShipInfoBackWindow(ShipInfoBackWinPos, Home::HOME_TEX, SHIP_INFO_BG_TENRYU_VTX, SHIP_INFO_BG_MINEKAZE_VTX, SHIP_INFO_BG_KONGOU_VTX, m_pHomeMenu));
 	m_pGameWindows.emplace_back(new ShipInfoWindow(ShipInfoWinPos, Home::HOME_TEX, SHIP_INFO_WIN_VTX, SHIP_INFO_TEXT_VTX, m_pGameDataManager, m_pHomeMenu));
-
 	/**@todo ここでGameDataManagerからタイムリミットの数値を取得する*/
-	int	  timeLimit = 3;
+	//int	  timeLimit = m_pGameDataManager->GetFightOffDays();
+
+	int	  testTimeLimit = 0; // テスト用変数
 
 	/**Caseの数字は残日数*/
-	switch(timeLimit)
+	switch(testTimeLimit)
 	{
 	case 3:
 		m_pGameWindows.emplace_back(new TimeLimitWindow(TimeLimitWinPos, Home::HOME_TEX, TIME_LIMIT_WIN_3_VTX));
@@ -137,6 +141,9 @@ void Home::Init()
 		{   0.0f,   0.0f},	// 天龍選択ボタン
 		{  100.f,   0.0f},	// 峯風選択ボタン
 		{  200.f,   0.0f},	// 金剛選択ボタン
+		{  850.f,  400.f},	// 軍艦情報背景ウィンドウ(天龍)
+		{   0.0f,  400.f},	// 軍艦情報背景ウィンドウ(峯風)
+		{   0.0f,  950.f},	// 軍艦情報背景ウィンドウ(金剛)
 	};
 
 	// 背景作成
@@ -219,6 +226,27 @@ void Home::Init()
 		m_rGameLib.SetVtxColor(KONGOU_BTN_VTX, BrightnessVal);
 		m_rGameLib.SetVtxUV(KONGOU_BTN_VTX, texPos[KONGOU_BTN_VTX].x / HomeTextureWidth, (texPos[KONGOU_BTN_VTX].x + width) / HomeTextureWidth,
 							texPos[KONGOU_BTN_VTX].y / HomeTextureHeight, (texPos[KONGOU_BTN_VTX].y + height) / HomeTextureHeight);
+	}
+
+	// 軍艦情報背景ウィンドウVertex作成ブロック
+	{
+		float width  = 850.f;
+		float height = 550.f;
+
+		// 天龍シルエット
+		m_rGameLib.CreateVtx(SHIP_INFO_BG_TENRYU_VTX, width, height);
+		m_rGameLib.SetVtxUV(SHIP_INFO_BG_TENRYU_VTX, texPos[SHIP_INFO_BG_TENRYU_VTX].x / HomeTextureWidth, (texPos[SHIP_INFO_BG_TENRYU_VTX].x + width) / HomeTextureWidth,
+							texPos[SHIP_INFO_BG_TENRYU_VTX].y / HomeTextureHeight, (texPos[SHIP_INFO_BG_TENRYU_VTX].y + height) / HomeTextureHeight);
+
+		// 峯風シルエット
+		m_rGameLib.CreateVtx(SHIP_INFO_BG_MINEKAZE_VTX, width, height);
+		m_rGameLib.SetVtxUV(SHIP_INFO_BG_MINEKAZE_VTX, texPos[SHIP_INFO_BG_MINEKAZE_VTX].x / HomeTextureWidth, (texPos[SHIP_INFO_BG_MINEKAZE_VTX].x + width) / HomeTextureWidth,
+							texPos[SHIP_INFO_BG_MINEKAZE_VTX].y / HomeTextureHeight, (texPos[SHIP_INFO_BG_MINEKAZE_VTX].y + height) / HomeTextureHeight);
+
+		// 金剛シルエット
+		m_rGameLib.CreateVtx(SHIP_INFO_BG_KONGOU_VTX, width, height);
+		m_rGameLib.SetVtxUV(SHIP_INFO_BG_KONGOU_VTX, texPos[SHIP_INFO_BG_KONGOU_VTX].x / HomeTextureWidth, (texPos[SHIP_INFO_BG_KONGOU_VTX].x + width) / HomeTextureWidth,
+							texPos[SHIP_INFO_BG_KONGOU_VTX].y / HomeTextureHeight, (texPos[SHIP_INFO_BG_KONGOU_VTX].y + height) / HomeTextureHeight);
 	}
 }
 

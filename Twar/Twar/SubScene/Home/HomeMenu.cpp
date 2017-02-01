@@ -43,39 +43,41 @@ HomeMenu::HomeMenu(GameDataManager* pDatamanager)
 	
 	// 軍艦選択ボタン作成
 	{
-		int btnCounter = 0;
-		D3DXVECTOR2 shipBTNPos[] = {
+		int btnCounter = 0;			// カウンター. ボタンを作成したら加算していく
+
+		// 軍艦選択ボタンの位置座標
+		D3DXVECTOR2 shipBtnPos[] = {
 			{ 150.f, 325.f },
 			{ 350.f, 325.f },
 			{ 550.f, 325.f },
 		};
 
 		// 天龍
-		m_pShipSelectButtons.emplace_back(new ScaleFunction(new BasicButton(shipBTNPos[btnCounter], sub_scene::Home::HOME_TEX, sub_scene::Home::TENRYU_BTN_VTX), 5.f));
+		m_pShipSelectButtons.emplace_back(new ScaleFunction(new BasicButton(shipBtnPos[btnCounter], sub_scene::Home::HOME_TEX, sub_scene::Home::TENRYU_BTN_VTX), 5.f));
 		++btnCounter;
 
-		/**@todo */
+		/**@todo ここでDataManagerから軍艦を所有しているかの情報を取得してボタンを作成するかを判断する予定*/
 		// 峯風
 		if(true/*m_pDataManager->*/)
 		{
-			m_pShipSelectButtons.emplace_back(new ScaleFunction(new BasicButton(shipBTNPos[btnCounter], sub_scene::Home::HOME_TEX, sub_scene::Home::MINEKAZE_BTN_VTX), 5.f));
+			m_pShipSelectButtons.emplace_back(new ScaleFunction(new BasicButton(shipBtnPos[btnCounter], sub_scene::Home::HOME_TEX, sub_scene::Home::MINEKAZE_BTN_VTX), 5.f));
 			++btnCounter;
 		}
 
 		// 金剛
 		if(true/*m_pDataManager->*/)
 		{
-			m_pShipSelectButtons.emplace_back(new ScaleFunction(new BasicButton(shipBTNPos[btnCounter], sub_scene::Home::HOME_TEX, sub_scene::Home::KONGOU_BTN_VTX), 5.f));
+			m_pShipSelectButtons.emplace_back(new ScaleFunction(new BasicButton(shipBtnPos[btnCounter], sub_scene::Home::HOME_TEX, sub_scene::Home::KONGOU_BTN_VTX), 5.f));
 		}
 	}
 }
 
 HomeMenu::~HomeMenu()
 {
-	for(auto& shipBTN : m_pShipSelectButtons)
+	for(auto& shipButton : m_pShipSelectButtons)
 	{
-		delete shipBTN;
-		shipBTN = nullptr;
+		delete shipButton;
+		shipButton = nullptr;
 	}
 	delete m_pPoliticsButton;
 	delete m_pBattleButton;
@@ -91,7 +93,7 @@ sub_scene::SUBSCENE_ID	HomeMenu::Control()
 	// 次のシーンの選択
 	sub_scene::SUBSCENE_ID	nextSubSceneID = SelectSubScene();
 
-	// 左クリックした場合、現在選んでいる状態を更新する
+	// 左クリックした場合、現在選択している状態で更新する
 	if(GameLib::Instance().ChecKMouseL() == ON)
 	{
 		m_SelectShipID = cuurentShipID;
@@ -130,9 +132,9 @@ void	HomeMenu::Draw()
 		break;
 	}
 
-	for(auto& shipBTN : m_pShipSelectButtons)
+	for(auto& shipButton : m_pShipSelectButtons)
 	{
-		shipBTN->Draw();
+		shipButton->Draw();
 	}
 
 	m_pPoliticsButton->Draw();
@@ -143,7 +145,7 @@ void	HomeMenu::Draw()
 	}
 	else
 	{
-		// 空処理
+		// 空処理 テストチェック用
 	}
 }
 
@@ -153,11 +155,11 @@ void	HomeMenu::Draw()
 
 ShipManager::SHIP_ID HomeMenu::SelectShip()
 {
-	for(auto& shipBTN : m_pShipSelectButtons)
+	for(auto& shipButton : m_pShipSelectButtons)
 	{
-		if(shipBTN->Control())
+		if(shipButton->Control())
 		{
-			switch(shipBTN->GetVtxID())
+			switch(shipButton->GetVtxID())
 			{
 			case sub_scene::Home::TENRYU_BTN_VTX:
 				return ShipManager::CRUISER;
@@ -186,8 +188,7 @@ sub_scene::SUBSCENE_ID HomeMenu::SelectSubScene()
 {
 	if(m_pPoliticsButton->Control())
 	{
-		/**@todo 2017/02/02 まだ政略Sceneがない*/
-		// return sub_scene::SUBSCENE_ID::;
+		return sub_scene::SUBSCENE_ID::POLICY;
 	}
 
 	if(m_SelectShipID != ShipManager::NONE)

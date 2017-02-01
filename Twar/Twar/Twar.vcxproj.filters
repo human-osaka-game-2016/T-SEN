@@ -268,9 +268,6 @@
     <ClCompile Include="SubScene\Opening\Opening.cpp">
       <Filter>Twar\SubScene\Opening</Filter>
     </ClCompile>
-    <ClCompile Include="SubScene\Shipyard\Shipyard.cpp">
-      <Filter>Twar\SubScene\Shipyard</Filter>
-    </ClCompile>
     <ClCompile Include="SubScene\Formation\Formation.cpp">
       <Filter>Twar\SubScene\Formation</Filter>
     </ClCompile>
@@ -315,6 +312,9 @@
     </ClCompile>
     <ClCompile Include="GameWindow\ShipInfoBackWindow.cpp">
       <Filter>Twar\GameWindow</Filter>
+    </ClCompile>
+    <ClCompile Include="SubScene\Policy\Policy.cpp">
+      <Filter>Twar\SubScene\Shipyard</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -477,9 +477,6 @@
     <ClInclude Include="SubScene\Opening\Opening.h">
       <Filter>Twar\SubScene\Opening</Filter>
     </ClInclude>
-    <ClInclude Include="SubScene\Shipyard\Shipyard.h">
-      <Filter>Twar\SubScene\Shipyard</Filter>
-    </ClInclude>
     <ClInclude Include="SubScene\Formation\Formation.h">
       <Filter>Twar\SubScene\Formation</Filter>
     </ClInclude>
@@ -527,6 +524,9 @@
     </ClInclude>
     <ClInclude Include="GameWindow\ShipInfoBackWindow.h">
       <Filter>Twar\GameWindow</Filter>
+    </ClInclude>
+    <ClInclude Include="SubScene\Policy\Policy.h">
+      <Filter>Twar\SubScene\Shipyard</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
