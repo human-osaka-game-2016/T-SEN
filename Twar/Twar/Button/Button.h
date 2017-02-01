@@ -47,6 +47,9 @@ public:
 	*/
 	virtual float GetButtonHeight() = 0;
 
+private:
+
+
 };
 
 

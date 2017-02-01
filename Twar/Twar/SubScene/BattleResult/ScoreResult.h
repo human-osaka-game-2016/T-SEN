@@ -32,6 +32,10 @@ public:
 	/**描画関数*/
 	void Draw();
 	
+	void PayControl();
+
+	int GetMoneyData();
+
 private:
 	/**データの種類*/
 	/**@todo 仮で決めている*/
@@ -48,6 +52,7 @@ private:
 	/**メンバーのDataを初期化する並列*/
 	void InitData(GameDataManager* pGameDayaManagher);
 
+	GameDataManager* m_pGameDataManager;   //!< GameDataManagerクラスのインスタンスへのポインタ
 };
 
 #endif // SCORE_RESULT_H

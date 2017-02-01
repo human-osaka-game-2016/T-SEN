@@ -42,6 +42,7 @@ namespace sub_scene
 
 BattleResult::BattleResult(GameDataManager* pGameDataManager, GameTimer* pGameTimer, SaveDataManager* pSaveDataManager)
 	: SubScene(pGameDataManager, pGameTimer, pSaveDataManager)
+	, m_pGameDataManager(pGameDataManager)
 	, m_pScoreResult(new ScoreResult(pGameDataManager))
 	, m_pBackground(new ResultBackground(RESULT_TEX, RESULT_VTX))
 	, m_pMessage(new GameMessage(MessagePos, "空白釦を押してください", MessageScale))
@@ -69,6 +70,8 @@ SUBSCENE_ID BattleResult::Control()
 		if(m_pBackground->Control())
 		{
 			m_State = SCORE_DISP;
+			m_pScoreResult->PayControl();
+			m_pGameDataManager->SetMoney(m_pScoreResult->GetMoneyData());
 		}
 
 		if(m_rGameLib.CheckKey(DIK_SPACE, SPACE) == ON)
