@@ -139,6 +139,8 @@
     <ClCompile Include="SubScene\Home\HomeMenu.cpp" />
     <ClCompile Include="SubScene\Opening\Opening.cpp" />
     <ClCompile Include="SubScene\Policy\Policy.cpp" />
+    <ClCompile Include="SubScene\Policy\PolicyBackGround.cpp" />
+    <ClCompile Include="SubScene\Policy\PolicyMenu.cpp" />
     <ClCompile Include="SubScene\SubSceneFactory.cpp" />
     <ClCompile Include="SubScene\SubScene.cpp" />
     <ClCompile Include="SubScene\WorldMap\WorldMap.cpp" />
@@ -211,6 +213,8 @@
     <ClInclude Include="SubScene\Home\HomeMenu.h" />
     <ClInclude Include="SubScene\Opening\Opening.h" />
     <ClInclude Include="SubScene\Policy\Policy.h" />
+    <ClInclude Include="SubScene\Policy\PolicyBackGround.h" />
+    <ClInclude Include="SubScene\Policy\PolicyMenu.h" />
     <ClInclude Include="SubScene\SubSceneFactory.h" />
     <ClInclude Include="SubScene\SubScene.h" />
     <ClInclude Include="SubScene\WorldMap\WorldMap.h" />
