@@ -39,6 +39,7 @@ public:
 	virtual void Draw()override;
 
 private:
+	/**軍艦の情報テキスト*/
 	enum SHIP_INFO_TEXT
 	{
 		NAME,			// 軍艦の種類

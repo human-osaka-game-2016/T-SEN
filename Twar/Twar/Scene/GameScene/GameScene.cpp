@@ -18,7 +18,7 @@ GameScene::GameScene(SaveDataManager* pSaveDataManager)
 	, m_pSubScene(nullptr)
 	, m_Step(CREATE_SUBSCENE)
 	, m_CurrentSubSceneID(sub_scene::BATTLE_RESULT)
-	, m_NextSubSceneID(sub_scene::BATTLE_RESULT)
+	, m_NextSubSceneID(sub_scene::HOME)
 {
 	sub_scene::SubSceneFactory::Instance().Init(m_pGameDataManager, m_pGameTimer, m_pSaveDataManager);
 }
