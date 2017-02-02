@@ -316,6 +316,8 @@
     <ClCompile Include="SubScene\Policy\Policy.cpp">
       <Filter>Twar\SubScene\Shipyard</Filter>
     </ClCompile>
+    <ClCompile Include="SubScene\Policy\PolicyBackGround.cpp" />
+    <ClCompile Include="SubScene\Policy\PolicyMenu.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Scene\SceneManager.h">
@@ -528,5 +530,7 @@
     <ClInclude Include="SubScene\Policy\Policy.h">
       <Filter>Twar\SubScene\Shipyard</Filter>
     </ClInclude>
+    <ClInclude Include="SubScene\Policy\PolicyBackGround.h" />
+    <ClInclude Include="SubScene\Policy\PolicyMenu.h" />
   </ItemGroup>
 </Project>
