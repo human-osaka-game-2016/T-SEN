@@ -14,6 +14,7 @@ class CameraController;
 class LoadingThread;
 class MonsterManager;
 class ShipManager;
+class CollisionManager;
 
 namespace sub_scene
 {
@@ -60,7 +61,8 @@ private:
 	LoadingThread*			m_pLoadingThread;
 	MonsterManager*         m_pMonsterManager;
 	ShipManager*			m_pShipManager;
-	
+	CollisionManager*		m_pCollisionManager;
+
 };
 
 }
