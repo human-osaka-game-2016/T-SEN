@@ -29,15 +29,18 @@ ApBullet::~ApBullet()
 //コントロール関数
 void ApBullet::Control(D3DXVECTOR3 Pos, float Rotate)
 {
+	/*初期化*/
 	float BulletSpeed = 10.f;
 	float DrawRange = 1000;
 	static int BulletTime = 0;
-	
+	const float Gravity = 9.8;
+	m_Data.hasDrawn = true;
 	Data* pData = nullptr;
 	BulletTime++;
-	if (GameLib::Instance().CheckKey(DIK_1, ONE) == PUSH&&BulletTime >= 120)
+
+	/*発射処理*/
+	if (GameLib::Instance().CheckKey(DIK_1, ONE) == PUSH && BulletTime >= 120)
 	{
-		m_Data.hasDrawn = true;
 		m_Data.hasInited = true;
 		BulletTime = 0;
 		if (m_Data.hasInited)
@@ -52,15 +55,17 @@ void ApBullet::Control(D3DXVECTOR3 Pos, float Rotate)
 
 	pData = m_pFirst;
 
+	/*弾の移動処理*/
 	while (pData)
 	{
 		pData->BulletPos.z += cos(3.141592 / 180 * pData->Rotate)*BulletSpeed;
 		pData->BulletPos.x += sin(3.141592 / 180 * pData->Rotate)*BulletSpeed;
+		pData->BulletPos.y += Gravity/2;
 
 		if (Pos.z - pData->BulletPos.z > DrawRange || Pos.z - pData->BulletPos.z<-DrawRange ||
 			Pos.x - pData->BulletPos.x>DrawRange || Pos.x - pData->BulletPos.x < -DrawRange)
 		{
-			pData->BulletPos.y -= 1;
+			pData->BulletPos.y -= Gravity;
 		}
 
 		if (pData->BulletPos.y <= 0)
@@ -93,8 +98,8 @@ void ApBullet::Draw()
 			m_pFbx->DrawFbx();
 			pData = pData->pNext;
 			D3DXCreateSphere(GameLib::Instance().GetDevice(),20,64,32,&m_pMesh,nullptr);
+			m_pMesh->DrawSubset(0);
 		}
-		m_pMesh->DrawSubset(0);
 	}
 }
 
