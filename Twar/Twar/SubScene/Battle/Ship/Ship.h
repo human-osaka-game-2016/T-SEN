@@ -68,6 +68,18 @@ public:
 	*/
 	void CameraTransWorld(float radius);
 
+	/**--@data 2017/02/04haga追加関数----------------------------------------------------------------------------------------------------------*/
+
+	/**-----Getter-------------*/
+
+	const D3DXVECTOR3& GetTargetPos(){ return m_TargetPos; }
+
+	/**-----Setter-------------*/
+
+	void SetTargetPos(const D3DXVECTOR3& targetPos);
+
+	/**--haga追加分終了-------------------------------------------------------------------------------------------------------------*/
+
 protected:
 	/**
 	Shipの属性
@@ -134,6 +146,7 @@ protected:
 
 	/**@data 2017/02/04追加 haga*/
 	StateMachine<Ship>*		m_pStateMachine;		//!< StateMachineクラスのインスタンスへのポインタ
+	D3DXVECTOR3				m_TargetPos;			//!< ターゲットの位置座標
 
 	/**	case Control of "the player" */
 	virtual void ControlPlayer() = 0;

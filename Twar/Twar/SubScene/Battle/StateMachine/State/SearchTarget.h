@@ -20,14 +20,23 @@ public:
 	/**Destructor*/
 	~SearchTarget();
 
-	/***/
-	virtual void Enter(Ship*);
+	/**
+	* 開始処理
+ 	* @param pShip	Shipクラスのインスタンスへのポインタ
+	*/
+	virtual void Enter(Ship* pShip)override;
 
-	/**実行関数*/
-	virtual void Excute(Ship*);
+	/**
+	* 実行関数
+	* @param pShip	Shipクラスのインスタンスへのポインタ
+	*/
+	virtual void Execute(Ship* pShip)override;
 
-	/***/
-	virtual void Exit(Ship*);
+	/**
+	* 終了関数
+	* @param pShip	Shipクラスのインスタンスへのポインタ
+	*/
+	virtual void Exit(Ship* pShip)override;
 
 };
 

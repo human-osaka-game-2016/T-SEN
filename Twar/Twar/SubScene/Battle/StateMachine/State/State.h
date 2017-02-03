@@ -18,14 +18,23 @@ public:
 	/**Destructor*/
 	virtual ~State() =default;
 
-	/***/
-	virtual void Enter(entry_type*) = 0;
+	/**
+	* 開始関数
+	* @param pType	このStateを使用するクラスのインスタンスへのポインタ
+	*/
+	virtual void Enter(entry_type* pType) = 0;
 
-	/**実行関数*/
-	virtual void Excute(entry_type*) = 0;
+	/**
+	* 実行関数
+	* @param pType	このStateを使用するクラスのインスタンスへのポインタ
+	*/
+	virtual void Execute(entry_type* pType) = 0;
 
-	/***/
-	virtual void Exit(entry_type*) = 0;
+	/**
+	* 終了関数
+	* @param pType	このStateを使用するクラスのインスタンスへのポインタ
+	*/
+	virtual void Exit(entry_type* pType) = 0;
 
 };
 
