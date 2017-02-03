@@ -7,8 +7,9 @@
 #include "BulletManager.h"
 
 BulletManager::BulletManager()
+	: m_pAPBulletModel(new FbxRelated())
 {
-	m_APBullet.LoadFbx("fbx/tama_0.FBX");
+	m_pAPBulletModel->LoadFbx("fbx/tama_0.FBX");
 }
 
 BulletManager::~BulletManager()
@@ -17,6 +18,7 @@ BulletManager::~BulletManager()
 	{
 		delete m_Bullet[i];
 	}
+	delete m_pAPBulletModel;
 }
 
 void BulletManager::Control(D3DXVECTOR3 Pos, float Rotate)
@@ -46,7 +48,7 @@ void BulletManager::Create(char* pCount,BULLET_ID* pBulletID)
 		{
 		case APBULLET:
 			pbullet = new ApBullet();
-			pbullet->m_pFbx = m_APBullet.m_pModel;
+			pbullet->m_pFbx = m_pAPBulletModel->m_pModel;
 			break;
 		}
 		m_Bullet.push_back(pbullet);

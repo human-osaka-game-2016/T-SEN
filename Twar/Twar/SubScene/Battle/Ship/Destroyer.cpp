@@ -7,17 +7,24 @@
 #include "Destroyer.h"
 #include "GameLib/GameLib.h"
 #include "Fbx/FbxModel.h"
+#include "../StateMachine/State/AttackTarget.h"
 
 const float Destroyer::m_SpeedLimit = 2.f;
 
 Destroyer::Destroyer(D3DXVECTOR3* pos)
 	: Ship(pos, { 1500, 0.f }, SHIP_ID::DESTROYER)
 {
+	m_pStateMachine = new StateMachine<Ship>(this);
+	m_pStateMachine->SetCurrntState(AttackTarget::Instance());
+	m_pStateMachine->EnterCurrentState();
+	m_pStateMachine->SetPreviousState(AttackTarget::Instance());
 }
 
 
 Destroyer::~Destroyer()
 {
+	delete m_pStateMachine;
+	m_pStateMachine = nullptr;
 }
 
 
@@ -409,6 +416,7 @@ void Destroyer::ControlPlayer()
 //----------------------------------------------------------------------------------------------------------------------
 void Destroyer::ControlAlly()
 {
+	m_pStateMachine->Update();
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -418,6 +426,7 @@ void Destroyer::ControlAlly()
 //----------------------------------------------------------------------------------------------------------------------
 void Destroyer::ControlEnemy()
 {
+	m_pStateMachine->Update();
 }
 
 void Destroyer::Draw()

@@ -7,17 +7,24 @@
 #include "Cruiser.h"
 #include "GameLib/GameLib.h"
 #include "Fbx/FbxModel.h"
+#include "../StateMachine/State/AttackTarget.h"
 
 const float Cruiser::m_SpeedLimit = 1.5f;
 
 Cruiser::Cruiser(D3DXVECTOR3* pos)
 	: Ship(pos, { 2500, 0.f }, SHIP_ID::CRUISER)
 {
+	m_pStateMachine = new StateMachine<Ship>(this);
+	m_pStateMachine->SetCurrntState(AttackTarget::Instance());
+	m_pStateMachine->EnterCurrentState();
+	m_pStateMachine->SetPreviousState(AttackTarget::Instance());
 }
 
 
 Cruiser::~Cruiser()
 {
+	delete m_pStateMachine;
+	m_pStateMachine = nullptr;
 }
 
 
@@ -409,6 +416,7 @@ void Cruiser::ControlPlayer()
 //----------------------------------------------------------------------------------------------------------------------
 void Cruiser::ControlAlly()
 {
+	m_pStateMachine->Update();
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -418,6 +426,7 @@ void Cruiser::ControlAlly()
 //----------------------------------------------------------------------------------------------------------------------
 void Cruiser::ControlEnemy()
 {
+	m_pStateMachine->Update();
 }
 
 void Cruiser::Draw()

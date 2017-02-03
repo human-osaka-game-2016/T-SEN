@@ -9,6 +9,7 @@
 
 #include <d3dx9.h>
 //#include "ShipManager.h"
+#include "../StateMachine/StateMachine.h"
 
 class FbxModel;
 class CameraController;
@@ -50,7 +51,7 @@ public:
 	Ship(D3DXVECTOR3* pos, STATUS status, SHIP_ID ShipID);
 
 	/**	デストラクタ */
-	~Ship();
+	virtual ~Ship();
 
 	/**	描画関数 */
 	virtual void Draw();
@@ -66,6 +67,18 @@ public:
 	@param	radius		カメラ座標と注視点の中点
 	*/
 	void CameraTransWorld(float radius);
+
+	/**--@data 2017/02/04haga追加関数----------------------------------------------------------------------------------------------------------*/
+
+	/**-----Getter-------------*/
+
+	const D3DXVECTOR3& GetTargetPos(){ return m_TargetPos; }
+
+	/**-----Setter-------------*/
+
+	void SetTargetPos(const D3DXVECTOR3& targetPos);
+
+	/**--haga追加分終了-------------------------------------------------------------------------------------------------------------*/
 
 protected:
 	/**
@@ -130,6 +143,10 @@ protected:
 
 	bool				m_IsHit;
 	bool				m_IsRush;
+
+	/**@data 2017/02/04追加 haga*/
+	StateMachine<Ship>*		m_pStateMachine;		//!< StateMachineクラスのインスタンスへのポインタ
+	D3DXVECTOR3				m_TargetPos;			//!< ターゲットの位置座標
 
 	/**	case Control of "the player" */
 	virtual void ControlPlayer() = 0;

@@ -6,6 +6,8 @@
 #ifndef BULLETMANAGER_H
 #define BULLETMANAGER_H
 
+#include <vector>
+
 class ApBullet;
 class Bullet;
 class FbxRelated;
@@ -40,8 +42,8 @@ public:
 	void Create(char* pCount, BULLET_ID* pBulletID);
 
 private:
-	ApBullet* m_pAPBullet;
-	FbxRelated m_APBullet;
+	ApBullet*		m_pAPBullet;
+	FbxRelated*		m_pAPBulletModel;
 	std::vector<Bullet*> m_Bullet;
 	char m_BulletCount;
 	int m_BulletNumber;
