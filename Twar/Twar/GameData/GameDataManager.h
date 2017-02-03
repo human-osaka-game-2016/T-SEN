@@ -16,6 +16,15 @@ public:
 	GameDataManager();
 	~GameDataManager();
 
+	enum SHIP_ID						//!<	船の艦種を識別するID
+	{
+		DESTROYER,
+		CRUISER,
+		BATTLESHIP,
+
+		SHIP_ID_MAX,
+	};
+
 	/*船の攻撃力の構造体*/
 	typedef struct
 	{

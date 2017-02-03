@@ -71,17 +71,11 @@
     <Filter Include="Twar\SubScene\BattleResult">
       <UniqueIdentifier>{9816fd68-b737-4453-964f-234befe4141b}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Twar\SubScene\WorldMap">
-      <UniqueIdentifier>{fc348c6d-3059-4389-971e-a4fb5d368171}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Twar\SubScene\Ending">
       <UniqueIdentifier>{a311019d-2cf5-4b27-a0f7-0985f305d7ca}</UniqueIdentifier>
     </Filter>
     <Filter Include="Twar\SubScene\Opening">
       <UniqueIdentifier>{e13d80b6-ac5a-44e6-b755-fe53a6edc99b}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Twar\SubScene\Shipyard">
-      <UniqueIdentifier>{f354e5da-d549-4f18-99ff-7e616b168534}</UniqueIdentifier>
     </Filter>
     <Filter Include="Twar\SubScene\Formation">
       <UniqueIdentifier>{2cb94972-59ea-421f-b782-bd4d213c97f9}</UniqueIdentifier>
@@ -100,6 +94,12 @@
     </Filter>
     <Filter Include="Twar\GameWindow">
       <UniqueIdentifier>{210fcd11-e549-456c-9296-76109ea496f0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Twar\SubScene\WorldMap">
+      <UniqueIdentifier>{fc348c6d-3059-4389-971e-a4fb5d368171}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Twar\SubScene\Policy">
+      <UniqueIdentifier>{f354e5da-d549-4f18-99ff-7e616b168534}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -314,10 +314,14 @@
       <Filter>Twar\GameWindow</Filter>
     </ClCompile>
     <ClCompile Include="SubScene\Policy\Policy.cpp">
-      <Filter>Twar\SubScene\Shipyard</Filter>
+      <Filter>Twar\SubScene\Policy</Filter>
     </ClCompile>
-    <ClCompile Include="SubScene\Policy\PolicyBackGround.cpp" />
-    <ClCompile Include="SubScene\Policy\PolicyMenu.cpp" />
+    <ClCompile Include="SubScene\Policy\PolicyBackGround.cpp">
+      <Filter>Twar\SubScene\Policy</Filter>
+    </ClCompile>
+    <ClCompile Include="SubScene\Policy\PolicyMenu.cpp">
+      <Filter>Twar\SubScene\Policy</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Scene\SceneManager.h">
@@ -528,9 +532,13 @@
       <Filter>Twar\GameWindow</Filter>
     </ClInclude>
     <ClInclude Include="SubScene\Policy\Policy.h">
-      <Filter>Twar\SubScene\Shipyard</Filter>
+      <Filter>Twar\SubScene\Policy</Filter>
     </ClInclude>
-    <ClInclude Include="SubScene\Policy\PolicyBackGround.h" />
-    <ClInclude Include="SubScene\Policy\PolicyMenu.h" />
+    <ClInclude Include="SubScene\Policy\PolicyBackGround.h">
+      <Filter>Twar\SubScene\Policy</Filter>
+    </ClInclude>
+    <ClInclude Include="SubScene\Policy\PolicyMenu.h">
+      <Filter>Twar\SubScene\Policy</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
