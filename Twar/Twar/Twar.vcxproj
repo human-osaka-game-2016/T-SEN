@@ -132,6 +132,13 @@
     <ClCompile Include="SubScene\Battle\Ship\Destroyer.cpp" />
     <ClCompile Include="SubScene\Battle\Ship\Ship.cpp" />
     <ClCompile Include="SubScene\Battle\Ship\ShipManager.cpp" />
+    <ClCompile Include="SubScene\Battle\StateMachine\StateMachine.cpp" />
+    <ClCompile Include="SubScene\Battle\StateMachine\State\AttackTarget.cpp" />
+    <ClCompile Include="SubScene\Battle\StateMachine\State\AvoidObject.cpp" />
+    <ClCompile Include="SubScene\Battle\StateMachine\State\MoveToTarget.cpp" />
+    <ClCompile Include="SubScene\Battle\StateMachine\State\SearchTarget.cpp" />
+    <ClCompile Include="SubScene\Battle\StateMachine\State\State.cpp" />
+    <ClCompile Include="SubScene\Battle\StateMachine\State\TurningAround.cpp" />
     <ClCompile Include="SubScene\Ending\Ending.cpp" />
     <ClCompile Include="SubScene\Formation\Formation.cpp" />
     <ClCompile Include="SubScene\Home\Home.cpp" />
@@ -206,6 +213,13 @@
     <ClInclude Include="SubScene\Battle\Ship\Destroyer.h" />
     <ClInclude Include="SubScene\Battle\Ship\Ship.h" />
     <ClInclude Include="SubScene\Battle\Ship\ShipManager.h" />
+    <ClInclude Include="SubScene\Battle\StateMachine\StateMachine.h" />
+    <ClInclude Include="SubScene\Battle\StateMachine\State\AttackTarget.h" />
+    <ClInclude Include="SubScene\Battle\StateMachine\State\AvoidObject.h" />
+    <ClInclude Include="SubScene\Battle\StateMachine\State\MoveToTarget.h" />
+    <ClInclude Include="SubScene\Battle\StateMachine\State\SearchTarget.h" />
+    <ClInclude Include="SubScene\Battle\StateMachine\State\State.h" />
+    <ClInclude Include="SubScene\Battle\StateMachine\State\TurningAround.h" />
     <ClInclude Include="SubScene\Ending\Ending.h" />
     <ClInclude Include="SubScene\Formation\Formation.h" />
     <ClInclude Include="SubScene\Home\Home.h" />
