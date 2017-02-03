@@ -106,6 +106,8 @@
     <ClCompile Include="SubScene\Battle\Battle.cpp" />
     <ClCompile Include="SubScene\Battle\BattleData\BattleDataManager.cpp" />
     <ClCompile Include="SubScene\Battle\BattleState\BattleStateManager.cpp" />
+    <ClCompile Include="SubScene\Battle\Bullet\AIBullet.cpp" />
+    <ClCompile Include="SubScene\Battle\Bullet\AIBulletManager.cpp" />
     <ClCompile Include="SubScene\Battle\Bullet\Ap.cpp" />
     <ClCompile Include="SubScene\Battle\Bullet\Bullet.cpp" />
     <ClCompile Include="SubScene\Battle\Bullet\BulletManager.cpp" />
@@ -132,6 +134,7 @@
     <ClCompile Include="SubScene\Battle\Ship\Destroyer.cpp" />
     <ClCompile Include="SubScene\Battle\Ship\Ship.cpp" />
     <ClCompile Include="SubScene\Battle\Ship\ShipManager.cpp" />
+    <ClCompile Include="SubScene\Battle\StateMachine\ShipStateManager.cpp" />
     <ClCompile Include="SubScene\Battle\StateMachine\StateMachine.cpp" />
     <ClCompile Include="SubScene\Battle\StateMachine\State\AttackTarget.cpp" />
     <ClCompile Include="SubScene\Battle\StateMachine\State\AvoidObject.cpp" />
@@ -187,6 +190,8 @@
     <ClInclude Include="SubScene\Battle\Battle.h" />
     <ClInclude Include="SubScene\Battle\BattleData\BattleDataManager.h" />
     <ClInclude Include="SubScene\Battle\BattleState\BattleStateManager.h" />
+    <ClInclude Include="SubScene\Battle\Bullet\AIBullet.h" />
+    <ClInclude Include="SubScene\Battle\Bullet\AIBulletManager.h" />
     <ClInclude Include="SubScene\Battle\Bullet\Ap.h" />
     <ClInclude Include="SubScene\Battle\Bullet\Bullet.h" />
     <ClInclude Include="SubScene\Battle\Bullet\BulletManager.h" />
@@ -213,6 +218,7 @@
     <ClInclude Include="SubScene\Battle\Ship\Destroyer.h" />
     <ClInclude Include="SubScene\Battle\Ship\Ship.h" />
     <ClInclude Include="SubScene\Battle\Ship\ShipManager.h" />
+    <ClInclude Include="SubScene\Battle\StateMachine\ShipStateManager.h" />
     <ClInclude Include="SubScene\Battle\StateMachine\StateMachine.h" />
     <ClInclude Include="SubScene\Battle\StateMachine\State\AttackTarget.h" />
     <ClInclude Include="SubScene\Battle\StateMachine\State\AvoidObject.h" />
@@ -233,6 +239,9 @@
     <ClInclude Include="SubScene\SubScene.h" />
     <ClInclude Include="SubScene\WorldMap\WorldMap.h" />
     <ClInclude Include="Thread\LoadingThread.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="SubScene\Battle\StateMachine\StateMachine.inl" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
