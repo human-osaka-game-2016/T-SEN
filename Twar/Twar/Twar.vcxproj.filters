@@ -349,6 +349,15 @@
     <ClCompile Include="SubScene\Battle\StateMachine\StateMachine.cpp">
       <Filter>Twar\SubScene\Battle\StateMachine</Filter>
     </ClCompile>
+    <ClCompile Include="SubScene\Battle\StateMachine\ShipStateManager.cpp">
+      <Filter>Twar\SubScene\Battle\StateMachine</Filter>
+    </ClCompile>
+    <ClCompile Include="SubScene\Battle\Bullet\AIBullet.cpp">
+      <Filter>Twar\SubScene\Battle\Bullet</Filter>
+    </ClCompile>
+    <ClCompile Include="SubScene\Battle\Bullet\AIBulletManager.cpp">
+      <Filter>Twar\SubScene\Battle\Bullet</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Scene\SceneManager.h">
@@ -588,5 +597,19 @@
     <ClInclude Include="SubScene\Battle\StateMachine\StateMachine.h">
       <Filter>Twar\SubScene\Battle\StateMachine</Filter>
     </ClInclude>
+    <ClInclude Include="SubScene\Battle\StateMachine\ShipStateManager.h">
+      <Filter>Twar\SubScene\Battle\StateMachine</Filter>
+    </ClInclude>
+    <ClInclude Include="SubScene\Battle\Bullet\AIBullet.h">
+      <Filter>Twar\SubScene\Battle\Bullet</Filter>
+    </ClInclude>
+    <ClInclude Include="SubScene\Battle\Bullet\AIBulletManager.h">
+      <Filter>Twar\SubScene\Battle\Bullet</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="SubScene\Battle\StateMachine\StateMachine.inl">
+      <Filter>Twar\SubScene\Battle\StateMachine</Filter>
+    </None>
   </ItemGroup>
 </Project>
