@@ -9,6 +9,7 @@
 
 #include <d3dx9.h>
 //#include "ShipManager.h"
+#include "../StateMachine/StateMachine.h"
 
 class FbxModel;
 class CameraController;
@@ -50,7 +51,7 @@ public:
 	Ship(D3DXVECTOR3* pos, STATUS status, SHIP_ID ShipID);
 
 	/**	デストラクタ */
-	~Ship();
+	virtual ~Ship();
 
 	/**	描画関数 */
 	virtual void Draw();
@@ -130,6 +131,9 @@ protected:
 
 	bool				m_IsHit;
 	bool				m_IsRush;
+
+	/**@data 2017/02/04追加 haga*/
+	StateMachine<Ship>*		m_pStateMachine;		//!< StateMachineクラスのインスタンスへのポインタ
 
 	/**	case Control of "the player" */
 	virtual void ControlPlayer() = 0;

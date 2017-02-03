@@ -31,6 +31,7 @@ Ship::Ship(D3DXVECTOR3* pos, STATUS status, SHIP_ID ShipID)
 	, m_IsUp(false)
 	, m_IsHit(false)
 	, m_IsRush(false)
+	, m_pStateMachine(nullptr)
 {
 }
 

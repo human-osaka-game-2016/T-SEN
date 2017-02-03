@@ -7,17 +7,24 @@
 #include "BattleShip.h"
 #include "GameLib/GameLib.h"
 #include "Fbx/FbxModel.h"
+#include "../StateMachine/State/AttackTarget.h"
 
 const float BattleShip::m_SpeedLimit = 1.f;
 
 BattleShip::BattleShip(D3DXVECTOR3* pos)
 	: Ship(pos, { 7500, 0.f }, SHIP_ID::BATTLESHIP)
 {
+	m_pStateMachine = new StateMachine<Ship>(this);
+	m_pStateMachine->SetCurrntState(AttackTarget::Instance());
+	m_pStateMachine->EnterCurrentState();
+	m_pStateMachine->SetPreviousState(AttackTarget::Instance());
 }
 
 
 BattleShip::~BattleShip()
 {
+	delete m_pStateMachine;
+	m_pStateMachine = nullptr;
 }
 
 void BattleShip::Control()
@@ -408,6 +415,7 @@ void BattleShip::ControlPlayer()
 //----------------------------------------------------------------------------------------------------------------------
 void BattleShip::ControlAlly()
 {
+	m_pStateMachine->Update();
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -417,6 +425,7 @@ void BattleShip::ControlAlly()
 //----------------------------------------------------------------------------------------------------------------------
 void BattleShip::ControlEnemy()
 {
+	m_pStateMachine->Update();
 }
 
 void BattleShip::Draw()
