@@ -1,4 +1,4 @@
-#ifndef MOVE_TO_TARGET_H
+﻿#ifndef MOVE_TO_TARGET_H
 #define MOVE_TO_TARGET_H
 
 #include "State.h"

@@ -1,4 +1,4 @@
-#include "AvoidObject.h"
+﻿#include "AvoidObject.h"
 
 
 AvoidObject::AvoidObject()

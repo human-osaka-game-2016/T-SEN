@@ -1,4 +1,4 @@
-#pragma once
+﻿#pragma once
 #include "State.h"
 class AvoidObject :
 	public State
