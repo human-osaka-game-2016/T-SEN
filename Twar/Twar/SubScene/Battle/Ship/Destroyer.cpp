@@ -7,17 +7,16 @@
 #include "Destroyer.h"
 #include "GameLib/GameLib.h"
 #include "Fbx/FbxModel.h"
-#include "../StateMachine/State/AttackTarget.h"
-
-const float Destroyer::m_SpeedLimit = 2.f;
+#include "../StateMachine/ShipStateManager.h"
 
 Destroyer::Destroyer(D3DXVECTOR3* pos)
 	: Ship(pos, { 1500, 0.f }, SHIP_ID::DESTROYER)
 {
+	m_SpeedLimit = m_DestroyerSpeedLimit;
 	m_pStateMachine = new StateMachine<Ship>(this);
-	m_pStateMachine->SetCurrntState(AttackTarget::Instance());
+	m_pStateMachine->SetCurrntState(ShipStateManager::GetShipState(ShipStateManager::MOVE_TO_TARGET));
 	m_pStateMachine->EnterCurrentState();
-	m_pStateMachine->SetPreviousState(AttackTarget::Instance());
+	m_pStateMachine->SetPreviousState(ShipStateManager::GetShipState(ShipStateManager::MOVE_TO_TARGET));
 }
 
 
@@ -49,18 +48,57 @@ void Destroyer::Control()
 	}
 	else
 	{
-		D3DXVECTOR3 vecAxisZ{ 0.f, 0.f, 1.f };			//!<	単位ベクトル
-		D3DXVec3TransformCoord(&vecAxisZ, &vecAxisZ, &m_Rotation);
+		switch(m_Attr)
+		{
+		case Ship::PLAYER:
+		{
+			D3DXVECTOR3 vecAxisZ{ 0.f, 0.f, 1.f };			//!<	単位ベクトル
+			D3DXVec3TransformCoord(&vecAxisZ, &vecAxisZ, &m_Rotation);
 
-		m_ObjPos -= vecAxisZ * m_Status.m_Speed;
-		m_CameraPos.x = m_LookatPos.x = m_ObjPos.x;
-		m_CameraPos.z = m_LookatPos.z = m_ObjPos.z;
+			m_ObjPos -= vecAxisZ * m_Status.m_Speed;
+			m_CameraPos.x = m_LookatPos.x = m_ObjPos.x;
+			m_CameraPos.z = m_LookatPos.z = m_ObjPos.z;
 
-		m_Status.m_Speed = 0.f;
-		m_Slant = 0.f;
-		m_Rotate = m_OldRotate;
+			m_Status.m_Speed = 0.f;
+			m_Slant = 0.f;
+			m_Rotate = m_OldRotate;
 
-		m_IsHit = false;
+			m_IsHit = false;
+		}
+		break;
+
+		case Ship::ALLY:
+		{
+			if(m_pStateMachine->GetCurrntState() != ShipStateManager::GetShipState(ShipStateManager::AVOID_OBJECT))
+			{
+				m_pStateMachine->SetCurrntState(ShipStateManager::GetShipState(ShipStateManager::AVOID_OBJECT));
+				m_pStateMachine->EnterCurrentState();
+			}
+			else
+			{
+				m_pStateMachine->Update();
+				m_IsHit = false;
+
+			}
+		}
+		break;
+
+		case Ship::ENEMY:
+		{
+			if(m_pStateMachine->GetCurrntState() != ShipStateManager::GetShipState(ShipStateManager::AVOID_OBJECT))
+			{
+				m_pStateMachine->SetCurrntState(ShipStateManager::GetShipState(ShipStateManager::AVOID_OBJECT));
+				m_pStateMachine->EnterCurrentState();
+			}
+			else
+			{
+				m_pStateMachine->Update();
+				m_IsHit = false;
+
+			}
+		}
+		break;
+		}
 	}
 
 	if (m_IsUp)

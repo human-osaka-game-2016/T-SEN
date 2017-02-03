@@ -37,6 +37,19 @@ public:
 	D3DXVECTOR3 GetNearShipPos(const D3DXVECTOR3& rPos);
 
 	/**
+	* モンスターの座標をかえしてくれる関数
+	* @return		モンスターの座標
+	*/
+	const D3DXVECTOR3& GetMonsterPos(){ return m_MonsterPos; };
+
+	/**
+	* AIが攻撃すべきターゲットの座標をかえしてくれる関数
+	* @param rPos 自分の座標
+	* @param playerAttackedCount プレイヤーに攻撃された回数
+	*/
+	D3DXVECTOR3 GetAIAttackTargetPos(const D3DXVECTOR3& rPos, int playerAttackedCount);
+
+	/**
 	* 船の座標をセットする関数
 	* @param	rPos		セットしたい船の座標
 	* @todo		この関数はBattleDataManagerの実装によって実装を変える予定

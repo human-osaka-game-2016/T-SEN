@@ -36,7 +36,7 @@ Battle::Battle(GameDataManager* pGameDataManager, GameTimer* pGameTimer)
 	m_pFieldManager = new FieldManager();
 	m_pShipManager = new ShipManager();
 	m_pCollisionManager = new CollisionManager(m_pShipManager, m_pMonsterManager, m_pShipManager->GetBulletManager());
-
+	
 
 	ShipManager::SHIP_ID shipID[12] =
 	{

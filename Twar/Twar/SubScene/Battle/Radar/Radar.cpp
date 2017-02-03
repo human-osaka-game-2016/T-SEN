@@ -12,6 +12,17 @@
 #include "Radar.h"
 
 //-------------------------------------------------------------------------------------------------------------------------------------//
+//Unnamed namespace
+//-------------------------------------------------------------------------------------------------------------------------------------//
+
+namespace
+{
+
+const	int		PlayerAttackCountLimit = 2;		// プレイヤーに攻撃をされたカウントの限界値
+
+}
+
+//-------------------------------------------------------------------------------------------------------------------------------------//
 //Public functions
 //-------------------------------------------------------------------------------------------------------------------------------------//
 
@@ -41,6 +52,32 @@ D3DXVECTOR3 Radar::GetNearShipPos(const D3DXVECTOR3& rPos)
 
 	D3DXVECTOR3 taegetPos = datas[0].pos;
 	datas.clear();
+	return taegetPos;
+}
+
+D3DXVECTOR3 Radar::GetAIAttackTargetPos(const D3DXVECTOR3& rPos, int playerAttackedCount)
+{
+	if(playerAttackedCount < PlayerAttackCountLimit)
+	{
+		return  GetMonsterPos();
+	}
+	else
+	{
+		// 下記の処理を行う 
+	}
+
+	 
+	D3DXVECTOR3 MonstrerVecLength = (rPos - GetMonsterPos());
+	float ToMonsterlength = D3DXVec3Length(&MonstrerVecLength);
+
+	// 現在の仕様ではm_ShipPos[0]はプレイヤーの座標
+	D3DXVECTOR3 PlayerVecLength = (rPos - m_ShipPos[0]);
+	float ToPlayerlength = D3DXVec3Length(&PlayerVecLength);
+
+	
+	D3DXVECTOR3 taegetPos = {0.0f, 0.0f, 0.0f};
+
+	D3DXVECTOR3 taegetPos;
 	return taegetPos;
 }
 

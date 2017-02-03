@@ -7,6 +7,8 @@
 #include "Fbx/FbxRelated.h"
 #include "ShipManager.h"
 #include "../Bullet/BulletManager.h"
+#include "../StateMachine/ShipStateManager.h"
+#include "../Bullet/AIBulletManager.h"
 
 ShipManager::ShipManager()
 	: m_BattleShip(new FbxRelated)
@@ -33,12 +35,12 @@ ShipManager::ShipManager()
 		// 読み込み失敗したらエラー
 		MessageBox(0, "FBXファイルの読み込みに失敗しました。", NULL, MB_OK);
 	}
-	if (!m_Cruiser->LoadFbx("fbx/kongou.fbx"))
+	if (!m_Cruiser->LoadFbx("fbx/tenryu.fbx"))
 	{
 		// 読み込み失敗したらエラー
 		MessageBox(0, "FBXファイルの読み込みに失敗しました。", NULL, MB_OK);
 	}
-	if (!m_Destroyer->LoadFbx("fbx/kongou.fbx"))
+	if (!m_Destroyer->LoadFbx("fbx/minekaze_new_anime.fbx"))
 	{
 		// 読み込み失敗したらエラー
 		MessageBox(0, "FBXファイルの読み込みに失敗しました。", NULL, MB_OK);
@@ -73,11 +75,16 @@ ShipManager::ShipManager()
 	char bullet = 1;
 	m_pBulletManager->Create(&bullet, bulletID);
 
+	ShipStateManager::CreateStates();
+	AIBulletManager::Create();				
 }
 
 
 ShipManager::~ShipManager()
 {
+	AIBulletManager::Delete();				
+	ShipStateManager::DeleteStates();
+
 	for (char i = 0; i < m_ArmyCount; i++)
 	{
 		delete m_Army[i];
@@ -104,6 +111,7 @@ void ShipManager::Control()
 		m_Enemy[i]->Control();
 	}
 	m_pBulletManager->Control(GetPlayerPos(), GetArmyRotate(0));
+	AIBulletManager::Instance()->Control();
 }
 
 void ShipManager::Draw()
@@ -117,6 +125,7 @@ void ShipManager::Draw()
 		m_Enemy[i]->Draw();
 	}
 	m_pBulletManager->Draw();
+	AIBulletManager::Instance()->Draw();
 }
 
 void ShipManager::Create(char* army, char* enemy, SHIP_ID* shipID)

@@ -43,6 +43,15 @@ public:
 	};
 
 
+	/**--@data 2017/02/04haga追加分----------------------------------------------------------------------------------------------------------*/
+
+	/**-----Static variable----*/
+	static const float			m_BattleShipSpeedLimit;			//!< 戦艦のスピード限界値
+	static const float			m_CruiserSpeedLimit;			//!< 巡洋艦のスピード限界値
+	static const float			m_DestroyerSpeedLimit;			//!< 駆逐艦のスピード限界値
+
+	/**----haga追加分終了---------------------------------------------------------------------------------------------------------------------*/
+
 	/**
 	コンストラクタ
 	@param	pos			オブジェクトの中心座標
@@ -68,17 +77,36 @@ public:
 	*/
 	void CameraTransWorld(float radius);
 
-	/**--@data 2017/02/04haga追加関数----------------------------------------------------------------------------------------------------------*/
-
+	/**--@data 2017/02/04haga追加分----------------------------------------------------------------------------------------------------------*/
 	/**-----Getter-------------*/
-
-	const D3DXVECTOR3& GetTargetPos(){ return m_TargetPos; }
+	const D3DXVECTOR3&  GetObjPos() { return m_ObjPos; }
+	float				GetRotate() { return m_Rotate; }
+	float				GetSpeedLimit(){ return m_SpeedLimit; }
+	float				GetOldRotate() { return m_OldRotate; }
+	StateMachine<Ship>*	GetStateMachine()const{ return m_pStateMachine; }
+	const D3DXVECTOR3&	GetTargetPos(){ return m_TargetPos; }
+	float				GetToTargetAngle(){ return m_TargetAngle; }
+	int					GetBulletIntervalCount(){ return m_BulletIntervalCount; }
+	bool				GetIsHit(){ return m_IsHit; }
+	int					GetAvoidedTimeCount(){  return m_AvoidedTimeCount; }
+	float				GetTurningSpeed(){ return m_TurningSpeed; }
+	int					GetTurningTimeCount(){ return m_TurningTimeCount; }
+	int					GetPlayerAttackedCount(){ return m_PlayerAttackedCount; }
 
 	/**-----Setter-------------*/
+	void SetObjPos(const D3DXVECTOR3& pos){ m_ObjPos = pos; }
+	void SetRotate(float rotate){ m_Rotate = rotate; }
+	void SetOldRotate(float rotate){ m_OldRotate = rotate; }
+	void SetTargetPos(const D3DXVECTOR3& targetPos){ m_TargetPos = targetPos; }
+	void SetTargetAngle(float angle){ m_TargetAngle = angle; }
+	void SetBulletIntervalCount(int bulletInterval){ m_BulletIntervalCount = bulletInterval; }
+	void SetIsHit(bool isHit){ m_IsHit = isHit; }
+	void SetAvoidedTimeCount(int avoidedTimeCount){ m_AvoidedTimeCount = avoidedTimeCount; }
+	void SetRotaion(const D3DXMATRIX& matRotation){ m_Rotation = matRotation; }
+	void SetTurningSpeed(float turningSpeed){ m_TurningSpeed = turningSpeed; }
+	void SetTurningTimeCount(int timeCount){ m_TurningTimeCount = timeCount; }
 
-	void SetTargetPos(const D3DXVECTOR3& targetPos);
-
-	/**--haga追加分終了-------------------------------------------------------------------------------------------------------------*/
+	/**--haga追加分終了--------------------------------------------------------------------------------------------------------------------*/
 
 protected:
 	/**
@@ -127,6 +155,7 @@ protected:
 	*/
 	static const float		m_LimitArrivalFlame;	//!<	限界速度到達フレーム
 	static const float		m_DecelerationSpeed;	//!<	減速スピード
+	float					m_SpeedLimit;			//!<	限界スピード値 2017/02/05haga追加分
 
 	/**
 	カメラの関係
@@ -144,9 +173,18 @@ protected:
 	bool				m_IsHit;
 	bool				m_IsRush;
 
-	/**@data 2017/02/04追加 haga*/
-	StateMachine<Ship>*		m_pStateMachine;		//!< StateMachineクラスのインスタンスへのポインタ
-	D3DXVECTOR3				m_TargetPos;			//!< ターゲットの位置座標
+	/**--@data 2017/02/04追加 haga--------------------------------------------------------------------------------------------------*/
+
+	StateMachine<Ship>*		m_pStateMachine;			//!< StateMachineクラスのインスタンスへのポインタ
+	D3DXVECTOR3				m_TargetPos;				//!< ターゲットの位置座標
+	float					m_TargetAngle;				//!< ターゲットへの角度
+	float					m_TurningSpeed;				//!< 旋回するときのスピード
+	int						m_TurningTimeCount;			//!< 旋回時間カウント
+	int						m_BulletIntervalCount;		//!< 弾の発射間隔のカウント数
+	int						m_AvoidedTimeCount;			//!< 回避時間をカウントする変数
+	int						m_PlayerAttackedCount;		//!< プレイヤーに攻撃された回数
+
+	/**--haga追加分終了-------------------------------------------------------------------------------------------------------------*/
 
 	/**	case Control of "the player" */
 	virtual void ControlPlayer() = 0;

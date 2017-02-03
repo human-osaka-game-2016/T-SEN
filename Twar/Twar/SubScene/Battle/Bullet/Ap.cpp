@@ -33,7 +33,7 @@ void ApBullet::Control(D3DXVECTOR3 Pos, float Rotate)
 	float BulletSpeed = 10.f;
 	float DrawRange = 1000;
 	static int BulletTime = 0;
-	const float Gravity = 9.8;
+	const float Gravity = 19.8;
 	m_Data.hasDrawn = true;
 	Data* pData = nullptr;
 	BulletTime++;

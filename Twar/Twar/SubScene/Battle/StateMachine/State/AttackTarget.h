@@ -10,20 +10,33 @@
 #include "State.h"
 #include "../../Ship/Ship.h"
 
-class BulletManager;
-
+/**
+* ターゲットへ攻撃を行う状態
+*/
 class AttackTarget : public State<Ship>
 {
 
 public:
+	/**インスタンスを生成する関数*/
+	static void Create()
+	{
+		if(m_pAttackTarget == nullptr)
+		{
+			m_pAttackTarget = new AttackTarget();
+		}
+	}
+
 	/**
 	* 実体を取得する関数
 	* @return  AttackTargetクラスのインスタンスへのポインタ
 	*/
-	static AttackTarget* Instance()
+	static AttackTarget* Instance(){ return m_pAttackTarget; }
+
+	/**インスタンスを破棄する関数*/
+	static void Delete()
 	{
-		static AttackTarget state;
-		return &state;
+		delete m_pAttackTarget;
+		m_pAttackTarget = nullptr;
 	}
 
 	/**
@@ -44,14 +57,14 @@ public:
 	*/
 	virtual void Exit(Ship* pShip)override;
 
-	/**Destructor*/
-	virtual ~AttackTarget();
-
 private:
-	BulletManager*    m_pBulletManager;		//!< BulletManagerクラスのインスタンスへのポインタ
+	static AttackTarget*	  m_pAttackTarget;		//!< AttackTargetクラスのインスタンスへのポインタ
 
 	/**Constructor*/
-	AttackTarget();
+	AttackTarget(){}
+
+	/**Destructor*/
+	virtual ~AttackTarget(){}
 
 };
 
