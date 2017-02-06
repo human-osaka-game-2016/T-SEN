@@ -63,6 +63,7 @@ Battle::Battle(GameDataManager* pGameDataManager, GameTimer* pGameTimer)
 Battle::~Battle()
 {
 	EffectManager::Instance().ReleaseID();
+	delete m_pCollisionManager;
 	delete m_pLight;
 	delete m_pFieldManager;
 	delete m_pMonsterManager;

@@ -27,7 +27,11 @@ void BattleShip::Control()
 		switch (m_Attr)
 		{
 		case Ship::PLAYER:
+#ifdef _DEBUG
+			debugControl();
+#else
 			BattleShip::ControlPlayer();
+#endif
 			break;
 
 		case Ship::ALLY:
@@ -73,6 +77,114 @@ void BattleShip::Control()
 			m_IsUp = true;
 		}
 	}
+}
+
+void BattleShip::debugControl()
+{
+	D3DXVECTOR3 vecAxisZ{ 0.f, 0.f, 1.f };			//!<	単位ベクトル
+
+	D3DXVec3TransformCoord(&vecAxisZ, &vecAxisZ, &m_Rotation);
+
+	if (m_pGameLib.ChecKMouseR() == ON)
+	{
+		m_Angle = m_ZoomAngle;
+		m_IsZoom = true;
+	}
+	else if (m_pGameLib.ChecKMouseR() == OFF)
+	{
+		m_Angle = m_NormalAngle;
+		m_IsZoom = false;
+	}
+
+	float nextSpeed;
+
+	if (m_pGameLib.CheckKey(DIK_W, W) - OFF + m_pGameLib.CheckKey(DIK_S, S) - OFF)
+	{
+		if (m_pGameLib.CheckKey(DIK_W, W) == ON)
+		{
+			m_Status.m_Speed = 2.f;
+		}
+		else if (m_pGameLib.CheckKey(DIK_S, S) == ON)
+		{
+			m_Status.m_Speed = -2.f;
+		}
+		else
+		{
+			m_Status.m_Speed = 0.f;
+		}
+	}
+
+	float nextSlant;
+	float RotateSpeed;												//!<	速度に依存する
+	float tiltSpeed;												//!<	速度に依存する
+	RotateSpeed = tiltSpeed = m_Status.m_Speed * 0.5f;				//!<	0.5		目で見て導き出された結果
+	float slantLimit = tiltSpeed * 10.f;							//!<	10.0	傾く速度が限界の1/10くらいが妥当かと
+	m_OldRotate = m_Rotate;
+
+	if (m_pGameLib.CheckKey(DIK_A, A) == ON)
+	{
+		m_Rotate -= 1;
+		m_CameraRotate -= 1;
+	}
+
+	if (m_pGameLib.CheckKey(DIK_D, D) == ON)
+	{
+		m_Rotate += 1;
+		m_CameraRotate += 1;
+
+	}
+
+	if (m_Rotate >= 360.f)						//!<	360 = 一回転の角度
+	{
+		m_Rotate -= 360.f;
+		m_CameraRotate -= 360.f;
+	}
+	if (m_Rotate <= -360.f)
+	{
+		m_Rotate += 360.f;
+		m_CameraRotate += 360.f;
+	}
+
+	m_ObjPos += vecAxisZ * m_Status.m_Speed;
+
+	POINT newCursor;
+	GetCursorPos(&newCursor);
+
+	HWND hWnd = InputDevice::GetInstance().GethWnd();
+
+	RECT winRect;
+	RECT clientRect;
+	GetWindowRect(hWnd, &winRect);
+	GetClientRect(hWnd, &clientRect);
+	int centerPosX = static_cast<int>(winRect.left + ((clientRect.right - clientRect.left) / 2));
+	int centerPosY = static_cast<int>(winRect.bottom - ((clientRect.bottom - clientRect.top) / 2));
+
+
+	float nextLookatPos = m_LookatPos.y - (newCursor.y - centerPosY) * 0.05f;			//!<	0.05	仮の感度(ゲーム中に変更できるようにする、かもしれない)
+
+	if (nextLookatPos <= 100.f && nextLookatPos >= 25.f)							//!<	100, 25	目で見て決めたカメラの上限と下限
+	{
+		m_LookatPos.y = nextLookatPos;
+	}
+
+	float nextRotate = m_CameraRotate + (newCursor.x - centerPosX) * 0.05f;			//!<	0.05	仮の感度(ゲーム中に変更できるようにする、かもしれない)
+
+	if (nextRotate <= m_Rotate + 150.f && nextRotate >= m_Rotate - 150.f)		//!<	150		船の前方から見える角度(左右150°ずつ)
+	{
+		m_CameraRotate = nextRotate;
+	}
+	else if (nextRotate >= m_Rotate + 150.f)
+	{
+		m_CameraRotate = m_Rotate + 150.f;
+	}
+	else if (nextRotate <= m_Rotate - 150.f)
+	{
+		m_CameraRotate = m_Rotate - 150.f;
+	}
+
+	m_CameraPos.x = m_LookatPos.x = m_ObjPos.x;
+	m_CameraPos.z = m_LookatPos.z = m_ObjPos.z;
+
 }
 
 //----------------------------------------------------------------------------------------------------------------------

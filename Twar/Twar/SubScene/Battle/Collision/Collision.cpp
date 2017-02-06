@@ -6,6 +6,7 @@
 
 #include <d3dx9.h>
 #include "../Ship/ShipManager.h"
+#include "../Monster/MonsterManager.h"
 #include "Collision.h"
 
 Collision::Collision(ShipManager* a_pShipManager)
@@ -25,7 +26,7 @@ bool Collision::CheckFirstCollision(D3DXVECTOR3 pos1, D3DXVECTOR3 pos2, float r1
 	return false;
 }
 
-bool Collision::CheckSecondCollision(D3DXVECTOR3 pos1, D3DXVECTOR3 pos2, ShipManager::ShipSize shipSize1, ShipManager::ShipSize shipSize2, float rotate1, float rotate2)
+bool Collision::CheckSecondCollisionShipShip(D3DXVECTOR3 pos1, D3DXVECTOR3 pos2, ShipManager::ShipSize shipSize1, ShipManager::ShipSize shipSize2, float rotate1, float rotate2)
 {
 	CollisionPosXY CollisionPosXY1[6];
 	CollisionPosXY CollisionPosXY2[6];
@@ -66,6 +67,22 @@ bool Collision::CheckSecondCollision(D3DXVECTOR3 pos1, D3DXVECTOR3 pos2, ShipMan
 	return false;
 }
 
+bool Collision::CheckSecondCollisionShipMonster(D3DXVECTOR3 shipPos, D3DXVECTOR3 monsterPos, ShipManager::ShipSize shipSize, MonsterManager::MonsterSize monsterSize, float shipRotate)
+{
+	CollisionPosXY CollisionPosXY[6];
+
+	CreateShipCollisionPos(shipPos, shipSize, shipRotate, CollisionPosXY);
+
+	for (char i = 0; i < 6; i++)
+	{
+		if ((CollisionPosXY[i].x - monsterPos.x) * (CollisionPosXY[i].x - monsterPos.x) + (CollisionPosXY[i].y - monsterPos.z) * (CollisionPosXY[i].y - monsterPos.z) <= (monsterSize.m_MaxR * 2.f) * (monsterSize.m_MaxR * 2.f)) // 2 はモンスターの拡大率
+		{
+			return true;
+		}
+	}
+	return false;
+}
+
 Collision::CollisionPosXY Collision::SubCheckSecondCollision(CollisionPosXY a, CollisionPosXY b)
 {
 	CollisionPosXY ret;
@@ -87,6 +104,39 @@ void Collision::CreateShipCollisionPos(D3DXVECTOR3 objPos, ShipManager::ShipSize
 	D3DXVECTOR3 vec4{ shipSize.m_MinX / 3.f, 0.f, shipSize.m_MaxZ };
 	D3DXVECTOR3 vec5{ shipSize.m_MinX / 3.f, 0.f, shipSize.m_MinZ };
 	D3DXVECTOR3 vec6{ shipSize.m_MinX, 0.f, 0.f };
+	D3DXVec3TransformCoord(&vec1, &vec1, &rotation);
+	D3DXVec3TransformCoord(&vec2, &vec2, &rotation);
+	D3DXVec3TransformCoord(&vec3, &vec3, &rotation);
+	D3DXVec3TransformCoord(&vec4, &vec4, &rotation);
+	D3DXVec3TransformCoord(&vec5, &vec5, &rotation);
+	D3DXVec3TransformCoord(&vec6, &vec6, &rotation);
+
+
+	collisionPosXY[0].x = objPos.x + vec1.x;
+	collisionPosXY[0].y = objPos.z + vec1.z;
+	collisionPosXY[1].x = objPos.x + vec2.x;
+	collisionPosXY[1].y = objPos.z + vec2.z;
+	collisionPosXY[2].x = objPos.x + vec3.x;
+	collisionPosXY[2].y = objPos.z + vec3.z;
+	collisionPosXY[3].x = objPos.x + vec4.x;
+	collisionPosXY[3].y = objPos.z + vec4.z;
+	collisionPosXY[4].x = objPos.x + vec5.x;
+	collisionPosXY[4].y = objPos.z + vec5.z;
+	collisionPosXY[5].x = objPos.x + vec6.x;
+	collisionPosXY[5].y = objPos.z + vec6.z;
+}
+
+void Collision::CreateMonsterCollisionPos(D3DXVECTOR3 objPos, MonsterManager::MonsterSize monsterSize, float rotate, CollisionPosXY* collisionPosXY)
+{
+	D3DXMATRIX rotation;
+	D3DXMatrixRotationY(&rotation, rotate * 3.141592f / 180.f);
+
+	D3DXVECTOR3 vec1{ monsterSize.m_MaxX, 0.f, 0.f };
+	D3DXVECTOR3 vec2{ monsterSize.m_MaxX / 3.f, 0.f, monsterSize.m_MaxZ };
+	D3DXVECTOR3 vec3{ monsterSize.m_MaxX / 3.f, 0.f, monsterSize.m_MinZ };
+	D3DXVECTOR3 vec4{ monsterSize.m_MinX / 3.f, 0.f, monsterSize.m_MaxZ };
+	D3DXVECTOR3 vec5{ monsterSize.m_MinX / 3.f, 0.f, monsterSize.m_MinZ };
+	D3DXVECTOR3 vec6{ monsterSize.m_MinX, 0.f, 0.f };
 	D3DXVec3TransformCoord(&vec1, &vec1, &rotation);
 	D3DXVec3TransformCoord(&vec2, &vec2, &rotation);
 	D3DXVec3TransformCoord(&vec3, &vec3, &rotation);

@@ -39,6 +39,9 @@ public:
 	/**描画関数*/
 	void Draw();
 
+	/**ゲッター関数*/
+	D3DXVECTOR3 GetPos(){ return m_Pos; };
+
 private:
 
 	/***ステータス(仮置き)*/

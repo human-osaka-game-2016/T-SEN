@@ -38,6 +38,8 @@ private:
 
 	/**	case Control of "the enemy" */
 	virtual void ControlEnemy();
+
+	void debugControl();
 };
 
 #endif	//	BATTLESHIP_H
