@@ -101,6 +101,12 @@
     <Filter Include="Twar\SubScene\Policy">
       <UniqueIdentifier>{f354e5da-d549-4f18-99ff-7e616b168534}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Twar\SubScene\Battle\StateMachine">
+      <UniqueIdentifier>{4a0b7cd2-80f8-4f1b-82bc-843815e30f5f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Twar\SubScene\Battle\StateMachine\State">
+      <UniqueIdentifier>{5da0300c-b65c-474a-86d2-7f6993ec24ad}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
