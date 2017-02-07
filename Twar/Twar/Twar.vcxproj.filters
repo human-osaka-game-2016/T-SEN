@@ -606,7 +606,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="SubScene\Battle\StateMachine\StateMachine.inl">
-    <Filter>Twar\SubScene\Battle\StateMachine</Filter>
-  </None>
+      <Filter>Twar\SubScene\Battle\StateMachine</Filter>
+    </None>
   </ItemGroup>
 </Project>
