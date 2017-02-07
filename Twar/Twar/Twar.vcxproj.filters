@@ -71,9 +71,6 @@
     <Filter Include="Twar\SubScene\BattleResult">
       <UniqueIdentifier>{9816fd68-b737-4453-964f-234befe4141b}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Twar\SubScene\WorldMap">
-      <UniqueIdentifier>{fc348c6d-3059-4389-971e-a4fb5d368171}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Twar\SubScene\Ending">
       <UniqueIdentifier>{a311019d-2cf5-4b27-a0f7-0985f305d7ca}</UniqueIdentifier>
     </Filter>
