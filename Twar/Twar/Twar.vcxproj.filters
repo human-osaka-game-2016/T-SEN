@@ -95,9 +95,6 @@
     <Filter Include="Twar\GameWindow">
       <UniqueIdentifier>{210fcd11-e549-456c-9296-76109ea496f0}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Twar\SubScene\WorldMap">
-      <UniqueIdentifier>{fc348c6d-3059-4389-971e-a4fb5d368171}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Twar\SubScene\Policy">
       <UniqueIdentifier>{f354e5da-d549-4f18-99ff-7e616b168534}</UniqueIdentifier>
     </Filter>
