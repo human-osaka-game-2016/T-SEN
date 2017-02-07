@@ -1,36 +1,73 @@
-﻿/**
-* @file		BattleDataManager.h
-* @brief	BattleDataManagerクラスヘッダ
-* @author	haga
-* @todo		2016/12/08にファイルだけ作成。実装はあとで行う
-*/
+﻿//==================================================================================================================================//
+//!< @file		BattleDataManager.h
+//!< @brief		BattleDataManagerクラスヘッダ
+//!< @author	haga
+//==================================================================================================================================//
 
 #ifndef BATTLE_DATA_MANAGER_H
 #define BATTLE_DATA_MANAGER_H
 
 /**
 * 戦闘に関するデータを管理するクラス
+* Singletonパターン
 */
 class BattleDataManager
 {
+
 public:
+
+	/**
+	* BattleDataManagerクラスのインスタンスを取得する関数
+	* @return BattleDataManagerクラスのインスタンス
+	*/
 	static BattleDataManager& Instance()
 	{
-		static BattleDataManager dataManager;
-		return dataManager;
+		static BattleDataManager battleDataManager;
+		return battleDataManager;
 	}
-	~BattleDataManager();
-	void SetPlayerHp(int hp);
-	void SetPlayerSpeed(float speed);
-	int GetPlayerHp();
-	float GetPlayerSpeed();
+
+	/**
+	* 初期化関数
+	* @attention	この関数はBattleシーンのConstructor内で必ずよぶこと
+	*/
+	void			Initialize();
+
+	/**--Getter------------------------------------------------------------------------------------------*/
+
+	inline int		GetPlayerHp(){ return m_PlayerHp; }
+	inline float	GetPlayerSpeed(){ return m_PlayerSpeed; }
+	inline int		GetMonsterHp(){ return m_MonsterHp; }
+	inline int		GetMonsterHpMax(){ return m_MonsterHpMax; }
+	inline int		GetPlayerAttackDamege(){ return m_PlayerAttackedDamage; }
+	inline int		GetBattleResult(){ return m_BattleResult; }
+
+	/**--Setter------------------------------------------------------------------------------------------*/
+
+	inline void		SetPlayerHp(int playerHp){ m_PlayerHp = playerHp; }
+	inline void		SetPlayerSpeed(float playerSpeed){ m_PlayerSpeed = playerSpeed; }
+	inline void		SetMonsterHp(int monsterHp){ m_MonsterHp = monsterHp; }
+	inline void		SetMonsterHpMax(int monsterHpMax){ m_MonsterHpMax = monsterHpMax; }
+	inline void		SetPlayerAttackDamege(int playerDamage){ m_PlayerAttackedDamage = playerDamage; }
+	inline void		SetBattleResult(bool result){ m_BattleResult = result; }
+
+	/**Destructor*/
+	~BattleDataManager(){}
 
 private:
-	BattleDataManager();
+	int				m_PlayerHp;					//!< プレイヤー軍艦のHP
+	float			m_PlayerSpeed;				//!< プレイヤー軍艦のスピード
+	int				m_MonsterHp;				//!< モンスターのHP
+	int				m_MonsterHpMax;				//!< モンスターのHP最大値
+	int				m_PlayerAttackedDamage;		//!< プレイヤーが攻撃して与えたダメージ
+	bool			m_BattleResult;				//!< 戦闘結果 trueが勝利、falseが敗北
 
-	int m_PlayerHp;
-	float m_PlayerSpeed;
+	/**Constructor*/
+	BattleDataManager(){}
+
 };
 
-
 #endif	// BATTLE_DATA_MANAGER_H
+
+//==================================================================================================================================//
+//END OF FILE
+//==================================================================================================================================//

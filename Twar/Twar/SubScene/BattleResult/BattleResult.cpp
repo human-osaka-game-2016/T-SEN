@@ -70,7 +70,6 @@ SUBSCENE_ID BattleResult::Control()
 		if(m_pBackground->Control())
 		{
 			m_State = SCORE_DISP;
-			m_pScoreResult->PayControl();
 			m_pGameDataManager->SetMoney(m_pScoreResult->GetMoneyData());
 		}
 

@@ -1,56 +1,52 @@
-﻿/**
-* @file GameDataManager.cpp
-* @brief GameDataManagerクラス実装
-* @author haga
-* @note 2016/11/03ファイル作成したが、実装はまだ行っていない
-*/
+﻿//==================================================================================================================================//
+//!< @file		GameDataManager.h
+//!< @brief		GameDatamanagerクラスヘッダ
+//!< @author	haga･matsuda
+//==================================================================================================================================//
+
+//--------------------------------------------------------------------------------------------------------------//
+//Includes
+//--------------------------------------------------------------------------------------------------------------//
+
 #include "GameDataManager.h"
 
+//--------------------------------------------------------------------------------------------------------------//
+//Unnamed namespace
+//--------------------------------------------------------------------------------------------------------------//
+
+namespace
+{
+
+const	int			MoneyDefaultval			= 1000;			// 所持金のデフォルト値
+const	int			FightOffDayLimitVal		= 10;			// 撃退日数期限
+
+}
+
+//--------------------------------------------------------------------------------------------------------------//
+//Public functions
+//--------------------------------------------------------------------------------------------------------------//
 
 GameDataManager::GameDataManager()
-	:m_Money(0)
+	: m_Money(MoneyDefaultval)
+	, m_FightOffDays(FightOffDayLimitVal)
+	, m_WaveCount(1)
+	, m_SelectedShipID()
 {
 	m_ShipAggressivity.m_Aggressivity[GameDataManager::ShipAggressivity::LV1] = 0;
 	m_ShipDurability.m_Durability[GameDataManager::ShipDurability::LV1] = 0;
 	m_ShipSpeed.m_Speed[GameDataManager::ShipSpeed::LV1] = 0;
 }
 
-
 GameDataManager::~GameDataManager()
 {
 }
 
-void GameDataManager::SetMoney(int money)
+void GameDataManager::ResetWaveData()
 {
-	m_Money = money;
+	m_FightOffDays = FightOffDayLimitVal;
+	++m_WaveCount;
 }
 
-int GameDataManager::GetMoney()
-{
-	return m_Money;
-}
-
-GameDataManager::ShipAggressivity* GameDataManager::GetShipAggressivity()
-{
-	return &m_ShipAggressivity;
-}
-
-GameDataManager::ShipDurability* GameDataManager::GetShipDurability()
-{
-	return &m_ShipDurability;
-}
-
-GameDataManager::ShipSpeed* GameDataManager::GetShipSpeed()
-{
-	return &m_ShipSpeed;
-}
-
-void GameDataManager::SetFightOffDays(int FightOffDays)
-{
-	m_FightOffDays = FightOffDays;
-}
-
-int GameDataManager::GetFightOffDays()
-{
-	return m_FightOffDays;
-}
+//==================================================================================================================================//
+//END OF FILE
+//==================================================================================================================================//
