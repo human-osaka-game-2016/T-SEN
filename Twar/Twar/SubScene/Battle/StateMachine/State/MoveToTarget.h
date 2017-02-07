@@ -14,11 +14,27 @@ class MoveToTarget : public State<Ship>
 {
 
 public:
-	/**Constrctor*/
-	MoveToTarget();
+	/**インスタンスを生成する関数*/
+	static void Create()
+	{
+		if(m_pMoveToTarget == nullptr)
+		{
+			m_pMoveToTarget = new MoveToTarget();
+		}
+	}
 
-	/**Destrctor*/
-	~MoveToTarget();
+	/**
+	* 実体を取得する関数
+	* @return  MoveToTargetクラスのインスタンスへのポインタ
+	*/
+	static MoveToTarget* Instance(){ return m_pMoveToTarget; }
+
+	/**インスタンスを破棄する関数*/
+	static void Delete()
+	{
+		delete m_pMoveToTarget;
+		m_pMoveToTarget = nullptr;
+	}
 
 	/**
 	* 開始関数
@@ -37,6 +53,15 @@ public:
 	* @param pShip	Shipクラスのインスタンスへのポインタ
 	*/
 	virtual void Exit(Ship* pShip)override;
+
+private:
+	static MoveToTarget*		m_pMoveToTarget;	// MoveToTargetクラスのインスタンスへのポインタ
+
+	/**Constrctor*/
+	MoveToTarget(){}
+
+	/**Destrctor*/
+	virtual ~MoveToTarget(){}
 
 };
 

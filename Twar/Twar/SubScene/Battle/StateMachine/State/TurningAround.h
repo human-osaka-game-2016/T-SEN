@@ -10,16 +10,34 @@
 #include "State.h"
 #include "../../Ship/Ship.h"
 
+/**
+* 旋回する状態
+*/
 class TurningAround : public State<Ship>
 {
 
 public:
-	/**Constructor*/
-	TurningAround();
+	/**インスタンスを生成する関数*/
+	static void Create()
+	{
+		if(m_pTurningAround == nullptr)
+		{
+			m_pTurningAround = new TurningAround();
+		}
+	}
 
-	/**Destructor*/
-	~TurningAround();
+	/**
+	* インスタンスを取得する関数
+	* @return  MoveToTargetクラスのインスタンスへのポインタ
+	*/
+	static TurningAround* Instance(){ return m_pTurningAround; }
 
+	/**インスタンスを破棄する関数*/
+	static void Delete()
+	{
+		delete m_pTurningAround;
+		m_pTurningAround = nullptr;
+	}
 	/**
 	* 開始関数
 	* @param pShip	Shipクラスのインスタンスへのポインタ
@@ -37,6 +55,15 @@ public:
 	* @param pShip	Shipクラスのインスタンスへのポインタ
 	*/
 	virtual void Exit(Ship* pShip)override;
+
+private:
+	static	TurningAround*			m_pTurningAround;		//!< TurningAroundクラスのインスタンスへのポインタ
+
+	/**Constructor*/
+	TurningAround(){}
+
+	/**Destructor*/
+	~TurningAround(){}
 
 };
 

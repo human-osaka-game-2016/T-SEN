@@ -39,9 +39,9 @@ const int			PosCount			= 3;						// モンスター位置座標の数
 
 // 出現位置テーブル
 const D3DXVECTOR3	PositionTable[PosCount] = {
-	{ 100.f, 0.0f,  100.f},
-	{-800.f, 0.0f, -800.f},
-	{ 800.f, 0.0f,  800.f}
+	{ -700.f, 0.0f,  -700.f},
+	{ 800.f, 0.0f, 800.f},
+	{ 500.f, 0.0f,  900.f}
 };
 
 }
@@ -69,6 +69,7 @@ Monster::Monster(FbxModel* pModel, MonsterBulletManager* pBulletManager)
 	std::mt19937 mt(seed_gen());
 	std::uniform_int_distribution<> dist(0, ( PosCount- 1 ));
 	m_Pos = PositionTable[dist(mt)];
+	Radar::Instance().SetMonsterPos(m_Pos);
 }
 
 Monster::~Monster()
@@ -106,6 +107,12 @@ bool Monster::Control()
 	case DEATH:
 		FadeOut();
 		break;
+	}
+
+	Radar::Instance().SetMonsterPos(m_Pos);
+	if(GameLib::Instance().CheckKey(DIK_M, M) == ON)
+	{
+		m_State = MOVING;
 	}
 
 	return m_HasVanished;

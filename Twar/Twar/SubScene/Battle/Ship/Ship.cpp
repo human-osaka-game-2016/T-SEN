@@ -18,6 +18,11 @@ const float Ship::m_CameraHeight = 50.f;
 const float	Ship::m_NormalAngle = 50.f;
 const float	Ship::m_ZoomAngle = 10.f;
 
+// haga追加分
+const float			Ship::m_BattleShipSpeedLimit	= 1.f;			// 戦艦のスピード限界値
+const float			Ship::m_CruiserSpeedLimit		= 1.5f;			// 巡洋艦のスピード限界値
+const float			Ship::m_DestroyerSpeedLimit		= 2.f;			// 駆逐艦のスピード限界値
+
 Ship::Ship(D3DXVECTOR3* pos, STATUS status, SHIP_ID ShipID)
 	: m_pGameLib(GameLib::Instance())
 	, m_pFbx(nullptr)
@@ -32,6 +37,13 @@ Ship::Ship(D3DXVECTOR3* pos, STATUS status, SHIP_ID ShipID)
 	, m_IsHit(false)
 	, m_IsRush(false)
 	, m_pStateMachine(nullptr)
+	, m_TargetPos({0.0f, 0.0f, 0.0f})
+	, m_TargetAngle(0.0f)
+	, m_TurningSpeed(0.0f)
+	, m_TurningTimeCount(0)
+	, m_BulletIntervalCount(0)
+	, m_AvoidedTimeCount(0)
+	, m_PlayerAttackedCount(0)
 {
 }
 
