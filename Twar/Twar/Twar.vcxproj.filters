@@ -96,7 +96,7 @@
       <UniqueIdentifier>{210fcd11-e549-456c-9296-76109ea496f0}</UniqueIdentifier>
     </Filter>
     <Filter Include="Twar\SubScene\Policy">
-    <UniqueIdentifier>{d0e0f531-8710-4763-a8d2-4c9e0f4871ae}</UniqueIdentifier>
+      <UniqueIdentifier>{d0e0f531-8710-4763-a8d2-4c9e0f4871ae}</UniqueIdentifier>
     </Filter>
     <Filter Include="Twar\SubScene\Battle\StateMachine">
       <UniqueIdentifier>{4a0b7cd2-80f8-4f1b-82bc-843815e30f5f}</UniqueIdentifier>
@@ -325,6 +325,36 @@
     <ClCompile Include="SubScene\Policy\PolicyMenu.cpp">
       <Filter>Twar\SubScene\Policy</Filter>
     </ClCompile>
+    <ClCompile Include="SubScene\Battle\StateMachine\State\AttackTarget.cpp">
+      <Filter>Twar\SubScene\Battle\StateMachine\State</Filter>
+    </ClCompile>
+    <ClCompile Include="SubScene\Battle\StateMachine\State\AvoidObject.cpp">
+      <Filter>Twar\SubScene\Battle\StateMachine\State</Filter>
+    </ClCompile>
+    <ClCompile Include="SubScene\Battle\StateMachine\State\MoveToTarget.cpp">
+      <Filter>Twar\SubScene\Battle\StateMachine\State</Filter>
+    </ClCompile>
+    <ClCompile Include="SubScene\Battle\StateMachine\State\SearchTarget.cpp">
+      <Filter>Twar\SubScene\Battle\StateMachine\State</Filter>
+    </ClCompile>
+    <ClCompile Include="SubScene\Battle\StateMachine\State\State.cpp">
+      <Filter>Twar\SubScene\Battle\StateMachine\State</Filter>
+    </ClCompile>
+    <ClCompile Include="SubScene\Battle\StateMachine\State\TurningAround.cpp">
+      <Filter>Twar\SubScene\Battle\StateMachine\State</Filter>
+    </ClCompile>
+    <ClCompile Include="SubScene\Battle\StateMachine\StateMachine.cpp">
+      <Filter>Twar\SubScene\Battle\StateMachine</Filter>
+    </ClCompile>
+    <ClCompile Include="SubScene\Battle\StateMachine\ShipStateManager.cpp">
+      <Filter>Twar\SubScene\Battle\StateMachine</Filter>
+    </ClCompile>
+    <ClCompile Include="SubScene\Battle\Bullet\AIBullet.cpp">
+      <Filter>Twar\SubScene\Battle\Bullet</Filter>
+    </ClCompile>
+    <ClCompile Include="SubScene\Battle\Bullet\AIBulletManager.cpp">
+      <Filter>Twar\SubScene\Battle\Bullet</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Scene\SceneManager.h">
@@ -543,5 +573,40 @@
     <ClInclude Include="SubScene\Policy\PolicyMenu.h">
       <Filter>Twar\SubScene\Policy</Filter>
     </ClInclude>
+    <ClInclude Include="SubScene\Battle\StateMachine\State\AttackTarget.h">
+      <Filter>Twar\SubScene\Battle\StateMachine\State</Filter>
+    </ClInclude>
+    <ClInclude Include="SubScene\Battle\StateMachine\State\AvoidObject.h">
+      <Filter>Twar\SubScene\Battle\StateMachine\State</Filter>
+    </ClInclude>
+    <ClInclude Include="SubScene\Battle\StateMachine\State\MoveToTarget.h">
+      <Filter>Twar\SubScene\Battle\StateMachine\State</Filter>
+    </ClInclude>
+    <ClInclude Include="SubScene\Battle\StateMachine\State\SearchTarget.h">
+      <Filter>Twar\SubScene\Battle\StateMachine\State</Filter>
+    </ClInclude>
+    <ClInclude Include="SubScene\Battle\StateMachine\State\State.h">
+      <Filter>Twar\SubScene\Battle\StateMachine\State</Filter>
+    </ClInclude>
+    <ClInclude Include="SubScene\Battle\StateMachine\State\TurningAround.h">
+      <Filter>Twar\SubScene\Battle\StateMachine\State</Filter>
+    </ClInclude>
+    <ClInclude Include="SubScene\Battle\StateMachine\StateMachine.h">
+      <Filter>Twar\SubScene\Battle\StateMachine</Filter>
+    </ClInclude>
+    <ClInclude Include="SubScene\Battle\StateMachine\ShipStateManager.h">
+      <Filter>Twar\SubScene\Battle\StateMachine</Filter>
+    </ClInclude>
+    <ClInclude Include="SubScene\Battle\Bullet\AIBullet.h">
+      <Filter>Twar\SubScene\Battle\Bullet</Filter>
+    </ClInclude>
+    <ClInclude Include="SubScene\Battle\Bullet\AIBulletManager.h">
+      <Filter>Twar\SubScene\Battle\Bullet</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="SubScene\Battle\StateMachine\StateMachine.inl">
+    <Filter>Twar\SubScene\Battle\StateMachine</Filter>
+  </None>
   </ItemGroup>
 </Project>
