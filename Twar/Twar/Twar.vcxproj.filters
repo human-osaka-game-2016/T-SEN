@@ -96,7 +96,7 @@
       <UniqueIdentifier>{210fcd11-e549-456c-9296-76109ea496f0}</UniqueIdentifier>
     </Filter>
     <Filter Include="Twar\SubScene\Policy">
-      <UniqueIdentifier>{f354e5da-d549-4f18-99ff-7e616b168534}</UniqueIdentifier>
+    <UniqueIdentifier>{d0e0f531-8710-4763-a8d2-4c9e0f4871ae}</UniqueIdentifier>
     </Filter>
     <Filter Include="Twar\SubScene\Battle\StateMachine">
       <UniqueIdentifier>{4a0b7cd2-80f8-4f1b-82bc-843815e30f5f}</UniqueIdentifier>
