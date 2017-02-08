@@ -38,7 +38,7 @@ public:
 	inline float	GetPlayerSpeed(){ return m_PlayerSpeed; }
 	inline int		GetMonsterHp(){ return m_MonsterHp; }
 	inline int		GetMonsterHpMax(){ return m_MonsterHpMax; }
-	inline int		GetPlayerAttackDamege(){ return m_PlayerAttackedDamage; }
+	inline int		GetPlayerAttackDamage(){ return m_PlayerAttackedDamage; }
 	inline int		GetBattleResult(){ return m_BattleResult; }
 
 	/**--Setter------------------------------------------------------------------------------------------*/
@@ -47,7 +47,7 @@ public:
 	inline void		SetPlayerSpeed(float playerSpeed){ m_PlayerSpeed = playerSpeed; }
 	inline void		SetMonsterHp(int monsterHp){ m_MonsterHp = monsterHp; }
 	inline void		SetMonsterHpMax(int monsterHpMax){ m_MonsterHpMax = monsterHpMax; }
-	inline void		SetPlayerAttackDamege(int playerDamage){ m_PlayerAttackedDamage = playerDamage; }
+	inline void		SetPlayerAttackDamage(int playerDamage){ m_PlayerAttackedDamage = playerDamage; }
 	inline void		SetBattleResult(bool result){ m_BattleResult = result; }
 
 	/**Destructor*/

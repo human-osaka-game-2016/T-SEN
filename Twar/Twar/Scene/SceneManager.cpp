@@ -18,6 +18,7 @@ SceneManager::SceneManager()
 	, m_IsEnd(false)
 {
 	SceneFactory::Instance().Init(m_pSaveDataManager);
+	//m_NextSceneID = ENDROLL_SCENE;
 }
 
 SceneManager::~SceneManager()

@@ -1,7 +1,7 @@
 ﻿/**
-* @file GameScene.cpp
-* @brief GameSceneクラス実装
-* @author haga
+* @file		GameScene.cpp
+* @brief	GameSceneクラス実装
+* @author	haga
 */
 #include "GameLib/GameLib.h"
 #include "GameScene.h"
@@ -21,6 +21,7 @@ GameScene::GameScene(SaveDataManager* pSaveDataManager)
 	, m_NextSubSceneID(sub_scene::HOME)
 {
 	sub_scene::SubSceneFactory::Instance().Init(m_pGameDataManager, m_pGameTimer, m_pSaveDataManager);
+	//m_NextSubSceneID = sub_scene::BATTLE_RESULT;
 }
 
 
@@ -40,14 +41,13 @@ SCENE_ID GameScene::Control()
 
 		m_CurrentSubSceneID = m_NextSubSceneID;					// シーンIDを更新する
 
-		if(m_CurrentSubSceneID == sub_scene::GAME_CLEAR)		// ゲームクリアならエンドロールシーンへ移行
+		if(m_CurrentSubSceneID == sub_scene::GAME_CLEAR || m_CurrentSubSceneID == sub_scene::GAME_OVER)		// ゲームクリアならエンドロールシーンへ移行
 		{
 			return ENDROLL_SCENE;
 		}
-		else if(m_CurrentSubSceneID == sub_scene::GAME_OVER,
-			m_CurrentSubSceneID == sub_scene::GAME_END)		// ゲームオーバーもしくはゲーム終了したらタイトルシーンへ移行
+		else 
 		{
-			return TITLE_SCENE;
+			// 空処理 テスト処理
 		}
 
 		m_pSubScene = sub_scene::SubSceneFactory::Instance().CreateSubScene(m_CurrentSubSceneID);
