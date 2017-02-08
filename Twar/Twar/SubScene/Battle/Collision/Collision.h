@@ -10,6 +10,7 @@
 #include <d3dx9.h>
 
 class ShipManager;
+class MonsterManager;
 
 class Collision
 {
@@ -27,14 +28,15 @@ private:
 	} CollisionPosXYZ;
 
 	CollisionPosXY SubCheckSecondCollision(CollisionPosXY a, CollisionPosXY b);
-	void Collision::CreateShipCollisionPos(D3DXVECTOR3 ShipCollisionPos, ShipManager::ShipSize shipSize, float rotate, CollisionPosXY* collisionPosXY);
+	void Collision::CreateShipCollisionPos(D3DXVECTOR3 objPos, ShipManager::ShipSize shipSize, float rotate, CollisionPosXY* collisionPosXY);
+	void Collision::CreateMonsterCollisionPos(D3DXVECTOR3 objPos, MonsterManager::MonsterSize monsterSize, float rotate, CollisionPosXY* collisionPosXY);
 
 public:
 	Collision(ShipManager* a_pShipManager);
 	~Collision();
 	bool CheckFirstCollision(D3DXVECTOR3 pos1, D3DXVECTOR3 pos2, float r1, float r2);
-	bool CheckSecondCollision(D3DXVECTOR3 pos1, D3DXVECTOR3 pos2, ShipManager::ShipSize shipSize1, ShipManager::ShipSize shipSize2, float rotate1, float rotate2);
-	//	bool CheckSecondCollision(D3DXVECTOR3 pos1, D3DXVECTOR3 pos2, ShipManager::ShipSize shipSize1, Monster::MonsterSize monsterSize2);
+	bool CheckSecondCollisionShipShip(D3DXVECTOR3 pos1, D3DXVECTOR3 pos2, ShipManager::ShipSize shipSize1, ShipManager::ShipSize shipSize2, float rotate1, float rotate2);
+	bool CheckSecondCollisionShipMonster(D3DXVECTOR3 shipPos, D3DXVECTOR3 monsterPos, ShipManager::ShipSize shipSize, MonsterManager::MonsterSize monsterSize, float shipRotate);
 
 };
 
