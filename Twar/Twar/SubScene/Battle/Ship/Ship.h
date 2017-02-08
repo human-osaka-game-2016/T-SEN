@@ -81,6 +81,7 @@ protected:
 	GameLib&				m_pGameLib;				//!<	GameLib
 	FbxModel*				m_pFbx;					//!<	モデルデータ
 	D3DXVECTOR3		        m_ObjPos;				//!<	座標
+	D3DXVECTOR3		        m_OldObjPos;
 	CameraController&		m_pcameraController;	//!<	カメラコントローラー
 	int	m_ShipID;
 	ATTR					m_Attr;					//!<	Shipの属性
@@ -91,7 +92,7 @@ protected:
 	*/
 	D3DXMATRIX				m_Rotation;
 	float					m_Rotate;
-	float m_OldRotate;
+	float					m_OldRotate;
 
 	/**
 	船体の傾き関係

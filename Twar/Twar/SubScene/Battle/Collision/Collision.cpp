@@ -75,7 +75,7 @@ bool Collision::CheckSecondCollisionShipMonster(D3DXVECTOR3 shipPos, D3DXVECTOR3
 
 	for (char i = 0; i < 6; i++)
 	{
-		if ((CollisionPosXY[i].x - monsterPos.x) * (CollisionPosXY[i].x - monsterPos.x) + (CollisionPosXY[i].y - monsterPos.z) * (CollisionPosXY[i].y - monsterPos.z) <= (monsterSize.m_MaxR * 2.f) * (monsterSize.m_MaxR * 2.f)) // 2 はモンスターの拡大率
+		if ((CollisionPosXY[i].x - monsterPos.x) * (CollisionPosXY[i].x - monsterPos.x) + (CollisionPosXY[i].y - monsterPos.z) * (CollisionPosXY[i].y - monsterPos.z) <= (monsterSize.m_MaxR * 1.5f) * (monsterSize.m_MaxR * 1.5f)) // 2 はモンスターの拡大率
 		{
 			return true;
 		}
@@ -98,12 +98,12 @@ void Collision::CreateShipCollisionPos(D3DXVECTOR3 objPos, ShipManager::ShipSize
 	D3DXMATRIX rotation;
 	D3DXMatrixRotationY(&rotation, rotate * 3.141592f / 180.f);
 
-	D3DXVECTOR3 vec1{ shipSize.m_MaxX, 0.f, 0.f };
-	D3DXVECTOR3 vec2{ shipSize.m_MaxX / 3.f, 0.f, shipSize.m_MaxZ };
-	D3DXVECTOR3 vec3{ shipSize.m_MaxX / 3.f, 0.f, shipSize.m_MinZ };
-	D3DXVECTOR3 vec4{ shipSize.m_MinX / 3.f, 0.f, shipSize.m_MaxZ };
-	D3DXVECTOR3 vec5{ shipSize.m_MinX / 3.f, 0.f, shipSize.m_MinZ };
-	D3DXVECTOR3 vec6{ shipSize.m_MinX, 0.f, 0.f };
+	D3DXVECTOR3 vec1{ 0.f, 0.f, shipSize.m_MaxZ };
+	D3DXVECTOR3 vec2{ shipSize.m_MaxX, 0.f, shipSize.m_MaxZ / 3.f };
+	D3DXVECTOR3 vec3{ shipSize.m_MinX, 0.f, shipSize.m_MaxZ / 3.f };
+	D3DXVECTOR3 vec4{ shipSize.m_MaxX, 0.f, shipSize.m_MinZ / 3.f };
+	D3DXVECTOR3 vec5{ shipSize.m_MinX, 0.f, shipSize.m_MinZ / 3.f };
+	D3DXVECTOR3 vec6{ 0.f, 0.f, shipSize.m_MinZ };
 	D3DXVec3TransformCoord(&vec1, &vec1, &rotation);
 	D3DXVec3TransformCoord(&vec2, &vec2, &rotation);
 	D3DXVec3TransformCoord(&vec3, &vec3, &rotation);

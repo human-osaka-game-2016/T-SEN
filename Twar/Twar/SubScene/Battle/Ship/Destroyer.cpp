@@ -45,12 +45,18 @@ void Destroyer::Control()
 		D3DXVECTOR3 vecAxisZ{ 0.f, 0.f, 1.f };			//!<	単位ベクトル
 		D3DXVec3TransformCoord(&vecAxisZ, &vecAxisZ, &m_Rotation);
 
-		m_ObjPos -= vecAxisZ * m_Status.m_Speed;
+		//		m_ObjPos = m_OldObjPos;
+		//		m_CameraPos.x = m_LookatPos.x = m_ObjPos.x;
+		//		m_CameraPos.z = m_LookatPos.z = m_ObjPos.z;
+		//
+		//		m_Status.m_Speed = 0.f;
+		//		m_Slant = 0.f;
+		//		m_Rotate = m_OldRotate;
+
+		m_Status.m_Speed *= -1.f;
+		m_ObjPos += vecAxisZ * m_Status.m_Speed;
 		m_CameraPos.x = m_LookatPos.x = m_ObjPos.x;
 		m_CameraPos.z = m_LookatPos.z = m_ObjPos.z;
-
-		m_Status.m_Speed = 0.f;
-		m_Slant = 0.f;
 		m_Rotate = m_OldRotate;
 
 		m_IsHit = false;
@@ -361,6 +367,7 @@ void Destroyer::ControlPlayer()
 		m_CameraRotate += 360.f;
 	}
 
+	m_OldObjPos = m_ObjPos;
 	m_ObjPos += vecAxisZ * m_Status.m_Speed;
 
 	POINT newCursor;
