@@ -55,13 +55,12 @@ Home::Home(GameDataManager* pGameDataManager, GameTimer* pGameTimer, SaveDataMan
 	m_pHomeMenu = new HomeMenu(pGameDataManager);
 	m_pGameWindows.emplace_back(new ShipInfoBackWindow(ShipInfoBackWinPos, Home::HOME_TEX, SHIP_INFO_BG_TENRYU_VTX, SHIP_INFO_BG_MINEKAZE_VTX, SHIP_INFO_BG_KONGOU_VTX, m_pHomeMenu));
 	m_pGameWindows.emplace_back(new ShipInfoWindow(ShipInfoWinPos, Home::HOME_TEX, SHIP_INFO_WIN_VTX, SHIP_INFO_TEXT_VTX, m_pGameDataManager, m_pHomeMenu));
-	/**@todo ここでGameDataManagerからタイムリミットの数値を取得する*/
-	//int	  timeLimit = m_pGameDataManager->GetFightOffDays();
+	
+	// ここでGameDataManagerからタイムリミットの数値を取得する
+	int	  timeLimit = m_pGameDataManager->GetFightOffDays();
 
-	int	  testTimeLimit = 0; // テスト用変数
-
-	/**Caseの数字は残日数*/
-	switch(testTimeLimit)
+	// Caseの数字は残日数
+	switch(timeLimit)
 	{
 	case 3:
 		m_pGameWindows.emplace_back(new TimeLimitWindow(TimeLimitWinPos, Home::HOME_TEX, TIME_LIMIT_WIN_3_VTX));
@@ -138,8 +137,8 @@ void Home::Init()
 		{	0.0f,  250.f},	// 撃退期限表示ウィンドウ(残り三日)
 		{  150.f,  250.f},	// 撃退期限表示ウィンドウ(残り二日)
 		{	0.0f,  325.f},	// 撃退期限表示ウィンドウ(残り一日)
-		{   0.0f,   0.0f},	// 天龍選択ボタン
-		{  100.f,   0.0f},	// 峯風選択ボタン
+		{  100.f,   0.0f},	// 天龍選択ボタン
+		{   0.0f,   0.0f},	// 峯風選択ボタン
 		{  200.f,   0.0f},	// 金剛選択ボタン
 		{  850.f,  400.f},	// 軍艦情報背景ウィンドウ(天龍)
 		{   0.0f,  400.f},	// 軍艦情報背景ウィンドウ(峯風)

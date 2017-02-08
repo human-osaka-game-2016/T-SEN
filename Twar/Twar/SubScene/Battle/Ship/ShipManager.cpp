@@ -9,6 +9,7 @@
 #include "../Bullet/BulletManager.h"
 #include "../StateMachine/ShipStateManager.h"
 #include "../Bullet/AIBulletManager.h"
+#include "../Radar/Radar.h"
 
 ShipManager::ShipManager()
 	: m_BattleShip(new FbxRelated)
@@ -102,13 +103,16 @@ ShipManager::~ShipManager()
 
 void ShipManager::Control()
 {
+	Radar::Instance().ClearData();
 	for (char i = 0; i < m_ArmyCount; i++)
 	{
 		m_Army[i]->Control();
+		Radar::Instance().SetShipPos(m_Army[i]->m_ObjPos);
 	}
 	for (char i = 0; i < m_EnemyCount; i++)
 	{
 		m_Enemy[i]->Control();
+		Radar::Instance().SetShipPos(m_Enemy[i]->m_ObjPos);
 	}
 	m_pBulletManager->Control(GetPlayerPos(), GetArmyRotate(0));
 	AIBulletManager::Instance()->Control();

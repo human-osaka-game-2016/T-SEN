@@ -10,6 +10,7 @@
 
 #include "GameLib/GameLib.h"
 #include "HomeMenu.h"
+#include "../../GameData/GameDatamanager.h"
 #include "../../Button/BasicButton.h"
 #include "../../Button/ButtonFunction/ButtonFunctionList.h"
 
@@ -25,9 +26,9 @@ const	  DWORD   BrightnessValMax  = 0xffffffff;		// 明度最大値
 
 }
 
-HomeMenu::HomeMenu(GameDataManager* pDatamanager)
-	: m_pDataManager(pDatamanager)
-	, m_SelectShipID(ShipManager::NONE)
+HomeMenu::HomeMenu(GameDataManager* pDataManager)
+	: m_pDataManager(pDataManager)
+	, m_SelectShipID(GameDataManager::SHIP_ID::SHIP_ID_MAX)
 {
 	// 出撃ボタン作成
 	{
@@ -88,7 +89,7 @@ HomeMenu::~HomeMenu()
 sub_scene::SUBSCENE_ID	HomeMenu::Control()
 {
 	// 軍艦の選択
-	ShipManager::SHIP_ID	cuurentShipID = SelectShip();
+	GameDataManager::SHIP_ID	cuurentShipID = SelectShip();
 
 	// 次のシーンの選択
 	sub_scene::SUBSCENE_ID	nextSubSceneID = SelectSubScene();
@@ -96,6 +97,7 @@ sub_scene::SUBSCENE_ID	HomeMenu::Control()
 	// 左クリックした場合、現在選択している状態で更新する
 	if(GameLib::Instance().ChecKMouseL() == ON)
 	{
+		m_pDataManager->SetSelectedShipID(cuurentShipID);
 		m_SelectShipID = cuurentShipID;
 		return nextSubSceneID;
 	}
@@ -109,19 +111,19 @@ void	HomeMenu::Draw()
 	// 明度調整
 	switch(m_SelectShipID)
 	{
-	case ShipManager::CRUISER:
+	case GameDataManager::CRUISER:
 		GameLib::Instance().SetVtxColor(sub_scene::Home::TENRYU_BTN_VTX, BrightnessValMax);
 		GameLib::Instance().SetVtxColor(sub_scene::Home::MINEKAZE_BTN_VTX, BrightnessVal);
 		GameLib::Instance().SetVtxColor(sub_scene::Home::KONGOU_BTN_VTX, BrightnessVal);
 		break;
 
-	case ShipManager::DESTROYER:
+	case GameDataManager::DESTROYER:
 		GameLib::Instance().SetVtxColor(sub_scene::Home::TENRYU_BTN_VTX, BrightnessVal);
 		GameLib::Instance().SetVtxColor(sub_scene::Home::MINEKAZE_BTN_VTX, BrightnessValMax);
 		GameLib::Instance().SetVtxColor(sub_scene::Home::KONGOU_BTN_VTX, BrightnessVal);
 		break;
 
-	case ShipManager::BATTLESHIP:
+	case GameDataManager::BATTLESHIP:
 		GameLib::Instance().SetVtxColor(sub_scene::Home::TENRYU_BTN_VTX, BrightnessVal);
 		GameLib::Instance().SetVtxColor(sub_scene::Home::MINEKAZE_BTN_VTX, BrightnessVal);
 		GameLib::Instance().SetVtxColor(sub_scene::Home::KONGOU_BTN_VTX, BrightnessValMax);
@@ -139,7 +141,7 @@ void	HomeMenu::Draw()
 
 	m_pPoliticsButton->Draw();
 
-	if(m_SelectShipID != ShipManager::NONE)
+	if(m_SelectShipID != GameDataManager::SHIP_ID_MAX)
 	{
 		m_pBattleButton->Draw();
 	}
@@ -153,7 +155,7 @@ void	HomeMenu::Draw()
 //Private functions
 //------------------------------------------------------------------------------------------------------------//
 
-ShipManager::SHIP_ID HomeMenu::SelectShip()
+GameDataManager::SHIP_ID HomeMenu::SelectShip()
 {
 	for(auto& shipButton : m_pShipSelectButtons)
 	{
@@ -162,15 +164,15 @@ ShipManager::SHIP_ID HomeMenu::SelectShip()
 			switch(shipButton->GetVtxID())
 			{
 			case sub_scene::Home::TENRYU_BTN_VTX:
-				return ShipManager::CRUISER;
+				return GameDataManager::CRUISER;
 				break;
 
 			case sub_scene::Home::MINEKAZE_BTN_VTX:
-				return ShipManager::DESTROYER;
+				return GameDataManager::DESTROYER;
 				break;
 
 			case sub_scene::Home::KONGOU_BTN_VTX:
-				return ShipManager::BATTLESHIP;
+				return GameDataManager::BATTLESHIP;
 				break;
 
 			default:
@@ -191,7 +193,7 @@ sub_scene::SUBSCENE_ID HomeMenu::SelectSubScene()
 		return sub_scene::SUBSCENE_ID::POLICY;
 	}
 
-	if(m_SelectShipID != ShipManager::NONE)
+	if(m_SelectShipID != GameDataManager::SHIP_ID_MAX)
 	{
 		if(m_pBattleButton->Control())
 		{

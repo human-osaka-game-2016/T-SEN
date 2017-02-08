@@ -75,10 +75,18 @@ D3DXVECTOR3 Radar::GetAIAttackTargetPos(const D3DXVECTOR3& rPos, int playerAttac
 	float ToPlayerlength = D3DXVec3Length(&PlayerVecLength);
 
 	
-	D3DXVECTOR3 taegetPos = {0.0f, 0.0f, 0.0f};
+	D3DXVECTOR3 targetPos = {0.0f, 0.0f, 0.0f};
 
-	//D3DXVECTOR3 taegetPos;
-	return taegetPos;
+	if(ToMonsterlength > ToPlayerlength)
+	{
+		targetPos = m_ShipPos[0];
+	}
+	else
+	{
+		targetPos = GetMonsterPos();
+	}
+	
+	return targetPos;
 }
 
 void Radar::SetShipPos(const D3DXVECTOR3& rPos)

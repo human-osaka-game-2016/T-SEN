@@ -15,9 +15,10 @@
 #include "Monster.h"
 #include "MonsterBullet/MonsterBulletManager.h"
 #include "../Radar/Radar.h"
+#include "../BattleData/BattleDataManager.h"
 
 //--------------------------------------------------------------------------------------------------------------------------------------//
-//Namespace
+//Unnamed namespace
 //--------------------------------------------------------------------------------------------------------------------------------------//
 
 // 数字は仮置き 時間は60FPSで計算
@@ -30,11 +31,12 @@ const float			ScaleVal			= 2.0f;						// 拡大率
 const float			SearchRange			= 600.f;					// 索敵範囲
 const float			ShortAttackRange	= 500.f;					// 近距離攻撃範囲
 const float			LongAttackRange		= 900.f;					// 遠距離攻撃範囲
-const int			NonAttackTime		= 3600;						// 攻撃状態において攻撃していない時間
+const int			NonAttackTime		= 600;						// 攻撃状態において攻撃していない時間
 const int			MoveTime			= 300;						// 移動時間
 const float			PosYMinLimit		= -360.f;					// y軸における位置座標の下の限界
 const float			UpDownSpeed			= 1.0f;						// 上下運動における速度
 const float			RollingSpeed		= 0.0625f;					// 回転速度
+const int			SearchStartTime		= 30;						// 索敵開始時間
 const int			PosCount			= 3;						// モンスター位置座標の数
 
 // 出現位置テーブル
@@ -69,6 +71,8 @@ Monster::Monster(FbxModel* pModel, MonsterBulletManager* pBulletManager)
 	std::mt19937 mt(seed_gen());
 	std::uniform_int_distribution<> dist(0, ( PosCount- 1 ));
 	m_Pos = PositionTable[dist(mt)];
+	BattleDataManager::Instance().SetMonsterHp(m_Status.Hp);
+	BattleDataManager::Instance().SetMonsterHpMax(m_Status.Hp);
 	Radar::Instance().SetMonsterPos(m_Pos);
 }
 
@@ -109,11 +113,8 @@ bool Monster::Control()
 		break;
 	}
 
+	BattleDataManager::Instance().SetMonsterHp(m_Status.Hp);
 	Radar::Instance().SetMonsterPos(m_Pos);
-	if(GameLib::Instance().CheckKey(DIK_M, M) == ON)
-	{
-		m_State = MOVING;
-	}
 
 	return m_HasVanished;
 }
@@ -154,6 +155,8 @@ void Monster::SearchTarget()
 		}
 		else
 		{
+			//float targetAngle = atan2f((m_TargetPos.x - m_Pos.x), (m_TargetPos.z - m_Pos.z));
+			//m_TargetRadian = targetAngle;
 			float targetAngle = atan2f((m_TargetPos.z - m_Pos.z), (m_TargetPos.x - m_Pos.x));
 			m_TargetRadian = D3DXToRadian(CorrectionAngle) - targetAngle;
 		}
@@ -199,7 +202,7 @@ void Monster::Rotate()
 			}
 			else
 			{
-				if((m_Radian - m_TargetRadian) > m_RollingSpeed)
+				if((m_Radian - m_TargetRadian) >= m_RollingSpeed)
 				{
 					SearchTarget();
 				}
@@ -252,7 +255,7 @@ void Monster::Rotate()
 
 void Monster::AttackTarget()
 {
-	if(m_AttackInterValCount == 0)
+	if(m_AttackInterValCount <= 0)
 	{
 		D3DXVECTOR3 vecLength = (m_Pos - m_TargetPos);
 		float length = D3DXVec3Length(&vecLength);
@@ -265,14 +268,15 @@ void Monster::AttackTarget()
 		}
 		else if(length <= LongAttackRange)
 		{
-			m_pBulletManager->CreateLongeRangeBullet(m_Pos,m_Radian);
+			m_pBulletManager->CreateLongeRangeBullet(m_Pos, m_Radian);
 			m_AttackInterValCount = m_Status.AttackInteval;
 			m_NonAttackTimeCount = 0;
 		}
 		else
 		{
 			++m_NonAttackTimeCount;
-			if(m_NonAttackTimeCount == NonAttackTime)
+			m_AttackInterValCount = m_Status.AttackInteval;
+			if(m_NonAttackTimeCount >= NonAttackTime)
 			{
 				m_State = STANDBY;
 				m_SearchRange = SearchRange;
@@ -283,9 +287,13 @@ void Monster::AttackTarget()
 	else
 	{
 		SearchTarget();
-		if(RollingSpeed > (m_Radian - m_TargetRadian) && (m_Radian - m_TargetRadian) > -RollingSpeed)
+		if(RollingSpeed < (m_Radian - m_TargetRadian) || (m_Radian - m_TargetRadian) < -RollingSpeed)
 		{
-			m_State = ROTATION;
+			if(m_AttackInterValCount <= SearchStartTime)
+			{
+				m_State = ROTATION;
+			}
+			
 		}
 		--m_AttackInterValCount;
 	}
@@ -373,7 +381,7 @@ void Monster::ControlAttitude()
 	D3DXMatrixRotationX(&matPicth, D3DXToRadian(AttitudeAngle));
 	D3DXMatrixMultiply(&matRotation, &matRotation, &matPicth);
 
-	D3DXMatrixRotationY(&matHeading, D3DXToRadian(m_Angle));
+	D3DXMatrixRotationY(&matHeading, m_Radian);
 	D3DXMatrixMultiply(&matRotation, &matRotation, &matHeading);
 
 	D3DXMatrixMultiply(&m_MatWorld, &m_MatWorld, &matRotation);

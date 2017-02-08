@@ -13,7 +13,6 @@
 #include "Font/Font.h"
 #include "ShipInfoWindow.h"
 #include "../SubScene/Home/HomeMenu.h"
-#include "../GameData/GameDataManager.h"
 
 //--------------------------------------------------------------------------------------------------------------//
 //Unnamed namespace
@@ -46,7 +45,7 @@ ShipInfoWindow::ShipInfoWindow(const D3DXVECTOR2& rPos, int texID, int winVtxID,
 	, m_pDatamanager(pDatamanager)
 	, m_pHomeMenu(pHomeMenu)
 	, m_pFont(nullptr)
-	, m_CurrentID(ShipManager::NONE)
+	, m_CurrentID(GameDataManager::SHIP_ID_MAX)
 {
 	// ウィンドウのアルファ値を設定する
 	GameLib::Instance().SetVtxColor(m_VtxID, WindowColor);
@@ -63,7 +62,7 @@ ShipInfoWindow::~ShipInfoWindow()
 
 void ShipInfoWindow::Control()
 {
-	ShipManager::SHIP_ID	nextID = m_pHomeMenu->GetSelectShipID();
+	GameDataManager::SHIP_ID	nextID = m_pHomeMenu->GetSelectShipID();
 	if(m_CurrentID != nextID)
 	{
 		m_CurrentID = nextID;
@@ -77,7 +76,7 @@ void ShipInfoWindow::Control()
 
 void ShipInfoWindow::Draw()
 {
-	if(m_CurrentID == ShipManager::NONE)
+	if(m_CurrentID == GameDataManager::SHIP_ID_MAX)
 	{ // 選択していなかったら描画しない
 		return;
 	}
@@ -95,15 +94,15 @@ void ShipInfoWindow::Draw()
 	std::string text[TEXT_MAX];
 	switch(m_CurrentID)
 	{
-	case ShipManager::CRUISER:
+	case GameDataManager::CRUISER:
 		text[NAME] = "天龍";
 		break;
 
-	case ShipManager::DESTROYER:
+	case GameDataManager::DESTROYER:
 		text[NAME] = "峯風";
 		break;
 
-	case ShipManager::BATTLESHIP:
+	case GameDataManager::BATTLESHIP:
 		text[NAME] = "金剛";
 		break;
 

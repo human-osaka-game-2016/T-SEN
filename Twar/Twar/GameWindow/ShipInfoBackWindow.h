@@ -8,7 +8,7 @@
 #define SHIP_INFO_BACK_WINDOW_H
 
 #include "GameWindow.h"
-#include "../SubScene/Battle/Ship/ShipManager.h"
+#include "../GameData/GameDataManager.h"
 
 class HomeMenu;
 
@@ -37,10 +37,10 @@ public:
 	virtual void Draw()override;
 
 private:
-	HomeMenu*				m_pHomeMenu;			//!< HomeMenuクラスのインスタンスへのポインタ
-	int						m_MinekazeVtxID;		//!< 峯風のシルエットのVertexID
-	int						m_KongouVtxID;			//!< 金剛のシルエットのVertexID
-	ShipManager::SHIP_ID	m_CurrentID;			//!< 現在選択している船のID
+	HomeMenu*					m_pHomeMenu;			//!< HomeMenuクラスのインスタンスへのポインタ
+	int							m_MinekazeVtxID;		//!< 峯風のシルエットのVertexID
+	int							m_KongouVtxID;			//!< 金剛のシルエットのVertexID
+	GameDataManager::SHIP_ID	m_CurrentID;			//!< 現在選択している船のID
 
 };
 

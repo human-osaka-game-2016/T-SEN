@@ -8,6 +8,7 @@
 #include "GameLib/GameLib.h"
 #include "Fbx/FbxModel.h"
 #include "../StateMachine/ShipStateManager.h"
+#include "../BattleData/BattleDataManager.h"
 
 BattleShip::BattleShip(D3DXVECTOR3* pos)
 	: Ship(pos, { 7500, 0.f }, SHIP_ID::BATTLESHIP)
@@ -34,6 +35,8 @@ void BattleShip::Control()
 		{
 		case Ship::PLAYER:
 			BattleShip::ControlPlayer();
+			BattleDataManager::Instance().SetPlayerHp(m_Status.m_Hp);
+			BattleDataManager::Instance().SetPlayerSpeed(m_Status.m_Speed);
 			break;
 
 		case Ship::ALLY:

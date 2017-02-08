@@ -19,7 +19,7 @@ enum SUBSCENE_ID
 {
 	OPENING,			//!< オープニングシーン
 	HOME,				//!< 鎮守府シーン
-	POLICY,			//!< 造船所シーン 
+	POLICY,				//!< 造船所シーン 
 	WORLD_MAP,			//!< 世界地図シーン
 	FORMATION,			//!< 編成シーン
 	BATTLE,				//!< 戦闘シーン
