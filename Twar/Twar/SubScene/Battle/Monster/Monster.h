@@ -63,6 +63,7 @@ private:
 	D3DXMATRIX						m_MatWorld;					//!< ワールド変換行列
 	float							m_Angle;					//!< 角度(向く方向)
 	float							m_Radian;					//!< ラジアンを格納する変数
+	float							m_BulletRadian;				//!< 弾のラジアンを格納
 	FbxModel*						m_pModel;					//!< モデルデータ
 	Monster::STATUS					m_Status;					//!< ステータス
 	Monster::STATE					m_State;					//!< モンスターの状態

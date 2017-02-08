@@ -8,6 +8,7 @@
 #include "GameLib/GameLib.h"
 #include "Fbx/FbxModel.h"
 #include "../StateMachine/ShipStateManager.h"
+#include "../BattleData/BattleDataManager.h"
 
 Cruiser::Cruiser(D3DXVECTOR3* pos)
 	: Ship(pos, { 2500, 0.f }, SHIP_ID::CRUISER)
@@ -35,6 +36,8 @@ void Cruiser::Control()
 		{
 		case Ship::PLAYER:
 			Cruiser::ControlPlayer();
+			BattleDataManager::Instance().SetPlayerHp(m_Status.m_Hp);
+			BattleDataManager::Instance().SetPlayerSpeed(m_Status.m_Speed);
 			break;
 
 		case Ship::ALLY:

@@ -40,8 +40,8 @@ LongRangeBullet::LongRangeBullet(FbxModel* pModel, const D3DXVECTOR3& rPos, floa
 	, m_IsWithinRange(true)
 {
 	m_Pos.y += FiringHeight;
-	m_BulletSpeedX = static_cast<float>(cos(m_Radian) * BulletSpeed);
-	m_BulletSpeedZ = static_cast<float>(sin(m_Radian) * BulletSpeed);
+	m_BulletSpeedX = static_cast<float>(sin(m_Radian) * BulletSpeed);
+	m_BulletSpeedZ = static_cast<float>(cos(m_Radian) * BulletSpeed);
 }
 
 LongRangeBullet::~LongRangeBullet()

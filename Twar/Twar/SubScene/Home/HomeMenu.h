@@ -10,9 +10,9 @@
 
 #include <vector>
 #include "Home.h"
+#include "../../GameData/GameDataManager.h"
 #include "../Battle/Ship/ShipManager.h"
 
-class GameDataManager;
 class Button;
 
 class HomeMenu
@@ -21,9 +21,9 @@ class HomeMenu
 public:
 	/**
 	* Constructor
-	* @param pDatamanager GameDataManagerクラスのインスタンスへのポインタ
+	* @param pDataManager GameDataManagerクラスのインスタンスへのポインタ
 	*/
-	explicit HomeMenu(GameDataManager* pDatamanager);
+	explicit HomeMenu(GameDataManager* pDataManager);
 
 	/**Destructor*/
 	~HomeMenu();
@@ -41,20 +41,20 @@ public:
 	* 現在選択している船のIDを取得する関数
 	* @return 現在選択している船のID
 	*/
-	ShipManager::SHIP_ID GetSelectShipID(){ return m_SelectShipID; }
+	GameDataManager::SHIP_ID GetSelectShipID(){ return m_SelectShipID; }
 
 private:
 	GameDataManager*			m_pDataManager;				//!< GameDataManagerクラスのインスタンスへのポインタ
 	Button*						m_pBattleButton;			//!< 戦闘開始ボタン
 	Button*						m_pPoliticsButton;			//!< 政略ボタン
 	std::vector<Button*>		m_pShipSelectButtons;		//!< 軍艦選択ボタン
-	ShipManager::SHIP_ID		m_SelectShipID;				//!< 現在選択している船のID
+	GameDataManager::SHIP_ID	m_SelectShipID;				//!< 現在選択している船のID
 
 	/**
 	* プレイヤーが選択した軍艦のIDを返す関数
 	* @return 選択した軍艦のID
 	*/
-	ShipManager::SHIP_ID	SelectShip();
+	GameDataManager::SHIP_ID	SelectShip();
 
 	/**
 	* プレイヤーが選択したSubSceneのIDを返す関数

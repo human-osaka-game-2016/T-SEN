@@ -8,9 +8,8 @@
 #define SHIP_INFO_WINDOW_H
 
 #include "GameWindow.h"
-#include "../SubScene/Battle/Ship/ShipManager.h"
+#include "../GameData/GameDataManager.h"
 
-class GameDataManager;
 class HomeMenu;
 class Font;
 
@@ -48,11 +47,11 @@ private:
 		SPEED,			// 速さ
 		TEXT_MAX
 	};
-	int						m_TextVtxID;			//!< テキストのVertexID
-	GameDataManager*		m_pDatamanager;			//!< GameDataManagerクラスのインスタンスへのポインタ
-	HomeMenu*				m_pHomeMenu;			//!< HomeMenuクラスのインスタンスへのポインタ
-	Font*					m_pFont;				//!< Fontクラスのインスタンスへのポインタ
-	ShipManager::SHIP_ID	m_CurrentID;			//!< 現在選択している船のID
+	int							m_TextVtxID;			//!< テキストのVertexID
+	GameDataManager*			m_pDatamanager;			//!< GameDataManagerクラスのインスタンスへのポインタ
+	HomeMenu*					m_pHomeMenu;			//!< HomeMenuクラスのインスタンスへのポインタ
+	Font*						m_pFont;				//!< Fontクラスのインスタンスへのポインタ
+	GameDataManager::SHIP_ID	m_CurrentID;			//!< 現在選択している船のID
 
 };
 

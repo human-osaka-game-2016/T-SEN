@@ -13,6 +13,7 @@
 #include "Monster/MonsterManager.h"
 #include "Ship/ShipManager.h"
 #include "Effect/EffectManager.h"
+#include "BattleData/BattleDataManager.h"
 #include "Collision/CollisionManager.h"
 #include "Battle.h"
 
@@ -31,13 +32,13 @@ Battle::Battle(GameDataManager* pGameDataManager, GameTimer* pGameTimer)
 	GameLib::Instance().CreateVtx(EXPLOSION_VTX, 200.f, 200.f);
 	EffectManager::Instance().RegisterID(EffectManager::EXPLOSION, EXPLOSION_TEX, EXPLOSION_VTX);
 	
+	BattleDataManager::Instance().Initialize();
 	m_pLight = new Light(GameLib::Instance().GetDevice(), D3DXVECTOR3{ 0, 0, 0 });
 	m_pMonsterManager = new MonsterManager(pGameDataManager);
 	m_pFieldManager = new FieldManager();
 	m_pShipManager = new ShipManager();
 	m_pCollisionManager = new CollisionManager(m_pShipManager, m_pMonsterManager, m_pShipManager->GetBulletManager());
 	
-
 	ShipManager::SHIP_ID shipID[12] =
 	{
 		ShipManager::BATTLESHIP,
@@ -53,6 +54,24 @@ Battle::Battle(GameDataManager* pGameDataManager, GameTimer* pGameTimer)
 		ShipManager::CRUISER,
 		ShipManager::DESTROYER
 	};
+
+	switch(m_pGameDataManager->GetSelectedShipID())
+	{
+	case GameDataManager::BATTLESHIP:
+		shipID[0] = ShipManager::BATTLESHIP;
+		break;
+
+	case GameDataManager::CRUISER:
+		shipID[0] = ShipManager::CRUISER;
+		break;
+
+	case GameDataManager::DESTROYER:
+		shipID[0] = ShipManager::DESTROYER;
+		break;
+
+	default:
+		break;
+	}
 
 	char ally = 2, enemy = 2;
 	m_pShipManager->Create(&ally, &enemy, shipID);

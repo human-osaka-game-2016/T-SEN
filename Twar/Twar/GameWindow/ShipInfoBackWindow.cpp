@@ -21,7 +21,7 @@ ShipInfoBackWindow::ShipInfoBackWindow(const D3DXVECTOR2& rPos, int texID, int t
 	, m_pHomeMenu(pHomeMenu)
 	, m_MinekazeVtxID(minekazeVtxID)
 	, m_KongouVtxID(kongouVtxID)
-	, m_CurrentID(ShipManager::NONE)
+	, m_CurrentID(GameDataManager::SHIP_ID_MAX)
 {}
 
 ShipInfoBackWindow::~ShipInfoBackWindow()
@@ -31,7 +31,7 @@ ShipInfoBackWindow::~ShipInfoBackWindow()
 
 void ShipInfoBackWindow::Control()
 {
-	ShipManager::SHIP_ID	nextID = m_pHomeMenu->GetSelectShipID();
+	GameDataManager::SHIP_ID	nextID = m_pHomeMenu->GetSelectShipID();
 	if(m_CurrentID != nextID)
 	{
 		m_CurrentID = nextID;
@@ -44,7 +44,7 @@ void ShipInfoBackWindow::Control()
 
 void ShipInfoBackWindow::Draw()
 {
-	if(m_CurrentID == ShipManager::NONE)
+	if(m_CurrentID == GameDataManager::SHIP_ID_MAX)
 	{ // 選択していなかったら描画しない
 		return;
 	}
@@ -55,15 +55,15 @@ void ShipInfoBackWindow::Draw()
 
 	switch(m_CurrentID)
 	{
-	case ShipManager::CRUISER:
+	case GameDataManager::CRUISER:
 		GameLib::Instance().DrawXY(m_TexID, m_VtxID, m_Pos.x, m_Pos.y);
 		break;
 
-	case ShipManager::DESTROYER:
+	case GameDataManager::DESTROYER:
 		GameLib::Instance().DrawXY(m_TexID, m_MinekazeVtxID, m_Pos.x, m_Pos.y);
 		break;
 
-	case ShipManager::BATTLESHIP:
+	case GameDataManager::BATTLESHIP:
 		GameLib::Instance().DrawXY(m_TexID, m_KongouVtxID, m_Pos.x, m_Pos.y);
 		break;
 
