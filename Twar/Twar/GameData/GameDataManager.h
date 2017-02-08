@@ -7,6 +7,8 @@
 #ifndef GAME_DATA_MANAGER_H
 #define GAME_DATA_MANAGER_H
 
+#include "../SubScene/SubScene.h"
+
 /**
 * ゲームデータを管理するクラス
 */
@@ -102,6 +104,7 @@ public:
 	inline void							SetFightOffDays(int fightOffDays){ m_FightOffDays = fightOffDays; }
 	inline void							SetWaveCount(int waveCount){ m_WaveCount = waveCount; }
 	inline void							SetSelectedShipID(GameDataManager::SHIP_ID id){ m_SelectedShipID = id; }
+
 private:
 	int								m_Money;			 //!< プレイヤーの所持金
 	ShipAggressivity				m_ShipAggressivity;  //!< 船の攻撃力の構造体のメンバ変数

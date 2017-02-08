@@ -1,8 +1,9 @@
-﻿/**
-* @file BattleResult.h
-* @brief BattleResultクラスヘッダ
-* @author haga
-*/
+﻿//==================================================================================================================================//
+//!< @file		BattleResult.h
+//!< @brief		BattleResultクラスヘッダ
+//!< @author	haga
+//==================================================================================================================================//
+
 #ifndef BATTLE_RESULT_H
 #define BATTLE_RESULT_H
 
@@ -38,8 +39,9 @@ public:
 	/**シーンの状態*/
 	enum STATE
 	{
-		RESULT_FEDE_IN,		//!< 結果画像がフェードインしている状態  
-		SCORE_DISP,			//!< スコアが表示されている状態
+		RESULT_FEDE_IN,					//!< 結果画像がフェードインしている状態  
+		SCORE_DISP_RETURN_HOME,			//!< スコアが表示し、Homeへ移行する状態
+		SCORE_DISP_RETURN_ENDROLL,		//!< スコアが表示し、EndRollSceneへ移行する状態
 	};
 
 	/**
@@ -63,11 +65,16 @@ private:
 	ScoreResult*		m_pScoreResult;			//!< ScoreResultクラスのインスタンスへのポインタ
 	ResultBackground*	m_pBackground;			//!< ResultBackgroundクラスのインスタンスへのポインタ
 	GameMessage*		m_pMessage;				//!< GameMessageクラスのインスタンスへのポインタ
-	STATE				m_State;				//!< シーの状態を格納する変数
+	STATE				m_State;				//!< シーンの状態を格納する変数
+	int					m_SceneChangeTimeCount;	//!< シーンチェンジする時間をカウントする変数
 	GameDataManager*    m_pGameDataManager;     //!< GameDataManagerクラスのインスタンスへのポインタ
 };
 
 }
 
 #endif // BATTLE_RESULT_H
+
+//==================================================================================================================================//
+//END OF FILE
+//==================================================================================================================================//
 
