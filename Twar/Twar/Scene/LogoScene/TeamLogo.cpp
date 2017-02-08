@@ -14,8 +14,8 @@ TeamLogo::TeamLogo()
 	, m_PosX(320.f)
     , m_PosY(240.f)
 {
-	float logoWidth = 1024.f;
-	float logoHeight = 512.f;
+	float logoWidth = 1600.f;
+	float logoHeight = 900.f;
 	GameLib::Instance().LoadTex(TEAM_LOGO_TEX, "../Resouce/LogoScene/logo.png");
 	GameLib::Instance().CreateVtx(TeamLogo::TEAM_LOGO_TEX, logoWidth, logoHeight);
 }
