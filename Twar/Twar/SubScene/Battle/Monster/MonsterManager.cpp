@@ -31,6 +31,15 @@ MonsterManager::MonsterManager(GameDataManager* pGameDataManager)
 	// GameDataManagerから敵の数をおしえてもらう
 	/**@todo	現在はまだ実装できていないで、適当に敵を作成*/
 	m_pMonsters.emplace_back(new Monster(m_pMonsterFbx->m_pModel, m_pBulletManager));
+
+	m_MonsterSize.m_MaxX = m_pMonsterFbx->m_pModel->maxX;
+	m_MonsterSize.m_MaxY = m_pMonsterFbx->m_pModel->maxY;
+	m_MonsterSize.m_MaxZ = m_pMonsterFbx->m_pModel->maxZ;
+	m_MonsterSize.m_MinX = m_pMonsterFbx->m_pModel->minX;
+	m_MonsterSize.m_MinY = m_pMonsterFbx->m_pModel->minY;
+	m_MonsterSize.m_MinZ = m_pMonsterFbx->m_pModel->minZ;
+	m_MonsterSize.m_MaxR = m_pMonsterFbx->m_pModel->maxR;
+
 }
 
 

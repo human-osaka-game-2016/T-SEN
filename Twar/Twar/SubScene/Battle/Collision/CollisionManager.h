@@ -8,6 +8,7 @@
 #define COLLISIONMANAGER_H
 
 #include "../Ship/ShipManager.h"
+#include "../Monster/MonsterManager.h"
 
 class Collision;
 class ShipManager;
@@ -28,6 +29,8 @@ private:
 	ShipManager::ShipSize m_BattleShipSize;
 	ShipManager::ShipSize m_CruiserSize;
 	ShipManager::ShipSize m_DestroyerSize;
+	MonsterManager::MonsterSize m_MonsterSize;
 };
 
 #endif // COLLISIONMANAGER_H
+
