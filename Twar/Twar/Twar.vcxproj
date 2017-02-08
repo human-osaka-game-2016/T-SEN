@@ -106,6 +106,12 @@
     <ClCompile Include="SubScene\Battle\Battle.cpp" />
     <ClCompile Include="SubScene\Battle\BattleData\BattleDataManager.cpp" />
     <ClCompile Include="SubScene\Battle\BattleState\BattleStateManager.cpp" />
+    <ClCompile Include="SubScene\Battle\BattleUI\Alignment.cpp" />
+    <ClCompile Include="SubScene\Battle\BattleUI\BattleUIManager.cpp" />
+    <ClCompile Include="SubScene\Battle\BattleUI\LifeGauge.cpp" />
+    <ClCompile Include="SubScene\Battle\BattleUI\MonsterLifeGauge.cpp" />
+    <ClCompile Include="SubScene\Battle\BattleUI\SpeedMeter.cpp" />
+    <ClCompile Include="SubScene\Battle\BattleUI\UI.cpp" />
     <ClCompile Include="SubScene\Battle\Bullet\AIBullet.cpp" />
     <ClCompile Include="SubScene\Battle\Bullet\AIBulletManager.cpp" />
     <ClCompile Include="SubScene\Battle\Bullet\Ap.cpp" />
@@ -190,6 +196,12 @@
     <ClInclude Include="SubScene\Battle\Battle.h" />
     <ClInclude Include="SubScene\Battle\BattleData\BattleDataManager.h" />
     <ClInclude Include="SubScene\Battle\BattleState\BattleStateManager.h" />
+    <ClInclude Include="SubScene\Battle\BattleUI\Alignment.h" />
+    <ClInclude Include="SubScene\Battle\BattleUI\BattleUIManager.h" />
+    <ClInclude Include="SubScene\Battle\BattleUI\LifeGauge.h" />
+    <ClInclude Include="SubScene\Battle\BattleUI\MonsterLifeGauge.h" />
+    <ClInclude Include="SubScene\Battle\BattleUI\SpeedMeter.h" />
+    <ClInclude Include="SubScene\Battle\BattleUI\UI.h" />
     <ClInclude Include="SubScene\Battle\Bullet\AIBullet.h" />
     <ClInclude Include="SubScene\Battle\Bullet\AIBulletManager.h" />
     <ClInclude Include="SubScene\Battle\Bullet\Ap.h" />

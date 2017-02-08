@@ -104,6 +104,9 @@
     <Filter Include="Twar\SubScene\Battle\StateMachine\State">
       <UniqueIdentifier>{5da0300c-b65c-474a-86d2-7f6993ec24ad}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Twar\SubScene\Battle\BattleUI">
+      <UniqueIdentifier>{542a66ae-69ea-49a9-9491-88773c69c2c1}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -262,9 +265,6 @@
     <ClCompile Include="SubScene\BattleResult\BattleResult.cpp">
       <Filter>Twar\SubScene\BattleResult</Filter>
     </ClCompile>
-    <ClCompile Include="SubScene\WorldMap\WorldMap.cpp">
-      <Filter>Twar\SubScene\WorldMap</Filter>
-    </ClCompile>
     <ClCompile Include="SubScene\Ending\Ending.cpp">
       <Filter>Twar\SubScene\Ending</Filter>
     </ClCompile>
@@ -354,6 +354,25 @@
     </ClCompile>
     <ClCompile Include="SubScene\Battle\Bullet\AIBulletManager.cpp">
       <Filter>Twar\SubScene\Battle\Bullet</Filter>
+    </ClCompile>
+    <ClCompile Include="SubScene\WorldMap\WorldMap.cpp" />
+    <ClCompile Include="SubScene\Battle\BattleUI\Alignment.cpp">
+      <Filter>Twar\SubScene\Battle\BattleUI</Filter>
+    </ClCompile>
+    <ClCompile Include="SubScene\Battle\BattleUI\BattleUIManager.cpp">
+      <Filter>Twar\SubScene\Battle\BattleUI</Filter>
+    </ClCompile>
+    <ClCompile Include="SubScene\Battle\BattleUI\LifeGauge.cpp">
+      <Filter>Twar\SubScene\Battle\BattleUI</Filter>
+    </ClCompile>
+    <ClCompile Include="SubScene\Battle\BattleUI\MonsterLifeGauge.cpp">
+      <Filter>Twar\SubScene\Battle\BattleUI</Filter>
+    </ClCompile>
+    <ClCompile Include="SubScene\Battle\BattleUI\SpeedMeter.cpp">
+      <Filter>Twar\SubScene\Battle\BattleUI</Filter>
+    </ClCompile>
+    <ClCompile Include="SubScene\Battle\BattleUI\UI.cpp">
+      <Filter>Twar\SubScene\Battle\BattleUI</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -507,9 +526,6 @@
     <ClInclude Include="SubScene\BattleResult\BattleResult.h">
       <Filter>Twar\SubScene\BattleResult</Filter>
     </ClInclude>
-    <ClInclude Include="SubScene\WorldMap\WorldMap.h">
-      <Filter>Twar\SubScene\WorldMap</Filter>
-    </ClInclude>
     <ClInclude Include="SubScene\Ending\Ending.h">
       <Filter>Twar\SubScene\Ending</Filter>
     </ClInclude>
@@ -602,6 +618,25 @@
     </ClInclude>
     <ClInclude Include="SubScene\Battle\Bullet\AIBulletManager.h">
       <Filter>Twar\SubScene\Battle\Bullet</Filter>
+    </ClInclude>
+    <ClInclude Include="SubScene\WorldMap\WorldMap.h" />
+    <ClInclude Include="SubScene\Battle\BattleUI\Alignment.h">
+      <Filter>Twar\SubScene\Battle\BattleUI</Filter>
+    </ClInclude>
+    <ClInclude Include="SubScene\Battle\BattleUI\BattleUIManager.h">
+      <Filter>Twar\SubScene\Battle\BattleUI</Filter>
+    </ClInclude>
+    <ClInclude Include="SubScene\Battle\BattleUI\LifeGauge.h">
+      <Filter>Twar\SubScene\Battle\BattleUI</Filter>
+    </ClInclude>
+    <ClInclude Include="SubScene\Battle\BattleUI\MonsterLifeGauge.h">
+      <Filter>Twar\SubScene\Battle\BattleUI</Filter>
+    </ClInclude>
+    <ClInclude Include="SubScene\Battle\BattleUI\SpeedMeter.h">
+      <Filter>Twar\SubScene\Battle\BattleUI</Filter>
+    </ClInclude>
+    <ClInclude Include="SubScene\Battle\BattleUI\UI.h">
+      <Filter>Twar\SubScene\Battle\BattleUI</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
