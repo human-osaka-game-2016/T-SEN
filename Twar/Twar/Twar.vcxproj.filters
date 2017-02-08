@@ -262,9 +262,6 @@
     <ClCompile Include="SubScene\BattleResult\BattleResult.cpp">
       <Filter>Twar\SubScene\BattleResult</Filter>
     </ClCompile>
-    <ClCompile Include="SubScene\WorldMap\WorldMap.cpp">
-      <Filter>Twar\SubScene\WorldMap</Filter>
-    </ClCompile>
     <ClCompile Include="SubScene\Ending\Ending.cpp">
       <Filter>Twar\SubScene\Ending</Filter>
     </ClCompile>
@@ -355,6 +352,7 @@
     <ClCompile Include="SubScene\Battle\Bullet\AIBulletManager.cpp">
       <Filter>Twar\SubScene\Battle\Bullet</Filter>
     </ClCompile>
+    <ClCompile Include="SubScene\WorldMap\WorldMap.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Scene\SceneManager.h">
@@ -507,9 +505,6 @@
     <ClInclude Include="SubScene\BattleResult\BattleResult.h">
       <Filter>Twar\SubScene\BattleResult</Filter>
     </ClInclude>
-    <ClInclude Include="SubScene\WorldMap\WorldMap.h">
-      <Filter>Twar\SubScene\WorldMap</Filter>
-    </ClInclude>
     <ClInclude Include="SubScene\Ending\Ending.h">
       <Filter>Twar\SubScene\Ending</Filter>
     </ClInclude>
@@ -603,6 +598,7 @@
     <ClInclude Include="SubScene\Battle\Bullet\AIBulletManager.h">
       <Filter>Twar\SubScene\Battle\Bullet</Filter>
     </ClInclude>
+    <ClInclude Include="SubScene\WorldMap\WorldMap.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="SubScene\Battle\StateMachine\StateMachine.inl">

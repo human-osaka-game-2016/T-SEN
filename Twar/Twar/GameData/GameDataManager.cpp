@@ -8,11 +8,7 @@
 
 
 GameDataManager::GameDataManager()
-	:m_Money(0)
 {
-	m_ShipAggressivity.m_Aggressivity[GameDataManager::ShipAggressivity::LV1] = 0;
-	m_ShipDurability.m_Durability[GameDataManager::ShipDurability::LV1] = 0;
-	m_ShipSpeed.m_Speed[GameDataManager::ShipSpeed::LV1] = 0;
 }
 
 
