@@ -1,8 +1,8 @@
-﻿/**
-* @file		ScoreResult.h
-* @brief	ScoreResultクラスヘッダ
-* @auhtor	haga
-*/
+﻿//==================================================================================================================================//
+//!< @file		ScoreResult.h
+//!< @brief		ScoreResultクラスヘッダ
+//!< @auhtor	haga
+//==================================================================================================================================//
 
 #ifndef SCORE_RESULT_H
 #define SCORE_RESULT_H
@@ -14,45 +14,50 @@ class Font;
 
 /**
 * 戦闘結果のデータ(スコア)を表示するクラス
-* @todo データに関してはまだ決まっていない部分があるので、決まり次第再実装
 */
 class ScoreResult
 {
 
 public:
 	/**
-	* コンストラクタ
+	* Constructor
 	* @param pGameDatamanager	GameDataManagerのインスタンスへのポインタ
 	*/
 	explicit ScoreResult(GameDataManager* pGameDayaManagher);
 
-	/**デストラクタ*/
+	/**Destructor*/
 	~ScoreResult();
 
 	/**描画関数*/
 	void Draw();
-	
-	void PayControl();
 
-	int GetMoneyData();
+	/**取得した通貨のGetter*/
+	inline int GetMoneyData(){ return m_Data[GETTEN_MONEY]; }
 
 private:
-	/**データの種類*/
-	/**@todo 仮で決めている*/
+	/**スコアの種類*/
 	enum SCORE_LIST
 	{
-		BATTLE_SCORE,	//!< 戦闘スコア(仮)
-		BATTLE_TIME,	//!< 戦闘時間
-		LIST_MAX,		//!< スコアのリストの最大値
+		PLAYER_DAMAGE_SCORE,	//!< プレイヤーが与えたダメージスコア
+		ELAPSED_DAYS,			//!< 経過日数
+		GETTEN_MONEY,			//!< 取得したお金
+		LIST_MAX,				//!< スコアのリストの最大値
 	};
 
-	int				m_Data[LIST_MAX];		//!< データ(数値)の静的配列
-	Font*			m_pFont;				//!< Fontクラスのインスタンスへのポインタ
+	GameDataManager*	m_pGameDataManager;		//!< GameDataManagerクラスのインスタンスへのポインタ
+	int					m_Data[LIST_MAX];		//!< データ(数値)の静的配列
+	Font*				m_pFont;				//!< Fontクラスのインスタンスへのポインタ
 
-	/**メンバーのDataを初期化する並列*/
-	void InitData(GameDataManager* pGameDayaManagher);
+	/**データを初期化する関数*/
+	void InitData();
 
-	GameDataManager* m_pGameDataManager;   //!< GameDataManagerクラスのインスタンスへのポインタ
+	/**戦闘で取得した通貨の計算を行う関数*/
+	int CalculateGettenMoney();
+	
 };
 
 #endif // SCORE_RESULT_H
+
+//==================================================================================================================================//
+//END OF FILE
+//==================================================================================================================================//

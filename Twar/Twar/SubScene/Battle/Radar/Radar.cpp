@@ -77,7 +77,7 @@ D3DXVECTOR3 Radar::GetAIAttackTargetPos(const D3DXVECTOR3& rPos, int playerAttac
 	
 	D3DXVECTOR3 taegetPos = {0.0f, 0.0f, 0.0f};
 
-	D3DXVECTOR3 taegetPos;
+	//D3DXVECTOR3 taegetPos;
 	return taegetPos;
 }
 
