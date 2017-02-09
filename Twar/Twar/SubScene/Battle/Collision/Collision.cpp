@@ -158,3 +158,4 @@ void Collision::CreateMonsterCollisionPos(D3DXVECTOR3 objPos, MonsterManager::Mo
 	collisionPosXY[5].x = objPos.x + vec6.x;
 	collisionPosXY[5].y = objPos.z + vec6.z;
 }
+
