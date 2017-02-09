@@ -99,6 +99,12 @@ SUBSCENE_ID Battle::Control()
 	m_pShipManager->Control();
 	m_pShipManager->CameraTransform();
 	GameLib::Instance().SetMousePosCenter();
+
+	if(CheckBattleState())
+	{
+		return SUBSCENE_ID::BATTLE_RESULT;
+	}
+
 	return SUBSCENE_ID::BATTLE;
 }
 
@@ -111,4 +117,21 @@ void sub_scene::Battle::Draw()
 	m_pFieldManager->Draw();
 }
 
+bool sub_scene::Battle::CheckBattleState()
+{
+	if(BattleDataManager::Instance().GetPlayerHp() <= 0)
+	{
+		BattleDataManager::Instance().SetBattleResult(false);
+		return true;
+	} 
+	else if(BattleDataManager::Instance().GetMonsterCount() <= 0)
+	{
+		BattleDataManager::Instance().SetBattleResult(true);
+		return true;
+	}
+	return false;
 }
+
+}
+
+

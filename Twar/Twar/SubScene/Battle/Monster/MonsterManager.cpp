@@ -13,6 +13,7 @@
 #include "Monster.h"
 #include "MonsterManager.h"
 #include "MonsterBullet/MonsterBulletManager.h"
+#include "../BattleData/BattleDataManager.h"
 
 //---------------------------------------------------------------------------------------------------------------------------------------//
 //Public functions
@@ -70,6 +71,8 @@ void MonsterManager::Control()
 			++itr;
 		}
 	}
+
+	BattleDataManager::Instance().SetMonsterCount(m_pMonsters.size());
 
 	m_pBulletManager->Control();
 }

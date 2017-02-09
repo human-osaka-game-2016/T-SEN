@@ -262,6 +262,8 @@ void BattleShip::ControlPlayer()
 		m_IsZoom = false;
 	}
 
+	BattleDataManager::Instance().SetPlayerToZoom(m_IsZoom);
+
 	float nextSpeed;
 
 	if (m_pGameLib.CheckKey(DIK_W, W) - OFF + m_pGameLib.CheckKey(DIK_S, S) - OFF)
