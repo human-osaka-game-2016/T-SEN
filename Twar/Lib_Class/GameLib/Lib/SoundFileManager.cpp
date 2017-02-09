@@ -5,6 +5,7 @@
 */
 
 #include "SoundFileManager.h"
+WAVEFORMATEX wFmt;
 
 SoundFileManager::SoundFileManager()
 	: m_pDSound8(NULL)
@@ -94,11 +95,13 @@ bool SoundFileManager::OpenWave(TCHAR* filepath, WAVEFORMATEX* waveFormatEx, cha
 HRESULT SoundFileManager::LoadSound(int key,TCHAR* filePath)
 {
 	LPDIRECTSOUNDBUFFER8 pDSBuffer = NULL;
+	m_soundMap[key] = pDSBuffer;
+
 	// Waveファイルオープン
-	WAVEFORMATEX wFmt;
+	
 	char *pWaveData = 0;
 	DWORD waveSize = 0;
-
+	
 	if (!OpenWave((filePath), &wFmt, &pWaveData, &waveSize))
 	{
 		return E_FAIL;
@@ -114,10 +117,10 @@ HRESULT SoundFileManager::LoadSound(int key,TCHAR* filePath)
 
 	IDirectSoundBuffer *ptmpBuf = 0;
 	m_pDSound8->CreateSoundBuffer(&DSBufferDesc, &ptmpBuf, NULL);
-	ptmpBuf->QueryInterface(IID_IDirectSoundBuffer8, (void**)&pDSBuffer);
+	ptmpBuf->QueryInterface(IID_IDirectSoundBuffer8, (void**)&m_soundMap[key]);
 
 	ptmpBuf->Release();
-	if (pDSBuffer == NULL)
+	if(m_soundMap[key] == NULL)
 	{
 		m_pDSound8->Release();
 		return E_FAIL;
@@ -129,16 +132,15 @@ HRESULT SoundFileManager::LoadSound(int key,TCHAR* filePath)
 	LPVOID lpvWrite = 0;
 	//音声データの大きさ
 	DWORD dwLength = 0;
-	if (DS_OK == pDSBuffer->Lock(0, 0, &lpvWrite, &dwLength, NULL, NULL, DSBLOCK_ENTIREBUFFER))
+	if(DS_OK == m_soundMap[key]->Lock(0, 0, &lpvWrite, &dwLength, NULL, NULL, DSBLOCK_ENTIREBUFFER))
 	{
 		memcpy(lpvWrite, pWaveData, dwLength);
-		pDSBuffer->Unlock(lpvWrite, dwLength, NULL, 0);
+		m_soundMap[key]->Unlock(lpvWrite, dwLength, NULL, 0);
 	}
 
 	delete[] pWaveData; // 元音はもういらない
 
-
-	m_soundMap[key] = pDSBuffer;
+	//free(&wFmt);
 
 	return S_OK;
 }
