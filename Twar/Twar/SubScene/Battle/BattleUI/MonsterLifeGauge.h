@@ -1,8 +1,8 @@
-﻿//==================================================================================================================================//
-//!< @file		MonsterLifeGauge.h
-//!< @brief		MonsterLifeGaugeクラスヘッダ
-//!< @author	ichikawa
-//==================================================================================================================================//
+﻿/**
+* @file MnsterLifeGauge.h
+* @brief MnsterLifeGaugeのクラスヘッダ
+* @author ichikawa
+*/
 
 #ifndef MONSTER_LIFE_GAUGE_H
 #define MONSTER_LIFE_GAUGE_H
@@ -14,7 +14,7 @@ class MonsterLifeGauge :public UI
 {
 
 public:
-	MonsterLifeGauge(int lifeTexID, int flameTexID);
+	MonsterLifeGauge(int lifeTexID, int LifeVtrID, int FlameVtrID);
 	virtual ~MonsterLifeGauge();
 	virtual void Control();
 	virtual void Draw();
@@ -22,28 +22,28 @@ public:
 private:
 	enum LIFE_GAUGE_ID
 	{
-		LIFE,			//!< ライフID
-		FLAME,			//!< 外装
+		//LIFE,			//!< ライフID
+		//FLAME,			//!< 外装
+		UI,				//!< UI
 		ID_MAX,
 	};
 
 	D3DXVECTOR2		m_LifePos;
+	D3DXVECTOR2		m_LifeFlamePos;
 	float			m_LifePosCount;
 	float			m_LifeHeight;
-	int				m_TexID[LIFE_GAUGE_ID::ID_MAX];
+	float			m_LifeWide;
 	float			m_LifeTv;
+	float			m_LifeTu;
 	float			m_LifeTvCount;
+	float			m_LifeID;
+	float			m_LifeFlameID;
+	float			m_LifeBaseID;
 	int				m_LifeMAX;
-
 	int				m_CurrentLife;
-
-	void RotationMatrix(CUSTOMVERTEX* vertex);
+	int				m_TexID[LIFE_GAUGE_ID::ID_MAX];
+	//void RotationMatrix(CUSTOMVERTEX* vertex);
 };
 
 
 #endif	// MONSTER_LIFE_GAUGE_H
-
-//==================================================================================================================================//
-//END OF FILE
-//==================================================================================================================================//
-

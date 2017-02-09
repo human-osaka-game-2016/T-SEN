@@ -15,6 +15,7 @@
 #include "Effect/EffectManager.h"
 #include "BattleData/BattleDataManager.h"
 #include "Collision/CollisionManager.h"
+#include "BattleUI/BattleUIManager.h"
 #include "Battle.h"
 
 namespace sub_scene
@@ -39,6 +40,7 @@ Battle::Battle(GameDataManager* pGameDataManager, GameTimer* pGameTimer)
 	m_pShipManager = new ShipManager();
 	m_pCollisionManager = new CollisionManager(m_pShipManager, m_pMonsterManager, m_pShipManager->GetBulletManager());
 	
+
 	ShipManager::SHIP_ID shipID[12] =
 	{
 		ShipManager::BATTLESHIP,
@@ -75,6 +77,8 @@ Battle::Battle(GameDataManager* pGameDataManager, GameTimer* pGameTimer)
 
 	char ally = 2, enemy = 2;
 	m_pShipManager->Create(&ally, &enemy, shipID);
+
+	m_pBattleUIManager = new BattleUIManager();
 	LoadingThread::DiscardThread();
 }
 
@@ -82,6 +86,7 @@ Battle::Battle(GameDataManager* pGameDataManager, GameTimer* pGameTimer)
 Battle::~Battle()
 {
 	EffectManager::Instance().ReleaseID();
+	delete m_pBattleUIManager;
 	delete m_pCollisionManager;
 	delete m_pLight;
 	delete m_pFieldManager;
@@ -99,6 +104,7 @@ SUBSCENE_ID Battle::Control()
 	m_pShipManager->Control();
 	m_pShipManager->CameraTransform();
 	GameLib::Instance().SetMousePosCenter();
+	m_pBattleUIManager->Control();
 
 	if(CheckBattleState())
 	{
@@ -115,6 +121,7 @@ void sub_scene::Battle::Draw()
 	EffectManager::Instance().Draw();
 	m_pMonsterManager->Draw();
 	m_pFieldManager->Draw();
+	m_pBattleUIManager->Draw();
 }
 
 bool sub_scene::Battle::CheckBattleState()

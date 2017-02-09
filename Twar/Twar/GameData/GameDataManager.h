@@ -98,12 +98,14 @@ public:
 	inline int							GetWaveCount(){ return m_WaveCount; }
 	inline GameDataManager::SHIP_ID		GetSelectedShipID(){ return m_SelectedShipID; }
 
+
 	/**--Setter--------------------------------------------------------------------------------------------------------------*/
 
 	inline void							SetMoney(int money){ m_Money = money; }
 	inline void							SetFightOffDays(int fightOffDays){ m_FightOffDays = fightOffDays; }
 	inline void							SetWaveCount(int waveCount){ m_WaveCount = waveCount; }
 	inline void							SetSelectedShipID(GameDataManager::SHIP_ID id){ m_SelectedShipID = id; }
+
 
 private:
 	int								m_Money;			 //!< プレイヤーの所持金
@@ -113,6 +115,7 @@ private:
 	int								m_FightOffDays;      //!< 撃退日数
 	int								m_WaveCount;		 //!< ウェーブ数
 	GameDataManager::SHIP_ID		m_SelectedShipID;	 //!< プレイヤーが選んだ船のID
+
 
 };
 

@@ -10,6 +10,7 @@
 #include "../StateMachine/ShipStateManager.h"
 #include "../Bullet/AIBulletManager.h"
 #include "../Radar/Radar.h"
+#include "../BattleData/BattleDataManager.h"
 
 
 ShipManager::ShipManager()
@@ -166,6 +167,8 @@ void ShipManager::Create(char* army, char* enemy, SHIP_ID* shipID)
 		if (i == 0)
 		{
 			tmp->m_Attr = Ship::PLAYER;
+			BattleDataManager::Instance().SetSpeedLimit(tmp->m_SpeedLimit);
+			BattleDataManager::Instance().SetPlayerHp(tmp->m_Status.m_Hp);
 		}
 		else
 		{
