@@ -10,6 +10,7 @@
 
 #include "GameLib/GameLib.h"
 #include "LifeGauge.h"
+#include "../BattleData/BattleDataManager.h"
 
 //--------------------------------------------------------------------------------------------------------------//
 //Unnamed namespace

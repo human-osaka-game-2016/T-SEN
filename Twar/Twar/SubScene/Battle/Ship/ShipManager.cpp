@@ -11,6 +11,7 @@
 #include "../Bullet/AIBulletManager.h"
 #include "../Radar/Radar.h"
 
+
 ShipManager::ShipManager()
 	: m_BattleShip(new FbxRelated)
 	, m_Cruiser(new FbxRelated)
@@ -114,6 +115,7 @@ void ShipManager::Control()
 		m_Enemy[i]->Control();
 		Radar::Instance().SetShipPos(m_Enemy[i]->m_ObjPos);
 	}
+
 	m_pBulletManager->Control(GetPlayerPos(), GetArmyRotate(0));
 	AIBulletManager::Instance()->Control();
 }

@@ -63,6 +63,9 @@ private:
 	ShipManager*			m_pShipManager;
 	CollisionManager*		m_pCollisionManager;
 
+	/**戦闘状態をチェックする*/
+	bool CheckBattleState();
+
 };
 
 }

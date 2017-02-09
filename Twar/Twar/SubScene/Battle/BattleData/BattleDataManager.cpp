@@ -22,6 +22,7 @@ void BattleDataManager::Initialize()
 	m_MonsterHpMax			= 0;
 	m_PlayerAttackedDamage	= 0;
 	m_BattleResult			= false;
+	m_PlayerToZoom			= false;
 }
 
 //==================================================================================================================================//

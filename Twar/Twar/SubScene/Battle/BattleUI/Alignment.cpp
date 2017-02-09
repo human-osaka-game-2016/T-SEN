@@ -10,6 +10,7 @@
 
 #include "GameLib/GameLib.h"
 #include "Alignment.h"
+#include "../BattleData/BattleDataManager.h"
 
 //--------------------------------------------------------------------------------------------------------------//
 //Public functions

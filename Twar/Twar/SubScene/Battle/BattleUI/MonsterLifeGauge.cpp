@@ -5,6 +5,7 @@
 
 #include "GameLib/GameLib.h"
 #include "MonsterLifeGauge.h"
+#include "../BattleData/BattleDataManager.h"
 
 //--------------------------------------------------------------------------------------------------------------//
 //Unamed namespace
