@@ -1,62 +1,50 @@
 ﻿/**
-* @file Bullet.h
-* @brief Bulletクラスヘッダ
+* @file  Bullet.cpp
+* @brief Bulletクラス実装
 * @author Matsuda
 */
-#ifndef BULLET_H
-#define BULLET_H
+#include"Bullet.h"
+#include"GameLib/GameLib.h"
 
-#include <d3dx9.h>
-
-class FbxModel;
-
-/**
-*Bulletクラス
-*/
-class Bullet
+Bullet::Bullet(FbxModel*	pModel, const D3DXVECTOR3& rPos, float angle, D3DXVECTOR3* vec, float bulletSpeed)
+	: m_EffectManager(EffectManager::Instance())
+	, m_pFbx(pModel)
+	, m_Pos(rPos)
+	, m_Rotate(angle)
+	, m_FireCount(0)
+	, m_HasVanished(false)
+	, m_pMesh(nullptr)
+	, m_FlyingTimeCount(0)
 {
-	friend class BulletManager;
+	D3DXVec3Normalize(&m_Vector, vec);
+	m_BulletSpeedX = m_Vector.x * bulletSpeed;
+	m_BulletSpeedY = m_Vector.y * bulletSpeed;
+	m_BulletSpeedZ = m_Vector.z * bulletSpeed;
+	m_Radian = D3DXToRadian(angle);
+}
 
-protected:
-	struct Data
-	{
-		D3DXVECTOR3 BulletPos;
-		float Rotate;
-		bool hasDrawn;
-		bool hasInited;
-		Data* pBefore;
-		Data* pNext;
-		D3DXMATRIX Matrix;
-	};
-	Data* m_pFirst;
-	Data* m_pLast;
-	Data m_Data;
-	D3DXMATRIX m_Rotation;
-	LPD3DXMESH m_pMesh;
-public:
-	/**コンストラクタ*/
-	Bullet();
+Bullet::~Bullet()
+{
+}
 
-	/**デストラクタ*/
-	virtual ~Bullet();
+bool Bullet::Control()
+{
+	return false;
+}
 
-	/**コントロール関数*/
-	virtual void Control(D3DXVECTOR3 Pos, float Rotate);
-	
-	/**描画関数*/
-	virtual void Draw();
-	
-	/**最後尾につける関数*/
-	virtual void PushBack(Data* pData);
-	
-	/**今あるポインターを削除して次のポインターを返す*/
-	virtual Data* EraseNext(Data* pData);
-	
-	/**リストを空にする関数*/
-	virtual void Clear();
+void Bullet::Draw()
+{
+}
 
-protected:
-	FbxModel* m_pFbx; //!<  モデルデータ
-
-};
-#endif  //BULLET_H
+//void Bullet::PushBack(Data* pData)
+//{
+//}
+//
+//Bullet::Data * Bullet::EraseNext(Data* pData)
+//{
+//	return pData;
+//}
+//
+//void Bullet::Clear()
+//{
+//}

@@ -25,9 +25,9 @@ AIBulletManager*	AIBulletManager::m_pBulletManager = nullptr;
 
 void AIBulletManager::Control()
 {
-	for(auto& itr = m_pBullets.begin(); itr != m_pBullets.end();)
+	for (auto& itr = m_pBullets.begin(); itr != m_pBullets.end();)
 	{
-		if((*itr)->Control())
+		if ((*itr)->Control())
 		{
 			delete (*itr);
 			itr = m_pBullets.erase(itr);
@@ -39,7 +39,7 @@ void AIBulletManager::Control()
 
 void AIBulletManager::Draw()
 {
-	for(auto& itr = m_pBullets.begin(); itr != m_pBullets.end();)
+	for (auto& itr = m_pBullets.begin(); itr != m_pBullets.end();)
 	{
 		(*itr)->Draw();
 		++itr;
@@ -48,8 +48,8 @@ void AIBulletManager::Draw()
 
 void AIBulletManager::CreateBullet(const D3DXVECTOR3& rPos, float angle)
 {
-	float radian = D3DXToRadian(angle);
-	m_pBullets.push_back(new AIBullet(m_pBulletModel->m_pModel, rPos, radian));
+	//	float radian = D3DXToRadian(angle);
+	m_pBullets.push_back(new AIBullet(m_pBulletModel->m_pModel, rPos, angle));
 }
 
 //--------------------------------------------------------------------------------------------------------------//
@@ -61,7 +61,7 @@ AIBulletManager::AIBulletManager()
 {
 	// モデルデータ読み込み
 	/**@todo 2016/12/23現在モデルデータは仮置き*/
-	if(!m_pBulletModel->LoadFbx("fbx/tama_0.FBX"))
+	if (!m_pBulletModel->LoadFbx("fbx/tama_0.FBX"))
 	{
 		// 読み込み失敗したらエラー
 		MessageBox(0, "AI弾のFBXファイルの読み込みに失敗しました。", NULL, MB_OK);
@@ -70,7 +70,7 @@ AIBulletManager::AIBulletManager()
 
 AIBulletManager::~AIBulletManager()
 {
-	for(auto pBullet : m_pBullets)
+	for (auto pBullet : m_pBullets)
 	{
 		delete pBullet;
 	}
