@@ -56,6 +56,9 @@ Home::Home(GameDataManager* pGameDataManager, GameTimer* pGameTimer, SaveDataMan
 	m_pGameWindows.emplace_back(new ShipInfoBackWindow(ShipInfoBackWinPos, Home::HOME_TEX, SHIP_INFO_BG_TENRYU_VTX, SHIP_INFO_BG_MINEKAZE_VTX, SHIP_INFO_BG_KONGOU_VTX, m_pHomeMenu));
 	m_pGameWindows.emplace_back(new ShipInfoWindow(ShipInfoWinPos, Home::HOME_TEX, SHIP_INFO_WIN_VTX, SHIP_INFO_TEXT_VTX, m_pGameDataManager, m_pHomeMenu));
 	
+	m_rGameLib.LoadSound(HOME_BGM, "../Sounds/home.wav");
+	m_rGameLib.LoadSound(CLICK_BGM, "../Sounds/click.wav");
+
 	// ここでGameDataManagerからタイムリミットの数値を取得する
 	int	  timeLimit = m_pGameDataManager->GetFightOffDays();
 
@@ -82,6 +85,7 @@ Home::Home(GameDataManager* pGameDataManager, GameTimer* pGameTimer, SaveDataMan
 
 Home::~Home()
 {
+	m_rGameLib.ReleaseAllSound();
 	m_rGameLib.ReleaseAllVertex();
 	m_rGameLib.ReleaseAllTex();
 
@@ -97,11 +101,17 @@ Home::~Home()
 
 SUBSCENE_ID Home::Control()
 {
+	m_rGameLib.PlayDSound(HOME_BGM, SOUND_LOOP);
 	SUBSCENE_ID nextSubSceneID = m_pHomeMenu->Control();
 
 	for(auto& pWindow : m_pGameWindows)
 	{
 		pWindow->Control();
+	}
+
+	if(GameLib::Instance().ChecKMouseL() == ON)
+	{
+		m_rGameLib.PlayDSound(CLICK_BGM, SOUND_PLAY);
 	}
 
 	return nextSubSceneID;

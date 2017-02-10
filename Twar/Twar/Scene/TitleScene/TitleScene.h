@@ -50,6 +50,13 @@ public:
 		SAVE_DATA_VTX,				//!< 現在選んでいるセーブデータを表示する画面 
 		VTX_MAX
 	};
+
+	/**SoundID*/
+	enum SOUND_ID
+	{
+		TITLE_BGM,				//!< 戦闘中に流れる音
+		CLICK_BGM,				//!< クリックする音
+	};
 	/**
 	* コンストラクタ
 	* @param[in] pSaveDataManager SaveDataManagerクラスのインスタンスへのポインタ

@@ -51,6 +51,13 @@ public:
 		VTX_MAX,
 	};
 
+	/**SoundID*/
+	enum SOUND_ID
+	{
+		HOME_BGM,				//!< 鎮守府に流れる音
+		CLICK_BGM				//!< クリック音
+	};
+
 	/**
 	* コンストラクタ
 	* @param pGameDataManager GameDataManagerクラスのインスタンスへのポインタ

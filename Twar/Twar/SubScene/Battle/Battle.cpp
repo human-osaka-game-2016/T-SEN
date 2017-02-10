@@ -32,7 +32,12 @@ Battle::Battle(GameDataManager* pGameDataManager, GameTimer* pGameTimer)
 	GameLib::Instance().LoadTex(EXPLOSION_TEX, "../Resouce/BattleScene/Effect/Effect.dds");
 	GameLib::Instance().CreateVtx(EXPLOSION_VTX, 200.f, 200.f);
 	EffectManager::Instance().RegisterID(EffectManager::EXPLOSION, EXPLOSION_TEX, EXPLOSION_VTX);
-	
+
+	// 音の読み込み
+	m_rGameLib.LoadSound(BTTLE_BGM, "../Sounds/battle.wav");
+	m_rGameLib.LoadSound(SHELLING_BGM, "../Sounds/shelling.wav");
+
+
 	BattleDataManager::Instance().Initialize();
 	m_pLight = new Light(GameLib::Instance().GetDevice(), D3DXVECTOR3{ 0, 0, 0 });
 	m_pMonsterManager = new MonsterManager(pGameDataManager);
@@ -85,6 +90,9 @@ Battle::Battle(GameDataManager* pGameDataManager, GameTimer* pGameTimer)
 
 Battle::~Battle()
 {
+	m_rGameLib.ReleaseAllSound();
+	m_rGameLib.ReleaseAllTex();
+	m_rGameLib.ReleaseAllVertex();
 	EffectManager::Instance().ReleaseID();
 	delete m_pBattleUIManager;
 	delete m_pCollisionManager;
@@ -97,6 +105,7 @@ Battle::~Battle()
 
 SUBSCENE_ID Battle::Control()
 {
+	m_rGameLib.PlayDSound(BTTLE_BGM, SOUND_LOOP);
 	m_pCollisionManager->Control();
 	m_pFieldManager->Control();
 	m_pMonsterManager->Control();

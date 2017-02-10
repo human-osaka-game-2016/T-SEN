@@ -54,6 +54,15 @@ public:
 
 	};
 
+	/**SoundID*/
+	enum SOUND_ID
+	{
+		BTTLE_BGM,				//!< 戦闘中に流れる音
+		EXPLOSION_BGM,			//!< 爆発音
+		SHELLING_BGM,			//!< 砲撃音
+		LOAD_BGM,				//!< ロード音
+	};
+
 	/**
 	* コンストラクタ
 	* @param pGameDataManager GameDataManagerクラスのインスタンスへのポインタ
