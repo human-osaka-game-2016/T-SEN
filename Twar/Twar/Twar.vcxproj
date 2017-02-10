@@ -89,6 +89,7 @@
     <ClCompile Include="GameWindow\TimeLimitWindow.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Message\GameMessage.cpp" />
+    <ClCompile Include="NumberDrawer\NumberDrawer.cpp" />
     <ClCompile Include="Scene\EndRollScene\EndRollScene.cpp" />
     <ClCompile Include="Scene\GameScene\GameScene.cpp" />
     <ClCompile Include="Scene\LogoScene\LogoScene.cpp" />
@@ -179,6 +180,7 @@
     <ClInclude Include="GameWindow\ShipInfoWindow.h" />
     <ClInclude Include="GameWindow\TimeLimitWindow.h" />
     <ClInclude Include="Message\GameMessage.h" />
+    <ClInclude Include="NumberDrawer\NumberDrawer.h" />
     <ClInclude Include="Scene\EndRollScene\EndRollScene.h" />
     <ClInclude Include="Scene\GameScene\GameScene.h" />
     <ClInclude Include="Scene\LogoScene\LogoScene.h" />

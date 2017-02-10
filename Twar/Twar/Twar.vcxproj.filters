@@ -107,6 +107,9 @@
     <Filter Include="Twar\SubScene\Battle\BattleUI">
       <UniqueIdentifier>{542a66ae-69ea-49a9-9491-88773c69c2c1}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Twar\NumberDrawer">
+      <UniqueIdentifier>{3ebf55f6-cd48-4098-a62b-215f00c36974}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -374,6 +377,9 @@
     <ClCompile Include="SubScene\Battle\BattleUI\UI.cpp">
       <Filter>Twar\SubScene\Battle\BattleUI</Filter>
     </ClCompile>
+    <ClCompile Include="NumberDrawer\NumberDrawer.cpp">
+      <Filter>Twar\NumberDrawer</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Scene\SceneManager.h">
@@ -637,6 +643,9 @@
     </ClInclude>
     <ClInclude Include="SubScene\Battle\BattleUI\UI.h">
       <Filter>Twar\SubScene\Battle\BattleUI</Filter>
+    </ClInclude>
+    <ClInclude Include="NumberDrawer\NumberDrawer.h">
+      <Filter>Twar\NumberDrawer</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
