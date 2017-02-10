@@ -18,6 +18,8 @@ TitleScene::TitleScene(SaveDataManager* pSaveDataManager)
 {
 	/** @todo ここでセーブデータの有無をメニュークラスにわたす。仕組みはまだ未実装nのためfalseを渡している */
 	m_pTitleMenu = new TitleMenu(false);
+	m_rGameLib.LoadSound(TITLE_BGM, "../Sounds/title.wav");
+	m_rGameLib.LoadSound(CLICK_BGM, "../Sounds/click.wav");
 	Init();
 }
 
@@ -32,6 +34,7 @@ TitleScene::~TitleScene()
 	delete m_pTitleBackground;
 	m_pTitleBackground = nullptr;
 
+	m_rGameLib.ReleaseAllSound();
 	m_rGameLib.ReleaseAllTex();
 	m_rGameLib.ReleaseAllVertex();
 }
@@ -56,6 +59,13 @@ SCENE_ID TitleScene::Control()
 
 			return GAME_SCENE;
 		break;
+	}
+
+	// サウンド処理
+	m_rGameLib.PlayDSound(TITLE_BGM, SOUND_LOOP);
+	if(GameLib::Instance().ChecKMouseL() == ON)
+	{	
+		m_rGameLib.PlayDSound(CLICK_BGM, SOUND_PLAY);
 	}
 	
 	return TITLE_SCENE;

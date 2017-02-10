@@ -101,7 +101,6 @@ Battle::~Battle()
 SUBSCENE_ID Battle::Control()
 {
 	m_rGameLib.PlayDSound(BTTLE_BGM, SOUND_LOOP);
-	
 	m_pCollisionManager->Control();
 	m_pFieldManager->Control();
 	m_pMonsterManager->Control();
