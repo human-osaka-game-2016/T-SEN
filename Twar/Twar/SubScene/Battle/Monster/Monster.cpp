@@ -41,9 +41,9 @@ const int			PosCount			= 3;						// モンスター位置座標の数
 
 // 出現位置テーブル
 const D3DXVECTOR3	PositionTable[PosCount] = {
-	{ -700.f, 0.0f,  -700.f},
-	{ 800.f, 0.0f, 800.f},
-	{ 500.f, 0.0f,  900.f}
+	{ 0.f, 0.0f,  0.f},
+	{ 200.f, 0.0f,200.f},
+	{ -200.f, 0.0f,  -200.f}
 };
 
 }

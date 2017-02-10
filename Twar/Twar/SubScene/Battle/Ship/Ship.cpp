@@ -37,7 +37,7 @@ Ship::Ship(D3DXVECTOR3* pos, STATUS status, SHIP_ID ShipID, BulletManager* pBull
 	, m_IsHit(false)
 	, m_IsRush(false)
 	, m_pStateMachine(nullptr)
-	, m_TargetPos({0.0f, 0.0f, 0.0f})
+	, m_TargetPos({ 0.0f, 0.0f, 0.0f })
 	, m_TargetAngle(0.0f)
 	, m_TurningSpeed(0.0f)
 	, m_TurningTimeCount(0)
@@ -45,7 +45,8 @@ Ship::Ship(D3DXVECTOR3* pos, STATUS status, SHIP_ID ShipID, BulletManager* pBull
 	, m_AvoidedTimeCount(0)
 	, m_PlayerAttackedCount(0)
 	, m_pBulletManager(pBulletManager)
-	, m_FiringCount(0)
+	, m_FiringCount(1)
+	, m_Radius(200.f)
 {
 }
 
@@ -86,7 +87,7 @@ void Ship::TransWorld()
 }
 
 
-void Ship::CameraTransWorld(float radius)
+void Ship::CameraTransWorld()
 {
 	//D3DXVECTOR3		cameraPos(0.f, 0.f, -radius);
 	//D3DXVec3TransformCoord(&cameraPos, &cameraPos, &m_CameraRotation);
@@ -101,33 +102,16 @@ void Ship::CameraTransWorld(float radius)
 	//m_LookatPos.z = lookatPos.z;
 
 	/////////////////////////////////////////////////　ここから　///////////////////////////////////////////////////////
-	static char Fps = 1;
 
-	if (m_pGameLib.CheckKey(DIK_P, P) == PUSH)
+	if (!m_IsFpsMode)
 	{
-		Fps *= -1;
-
-		if (Fps < 0)
-		{
-			m_CameraPos.y -= 25.f;
-			m_LookatPos.y -= 25.f;
-		}
-		else
-		{
-			m_CameraPos.y += 25.f;
-			m_LookatPos.y += 25.f;
-		}
-	}
-
-	if (Fps > 0)
-	{
-		D3DXVECTOR3		cameraPos(0.f, 0.f, -radius);
+		D3DXVECTOR3		cameraPos(0.f, 0.f, -m_Radius);
 		D3DXVec3TransformCoord(&cameraPos, &cameraPos, &m_CameraRotation);
 		D3DXVec3Add(&cameraPos, &cameraPos, &m_CameraPos);
 		m_CameraPos.x = cameraPos.x;
 		m_CameraPos.z = cameraPos.z;
 
-		D3DXVECTOR3		lookatPos(0.f, 0.f, radius);
+		D3DXVECTOR3		lookatPos(0.f, 0.f, m_Radius);
 		D3DXVec3TransformCoord(&lookatPos, &lookatPos, &m_CameraRotation);
 		D3DXVec3Add(&lookatPos, &lookatPos, &m_LookatPos);
 		m_LookatPos.x = lookatPos.x;
@@ -135,13 +119,13 @@ void Ship::CameraTransWorld(float radius)
 	}
 	else
 	{
-		D3DXVECTOR3		cameraPos(0.f, 0.f, radius / 2);
+		D3DXVECTOR3		cameraPos(0.f, 0.f, 10.f);
 		D3DXVec3TransformCoord(&cameraPos, &cameraPos, &m_CameraRotation);
 		D3DXVec3Add(&cameraPos, &cameraPos, &m_CameraPos);
 		m_CameraPos.x = cameraPos.x;
 		m_CameraPos.z = cameraPos.z;
 
-		D3DXVECTOR3		lookatPos(0.f, 0.f, radius * 2);
+		D3DXVECTOR3		lookatPos(0.f, 0.f, m_Radius * 2.f);
 		D3DXVec3TransformCoord(&lookatPos, &lookatPos, &m_CameraRotation);
 		D3DXVec3Add(&lookatPos, &lookatPos, &m_LookatPos);
 		m_LookatPos.x = lookatPos.x;

@@ -20,18 +20,18 @@ ShipManager::ShipManager()
 	, m_pBulletManager(new BulletManager())
 {
 	//	仮置き
-	m_TemplatePos[0] = { -250.f, -4.f, -500.f };
-	m_TemplatePos[1] = { -150.f, -4.f, -500.f };
-	m_TemplatePos[2] = { -50.f, -4.f, -500.f };
-	m_TemplatePos[3] = { 50.f, -4.f, -500.f };
-	m_TemplatePos[4] = { 150.f, -4.f, -500.f };
-	m_TemplatePos[5] = { 250.f, -4.f, -500.f };
-	m_TemplatePos[6] = { -250.f, -4.f, 500.f };
-	m_TemplatePos[7] = { -150.f, -4.f, 500.f };
-	m_TemplatePos[8] = { -50.f, -4.f, 500.f };
-	m_TemplatePos[9] = { 50.f, -4.f, 500.f };
-	m_TemplatePos[10] = { 150.f, -4.f, 500.f };
-	m_TemplatePos[11] = { 250.f, -4.f, 500.f };
+	m_TemplatePos[0] = { -100.f, -4.f, -1000.f };
+	m_TemplatePos[1] = { 100.f, -4.f, -1000.f };
+	m_TemplatePos[2] = { -300.f, -4.f, -1000.f };
+	m_TemplatePos[3] = { 300.f, -4.f, -1000.f };
+	m_TemplatePos[4] = { -500.f, -4.f, -1000.f };
+	m_TemplatePos[5] = { 500.f, -4.f, -1000.f };
+	m_TemplatePos[6] = { 100.f, -4.f, 1000.f };
+	m_TemplatePos[7] = { -100.f, -4.f, 1000.f };
+	m_TemplatePos[8] = { 300.f, -4.f, 1000.f };
+	m_TemplatePos[9] = { -300.f, -4.f, 1000.f };
+	m_TemplatePos[10] = { 500.f, -4.f, 1000.f };
+	m_TemplatePos[11] = { -500.f, -4.f, 1000.f };
 
 	if (!m_BattleShip->LoadFbx("fbx/kongou.fbx"))
 	{

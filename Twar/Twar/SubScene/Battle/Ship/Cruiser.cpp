@@ -9,6 +9,7 @@
 #include "Fbx/FbxModel.h"
 #include "../StateMachine/ShipStateManager.h"
 #include "../BattleData/BattleDataManager.h"
+#include "../Bullet/BulletManager.h"
 
 Cruiser::Cruiser(D3DXVECTOR3* pos, BulletManager* pBulletManager)
 	: Ship(pos, { 2500, 0.f }, SHIP_ID::CRUISER, pBulletManager)
@@ -112,7 +113,7 @@ void Cruiser::Control()
 	{
 		m_ObjPos.y += m_PitchSpeed;
 
-		if (m_ObjPos.y >= m_PitchLowerLimit)
+		if (m_ObjPos.y >= m_PitchLowerLimit + 1.f)
 		{
 			m_IsUp = false;
 		}
@@ -121,7 +122,7 @@ void Cruiser::Control()
 	{
 		m_ObjPos.y -= m_PitchSpeed;
 
-		if (m_ObjPos.y <= m_PitchUpperLimit)
+		if (m_ObjPos.y <= m_PitchUpperLimit + 3.f)
 		{
 			m_IsUp = true;
 		}
@@ -139,16 +140,108 @@ void Cruiser::ControlPlayer()
 
 	D3DXVec3TransformCoord(&vecAxisZ, &vecAxisZ, &m_Rotation);
 
+	///////////////////////////////////////////////　ここから　/////////////////////////////////////////////////////////
+
+	if (m_pGameLib.CheckKey(DIK_P, P) == PUSH)
+	{
+		if (m_IsFpsMode)
+		{
+			m_IsFpsMode = false;
+			m_CameraPos.y += 25.f;
+			m_LookatPos.y += 25.f;
+		}
+		else
+		{
+			m_IsFpsMode = true;
+			m_CameraPos.y -= 25.f;
+			m_LookatPos.y -= 25.f;
+		}
+	}
+
 	if (m_pGameLib.ChecKMouseR() == ON)
 	{
 		m_Angle = m_ZoomAngle;
+		if (!m_IsZoom)
+		{
+			if (!m_IsFpsMode)
+			{
+				m_CameraPos.y -= 25.f;
+				m_LookatPos.y -= 25.f;
+			}
+		}
 		m_IsZoom = true;
 	}
 	else if (m_pGameLib.ChecKMouseR() == OFF)
 	{
 		m_Angle = m_NormalAngle;
+		if (m_IsZoom)
+		{
+			if (!m_IsFpsMode)
+			{
+				m_CameraPos.y += 25.f;
+				m_LookatPos.y += 25.f;
+			}
+		}
 		m_IsZoom = false;
+
+		if (m_pGameLib.CheckKey(DIK_P, P) == PUSH)
+		{
+			if (m_IsFpsMode)
+			{
+				m_IsFpsMode = false;
+				m_CameraPos.y += 25.f;
+				m_LookatPos.y += 25.f;
+			}
+			else
+			{
+				m_IsFpsMode = true;
+				m_CameraPos.y -= 25.f;
+				m_LookatPos.y -= 25.f;
+			}
+		}
 	}
+
+	if (m_pGameLib.ChecKMouseL() == ON && m_FiringCount == 0)
+	{
+		D3DXVECTOR3 vec;
+		if (m_CameraPos.y > m_LookatPos.y)
+		{
+			vec.x = m_LookatPos.x - m_CameraPos.x;
+			vec.y = 0.f;
+			vec.z = m_LookatPos.z - m_CameraPos.z;
+		}
+		else
+		{
+			vec.x = m_LookatPos.x - m_CameraPos.x;
+			vec.y = m_LookatPos.y - m_CameraPos.y;
+			vec.z = m_LookatPos.z - m_CameraPos.z;
+		}
+		if (m_IsFpsMode)
+		{
+			m_pBulletManager->Create({ m_CameraPos.x, m_CameraPos.y, m_CameraPos.z },
+				m_CameraRotate,
+				&vec);
+		}
+		else if (m_IsZoom)
+		{
+			m_pBulletManager->Create({ m_ObjPos.x, (m_LookatPos.y + m_CameraPos.y) / 2, m_ObjPos.z },
+				m_CameraRotate,
+				&vec);
+		}
+		else
+		{
+			m_pBulletManager->Create({ m_ObjPos.x, m_CameraPos.y - 25.f, m_ObjPos.z },
+				m_CameraRotate,
+				&vec);
+		}
+		m_FiringCount = 120;
+	}
+	else if (m_FiringCount > 0)
+	{
+		m_FiringCount--;
+	}
+
+	///////////////////////////////////////////////　ここまで　/////////////////////////////////////////////////////////
 
 	BattleDataManager::Instance().SetPlayerToZoom(m_IsZoom);
 
@@ -415,7 +508,6 @@ void Cruiser::ControlPlayer()
 		m_CameraRotate += 360.f;
 	}
 
-	m_OldObjPos = m_ObjPos;
 	m_ObjPos += vecAxisZ * m_Status.m_Speed;
 
 	POINT newCursor;
@@ -433,9 +525,23 @@ void Cruiser::ControlPlayer()
 
 	float nextLookatPos = m_LookatPos.y - (newCursor.y - centerPosY) * 0.05f;			//!<	0.05	仮の感度(ゲーム中に変更できるようにする、かもしれない)
 
-	if (nextLookatPos <= 100.f && nextLookatPos >= 25.f)							//!<	100, 25	目で見て決めたカメラの上限と下限
+	if (!m_IsZoom)
 	{
-		m_LookatPos.y = nextLookatPos;
+		if (nextLookatPos <= m_CameraPos.y + 100.f && nextLookatPos >= m_CameraPos.y - 25.f)							//!<	100, 25	目で見て決めたカメラの上限と下限
+		{
+			m_LookatPos.y = nextLookatPos;
+		}
+	}
+	else
+	{
+		if (nextLookatPos <= m_CameraPos.y + 100.f && nextLookatPos >= m_CameraPos.y)							//!<	100, 25	目で見て決めたカメラの上限と下限
+		{
+			m_LookatPos.y = nextLookatPos;
+		}
+		if (m_LookatPos.y < m_CameraPos.y)
+		{
+			m_LookatPos.y = m_CameraPos.y;
+		}
 	}
 
 	float nextRotate = m_CameraRotate + (newCursor.x - centerPosX) * 0.05f;			//!<	0.05	仮の感度(ゲーム中に変更できるようにする、かもしれない)
@@ -455,6 +561,11 @@ void Cruiser::ControlPlayer()
 
 	m_CameraPos.x = m_LookatPos.x = m_ObjPos.x;
 	m_CameraPos.z = m_LookatPos.z = m_ObjPos.z;
+	if (m_IsFpsMode)
+	{
+		m_CameraPos = m_CameraPos + vecAxisZ * 50.f;////////////////////////////////////////////////////////////////////////////////////////////////////////
+		m_LookatPos = m_LookatPos + vecAxisZ * 50.f;////////////////////////////////////////////////////////////////////////////////////////////////////////
+	}
 }
 
 //----------------------------------------------------------------------------------------------------------------------

@@ -160,7 +160,7 @@ void SoundFileManager::SoundPlayer(int key, SOUND_MODE sMode)
 		m_soundMap[key]->Play(0, 0, 0);
 		break;
 	case PlayLoop:
-		m_soundMap[key]->Play(0, 0, DSBPLAY_LOOPING);
+//		m_soundMap[key]->Play(0, 0, DSBPLAY_LOOPING);5
 		break;
 	case Stop:
 		m_soundMap[key]->Stop();

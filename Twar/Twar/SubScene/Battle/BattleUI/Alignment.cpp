@@ -16,8 +16,19 @@ Alignment::Alignment(int texID, int zoomTexID, int vtxID)
 {
 	GameLib::Instance().ShowMouseCursor(false);
 	GameLib::Instance().SetMousePosCenter();
-	GameLib::Instance().GetMousePos(&m_Pos.x, &m_Pos.y);
+//	GameLib::Instance().GetMousePos(&m_Pos.x, &m_Pos.y);
 	GameLib::Instance().CreateVtx(m_VtxID, 1800.f, 1000.f);
+
+	HWND hWnd = InputDevice::GetInstance().GethWnd();
+
+	RECT winRect;
+	RECT clientRect;
+
+	GetWindowRect(hWnd, &winRect);
+	GetClientRect(hWnd, &clientRect);
+	m_Pos.x = static_cast<int>(winRect.left + ((clientRect.right - clientRect.left) / 2));
+	m_Pos.y = static_cast<int>(winRect.bottom - ((clientRect.bottom - clientRect.top) / 2));
+
 }
 
 Alignment::~Alignment()
@@ -26,7 +37,7 @@ Alignment::~Alignment()
 
 void Alignment::Control()
 {
-	GameLib::Instance().GetMousePos(&m_Pos.x, &m_Pos.y);
+	//GameLib::Instance().GetMousePos(&m_Pos.x, &m_Pos.y);
 }
 
 void Alignment::Draw()

@@ -254,13 +254,33 @@ void BattleShip::ControlPlayer()
 	D3DXVec3TransformCoord(&vecAxisZ, &vecAxisZ, &m_Rotation);
 
 	///////////////////////////////////////////////　ここから　/////////////////////////////////////////////////////////
+
+	if (m_pGameLib.CheckKey(DIK_P, P) == PUSH)
+	{
+		if (m_IsFpsMode)
+		{
+			m_IsFpsMode = false;
+			m_CameraPos.y += 25.f;
+			m_LookatPos.y += 25.f;
+		}
+		else
+		{
+			m_IsFpsMode = true;
+			m_CameraPos.y -= 25.f;
+			m_LookatPos.y -= 25.f;
+		}
+	}
+
 	if (m_pGameLib.ChecKMouseR() == ON)
 	{
 		m_Angle = m_ZoomAngle;
 		if (!m_IsZoom)
 		{
-			//			m_CameraPos.y -= 25.f;
-			//			m_LookatPos.y -= 25.f;
+			if (!m_IsFpsMode)
+			{
+				m_CameraPos.y -= 25.f;
+				m_LookatPos.y -= 25.f;
+			}
 		}
 		m_IsZoom = true;
 	}
@@ -269,52 +289,63 @@ void BattleShip::ControlPlayer()
 		m_Angle = m_NormalAngle;
 		if (m_IsZoom)
 		{
-			//			m_CameraPos.y += 25.f;
-			//			m_LookatPos.y += 25.f;
+			if (!m_IsFpsMode)
+			{
+				m_CameraPos.y += 25.f;
+				m_LookatPos.y += 25.f;
+			}
 		}
 		m_IsZoom = false;
-	}
 
-	if (m_pGameLib.ChecKMouseL() == ON && m_FiringCount == 0)
-	{
-
-		if (!m_IsZoom)
+		if (m_pGameLib.CheckKey(DIK_P, P) == PUSH)
 		{
-			if (m_CameraPos.y > m_LookatPos.y)
+			if (m_IsFpsMode)
 			{
-				D3DXVECTOR3 vec = { m_LookatPos.x - m_CameraPos.x, 0.f, m_LookatPos.z - m_CameraPos.z };
-
-				m_pBulletManager->Create({ m_ObjPos.x, m_CameraPos.y - 25.f, m_ObjPos.z },
-					m_CameraRotate,
-					&vec);
+				m_IsFpsMode = false;
+				m_CameraPos.y += 25.f;
+				m_LookatPos.y += 25.f;
 			}
 			else
 			{
-				D3DXVECTOR3 vec = { m_LookatPos.x - m_CameraPos.x, m_LookatPos.y - m_CameraPos.y, m_LookatPos.z - m_CameraPos.z };
-
-				m_pBulletManager->Create({ m_ObjPos.x, m_CameraPos.y - 25.f, m_ObjPos.z },
-					m_CameraRotate,
-					&vec);
+				m_IsFpsMode = true;
+				m_CameraPos.y -= 25.f;
+				m_LookatPos.y -= 25.f;
 			}
+		}
+	}
+
+	if (m_pGameLib.ChecKMouseL() == PUSH && m_FiringCount == 0)
+	{
+		D3DXVECTOR3 vec;
+		if (m_CameraPos.y > m_LookatPos.y)
+		{
+			vec.x = m_LookatPos.x - m_CameraPos.x;
+			vec.y = 0.f;
+			vec.z = m_LookatPos.z - m_CameraPos.z;
 		}
 		else
 		{
-			if (m_CameraPos.y > m_LookatPos.y)
-			{
-				D3DXVECTOR3 vec = { m_LookatPos.x - m_CameraPos.x, 0.f, m_LookatPos.z - m_CameraPos.z };
-
-				m_pBulletManager->Create({ m_ObjPos.x, m_CameraPos.y, m_ObjPos.z },
-					m_CameraRotate,
-					&vec);
-			}
-			else
-			{
-				D3DXVECTOR3 vec = { m_LookatPos.x - m_CameraPos.x, m_LookatPos.y - m_CameraPos.y, m_LookatPos.z - m_CameraPos.z };
-
-				m_pBulletManager->Create({ m_ObjPos.x, m_CameraPos.y, m_ObjPos.z },
-					m_CameraRotate,
-					&vec);
-			}
+			vec.x = m_LookatPos.x - m_CameraPos.x;
+			vec.y = m_LookatPos.y - m_CameraPos.y;
+			vec.z = m_LookatPos.z - m_CameraPos.z;
+		}
+		if (m_IsFpsMode)
+		{
+			m_pBulletManager->Create({ m_CameraPos.x, m_CameraPos.y, m_CameraPos.z },
+				m_CameraRotate,
+				&vec);
+		}
+		else if (m_IsZoom)
+		{
+			m_pBulletManager->Create({ m_ObjPos.x, (m_LookatPos.y + m_CameraPos.y) / 2, m_ObjPos.z },
+				m_CameraRotate,
+				&vec);
+		}
+		else
+		{
+			m_pBulletManager->Create({ m_ObjPos.x, m_CameraPos.y - 25.f, m_ObjPos.z },
+				m_CameraRotate,
+				&vec);
 		}
 		m_FiringCount = 120;
 	}
@@ -607,9 +638,23 @@ void BattleShip::ControlPlayer()
 
 	float nextLookatPos = m_LookatPos.y - (newCursor.y - centerPosY) * 0.05f;			//!<	0.05	仮の感度(ゲーム中に変更できるようにする、かもしれない)
 
-	if (nextLookatPos <= 100.f && nextLookatPos >= 25.f)							//!<	100, 25	目で見て決めたカメラの上限と下限
+	if (!m_IsZoom)
 	{
-		m_LookatPos.y = nextLookatPos;
+		if (nextLookatPos <= m_CameraPos.y + 100.f && nextLookatPos >= m_CameraPos.y - 25.f)							//!<	100, 25	目で見て決めたカメラの上限と下限
+		{
+			m_LookatPos.y = nextLookatPos;
+		}
+	}
+	else
+	{
+		if (nextLookatPos <= m_CameraPos.y + 100.f && nextLookatPos >= m_CameraPos.y)							//!<	100, 25	目で見て決めたカメラの上限と下限
+		{
+			m_LookatPos.y = nextLookatPos;
+		}
+		if (m_LookatPos.y < m_CameraPos.y)
+		{
+			m_LookatPos.y = m_CameraPos.y;
+		}
 	}
 
 	float nextRotate = m_CameraRotate + (newCursor.x - centerPosX) * 0.05f;			//!<	0.05	仮の感度(ゲーム中に変更できるようにする、かもしれない)
@@ -629,9 +674,11 @@ void BattleShip::ControlPlayer()
 
 	m_CameraPos.x = m_LookatPos.x = m_ObjPos.x;
 	m_CameraPos.z = m_LookatPos.z = m_ObjPos.z;
-
-	m_CameraPos = m_CameraPos + vecAxisZ * 50.f;////////////////////////////////////////////////////////////////////////////////////////////////////////
-	m_LookatPos = m_LookatPos + vecAxisZ * 50.f;////////////////////////////////////////////////////////////////////////////////////////////////////////
+	if (m_IsFpsMode)
+	{
+		m_CameraPos = m_CameraPos + vecAxisZ * 50.f;////////////////////////////////////////////////////////////////////////////////////////////////////////
+		m_LookatPos = m_LookatPos + vecAxisZ * 50.f;////////////////////////////////////////////////////////////////////////////////////////////////////////
+	}
 }
 
 //----------------------------------------------------------------------------------------------------------------------
