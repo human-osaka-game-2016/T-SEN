@@ -48,8 +48,8 @@ void AIBulletManager::Draw()
 
 void AIBulletManager::CreateBullet(const D3DXVECTOR3& rPos, float angle)
 {
-	float radian = D3DXToRadian(angle);
-	m_pBullets.push_back(new AIBullet(m_pBulletModel->m_pModel, rPos, radian));
+//	float radian = D3DXToRadian(angle);
+	m_pBullets.push_back(new AIBullet(m_pBulletModel->m_pModel, rPos, angle));
 }
 
 //--------------------------------------------------------------------------------------------------------------//

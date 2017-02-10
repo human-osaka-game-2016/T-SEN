@@ -13,6 +13,7 @@
 #include "Effect.h"
 #include "EffectManager.h"
 #include "Explosion.h"
+#include "GameLib/GameLib.h"
 
 //--------------------------------------------------------------------------------------------------------------------------------------//
 //Public functions
@@ -58,6 +59,7 @@ void EffectManager::Control()
 // 描画関数
 void EffectManager::Draw()
 {
+	GameLib::Instance().GetDevice()->SetFVF(USER_VERTEX_FVF);
 	if(m_Effect.size() > 0)
 	{
 		for(auto effect : m_Effect)

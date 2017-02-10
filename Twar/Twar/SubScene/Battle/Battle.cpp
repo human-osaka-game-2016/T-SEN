@@ -16,6 +16,7 @@
 #include "BattleData/BattleDataManager.h"
 #include "Collision/CollisionManager.h"
 #include "Battle.h"
+#include "Bullet/AIBulletManager.h"
 
 namespace sub_scene
 {
@@ -37,7 +38,7 @@ Battle::Battle(GameDataManager* pGameDataManager, GameTimer* pGameTimer)
 	m_pMonsterManager = new MonsterManager(pGameDataManager);
 	m_pFieldManager = new FieldManager();
 	m_pShipManager = new ShipManager();
-	m_pCollisionManager = new CollisionManager(m_pShipManager, m_pMonsterManager, m_pShipManager->GetBulletManager());
+	m_pCollisionManager = new CollisionManager(m_pShipManager, m_pMonsterManager, m_pShipManager->GetBulletManager(), AIBulletManager::Instance(), m_pMonsterManager->GetMonsterBulletManager());
 	
 	ShipManager::SHIP_ID shipID[12] =
 	{
@@ -106,9 +107,9 @@ void sub_scene::Battle::Draw()
 {
 	CameraController::GetInstance().TransformView(m_pShipManager->GetCameraPos(), m_pShipManager->GetLookAtPos(), m_pShipManager->GetAngle());
 	m_pShipManager->Draw();
-	EffectManager::Instance().Draw();
 	m_pMonsterManager->Draw();
 	m_pFieldManager->Draw();
+	EffectManager::Instance().Draw();
 }
 
 }

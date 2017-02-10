@@ -11,6 +11,7 @@
 #include "AIBullet.h"
 #include "GameLib/GameLib.h"
 #include "Fbx/FbxRelated.h"
+#include "../Effect/EffectManager.h"
 
 //--------------------------------------------------------------------------------------------------------------//
 //Unnamed namespace
@@ -29,14 +30,17 @@ const float		PosYMinLimit = -10.f;			// Y軸における位置座標の最小の
 //Public functions
 //--------------------------------------------------------------------------------------------------------------//
 
-AIBullet::AIBullet(FbxModel* pModel, const D3DXVECTOR3& rPos, float radian)
-	: m_pModel(pModel)
+AIBullet::AIBullet(FbxModel* pModel, const D3DXVECTOR3& rPos, float angle)
+	: m_EffectManager(EffectManager::Instance())
+	, m_pModel(pModel)
 	, m_Pos(rPos)
-	, m_Radian(radian)
+	, m_Angle(angle)
 	, m_FlyingTimeCount(0)
 	, m_HasVanished(false)
 	, m_pMesh(nullptr)
+	, m_FireCount(0)
 {
+	m_Radian = D3DXToRadian(angle);
 	m_BulletSpeedX = static_cast<float>(sin(m_Radian) * BulletSpeed);
 	m_BulletSpeedZ = static_cast<float>(cos(m_Radian) * BulletSpeed);
 	m_BulletSpeedY = BulletSpeed;
@@ -52,8 +56,16 @@ AIBullet::~AIBullet()
 
 bool AIBullet::Control()
 {
-	if(m_Pos.y > PosYMinLimit)
+	if (m_IsHit && m_FireCount >= 10)
 	{
+		m_HasVanished = true;
+		m_IsHit = false;
+		m_EffectManager.Create(m_Pos, m_EffectManager.EXPLOSION);
+	}
+	else if(m_Pos.y > PosYMinLimit)
+	{
+		m_IsHit = false;
+		m_OldPos = m_Pos;
 		m_Pos.x += m_BulletSpeedX;
 		m_Pos.z += m_BulletSpeedZ;
 		m_Pos.y += (m_BulletSpeedY + Gravity * m_FlyingTimeCount);
@@ -69,6 +81,7 @@ bool AIBullet::Control()
 	{
 		m_HasVanished = true;
 	}
+	m_FireCount++;
 
 	return m_HasVanished;
 }

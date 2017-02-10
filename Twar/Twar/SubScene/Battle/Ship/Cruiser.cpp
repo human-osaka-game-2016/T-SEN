@@ -10,8 +10,8 @@
 #include "../StateMachine/ShipStateManager.h"
 #include "../BattleData/BattleDataManager.h"
 
-Cruiser::Cruiser(D3DXVECTOR3* pos)
-	: Ship(pos, { 2500, 0.f }, SHIP_ID::CRUISER)
+Cruiser::Cruiser(D3DXVECTOR3* pos, BulletManager* pBulletManager)
+	: Ship(pos, { 2500, 0.f }, SHIP_ID::CRUISER, pBulletManager)
 {
 	m_SpeedLimit = m_CruiserSpeedLimit;
 	m_pStateMachine = new StateMachine<Ship>(this);

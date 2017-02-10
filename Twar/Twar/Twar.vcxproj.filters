@@ -232,9 +232,6 @@
     <ClCompile Include="SubScene\Battle\Ship\BattleShip.cpp">
       <Filter>Twar\SubScene\Battle\Ship</Filter>
     </ClCompile>
-    <ClCompile Include="SubScene\Battle\Ship\Cruiser.cpp">
-      <Filter>Twar\SubScene\Battle\Ship</Filter>
-    </ClCompile>
     <ClCompile Include="SubScene\Battle\Ship\Destroyer.cpp">
       <Filter>Twar\SubScene\Battle\Ship</Filter>
     </ClCompile>
@@ -373,6 +370,9 @@
     </ClCompile>
     <ClCompile Include="SubScene\Battle\BattleUI\UI.cpp">
       <Filter>Twar\SubScene\Battle\BattleUI</Filter>
+    </ClCompile>
+    <ClCompile Include="SubScene\Battle\Ship\Cruiser.cpp">
+      <Filter>Twar\SubScene\Battle\Ship</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

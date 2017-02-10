@@ -16,7 +16,7 @@ class Cruiser : public Ship
 {
 public:
 	/**	コンストラクタ */
-	Cruiser(D3DXVECTOR3* pos);
+	Cruiser(D3DXVECTOR3* pos, BulletManager* pBulletManager);
 
 	/**	デストラクタ */
 	~Cruiser();

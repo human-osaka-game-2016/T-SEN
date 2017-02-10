@@ -73,8 +73,8 @@ ShipManager::ShipManager()
 	{
 		BulletManager::APBULLET,
 	};
-	char bullet = 1;
-	m_pBulletManager->Create(&bullet, bulletID);
+	char bullet = 2;
+	//m_pBulletManager->Create(&bullet, bulletID);
 
 	ShipStateManager::CreateStates();
 	AIBulletManager::Create();				
@@ -145,15 +145,15 @@ void ShipManager::Create(char* army, char* enemy, SHIP_ID* shipID)
 		switch (shipID[i])
 		{
 		case BATTLESHIP:
-			tmp = new BattleShip(&m_TemplatePos[i]);
+			tmp = new BattleShip(&m_TemplatePos[i], m_pBulletManager);
 			tmp->m_pFbx = m_BattleShip->m_pModel;
 			break;
 		case CRUISER:
-			tmp = new Cruiser(&m_TemplatePos[i]);
+			tmp = new Cruiser(&m_TemplatePos[i], m_pBulletManager);
 			tmp->m_pFbx = m_Cruiser->m_pModel;
 			break;
 		case DESTROYER:
-			tmp = new Destroyer(&m_TemplatePos[i]);
+			tmp = new Destroyer(&m_TemplatePos[i], m_pBulletManager);
 			tmp->m_pFbx = m_Destroyer->m_pModel;
 			break;
 		case NONE:
@@ -179,15 +179,15 @@ void ShipManager::Create(char* army, char* enemy, SHIP_ID* shipID)
 		switch (shipID[i])
 		{
 		case BATTLESHIP:
-			tmp = new BattleShip(&m_TemplatePos[i]);
+			tmp = new BattleShip(&m_TemplatePos[i], m_pBulletManager);
 			tmp->m_pFbx = m_BattleShip->m_pModel;
 			break;
 		case CRUISER:
-			tmp = new Cruiser(&m_TemplatePos[i]);
+			tmp = new Cruiser(&m_TemplatePos[i], m_pBulletManager);
 			tmp->m_pFbx = m_Cruiser->m_pModel;
 			break;
 		case DESTROYER:
-			tmp = new Destroyer(&m_TemplatePos[i]);
+			tmp = new Destroyer(&m_TemplatePos[i], m_pBulletManager);
 			tmp->m_pFbx = m_Destroyer->m_pModel;
 			break;
 		case NONE:

@@ -23,7 +23,7 @@ const float			Ship::m_BattleShipSpeedLimit	= 1.f;			// 戦艦のスピード限�
 const float			Ship::m_CruiserSpeedLimit		= 1.5f;			// 巡洋艦のスピード限界値
 const float			Ship::m_DestroyerSpeedLimit		= 2.f;			// 駆逐艦のスピード限界値
 
-Ship::Ship(D3DXVECTOR3* pos, STATUS status, SHIP_ID ShipID)
+Ship::Ship(D3DXVECTOR3* pos, STATUS status, SHIP_ID ShipID, BulletManager* pBulletManager)
 	: m_pGameLib(GameLib::Instance())
 	, m_pFbx(nullptr)
 	, m_ObjPos(*pos)
@@ -44,6 +44,8 @@ Ship::Ship(D3DXVECTOR3* pos, STATUS status, SHIP_ID ShipID)
 	, m_BulletIntervalCount(0)
 	, m_AvoidedTimeCount(0)
 	, m_PlayerAttackedCount(0)
+	, m_pBulletManager(pBulletManager)
+	, m_FiringCount(0)
 {
 }
 
@@ -86,16 +88,65 @@ void Ship::TransWorld()
 
 void Ship::CameraTransWorld(float radius)
 {
-	D3DXVECTOR3		cameraPos(0.f, 0.f, -radius);
-	D3DXVec3TransformCoord(&cameraPos, &cameraPos, &m_CameraRotation);
-	D3DXVec3Add(&cameraPos, &cameraPos, &m_CameraPos);
-	m_CameraPos.x = cameraPos.x;
-	m_CameraPos.z = cameraPos.z;
+	//D3DXVECTOR3		cameraPos(0.f, 0.f, -radius);
+	//D3DXVec3TransformCoord(&cameraPos, &cameraPos, &m_CameraRotation);
+	//D3DXVec3Add(&cameraPos, &cameraPos, &m_CameraPos);
+	//m_CameraPos.x = cameraPos.x;
+	//m_CameraPos.z = cameraPos.z;
+	//
+	//D3DXVECTOR3		lookatPos(0.f, 0.f, radius);
+	//D3DXVec3TransformCoord(&lookatPos, &lookatPos, &m_CameraRotation);
+	//D3DXVec3Add(&lookatPos, &lookatPos, &m_LookatPos);
+	//m_LookatPos.x = lookatPos.x;
+	//m_LookatPos.z = lookatPos.z;
 
-	D3DXVECTOR3		lookatPos(0.f, 0.f, radius);
-	D3DXVec3TransformCoord(&lookatPos, &lookatPos, &m_CameraRotation);
-	D3DXVec3Add(&lookatPos, &lookatPos, &m_LookatPos);
-	m_LookatPos.x = lookatPos.x;
-	m_LookatPos.z = lookatPos.z;
+	/////////////////////////////////////////////////　ここから　///////////////////////////////////////////////////////
+	static char Fps = 1;
+
+	if (m_pGameLib.CheckKey(DIK_P, P) == PUSH)
+	{
+		Fps *= -1;
+
+		if (Fps < 0)
+		{
+			m_CameraPos.y -= 25.f;
+			m_LookatPos.y -= 25.f;
+		}
+		else
+		{
+			m_CameraPos.y += 25.f;
+			m_LookatPos.y += 25.f;
+		}
+	}
+
+	if (Fps > 0)
+	{
+		D3DXVECTOR3		cameraPos(0.f, 0.f, -radius);
+		D3DXVec3TransformCoord(&cameraPos, &cameraPos, &m_CameraRotation);
+		D3DXVec3Add(&cameraPos, &cameraPos, &m_CameraPos);
+		m_CameraPos.x = cameraPos.x;
+		m_CameraPos.z = cameraPos.z;
+
+		D3DXVECTOR3		lookatPos(0.f, 0.f, radius);
+		D3DXVec3TransformCoord(&lookatPos, &lookatPos, &m_CameraRotation);
+		D3DXVec3Add(&lookatPos, &lookatPos, &m_LookatPos);
+		m_LookatPos.x = lookatPos.x;
+		m_LookatPos.z = lookatPos.z;
+	}
+	else
+	{
+		D3DXVECTOR3		cameraPos(0.f, 0.f, radius / 2);
+		D3DXVec3TransformCoord(&cameraPos, &cameraPos, &m_CameraRotation);
+		D3DXVec3Add(&cameraPos, &cameraPos, &m_CameraPos);
+		m_CameraPos.x = cameraPos.x;
+		m_CameraPos.z = cameraPos.z;
+
+		D3DXVECTOR3		lookatPos(0.f, 0.f, radius * 2);
+		D3DXVec3TransformCoord(&lookatPos, &lookatPos, &m_CameraRotation);
+		D3DXVec3Add(&lookatPos, &lookatPos, &m_LookatPos);
+		m_LookatPos.x = lookatPos.x;
+		m_LookatPos.z = lookatPos.z;
+	}
+	///////////////////////////////////////////////　ここまで　/////////////////////////////////////////////////////////
 }
 

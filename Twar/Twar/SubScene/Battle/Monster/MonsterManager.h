@@ -41,8 +41,10 @@ public:
 	void Draw();
 
 	/**ゲッター関数*/
-	MonsterSize GetMonsterSize(){ return m_MonsterSize; };
-	D3DXVECTOR3 GetPos(int i){ return m_pMonsters[i]->GetPos(); };
+	MonsterSize GetMonsterSize(){ return m_MonsterSize; }
+	D3DXVECTOR3 GetPos(int i){ return m_pMonsters[i]->GetPos(); }
+	float GetAngle(int i){ return m_pMonsters[i]->GetAngle(); }
+	MonsterBulletManager* GetMonsterBulletManager(){ return m_pBulletManager; }
 
 private:
 	GameDataManager*		m_pGameDataManager;		//!< GameDatamanagerクラスのインスタンスへのポインタ
