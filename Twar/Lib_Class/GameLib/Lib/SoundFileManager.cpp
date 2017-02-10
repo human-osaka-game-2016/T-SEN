@@ -19,6 +19,12 @@ SoundFileManager::~SoundFileManager()
 	{
 		ReleaseALL();
 	}
+
+	if(m_pDSound8)
+	{
+		m_pDSound8->Release();
+		m_pDSound8 = NULL;
+	}
 }
 
 void SoundFileManager::InitSound(HWND hWnd)
@@ -195,11 +201,7 @@ void SoundFileManager::ReleaseALL()
 
 	m_soundMap.clear();
 
-	if (m_pDSound8)
-	{
-		m_pDSound8->Release();
-		m_pDSound8 = NULL;
-	}
+
 
 	m_releaseFlag = true;
 }
