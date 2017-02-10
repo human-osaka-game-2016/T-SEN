@@ -108,7 +108,7 @@ public:
 	void Create(char* army, char* enemy, SHIP_ID* shipID);
 
 	/**	カメラ位置を決める関数 */
-	void CameraTransform(){ m_Army[0]->CameraTransWorld(200.f); }
+	void CameraTransform(){ m_Army[0]->CameraTransWorld(10.f); }/////////////////////////////////////////　もとは200　//////////////////////////////////////////////////
 };
 
 #endif	//	SHIPMANAGER_H

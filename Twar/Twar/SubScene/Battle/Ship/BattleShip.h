@@ -16,7 +16,7 @@ class BattleShip : public Ship
 {
 public:
 	/**	コンストラクタ */
-	BattleShip(D3DXVECTOR3* pos);
+	BattleShip(D3DXVECTOR3* pos, BulletManager* pBulletManager);
 
 	/**	デストラクタ */
 	~BattleShip();

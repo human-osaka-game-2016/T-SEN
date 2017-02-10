@@ -10,8 +10,8 @@
 #include "../StateMachine/ShipStateManager.h"
 #include "../BattleData/BattleDataManager.h"
 
-Destroyer::Destroyer(D3DXVECTOR3* pos)
-	: Ship(pos, { 1500, 0.f }, SHIP_ID::DESTROYER)
+Destroyer::Destroyer(D3DXVECTOR3* pos, BulletManager* pBulletManager)
+	: Ship(pos, { 1500, 0.f }, SHIP_ID::DESTROYER, pBulletManager)
 {
 	m_SpeedLimit = m_DestroyerSpeedLimit;
 	m_pStateMachine = new StateMachine<Ship>(this);

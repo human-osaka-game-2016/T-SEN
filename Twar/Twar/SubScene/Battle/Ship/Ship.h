@@ -15,6 +15,7 @@ class FbxModel;
 class CameraController;
 class GameLib;
 class ShipManager;
+class BulletManager;
 
 /**
 Ship全体の親クラス
@@ -57,7 +58,7 @@ public:
 	@param	pos			オブジェクトの中心座標
 	@param	status		ステータス
 	*/
-	Ship(D3DXVECTOR3* pos, STATUS status, SHIP_ID ShipID);
+	Ship(D3DXVECTOR3* pos, STATUS status, SHIP_ID ShipID, BulletManager* pBulletManager);
 
 	/**	デストラクタ */
 	virtual ~Ship();
@@ -127,6 +128,8 @@ protected:
 	int	m_ShipID;
 	ATTR					m_Attr;					//!<	Shipの属性
 	STATUS					m_Status;				//!<	ステータス
+	BulletManager*			m_pBulletManager;
+	int						m_FiringCount;
 
 	/**
 	船体の回転関係

@@ -16,7 +16,7 @@ class Destroyer : public Ship
 {
 public:
 	/**	コンストラクタ */
-	Destroyer(D3DXVECTOR3* pos);
+	Destroyer(D3DXVECTOR3* pos, BulletManager* pBulletManager);
 
 	/**	デストラクタ */
 	~Destroyer();
