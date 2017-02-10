@@ -70,6 +70,7 @@ namespace sub_scene
 			{ 1080.f, 210.f },
 			{ 1080.f, 390.f },
 			{ 1324.f, 390.f },
+			{ 1324.f, 390.f },
 		};
 
 		m_pPolicyBackGround = new PolicyBackGround(Policy::BACKGROUND_TEX,Policy::BACKGROUND_VTX);
@@ -121,7 +122,7 @@ namespace sub_scene
 			float width = 200.f;
 			float height = 130.f;
 			m_rGameLib.CreateVtx(SETTLEMENT_PUSH_BUTTON_VTX, width, height);
-			m_rGameLib.SetVtxUV(SETTLEMENT_BUTTON_VTX, texPos[SETTLEMENT_PUSH_BUTTON_VTX].x / m_PolicyTextureWidth, (texPos[SETTLEMENT_PUSH_BUTTON_VTX].x + width) / m_PolicyTextureWidth,
+			m_rGameLib.SetVtxUV(SETTLEMENT_PUSH_BUTTON_VTX, texPos[SETTLEMENT_PUSH_BUTTON_VTX].x / m_PolicyTextureWidth, (texPos[SETTLEMENT_PUSH_BUTTON_VTX].x + width) / m_PolicyTextureWidth,
 				texPos[SETTLEMENT_PUSH_BUTTON_VTX].y / m_PolicyTextureHeight, (texPos[SETTLEMENT_PUSH_BUTTON_VTX].y + height) / m_PolicyTextureHeight);
 		}
 		//キャンセルボタンVertex作成ブロック
@@ -195,6 +196,24 @@ namespace sub_scene
 			float width = 100.f;
 			float height = 70.f;
 			m_rGameLib.CreateVtx(CREATSHIP_VTX, width, height);
+		}
+
+		{
+			float width = 35.f;
+			float height = 35.f;
+			m_rGameLib.CreateVtx(SMALL_NUMBER_VTX, width, height);
+		}
+		
+		{
+			float width = 60.f;
+			float height = 60.f;
+			m_rGameLib.CreateVtx(MEDIUM_NUMBER_VTX, width, height);
+		}
+
+		{
+			float width = 65.f;
+			float height = 90.f;
+			m_rGameLib.CreateVtx(LARGE_NUMBER_VTX, width, height);
 		}
 	}
 }
