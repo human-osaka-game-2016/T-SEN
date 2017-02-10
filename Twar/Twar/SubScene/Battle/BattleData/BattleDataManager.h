@@ -44,6 +44,7 @@ public:
 	inline int		GetMonsterCount(){ return m_MonsterCount;  }
 	inline int		GetPlayerAttackDamage(){ return m_PlayerAttackedDamage; }
 	inline int		GetBattleResult(){ return m_BattleResult; }
+	inline float	GetSpeedLimit(){ return m_SpeedLimit; }
 
 	/**--Setter------------------------------------------------------------------------------------------*/
 
@@ -55,6 +56,7 @@ public:
 	inline void		SetPlayerAttackDamage(int playerDamage){ m_PlayerAttackedDamage = playerDamage; }
 	inline void		SetBattleResult(bool result){ m_BattleResult = result; }
 	inline void		SetPlayerToZoom(bool isZoom){ m_PlayerToZoom = isZoom; }
+	inline void		SetSpeedLimit(float speedlimit){ m_SpeedLimit = speedlimit; }
 
 	/**Destructor*/
 	~BattleDataManager(){}
@@ -68,6 +70,7 @@ private:
 	int				m_PlayerAttackedDamage;		//!< プレイヤーが攻撃して与えたダメージ
 	bool			m_BattleResult;				//!< 戦闘結果 trueが勝利、falseが敗北
 	bool			m_PlayerToZoom;				//!< プレイヤーがズームしているかどうか
+	float			m_SpeedLimit;		 //!< 最大船速
 
 	/**Constructor*/
 	BattleDataManager(){}
