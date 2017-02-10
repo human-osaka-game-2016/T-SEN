@@ -69,11 +69,6 @@ void LifeGauge::Control()
 
 void LifeGauge::Draw()
 {
-
-	//GameLib::Instance().SetVtxUV(m_MonsterFlameID, 0.0f, 450.f / 1024.f, 300.f / 512.f, 400.f / 512.f);
-	//GameLib::Instance().SetVtxColor(m_MonsterFlameID, 0xffffffff);
-	//GameLib::Instance().DrawXY(m_TexID[UI], m_MonsterFlameID, m_Pos.x, m_Pos.y);
-
 	GameLib::Instance().SetVtxUV(m_VtxID, 130 / 1024.f, 580 / 1024.f, m_LifeTv, 100 / 512.f);
 	GameLib::Instance().SetVtxSize(m_VtxID, m_LifeHeight, 100.f);
 	GameLib::Instance().DrawXY(m_TexID[UI], m_VtxID, m_LifePos.x, m_LifePos.y);
@@ -82,6 +77,4 @@ void LifeGauge::Draw()
 	GameLib::Instance().SetVtxColor(m_FlameVtxID, 0xffffffff);
 	GameLib::Instance().DrawXY(m_TexID[UI], m_FlameVtxID, m_Pos.x, m_Pos.y);
 
-
-	//GameLib::Instance().DrawXYCenterPos(m_TexID[DECORATION], m_FlameVtxID, m_Pos.x, m_Pos.y);
 }

@@ -22,8 +22,6 @@ public:
 private:
 	enum LIFE_GAUGE_ID
 	{
-		//LIFE,			//!< ライフID
-		//FLAME,			//!< 外装
 		UI,				//!< UI
 		ID_MAX,
 	};
@@ -42,7 +40,6 @@ private:
 	int				m_LifeMAX;
 	int				m_CurrentLife;
 	int				m_TexID[LIFE_GAUGE_ID::ID_MAX];
-	//void RotationMatrix(CUSTOMVERTEX* vertex);
 };
 
 

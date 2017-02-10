@@ -65,15 +65,6 @@ void BattleUIManager::Draw()
 
 void BattleUIManager::InitData()
 {
-	//GameLib::Instance().LoadTexEx(sub_scene::Battle::LIFE,"../Resouce/LIFE.png", 255, 0, 0, 0, false);
-	//GameLib::Instance().LoadTexEx(sub_scene::Battle::LIFE_FLAME, "../Resouce/LIFE_FLAME.png", 255, 0, 0, 0, false);
-	//GameLib::Instance().LoadTexEx(sub_scene::Battle::LIFE_DECORATION, "../Resouce/LIFE_DECO.png", 255, 0, 0, 0, false);
-	//
-	//GameLib::Instance().LoadTexEx(sub_scene::Battle::METER_BG, "../Resouce/SPEED_BG.png", 255, 0, 0, 0, false);
-	//GameLib::Instance().LoadTexEx(sub_scene::Battle::METER_DIAL, "../Resouce/SPEED_FLAME.png", 255, 0, 0, 0, false);
-	//GameLib::Instance().LoadTexEx(sub_scene::Battle::METER_NEEDLE, "../Resouce/SPEED_NEEDLE.png", 255, 0, 0, 0, false);
-	//GameLib::Instance().LoadTex(sub_scene::Battle::METER_AICON, "../Resouce/aikon.png");
-
 	GameLib::Instance().LoadTexEx(sub_scene::Battle::ALIGNMENT, "../Resouce/BattleScene/UI/Alignment.png", 255, 0, 0, 0, false);
 	GameLib::Instance().LoadTexEx(sub_scene::Battle::ALIGNMENTZOOM, "../Resouce/BattleScene/UI/AlignmentZoom.png", 255, 255, 0, 0, false);
 	GameLib::Instance().LoadTexEx(sub_scene::Battle::UI, "../Resouce/BattleScene/UI/sento_ui_0.png", 255, 255, 0, 0, false);

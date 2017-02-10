@@ -20,8 +20,6 @@ private:
 	enum LIFE_GAUGE_ID
 	{
 		LIFE,				//!< ライフID
-		//FLAME,			//!< 外装
-		//DECORATION,		//!< 装飾
 		UI,					//!< UIの統合ファイル
 		ID_MAX,
 	};
@@ -45,4 +43,4 @@ private:
 
 };
 
-#endif	LIFE_GAUGE_H
+#endif	//LIFE_GAUGE_H

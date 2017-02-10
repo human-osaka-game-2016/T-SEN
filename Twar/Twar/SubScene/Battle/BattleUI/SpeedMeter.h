@@ -41,7 +41,6 @@ private:
 	float			m_CurrentSpeed;
 	float			m_SpeedCount;
 	float			m_PosY;
-	//void RotationMatrix(CUSTOMVERTEX* vertex);
 };
 
 #endif	// SPEED_METER_H
