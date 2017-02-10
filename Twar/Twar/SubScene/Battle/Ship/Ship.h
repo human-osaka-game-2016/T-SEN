@@ -76,7 +76,7 @@ public:
 	カメラ座標と注視点を決める関数
 	@param	radius		カメラ座標と注視点の中点
 	*/
-	void CameraTransWorld(float radius);
+	void CameraTransWorld();
 
 	/**--@data 2017/02/04haga追加分----------------------------------------------------------------------------------------------------------*/
 	/**-----Getter-------------*/
@@ -173,6 +173,8 @@ protected:
 	bool					m_IsZoom;
 	static const float		m_NormalAngle;
 	static const float		m_ZoomAngle;
+	float					m_Radius;
+	bool					m_IsFpsMode;
 
 	bool				m_IsHit;
 	bool				m_IsRush;

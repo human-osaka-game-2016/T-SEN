@@ -118,7 +118,7 @@ SUBSCENE_ID Battle::Control()
 
 	if(CheckBattleState())
 	{
-		return SUBSCENE_ID::BATTLE_RESULT;
+//		return SUBSCENE_ID::BATTLE_RESULT;
 	}
 
 	return SUBSCENE_ID::BATTLE;

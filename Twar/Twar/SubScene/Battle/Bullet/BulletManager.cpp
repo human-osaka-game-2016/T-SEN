@@ -23,10 +23,11 @@ BulletManager::BulletManager()
 
 BulletManager::~BulletManager()
 {
-	for (char i = 0; i < m_BulletCount; i++)
+	for (auto pBullet : m_pBullet)
 	{
-		delete m_pBullet[i];
+		delete pBullet;
 	}
+
 	delete m_pAPBulletModel;
 }
 
