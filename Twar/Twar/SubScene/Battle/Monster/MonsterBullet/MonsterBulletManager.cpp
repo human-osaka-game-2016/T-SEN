@@ -48,6 +48,15 @@ MonsterBulletManager::MonsterBulletManager()
 		// 読み込み失敗したらエラー
 		MessageBox(0, "近距離弾のFBXファイルの読み込みに失敗しました。", NULL, MB_OK);
 	}
+
+	m_MonsterBulletSize.m_MaxX = m_pLongRangeBulletModel->m_pModel->maxX;
+	m_MonsterBulletSize.m_MaxY = m_pLongRangeBulletModel->m_pModel->maxY;
+	m_MonsterBulletSize.m_MaxZ = m_pLongRangeBulletModel->m_pModel->maxZ;
+	m_MonsterBulletSize.m_MinX = m_pLongRangeBulletModel->m_pModel->minX;
+	m_MonsterBulletSize.m_MinY = m_pLongRangeBulletModel->m_pModel->minY;
+	m_MonsterBulletSize.m_MinZ = m_pLongRangeBulletModel->m_pModel->minZ;
+	m_MonsterBulletSize.m_MaxR = m_pLongRangeBulletModel->m_pModel->maxR;
+
 }
 
 MonsterBulletManager::~MonsterBulletManager()

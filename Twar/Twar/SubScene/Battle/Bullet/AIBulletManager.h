@@ -9,6 +9,7 @@
 
 #include <d3dx9.h>
 #include <vector>
+#include "AIBullet.h"
 
 class AIBullet;
 class FbxRelated;
@@ -24,7 +25,7 @@ public:
 	/**AIBulletManagerのインスタンスを作成する関数*/
 	static void Create()
 	{
-		if(m_pBulletManager == nullptr)
+		if (m_pBulletManager == nullptr)
 		{
 			m_pBulletManager = new AIBulletManager();
 		}
@@ -59,6 +60,13 @@ public:
 	* @param	angle	角度
 	*/
 	void CreateBullet(const D3DXVECTOR3& rPos, float angle);
+
+	int GetBulletCount(){ return static_cast<int>(m_pBullets.size()); }
+	D3DXVECTOR3 GetBulletPos(int i){ return m_pBullets[i]->GetPos(); }
+	D3DXVECTOR3 GetBulletOldPos(int i){ return m_pBullets[i]->GetOldPos(); }
+	float GetBulletAngle(int i){ return m_pBullets[i]->GetAngle(); }
+
+	void SetHit(int i, bool is){ m_pBullets[i]->SetHit(is); }
 
 private:
 	static AIBulletManager*			m_pBulletManager;		// AIBulletManagerクラスのインスタンスへのポインタ

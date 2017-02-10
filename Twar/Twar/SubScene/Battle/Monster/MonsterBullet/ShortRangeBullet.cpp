@@ -65,8 +65,16 @@ ShortRangeBullet::~ShortRangeBullet()
 // コントロール関数
 bool ShortRangeBullet::Control()
 {
-	if(m_StanbyTime == m_StanbyTimeCount)
+	if (m_IsHit && m_FireCount >= 10)
 	{
+		m_HasVanished = true;
+		m_IsHit = false;
+		m_EffectManager.Create(m_Pos, m_EffectManager.EXPLOSION);
+	}
+	else if (m_StanbyTime == m_StanbyTimeCount)
+	{
+		m_IsHit = false;
+		m_OldPos = m_Pos;
 		m_Pos.x += m_BulletSpeedX;
 		m_Pos.z += m_BulletSpeedZ;
 		m_Pos.y += (m_BulletSpeedY + Gravity * m_FlyingTimeCount);
@@ -82,6 +90,7 @@ bool ShortRangeBullet::Control()
 	{
 		++m_StanbyTimeCount;
 	}
+	m_FireCount++;
 	return m_HasVanished;
 }
 

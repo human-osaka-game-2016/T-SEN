@@ -40,7 +40,8 @@ public:
 	void Draw();
 
 	/**ゲッター関数*/
-	D3DXVECTOR3 GetPos(){ return m_Pos; };
+	D3DXVECTOR3 GetPos(){ return m_Pos; }
+	float GetAngle(){ return m_Angle; }
 
 private:
 

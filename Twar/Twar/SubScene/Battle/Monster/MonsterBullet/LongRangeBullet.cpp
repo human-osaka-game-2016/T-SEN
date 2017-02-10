@@ -19,13 +19,13 @@
 namespace
 {
 
-const float		FiringHeight		= 50.f;				// 弾の発射する高さ
-const float		BulletSpeed			= 3.0f;				// 弾の速度
+const float		FiringHeight		= 30.f;				// 弾の発射する高さ
+const float		BulletSpeed			= 5.0f;				// 弾の速度
 const float		BulletRange			= 800.f;			// 弾の高さを保ってられる範囲.この範囲を過ぎると徐々に降下していく
 const float		DescendingSpeed		= 1.0f;				// 弾の降下速度(弾の射程範囲を超える場合び落下するときの速度)
 const float		PosYMinLimit		= -50.f;			// Y軸における位置座標の最小の限界値
-const float		RollingSpeed		= 0.5f;				// 弾の回転速度(回転角度)
-const float		ScaleVal			= 5.0f;				// 弾の大きさの倍率
+const float		RollingSpeed		= 3.f;				// 弾の回転速度(回転角度)
+const float		ScaleVal			= 2.0f;				// 弾の大きさの倍率
 
 }
 
@@ -52,8 +52,15 @@ LongRangeBullet::~LongRangeBullet()
 // コントロール関数
 bool LongRangeBullet::Control()
 {
-	if(m_IsWithinRange)
+	if (m_IsHit && m_FireCount >= 20)
 	{
+		m_HasVanished = true;
+		m_IsHit = false;
+		m_EffectManager.Create(m_Pos, m_EffectManager.EXPLOSION);
+	}
+	else if (m_IsWithinRange)
+	{
+		m_IsHit = false;
 		m_Pos.x += m_BulletSpeedX;
 		m_Pos.z += m_BulletSpeedZ;
 		m_FlyingDistanceCount.x += m_BulletSpeedX;
@@ -68,6 +75,7 @@ bool LongRangeBullet::Control()
 	}
 	else
 	{
+		m_OldPos = m_Pos;
 		m_Pos.x += m_BulletSpeedX;
 		m_Pos.z += m_BulletSpeedZ;
 		m_Pos.y -= DescendingSpeed;
@@ -77,6 +85,7 @@ bool LongRangeBullet::Control()
 			m_HasVanished = true;
 		}
 	}
+	m_FireCount++;
 
 	// 弾の回転処理
 	m_RollingAngle += RollingSpeed;

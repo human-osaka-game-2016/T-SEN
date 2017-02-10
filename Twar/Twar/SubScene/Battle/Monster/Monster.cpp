@@ -112,6 +112,7 @@ bool Monster::Control()
 		FadeOut();
 		break;
 	}
+	m_Angle = D3DXToDegree(m_Radian);
 
 	BattleDataManager::Instance().SetMonsterHp(m_Status.Hp);
 	Radar::Instance().SetMonsterPos(m_Pos);
