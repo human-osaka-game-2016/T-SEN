@@ -9,9 +9,10 @@
 #include "Fbx/FbxModel.h"
 #include "../StateMachine/ShipStateManager.h"
 #include "../BattleData/BattleDataManager.h"
+#include "../Bullet/BulletManager.h"
 
-BattleShip::BattleShip(D3DXVECTOR3* pos)
-	: Ship(pos, { 7500, 0.f }, SHIP_ID::BATTLESHIP)
+BattleShip::BattleShip(D3DXVECTOR3* pos, BulletManager* pBulletManager)
+	: Ship(pos, { 7500, 0.f }, SHIP_ID::BATTLESHIP, pBulletManager)
 {
 	m_SpeedLimit = m_BattleShipSpeedLimit;
 	m_pStateMachine = new StateMachine<Ship>(this);
@@ -115,6 +116,8 @@ void BattleShip::Control()
 	if (m_IsUp)
 	{
 		m_ObjPos.y += m_PitchSpeed;
+		m_CameraPos.y += m_PitchSpeed;////////////////////////////////////////////////////////////////////////////////////////////////////////
+		m_LookatPos.y += m_PitchSpeed;////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 		if (m_ObjPos.y >= m_PitchLowerLimit)
 		{
@@ -124,6 +127,8 @@ void BattleShip::Control()
 	else
 	{
 		m_ObjPos.y -= m_PitchSpeed;
+		m_CameraPos.y -= m_PitchSpeed;////////////////////////////////////////////////////////////////////////////////////////////////////////
+		m_LookatPos.y -= m_PitchSpeed;////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 		if (m_ObjPos.y <= m_PitchUpperLimit)
 		{
@@ -149,8 +154,6 @@ void BattleShip::debugControl()
 		m_IsZoom = false;
 	}
 
-	float nextSpeed;
-
 	if (m_pGameLib.CheckKey(DIK_W, W) - OFF + m_pGameLib.CheckKey(DIK_S, S) - OFF)
 	{
 		if (m_pGameLib.CheckKey(DIK_W, W) == ON)
@@ -167,7 +170,6 @@ void BattleShip::debugControl()
 		}
 	}
 
-	float nextSlant;
 	float RotateSpeed;												//!<	速度に依存する
 	float tiltSpeed;												//!<	速度に依存する
 	RotateSpeed = tiltSpeed = m_Status.m_Speed * 0.5f;				//!<	0.5		目で見て導き出された結果
@@ -251,16 +253,77 @@ void BattleShip::ControlPlayer()
 
 	D3DXVec3TransformCoord(&vecAxisZ, &vecAxisZ, &m_Rotation);
 
+	///////////////////////////////////////////////　ここから　/////////////////////////////////////////////////////////
 	if (m_pGameLib.ChecKMouseR() == ON)
 	{
 		m_Angle = m_ZoomAngle;
+		if (!m_IsZoom)
+		{
+			//			m_CameraPos.y -= 25.f;
+			//			m_LookatPos.y -= 25.f;
+		}
 		m_IsZoom = true;
 	}
 	else if (m_pGameLib.ChecKMouseR() == OFF)
 	{
 		m_Angle = m_NormalAngle;
+		if (m_IsZoom)
+		{
+			//			m_CameraPos.y += 25.f;
+			//			m_LookatPos.y += 25.f;
+		}
 		m_IsZoom = false;
 	}
+
+	if (m_pGameLib.ChecKMouseL() == ON && m_FiringCount == 0)
+	{
+
+		if (!m_IsZoom)
+		{
+			if (m_CameraPos.y > m_LookatPos.y)
+			{
+				D3DXVECTOR3 vec = { m_LookatPos.x - m_CameraPos.x, 0.f, m_LookatPos.z - m_CameraPos.z };
+
+				m_pBulletManager->Create({ m_ObjPos.x, m_CameraPos.y - 25.f, m_ObjPos.z },
+					m_CameraRotate,
+					&vec);
+			}
+			else
+			{
+				D3DXVECTOR3 vec = { m_LookatPos.x - m_CameraPos.x, m_LookatPos.y - m_CameraPos.y, m_LookatPos.z - m_CameraPos.z };
+
+				m_pBulletManager->Create({ m_ObjPos.x, m_CameraPos.y - 25.f, m_ObjPos.z },
+					m_CameraRotate,
+					&vec);
+			}
+		}
+		else
+		{
+			if (m_CameraPos.y > m_LookatPos.y)
+			{
+				D3DXVECTOR3 vec = { m_LookatPos.x - m_CameraPos.x, 0.f, m_LookatPos.z - m_CameraPos.z };
+
+				m_pBulletManager->Create({ m_ObjPos.x, m_CameraPos.y, m_ObjPos.z },
+					m_CameraRotate,
+					&vec);
+			}
+			else
+			{
+				D3DXVECTOR3 vec = { m_LookatPos.x - m_CameraPos.x, m_LookatPos.y - m_CameraPos.y, m_LookatPos.z - m_CameraPos.z };
+
+				m_pBulletManager->Create({ m_ObjPos.x, m_CameraPos.y, m_ObjPos.z },
+					m_CameraRotate,
+					&vec);
+			}
+		}
+		m_FiringCount = 120;
+	}
+	else if (m_FiringCount > 0)
+	{
+		m_FiringCount--;
+	}
+
+	///////////////////////////////////////////////　ここまで　/////////////////////////////////////////////////////////
 
 	BattleDataManager::Instance().SetPlayerToZoom(m_IsZoom);
 
@@ -566,6 +629,9 @@ void BattleShip::ControlPlayer()
 
 	m_CameraPos.x = m_LookatPos.x = m_ObjPos.x;
 	m_CameraPos.z = m_LookatPos.z = m_ObjPos.z;
+
+	m_CameraPos = m_CameraPos + vecAxisZ * 50.f;////////////////////////////////////////////////////////////////////////////////////////////////////////
+	m_LookatPos = m_LookatPos + vecAxisZ * 50.f;////////////////////////////////////////////////////////////////////////////////////////////////////////
 }
 
 //----------------------------------------------------------------------------------------------------------------------
