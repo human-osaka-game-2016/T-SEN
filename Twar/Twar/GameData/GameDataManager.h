@@ -31,56 +31,17 @@ public:
 		SHIP_ID_MAX,
 	};
 
-	/*船の攻撃力の構造体*/
-	typedef struct
+	enum Level_ID
 	{
-		enum Level
-		{
-			LV1 = 1,
-			LV2,
-			LV3,
-			LV4,
-			LV5,
-			LVMAX,
-		};
-		float	m_Aggressivity[LVMAX];
-		char	m_Name[32];
+		LV1,
+		LV2,
+		LV3,
+		LV4,
+		LV5,
+		LV6,
 
-	}ShipAggressivity;
-
-	/*船の耐久値の構造体*/
-	typedef struct
-	{
-		enum Level
-		{
-			LV1 = 1,
-			LV2,
-			LV3,
-			LV4,
-			LV5,
-			LVMAX,
-		};
-		float	m_Durability[LVMAX];
-		char	m_Name[32];
-
-	}ShipDurability;
-	
-	/*船の機動力の構造体*/
-	typedef struct
-	{
-		enum Level
-		{
-			LV1 = 1,
-			LV2,
-			LV3,
-			LV4,
-			LV5,
-			LVMAX,
-		};
-		float	m_Speed[LVMAX];
-		char	m_Name[32];
-
-	}ShipSpeed;
+		LV_MAX,
+	};
 
 	/**
 	* ウェーブが終了したら呼び出す関数<br>
@@ -91,11 +52,13 @@ public:
 	/**--Getter--------------------------------------------------------------------------------------------------------------*/
 
 	inline int							GetMoney(){ return m_Money; }										
-	inline ShipAggressivity*			GetShipAggressivity(){ return &m_ShipAggressivity; }
-	inline ShipDurability*				GetShipDurability(){ return &m_ShipDurability; }
-	inline ShipSpeed*					GetShipSpeed(){ return &m_ShipSpeed; }
+	inline int			                GetShipAggressivity(int ShipID, int LvID){ return m_ShipAggressivity[ShipID][LvID]; }
+	inline int                			GetShipDurability(int ShipID, int LvID){ return m_ShipDurability[ShipID][LvID]; }
+	inline int			                GetShipSpeed(int ShipID, int LvID){ return m_ShipSpeed[ShipID][LvID]; }
 	inline int							GetFightOffDays(){ return m_FightOffDays;  }
 	inline int							GetWaveCount(){ return m_WaveCount; }
+	inline bool                         GetBattleShipSelect(){ return m_IsBattleShipSelected; }
+	inline bool                         GetCruiserSelect(){ return m_IsCruiserSelected; }
 	inline GameDataManager::SHIP_ID		GetSelectedShipID(){ return m_SelectedShipID; }
 
 
@@ -105,17 +68,19 @@ public:
 	inline void							SetFightOffDays(int fightOffDays){ m_FightOffDays = fightOffDays; }
 	inline void							SetWaveCount(int waveCount){ m_WaveCount = waveCount; }
 	inline void							SetSelectedShipID(GameDataManager::SHIP_ID id){ m_SelectedShipID = id; }
-
-
+	inline void                         SetDestroyerAggressivity(int ShipAggressivity,int Lv){ m_ShipAggressivity[DESTROYER][Lv] = ShipAggressivity; }
+	inline void                         SetBattleShipSelect(bool IsBattleShipSelected){ m_IsBattleShipSelected = IsBattleShipSelected; }
+	inline void                         SetCruiserSelect(bool IsCuriserSelected){ m_IsCruiserSelected = IsCuriserSelected; }
 private:
 	int								m_Money;			 //!< プレイヤーの所持金
-	ShipAggressivity				m_ShipAggressivity;  //!< 船の攻撃力の構造体のメンバ変数
-	ShipDurability					m_ShipDurability;    //!< 船の耐久値の構造体のメンバ変数
-	ShipSpeed						m_ShipSpeed;         //!< 船の機動力の構造体のメンバ変数
+	int				                m_ShipAggressivity[SHIP_ID_MAX][LV_MAX];  //!< 船の攻撃力のメンバ変数
+	int         					m_ShipDurability[SHIP_ID_MAX][LV_MAX];    //!< 船の耐久値のメンバ変数
+	int						        m_ShipSpeed[SHIP_ID_MAX][LV_MAX];         //!< 船の機動力のメンバ変数
 	int								m_FightOffDays;      //!< 撃退日数
 	int								m_WaveCount;		 //!< ウェーブ数
 	GameDataManager::SHIP_ID		m_SelectedShipID;	 //!< プレイヤーが選んだ船のID
-
+	bool                            m_IsBattleShipSelected;
+	bool                            m_IsCruiserSelected;
 
 };
 

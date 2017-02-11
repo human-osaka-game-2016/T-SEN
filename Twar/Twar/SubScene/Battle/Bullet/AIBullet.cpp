@@ -44,10 +44,12 @@ AIBullet::AIBullet(FbxModel* pModel, const D3DXVECTOR3& rPos, float angle)
 	m_BulletSpeedX = static_cast<float>(sin(m_Radian) * BulletSpeed);
 	m_BulletSpeedZ = static_cast<float>(cos(m_Radian) * BulletSpeed);
 	m_BulletSpeedY = BulletSpeed;
+	//m_rGameLib.LoadSound(EXPLOSION_BGM, "../Sounds/explosion.wav");
 }
 
 AIBullet::~AIBullet()
 {
+	//m_rGameLib.ReleaseAllSound();
 	if (m_pMesh != nullptr)
 	{
 		m_pMesh->Release();
@@ -61,6 +63,7 @@ bool AIBullet::Control()
 		m_HasVanished = true;
 		m_IsHit = false;
 		m_EffectManager.Create(m_Pos, m_EffectManager.EXPLOSION);
+		//m_rGameLib.PlayDSound(EXPLOSION_BGM, SOUND_PLAY);
 	}
 	else if (m_Pos.y > PosYMinLimit)
 	{

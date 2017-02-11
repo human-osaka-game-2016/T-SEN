@@ -11,6 +11,7 @@
 
 class FbxModel;
 class EffectManager;
+class GameLib;
 
 /**
 * 軍艦AIが発射する弾
@@ -42,8 +43,14 @@ public:
 
 	void SetHit(bool is){ m_IsHit = is; };
 
+	/**SoundID*/
+	enum SOUND_ID
+	{
+		EXPLOSION_BGM,
+	};
 private:
 	EffectManager&		m_EffectManager;
+	//GameLib&		    m_rGameLib;				//!< GameLibクラス
 	FbxModel*			m_pModel;				//!< FbxModelクラスのインスタンスへのポインタ(モデルデータを格納)
 	D3DXVECTOR3			m_Pos;					//!< 位置座標
 	D3DXVECTOR3			m_OldPos;
