@@ -70,7 +70,8 @@ namespace sub_scene
 			{ 1080.f, 210.f },
 			{ 1080.f, 390.f },
 			{ 1324.f, 390.f },
-			{ 1324.f, 390.f },
+			{ 1568.f, 390.f },
+			{ 1520.f, 330.f },
 		};
 
 		m_pPolicyBackGround = new PolicyBackGround(Policy::BACKGROUND_TEX,Policy::BACKGROUND_VTX);
@@ -184,18 +185,22 @@ namespace sub_scene
 				texPos[EXCHANGE_FILTER_VTX].y / m_PolicyTextureHeight, (texPos[EXCHANGE_FILTER_VTX].y + height) / m_PolicyTextureHeight);
 		}
 
-		//LvupVertex作成ブロック
+		//黒フィルターVertex作成ブロック
 		{
-			float width = 90.f;
-			float height = 50.f;
-			m_rGameLib.CreateVtx(LVUP_VTX, width, height);
+			float width = 244.f;
+			float height = 169.f;
+			m_rGameLib.CreateVtx(BLACK_FILTER_VTX, width, height);
+			m_rGameLib.SetVtxUV(BLACK_FILTER_VTX, texPos[BLACK_FILTER_VTX].x / m_PolicyTextureWidth, (texPos[BLACK_FILTER_VTX].x + width) / m_PolicyTextureWidth,
+				texPos[BLACK_FILTER_VTX].y / m_PolicyTextureHeight, (texPos[BLACK_FILTER_VTX].y + height) / m_PolicyTextureHeight);
 		}
 
-		//造船Vertex作成ブロック
+		//ハイフンVertex作成ブロック
 		{
-			float width = 100.f;
-			float height = 70.f;
-			m_rGameLib.CreateVtx(CREATSHIP_VTX, width, height);
+			float width = 44.f;
+			float height = 60.f;
+			m_rGameLib.CreateVtx(HYPHEN_VTX, width, height);
+			m_rGameLib.SetVtxUV(HYPHEN_VTX, texPos[HYPHEN_VTX].x / m_PolicyTextureWidth, (texPos[HYPHEN_VTX].x + width) / m_PolicyTextureWidth,
+				texPos[HYPHEN_VTX].y / m_PolicyTextureHeight, (texPos[HYPHEN_VTX].y + height) / m_PolicyTextureHeight);
 		}
 
 		{

@@ -44,25 +44,13 @@ public:
 		DIGIT_MAX,
 	};
 
-	enum Level_ID
-	{
-		LV1,
-		LV2,
-		LV3,
-		LV4,
-		LV5,
-		LV6,
-
-		LV_MAX,
-	};
-
 	PolicyMenu(GameDataManager* GameDataManager);
 	~PolicyMenu();
 	sub_scene::SUBSCENE_ID Control();
 	void Draw();
 	void MoneyBreakdownDigit(int MyMoney, int SumMoney);
 	void PolicyBreakdownDigit(int EnhancementCost, int ExchangeCost);
-	void InitArray();
+	void InitStatus();
 	void InitCost();
 	void AggressivityLvUP();
 	void DurabilityLvUP();
@@ -84,17 +72,17 @@ private:
 	int m_EnhancementCostDigit[DIGIT_MAX];
 	int m_ExchangeCostDigit[DIGIT_MAX];
 	int m_CreatShipCost[GameDataManager::SHIP_ID_MAX];            //船を造船するのに必要な金額
-	int m_EnhancementCost[GameDataManager::SHIP_ID_MAX][LV_MAX];  //強化に必要な金額
-	int m_Aggressivity[GameDataManager::SHIP_ID_MAX][LV_MAX];     //攻撃力
-	int m_Durability[GameDataManager::SHIP_ID_MAX][LV_MAX];       //耐久力
-	int m_Speed[GameDataManager::SHIP_ID_MAX][LV_MAX];            //機動力
-	int m_ExchangeCost[EXCHANGE_MAX][LV_MAX];                     //交流するために必要な金額
+	int m_EnhancementCost[GameDataManager::SHIP_ID_MAX][GameDataManager::LV_MAX];  //強化に必要な金額
+	int m_Aggressivity[GameDataManager::SHIP_ID_MAX][GameDataManager::LV_MAX];     //攻撃力
+	int m_Durability[GameDataManager::SHIP_ID_MAX][GameDataManager::LV_MAX];       //耐久力
+	int m_Speed[GameDataManager::SHIP_ID_MAX][GameDataManager::LV_MAX];            //機動力
+	int m_ExchangeCost[EXCHANGE_MAX][GameDataManager::LV_MAX];                     //交流するために必要な金額
 	int m_CurrentLevel[12];                                       //現在のレベル
 
-	Level_ID m_AggressivityLv[GameDataManager::SHIP_ID_MAX];
-	Level_ID m_DurabilityLv[GameDataManager::SHIP_ID_MAX];
-	Level_ID m_SpeedLv[GameDataManager::SHIP_ID_MAX];
-	Level_ID m_ExchangeLv[EXCHANGE_MAX];
+	GameDataManager::Level_ID m_AggressivityLv[GameDataManager::SHIP_ID_MAX];
+	GameDataManager::Level_ID m_DurabilityLv[GameDataManager::SHIP_ID_MAX];
+	GameDataManager::Level_ID m_SpeedLv[GameDataManager::SHIP_ID_MAX];
+	GameDataManager::Level_ID m_ExchangeLv[EXCHANGE_MAX];
 
 	Button* m_pHomeButton;
 	Button* m_pPushHomeButton;
@@ -117,6 +105,8 @@ private:
 	bool m_IsPushCancellationDrawn;
 	bool m_IsExchangeFilDrawn[EXCHANGE_MAX];
 	bool m_IsEnhancementFilDrawn[GameDataManager::SHIP_ID_MAX][ENHANCEMENT_MAX];
+	bool m_IsBattleShipSelected;
+	bool m_IsCruiserSelected;
 
 	EXCHANGE_ID m_ExchangeID;
 

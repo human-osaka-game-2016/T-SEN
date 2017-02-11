@@ -59,14 +59,14 @@ HomeMenu::HomeMenu(GameDataManager* pDataManager)
 
 		/**@todo ここでDataManagerから軍艦を所有しているかの情報を取得してボタンを作成するかを判断する予定*/
 		// 峯風
-		if(true/*m_pDataManager->*/)
+		if (m_pDataManager->GetCruiserSelect()/*m_pDataManager->*/)
 		{
 			m_pShipSelectButtons.emplace_back(new ScaleFunction(new BasicButton(shipBtnPos[btnCounter], sub_scene::Home::HOME_TEX, sub_scene::Home::MINEKAZE_BTN_VTX), 5.f));
 			++btnCounter;
 		}
 
 		// 金剛
-		if(true/*m_pDataManager->*/)
+		if (m_pDataManager->GetBattleShipSelect()/*m_pDataManager->*/)
 		{
 			m_pShipSelectButtons.emplace_back(new ScaleFunction(new BasicButton(shipBtnPos[btnCounter], sub_scene::Home::HOME_TEX, sub_scene::Home::KONGOU_BTN_VTX), 5.f));
 		}

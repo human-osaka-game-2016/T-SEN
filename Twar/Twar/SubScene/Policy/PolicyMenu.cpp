@@ -75,6 +75,8 @@ PolicyMenu::PolicyMenu(GameDataManager* GameDataManager)
 	, m_IsPushHomeDrawn(false)
 	, m_IsPushSettlementDrawn(false)
 	, m_IsPushCancellationDrawn(false)
+	, m_IsBattleShipSelected(false)
+	, m_IsCruiserSelected(false)
 {
 
 	D3DXVECTOR2 HomeBtnPos{ 160.f, 100.f };
@@ -122,10 +124,10 @@ PolicyMenu::PolicyMenu(GameDataManager* GameDataManager)
 
 	for (int i = 0; i < GameDataManager::SHIP_ID_MAX; i++)
 	{
-		m_AggressivityLv[i] = LV2;
-		m_DurabilityLv[i] = LV2;
-		m_SpeedLv[i] = LV2;
-		m_CreatShipCost[i] = LV2;
+		m_AggressivityLv[i] = GameDataManager::LV2;
+		m_DurabilityLv[i] = GameDataManager::LV2;
+		m_SpeedLv[i] = GameDataManager::LV2;
+		m_CreatShipCost[i] = GameDataManager::LV2;
 		for (int j = 0; j < ENHANCEMENT_MAX; j++)
 		{
 			m_pEnhancementFilterButton[i][j] = new ScaleFunction(new BasicButton(EnhancementFilterBtnPos[i][j], sub_scene::Policy::POLICY_TEX, sub_scene::Policy::ENHANCEMENT_FILTER_VTX));
@@ -134,7 +136,7 @@ PolicyMenu::PolicyMenu(GameDataManager* GameDataManager)
 
 	for (int i = 0; i < EXCHANGE_MAX; i++)
 	{
-		m_ExchangeLv[i] = LV2;
+		m_ExchangeLv[i] = GameDataManager::LV2;
 		m_pExchangeFilterButton[i] = new ScaleFunction(new BasicButton(ExchangeFilterBtnPos[i], sub_scene::Policy::POLICY_TEX, sub_scene::Policy::EXCHANGE_FILTER_VTX));
 	}
 
@@ -163,6 +165,7 @@ PolicyMenu::PolicyMenu(GameDataManager* GameDataManager)
 			m_CurrentLevel[i] = 1;
 		}
 	}
+	InitStatus();
 	InitCost();
 
 }
@@ -260,10 +263,10 @@ sub_scene::SUBSCENE_ID PolicyMenu::Control()
 		if (GameLib::Instance().ChecKMouseL() == PUSH)
 		{
 			m_IsPushSettlementDrawn = true;
-			MakeAccountsSquare();
 		}
 		else if (GameLib::Instance().ChecKMouseL() == OFF && m_IsPushSettlementDrawn)
 		{
+			MakeAccountsSquare();
 			m_IsPushSettlementDrawn = false;
 		}
 	}
@@ -273,10 +276,10 @@ sub_scene::SUBSCENE_ID PolicyMenu::Control()
 		if (GameLib::Instance().ChecKMouseL() == PUSH)
 		{
 			m_IsPushCancellationDrawn = true;
-			Cancel();
 		}
 		else if (GameLib::Instance().ChecKMouseL() == OFF && m_IsPushCancellationDrawn)
 		{
+			Cancel();
 			m_IsPushCancellationDrawn = false;
 		}
 	}
@@ -404,6 +407,9 @@ void PolicyMenu::MakeAccountsSquare()
 	if (m_MyMoney >= m_SumMoney)
 	{
 		m_MyMoney -= m_SumMoney;
+		m_pGameDataManager->SetMoney(m_MyMoney);
+		m_pGameDataManager->SetBattleShipSelect(m_IsBattleShipSelected);
+		m_pGameDataManager->SetCruiserSelect(m_IsCruiserSelected);
 	}
 }
 void PolicyMenu::Cancel()
@@ -453,17 +459,43 @@ int PolicyMenu::ExchangeBreakdownDigit(int ExchangeCost, int Digit)
 	}
 	return m_ExchangeCostDigit[Digit];
 }
+void PolicyMenu::InitStatus()
+{
+	static const int aggressivity[GameDataManager::SHIP_ID_MAX][GameDataManager::LV_MAX]
+	{
+		{800, 1200, 1800, 2700, 4050},
+		{ 1500, 2250, 3500, 5000, 7000 },
+		{ 3500, 5250, 7800, 12000, 1800 },
+	};
 
+	static const int durability[GameDataManager::SHIP_ID_MAX][GameDataManager::LV_MAX]
+	{
+		{2200,3300,5000,7500,12000},
+		{4000,6000,9000,13500,20000},
+		{10000,15000,22000,33000,50000},
+	};
+
+	static const int speed[GameDataManager::SHIP_ID_MAX][GameDataManager::LV_MAX]
+	{
+		{20, 22, 24},
+		{ 15, 17, 19 },
+		{ 10, 12, 14 },
+	};
+
+	memcpy(m_Aggressivity, aggressivity, sizeof aggressivity);
+	memcpy(m_Durability, durability, sizeof durability);
+	memcpy(m_Speed, speed, sizeof speed);
+}
 void PolicyMenu::InitCost()
 {
-	static const int enhancement_cost[GameDataManager::SHIP_ID_MAX][LV_MAX]
+	static const int enhancement_cost[GameDataManager::SHIP_ID_MAX][GameDataManager::LV_MAX]
 	{
 		{ 0, 30, 70, 100, 150 },
 		{ 0, 50, 70, 100, 150 },
 		{ 0, 100, 150, 200, 300 },
 	};
 
-	static const int exchange_cost[EXCHANGE_MAX][LV_MAX]
+	static const int exchange_cost[EXCHANGE_MAX][GameDataManager::LV_MAX]
 	{
 		{ 0, 150, 70, 150, 200},
 		{ 0, 100, 30, 70, 100 },
@@ -529,47 +561,48 @@ void PolicyMenu::AggressivityLvUP()
 	{
 		switch (m_AggressivityLv[GameDataManager::DESTROYER])
 		{
-		case LV1:
-			if (m_MyMoney >= m_EnhancementCost[GameDataManager::DESTROYER][LV1])
+		case GameDataManager::LV1:
+			if (m_MyMoney >= m_EnhancementCost[GameDataManager::DESTROYER][GameDataManager::LV1])
 			{
-				m_AggressivityLv[GameDataManager::DESTROYER] = LV2;
-				m_SumMoney += m_EnhancementCost[GameDataManager::DESTROYER][LV1];
+				m_AggressivityLv[GameDataManager::DESTROYER] = GameDataManager::LV2;
+				m_SumMoney += m_EnhancementCost[GameDataManager::DESTROYER][GameDataManager::LV1];
+				m_CurrentLevel[4]++;
+				m_pGameDataManager->SetDestroyerAggressivity(m_Aggressivity[GameDataManager::DESTROYER][m_CurrentLevel[4]], m_CurrentLevel[4]);
+			}
+			break;
+		case GameDataManager::LV2:
+			if (m_MyMoney >= m_EnhancementCost[GameDataManager::DESTROYER][GameDataManager::LV2])
+			{
+				m_AggressivityLv[GameDataManager::DESTROYER] = GameDataManager::LV3;
+				m_SumMoney += m_EnhancementCost[GameDataManager::DESTROYER][GameDataManager::LV2];
 				m_CurrentLevel[4]++;
 			}
 			break;
-		case LV2:
-			if (m_MyMoney >= m_EnhancementCost[GameDataManager::DESTROYER][LV2])
+		case GameDataManager::LV3:
+			if (m_MyMoney >= m_EnhancementCost[GameDataManager::DESTROYER][GameDataManager::LV3])
 			{
-				m_AggressivityLv[GameDataManager::DESTROYER] = LV3;
-				m_SumMoney += m_EnhancementCost[GameDataManager::DESTROYER][LV2];
+				m_AggressivityLv[GameDataManager::DESTROYER] = GameDataManager::LV4;
+				m_SumMoney += m_EnhancementCost[GameDataManager::DESTROYER][GameDataManager::LV3];
 				m_CurrentLevel[4]++;
 			}
 			break;
-		case LV3:
-			if (m_MyMoney >= m_EnhancementCost[GameDataManager::DESTROYER][LV3])
+		case GameDataManager::LV4:
+			if (m_MyMoney >= m_EnhancementCost[GameDataManager::DESTROYER][GameDataManager::LV4])
 			{
-				m_AggressivityLv[GameDataManager::DESTROYER] = LV4;
-				m_SumMoney += m_EnhancementCost[GameDataManager::DESTROYER][LV3];
+				m_AggressivityLv[GameDataManager::DESTROYER] = GameDataManager::LV5;
+				m_SumMoney += m_EnhancementCost[GameDataManager::DESTROYER][GameDataManager::LV4];
 				m_CurrentLevel[4]++;
 			}
 			break;
-		case LV4:
-			if (m_MyMoney >= m_EnhancementCost[GameDataManager::DESTROYER][LV4])
+		case GameDataManager::LV5:
+			if (m_MyMoney >= m_EnhancementCost[GameDataManager::DESTROYER][GameDataManager::LV5])
 			{
-				m_AggressivityLv[GameDataManager::DESTROYER] = LV5;
-				m_SumMoney += m_EnhancementCost[GameDataManager::DESTROYER][LV4];
+				m_AggressivityLv[GameDataManager::DESTROYER] = GameDataManager::LV6;
+				m_SumMoney += m_EnhancementCost[GameDataManager::DESTROYER][GameDataManager::LV5];
 				m_CurrentLevel[4]++;
 			}
 			break;
-		case LV5:
-			if (m_MyMoney >= m_EnhancementCost[GameDataManager::DESTROYER][LV5])
-			{
-				m_AggressivityLv[GameDataManager::DESTROYER] = LV6;
-				m_SumMoney += m_EnhancementCost[GameDataManager::DESTROYER][LV5];
-				m_CurrentLevel[4]++;
-			}
-			break;
-		case LV6:
+		case GameDataManager::LV6:
 			break;
 		default:
 			break;
@@ -579,47 +612,47 @@ void PolicyMenu::AggressivityLvUP()
 	{
 		switch (m_AggressivityLv[GameDataManager::CRUISER])
 		{
-		case LV1:
-			if (m_MyMoney >= m_EnhancementCost[GameDataManager::CRUISER][LV1])
+		case GameDataManager::LV1:
+			if (m_MyMoney >= m_EnhancementCost[GameDataManager::CRUISER][GameDataManager::LV1])
 			{
-				m_AggressivityLv[GameDataManager::CRUISER] = LV2;
-				m_SumMoney += m_EnhancementCost[GameDataManager::CRUISER][LV1];
+				m_AggressivityLv[GameDataManager::CRUISER] = GameDataManager::LV2;
+				m_SumMoney += m_EnhancementCost[GameDataManager::CRUISER][GameDataManager::LV1];
 				m_CurrentLevel[7]++;
 			}
 			break;
-		case LV2:
-			if (m_MyMoney >= m_EnhancementCost[GameDataManager::CRUISER][LV2])
+		case GameDataManager::LV2:
+			if (m_MyMoney >= m_EnhancementCost[GameDataManager::CRUISER][GameDataManager::LV2])
 			{
-				m_AggressivityLv[GameDataManager::CRUISER] = LV3;
-				m_SumMoney += m_EnhancementCost[GameDataManager::CRUISER][LV2];
+				m_AggressivityLv[GameDataManager::CRUISER] = GameDataManager::LV3;
+				m_SumMoney += m_EnhancementCost[GameDataManager::CRUISER][GameDataManager::LV2];
 				m_CurrentLevel[7]++;
 			}
 			break;
-		case LV3:
-			if (m_MyMoney >= m_EnhancementCost[GameDataManager::CRUISER][LV3])
+		case GameDataManager::LV3:
+			if (m_MyMoney >= m_EnhancementCost[GameDataManager::CRUISER][GameDataManager::LV3])
 			{
-				m_AggressivityLv[GameDataManager::CRUISER] = LV4;
-				m_SumMoney += m_EnhancementCost[GameDataManager::CRUISER][LV3];
+				m_AggressivityLv[GameDataManager::CRUISER] = GameDataManager::LV4;
+				m_SumMoney += m_EnhancementCost[GameDataManager::CRUISER][GameDataManager::LV3];
 				m_CurrentLevel[7]++;
 			}
 			break;
-		case LV4:
-			if (m_MyMoney >= m_EnhancementCost[GameDataManager::CRUISER][LV4])
+		case GameDataManager::LV4:
+			if (m_MyMoney >= m_EnhancementCost[GameDataManager::CRUISER][GameDataManager::LV4])
 			{
-				m_AggressivityLv[GameDataManager::CRUISER] = LV5;
-				m_SumMoney += m_EnhancementCost[GameDataManager::CRUISER][LV4];
+				m_AggressivityLv[GameDataManager::CRUISER] = GameDataManager::LV5;
+				m_SumMoney += m_EnhancementCost[GameDataManager::CRUISER][GameDataManager::LV4];
 				m_CurrentLevel[7]++;
 			}
 			break;
-		case LV5:
-			if (m_MyMoney >= m_EnhancementCost[GameDataManager::CRUISER][LV5])
+		case GameDataManager::LV5:
+			if (m_MyMoney >= m_EnhancementCost[GameDataManager::CRUISER][GameDataManager::LV5])
 			{
-				m_AggressivityLv[GameDataManager::CRUISER] = LV6;
-				m_SumMoney += m_EnhancementCost[GameDataManager::CRUISER][LV5];
+				m_AggressivityLv[GameDataManager::CRUISER] = GameDataManager::LV6;
+				m_SumMoney += m_EnhancementCost[GameDataManager::CRUISER][GameDataManager::LV5];
 				m_CurrentLevel[7]++;
 			}
 			break;
-		case LV6:
+		case GameDataManager::LV6:
 			break;
 		default:
 			break;
@@ -630,47 +663,47 @@ void PolicyMenu::AggressivityLvUP()
 	{
 		switch (m_AggressivityLv[GameDataManager::BATTLESHIP])
 		{
-		case LV1:
-			if (m_MyMoney >= m_EnhancementCost[GameDataManager::BATTLESHIP][LV1])
+		case GameDataManager::LV1:
+			if (m_MyMoney >= m_EnhancementCost[GameDataManager::BATTLESHIP][GameDataManager::LV1])
 			{
-				m_AggressivityLv[GameDataManager::BATTLESHIP] = LV2;
-				m_SumMoney += m_EnhancementCost[GameDataManager::BATTLESHIP][LV1];
+				m_AggressivityLv[GameDataManager::BATTLESHIP] = GameDataManager::LV2;
+				m_SumMoney += m_EnhancementCost[GameDataManager::BATTLESHIP][GameDataManager::LV1];
 				m_CurrentLevel[10]++;
 			}
 			break;
-		case LV2:
-			if (m_MyMoney >= m_EnhancementCost[GameDataManager::BATTLESHIP][LV2])
+		case GameDataManager::LV2:
+			if (m_MyMoney >= m_EnhancementCost[GameDataManager::BATTLESHIP][GameDataManager::LV2])
 			{
-				m_AggressivityLv[GameDataManager::BATTLESHIP] = LV3;
-				m_SumMoney += m_EnhancementCost[GameDataManager::BATTLESHIP][LV2];
+				m_AggressivityLv[GameDataManager::BATTLESHIP] = GameDataManager::LV3;
+				m_SumMoney += m_EnhancementCost[GameDataManager::BATTLESHIP][GameDataManager::LV2];
 				m_CurrentLevel[10]++;
 			}
 			break;
-		case LV3:
-			if (m_MyMoney >= m_EnhancementCost[GameDataManager::BATTLESHIP][LV3])
+		case GameDataManager::LV3:
+			if (m_MyMoney >= m_EnhancementCost[GameDataManager::BATTLESHIP][GameDataManager::LV3])
 			{
-				m_AggressivityLv[GameDataManager::BATTLESHIP] = LV4;
-				m_SumMoney += m_EnhancementCost[GameDataManager::BATTLESHIP][LV3];
+				m_AggressivityLv[GameDataManager::BATTLESHIP] = GameDataManager::LV4;
+				m_SumMoney += m_EnhancementCost[GameDataManager::BATTLESHIP][GameDataManager::LV3];
 				m_CurrentLevel[10]++;
 			}
 			break;
-		case LV4:
-			if (m_MyMoney >= m_EnhancementCost[GameDataManager::BATTLESHIP][LV4])
+		case GameDataManager::LV4:
+			if (m_MyMoney >= m_EnhancementCost[GameDataManager::BATTLESHIP][GameDataManager::LV4])
 			{
-				m_AggressivityLv[GameDataManager::BATTLESHIP] = LV5;
-				m_SumMoney += m_EnhancementCost[GameDataManager::BATTLESHIP][LV4];
+				m_AggressivityLv[GameDataManager::BATTLESHIP] = GameDataManager::LV5;
+				m_SumMoney += m_EnhancementCost[GameDataManager::BATTLESHIP][GameDataManager::LV4];
 				m_CurrentLevel[10]++;
 			}
 			break;
-		case LV5:
-			if (m_MyMoney >= m_EnhancementCost[GameDataManager::BATTLESHIP][LV5])
+		case GameDataManager::LV5:
+			if (m_MyMoney >= m_EnhancementCost[GameDataManager::BATTLESHIP][GameDataManager::LV5])
 			{
-				m_AggressivityLv[GameDataManager::BATTLESHIP] = LV6;
-				m_SumMoney += m_EnhancementCost[GameDataManager::BATTLESHIP][LV5];
+				m_AggressivityLv[GameDataManager::BATTLESHIP] = GameDataManager::LV6;
+				m_SumMoney += m_EnhancementCost[GameDataManager::BATTLESHIP][GameDataManager::LV5];
 				m_CurrentLevel[10]++;
 			}
 			break;
-		case LV6:
+		case GameDataManager::LV6:
 			break;
 		default:
 			break;
@@ -683,47 +716,47 @@ void PolicyMenu::DurabilityLvUP()
 	{
 		switch (m_DurabilityLv[GameDataManager::DESTROYER])
 		{
-		case LV1:
-			if (m_MyMoney >= m_EnhancementCost[GameDataManager::DESTROYER][LV1])
+		case GameDataManager::LV1:
+			if (m_MyMoney >= m_EnhancementCost[GameDataManager::DESTROYER][GameDataManager::LV1])
 			{
-				m_DurabilityLv[GameDataManager::DESTROYER] = LV2;
-				m_SumMoney += m_EnhancementCost[GameDataManager::DESTROYER][LV1];
+				m_DurabilityLv[GameDataManager::DESTROYER] = GameDataManager::LV2;
+				m_SumMoney += m_EnhancementCost[GameDataManager::DESTROYER][GameDataManager::LV1];
 				m_CurrentLevel[3]++;
 			}
 			break;
-		case LV2:
-			if (m_MyMoney >= m_EnhancementCost[GameDataManager::DESTROYER][LV2])
+		case GameDataManager::LV2:
+			if (m_MyMoney >= m_EnhancementCost[GameDataManager::DESTROYER][GameDataManager::LV2])
 			{
-				m_DurabilityLv[GameDataManager::DESTROYER] = LV3;
-				m_SumMoney += m_EnhancementCost[GameDataManager::DESTROYER][LV2];
+				m_DurabilityLv[GameDataManager::DESTROYER] = GameDataManager::LV3;
+				m_SumMoney += m_EnhancementCost[GameDataManager::DESTROYER][GameDataManager::LV2];
 				m_CurrentLevel[3]++;
 			}
 			break;
-		case LV3:
-			if (m_MyMoney >= m_EnhancementCost[GameDataManager::DESTROYER][LV3])
+		case GameDataManager::LV3:
+			if (m_MyMoney >= m_EnhancementCost[GameDataManager::DESTROYER][GameDataManager::LV3])
 			{
-				m_DurabilityLv[GameDataManager::DESTROYER] = LV4;
-				m_SumMoney += m_EnhancementCost[GameDataManager::DESTROYER][LV3];
+				m_DurabilityLv[GameDataManager::DESTROYER] = GameDataManager::LV4;
+				m_SumMoney += m_EnhancementCost[GameDataManager::DESTROYER][GameDataManager::LV3];
 				m_CurrentLevel[3]++;
 			}
 			break;
-		case LV4:
-			if (m_MyMoney >= m_EnhancementCost[GameDataManager::DESTROYER][LV4])
+		case GameDataManager::LV4:
+			if (m_MyMoney >= m_EnhancementCost[GameDataManager::DESTROYER][GameDataManager::LV4])
 			{
-				m_DurabilityLv[GameDataManager::DESTROYER] = LV5;
-				m_SumMoney += m_EnhancementCost[GameDataManager::DESTROYER][LV4];
+				m_DurabilityLv[GameDataManager::DESTROYER] = GameDataManager::LV5;
+				m_SumMoney += m_EnhancementCost[GameDataManager::DESTROYER][GameDataManager::LV4];
 				m_CurrentLevel[3]++;
 			}
 			break;
-		case LV5:
-			if (m_MyMoney >= m_EnhancementCost[GameDataManager::DESTROYER][LV5])
+		case GameDataManager::LV5:
+			if (m_MyMoney >= m_EnhancementCost[GameDataManager::DESTROYER][GameDataManager::LV5])
 			{
-				m_DurabilityLv[GameDataManager::DESTROYER] = LV6;
-				m_SumMoney += m_EnhancementCost[GameDataManager::DESTROYER][LV5];
+				m_DurabilityLv[GameDataManager::DESTROYER] = GameDataManager::LV6;
+				m_SumMoney += m_EnhancementCost[GameDataManager::DESTROYER][GameDataManager::LV5];
 				m_CurrentLevel[3]++;
 			}
 			break;
-		case LV6:
+		case GameDataManager::LV6:
 			break;
 		default:
 			break;
@@ -733,47 +766,47 @@ void PolicyMenu::DurabilityLvUP()
 	{
 		switch (m_DurabilityLv[GameDataManager::CRUISER])
 		{
-		case LV1:
-			if (m_MyMoney >= m_EnhancementCost[GameDataManager::CRUISER][LV1])
+		case GameDataManager::LV1:
+			if (m_MyMoney >= m_EnhancementCost[GameDataManager::CRUISER][GameDataManager::LV1])
 			{
-				m_DurabilityLv[GameDataManager::CRUISER] = LV2;
-				m_SumMoney += m_EnhancementCost[GameDataManager::CRUISER][LV1];
+				m_DurabilityLv[GameDataManager::CRUISER] = GameDataManager::LV2;
+				m_SumMoney += m_EnhancementCost[GameDataManager::CRUISER][GameDataManager::LV1];
 				m_CurrentLevel[6]++;
 			}
 			break;
-		case LV2:
-			if (m_MyMoney >= m_EnhancementCost[GameDataManager::CRUISER][LV2])
+		case GameDataManager::LV2:
+			if (m_MyMoney >= m_EnhancementCost[GameDataManager::CRUISER][GameDataManager::LV2])
 			{
-				m_DurabilityLv[GameDataManager::CRUISER] = LV3;
-				m_SumMoney += m_EnhancementCost[GameDataManager::CRUISER][LV2];
+				m_DurabilityLv[GameDataManager::CRUISER] = GameDataManager::LV3;
+				m_SumMoney += m_EnhancementCost[GameDataManager::CRUISER][GameDataManager::LV2];
 				m_CurrentLevel[6]++;
 			}
 			break;
-		case LV3:
-			if (m_MyMoney >= m_EnhancementCost[GameDataManager::CRUISER][LV3])
+		case GameDataManager::LV3:
+			if (m_MyMoney >= m_EnhancementCost[GameDataManager::CRUISER][GameDataManager::LV3])
 			{
-				m_DurabilityLv[GameDataManager::CRUISER] = LV4;
-				m_SumMoney += m_EnhancementCost[GameDataManager::CRUISER][LV3];
+				m_DurabilityLv[GameDataManager::CRUISER] = GameDataManager::LV4;
+				m_SumMoney += m_EnhancementCost[GameDataManager::CRUISER][GameDataManager::LV3];
 				m_CurrentLevel[6]++;
 			}
 			break;
-		case LV4:
-			if (m_MyMoney >= m_EnhancementCost[GameDataManager::CRUISER][LV4])
+		case GameDataManager::LV4:
+			if (m_MyMoney >= m_EnhancementCost[GameDataManager::CRUISER][GameDataManager::LV4])
 			{
-				m_DurabilityLv[GameDataManager::CRUISER] = LV5;
-				m_SumMoney += m_EnhancementCost[GameDataManager::CRUISER][LV4];
+				m_DurabilityLv[GameDataManager::CRUISER] = GameDataManager::LV5;
+				m_SumMoney += m_EnhancementCost[GameDataManager::CRUISER][GameDataManager::LV4];
 				m_CurrentLevel[6]++;
 			}
 			break;
-		case LV5:
-			if (m_MyMoney >= m_EnhancementCost[GameDataManager::CRUISER][LV5])
+		case GameDataManager::LV5:
+			if (m_MyMoney >= m_EnhancementCost[GameDataManager::CRUISER][GameDataManager::LV5])
 			{
-				m_DurabilityLv[GameDataManager::CRUISER] = LV6;
-				m_SumMoney += m_EnhancementCost[GameDataManager::CRUISER][LV5];
+				m_DurabilityLv[GameDataManager::CRUISER] = GameDataManager::LV6;
+				m_SumMoney += m_EnhancementCost[GameDataManager::CRUISER][GameDataManager::LV5];
 				m_CurrentLevel[6]++;
 			}
 			break;
-		case LV6:
+		case GameDataManager::LV6:
 			break;
 		default:
 			break;
@@ -783,47 +816,47 @@ void PolicyMenu::DurabilityLvUP()
 	{
 		switch (m_DurabilityLv[GameDataManager::BATTLESHIP])
 		{
-		case LV1:
-			if (m_MyMoney >= m_EnhancementCost[GameDataManager::BATTLESHIP][LV1])
+		case GameDataManager::LV1:
+			if (m_MyMoney >= m_EnhancementCost[GameDataManager::BATTLESHIP][GameDataManager::LV1])
 			{
-				m_DurabilityLv[GameDataManager::BATTLESHIP] = LV2;
-				m_SumMoney += m_EnhancementCost[GameDataManager::BATTLESHIP][LV1];
+				m_DurabilityLv[GameDataManager::BATTLESHIP] = GameDataManager::LV2;
+				m_SumMoney += m_EnhancementCost[GameDataManager::BATTLESHIP][GameDataManager::LV1];
 				m_CurrentLevel[9]++;
 			}
 			break;
-		case LV2:
-			if (m_MyMoney >= m_EnhancementCost[GameDataManager::BATTLESHIP][LV2])
+		case GameDataManager::LV2:
+			if (m_MyMoney >= m_EnhancementCost[GameDataManager::BATTLESHIP][GameDataManager::LV2])
 			{
-				m_DurabilityLv[GameDataManager::BATTLESHIP] = LV3;
-				m_SumMoney += m_EnhancementCost[GameDataManager::BATTLESHIP][LV2];
+				m_DurabilityLv[GameDataManager::BATTLESHIP] = GameDataManager::LV3;
+				m_SumMoney += m_EnhancementCost[GameDataManager::BATTLESHIP][GameDataManager::LV2];
 				m_CurrentLevel[9]++;
 			}
 			break;
-		case LV3:
-			if (m_MyMoney >= m_EnhancementCost[GameDataManager::BATTLESHIP][LV3])
+		case GameDataManager::LV3:
+			if (m_MyMoney >= m_EnhancementCost[GameDataManager::BATTLESHIP][GameDataManager::LV3])
 			{
-				m_DurabilityLv[GameDataManager::BATTLESHIP] = LV4;
-				m_SumMoney += m_EnhancementCost[GameDataManager::BATTLESHIP][LV3];
+				m_DurabilityLv[GameDataManager::BATTLESHIP] = GameDataManager::LV4;
+				m_SumMoney += m_EnhancementCost[GameDataManager::BATTLESHIP][GameDataManager::LV3];
 				m_CurrentLevel[9]++;
 			}
 			break;
-		case LV4:
-			if (m_MyMoney >= m_EnhancementCost[GameDataManager::BATTLESHIP][LV4])
+		case GameDataManager::LV4:
+			if (m_MyMoney >= m_EnhancementCost[GameDataManager::BATTLESHIP][GameDataManager::LV4])
 			{
-				m_DurabilityLv[GameDataManager::BATTLESHIP] = LV5;
-				m_SumMoney += m_EnhancementCost[GameDataManager::BATTLESHIP][LV4];
+				m_DurabilityLv[GameDataManager::BATTLESHIP] = GameDataManager::LV5;
+				m_SumMoney += m_EnhancementCost[GameDataManager::BATTLESHIP][GameDataManager::LV4];
 				m_CurrentLevel[9]++;
 			}
 			break;
-		case LV5:
-			if (m_MyMoney >= m_EnhancementCost[GameDataManager::BATTLESHIP][LV5])
+		case GameDataManager::LV5:
+			if (m_MyMoney >= m_EnhancementCost[GameDataManager::BATTLESHIP][GameDataManager::LV5])
 			{
-				m_DurabilityLv[GameDataManager::BATTLESHIP] = LV6;
-				m_SumMoney += m_EnhancementCost[GameDataManager::BATTLESHIP][LV5];
+				m_DurabilityLv[GameDataManager::BATTLESHIP] = GameDataManager::LV6;
+				m_SumMoney += m_EnhancementCost[GameDataManager::BATTLESHIP][GameDataManager::LV5];
 				m_CurrentLevel[9]++;
 			}
 			break;
-		case LV6:
+		case GameDataManager::LV6:
 			break;
 		default:
 			break;
@@ -837,47 +870,47 @@ void PolicyMenu::SpeedLvUP()
 	{
 		switch (m_SpeedLv[GameDataManager::DESTROYER])
 		{
-		case LV1:
-			if (m_MyMoney >= m_EnhancementCost[GameDataManager::DESTROYER][LV1])
+		case GameDataManager::LV1:
+			if (m_MyMoney >= m_EnhancementCost[GameDataManager::DESTROYER][GameDataManager::LV1])
 			{
-				m_SpeedLv[GameDataManager::DESTROYER] = LV2;
-				m_SumMoney += m_EnhancementCost[GameDataManager::DESTROYER][LV1];
+				m_SpeedLv[GameDataManager::DESTROYER] = GameDataManager::LV2;
+				m_SumMoney += m_EnhancementCost[GameDataManager::DESTROYER][GameDataManager::LV1];
 				m_CurrentLevel[5]++;
 			}
 			break;
-		case LV2:
-			if (m_MyMoney >= m_EnhancementCost[GameDataManager::DESTROYER][LV2])
+		case GameDataManager::LV2:
+			if (m_MyMoney >= m_EnhancementCost[GameDataManager::DESTROYER][GameDataManager::LV2])
 			{
-				m_SpeedLv[GameDataManager::DESTROYER] = LV3;
-				m_SumMoney += m_EnhancementCost[GameDataManager::DESTROYER][LV2];
+				m_SpeedLv[GameDataManager::DESTROYER] = GameDataManager::LV3;
+				m_SumMoney += m_EnhancementCost[GameDataManager::DESTROYER][GameDataManager::LV2];
 				m_CurrentLevel[5]++;
 			}
 			break;
-		case LV3:
-			if (m_MyMoney >= m_EnhancementCost[GameDataManager::DESTROYER][LV3])
+		case GameDataManager::LV3:
+			if (m_MyMoney >= m_EnhancementCost[GameDataManager::DESTROYER][GameDataManager::LV3])
 			{
-				m_SpeedLv[GameDataManager::DESTROYER] = LV4;
-				m_SumMoney += m_EnhancementCost[GameDataManager::DESTROYER][LV3];
+				m_SpeedLv[GameDataManager::DESTROYER] = GameDataManager::LV4;
+				m_SumMoney += m_EnhancementCost[GameDataManager::DESTROYER][GameDataManager::LV3];
 				m_CurrentLevel[5]++;
 			}
 			break;
-		case LV4:
-			if (m_MyMoney >= m_EnhancementCost[GameDataManager::DESTROYER][LV4])
+		case GameDataManager::LV4:
+			if (m_MyMoney >= m_EnhancementCost[GameDataManager::DESTROYER][GameDataManager::LV4])
 			{
-				m_SpeedLv[GameDataManager::DESTROYER] = LV5;
-				m_SumMoney += m_EnhancementCost[GameDataManager::DESTROYER][LV4];
+				m_SpeedLv[GameDataManager::DESTROYER] = GameDataManager::LV5;
+				m_SumMoney += m_EnhancementCost[GameDataManager::DESTROYER][GameDataManager::LV4];
 				m_CurrentLevel[5]++;
 			}
 			break;
-		case LV5:
-			if (m_MyMoney >= m_EnhancementCost[GameDataManager::DESTROYER][LV5])
+		case GameDataManager::LV5:
+			if (m_MyMoney >= m_EnhancementCost[GameDataManager::DESTROYER][GameDataManager::LV5])
 			{
-				m_SpeedLv[GameDataManager::DESTROYER] = LV6;
-				m_SumMoney += m_EnhancementCost[GameDataManager::DESTROYER][LV5];
+				m_SpeedLv[GameDataManager::DESTROYER] = GameDataManager::LV6;
+				m_SumMoney += m_EnhancementCost[GameDataManager::DESTROYER][GameDataManager::LV5];
 				m_CurrentLevel[5]++;
 			}
 			break;
-		case LV6:
+		case GameDataManager::LV6:
 			break;
 		default:
 			break;
@@ -887,47 +920,47 @@ void PolicyMenu::SpeedLvUP()
 	{
 		switch (m_SpeedLv[GameDataManager::CRUISER])
 		{
-		case LV1:
-			if (m_MyMoney >= m_EnhancementCost[GameDataManager::CRUISER][LV1])
+		case GameDataManager::LV1:
+			if (m_MyMoney >= m_EnhancementCost[GameDataManager::CRUISER][GameDataManager::LV1])
 			{
-				m_SpeedLv[GameDataManager::CRUISER] = LV2;
-				m_SumMoney += m_EnhancementCost[GameDataManager::CRUISER][LV1];
+				m_SpeedLv[GameDataManager::CRUISER] = GameDataManager::LV2;
+				m_SumMoney += m_EnhancementCost[GameDataManager::CRUISER][GameDataManager::LV1];
 				m_CurrentLevel[8]++;
 			}
 			break;
-		case LV2:
-			if (m_MyMoney >= m_EnhancementCost[GameDataManager::CRUISER][LV2])
+		case GameDataManager::LV2:
+			if (m_MyMoney >= m_EnhancementCost[GameDataManager::CRUISER][GameDataManager::LV2])
 			{
-				m_SpeedLv[GameDataManager::CRUISER] = LV3;
-				m_SumMoney += m_EnhancementCost[GameDataManager::CRUISER][LV2];
+				m_SpeedLv[GameDataManager::CRUISER] = GameDataManager::LV3;
+				m_SumMoney += m_EnhancementCost[GameDataManager::CRUISER][GameDataManager::LV2];
 				m_CurrentLevel[8]++;
 			}
 			break;
-		case LV3:
-			if (m_MyMoney >= m_EnhancementCost[GameDataManager::CRUISER][LV3])
+		case GameDataManager::LV3:
+			if (m_MyMoney >= m_EnhancementCost[GameDataManager::CRUISER][GameDataManager::LV3])
 			{
-				m_SpeedLv[GameDataManager::CRUISER] = LV4;
-				m_SumMoney += m_EnhancementCost[GameDataManager::CRUISER][LV3];
+				m_SpeedLv[GameDataManager::CRUISER] = GameDataManager::LV4;
+				m_SumMoney += m_EnhancementCost[GameDataManager::CRUISER][GameDataManager::LV3];
 				m_CurrentLevel[8]++;
 			}
 			break;
-		case LV4:
-			if (m_MyMoney >= m_EnhancementCost[GameDataManager::CRUISER][LV4])
+		case GameDataManager::LV4:
+			if (m_MyMoney >= m_EnhancementCost[GameDataManager::CRUISER][GameDataManager::LV4])
 			{
-				m_SpeedLv[GameDataManager::CRUISER] = LV5;
-				m_SumMoney += m_EnhancementCost[GameDataManager::CRUISER][LV4];
+				m_SpeedLv[GameDataManager::CRUISER] = GameDataManager::LV5;
+				m_SumMoney += m_EnhancementCost[GameDataManager::CRUISER][GameDataManager::LV4];
 				m_CurrentLevel[8]++;
 			}
 			break;
-		case LV5:
-			if (m_MyMoney >= m_EnhancementCost[GameDataManager::CRUISER][LV5])
+		case GameDataManager::LV5:
+			if (m_MyMoney >= m_EnhancementCost[GameDataManager::CRUISER][GameDataManager::LV5])
 			{
-				m_SpeedLv[GameDataManager::CRUISER] = LV6;
-				m_SumMoney += m_EnhancementCost[GameDataManager::CRUISER][LV5];
+				m_SpeedLv[GameDataManager::CRUISER] = GameDataManager::LV6;
+				m_SumMoney += m_EnhancementCost[GameDataManager::CRUISER][GameDataManager::LV5];
 				m_CurrentLevel[8]++;
 			}
 			break;
-		case LV6:
+		case GameDataManager::LV6:
 			break;
 		default:
 			break;
@@ -937,47 +970,47 @@ void PolicyMenu::SpeedLvUP()
 	{
 		switch (m_SpeedLv[GameDataManager::BATTLESHIP])
 		{
-		case LV1:
-			if (m_MyMoney >= m_EnhancementCost[GameDataManager::BATTLESHIP][LV1])
+		case GameDataManager::LV1:
+			if (m_MyMoney >= m_EnhancementCost[GameDataManager::BATTLESHIP][GameDataManager::LV1])
 			{
-				m_SpeedLv[GameDataManager::BATTLESHIP] = LV2;
-				m_SumMoney += m_EnhancementCost[GameDataManager::BATTLESHIP][LV1];
+				m_SpeedLv[GameDataManager::BATTLESHIP] = GameDataManager::LV2;
+				m_SumMoney += m_EnhancementCost[GameDataManager::BATTLESHIP][GameDataManager::LV1];
 				m_CurrentLevel[11]++;
 			}
 			break;
-		case LV2:
-			if (m_MyMoney >= m_EnhancementCost[GameDataManager::BATTLESHIP][LV2])
+		case GameDataManager::LV2:
+			if (m_MyMoney >= m_EnhancementCost[GameDataManager::BATTLESHIP][GameDataManager::LV2])
 			{
-				m_SpeedLv[GameDataManager::BATTLESHIP] = LV3;
-				m_SumMoney += m_EnhancementCost[GameDataManager::BATTLESHIP][LV2];
+				m_SpeedLv[GameDataManager::BATTLESHIP] = GameDataManager::LV3;
+				m_SumMoney += m_EnhancementCost[GameDataManager::BATTLESHIP][GameDataManager::LV2];
 				m_CurrentLevel[11]++;
 			}
 			break;
-		case LV3:
-			if (m_MyMoney >= m_EnhancementCost[GameDataManager::BATTLESHIP][LV3])
+		case GameDataManager::LV3:
+			if (m_MyMoney >= m_EnhancementCost[GameDataManager::BATTLESHIP][GameDataManager::LV3])
 			{
-				m_SpeedLv[GameDataManager::BATTLESHIP] = LV4;
-				m_SumMoney += m_EnhancementCost[GameDataManager::BATTLESHIP][LV3];
+				m_SpeedLv[GameDataManager::BATTLESHIP] = GameDataManager::LV4;
+				m_SumMoney += m_EnhancementCost[GameDataManager::BATTLESHIP][GameDataManager::LV3];
 				m_CurrentLevel[11]++;
 			}
 			break;
-		case LV4:
-			if (m_MyMoney >= m_EnhancementCost[GameDataManager::BATTLESHIP][LV4])
+		case GameDataManager::LV4:
+			if (m_MyMoney >= m_EnhancementCost[GameDataManager::BATTLESHIP][GameDataManager::LV4])
 			{
-				m_SpeedLv[GameDataManager::BATTLESHIP] = LV5;
-				m_SumMoney += m_EnhancementCost[GameDataManager::BATTLESHIP][LV4];
+				m_SpeedLv[GameDataManager::BATTLESHIP] = GameDataManager::LV5;
+				m_SumMoney += m_EnhancementCost[GameDataManager::BATTLESHIP][GameDataManager::LV4];
 				m_CurrentLevel[11]++;
 			}
 			break;
-		case LV5:
-			if (m_MyMoney >= m_EnhancementCost[GameDataManager::BATTLESHIP][LV5])
+		case GameDataManager::LV5:
+			if (m_MyMoney >= m_EnhancementCost[GameDataManager::BATTLESHIP][GameDataManager::LV5])
 			{
-				m_SpeedLv[GameDataManager::BATTLESHIP] = LV6;
-				m_SumMoney += m_EnhancementCost[GameDataManager::BATTLESHIP][LV5];
+				m_SpeedLv[GameDataManager::BATTLESHIP] = GameDataManager::LV6;
+				m_SumMoney += m_EnhancementCost[GameDataManager::BATTLESHIP][GameDataManager::LV5];
 				m_CurrentLevel[11]++;
 			}
 			break;
-		case LV6:
+		case GameDataManager::LV6:
 			break;
 		default:
 			break;
@@ -992,47 +1025,47 @@ void PolicyMenu::ExchangeLvUP()
 	{
 		switch (m_ExchangeLv[IKOKU])
 		{
-		case LV1:
-			if (m_MyMoney >= m_ExchangeCost[IKOKU][LV1])
+		case GameDataManager::LV1:
+			if (m_MyMoney >= m_ExchangeCost[IKOKU][GameDataManager::LV1])
 			{
-				m_ExchangeLv[IKOKU] = LV2;
-				m_SumMoney += m_ExchangeCost[IKOKU][LV1];
+				m_ExchangeLv[IKOKU] = GameDataManager::LV2;
+				m_SumMoney += m_ExchangeCost[IKOKU][GameDataManager::LV1];
 				m_CurrentLevel[0]++;
 			}
 			break;
-		case LV2:
-			if (m_MyMoney >= m_ExchangeCost[IKOKU][LV2])
+		case GameDataManager::LV2:
+			if (m_MyMoney >= m_ExchangeCost[IKOKU][GameDataManager::LV2])
 			{
-				m_ExchangeLv[IKOKU] = LV3;
-				m_SumMoney += m_ExchangeCost[IKOKU][LV2];
+				m_ExchangeLv[IKOKU] = GameDataManager::LV3;
+				m_SumMoney += m_ExchangeCost[IKOKU][GameDataManager::LV2];
 				m_CurrentLevel[0]++;
 			}
 			break;
-		case LV3:
-			if (m_MyMoney >= m_ExchangeCost[IKOKU][LV3])
+		case GameDataManager::LV3:
+			if (m_MyMoney >= m_ExchangeCost[IKOKU][GameDataManager::LV3])
 			{
-				m_ExchangeLv[IKOKU] = LV4;
-				m_SumMoney += m_ExchangeCost[IKOKU][LV3];
+				m_ExchangeLv[IKOKU] = GameDataManager::LV4;
+				m_SumMoney += m_ExchangeCost[IKOKU][GameDataManager::LV3];
 				m_CurrentLevel[0]++;
 			}
 			break;
-		case LV4:
-			if (m_MyMoney >= m_ExchangeCost[IKOKU][LV4])
+		case GameDataManager::LV4:
+			if (m_MyMoney >= m_ExchangeCost[IKOKU][GameDataManager::LV4])
 			{
-				m_ExchangeLv[IKOKU] = LV5;
-				m_SumMoney += m_ExchangeCost[IKOKU][LV4];
+				m_ExchangeLv[IKOKU] = GameDataManager::LV5;
+				m_SumMoney += m_ExchangeCost[IKOKU][GameDataManager::LV4];
 				m_CurrentLevel[0]++;
 			}
 			break;
-		case LV5:
-			if (m_MyMoney >= m_ExchangeCost[IKOKU][LV5])
+		case GameDataManager::LV5:
+			if (m_MyMoney >= m_ExchangeCost[IKOKU][GameDataManager::LV5])
 			{
-				m_ExchangeLv[IKOKU] = LV6;
-				m_SumMoney += m_ExchangeCost[IKOKU][LV5];
+				m_ExchangeLv[IKOKU] = GameDataManager::LV6;
+				m_SumMoney += m_ExchangeCost[IKOKU][GameDataManager::LV5];
 				m_CurrentLevel[0]++;
 			}
 			break;
-		case LV6:
+		case GameDataManager::LV6:
 			break;
 		default:
 			break;
@@ -1042,47 +1075,47 @@ void PolicyMenu::ExchangeLvUP()
 	{
 		switch (m_ExchangeLv[ROKOKU])
 		{
-		case LV1:
-			if (m_MyMoney >= m_ExchangeCost[ROKOKU][LV1])
+		case GameDataManager::LV1:
+			if (m_MyMoney >= m_ExchangeCost[ROKOKU][GameDataManager::LV1])
 			{
-				m_ExchangeLv[ROKOKU] = LV2;
-				m_SumMoney += m_ExchangeCost[ROKOKU][LV1];
+				m_ExchangeLv[ROKOKU] = GameDataManager::LV2;
+				m_SumMoney += m_ExchangeCost[ROKOKU][GameDataManager::LV1];
 				m_CurrentLevel[1]++;
 			}
 			break;
-		case LV2:
-			if (m_MyMoney >= m_ExchangeCost[ROKOKU][LV2])
+		case GameDataManager::LV2:
+			if (m_MyMoney >= m_ExchangeCost[ROKOKU][GameDataManager::LV2])
 			{
-				m_ExchangeLv[ROKOKU] = LV3;
-				m_SumMoney += m_ExchangeCost[ROKOKU][LV2];
+				m_ExchangeLv[ROKOKU] = GameDataManager::LV3;
+				m_SumMoney += m_ExchangeCost[ROKOKU][GameDataManager::LV2];
 				m_CurrentLevel[1]++;
 			}
 			break;
-		case LV3:
-			if (m_MyMoney >= m_ExchangeCost[ROKOKU][LV3])
+		case GameDataManager::LV3:
+			if (m_MyMoney >= m_ExchangeCost[ROKOKU][GameDataManager::LV3])
 			{
-				m_ExchangeLv[ROKOKU] = LV4;
-				m_SumMoney += m_ExchangeCost[ROKOKU][LV3];
+				m_ExchangeLv[ROKOKU] = GameDataManager::LV4;
+				m_SumMoney += m_ExchangeCost[ROKOKU][GameDataManager::LV3];
 				m_CurrentLevel[1]++;
 			}
 			break;
-		case LV4:
-			if (m_MyMoney >= m_ExchangeCost[ROKOKU][LV4])
+		case GameDataManager::LV4:
+			if (m_MyMoney >= m_ExchangeCost[ROKOKU][GameDataManager::LV4])
 			{
-				m_ExchangeLv[ROKOKU] = LV5;
-				m_SumMoney += m_ExchangeCost[ROKOKU][LV4];
+				m_ExchangeLv[ROKOKU] = GameDataManager::LV5;
+				m_SumMoney += m_ExchangeCost[ROKOKU][GameDataManager::LV4];
 				m_CurrentLevel[1]++;
 			}
 			break;
-		case LV5:
-			if (m_MyMoney >= m_ExchangeCost[ROKOKU][LV5])
+		case GameDataManager::LV5:
+			if (m_MyMoney >= m_ExchangeCost[ROKOKU][GameDataManager::LV5])
 			{
-				m_ExchangeLv[ROKOKU] = LV6;
-				m_SumMoney += m_ExchangeCost[ROKOKU][LV5];
+				m_ExchangeLv[ROKOKU] = GameDataManager::LV6;
+				m_SumMoney += m_ExchangeCost[ROKOKU][GameDataManager::LV5];
 				m_CurrentLevel[1]++;
 			}
 			break;
-		case LV6:
+		case GameDataManager::LV6:
 			break;
 		default:
 			break;
@@ -1092,47 +1125,47 @@ void PolicyMenu::ExchangeLvUP()
 	{
 		switch (m_ExchangeLv[HAKOKU])
 		{
-		case LV1:
-			if (m_MyMoney >= m_ExchangeCost[HAKOKU][LV1])
+		case GameDataManager::LV1:
+			if (m_MyMoney >= m_ExchangeCost[HAKOKU][GameDataManager::LV1])
 			{
-				m_ExchangeLv[HAKOKU] = LV2;
-				m_SumMoney += m_ExchangeCost[HAKOKU][LV1];
+				m_ExchangeLv[HAKOKU] = GameDataManager::LV2;
+				m_SumMoney += m_ExchangeCost[HAKOKU][GameDataManager::LV1];
 				m_CurrentLevel[2]++;
 			}
 			break;
-		case LV2:
-			if (m_MyMoney >= m_ExchangeCost[HAKOKU][LV2])
+		case GameDataManager::LV2:
+			if (m_MyMoney >= m_ExchangeCost[HAKOKU][GameDataManager::LV2])
 			{
-				m_ExchangeLv[HAKOKU] = LV3;
-				m_SumMoney += m_ExchangeCost[HAKOKU][LV2];
+				m_ExchangeLv[HAKOKU] = GameDataManager::LV3;
+				m_SumMoney += m_ExchangeCost[HAKOKU][GameDataManager::LV2];
 				m_CurrentLevel[2]++;
 			}
 			break;
-		case LV3:
-			if (m_MyMoney >= m_ExchangeCost[HAKOKU][LV3])
+		case GameDataManager::LV3:
+			if (m_MyMoney >= m_ExchangeCost[HAKOKU][GameDataManager::LV3])
 			{
-				m_ExchangeLv[HAKOKU] = LV4;
-				m_SumMoney += m_ExchangeCost[HAKOKU][LV3];
+				m_ExchangeLv[HAKOKU] = GameDataManager::LV4;
+				m_SumMoney += m_ExchangeCost[HAKOKU][GameDataManager::LV3];
 				m_CurrentLevel[2]++;
 			}
 			break;
-		case LV4:
-			if (m_MyMoney >= m_ExchangeCost[HAKOKU][LV4])
+		case GameDataManager::LV4:
+			if (m_MyMoney >= m_ExchangeCost[HAKOKU][GameDataManager::LV4])
 			{
-				m_ExchangeLv[HAKOKU] = LV5;
-				m_SumMoney += m_ExchangeCost[HAKOKU][LV4];
+				m_ExchangeLv[HAKOKU] = GameDataManager::LV5;
+				m_SumMoney += m_ExchangeCost[HAKOKU][GameDataManager::LV4];
 				m_CurrentLevel[2]++;
 			}
 			break;
-		case LV5:
-			if (m_MyMoney >= m_ExchangeCost[HAKOKU][LV5])
+		case GameDataManager::LV5:
+			if (m_MyMoney >= m_ExchangeCost[HAKOKU][GameDataManager::LV5])
 			{
-				m_ExchangeLv[HAKOKU] = LV6;
-				m_SumMoney += m_ExchangeCost[HAKOKU][LV5];
+				m_ExchangeLv[HAKOKU] = GameDataManager::LV6;
+				m_SumMoney += m_ExchangeCost[HAKOKU][GameDataManager::LV5];
 				m_CurrentLevel[2]++;
 			}
 			break;
-		case LV6:
+		case GameDataManager::LV6:
 			break;
 		default:
 			break;
@@ -1149,6 +1182,7 @@ void PolicyMenu::CreatShip()
 		{
 			m_SumMoney += m_CreatShipCost[GameDataManager::BATTLESHIP];
 			BattleShipPushCount++;
+			m_IsBattleShipSelected = true;
 		}
 	}
 
@@ -1158,6 +1192,7 @@ void PolicyMenu::CreatShip()
 		{
 			m_SumMoney += m_CreatShipCost[GameDataManager::CRUISER];
 			CruiserShipPushCount++;
+			m_IsCruiserSelected = true;
 		}
 	}
 
@@ -1165,5 +1200,7 @@ void PolicyMenu::CreatShip()
 	{
 		BattleShipPushCount = 0;
 		CruiserShipPushCount = 0;
+		m_IsBattleShipSelected = false;
+		m_IsCruiserSelected = false;
 	}
 }

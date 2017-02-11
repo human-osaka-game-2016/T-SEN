@@ -31,10 +31,10 @@ GameDataManager::GameDataManager()
 	, m_FightOffDays(FightOffDayLimitVal)
 	, m_WaveCount(1)
 	, m_SelectedShipID()
+	, m_IsBattleShipSelected(false)
+	, m_IsCruiserSelected(false)
+
 {
-	m_ShipAggressivity.m_Aggressivity[GameDataManager::ShipAggressivity::LV1] = 0;
-	m_ShipDurability.m_Durability[GameDataManager::ShipDurability::LV1] = 0;
-	m_ShipSpeed.m_Speed[GameDataManager::ShipSpeed::LV1] = 0;
 }
 
 GameDataManager::~GameDataManager()
@@ -46,6 +46,7 @@ void GameDataManager::ResetWaveData()
 	m_FightOffDays = FightOffDayLimitVal;
 	++m_WaveCount;
 }
+
 
 //==================================================================================================================================//
 //END OF FILE
