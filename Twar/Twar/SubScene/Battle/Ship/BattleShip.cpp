@@ -12,7 +12,7 @@
 #include "../Bullet/BulletManager.h"
 
 BattleShip::BattleShip(D3DXVECTOR3* pos, BulletManager* pBulletManager)
-	: Ship(pos, { 7500, 0.f }, SHIP_ID::BATTLESHIP, pBulletManager)
+	: Ship(pos, { 20, 0.f }, SHIP_ID::BATTLESHIP, pBulletManager)
 {
 	m_SpeedLimit = m_BattleShipSpeedLimit;
 	m_pStateMachine = new StateMachine<Ship>(this);
@@ -255,7 +255,7 @@ void BattleShip::ControlPlayer()
 
 	///////////////////////////////////////////////　ここから　/////////////////////////////////////////////////////////
 
-	if (m_pGameLib.CheckKey(DIK_P, P) == PUSH)
+	if (m_pGameLib.CheckKey(DIK_F, F) == PUSH)
 	{
 		if (m_IsFpsMode)
 		{

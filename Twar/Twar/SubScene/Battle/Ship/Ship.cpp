@@ -9,7 +9,7 @@
 #include "../CameraController/CameraController.h"
 #include "Fbx/FbxModel.h"
 
-const float	Ship::m_LimitArrivalFlame = 500.f;
+const float	Ship::m_LimitArrivalFlame = 300.f;
 const float	Ship::m_DecelerationSpeed = 0.002f;
 const float	Ship::m_PitchSpeed = 0.025f;
 const float	Ship::m_PitchUpperLimit = -6.f;

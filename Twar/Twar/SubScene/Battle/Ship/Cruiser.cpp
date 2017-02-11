@@ -12,7 +12,7 @@
 #include "../Bullet/BulletManager.h"
 
 Cruiser::Cruiser(D3DXVECTOR3* pos, BulletManager* pBulletManager)
-	: Ship(pos, { 2500, 0.f }, SHIP_ID::CRUISER, pBulletManager)
+	: Ship(pos, { 15, 0.f }, SHIP_ID::CRUISER, pBulletManager)
 {
 	m_SpeedLimit = m_CruiserSpeedLimit;
 	m_pStateMachine = new StateMachine<Ship>(this);
@@ -184,7 +184,7 @@ void Cruiser::ControlPlayer()
 		}
 		m_IsZoom = false;
 
-		if (m_pGameLib.CheckKey(DIK_P, P) == PUSH)
+		if (m_pGameLib.CheckKey(DIK_F, F) == PUSH)
 		{
 			if (m_IsFpsMode)
 			{

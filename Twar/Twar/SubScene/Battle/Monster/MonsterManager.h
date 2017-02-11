@@ -40,6 +40,8 @@ public:
 	/**描画関数*/
 	void Draw();
 
+	void Hit(int i){ m_pMonsters[i]->Hit(); }
+
 	/**ゲッター関数*/
 	MonsterSize GetMonsterSize(){ return m_MonsterSize; }
 	D3DXVECTOR3 GetPos(int i){ return m_pMonsters[i]->GetPos(); }

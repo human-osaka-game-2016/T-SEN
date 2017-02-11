@@ -38,8 +38,10 @@ private:
 	float			m_LifeTu;
 	float			m_LifeTvCount;
 	int				m_LifeMAX;
+	float			m_LifeWide;
+	float			m_width;
 
-	int CurrentLife;
+	int m_CurrentLife;
 
 };
 

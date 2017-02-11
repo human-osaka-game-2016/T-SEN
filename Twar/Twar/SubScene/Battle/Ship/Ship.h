@@ -78,6 +78,8 @@ public:
 	*/
 	void CameraTransWorld();
 
+	void Damage(){ m_Status.m_Hp--; }
+
 	/**--@data 2017/02/04haga追加分----------------------------------------------------------------------------------------------------------*/
 	/**-----Getter-------------*/
 	const D3DXVECTOR3&  GetObjPos() { return m_ObjPos; }

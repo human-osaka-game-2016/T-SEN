@@ -13,6 +13,7 @@
 #include "Monster.h"
 #include "MonsterManager.h"
 #include "MonsterBullet/MonsterBulletManager.h"
+#include "../BattleData/BattleDataManager.h"
 
 //---------------------------------------------------------------------------------------------------------------------------------------//
 //Public functions
@@ -31,6 +32,8 @@ MonsterManager::MonsterManager(GameDataManager* pGameDataManager)
 	// GameDataManagerから敵の数をおしえてもらう
 	/**@todo	現在はまだ実装できていないで、適当に敵を作成*/
 	m_pMonsters.emplace_back(new Monster(m_pMonsterFbx->m_pModel, m_pBulletManager));
+
+	BattleDataManager::Instance().SetMonsterCount(sizeof(m_pMonsters));
 
 	m_MonsterSize.m_MaxX = m_pMonsterFbx->m_pModel->maxX;
 	m_MonsterSize.m_MaxY = m_pMonsterFbx->m_pModel->maxY;
@@ -64,6 +67,7 @@ void MonsterManager::Control()
 		{// 消滅していたら削除する
 			delete (*itr);
 			itr = m_pMonsters.erase(itr);
+			BattleDataManager::Instance().SetMonsterCount(static_cast<int>(m_pMonsters.size()));
 		}
 		else
 		{

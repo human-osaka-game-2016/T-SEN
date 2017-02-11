@@ -134,14 +134,17 @@ void CollisionManager::Control()
 			if (m_pCollision->CheckFirstCollision3D(m_pShipManager->GetArmyObjPos(i), m_pMonsterBulletManager->GetBulletPos(j), r1 * 0.9f, m_MonsterBulletSize.m_MaxR * 0.5f))
 			{
 				if (m_pCollision->CheckSecondCollisionShipBullet(m_pShipManager->GetArmyObjPos(i),
-																 m_pMonsterBulletManager->GetBulletOldPos(j),
-																 m_pMonsterBulletManager->GetBulletPos(j),
-																 shipSize1,
-																 m_BulletSize,
-																 m_pShipManager->GetArmyRotate(i),
-																 m_pMonsterBulletManager->GetBulletAngle(j)))
+					m_pMonsterBulletManager->GetBulletOldPos(j),
+					m_pMonsterBulletManager->GetBulletPos(j),
+					shipSize1,
+					m_BulletSize,
+					m_pShipManager->GetArmyRotate(i),
+					m_pMonsterBulletManager->GetBulletAngle(j)))
 				{
-					m_pMonsterBulletManager->SetHit(j, true);
+					if (m_pShipManager->IsDamageArmy(i))
+					{
+						m_pMonsterBulletManager->SetHit(j, true);
+					}
 				}
 			}
 		}
@@ -252,14 +255,17 @@ void CollisionManager::Control()
 				if (m_pCollision->CheckFirstCollision3D(m_pShipManager->GetEnemyObjPos(j), m_pMonsterBulletManager->GetBulletPos(k), r2 * 0.9f, m_MonsterBulletSize.m_MaxR * 0.5f))
 				{
 					if (m_pCollision->CheckSecondCollisionShipBullet(m_pShipManager->GetEnemyObjPos(j),
-																	 m_pMonsterBulletManager->GetBulletOldPos(k),
-																	 m_pMonsterBulletManager->GetBulletPos(k),
-																	 shipSize2,
-																	 m_BulletSize,
-																	 m_pShipManager->GetEnemyRotate(j),
-																	 m_pMonsterBulletManager->GetBulletAngle(k)))
+						m_pMonsterBulletManager->GetBulletOldPos(k),
+						m_pMonsterBulletManager->GetBulletPos(k),
+						shipSize2,
+						m_BulletSize,
+						m_pShipManager->GetEnemyRotate(j),
+						m_pMonsterBulletManager->GetBulletAngle(k)))
 					{
-						m_pMonsterBulletManager->SetHit(k, true);
+						if (m_pShipManager->IsDamageEnemy(j))
+						{
+							m_pMonsterBulletManager->SetHit(k, true);
+						}
 					}
 				}
 			}
@@ -279,6 +285,7 @@ void CollisionManager::Control()
 																m_pBulletManager->GetBulletRotate(i)))
 			{
 				m_pBulletManager->SetHit(i, true);
+				m_pMonsterManager->Hit(0);
 			}
 		}
 	}
@@ -295,6 +302,7 @@ void CollisionManager::Control()
 																m_pAIBulletManager->GetBulletAngle(i)))
 			{
 				m_pAIBulletManager->SetHit(i, true);
+				m_pMonsterManager->Hit(0);
 			}
 		}
 	}
