@@ -35,6 +35,7 @@ MonsterLifeGauge::MonsterLifeGauge(int lifeTexID, int LifeVtrID, int FlameVtrID)
 	, m_LifeTu(130.f / 1024.f)
 	, m_LifeHeight(100.f)
 	, m_LifeWide(450.f)
+	, m_width(0.f)
 {
 	m_Angle = 90.f;
 	m_LifeMAX = BattleDataManager::Instance().GetMonsterHp();
@@ -61,14 +62,17 @@ MonsterLifeGauge::~MonsterLifeGauge()
 void MonsterLifeGauge::Control()
 {
 	m_CurrentLife = BattleDataManager::Instance().GetMonsterHp();
+
+	m_width = m_LifeWide / m_LifeMAX * m_CurrentLife;
 }
 
 void MonsterLifeGauge::Draw()
 {
 	// ライフゲージ
 	GameLib::Instance().GetDevice()->SetTexture(0, GameLib::Instance().GetTexture(m_TexID[UI]));
-	GameLib::Instance().SetVtxUV(m_LifeID, m_LifeTu, (130.f + VtxWidth) / 1024.f, 100.f / 512.f, (100.f + VtxHeight) / 512.f);
-	GameLib::Instance().DrawXY(m_TexID[UI], m_LifeID, m_LifePos.x, m_LifePos.y);
+	GameLib::Instance().CreateVtx(m_LifeID, m_width, 100.f);
+	GameLib::Instance().SetVtxUV(m_LifeID, m_LifeTu + ((VtxWidth - m_width) / 1024.f), (130.f + VtxWidth) / 1024.f, 100.f / 512.f, (100.f + VtxHeight) / 512.f);
+	GameLib::Instance().DrawXY(m_TexID[UI], m_LifeID, m_LifePos.x + (VtxWidth - m_width), m_LifePos.y);
 
 	// フレーム描画
 	GameLib::Instance().GetDevice()->SetTexture(0, GameLib::Instance().GetTexture(m_TexID[UI]));

@@ -39,6 +39,8 @@ public:
 	/**描画関数*/
 	void Draw();
 
+	void Hit(){ m_Status.Hp--; }
+
 	/**ゲッター関数*/
 	D3DXVECTOR3 GetPos(){ return m_Pos; }
 	float GetAngle(){ return m_Angle; }

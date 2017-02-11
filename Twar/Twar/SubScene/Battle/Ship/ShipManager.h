@@ -109,6 +109,26 @@ public:
 
 	/**	カメラ位置を決める関数 */
 	void CameraTransform(){ m_Army[0]->CameraTransWorld(); }/////////////////////////////////////////　もとは200　//////////////////////////////////////////////////
+
+	bool IsDamageArmy(int i)
+	{ 
+		m_Army[i]->m_Status.m_Hp--; 
+		if (m_Army[i]->m_Status.m_Hp <= 0)
+		{
+			return false;
+		}
+		return true;
+	}
+	
+	bool IsDamageEnemy(int i)
+		{
+			m_Enemy[i]->m_Status.m_Hp--;
+			if (m_Enemy[i]->m_Status.m_Hp <= 0)
+			{
+				return false;
+			}
+			return true;
+		}
 };
 
 #endif	//	SHIPMANAGER_H

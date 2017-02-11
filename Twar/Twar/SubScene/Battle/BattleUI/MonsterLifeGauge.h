@@ -40,6 +40,7 @@ private:
 	int				m_LifeMAX;
 	int				m_CurrentLife;
 	int				m_TexID[LIFE_GAUGE_ID::ID_MAX];
+	float			m_width;
 };
 
 

@@ -55,10 +55,10 @@ Battle::Battle(GameDataManager* pGameDataManager, GameTimer* pGameTimer)
 		ShipManager::BATTLESHIP,
 		ShipManager::CRUISER,
 		ShipManager::DESTROYER,
-		ShipManager::DESTROYER,
+		ShipManager::BATTLESHIP,
 		ShipManager::CRUISER,
 		ShipManager::DESTROYER,
-		ShipManager::BATTLESHIP,
+		ShipManager::DESTROYER,
 		ShipManager::CRUISER,
 		ShipManager::DESTROYER
 	};
@@ -81,7 +81,7 @@ Battle::Battle(GameDataManager* pGameDataManager, GameTimer* pGameTimer)
 		break;
 	}
 
-	char ally = 2, enemy = 2;
+	char ally = 3, enemy = 4;
 	m_pShipManager->Create(&ally, &enemy, shipID);
 
 	m_pBattleUIManager = new BattleUIManager();
@@ -118,7 +118,7 @@ SUBSCENE_ID Battle::Control()
 
 	if(CheckBattleState())
 	{
-//		return SUBSCENE_ID::BATTLE_RESULT;
+		return SUBSCENE_ID::BATTLE_RESULT;
 	}
 
 	return SUBSCENE_ID::BATTLE;

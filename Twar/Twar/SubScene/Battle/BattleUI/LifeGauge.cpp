@@ -25,11 +25,13 @@ namespace
 
 LifeGauge::LifeGauge(int lifeTexID, int lifeVtxID, int flameVtxID, int MosterflameID)
 	: m_LifeTv(0.0f)
-	, m_LifeTu()
-	, m_LifeHeight(450.f)
+	, m_LifeTu(130.f / 1024.f)
+	, m_LifeHeight(100.f)
+	, m_LifeWide(450.f)
+	, m_width(0.f)
 {
 	m_LifeMAX = BattleDataManager::Instance().GetPlayerHp();
-	CurrentLife = m_LifeMAX;
+	m_CurrentLife = m_LifeMAX;
 	m_LifeTvCount = 1.0f / m_LifeMAX;
 	m_LifePos.x = 45.f;
 	m_LifePos.y = LifePosY;
@@ -54,24 +56,30 @@ LifeGauge::~LifeGauge()
 
 void LifeGauge::Control()
 {
-	CurrentLife = BattleDataManager::Instance().GetPlayerHp();
+	m_CurrentLife = BattleDataManager::Instance().GetPlayerHp();
 
-	if (m_LifeMAX != CurrentLife)
-	{
-
-		m_LifeTu += (m_LifeMAX - CurrentLife) * m_LifeTvCount;	//ダメージ表示分
-		m_LifePos.x += ((m_LifeMAX - CurrentLife) * m_LifePosCount) / 1.0f;	//ダメージ表示分
-		m_LifeHeight -= (m_LifeMAX - CurrentLife) * m_LifePosCount;;	//ダメージ計算
-		m_LifeMAX = CurrentLife;	//ダメージ計算
-
-	}
+	//if (m_LifeMAX != CurrentLife)
+	//{
+	//
+	//	m_LifeTu += (m_LifeMAX - CurrentLife) * m_LifeTvCount;	//ダメージ表示分
+	//	m_LifePos.x += ((m_LifeMAX - CurrentLife) * m_LifePosCount) / 1.0f;	//ダメージ表示分
+	//	m_LifeHeight -= (m_LifeMAX - CurrentLife) * m_LifePosCount;;	//ダメージ計算
+	//	m_LifeMAX = CurrentLife;	//ダメージ計算
+	//
+	//}
+	m_width = m_LifeWide / m_LifeMAX * m_CurrentLife;
 }
 
 void LifeGauge::Draw()
 {
-	GameLib::Instance().SetVtxUV(m_VtxID, 130 / 1024.f, 580 / 1024.f, m_LifeTv, 100 / 512.f);
-	GameLib::Instance().SetVtxSize(m_VtxID, m_LifeHeight, 100.f);
-	GameLib::Instance().DrawXY(m_TexID[UI], m_VtxID, m_LifePos.x, m_LifePos.y);
+	//GameLib::Instance().SetVtxUV(m_VtxID, 130 / 1024.f, 580 / 1024.f, m_LifeTv, 100 / 512.f);
+	//GameLib::Instance().SetVtxSize(m_VtxID, m_LifeWide, 100.f);
+	//GameLib::Instance().DrawXY(m_TexID[UI], m_VtxID, m_LifePos.x, m_LifePos.y);
+
+	GameLib::Instance().GetDevice()->SetTexture(0, GameLib::Instance().GetTexture(m_TexID[UI]));
+	GameLib::Instance().CreateVtx(m_VtxID, m_width, 100.f);
+	GameLib::Instance().SetVtxUV(m_VtxID, m_LifeTu + ((m_LifeWide - m_width) / 1024.f), (130.f + m_LifeWide) / 1024.f, m_LifeTv / 512.f, (100.f + m_LifeTv) / 512.f);
+	GameLib::Instance().DrawXY(m_TexID[UI], m_VtxID, m_LifePos.x + (m_LifeWide - m_width), m_LifePos.y);
 
 	GameLib::Instance().SetVtxUV(m_FlameVtxID, 130.f / 1024.f, 580.f / 1024.f, 200.f / 512.f, 300.f / 512.f);
 	GameLib::Instance().SetVtxColor(m_FlameVtxID, 0xffffffff);

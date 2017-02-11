@@ -108,28 +108,42 @@ void ShipManager::Control()
 	Radar::Instance().ClearData();
 	for (char i = 0; i < m_ArmyCount; i++)
 	{
-		m_Army[i]->Control();
-		Radar::Instance().SetShipPos(m_Army[i]->m_ObjPos);
+		if (m_Army[i]->m_Status.m_Hp > 0)
+		{
+			m_Army[i]->Control();
+			Radar::Instance().SetShipPos(m_Army[i]->m_ObjPos);
+		}
 	}
 	for (char i = 0; i < m_EnemyCount; i++)
 	{
-		m_Enemy[i]->Control();
-		Radar::Instance().SetShipPos(m_Enemy[i]->m_ObjPos);
+		if (m_Enemy[i]->m_Status.m_Hp > 0)
+		{
+			m_Enemy[i]->Control();
+			Radar::Instance().SetShipPos(m_Enemy[i]->m_ObjPos);
+		}
 	}
 
 	m_pBulletManager->Control(GetPlayerPos(), GetArmyRotate(0));
 	AIBulletManager::Instance()->Control();
+
+	BattleDataManager::Instance().SetPlayerHp(m_Army[0]->m_Status.m_Hp);
 }
 
 void ShipManager::Draw()
 {
 	for (char i = 0; i < m_ArmyCount; i++)
 	{
-		m_Army[i]->Draw();
+		if (m_Army[i]->m_Status.m_Hp > 0)
+		{
+			m_Army[i]->Draw();
+		}
 	}
 	for (char i = 0; i < m_EnemyCount; i++)
 	{
-		m_Enemy[i]->Draw();
+		if (m_Enemy[i]->m_Status.m_Hp > 0)
+		{
+			m_Enemy[i]->Draw();
+		}
 	}
 	m_pBulletManager->Draw();
 	AIBulletManager::Instance()->Draw();

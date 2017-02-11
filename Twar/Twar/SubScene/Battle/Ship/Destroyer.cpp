@@ -12,7 +12,7 @@
 #include "../Bullet/BulletManager.h"
 
 Destroyer::Destroyer(D3DXVECTOR3* pos, BulletManager* pBulletManager)
-	: Ship(pos, { 1500, 0.f }, SHIP_ID::DESTROYER, pBulletManager)
+	: Ship(pos, { 10, 0.f }, SHIP_ID::DESTROYER, pBulletManager)
 {
 	m_SpeedLimit = m_DestroyerSpeedLimit;
 	m_pStateMachine = new StateMachine<Ship>(this);
@@ -186,7 +186,7 @@ void Destroyer::ControlPlayer()
 		}
 		m_IsZoom = false;
 
-		if (m_pGameLib.CheckKey(DIK_P, P) == PUSH)
+		if (m_pGameLib.CheckKey(DIK_F, F) == PUSH)
 		{
 			if (m_IsFpsMode)
 			{

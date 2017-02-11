@@ -55,7 +55,7 @@ const D3DXVECTOR3	PositionTable[PosCount] = {
 Monster::Monster(FbxModel* pModel, MonsterBulletManager* pBulletManager)
 	: m_Radian(D3DXToRadian(180.f))
 	, m_pModel(pModel)
-	, m_Status({10,0,300})
+	, m_Status({70,0,300})
 	, m_State(Monster::STANDBY)
 	, m_SearchRange(SearchRange)
 	, m_RollingSpeed(0.0f)
@@ -116,6 +116,11 @@ bool Monster::Control()
 
 	BattleDataManager::Instance().SetMonsterHp(m_Status.Hp);
 	Radar::Instance().SetMonsterPos(m_Pos);
+
+	if (m_Status.Hp <= 0)
+	{
+		m_HasVanished = true;
+	}
 
 	return m_HasVanished;
 }
